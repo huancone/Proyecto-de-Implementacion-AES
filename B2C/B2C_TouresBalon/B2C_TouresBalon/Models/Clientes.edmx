@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Clientes.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ADDRESS">
+          <Key>
+            <PropertyRef Name="ADDRID" />
+          </Key>
+          <Property Name="ADDRID" Type="varchar2" MaxLength="40" Nullable="false" />
+          <Property Name="STREET" Type="varchar2" MaxLength="40" />
+          <Property Name="CITY" Type="varchar2" MaxLength="40" />
+          <Property Name="STATE" Type="varchar2" MaxLength="40" />
+          <Property Name="COUNTRY" Type="varchar2" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="CUSTOMER">
+          <Key>
+            <PropertyRef Name="CUSTID" />
+          </Key>
+          <Property Name="CUSTID" Type="varchar2" MaxLength="40" Nullable="false" />
+          <Property Name="FNAME" Type="varchar2" MaxLength="40" />
+          <Property Name="LNAME" Type="varchar2" MaxLength="40" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CLIENTES_DB_USER.CUSTOMER_ADDRESS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CUSTOMER_ADDRESS">
+          <Key>
+            <PropertyRef Name="CUSTID" />
+            <PropertyRef Name="ADDRESSID" />
+          </Key>
+          <Property Name="CUSTID" Type="varchar2" MaxLength="40" Nullable="false" />
+          <Property Name="ADDRESSID" Type="varchar2" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="ClientesStoreContainer">
+          <EntitySet Name="ADDRESS" EntityType="Self.ADDRESS" Schema="CLIENTES_DB_USER" store:Type="Tables" />
+          <EntitySet Name="CUSTOMER" EntityType="Self.CUSTOMER" Schema="CLIENTES_DB_USER" store:Type="Tables" />
+          <EntitySet Name="CUSTOMER_ADDRESS" EntityType="Self.CUSTOMER_ADDRESS" store:Type="Tables" store:Schema="CLIENTES_DB_USER">
+            <DefiningQuery>SELECT 
+"CUSTOMER_ADDRESS"."CUSTID" AS "CUSTID", 
+"CUSTOMER_ADDRESS"."ADDRESSID" AS "ADDRESSID"
+FROM "CLIENTES_DB_USER"."CUSTOMER_ADDRESS" "CUSTOMER_ADDRESS"</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Clientes" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="ClientesContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ADDRESSes" EntityType="Clientes.ADDRESS" />
+          <EntitySet Name="CUSTOMERs" EntityType="Clientes.CUSTOMER" />
+          <EntitySet Name="CUSTOMER_ADDRESS" EntityType="Clientes.CUSTOMER_ADDRESS" />
+        </EntityContainer>
+        <EntityType Name="ADDRESS">
+          <Key>
+            <PropertyRef Name="ADDRID" />
+          </Key>
+          <Property Name="ADDRID" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="STREET" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="CITY" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="STATE" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="COUNTRY" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CUSTOMER">
+          <Key>
+            <PropertyRef Name="CUSTID" />
+          </Key>
+          <Property Name="CUSTID" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="FNAME" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="LNAME" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CUSTOMER_ADDRESS">
+          <Key>
+            <PropertyRef Name="CUSTID" />
+            <PropertyRef Name="ADDRESSID" />
+          </Key>
+          <Property Name="CUSTID" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="ADDRESSID" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="Clientes" />
+        <Alias Key="Target" Value="Clientes.Store" />
+        <EntityContainerMapping CdmEntityContainer="ClientesContainer" StorageEntityContainer="ClientesStoreContainer">
+          <EntitySetMapping Name="ADDRESSes">
+            <EntityTypeMapping TypeName="Clientes.ADDRESS">
+              <MappingFragment StoreEntitySet="ADDRESS">
+                <ScalarProperty Name="COUNTRY" ColumnName="COUNTRY" />
+                <ScalarProperty Name="STATE" ColumnName="STATE" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+                <ScalarProperty Name="STREET" ColumnName="STREET" />
+                <ScalarProperty Name="ADDRID" ColumnName="ADDRID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CUSTOMERs">
+            <EntityTypeMapping TypeName="Clientes.CUSTOMER">
+              <MappingFragment StoreEntitySet="CUSTOMER">
+                <ScalarProperty Name="LNAME" ColumnName="LNAME" />
+                <ScalarProperty Name="FNAME" ColumnName="FNAME" />
+                <ScalarProperty Name="CUSTID" ColumnName="CUSTID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CUSTOMER_ADDRESS">
+            <EntityTypeMapping TypeName="Clientes.CUSTOMER_ADDRESS">
+              <MappingFragment StoreEntitySet="CUSTOMER_ADDRESS">
+                <ScalarProperty Name="ADDRESSID" ColumnName="ADDRESSID" />
+                <ScalarProperty Name="CUSTID" ColumnName="CUSTID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
