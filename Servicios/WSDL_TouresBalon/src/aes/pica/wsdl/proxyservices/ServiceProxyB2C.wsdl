@@ -234,6 +234,7 @@
 			</xsd:sequence>
 		</xsd:complexType>
 		
+		
         <xsd:complexType name="Ciudad">
        	    <xsd:sequence>
 	       		<xsd:element name="id_ciudad" type="xsd:int"></xsd:element>
