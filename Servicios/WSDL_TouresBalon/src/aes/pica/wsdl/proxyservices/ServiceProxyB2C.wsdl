@@ -502,8 +502,6 @@
         <xsd:complexType>
           <xsd:sequence>
             <xsd:element name="cliente" type="tb_b2:Cliente" maxOccurs="1" minOccurs="1"/>
-=======
->>>>>>> branch 'master' of https://github.com/huancone/Proyecto-de-Implementacion-AES.git
           </xsd:sequence>
         </xsd:complexType>
         
