@@ -90,7 +90,6 @@
       					type="xsd:string" maxOccurs="1" minOccurs="0">
       				</xsd:element>
       			</xsd:sequence>
-      			
       		</xsd:choice>
       	</xsd:complexType>
       </xsd:element>
