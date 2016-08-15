@@ -116,15 +116,18 @@
       <xsd:element name="ConsultarCampaniaProducto">
       	<xsd:complexType>
       		<xsd:sequence>
-      			<xsd:element name="in" type="xsd:string"></xsd:element>
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
       <xsd:element name="ConsultarCampaniaProductoResponse">
       	<xsd:complexType>
-      		<xsd:sequence>
-      			<xsd:element name="out" type="xsd:string"></xsd:element>
-      		</xsd:sequence>
+                    <xsd:choice>
+                    	<xsd:element name="producto" type="tb_b2:Producto" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+                    	<xsd:element name="error"
+                    		type="tb_b2:Error" maxOccurs="1" minOccurs="0">
+                    	</xsd:element>
+                    </xsd:choice>
+                    
       	</xsd:complexType>
       </xsd:element>
       <xsd:element name="ConsultarClientesOrdenes">
