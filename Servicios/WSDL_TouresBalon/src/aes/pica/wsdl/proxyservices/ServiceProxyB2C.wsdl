@@ -73,24 +73,16 @@
       </xsd:element>
       <xsd:element name="ConsultarProducto">
       	<xsd:complexType>
-      		<xsd:choice>
-      			<xsd:element name="error" type="tb_b2:Error" maxOccurs="1" minOccurs="1">
-      			</xsd:element>
-      			<xsd:sequence>
-      				<xsd:element name="tipo_consulta"
-      					type="tb_b2:TipoConsultaProducto" maxOccurs="1" minOccurs="0">
+                    <xsd:sequence>
+                        <xsd:element name="tipo_consulta" type="tb_b2:TipoConsultaProducto" maxOccurs="1" minOccurs="0">
       				</xsd:element>
-      				<xsd:element name="codigo"
-      					type="xsd:string" maxOccurs="1" minOccurs="0">
+                        <xsd:element name="codigo" type="xsd:string" maxOccurs="1" minOccurs="0">
       				</xsd:element>
-      				<xsd:element name="nombre"
-      					type="xsd:string" maxOccurs="1" minOccurs="0">
+                        <xsd:element name="nombre" type="xsd:string" maxOccurs="1" minOccurs="0">
       				</xsd:element>
-      				<xsd:element name="descripcion"
-      					type="xsd:string" maxOccurs="1" minOccurs="0">
+                        <xsd:element name="descripcion" type="xsd:string" maxOccurs="1" minOccurs="0">
       				</xsd:element>
-      			</xsd:sequence>
-      		</xsd:choice>
+                    </xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
       <xsd:element name="ConsultarProductoResponse">
