@@ -19,15 +19,21 @@
       <xsd:element name="AutenticarCliente">
       	<xsd:complexType>
       		<xsd:sequence>
-      			<xsd:element name="in" type="xsd:string"></xsd:element>
+      			<xsd:element name="usuario" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      			<xsd:element name="contrasenia" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
       <xsd:element name="AutenticarClienteResponse">
       	<xsd:complexType>
-      		<xsd:sequence>
-      			<xsd:element name="out" type="xsd:string"></xsd:element>
-      		</xsd:sequence>
+                    <xsd:choice>
+                        <xsd:element name="respuesta" type="tb_b2:RespuestaGenerica" maxOccurs="1" minOccurs="0">
+                    	</xsd:element>
+                        <xsd:element name="error" type="tb_b2:Error"
+                    		maxOccurs="1" minOccurs="0">
+                    	</xsd:element>
+                    </xsd:choice>
+
       	</xsd:complexType>
       </xsd:element>
       <xsd:element name="ActualizarCliente">
