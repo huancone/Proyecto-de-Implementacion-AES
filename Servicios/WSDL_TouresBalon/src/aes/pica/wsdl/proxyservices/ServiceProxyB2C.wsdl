@@ -280,7 +280,7 @@
        	    <xsd:sequence>
 	       		<xsd:element name="id_ciudad" type="xsd:int"></xsd:element>
 	       		<xsd:element name="pais" type="xsd:string"></xsd:element>
-	       		<xsd:element name="tipo_ciudad" type="tb_p:TarifaTIpo"></xsd:element>
+	       		<xsd:element name="tipo_ciudad" type="tb_p:TarifaTipo"></xsd:element>
        	    </xsd:sequence>
         </xsd:complexType>		
     
@@ -554,9 +554,9 @@
       <xsd:element name="ActualizarClienteResponse">
       	<xsd:complexType>
                     <xsd:choice>
-      			<xsd:element name="respuesta" type="tb_b2:RespuestaGenerica">
+      			<xsd:element name="respuesta" type="tb_b2:RespuestaGenerica" maxOccurs="1" minOccurs="1">
       			</xsd:element>
-      			<xsd:element name="error" type="tb_b2:Error"></xsd:element>
+      			<xsd:element name="error" type="tb_b2:Error" maxOccurs="1" minOccurs="0"></xsd:element>
       		</xsd:choice>
       	</xsd:complexType>
       </xsd:element>
@@ -750,7 +750,7 @@
        	    <xsd:sequence>
 	       		<xsd:element name="id_ciudad" type="xsd:int"></xsd:element>
 	       		<xsd:element name="pais" type="xsd:string"></xsd:element>
-	       		<xsd:element name="tipo_ciudad" type="tb_b2:TarifaTIpo"></xsd:element>
+	       		<xsd:element name="tipo_ciudad" type="tb_b2:TarifaTipo"></xsd:element>
        	    </xsd:sequence>
         </xsd:complexType>		
     
@@ -1216,7 +1216,7 @@
        	    <xsd:sequence>
 	       		<xsd:element name="id_ciudad" type="xsd:int"></xsd:element>
 	       		<xsd:element name="pais" type="xsd:string"></xsd:element>
-	       		<xsd:element name="tipo_ciudad" type="tb_p:TarifaTIpo"></xsd:element>
+	       		<xsd:element name="tipo_ciudad" type="tb_p:TarifaTipo"></xsd:element>
        	    </xsd:sequence>
         </xsd:complexType>		
     
