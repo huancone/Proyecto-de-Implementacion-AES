@@ -16,11 +16,17 @@
 			<xsd:element name="RegistrarClienteResponse">
 				<xsd:complexType>
 					<xsd:choice>
-						<xsd:element name="respuesta" type="tb_b2:RespuestaGenerica"
-							maxOccurs="1" minOccurs="0"></xsd:element>
 						<xsd:element name="error" type="tb_b2:Error"
 							maxOccurs="1" minOccurs="0">
 						</xsd:element>
+						<xsd:sequence>
+							<xsd:element name="respuesta"
+								type="tb_b2:RespuestaGenerica" maxOccurs="1" minOccurs="1">
+							</xsd:element>
+							<xsd:element name="id_cliente"
+								type="xsd:string" maxOccurs="1" minOccurs="1">
+							</xsd:element>
+						</xsd:sequence>
 					</xsd:choice>
 				</xsd:complexType>
 			</xsd:element>
