@@ -84,8 +84,7 @@
                     	<xsd:element name="error"
                     		type="tb_o:Error" maxOccurs="1" minOccurs="0">
                     	</xsd:element>
-                    </xsd:choice>
-                    
+                    </xsd:choice>                    
             	</xsd:complexType>
             </xsd:element>
             <xsd:element name="CrearOrdenes">
