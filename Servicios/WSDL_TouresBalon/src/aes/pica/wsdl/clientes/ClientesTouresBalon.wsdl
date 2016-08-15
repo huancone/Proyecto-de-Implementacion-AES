@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:t="http://www.touresbalon.com/ClientesTouresBalon/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ClientesTouresBalon" targetNamespace="http://www.touresbalon.com/ClientesTouresBalon/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.touresbalon.com/ClientesTouresBalon/">
+      <xsd:element name="RegistrarCliente">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="cliente" type="t:Cliente" maxOccurs="1" minOccurs="1"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RegistrarClienteResponse">
+        <xsd:complexType>
+                    <xsd:choice>
+          	<xsd:element name="respuesta" type="t:RespuestaGenerica" maxOccurs="1" minOccurs="1" />
+          	<xsd:element name="error" type="t:Error" maxOccurs="1" minOccurs="0"></xsd:element>
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+    
+      <xsd:complexType name="Cliente">
+      	<xsd:sequence>
+      		<xsd:element name="nombres" type="xsd:string"
+      			maxOccurs="1" minOccurs="1">
+      		</xsd:element>
+      		<xsd:element name="apellidos" type="xsd:string"
+      			maxOccurs="1" minOccurs="1">
+      		</xsd:element>
+      		<xsd:element name="num_tel" type="xsd:string"
+      			maxOccurs="1" minOccurs="0">
+      		</xsd:element>
+      		<xsd:element name="email" type="xsd:string" maxOccurs="1"
+      			minOccurs="1">
+      		</xsd:element>
+      		<xsd:element name="contrasenia" type="xsd:string"
+      			maxOccurs="1" minOccurs="1">
+      		</xsd:element>
+      		<xsd:element name="tipo_tarjeta" type="xsd:string"
+      			maxOccurs="1" minOccurs="0">
+      		</xsd:element>
+      		<xsd:element name="numero_tarjeta" type="xsd:string"
+      			maxOccurs="1" minOccurs="0">
+      		</xsd:element>
+      		<xsd:element name="direccion" type="t:Direccion"
+      			maxOccurs="unbounded" minOccurs="0">
+      		</xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+      <xsd:complexType name="Direccion">
+      	<xsd:sequence>
+      		<xsd:element name="pais" type="xsd:string"></xsd:element>
+      		<xsd:element name="ciudad" type="xsd:string"></xsd:element>
+      		<xsd:element name="estado" type="xsd:string"></xsd:element>
+      		<xsd:element name="cod_postal" type="xsd:string"></xsd:element>
+      		<xsd:element name="tipo_dir" type="xsd:string"></xsd:element>
+      		<xsd:element name="dir_calle" type="xsd:string"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+      <xsd:element name="AutenticarCliente">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="usuario" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      			<xsd:element name="contrasenia" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AutenticarClienteResponse">
+      	<xsd:complexType>
+                    <xsd:choice>
+      			<xsd:element name="respuesta" type="t:RespuestaGenerica" maxOccurs="1" minOccurs="1">
+      			</xsd:element>
+      			<xsd:element name="error" type="t:Error" maxOccurs="1" minOccurs="0"></xsd:element>
+      		</xsd:choice>
+      	</xsd:complexType>
+      </xsd:element>
+    
+      <xsd:element name="ActualizarCliente">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="cliente" type="t:Cliente"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ActualizarClienteResponse">
+      	<xsd:complexType>
+                    <xsd:choice>
+      			<xsd:element name="respuesta" type="t:RespuestaGenerica" maxOccurs="1" minOccurs="1">
+      			</xsd:element>
+      			<xsd:element name="error" type="t:Error" maxOccurs="1" minOccurs="0"></xsd:element>
+      		</xsd:choice>
+      	</xsd:complexType>
+      </xsd:element>
+    
+      <xsd:element name="ActualizarContrasenia">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="usuario" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      			<xsd:element name="contrasenia" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ActualizarContraseniaResponse">
+      	<xsd:complexType>
+                    <xsd:choice>
+      			<xsd:element name="respuesta" type="t:RespuestaGenerica" maxOccurs="1" minOccurs="1">
+      			</xsd:element>
+      			<xsd:element name="error" type="t:Error" maxOccurs="1" minOccurs="0"></xsd:element>
+      		</xsd:choice>
+      	</xsd:complexType>
+      </xsd:element>
+    
+    
+      <xsd:complexType name="Error">
+      	<xsd:sequence>
+      		<xsd:element name="codigo" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      		<xsd:element name="mensaje" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+      <xsd:simpleType name="RespuestaGenerica">
+      	<xsd:restriction base="xsd:string">
+      		<xsd:enumeration value="OK"></xsd:enumeration>
+      		<xsd:enumeration value="KO"></xsd:enumeration>
+      	</xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="algo">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="algo" type="xsd:string"></xsd:element>
+      			<xsd:element name="asdfasd" type="xsd:boolean"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="algoResponse">
+      	<xsd:complexType>
+                    <xsd:choice>
+                    	<xsd:element name="out" type="xsd:string"></xsd:element>
+                    	<xsd:element name="error"
+                    		type="xsd:string">
+                    	</xsd:element>
+                    </xsd:choice>
+                    
+      	</xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="RegistrarClienteRequest">
+    <wsdl:part element="t:RegistrarCliente" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="RegistrarClienteResponse">
+    <wsdl:part element="t:RegistrarClienteResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="AutenticarClienteRequest">
+  	<wsdl:part name="parameters" element="t:AutenticarCliente"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AutenticarClienteResponse">
+  	<wsdl:part name="parameters" element="t:AutenticarClienteResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ActualizarClienteRequest">
+  	<wsdl:part name="parameters" element="t:ActualizarCliente"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ActualizarClienteResponse">
+  	<wsdl:part name="parameters" element="t:ActualizarClienteResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ActualizarContraseniaRequest">
+  	<wsdl:part name="parameters" element="t:ActualizarContrasenia"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ActualizarContraseniaResponse">
+  	<wsdl:part name="parameters" element="t:ActualizarContraseniaResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="algoRequest">
+  	<wsdl:part name="parameters" element="t:algo"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="algoResponse">
+  	<wsdl:part name="parameters" element="t:algoResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ClientesTouresBalon">
+    <wsdl:operation name="RegistrarCliente">
+      <wsdl:input message="t:RegistrarClienteRequest"/>
+      <wsdl:output message="t:RegistrarClienteResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="AutenticarCliente">
+    	<wsdl:input message="t:AutenticarClienteRequest"></wsdl:input>
+    	<wsdl:output message="t:AutenticarClienteResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarCliente">
+    	<wsdl:input message="t:ActualizarClienteRequest"></wsdl:input>
+    	<wsdl:output message="t:ActualizarClienteResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarContrasenia">
+    	<wsdl:input message="t:ActualizarContraseniaRequest"></wsdl:input>
+    	<wsdl:output message="t:ActualizarContraseniaResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="algo">
+    	<wsdl:input message="t:algoRequest"></wsdl:input>
+    	<wsdl:output message="t:algoResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ClientesTouresBalonSOAP"
+  	type="t:ClientesTouresBalon">
+  	<soap:binding style="document"
+  		transport="http://schemas.xmlsoap.org/soap/http" />
+  	<wsdl:operation name="RegistrarCliente">
+  		<soap:operation
+  			soapAction="http://www.touresbalon.com/ClientesTouresBalon/RegistrarCliente" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="AutenticarCliente">
+  		<soap:operation
+  			soapAction="http://www.touresbalon.com/ClientesTouresBalon/AutenticarCliente" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="ActualizarCliente">
+  		<soap:operation
+  			soapAction="http://www.touresbalon.com/ClientesTouresBalon/ActualizarCliente" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="ActualizarContrasenia">
+  		<soap:operation
+  			soapAction="http://www.touresbalon.com/ClientesTouresBalon/ActualizarContrasenia" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ClientesTouresBalon">
+    <wsdl:port binding="t:ClientesTouresBalonSOAP" name="ClientesTouresBalonSOAP">
+      <wsdl:documentation>Version 0.1</wsdl:documentation>
+      <soap:address location="http://www.touresbalon.com/Clientes"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

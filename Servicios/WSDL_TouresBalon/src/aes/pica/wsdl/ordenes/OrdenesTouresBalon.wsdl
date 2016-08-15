@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tb_o="http://www.touresbalon.com/OrdenesTouresBalon/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="OrdenesTouresBalon" targetNamespace="http://www.touresbalon.com/OrdenesTouresBalon/">
+  <wsdl:documentation>V 0.1</wsdl:documentation>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.touresbalon.com/OrdenesTouresBalon/">
+      <xsd:element name="ConsultarClientesOrdenes">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id_cliente" type="xsd:string" maxOccurs="1" minOccurs="1"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ConsultarClientesOrdenesResponse">
+        <xsd:complexType>
+                    <xsd:choice>
+                    	<xsd:element name="orden" type="tb_o:Orden" maxOccurs="unbounded" minOccurs="0"/>
+                    	<xsd:element name="error"
+                    		type="tb_o:Error" maxOccurs="1" minOccurs="0">
+                    	</xsd:element>
+                    </xsd:choice>
+                    
+        </xsd:complexType>
+      </xsd:element>
+    
+      <xsd:complexType name="Item">
+      	<xsd:sequence>
+      		<xsd:element name="id_item" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      		<xsd:element name="id_prod" type="xsd:int" maxOccurs="1" minOccurs="1"></xsd:element>
+      		<xsd:element name="nombre_prod" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      		<xsd:element name="part_num" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      		<xsd:element name="precio" type="xsd:double" maxOccurs="1" minOccurs="1"></xsd:element>
+      		<xsd:element name="cantidad" type="xsd:int" maxOccurs="1" minOccurs="1"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+      <xsd:complexType name="Orden">
+      	<xsd:sequence>
+      		<xsd:element name="id_orden" type="xsd:string"
+      			maxOccurs="1" minOccurs="1">
+      		</xsd:element>
+      		<xsd:element name="fecha_orden" type="xsd:date"
+      			maxOccurs="1" minOccurs="1">
+      		</xsd:element>
+      		<xsd:element name="precio" type="xsd:double" maxOccurs="1"
+      			minOccurs="1">
+      		</xsd:element>
+      		<xsd:element name="estatus" type="tb_o:EstatusOrden"
+      			maxOccurs="1" minOccurs="1">
+      		</xsd:element>
+      		<xsd:element name="comentarios" type="xsd:string"
+      			maxOccurs="unbounded" minOccurs="0">
+      		</xsd:element>
+      		<xsd:element name="item" type="tb_o:Item" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+      
+            <xsd:complexType name="Error">
+            	<xsd:sequence>
+            		<xsd:element name="codigo" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+            		<xsd:element name="mensaje" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+            	</xsd:sequence>
+            </xsd:complexType>
+    
+            <xsd:simpleType name="EstatusOrden">
+            	<xsd:restriction base="xsd:string">
+            		<xsd:enumeration value="VALIDACION"></xsd:enumeration>
+            		<xsd:enumeration value="RESERVACION"></xsd:enumeration>
+            		<xsd:enumeration value="CERRADA"></xsd:enumeration>
+            		<xsd:enumeration value="RECHAZADA"></xsd:enumeration>
+            		<xsd:enumeration value="CANCELADA"></xsd:enumeration>
+            	</xsd:restriction>
+            </xsd:simpleType>
+            <xsd:element name="CancelarOrdenes">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="id_orden" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+            <xsd:element name="CancelarOrdenesResponse">
+            	<xsd:complexType>
+                    <xsd:choice>
+                    	<xsd:element name="repuesta" type="tb_o:RespuestaGenerica" maxOccurs="1" minOccurs="0"></xsd:element>
+                    	<xsd:element name="error"
+                    		type="tb_o:Error" maxOccurs="1" minOccurs="0">
+                    	</xsd:element>
+                    </xsd:choice>
+                    
+            	</xsd:complexType>
+            </xsd:element>
+            <xsd:element name="CrearOrdenes">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="orden" type="tb_o:Orden" maxOccurs="unbounded" minOccurs="1"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+            <xsd:element name="CrearOrdenesResponse">
+            	<xsd:complexType>
+                    <xsd:choice>
+                    	<xsd:element name="respuesta" type="tb_o:RespuestaGenerica" maxOccurs="1" minOccurs="0"></xsd:element>
+                    	<xsd:element name="error"
+                    		type="tb_o:Error" maxOccurs="1" minOccurs="0">
+                    	</xsd:element>
+                    </xsd:choice>
+                    
+            	</xsd:complexType>
+            </xsd:element>
+    
+            <xsd:simpleType name="RespuestaGenerica">
+            	<xsd:restriction base="xsd:string">
+            		<xsd:enumeration value="OK"></xsd:enumeration>
+            		<xsd:enumeration value="KO"></xsd:enumeration>
+            	</xsd:restriction>
+            </xsd:simpleType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ConsultarClientesOrdenesRequest">
+    <wsdl:part element="tb_o:ConsultarClientesOrdenes" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultarClientesOrdenesResponse">
+    <wsdl:part element="tb_o:ConsultarClientesOrdenesResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="CancelarOrdenesRequest">
+  	<wsdl:part name="parameters" element="tb_o:CancelarOrdenes"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CancelarOrdenesResponse">
+  	<wsdl:part name="parameters" element="tb_o:CancelarOrdenesResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CrearOrdenesRequest">
+  	<wsdl:part name="parameters" element="tb_o:CrearOrdenes"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CrearOrdenesResponse">
+  	<wsdl:part name="parameters" element="tb_o:CrearOrdenesResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="OrdenesTouresBalon">
+    <wsdl:operation name="ConsultarClientesOrdenes">
+      <wsdl:input message="tb_o:ConsultarClientesOrdenesRequest"/>
+      <wsdl:output message="tb_o:ConsultarClientesOrdenesResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="CancelarOrdenes">
+    	<wsdl:input message="tb_o:CancelarOrdenesRequest"></wsdl:input>
+    	<wsdl:output message="tb_o:CancelarOrdenesResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearOrdenes">
+    	<wsdl:input message="tb_o:CrearOrdenesRequest"></wsdl:input>
+    	<wsdl:output message="tb_o:CrearOrdenesResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="OrdenesTouresBalonSOAP"
+  	type="tb_o:OrdenesTouresBalon">
+  	<soap:binding style="document"
+  		transport="http://schemas.xmlsoap.org/soap/http" />
+  	<wsdl:operation name="ConsultarClientesOrdenes">
+  		<soap:operation
+  			soapAction="http://www.touresbalon.com/OrdenesTouresBalon/ConsultarClientesOrdenes" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="CancelarOrdenes">
+  		<soap:operation
+  			soapAction="http://www.touresbalon.com/OrdenesTouresBalon/CancelarOrdenes" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="CrearOrdenes">
+  		<soap:operation
+  			soapAction="http://www.touresbalon.com/OrdenesTouresBalon/CrearOrdenes" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="OrdenesTouresBalon">
+    <wsdl:port binding="tb_o:OrdenesTouresBalonSOAP" name="OrdenesTouresBalonSOAP">
+      <soap:address location="http://www.touresbalon.com/Ordenes"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

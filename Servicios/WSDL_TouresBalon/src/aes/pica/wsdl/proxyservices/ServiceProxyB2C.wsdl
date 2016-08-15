@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tb_b2="http://www.touresbalon.com/ServiceProxyB2C/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ServiceProxyB2C" targetNamespace="http://www.touresbalon.com/ServiceProxyB2C/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.touresbalon.com/ServiceProxyB2C/">
+      <xsd:element name="RegistrarCliente">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="in" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RegistrarClienteResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="RegistrarClienteRequest">
+    <wsdl:part element="tb_b2:RegistrarCliente" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="RegistrarClienteResponse">
+    <wsdl:part element="tb_b2:RegistrarClienteResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="ServiceProxyB2C">
+    <wsdl:operation name="RegistrarCliente">
+      <wsdl:input message="tb_b2:RegistrarClienteRequest"/>
+      <wsdl:output message="tb_b2:RegistrarClienteResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceProxyB2CSOAP" type="tb_b2:ServiceProxyB2C">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="RegistrarCliente">
+      <soap:operation soapAction="http://www.touresbalon.com/ServiceProxyB2C/RegistrarCliente"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServiceProxyB2C">
+    <wsdl:port binding="tb_b2:ServiceProxyB2CSOAP" name="ServiceProxyB2CSOAP">
+      <soap:address location="http://www.touresbalon.com/ServiceProxyB2C"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
