@@ -91,7 +91,6 @@
       				</xsd:element>
       			</xsd:sequence>
       		</xsd:choice>
-
       	</xsd:complexType>
       </xsd:element>
       <xsd:element name="ConsultarProductoResponse">
