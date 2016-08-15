@@ -274,7 +274,7 @@
        	    <xsd:sequence>
 	       		<xsd:element name="id_ciudad" type="xsd:int"></xsd:element>
 	       		<xsd:element name="pais" type="xsd:string"></xsd:element>
-	       		<xsd:element name="tipo_ciudad" type="tb_p:TarifaTipo"></xsd:element>
+	       		<xsd:element name="tipo_ciudad" type="tb_b2:TarifaTipo"></xsd:element>
        	    </xsd:sequence>
         </xsd:complexType>		
     
@@ -1210,7 +1210,7 @@
        	    <xsd:sequence>
 	       		<xsd:element name="id_ciudad" type="xsd:int"></xsd:element>
 	       		<xsd:element name="pais" type="xsd:string"></xsd:element>
-	       		<xsd:element name="tipo_ciudad" type="tb_p:TarifaTipo"></xsd:element>
+	       		<xsd:element name="tipo_ciudad" type="tb_b2:TarifaTipo"></xsd:element>
        	    </xsd:sequence>
         </xsd:complexType>		
     
