@@ -172,6 +172,41 @@
       		<xsd:element name="direccion" type="tb_b2:Direccion" maxOccurs="unbounded" minOccurs="0"></xsd:element>
       	</xsd:sequence>
       </xsd:complexType>
+    
+  	 <xsd:complexType name="Item">
+      	<xsd:sequence>
+      		<xsd:element name="id_item" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      		<xsd:element name="id_prod" type="xsd:int" maxOccurs="1" minOccurs="1"></xsd:element>
+      		<xsd:element name="nombre_prod" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      		<xsd:element name="part_num" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      		<xsd:element name="precio" type="xsd:double" maxOccurs="1" minOccurs="1"></xsd:element>
+      		<xsd:element name="cantidad" type="xsd:int" maxOccurs="1" minOccurs="1"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+  	 <xsd:complexType name="Orden">
+  	 	<xsd:sequence>
+  	 		<xsd:element name="id_orden" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+  	 		<xsd:element name="fecha_orden" type="xsd:date" maxOccurs="1" minOccurs="1"></xsd:element>
+  	 		<xsd:element name="precio" type="xsd:double" maxOccurs="1" minOccurs="1"></xsd:element>
+  	 		<xsd:element name="estatus" type="tb_b2:EstatusOrden"
+  	 			maxOccurs="1" minOccurs="1">
+  	 		</xsd:element>
+  	 		<xsd:element name="comentarios" type="xsd:string" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+  	 		<xsd:element name="item" type="tb_b2:Item" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+  	 	</xsd:sequence>
+  	 </xsd:complexType>
+    
+    
+		<xsd:simpleType name="EstatusOrden">
+        	<xsd:restriction base="xsd:string">
+        		<xsd:enumeration value="VALIDACION"></xsd:enumeration>
+        		<xsd:enumeration value="RESERVACION"></xsd:enumeration>
+        		<xsd:enumeration value="CERRADA"></xsd:enumeration>
+        		<xsd:enumeration value="RECHAZADA"></xsd:enumeration>
+        		<xsd:enumeration value="CANCELADA"></xsd:enumeration>
+        	</xsd:restriction>
+        </xsd:simpleType>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="RegistrarClienteRequest">
