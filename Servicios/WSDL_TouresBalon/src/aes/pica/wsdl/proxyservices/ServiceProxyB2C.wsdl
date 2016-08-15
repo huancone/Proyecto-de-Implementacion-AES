@@ -7,8 +7,7 @@
           <xsd:sequence>
             <xsd:element name="cliente" type="tb_b2:Cliente" maxOccurs="1" minOccurs="1"/>
           </xsd:sequence>
-        </xsd:complexType>
-        
+        </xsd:complexType>        
       </xsd:element>
       <xsd:element name="RegistrarClienteResponse">
         <xsd:complexType>
@@ -509,6 +508,8 @@
         <xsd:complexType>
           <xsd:sequence>
             <xsd:element name="cliente" type="tb_b2:Cliente" maxOccurs="1" minOccurs="1"/>
+=======
+>>>>>>> branch 'master' of https://github.com/huancone/Proyecto-de-Implementacion-AES.git
           </xsd:sequence>
         </xsd:complexType>
         
@@ -546,7 +547,7 @@
       <xsd:element name="ActualizarCliente">
       	<xsd:complexType>
       		<xsd:sequence>
-      			<xsd:element name="in" type="xsd:string"></xsd:element>
+      			<xsd:element name="cliente" type="tb_b2:Cliente" maxOccurs="1" minOccurs="1"></xsd:element>
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
@@ -578,15 +579,17 @@
       <xsd:element name="ConsultarProducto">
       	<xsd:complexType>
       		<xsd:sequence>
-      			<xsd:element name="in" type="xsd:string"></xsd:element>
+      			<xsd:element name="usuario" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      			<xsd:element name="contrasenia" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
       <xsd:element name="ConsultarProductoResponse">
       	<xsd:complexType>
-      		<xsd:sequence>
-      			<xsd:element name="out" type="xsd:string"></xsd:element>
-      		</xsd:sequence>
+                    <xsd:choice>
+      			<xsd:element name="respuesta" type="tb_b2:RespuestaGenerica"></xsd:element>
+      			<xsd:element name="error" type="tb_b2:Error"></xsd:element>
+      		</xsd:choice>
       	</xsd:complexType>
       </xsd:element>
       <xsd:element name="ConsultarCampaniaProducto">
@@ -747,7 +750,7 @@
        	    <xsd:sequence>
 	       		<xsd:element name="id_ciudad" type="xsd:int"></xsd:element>
 	       		<xsd:element name="pais" type="xsd:string"></xsd:element>
-	       		<xsd:element name="tipo_ciudad" type="tb_p:TarifaTIpo"></xsd:element>
+	       		<xsd:element name="tipo_ciudad" type="tb_b2:TarifaTIpo"></xsd:element>
        	    </xsd:sequence>
         </xsd:complexType>		
     
