@@ -8,6 +8,7 @@
             <xsd:element name="in" type="xsd:string"/>
           </xsd:sequence>
         </xsd:complexType>
+        
       </xsd:element>
       <xsd:element name="RegistrarClienteResponse">
         <xsd:complexType>
