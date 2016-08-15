@@ -93,7 +93,7 @@
       	</xsd:complexType>
       </xsd:element>
     
-      <xsd:element name="ActualizarContrasenia">
+      <xsd:element name="ActualizarContraseniaCliente">
       	<xsd:complexType>
       		<xsd:sequence>
       			<xsd:element name="usuario" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
@@ -101,7 +101,7 @@
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
-      <xsd:element name="ActualizarContraseniaResponse">
+      <xsd:element name="ActualizarContraseniaClienteResponse">
       	<xsd:complexType>
                     <xsd:choice>
       			<xsd:element name="respuesta" type="t:RespuestaGenerica" maxOccurs="1" minOccurs="1">
@@ -145,17 +145,11 @@
   <wsdl:message name="ActualizarClienteResponse">
   	<wsdl:part name="parameters" element="t:ActualizarClienteResponse"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ActualizarContraseniaRequest">
-  	<wsdl:part name="parameters" element="t:ActualizarContrasenia"></wsdl:part>
+  <wsdl:message name="ActualizarContraseniaClienteRequest">
+  	<wsdl:part name="parameters" element="t:ActualizarContraseniaCliente"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ActualizarContraseniaResponse">
-  	<wsdl:part name="parameters" element="t:ActualizarContraseniaResponse"></wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="algoRequest">
-  	<wsdl:part name="parameters" element="t:algo"></wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="algoResponse">
-  	<wsdl:part name="parameters" element="t:algoResponse"></wsdl:part>
+  <wsdl:message name="ActualizarContraseniaClienteResponse">
+  	<wsdl:part name="parameters" element="t:ActualizarContraseniaClienteResponse"></wsdl:part>
   </wsdl:message>
   <wsdl:portType name="ClientesTouresBalon">
     <wsdl:operation name="RegistrarCliente">
@@ -170,13 +164,9 @@
     	<wsdl:input message="t:ActualizarClienteRequest"></wsdl:input>
     	<wsdl:output message="t:ActualizarClienteResponse"></wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ActualizarContrasenia">
-    	<wsdl:input message="t:ActualizarContraseniaRequest"></wsdl:input>
-    	<wsdl:output message="t:ActualizarContraseniaResponse"></wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="algo">
-    	<wsdl:input message="t:algoRequest"></wsdl:input>
-    	<wsdl:output message="t:algoResponse"></wsdl:output>
+    <wsdl:operation name="ActualizarContraseniaCliente">
+    	<wsdl:input message="t:ActualizarContraseniaClienteRequest"></wsdl:input>
+    	<wsdl:output message="t:ActualizarContraseniaClienteResponse"></wsdl:output>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ClientesTouresBalonSOAP"
@@ -213,9 +203,9 @@
   			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>
-  	<wsdl:operation name="ActualizarContrasenia">
+  	<wsdl:operation name="ActualizarContraseniaCliente">
   		<soap:operation
-  			soapAction="http://www.touresbalon.com/ClientesTouresBalon/ActualizarContrasenia" />
+  			soapAction="http://www.touresbalon.com/ClientesTouresBalon/ActualizarContraseniaCliente" />
   		<wsdl:input>
   			<soap:body use="literal" />
   		</wsdl:input>
