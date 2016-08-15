@@ -70,6 +70,975 @@
       </xsd:element>
       <xsd:element name="ConsultarProducto">
       	<xsd:complexType>
+      		<xsd:choice>
+      			<xsd:element name="error" type="tb_b2:Error" maxOccurs="1" minOccurs="1">
+      			</xsd:element>
+      			<xsd:sequence>
+      				<xsd:element name="tipo_consulta"
+      					type="tb_b2:TipoConsultaProducto" maxOccurs="1" minOccurs="0">
+      				</xsd:element>
+      				<xsd:element name="codigo"
+      					type="xsd:string" maxOccurs="1" minOccurs="0">
+      				</xsd:element>
+      				<xsd:element name="nombre"
+      					type="xsd:string" maxOccurs="1" minOccurs="0">
+      				</xsd:element>
+      				<xsd:element name="descripcion"
+      					type="xsd:string" maxOccurs="1" minOccurs="0">
+      				</xsd:element>
+      			</xsd:sequence>
+      		</xsd:choice>
+
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ConsultarProductoResponse">
+      	<xsd:complexType>
+                    <xsd:choice>
+                        <xsd:element name="error" type="tb_b2:Error"></xsd:element>
+                        <xsd:sequence>
+                    		<xsd:element name="producto"
+                    			type="tb_b2:Producto" maxOccurs="unbounded" minOccurs="0">
+                    		</xsd:element>
+                    		<xsd:element name="producto_top_1"
+                    			type="tb_b2:Producto" maxOccurs="1" minOccurs="0">
+                    		</xsd:element>
+                    		<xsd:element name="producto_top_2"
+                    			type="tb_b2:Producto" maxOccurs="1" minOccurs="0">
+                    		</xsd:element>
+                    		<xsd:element name="producto_top_3"
+                    			type="tb_b2:Producto" maxOccurs="1" minOccurs="0">
+                    		</xsd:element>
+                    		<xsd:element name="producto_top_4"
+                    			type="tb_b2:Producto" maxOccurs="1" minOccurs="0">
+                    		</xsd:element>
+                    		<xsd:element name="producto_top_5"
+                    			type="tb_b2:Producto" maxOccurs="1" minOccurs="0">
+                    		</xsd:element>
+                    	</xsd:sequence>
+                    </xsd:choice>
+
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ConsultarCampaniaProducto">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="in" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ConsultarCampaniaProductoResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="out" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ConsultarClientesOrdenes">
+      	<xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id_cliente" type="xsd:string" maxOccurs="1" minOccurs="1"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ConsultarClientesOrdenesResponse">
+      	<xsd:complexType>
+                    <xsd:choice>
+                    	<xsd:element name="orden" type="tb_b2:Orden" maxOccurs="unbounded" minOccurs="0"/>
+                    	<xsd:element name="error"
+                    		type="tb_b2:Error" maxOccurs="1" minOccurs="0">
+                    	</xsd:element>
+                    </xsd:choice>
+                    
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CancelarOrdenes">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="id_orden" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CancelarOrdenesResponse">
+      	<xsd:complexType>
+  			<xsd:choice>
+  				<xsd:element name="respuesta" type="tb_b2:RespuestaGenerica" maxOccurs="1" minOccurs="0"></xsd:element>
+  				<xsd:element name="error"
+  					type="tb_b2:Error" maxOccurs="1" minOccurs="0">
+  				</xsd:element>
+  			</xsd:choice>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CrearOrdenes">
+      	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="orden" type="tb_b2:Orden" maxOccurs="unbounded" minOccurs="1"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CrearOrdenesResponse">
+      	<xsd:complexType>
+                    <xsd:choice>
+                    	<xsd:element name="respuesta" type="tb_b2:RespuestaGenerica" maxOccurs="1" minOccurs="0"></xsd:element>
+                    	<xsd:element name="error"
+                    		type="tb_b2:Error" maxOccurs="1" minOccurs="0">
+                    	</xsd:element>
+                    </xsd:choice>
+                    
+            	</xsd:complexType>
+      </xsd:element>
+    
+      <xsd:simpleType name="RespuestaGenerica">
+      	<xsd:restriction base="xsd:string">
+      		<xsd:enumeration value="OK"></xsd:enumeration>
+      		<xsd:enumeration value="KO"></xsd:enumeration>
+      	</xsd:restriction>
+      </xsd:simpleType>
+    
+      <xsd:complexType name="Error">
+      	<xsd:sequence>
+      		<xsd:element name="codigo" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      		<xsd:element name="mensaje" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+      <xsd:complexType name="Direccion">
+      	<xsd:sequence>
+      		<xsd:element name="pais" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      		<xsd:element name="ciudad" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      		<xsd:element name="estado" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      		<xsd:element name="cod_postal" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      		<xsd:element name="tipo_dir" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      		<xsd:element name="dir_calle" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+      <xsd:complexType name="Cliente">
+      	<xsd:sequence>
+      		<xsd:element name="nombres" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      		<xsd:element name="apellidos" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      		<xsd:element name="num_tel" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      		<xsd:element name="email" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      		<xsd:element name="contrasenia" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      		<xsd:element name="tipo_tarjeta" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      		<xsd:element name="numero_tarjeta" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      		<xsd:element name="direccion" type="tb_b2:Direccion" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+  	 <xsd:complexType name="Item">
+      	<xsd:sequence>
+      		<xsd:element name="id_item" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      		<xsd:element name="id_prod" type="xsd:int" maxOccurs="1" minOccurs="1"></xsd:element>
+      		<xsd:element name="nombre_prod" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      		<xsd:element name="part_num" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      		<xsd:element name="precio" type="xsd:double" maxOccurs="1" minOccurs="1"></xsd:element>
+      		<xsd:element name="cantidad" type="xsd:int" maxOccurs="1" minOccurs="1"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+  	 <xsd:complexType name="Orden">
+  	 	<xsd:sequence>
+  	 		<xsd:element name="id_orden" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+  	 		<xsd:element name="fecha_orden" type="xsd:date" maxOccurs="1" minOccurs="1"></xsd:element>
+  	 		<xsd:element name="precio" type="xsd:double" maxOccurs="1" minOccurs="1"></xsd:element>
+  	 		<xsd:element name="estatus" type="tb_b2:EstatusOrden"
+  	 			maxOccurs="1" minOccurs="1">
+  	 		</xsd:element>
+  	 		<xsd:element name="comentarios" type="xsd:string" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+  	 		<xsd:element name="item" type="tb_b2:Item" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+  	 	</xsd:sequence>
+  	 </xsd:complexType>
+    
+    
+		<xsd:simpleType name="EstatusOrden">
+        	<xsd:restriction base="xsd:string">
+        		<xsd:enumeration value="VALIDACION"></xsd:enumeration>
+        		<xsd:enumeration value="RESERVACION"></xsd:enumeration>
+        		<xsd:enumeration value="CERRADA"></xsd:enumeration>
+        		<xsd:enumeration value="RECHAZADA"></xsd:enumeration>
+        		<xsd:enumeration value="CANCELADA"></xsd:enumeration>
+        	</xsd:restriction>
+        </xsd:simpleType>
+    
+		<xsd:simpleType name="TipoConsultaProducto">
+			<xsd:restriction base="xsd:string"></xsd:restriction>
+		</xsd:simpleType>
+    
+		<xsd:complexType name="TarifaTipo">
+			<xsd:sequence>
+				<xsd:element name="id" type="xsd:int" maxOccurs="1" minOccurs="1"></xsd:element>
+				<xsd:element name="nombre_tipo" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+				<xsd:element name="precio" type="xsd:double" maxOccurs="1" minOccurs="1"></xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+		
+		
+        <xsd:complexType name="Ciudad">
+       	    <xsd:sequence>
+	       		<xsd:element name="id_ciudad" type="xsd:int"></xsd:element>
+	       		<xsd:element name="pais" type="xsd:string"></xsd:element>
+	       		<xsd:element name="tipo_ciudad" type="tb_p:TarifaTIpo"></xsd:element>
+       	    </xsd:sequence>
+        </xsd:complexType>		
+    
+     <xsd:complexType name="Producto">
+      	<xsd:sequence>
+      		<xsd:element name="id_producto" type="xsd:int" maxOccurs="1" minOccurs="1"></xsd:element>
+      		<xsd:element name="espectaculo" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      		<xsd:element name="ciudad_espectaculo"
+      			type="tb_b2:Ciudad" maxOccurs="1" minOccurs="1">
+      		</xsd:element>
+      		<xsd:element name="fecha_llegada" type="xsd:date" maxOccurs="1" minOccurs="0"></xsd:element>
+      		<xsd:element name="fecha_salida" type="xsd:date" maxOccurs="1" minOccurs="0"></xsd:element>
+      		<xsd:element name="tipo_transporte" type="tb_b2:TarifaTipo"
+      			maxOccurs="1" minOccurs="0">
+      		</xsd:element>
+      		<xsd:element name="tipo_espectaculo"
+      			type="tb_b2:TarifaTipo" maxOccurs="1" minOccurs="1">
+      		</xsd:element>
+      		<xsd:element name="tipo_hospedaje" type="tb_b2:TarifaTipo"
+      			maxOccurs="1" minOccurs="0">
+      		</xsd:element>
+      		<xsd:element name="imagen_producto" type="xsd:base64Binary" maxOccurs="1" minOccurs="0"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+        </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="RegistrarClienteRequest">
+    <wsdl:part element="tb_b2:RegistrarCliente" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="RegistrarClienteResponse">
+    <wsdl:part element="tb_b2:RegistrarClienteResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="AutenticarClienteRequest">
+  	<wsdl:part name="parameters" element="tb_b2:AutenticarCliente"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AutenticarClienteResponse">
+  	<wsdl:part name="parameters" element="tb_b2:AutenticarClienteResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ActualizarClienteRequest">
+  	<wsdl:part name="parameters" element="tb_b2:ActualizarCliente"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ActualizarClienteResponse">
+  	<wsdl:part name="parameters" element="tb_b2:ActualizarClienteResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ActualizarContraseniaClienteRequest">
+  	<wsdl:part name="parameters" element="tb_b2:ActualizarContraseniaCliente"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ActualizarContraseniaClienteResponse">
+  	<wsdl:part name="parameters" element="tb_b2:ActualizarContraseniaClienteResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarProductoRequest">
+  	<wsdl:part name="parameters" element="tb_b2:ConsultarProducto"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarProductoResponse">
+  	<wsdl:part name="parameters" element="tb_b2:ConsultarProductoResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarCampaniaProductoRequest">
+  	<wsdl:part name="parameters" element="tb_b2:ConsultarCampaniaProducto"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarCampaniaProductoResponse">
+  	<wsdl:part name="parameters" element="tb_b2:ConsultarCampaniaProductoResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarClientesOrdenesRequest">
+  	<wsdl:part name="parameters" element="tb_b2:ConsultarClientesOrdenes"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarClientesOrdenesResponse">
+  	<wsdl:part name="parameters" element="tb_b2:ConsultarClientesOrdenesResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CancelarOrdenesRequest">
+  	<wsdl:part name="parameters" element="tb_b2:CancelarOrdenes"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CancelarOrdenesResponse">
+  	<wsdl:part name="parameters" element="tb_b2:CancelarOrdenesResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CrearOrdenesRequest">
+  	<wsdl:part name="parameters" element="tb_b2:CrearOrdenes"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CrearOrdenesResponse">
+  	<wsdl:part name="parameters" element="tb_b2:CrearOrdenesResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ServiceProxyB2C">
+    <wsdl:operation name="RegistrarCliente">
+      <wsdl:input message="tb_b2:RegistrarClienteRequest"/>
+      <wsdl:output message="tb_b2:RegistrarClienteResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="AutenticarCliente">
+    	<wsdl:input message="tb_b2:AutenticarClienteRequest"></wsdl:input>
+    	<wsdl:output message="tb_b2:AutenticarClienteResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarCliente">
+    	<wsdl:input message="tb_b2:ActualizarClienteRequest"></wsdl:input>
+    	<wsdl:output message="tb_b2:ActualizarClienteResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarContraseniaCliente">
+    	<wsdl:input message="tb_b2:ActualizarContraseniaClienteRequest"></wsdl:input>
+    	<wsdl:output message="tb_b2:ActualizarContraseniaClienteResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarProducto">
+    	<wsdl:input message="tb_b2:ConsultarProductoRequest"></wsdl:input>
+    	<wsdl:output message="tb_b2:ConsultarProductoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarCampaniaProducto">
+    	<wsdl:input message="tb_b2:ConsultarCampaniaProductoRequest"></wsdl:input>
+    	<wsdl:output message="tb_b2:ConsultarCampaniaProductoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarClientesOrdenes">
+    	<wsdl:input message="tb_b2:ConsultarClientesOrdenesRequest"></wsdl:input>
+    	<wsdl:output message="tb_b2:ConsultarClientesOrdenesResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelarOrdenes">
+    	<wsdl:input message="tb_b2:CancelarOrdenesRequest"></wsdl:input>
+    	<wsdl:output message="tb_b2:CancelarOrdenesResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearOrdenes">
+    	<wsdl:input message="tb_b2:CrearOrdenesRequest"></wsdl:input>
+    	<wsdl:output message="tb_b2:CrearOrdenesResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceProxyB2CSOAP"
+  	type="tb_b2:ServiceProxyB2C">
+  	<soap:binding style="document"
+  		transport="http://schemas.xmlsoap.org/soap/http" />
+  	<wsdl:operation name="RegistrarCliente">
+  		<soap:operation
+  			soapAction="http://www.touresbalon.com/ServiceProxyB2C/RegistrarCliente" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="AutenticarCliente">
+  		<soap:operation
+  			soapAction="http://www.touresbalon.com/ServiceProxyB2C/AutenticarCliente" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="ActualizarCliente">
+  		<soap:operation
+  			soapAction="http://www.touresbalon.com/ServiceProxyB2C/ActualizarCliente" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="ActualizarContraseniaCliente">
+  		<soap:operation
+  			soapAction="http://www.touresbalon.com/ServiceProxyB2C/ActualizarContraseniaCliente" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="ConsultarProducto">
+  		<soap:operation
+  			soapAction="http://www.touresbalon.com/ServiceProxyB2C/ConsultarProducto" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="ConsultarCampaniaProducto">
+  		<soap:operation
+  			soapAction="http://www.touresbalon.com/ServiceProxyB2C/ConsultarCampaniaProducto" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="ConsultarClientesOrdenes">
+  		<soap:operation
+  			soapAction="http://www.touresbalon.com/ServiceProxyB2C/ConsultarClientesOrdenes" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="CancelarOrdenes">
+  		<soap:operation
+  			soapAction="http://www.touresbalon.com/ServiceProxyB2C/CancelarOrdenes" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="CrearOrdenes">
+  		<soap:operation
+  			soapAction="http://www.touresbalon.com/ServiceProxyB2C/CrearOrdenes" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServiceProxyB2C">
+    <wsdl:port binding="tb_b2:ServiceProxyB2CSOAP" name="ServiceProxyB2CSOAP">
+      <soap:address location="http://www.touresbalon.com/ServiceProxyB2C"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tb_b2="http://www.touresbalon.com/ServiceProxyB2C/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ServiceProxyB2C" targetNamespace="http://www.touresbalon.com/ServiceProxyB2C/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.touresbalon.com/ServiceProxyB2C/">
+      <xsd:element name="RegistrarCliente">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="cliente" type="tb_b2:Cliente" maxOccurs="1" minOccurs="1"/>
+          </xsd:sequence>
+        </xsd:complexType>
+        
+      </xsd:element>
+      <xsd:element name="RegistrarClienteResponse">
+        <xsd:complexType>
+           <xsd:choice>
+           	<xsd:element name="respuesta" type="tb_b2:RespuestaGenerica" maxOccurs="1" minOccurs="0"></xsd:element>
+           	<xsd:element name="error"
+           		type="tb_b2:Error" maxOccurs="1" minOccurs="0">
+           	</xsd:element>
+           </xsd:choice>
+       	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AutenticarCliente">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="usuario" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      			<xsd:element name="contrasenia" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AutenticarClienteResponse">
+      	<xsd:complexType>
+                    <xsd:choice>
+                        <xsd:element name="respuesta" type="tb_b2:RespuestaGenerica" maxOccurs="1" minOccurs="0">
+                    	</xsd:element>
+                        <xsd:element name="error" type="tb_b2:Error"
+                    		maxOccurs="1" minOccurs="0">
+                    	</xsd:element>
+                    </xsd:choice>
+
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ActualizarCliente">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="in" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ActualizarClienteResponse">
+      	<xsd:complexType>
+                    <xsd:choice>
+      			<xsd:element name="respuesta" type="tb_b2:RespuestaGenerica">
+      			</xsd:element>
+      			<xsd:element name="error" type="tb_b2:Error"></xsd:element>
+      		</xsd:choice>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ActualizarContraseniaCliente">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="usuario" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      			<xsd:element name="contrasenia" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ActualizarContraseniaClienteResponse">
+      	<xsd:complexType>
+                    <xsd:choice>
+      			<xsd:element name="respuesta" type="tb_b2:RespuestaGenerica"></xsd:element>
+      			<xsd:element name="error" type="tb_b2:Error"></xsd:element>
+      		</xsd:choice>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ConsultarProducto">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="in" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ConsultarProductoResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="out" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ConsultarCampaniaProducto">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="in" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ConsultarCampaniaProductoResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="out" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ConsultarClientesOrdenes">
+      	<xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id_cliente" type="xsd:string" maxOccurs="1" minOccurs="1"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ConsultarClientesOrdenesResponse">
+      	<xsd:complexType>
+                    <xsd:choice>
+                    	<xsd:element name="orden" type="tb_b2:Orden" maxOccurs="unbounded" minOccurs="0"/>
+                    	<xsd:element name="error"
+                    		type="tb_b2:Error" maxOccurs="1" minOccurs="0">
+                    	</xsd:element>
+                    </xsd:choice>
+                    
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CancelarOrdenes">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="id_orden" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CancelarOrdenesResponse">
+      	<xsd:complexType>
+  			<xsd:choice>
+  				<xsd:element name="respuesta" type="tb_b2:RespuestaGenerica" maxOccurs="1" minOccurs="0"></xsd:element>
+  				<xsd:element name="error"
+  					type="tb_b2:Error" maxOccurs="1" minOccurs="0">
+  				</xsd:element>
+  			</xsd:choice>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CrearOrdenes">
+      	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="orden" type="tb_b2:Orden" maxOccurs="unbounded" minOccurs="1"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CrearOrdenesResponse">
+      	<xsd:complexType>
+                    <xsd:choice>
+                    	<xsd:element name="respuesta" type="tb_b2:RespuestaGenerica" maxOccurs="1" minOccurs="0"></xsd:element>
+                    	<xsd:element name="error"
+                    		type="tb_b2:Error" maxOccurs="1" minOccurs="0">
+                    	</xsd:element>
+                    </xsd:choice>
+                    
+            	</xsd:complexType>
+      </xsd:element>
+    
+      <xsd:simpleType name="RespuestaGenerica">
+      	<xsd:restriction base="xsd:string">
+      		<xsd:enumeration value="OK"></xsd:enumeration>
+      		<xsd:enumeration value="KO"></xsd:enumeration>
+      	</xsd:restriction>
+      </xsd:simpleType>
+    
+      <xsd:complexType name="Error">
+      	<xsd:sequence>
+      		<xsd:element name="codigo" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      		<xsd:element name="mensaje" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+      <xsd:complexType name="Direccion">
+      	<xsd:sequence>
+      		<xsd:element name="pais" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      		<xsd:element name="ciudad" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      		<xsd:element name="estado" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      		<xsd:element name="cod_postal" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      		<xsd:element name="tipo_dir" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      		<xsd:element name="dir_calle" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+      <xsd:complexType name="Cliente">
+      	<xsd:sequence>
+      		<xsd:element name="nombres" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      		<xsd:element name="apellidos" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      		<xsd:element name="num_tel" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      		<xsd:element name="email" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      		<xsd:element name="contrasenia" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      		<xsd:element name="tipo_tarjeta" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      		<xsd:element name="numero_tarjeta" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      		<xsd:element name="direccion" type="tb_b2:Direccion" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+  	 <xsd:complexType name="Item">
+      	<xsd:sequence>
+      		<xsd:element name="id_item" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      		<xsd:element name="id_prod" type="xsd:int" maxOccurs="1" minOccurs="1"></xsd:element>
+      		<xsd:element name="nombre_prod" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      		<xsd:element name="part_num" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      		<xsd:element name="precio" type="xsd:double" maxOccurs="1" minOccurs="1"></xsd:element>
+      		<xsd:element name="cantidad" type="xsd:int" maxOccurs="1" minOccurs="1"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+  	 <xsd:complexType name="Orden">
+  	 	<xsd:sequence>
+  	 		<xsd:element name="id_orden" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+  	 		<xsd:element name="fecha_orden" type="xsd:date" maxOccurs="1" minOccurs="1"></xsd:element>
+  	 		<xsd:element name="precio" type="xsd:double" maxOccurs="1" minOccurs="1"></xsd:element>
+  	 		<xsd:element name="estatus" type="tb_b2:EstatusOrden"
+  	 			maxOccurs="1" minOccurs="1">
+  	 		</xsd:element>
+  	 		<xsd:element name="comentarios" type="xsd:string" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+  	 		<xsd:element name="item" type="tb_b2:Item" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+  	 	</xsd:sequence>
+  	 </xsd:complexType>
+    
+    
+		<xsd:simpleType name="EstatusOrden">
+        	<xsd:restriction base="xsd:string">
+        		<xsd:enumeration value="VALIDACION"></xsd:enumeration>
+        		<xsd:enumeration value="RESERVACION"></xsd:enumeration>
+        		<xsd:enumeration value="CERRADA"></xsd:enumeration>
+        		<xsd:enumeration value="RECHAZADA"></xsd:enumeration>
+        		<xsd:enumeration value="CANCELADA"></xsd:enumeration>
+        	</xsd:restriction>
+        </xsd:simpleType>
+    
+		<xsd:simpleType name="TipoConsultaProducto">
+			<xsd:restriction base="xsd:string"></xsd:restriction>
+		</xsd:simpleType>
+    
+		<xsd:complexType name="TarifaTipo">
+			<xsd:sequence>
+				<xsd:element name="id" type="xsd:int" maxOccurs="1" minOccurs="1"></xsd:element>
+				<xsd:element name="nombre_tipo" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+				<xsd:element name="precio" type="xsd:double" maxOccurs="1" minOccurs="1"></xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+		
+		
+        <xsd:complexType name="Ciudad">
+       	    <xsd:sequence>
+	       		<xsd:element name="id_ciudad" type="xsd:int"></xsd:element>
+	       		<xsd:element name="pais" type="xsd:string"></xsd:element>
+	       		<xsd:element name="tipo_ciudad" type="tb_p:TarifaTIpo"></xsd:element>
+       	    </xsd:sequence>
+        </xsd:complexType>		
+    
+     <xsd:complexType name="Producto">
+      	<xsd:sequence>
+      		<xsd:element name="id_producto" type="xsd:int" maxOccurs="1" minOccurs="1"></xsd:element>
+      		<xsd:element name="espectaculo" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      		<xsd:element name="ciudad_espectaculo"
+      			type="tb_b2:Ciudad" maxOccurs="1" minOccurs="1">
+      		</xsd:element>
+      		<xsd:element name="fecha_llegada" type="xsd:date" maxOccurs="1" minOccurs="0"></xsd:element>
+      		<xsd:element name="fecha_salida" type="xsd:date" maxOccurs="1" minOccurs="0"></xsd:element>
+      		<xsd:element name="tipo_transporte" type="tb_b2:TarifaTipo"
+      			maxOccurs="1" minOccurs="0">
+      		</xsd:element>
+      		<xsd:element name="tipo_espectaculo"
+      			type="tb_b2:TarifaTipo" maxOccurs="1" minOccurs="1">
+      		</xsd:element>
+      		<xsd:element name="tipo_hospedaje" type="tb_b2:TarifaTipo"
+      			maxOccurs="1" minOccurs="0">
+      		</xsd:element>
+      		<xsd:element name="imagen_producto" type="xsd:base64Binary" maxOccurs="1" minOccurs="0"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+        </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="RegistrarClienteRequest">
+    <wsdl:part element="tb_b2:RegistrarCliente" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="RegistrarClienteResponse">
+    <wsdl:part element="tb_b2:RegistrarClienteResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="AutenticarClienteRequest">
+  	<wsdl:part name="parameters" element="tb_b2:AutenticarCliente"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AutenticarClienteResponse">
+  	<wsdl:part name="parameters" element="tb_b2:AutenticarClienteResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ActualizarClienteRequest">
+  	<wsdl:part name="parameters" element="tb_b2:ActualizarCliente"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ActualizarClienteResponse">
+  	<wsdl:part name="parameters" element="tb_b2:ActualizarClienteResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ActualizarContraseniaClienteRequest">
+  	<wsdl:part name="parameters" element="tb_b2:ActualizarContraseniaCliente"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ActualizarContraseniaClienteResponse">
+  	<wsdl:part name="parameters" element="tb_b2:ActualizarContraseniaClienteResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarProductoRequest">
+  	<wsdl:part name="parameters" element="tb_b2:ConsultarProducto"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarProductoResponse">
+  	<wsdl:part name="parameters" element="tb_b2:ConsultarProductoResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarCampaniaProductoRequest">
+  	<wsdl:part name="parameters" element="tb_b2:ConsultarCampaniaProducto"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarCampaniaProductoResponse">
+  	<wsdl:part name="parameters" element="tb_b2:ConsultarCampaniaProductoResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarClientesOrdenesRequest">
+  	<wsdl:part name="parameters" element="tb_b2:ConsultarClientesOrdenes"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarClientesOrdenesResponse">
+  	<wsdl:part name="parameters" element="tb_b2:ConsultarClientesOrdenesResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CancelarOrdenesRequest">
+  	<wsdl:part name="parameters" element="tb_b2:CancelarOrdenes"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CancelarOrdenesResponse">
+  	<wsdl:part name="parameters" element="tb_b2:CancelarOrdenesResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CrearOrdenesRequest">
+  	<wsdl:part name="parameters" element="tb_b2:CrearOrdenes"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CrearOrdenesResponse">
+  	<wsdl:part name="parameters" element="tb_b2:CrearOrdenesResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ServiceProxyB2C">
+    <wsdl:operation name="RegistrarCliente">
+      <wsdl:input message="tb_b2:RegistrarClienteRequest"/>
+      <wsdl:output message="tb_b2:RegistrarClienteResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="AutenticarCliente">
+    	<wsdl:input message="tb_b2:AutenticarClienteRequest"></wsdl:input>
+    	<wsdl:output message="tb_b2:AutenticarClienteResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarCliente">
+    	<wsdl:input message="tb_b2:ActualizarClienteRequest"></wsdl:input>
+    	<wsdl:output message="tb_b2:ActualizarClienteResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarContraseniaCliente">
+    	<wsdl:input message="tb_b2:ActualizarContraseniaClienteRequest"></wsdl:input>
+    	<wsdl:output message="tb_b2:ActualizarContraseniaClienteResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarProducto">
+    	<wsdl:input message="tb_b2:ConsultarProductoRequest"></wsdl:input>
+    	<wsdl:output message="tb_b2:ConsultarProductoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarCampaniaProducto">
+    	<wsdl:input message="tb_b2:ConsultarCampaniaProductoRequest"></wsdl:input>
+    	<wsdl:output message="tb_b2:ConsultarCampaniaProductoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarClientesOrdenes">
+    	<wsdl:input message="tb_b2:ConsultarClientesOrdenesRequest"></wsdl:input>
+    	<wsdl:output message="tb_b2:ConsultarClientesOrdenesResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelarOrdenes">
+    	<wsdl:input message="tb_b2:CancelarOrdenesRequest"></wsdl:input>
+    	<wsdl:output message="tb_b2:CancelarOrdenesResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearOrdenes">
+    	<wsdl:input message="tb_b2:CrearOrdenesRequest"></wsdl:input>
+    	<wsdl:output message="tb_b2:CrearOrdenesResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceProxyB2CSOAP"
+  	type="tb_b2:ServiceProxyB2C">
+  	<soap:binding style="document"
+  		transport="http://schemas.xmlsoap.org/soap/http" />
+  	<wsdl:operation name="RegistrarCliente">
+  		<soap:operation
+  			soapAction="http://www.touresbalon.com/ServiceProxyB2C/RegistrarCliente" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="AutenticarCliente">
+  		<soap:operation
+  			soapAction="http://www.touresbalon.com/ServiceProxyB2C/AutenticarCliente" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="ActualizarCliente">
+  		<soap:operation
+  			soapAction="http://www.touresbalon.com/ServiceProxyB2C/ActualizarCliente" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="ActualizarContraseniaCliente">
+  		<soap:operation
+  			soapAction="http://www.touresbalon.com/ServiceProxyB2C/ActualizarContraseniaCliente" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="ConsultarProducto">
+  		<soap:operation
+  			soapAction="http://www.touresbalon.com/ServiceProxyB2C/ConsultarProducto" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="ConsultarCampaniaProducto">
+  		<soap:operation
+  			soapAction="http://www.touresbalon.com/ServiceProxyB2C/ConsultarCampaniaProducto" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="ConsultarClientesOrdenes">
+  		<soap:operation
+  			soapAction="http://www.touresbalon.com/ServiceProxyB2C/ConsultarClientesOrdenes" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="CancelarOrdenes">
+  		<soap:operation
+  			soapAction="http://www.touresbalon.com/ServiceProxyB2C/CancelarOrdenes" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="CrearOrdenes">
+  		<soap:operation
+  			soapAction="http://www.touresbalon.com/ServiceProxyB2C/CrearOrdenes" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServiceProxyB2C">
+    <wsdl:port binding="tb_b2:ServiceProxyB2CSOAP" name="ServiceProxyB2CSOAP">
+      <soap:address location="http://www.touresbalon.com/ServiceProxyB2C"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tb_b2="http://www.touresbalon.com/ServiceProxyB2C/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ServiceProxyB2C" targetNamespace="http://www.touresbalon.com/ServiceProxyB2C/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.touresbalon.com/ServiceProxyB2C/">
+      <xsd:element name="RegistrarCliente">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="cliente" type="tb_b2:Cliente" maxOccurs="1" minOccurs="1"/>
+          </xsd:sequence>
+        </xsd:complexType>
+        
+      </xsd:element>
+      <xsd:element name="RegistrarClienteResponse">
+        <xsd:complexType>
+           <xsd:choice>
+           	<xsd:element name="respuesta" type="tb_b2:RespuestaGenerica" maxOccurs="1" minOccurs="0"></xsd:element>
+           	<xsd:element name="error"
+           		type="tb_b2:Error" maxOccurs="1" minOccurs="0">
+           	</xsd:element>
+           </xsd:choice>
+       	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AutenticarCliente">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="usuario" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      			<xsd:element name="contrasenia" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AutenticarClienteResponse">
+      	<xsd:complexType>
+                    <xsd:choice>
+                        <xsd:element name="respuesta" type="tb_b2:RespuestaGenerica" maxOccurs="1" minOccurs="0">
+                    	</xsd:element>
+                        <xsd:element name="error" type="tb_b2:Error"
+                    		maxOccurs="1" minOccurs="0">
+                    	</xsd:element>
+                    </xsd:choice>
+
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ActualizarCliente">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="in" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ActualizarClienteResponse">
+      	<xsd:complexType>
+                    <xsd:choice>
+      			<xsd:element name="respuesta" type="tb_b2:RespuestaGenerica">
+      			</xsd:element>
+      			<xsd:element name="error" type="tb_b2:Error"></xsd:element>
+      		</xsd:choice>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ActualizarContraseniaCliente">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="usuario" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      			<xsd:element name="contrasenia" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ActualizarContraseniaClienteResponse">
+      	<xsd:complexType>
+                    <xsd:choice>
+      			<xsd:element name="respuesta" type="tb_b2:RespuestaGenerica"></xsd:element>
+      			<xsd:element name="error" type="tb_b2:Error"></xsd:element>
+      		</xsd:choice>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ConsultarProducto">
+      	<xsd:complexType>
       		<xsd:sequence>
       			<xsd:element name="in" type="xsd:string"></xsd:element>
       		</xsd:sequence>
