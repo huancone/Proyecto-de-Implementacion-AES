@@ -49,12 +49,12 @@
     
       <xsd:complexType name="Direccion">
       	<xsd:sequence>
-      		<xsd:element name="pais" type="xsd:string"></xsd:element>
-      		<xsd:element name="ciudad" type="xsd:string"></xsd:element>
-      		<xsd:element name="estado" type="xsd:string"></xsd:element>
-      		<xsd:element name="cod_postal" type="xsd:string"></xsd:element>
-      		<xsd:element name="tipo_dir" type="xsd:string"></xsd:element>
-      		<xsd:element name="dir_calle" type="xsd:string"></xsd:element>
+      		<xsd:element name="pais" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      		<xsd:element name="ciudad" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      		<xsd:element name="estado" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      		<xsd:element name="cod_postal" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      		<xsd:element name="tipo_dir" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      		<xsd:element name="dir_calle" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
       	</xsd:sequence>
       </xsd:complexType>
     
