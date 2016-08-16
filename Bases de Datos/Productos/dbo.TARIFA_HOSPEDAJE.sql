@@ -1,7 +1,0 @@
-﻿CREATE TABLE [dbo].[TARIFA_HOSPEDAJE] (
-    [ID]          NUMERIC (18)   NOT NULL,
-    [NOMBRE_TIPO] NVARCHAR (MAX) NULL,
-    [PRECIO]      MONEY          NULL,
-    PRIMARY KEY CLUSTERED ([ID] ASC)
-);
-
