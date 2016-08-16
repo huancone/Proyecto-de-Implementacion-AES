@@ -112,6 +112,108 @@
             		<xsd:enumeration value="KO"></xsd:enumeration>
             	</xsd:restriction>
             </xsd:simpleType>
+            <xsd:element name="ConsultarOrdenes">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="tipo_consulta"
+            				type="tb_o:TipoConsultaOrden" maxOccurs="1" minOccurs="1">
+            			</xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+            <xsd:element name="ConsultarOrdenesResponse">
+            	<xsd:complexType>
+           			<xsd:choice>
+           				<xsd:element name="orden"
+           					type="tb_o:Orden" maxOccurs="1" minOccurs="0">
+           				</xsd:element>
+           				<xsd:element name="error"
+           					type="tb_o:Error" maxOccurs="1" minOccurs="0">
+           				</xsd:element>
+           			</xsd:choice>
+            	</xsd:complexType>
+            </xsd:element>
+    
+            <xsd:simpleType name="TipoConsultaOrden">
+            	<xsd:restriction base="xsd:string">
+            		<xsd:enumeration value="ORDEN"></xsd:enumeration>
+            		<xsd:enumeration value="PRODUCTO"></xsd:enumeration>
+            	</xsd:restriction>
+            </xsd:simpleType>
+    
+        
+        
+            <xsd:element name="ConsultarRangoCerradoOrdenes">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="mes" maxOccurs="1" minOccurs="1">
+            				<xsd:simpleType>
+            					<xsd:restriction base="xsd:int">
+            						<xsd:minInclusive value="1"></xsd:minInclusive>
+            						<xsd:maxInclusive value="12"></xsd:maxInclusive>
+            					</xsd:restriction>
+            				</xsd:simpleType>
+            			</xsd:element>
+            			<xsd:element name="anio" maxOccurs="1"
+            				minOccurs="1">
+            				<xsd:simpleType>
+            					<xsd:restriction base="xsd:int">
+            						<xsd:minInclusive value="2015"></xsd:minInclusive>
+            						<xsd:maxInclusive value="2020"></xsd:maxInclusive>
+            					</xsd:restriction>
+            				</xsd:simpleType>
+            			</xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+            <xsd:element name="ConsultarRangoCerradoOrdenesResponse">
+            	<xsd:complexType>
+            		<xsd:choice>
+            			<xsd:element name="error" type="tb_o:Error"
+            				maxOccurs="1" minOccurs="0">
+            			</xsd:element>
+            			<xsd:sequence>
+            				<xsd:element name="ordenes_cerradas"
+            					type="xsd:int" maxOccurs="1" minOccurs="1">
+            				</xsd:element>
+                            <xsd:element name="total_mes" type="xsd:double" maxOccurs="1" minOccurs="1">
+            			</xsd:element>
+                        </xsd:sequence>
+            		</xsd:choice>
+            	</xsd:complexType>
+            </xsd:element>
+            <xsd:element name="ConsultarRankingAbiertasOrdenes">
+            	<xsd:complexType>
+            	</xsd:complexType>
+            </xsd:element>
+            <xsd:element name="ConsultarRankingAbiertasOrdenesResponse">
+            	<xsd:complexType>
+           			<xsd:choice>
+           				<xsd:element name="ordenes" type="tb_o:Orden"
+           					maxOccurs="unbounded" minOccurs="0">
+           				</xsd:element>
+           				<xsd:element name="error"
+           					type="tb_o:Error" maxOccurs="1" minOccurs="0">
+           				</xsd:element>
+           			</xsd:choice>
+            	</xsd:complexType>
+            </xsd:element>
+            <xsd:element name="ConsultarRankingCerradoOrdenes">
+            	<xsd:complexType>
+            	</xsd:complexType>
+            </xsd:element>
+			<xsd:element name="ConsultarRankingCerradoOrdenesResponse">
+				<xsd:complexType>
+					<xsd:choice>
+						<xsd:element name="ordenes" type="tb_o:Orden" maxOccurs="unbounded"
+							minOccurs="0">
+						</xsd:element>
+						<xsd:element name="error" type="tb_o:Error" maxOccurs="1"
+							minOccurs="0">
+						</xsd:element>
+					</xsd:choice>
+				</xsd:complexType>
+			</xsd:element>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="ConsultarClientesOrdenesRequest">
@@ -132,6 +234,30 @@
   <wsdl:message name="CrearOrdenesResponse">
   	<wsdl:part name="parameters" element="tb_o:CrearOrdenesResponse"></wsdl:part>
   </wsdl:message>
+  <wsdl:message name="ConsultarOrdenesRequest">
+  	<wsdl:part name="parameters" element="tb_o:ConsultarOrdenes"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarOrdenesResponse">
+  	<wsdl:part name="parameters" element="tb_o:ConsultarOrdenesResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarRangoCerradoOrdenesRequest">
+  	<wsdl:part name="parameters" element="tb_o:ConsultarRangoCerradoOrdenes"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarRangoCerradoOrdenesResponse">
+  	<wsdl:part name="parameters" element="tb_o:ConsultarRangoCerradoOrdenesResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarRankingAbiertasOrdenesRequest">
+  	<wsdl:part name="parameters" element="tb_o:ConsultarRankingAbiertasOrdenes"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarRankingAbiertasOrdenesResponse">
+  	<wsdl:part name="parameters" element="tb_o:ConsultarRankingAbiertasOrdenesResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarRankingCerradoOrdenesRequest">
+  	<wsdl:part name="parameters" element="tb_o:ConsultarRankingCerradoOrdenes"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarRankingCerradoOrdenesResponse">
+  	<wsdl:part name="parameters" element="tb_o:ConsultarRankingCerradoOrdenesResponse"></wsdl:part>
+  </wsdl:message>
   <wsdl:portType name="OrdenesTouresBalon">
     <wsdl:operation name="ConsultarClientesOrdenes">
       <wsdl:input message="tb_o:ConsultarClientesOrdenesRequest"/>
@@ -144,6 +270,22 @@
     <wsdl:operation name="CrearOrdenes">
     	<wsdl:input message="tb_o:CrearOrdenesRequest"></wsdl:input>
     	<wsdl:output message="tb_o:CrearOrdenesResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarOrdenes">
+    	<wsdl:input message="tb_o:ConsultarOrdenesRequest"></wsdl:input>
+    	<wsdl:output message="tb_o:ConsultarOrdenesResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarRangoCerradoOrdenes">
+    	<wsdl:input message="tb_o:ConsultarRangoCerradoOrdenesRequest"></wsdl:input>
+    	<wsdl:output message="tb_o:ConsultarRangoCerradoOrdenesResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarRankingAbiertasOrdenes">
+    	<wsdl:input message="tb_o:ConsultarRankingAbiertasOrdenesRequest"></wsdl:input>
+    	<wsdl:output message="tb_o:ConsultarRankingAbiertasOrdenesResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarRankingCerradoOrdenes">
+    	<wsdl:input message="tb_o:ConsultarRankingCerradoOrdenesRequest"></wsdl:input>
+    	<wsdl:output message="tb_o:ConsultarRankingCerradoOrdenesResponse"></wsdl:output>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="OrdenesTouresBalonSOAP"
