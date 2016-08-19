@@ -371,6 +371,9 @@
   		<wsdl:output>
   			<soap:body use="literal" />
   		</wsdl:output>
+  		<wsdl:fault name="fault">
+  			<soap:fault use="literal" name="fault" />
+  		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="CancelarOrdenes">
   		<soap:operation
@@ -381,6 +384,9 @@
   		<wsdl:output>
   			<soap:body use="literal" />
   		</wsdl:output>
+  		<wsdl:fault name="fault">
+  			<soap:fault use="literal" name="fault" />
+  		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="CrearOrdenes">
   		<soap:operation
@@ -391,6 +397,61 @@
   		<wsdl:output>
   			<soap:body use="literal" />
   		</wsdl:output>
+  		<wsdl:fault name="fault">
+  			<soap:fault use="literal" name="fault" />
+  		</wsdl:fault>
+  	</wsdl:operation>
+  	<wsdl:operation name="ConsultarOrdenes">
+  		<soap:operation
+  			soapAction="http://www.touresbalon.com/OrdenesTouresBalon/ConsultarOrdenes" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  		<wsdl:fault name="fault">
+  			<soap:fault use="literal" name="fault" />
+  		</wsdl:fault>
+  	</wsdl:operation>
+  	<wsdl:operation name="ConsultarRangoCerradoOrdenes">
+  		<soap:operation
+  			soapAction="http://www.touresbalon.com/OrdenesTouresBalon/ConsultarRangoCerradoOrdenes" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  		<wsdl:fault name="fault">
+  			<soap:fault use="literal" name="fault" />
+  		</wsdl:fault>
+  	</wsdl:operation>
+  	<wsdl:operation name="ConsultarRankingAbiertasOrdenes">
+  		<soap:operation
+  			soapAction="http://www.touresbalon.com/OrdenesTouresBalon/ConsultarRankingAbiertasOrdenes" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  		<wsdl:fault name="fault">
+  			<soap:fault use="literal" name="fault" />
+  		</wsdl:fault>
+  	</wsdl:operation>
+  	<wsdl:operation name="ConsultarRankingCerradoOrdenes">
+  		<soap:operation
+  			soapAction="http://www.touresbalon.com/OrdenesTouresBalon/ConsultarRankingCerradoOrdenes" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  		<wsdl:fault name="fault">
+  			<soap:fault use="literal" name="fault" />
+  		</wsdl:fault>
   	</wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="OrdenesTouresBalon">
