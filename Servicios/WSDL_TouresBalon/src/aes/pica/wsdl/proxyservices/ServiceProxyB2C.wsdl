@@ -171,7 +171,7 @@
 			<xsd:element name="CancelarOrdenes">
 				<xsd:complexType>
 					<xsd:sequence>
-						<xsd:element name="id_orden" type="xsd:string"></xsd:element>
+						<xsd:element name="id_orden" type="xsd:string" maxOccurs="unbounded" minOccurs="1"></xsd:element>
 					</xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>
