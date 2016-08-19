@@ -21,21 +21,9 @@
                     		<xsd:element name="producto"
                     			type="tb_p:Producto" maxOccurs="unbounded"
                     			minOccurs="0" />
-                    		<xsd:element name="producto_top_1"
-                    			type="tb_p:Producto" maxOccurs="1" minOccurs="0">
-                    		</xsd:element>
-                    		<xsd:element name="producto_top_2"
-                    			type="tb_p:Producto" maxOccurs="1" minOccurs="0">
-                    		</xsd:element>
-                    		<xsd:element name="producto_top_3"
-                    			type="tb_p:Producto" maxOccurs="1" minOccurs="0">
-                    		</xsd:element>
-                    		<xsd:element name="producto_top_4"
-                    			type="tb_p:Producto" maxOccurs="1" minOccurs="0">
-                    		</xsd:element>
-                    		<xsd:element name="producto_top_5"
-                    			type="tb_p:Producto" maxOccurs="1" minOccurs="0">
-                    		</xsd:element>
+                    		<xsd:element name="producto_top"
+                    			type="tb_p:Producto" maxOccurs="unbounded" minOccurs="0">
+                    		</xsd:element>
                     	</xsd:sequence>
                     	<xsd:element name="error"
                     		type="tb_p:Error" maxOccurs="1" minOccurs="0">

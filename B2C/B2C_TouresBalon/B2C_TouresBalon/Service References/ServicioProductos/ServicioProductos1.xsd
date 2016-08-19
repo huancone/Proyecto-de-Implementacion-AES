@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:60151/ServicioProductos.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ServicioProductos" />
+  <xs:element name="DoWork">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DoWorkResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConsultarProductos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="palabraClave" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConsultarProductosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/ServicioProductos" minOccurs="0" name="ConsultarProductosResult" nillable="true" type="q1:ArrayOfProducto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConsultarPromociones">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConsultarPromocionesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ServicioProductos" minOccurs="0" name="ConsultarPromocionesResult" nillable="true" type="q2:ArrayOfProducto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
