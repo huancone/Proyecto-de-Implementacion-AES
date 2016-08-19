@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,21 +15,8 @@ namespace B2C_TouresBalon.Controllers
         {
             var proxy = new ServicioProductosClient();
             IEnumerable<Producto> promociones = proxy.ConsultarPromociones();
+            
             return View(promociones);
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
         }
     }
 }
