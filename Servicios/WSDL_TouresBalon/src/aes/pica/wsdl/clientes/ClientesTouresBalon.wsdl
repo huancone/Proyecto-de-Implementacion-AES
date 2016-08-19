@@ -11,19 +11,12 @@
       </xsd:element>
       <xsd:element name="RegistrarClienteResponse">
         <xsd:complexType>
-                    <xsd:choice>
-                    	<xsd:element name="error" type="t:Error"
-                    		maxOccurs="1" minOccurs="0">
+                    <xsd:sequence>
+                    	<xsd:element name="registrarClienteResponse"
+                    		type="t:RegistrarClienteReponseType" maxOccurs="1" minOccurs="1">
                     	</xsd:element>
-                    	<xsd:sequence>
-                    		<xsd:element name="respuesta"
-                    			type="t:RespuestaGenerica" maxOccurs="1"
-                    			minOccurs="1" />
-                    		<xsd:element name="id_cliente"
-                    			type="xsd:string" maxOccurs="1" minOccurs="1">
-                    		</xsd:element>
-                    	</xsd:sequence>
-                    </xsd:choice>
+                    </xsd:sequence>
+                    
         </xsd:complexType>
       </xsd:element>
     
@@ -77,11 +70,10 @@
       </xsd:element>
       <xsd:element name="AutenticarClienteResponse">
       	<xsd:complexType>
-                    <xsd:choice>
+                    <xsd:sequence>
       			<xsd:element name="respuesta" type="t:RespuestaGenerica" maxOccurs="1" minOccurs="1">
       			</xsd:element>
-      			<xsd:element name="error" type="t:Error" maxOccurs="1" minOccurs="0"></xsd:element>
-      		</xsd:choice>
+      		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
     
@@ -94,11 +86,10 @@
       </xsd:element>
       <xsd:element name="ActualizarClienteResponse">
       	<xsd:complexType>
-                    <xsd:choice>
+                    <xsd:sequence>
       			<xsd:element name="respuesta" type="t:RespuestaGenerica" maxOccurs="1" minOccurs="1">
       			</xsd:element>
-      			<xsd:element name="error" type="t:Error" maxOccurs="1" minOccurs="0"></xsd:element>
-      		</xsd:choice>
+      		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
     
@@ -112,11 +103,10 @@
       </xsd:element>
       <xsd:element name="ActualizarContraseniaClienteResponse">
       	<xsd:complexType>
-                    <xsd:choice>
+                    <xsd:sequence>
       			<xsd:element name="respuesta" type="t:RespuestaGenerica" maxOccurs="1" minOccurs="1">
       			</xsd:element>
-      			<xsd:element name="error" type="t:Error" maxOccurs="1" minOccurs="0"></xsd:element>
-      		</xsd:choice>
+      		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
     
@@ -146,12 +136,9 @@
       </xsd:element>
       <xsd:element name="ActualizarEstatusClienteResponse">
       	<xsd:complexType>
-                    <xsd:choice>
+                    <xsd:sequence>
                     	<xsd:element name="respuesta" type="t:RespuestaGenerica" maxOccurs="1" minOccurs="0"></xsd:element>
-                    	<xsd:element name="error"
-                    		type="t:Error" maxOccurs="1" minOccurs="0">
-                    	</xsd:element>
-                    </xsd:choice>
+                    </xsd:sequence>
                     
       	</xsd:complexType>
       </xsd:element>
@@ -164,12 +151,9 @@
       </xsd:element>
       <xsd:element name="ConsultarPorIdentificacionClienteResponse">
       	<xsd:complexType>
-                    <xsd:choice>
+                    <xsd:sequence>
                     	<xsd:element name="cliente" type="t:Cliente" maxOccurs="1" minOccurs="0"></xsd:element>
-                    	<xsd:element name="error"
-                    		type="t:Error" maxOccurs="1" minOccurs="0">
-                    	</xsd:element>
-                    </xsd:choice>
+                    </xsd:sequence>
                     
       	</xsd:complexType>
       </xsd:element>
@@ -182,14 +166,10 @@
       </xsd:element>
       <xsd:element name="ConsultarPorProductoClienteResponse">
       	<xsd:complexType>
-                    <xsd:choice>
-                    	<xsd:element name="cliente" type="t:Cliente"
-                    		maxOccurs="unbounded" minOccurs="0">
+                    <xsd:sequence>
+                    	<xsd:element name="cliente" type="t:Cliente" maxOccurs="unbounded" minOccurs="0">
                     	</xsd:element>
-                    	<xsd:element name="error"
-                    		type="t:Error" maxOccurs="1" minOccurs="0">
-                    	</xsd:element>
-                    </xsd:choice>
+                    </xsd:sequence>
                     
       	</xsd:complexType>
       </xsd:element>
@@ -203,12 +183,9 @@
       </xsd:element>
       <xsd:element name="ConsultarPorFactRangoClienteResponse">
       	<xsd:complexType>
-                    <xsd:choice>
+                    <xsd:sequence>
                     	<xsd:element name="cliente" type="t:Cliente" maxOccurs="unbounded" minOccurs="0"></xsd:element>
-                    	<xsd:element name="error"
-                    		type="t:Error" maxOccurs="1" minOccurs="0">
-                    	</xsd:element>
-                    </xsd:choice>
+                    </xsd:sequence>
                     
       	</xsd:complexType>
       </xsd:element>
@@ -220,6 +197,89 @@
       		<xsd:enumeration value="PLATEADO"></xsd:enumeration>
       	</xsd:restriction>
       </xsd:simpleType>
+      <xsd:element name="RegistrarClienteFault">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="RegistrarClienteFault"
+      				type="t:Error" maxOccurs="1" minOccurs="0">
+      			</xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AutenticarClienteFault">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="AutenticarClienteFault"
+      				type="t:Error" maxOccurs="1" minOccurs="0">
+      			</xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ActualizarClienteFault">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="ActualizarClienteFault"
+      				type="t:Error" maxOccurs="1" minOccurs="0">
+      			</xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ActualizarContraseniaClienteFault">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="ActualizarContraseniaClienteFault"
+      				type="t:Error" maxOccurs="1" minOccurs="0">
+      			</xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ActualizarEstatusClienteFault">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="ActualizarEstatusClienteFault"
+      				type="t:Error" maxOccurs="1" minOccurs="0">
+      			</xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ConsultarPorIdentificacionClienteFault">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element
+      				name="ConsultarPorIdentificacionClienteFault"
+      				type="t:Error" maxOccurs="1" minOccurs="0">
+      			</xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ConsultarPorProductoClienteFault">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="ConsultarPorProductoClienteFault"
+      				type="xsd:string" maxOccurs="1" minOccurs="0">
+      			</xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ConsultarPorFactRangoClienteFault">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="ConsultarPorFactRangoClienteFault"
+      				type="t:Error" maxOccurs="1" minOccurs="0">
+      			</xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    
+    
+      <xsd:complexType name="RegistrarClienteReponseType">
+      	<xsd:sequence>
+      		<xsd:element name="respuesta"
+      			type="t:RespuestaGenerica" maxOccurs="1" minOccurs="1">
+      		</xsd:element>
+      		<xsd:element name="id_cliente" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="RegistrarClienteRequest">
@@ -270,39 +330,71 @@
   <wsdl:message name="ConsultarPorFactRangoClienteResponse">
   	<wsdl:part name="parameters" element="t:ConsultarPorFactRangoClienteResponse"></wsdl:part>
   </wsdl:message>
+  <wsdl:message name="RegistrarClienteFault">
+  	<wsdl:part name="parameters" element="t:RegistrarClienteFault"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AutenticarClienteFault">
+  	<wsdl:part name="parameters" element="t:AutenticarClienteFault"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ActualizarClienteFault">
+  	<wsdl:part name="parameters" element="t:ActualizarClienteFault"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ActualizarContraseniaClienteFault">
+  	<wsdl:part name="parameters" element="t:ActualizarContraseniaClienteFault"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ActualizarEstatusClienteFault">
+  	<wsdl:part name="parameters" element="t:ActualizarEstatusClienteFault"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarPorIdentificacionClienteFault">
+  	<wsdl:part name="parameters" element="t:ConsultarPorIdentificacionClienteFault"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarPorProductoClienteFault">
+  	<wsdl:part name="parameters" element="t:ConsultarPorProductoClienteFault"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarPorFactRangoClienteFault">
+  	<wsdl:part name="parameters" element="t:ConsultarPorFactRangoClienteFault"></wsdl:part>
+  </wsdl:message>
   <wsdl:portType name="ClientesTouresBalon">
     <wsdl:operation name="RegistrarCliente">
       <wsdl:input message="t:RegistrarClienteRequest"/>
       <wsdl:output message="t:RegistrarClienteResponse"/>
-    </wsdl:operation>
+            <wsdl:fault name="fault" message="t:RegistrarClienteFault"></wsdl:fault>
+        </wsdl:operation>
     <wsdl:operation name="AutenticarCliente">
     	<wsdl:input message="t:AutenticarClienteRequest"></wsdl:input>
     	<wsdl:output message="t:AutenticarClienteResponse"></wsdl:output>
-    </wsdl:operation>
+            <wsdl:fault name="fault" message="t:AutenticarClienteFault"></wsdl:fault>
+        </wsdl:operation>
     <wsdl:operation name="ActualizarCliente">
     	<wsdl:input message="t:ActualizarClienteRequest"></wsdl:input>
     	<wsdl:output message="t:ActualizarClienteResponse"></wsdl:output>
-    </wsdl:operation>
+            <wsdl:fault name="fault" message="t:ActualizarClienteFault"></wsdl:fault>
+        </wsdl:operation>
     <wsdl:operation name="ActualizarContraseniaCliente">
     	<wsdl:input message="t:ActualizarContraseniaClienteRequest"></wsdl:input>
     	<wsdl:output message="t:ActualizarContraseniaClienteResponse"></wsdl:output>
-    </wsdl:operation>
+            <wsdl:fault name="fault" message="t:ActualizarContraseniaClienteFault"></wsdl:fault>
+        </wsdl:operation>
     <wsdl:operation name="ActualizarEstatusCliente">
     	<wsdl:input message="t:ActualizarEstatusClienteRequest"></wsdl:input>
     	<wsdl:output message="t:ActualizarEstatusClienteResponse"></wsdl:output>
-    </wsdl:operation>
+            <wsdl:fault name="fault" message="t:ActualizarEstatusClienteFault"></wsdl:fault>
+        </wsdl:operation>
     <wsdl:operation name="ConsultarPorIdentificacionCliente">
     	<wsdl:input message="t:ConsultarPorIdentificacionClienteRequest"></wsdl:input>
     	<wsdl:output message="t:ConsultarPorIdentificacionClienteResponse"></wsdl:output>
-    </wsdl:operation>
+            <wsdl:fault name="fault" message="t:ConsultarPorIdentificacionClienteFault"></wsdl:fault>
+        </wsdl:operation>
     <wsdl:operation name="ConsultarPorProductoCliente">
     	<wsdl:input message="t:ConsultarPorProductoClienteRequest"></wsdl:input>
     	<wsdl:output message="t:ConsultarPorProductoClienteResponse"></wsdl:output>
-    </wsdl:operation>
+            <wsdl:fault name="fault" message="t:ConsultarPorProductoClienteFault"></wsdl:fault>
+        </wsdl:operation>
     <wsdl:operation name="ConsultarPorFactRangoCliente">
     	<wsdl:input message="t:ConsultarPorFactRangoClienteRequest"></wsdl:input>
     	<wsdl:output message="t:ConsultarPorFactRangoClienteResponse"></wsdl:output>
-    </wsdl:operation>
+            <wsdl:fault name="fault" message="t:ConsultarPorFactRangoClienteFault"></wsdl:fault>
+        </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ClientesTouresBalonSOAP"
   	type="t:ClientesTouresBalon">
@@ -317,6 +409,9 @@
   		<wsdl:output>
   			<soap:body use="literal" />
   		</wsdl:output>
+  		<wsdl:fault name="fault">
+  			<soap:fault use="literal" name="fault" />
+  		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="AutenticarCliente">
   		<soap:operation
@@ -327,6 +422,9 @@
   		<wsdl:output>
   			<soap:body use="literal" />
   		</wsdl:output>
+  		<wsdl:fault name="fault">
+  			<soap:fault use="literal" name="fault" />
+  		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="ActualizarCliente">
   		<soap:operation
@@ -337,6 +435,9 @@
   		<wsdl:output>
   			<soap:body use="literal" />
   		</wsdl:output>
+  		<wsdl:fault name="fault">
+  			<soap:fault use="literal" name="fault" />
+  		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="ActualizarContraseniaCliente">
   		<soap:operation
@@ -347,6 +448,9 @@
   		<wsdl:output>
   			<soap:body use="literal" />
   		</wsdl:output>
+  		<wsdl:fault name="fault">
+  			<soap:fault use="literal" name="fault" />
+  		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="ActualizarEstatusCliente">
   		<soap:operation
@@ -357,6 +461,9 @@
   		<wsdl:output>
   			<soap:body use="literal" />
   		</wsdl:output>
+  		<wsdl:fault name="fault">
+  			<soap:fault use="literal" name="fault" />
+  		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="ConsultarPorIdentificacionCliente">
   		<soap:operation
@@ -367,6 +474,9 @@
   		<wsdl:output>
   			<soap:body use="literal" />
   		</wsdl:output>
+  		<wsdl:fault name="fault">
+  			<soap:fault use="literal" name="fault" />
+  		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="ConsultarPorProductoCliente">
   		<soap:operation
@@ -377,6 +487,9 @@
   		<wsdl:output>
   			<soap:body use="literal" />
   		</wsdl:output>
+  		<wsdl:fault name="fault">
+  			<soap:fault use="literal" name="fault" />
+  		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="ConsultarPorFactRangoCliente">
   		<soap:operation
@@ -387,6 +500,9 @@
   		<wsdl:output>
   			<soap:body use="literal" />
   		</wsdl:output>
+  		<wsdl:fault name="fault">
+  			<soap:fault use="literal" name="fault" />
+  		</wsdl:fault>
   	</wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="ClientesTouresBalon">
