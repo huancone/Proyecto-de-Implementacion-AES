@@ -100,13 +100,9 @@
 			</xsd:element>
 			<xsd:element name="ConsultarCampaniaProductoResponse">
 				<xsd:complexType>
-					<xsd:choice>
-						<xsd:element name="producto" type="tb_b2:Producto"
-							maxOccurs="unbounded" minOccurs="0"></xsd:element>
-						<xsd:element name="error" type="tb_b2:Error"
-							maxOccurs="1" minOccurs="0">
-						</xsd:element>
-					</xsd:choice>
+                    <xsd:sequence>
+						<xsd:element name="campanias" type="tb_b2:Campania" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+					</xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>
 			<xsd:element name="ConsultarClientesOrdenes">
@@ -353,7 +349,7 @@
 				<xsd:complexType>
 					<xsd:sequence>
 						<xsd:element
-							name="ConsultarCampaniaProductoFault" type="xsd:string">
+							name="ConsultarCampaniaProductoFault" type="tb_b2:Error" maxOccurs="1" minOccurs="0">
 						</xsd:element>
 					</xsd:sequence>
 				</xsd:complexType>
@@ -641,15 +637,6 @@
             	</xsd:restriction>
             </xsd:simpleType>
 		
-            <xsd:complexType name="TipoGestProdReponse">
-            	<xsd:sequence>
-            		<xsd:element name="respuesta"
-            			type="tb_b2:RespuestaGenerica" maxOccurs="1"
-            			minOccurs="1">
-            		</xsd:element>
-            		<xsd:element name="producto" type="tb_b2:Producto" maxOccurs="1" minOccurs="1"></xsd:element>
-            	</xsd:sequence>
-            </xsd:complexType>
             <xsd:element name="ConsultarPorEspectaculoProducto">
             	<xsd:complexType>
             		<xsd:sequence>
@@ -699,7 +686,7 @@
             		<xsd:sequence>
             			<xsd:element
             				name="ConsultarRankingEspectaculosVendidosProductoFault"
-            				type="tb_b2:Error" maxOccurs="unbounded" minOccurs="0">
+            				type="tb_b2:Error" maxOccurs="1" minOccurs="0">
             			</xsd:element>
             		</xsd:sequence>
             	</xsd:complexType>
@@ -736,12 +723,12 @@
             <xsd:element name="GestionCampaniaProducto">
             	<xsd:complexType>
             		<xsd:sequence>
-            			<xsd:element name="tipo_producto"
+            			<xsd:element name="tipo_operacion"
             				type="tb_b2:TipoConsultaProducto" maxOccurs="1"
             				minOccurs="1">
             			</xsd:element>
-            			<xsd:element name="producto"
-            				type="tb_b2:Producto" maxOccurs="1" minOccurs="0">
+            			<xsd:element name="campania"
+            				type="tb_b2:Campania" maxOccurs="1" minOccurs="0">
             			</xsd:element>
             		</xsd:sequence>
             	</xsd:complexType>
@@ -749,7 +736,7 @@
             <xsd:element name="GestionCampaniaProductoResponse">
             	<xsd:complexType>
             		<xsd:sequence>
-            			<xsd:element name="compania_prod_response" type="tb_b2:TipoGestProdReponse" maxOccurs="1" minOccurs="1"></xsd:element>
+            			<xsd:element name="respuesta" type="tb_b2:RespuestaGenerica" maxOccurs="1" minOccurs="1"></xsd:element>
             		</xsd:sequence>
             	</xsd:complexType>
             </xsd:element>
@@ -777,7 +764,7 @@
             <xsd:element name="GestionProductoResponse">
             	<xsd:complexType>
             		<xsd:sequence>
-            			<xsd:element name="gestion_prod_response" type="tb_b2:TipoGestProdReponse" maxOccurs="1" minOccurs="1"></xsd:element>
+            			<xsd:element name="gestion_producto_reponse" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
             		</xsd:sequence>
             	</xsd:complexType>
             </xsd:element>
@@ -821,6 +808,47 @@
             		</xsd:sequence>
             	</xsd:complexType>
             </xsd:element>
+		
+            <xsd:complexType name="Campania">
+            	<xsd:sequence>
+            		<xsd:element name="id_producto" type="xsd:string"
+            			maxOccurs="1" minOccurs="1">
+            		</xsd:element>
+            		<xsd:element name="fecha_inicio_campania"
+            			type="xsd:date" maxOccurs="1" minOccurs="1">
+            		</xsd:element>
+            		<xsd:element name="fecha_fin_campania" type="xsd:date" maxOccurs="1" minOccurs="1"></xsd:element>
+            	</xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="ConsultaTop5Productos">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="id_producto" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+            <xsd:element name="ConsultaTop5ProductosResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="lista_productos_top" type="tb_b2:ListaTop5Productos" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+            <xsd:element name="ConsultaTop5ProductosFault">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="ConsultaTop5ProductosFault"
+            				type="tb_b2:Error" maxOccurs="1" minOccurs="0">
+            			</xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+		
+            <xsd:complexType name="ListaTop5Productos">
+            	<xsd:sequence>
+                    <xsd:element name="productos_top" type="tb_b2:Producto" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+            	</xsd:sequence>
+            </xsd:complexType>
 		</xsd:schema>
 	</wsdl:types>
 	<wsdl:message name="RegistrarClienteRequest">
@@ -1031,6 +1059,15 @@
 	<wsdl:message name="GestionTarifaFault">
 		<wsdl:part name="parameters" element="tb_b2:GestionTarifaFault"></wsdl:part>
 	</wsdl:message>
+	<wsdl:message name="ConsultaTop5ProductosRequest">
+		<wsdl:part name="parameters" element="tb_b2:ConsultaTop5Productos"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="ConsultaTop5ProductosResponse">
+		<wsdl:part name="parameters" element="tb_b2:ConsultaTop5ProductosResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="ConsultaTop5ProductosFault">
+		<wsdl:part name="parameters" element="tb_b2:ConsultaTop5ProductosFault"></wsdl:part>
+	</wsdl:message>
 	<wsdl:portType name="ServiceProxyB2C">
 		<wsdl:operation name="RegistrarCliente">
 			<wsdl:input message="tb_b2:RegistrarClienteRequest" />
@@ -1146,6 +1183,11 @@
 			<wsdl:input message="tb_b2:GestionTarifaRequest"></wsdl:input>
 			<wsdl:output message="tb_b2:GestionTarifaResponse"></wsdl:output>
             <wsdl:fault name="fault" message="tb_b2:GestionTarifaFault"></wsdl:fault>
+        </wsdl:operation>
+		<wsdl:operation name="ConsultaTop5Productos">
+			<wsdl:input message="tb_b2:ConsultaTop5ProductosRequest"></wsdl:input>
+			<wsdl:output message="tb_b2:ConsultaTop5ProductosResponse"></wsdl:output>
+            <wsdl:fault name="fault" message="tb_b2:ConsultaTop5ProductosFault"></wsdl:fault>
         </wsdl:operation>
 	</wsdl:portType>
 	<wsdl:binding name="ServiceProxyB2CSOAP" type="tb_b2:ServiceProxyB2C">
