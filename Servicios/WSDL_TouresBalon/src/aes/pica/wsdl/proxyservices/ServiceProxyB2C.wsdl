@@ -15,19 +15,11 @@
 			</xsd:element>
 			<xsd:element name="RegistrarClienteResponse">
 				<xsd:complexType>
-					<xsd:choice>
-						<xsd:element name="error" type="tb_b2:Error"
-							maxOccurs="1" minOccurs="0">
+					<xsd:sequence>
+						<xsd:element name="registrarClienteResponse"
+							type="tb_b2:RegistrarClienteReponseType" maxOccurs="1" minOccurs="1">
 						</xsd:element>
-						<xsd:sequence>
-							<xsd:element name="respuesta"
-								type="tb_b2:RespuestaGenerica" maxOccurs="1" minOccurs="1">
-							</xsd:element>
-							<xsd:element name="id_cliente"
-								type="xsd:string" maxOccurs="1" minOccurs="1">
-							</xsd:element>
 						</xsd:sequence>
-					</xsd:choice>
 				</xsd:complexType>
 			</xsd:element>
 			<xsd:element name="AutenticarCliente">
@@ -42,14 +34,8 @@
 			</xsd:element>
 			<xsd:element name="AutenticarClienteResponse">
 				<xsd:complexType>
-					<xsd:choice>
-						<xsd:element name="respuesta" type="tb_b2:RespuestaGenerica"
-							maxOccurs="1" minOccurs="0">
-						</xsd:element>
-						<xsd:element name="error" type="tb_b2:Error"
-							maxOccurs="1" minOccurs="0">
-						</xsd:element>
-					</xsd:choice>
+					<xsd:sequence><xsd:element name="respuesta" type="tb_b2:RespuestaGenerica" maxOccurs="1" minOccurs="1">
+					</xsd:element></xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>
 			<xsd:element name="ActualizarCliente">
@@ -62,11 +48,8 @@
 			</xsd:element>
 			<xsd:element name="ActualizarClienteResponse">
 				<xsd:complexType>
-					<xsd:choice>
-						<xsd:element name="respuesta" type="tb_b2:RespuestaGenerica">
-						</xsd:element>
-						<xsd:element name="error" type="tb_b2:Error"></xsd:element>
-					</xsd:choice>
+					<xsd:sequence><xsd:element name="respuesta" type="tb_b2:RespuestaGenerica" maxOccurs="1" minOccurs="1">
+					</xsd:element></xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>
 			<xsd:element name="ActualizarContraseniaCliente">
@@ -81,10 +64,8 @@
 			</xsd:element>
 			<xsd:element name="ActualizarContraseniaClienteResponse">
 				<xsd:complexType>
-					<xsd:choice>
-						<xsd:element name="respuesta" type="tb_b2:RespuestaGenerica"></xsd:element>
-						<xsd:element name="error" type="tb_b2:Error"></xsd:element>
-					</xsd:choice>
+					<xsd:sequence><xsd:element name="respuesta" type="tb_b2:RespuestaGenerica" maxOccurs="1" minOccurs="1">
+					</xsd:element></xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>
 			<xsd:element name="ConsultarProducto">
@@ -343,6 +324,206 @@
 						maxOccurs="1" minOccurs="0"></xsd:element>
 				</xsd:sequence>
 			</xsd:complexType>
+		
+			<xsd:complexType name="RegistrarClienteReponseType">
+				<xsd:sequence>
+					<xsd:element name="respuesta"
+						type="tb_b2:RespuestaGenerica" maxOccurs="1" minOccurs="1">
+					</xsd:element>
+					<xsd:element name="id_cliente" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+		
+			<xsd:simpleType name="EstatusCliente">
+				<xsd:restriction base="xsd:string">
+					<xsd:enumeration value="PLATINO"></xsd:enumeration>
+					<xsd:enumeration value="DORADO"></xsd:enumeration>
+					<xsd:enumeration value="PLATEADO"></xsd:enumeration>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:element name="RegistrarClienteFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="RegistrarClienteFault"
+							type="tb_b2:Error" maxOccurs="1" minOccurs="0">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="AutenticarClienteFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="AutenticarClienteFault"
+							type="tb_b2:Error" maxOccurs="1" minOccurs="0">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ActualizarClienteFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="ActualizarClienteFault"
+							type="tb_b2:Error" maxOccurs="1" minOccurs="0">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ActualizarContraseniaClienteFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element
+							name="ActualizarContraseniaClienteFault" type="tb_b2:Error" maxOccurs="1" minOccurs="0">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ConsultarProductoFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="ConsultarProductoFault"
+							type="xsd:string">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ConsultarCampaniaProductoFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element
+							name="ConsultarCampaniaProductoFault" type="xsd:string">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ConsultarClientesOrdenesFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element
+							name="ConsultarClientesOrdenesFault" type="xsd:string">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="CancelarOrdenesFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="CancelarOrdenesFault"
+							type="xsd:string">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="CrearOrdenesFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="CrearOrdenesFault"
+							type="xsd:string">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ActualizarEstatusCliente">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="id_cliente"
+							type="xsd:string" maxOccurs="1" minOccurs="1">
+						</xsd:element>
+						<xsd:element name="estatus_cliente"
+							type="tb_b2:EstatusCliente" maxOccurs="1" minOccurs="1">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ActualizarEstatusClienteResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="respuesta" type="tb_b2:RespuestaGenerica" maxOccurs="1" minOccurs="1"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ActualizarEstatusClienteFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element
+							name="ActualizarEstatusClienteFault" type="tb_b2:Error" maxOccurs="1" minOccurs="0">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ConsultarPorIdentificacionCliente">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="id_cliente" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ConsultarPorIdentificacionClienteResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="cliente" type="tb_b2:Cliente" maxOccurs="1" minOccurs="0"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element
+				name="ConsultarPorIdentificacionClienteFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element
+							name="ConsultarPorIdentificacionClienteFault"
+							type="tb_b2:Error" maxOccurs="1" minOccurs="0">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ConsultarPorProductoCliente">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="id_producto" type="xsd:int" maxOccurs="1" minOccurs="1"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ConsultarPorProductoClienteResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="cliente" type="tb_b2:Cliente" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ConsultarPorProductoClienteFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element
+							name="ConsultarPorProductoClienteFault" type="tb_b2:Error" maxOccurs="1" minOccurs="0">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ConsultarPorFactRangoCliente">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="fecha_ini" type="xsd:date" maxOccurs="1" minOccurs="1"></xsd:element>
+						<xsd:element name="fecha_fin"
+							type="xsd:date" maxOccurs="1" minOccurs="1">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ConsultarPorFactRangoClienteResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="cliente" type="tb_b2:Cliente" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ConsultarPorFactRangoClienteFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element
+							name="ConsultarPorFactRangoClienteFault" type="tb_b2:Error" maxOccurs="1" minOccurs="0">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
 		</xsd:schema>
 	</wsdl:types>
 	<wsdl:message name="RegistrarClienteRequest">
@@ -399,43 +580,135 @@
 	<wsdl:message name="CrearOrdenesResponse">
 		<wsdl:part name="parameters" element="tb_b2:CrearOrdenesResponse"></wsdl:part>
 	</wsdl:message>
+	<wsdl:message name="RegistrarClienteFault">
+		<wsdl:part name="parameters" element="tb_b2:RegistrarClienteFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="AutenticarClienteFault">
+		<wsdl:part name="parameters" element="tb_b2:AutenticarClienteFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="ActualizarClienteFault">
+		<wsdl:part name="parameters" element="tb_b2:ActualizarClienteFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="ActualizarContraseniaClienteFault">
+		<wsdl:part name="parameters" element="tb_b2:ActualizarContraseniaClienteFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="ConsultarProductoFault">
+		<wsdl:part name="parameters" element="tb_b2:ConsultarProductoFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="ConsultarCampaniaProductoFault">
+		<wsdl:part name="parameters" element="tb_b2:ConsultarCampaniaProductoFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="ConsultarClientesOrdenesFault">
+		<wsdl:part name="parameters" element="tb_b2:ConsultarClientesOrdenesFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="CancelarOrdenesFault">
+		<wsdl:part name="parameters" element="tb_b2:CancelarOrdenesFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="CrearOrdenesFault">
+		<wsdl:part name="parameters" element="tb_b2:CrearOrdenesFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="ActualizarEstatusClienteRequest">
+		<wsdl:part name="parameters" element="tb_b2:ActualizarEstatusCliente"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="ActualizarEstatusClienteResponse">
+		<wsdl:part name="parameters" element="tb_b2:ActualizarEstatusClienteResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="ActualizarEstatusClienteFault">
+		<wsdl:part name="parameters" element="tb_b2:ActualizarEstatusClienteFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="ConsultarPorIdentificacionClienteRequest">
+		<wsdl:part name="parameters" element="tb_b2:ConsultarPorIdentificacionCliente"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="ConsultarPorIdentificacionClienteResponse">
+		<wsdl:part name="parameters" element="tb_b2:ConsultarPorIdentificacionClienteResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="ConsultarPorIdentificacionClienteFault">
+		<wsdl:part name="parameters" element="tb_b2:ConsultarPorIdentificacionClienteFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="ConsultarPorProductoClienteRequest">
+		<wsdl:part name="parameters" element="tb_b2:ConsultarPorProductoCliente"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="ConsultarPorProductoClienteResponse">
+		<wsdl:part name="parameters" element="tb_b2:ConsultarPorProductoClienteResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="ConsultarPorProductoClienteFault">
+		<wsdl:part name="parameters" element="tb_b2:ConsultarPorProductoClienteFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="ConsultarPorFactRangoClienteRequest">
+		<wsdl:part name="parameters" element="tb_b2:ConsultarPorFactRangoCliente"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="ConsultarPorFactRangoClienteResponse">
+		<wsdl:part name="parameters" element="tb_b2:ConsultarPorFactRangoClienteResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="ConsultarPorFactRangoClienteFault">
+		<wsdl:part name="parameters" element="tb_b2:ConsultarPorFactRangoClienteFault"></wsdl:part>
+	</wsdl:message>
 	<wsdl:portType name="ServiceProxyB2C">
 		<wsdl:operation name="RegistrarCliente">
 			<wsdl:input message="tb_b2:RegistrarClienteRequest" />
 			<wsdl:output message="tb_b2:RegistrarClienteResponse" />
-		</wsdl:operation>
+            <wsdl:fault name="fault" message="tb_b2:RegistrarClienteFault"></wsdl:fault>
+        </wsdl:operation>
 		<wsdl:operation name="AutenticarCliente">
 			<wsdl:input message="tb_b2:AutenticarClienteRequest"></wsdl:input>
 			<wsdl:output message="tb_b2:AutenticarClienteResponse"></wsdl:output>
-		</wsdl:operation>
+            <wsdl:fault name="fault" message="tb_b2:AutenticarClienteFault"></wsdl:fault>
+        </wsdl:operation>
 		<wsdl:operation name="ActualizarCliente">
 			<wsdl:input message="tb_b2:ActualizarClienteRequest"></wsdl:input>
 			<wsdl:output message="tb_b2:ActualizarClienteResponse"></wsdl:output>
-		</wsdl:operation>
+            <wsdl:fault name="fault" message="tb_b2:ActualizarClienteFault"></wsdl:fault>
+        </wsdl:operation>
 		<wsdl:operation name="ActualizarContraseniaCliente">
 			<wsdl:input message="tb_b2:ActualizarContraseniaClienteRequest"></wsdl:input>
 			<wsdl:output message="tb_b2:ActualizarContraseniaClienteResponse"></wsdl:output>
-		</wsdl:operation>
+            <wsdl:fault name="fault" message="tb_b2:ActualizarContraseniaClienteFault"></wsdl:fault>
+        </wsdl:operation>
 		<wsdl:operation name="ConsultarProducto">
 			<wsdl:input message="tb_b2:ConsultarProductoRequest"></wsdl:input>
 			<wsdl:output message="tb_b2:ConsultarProductoResponse"></wsdl:output>
-		</wsdl:operation>
+            <wsdl:fault name="fault" message="tb_b2:ConsultarProductoFault"></wsdl:fault>
+        </wsdl:operation>
 		<wsdl:operation name="ConsultarCampaniaProducto">
 			<wsdl:input message="tb_b2:ConsultarCampaniaProductoRequest"></wsdl:input>
 			<wsdl:output message="tb_b2:ConsultarCampaniaProductoResponse"></wsdl:output>
-		</wsdl:operation>
+            <wsdl:fault name="fault" message="tb_b2:ConsultarCampaniaProductoFault"></wsdl:fault>
+        </wsdl:operation>
 		<wsdl:operation name="ConsultarClientesOrdenes">
 			<wsdl:input message="tb_b2:ConsultarClientesOrdenesRequest"></wsdl:input>
 			<wsdl:output message="tb_b2:ConsultarClientesOrdenesResponse"></wsdl:output>
-		</wsdl:operation>
+            <wsdl:fault name="fault" message="tb_b2:ConsultarClientesOrdenesFault"></wsdl:fault>
+        </wsdl:operation>
 		<wsdl:operation name="CancelarOrdenes">
 			<wsdl:input message="tb_b2:CancelarOrdenesRequest"></wsdl:input>
 			<wsdl:output message="tb_b2:CancelarOrdenesResponse"></wsdl:output>
-		</wsdl:operation>
+            <wsdl:fault name="fault" message="tb_b2:CancelarOrdenesFault"></wsdl:fault>
+        </wsdl:operation>
 		<wsdl:operation name="CrearOrdenes">
 			<wsdl:input message="tb_b2:CrearOrdenesRequest"></wsdl:input>
 			<wsdl:output message="tb_b2:CrearOrdenesResponse"></wsdl:output>
-		</wsdl:operation>
+            <wsdl:fault name="fault" message="tb_b2:CrearOrdenesFault"></wsdl:fault>
+        </wsdl:operation>
+		<wsdl:operation name="ActualizarEstatusCliente">
+			<wsdl:input message="tb_b2:ActualizarEstatusClienteRequest"></wsdl:input>
+			<wsdl:output message="tb_b2:ActualizarEstatusClienteResponse"></wsdl:output>
+            <wsdl:fault name="fault" message="tb_b2:ActualizarEstatusClienteFault"></wsdl:fault>
+        </wsdl:operation>
+		<wsdl:operation name="ConsultarPorIdentificacionCliente">
+			<wsdl:input message="tb_b2:ConsultarPorIdentificacionClienteRequest"></wsdl:input>
+			<wsdl:output message="tb_b2:ConsultarPorIdentificacionClienteResponse"></wsdl:output>
+            <wsdl:fault name="fault" message="tb_b2:ConsultarPorIdentificacionClienteFault"></wsdl:fault>
+        </wsdl:operation>
+		<wsdl:operation name="ConsultarPorProductoCliente">
+			<wsdl:input message="tb_b2:ConsultarPorProductoClienteRequest"></wsdl:input>
+			<wsdl:output message="tb_b2:ConsultarPorProductoClienteResponse"></wsdl:output>
+            <wsdl:fault name="fault" message="tb_b2:ConsultarPorProductoClienteFault"></wsdl:fault>
+        </wsdl:operation>
+		<wsdl:operation name="ConsultarPorFactRangoCliente">
+			<wsdl:input message="tb_b2:ConsultarPorFactRangoClienteRequest"></wsdl:input>
+			<wsdl:output message="tb_b2:ConsultarPorFactRangoClienteResponse"></wsdl:output>
+            <wsdl:fault name="fault" message="tb_b2:ConsultarPorFactRangoClienteFault"></wsdl:fault>
+        </wsdl:operation>
 	</wsdl:portType>
 	<wsdl:binding name="ServiceProxyB2CSOAP" type="tb_b2:ServiceProxyB2C">
 		<soap:binding style="document"
