@@ -381,131 +381,6 @@
 					</xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>
-			<xsd:element name="ActualizarEstatusCliente">
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element name="id_cliente"
-							type="xsd:string" maxOccurs="1" minOccurs="1">
-						</xsd:element>
-						<xsd:element name="estatus_cliente"
-							type="tb_b2:EstatusCliente" maxOccurs="1" minOccurs="1">
-						</xsd:element>
-					</xsd:sequence>
-				</xsd:complexType>
-			</xsd:element>
-			<xsd:element name="ActualizarEstatusClienteResponse">
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element name="respuesta" type="tb_b2:RespuestaGenerica" maxOccurs="1" minOccurs="1"></xsd:element>
-					</xsd:sequence>
-				</xsd:complexType>
-			</xsd:element>
-			<xsd:element name="ActualizarEstatusClienteFault">
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element
-							name="ActualizarEstatusClienteFault" type="tb_b2:Error" maxOccurs="1" minOccurs="0">
-						</xsd:element>
-					</xsd:sequence>
-				</xsd:complexType>
-			</xsd:element>
-			<xsd:element name="ConsultarPorIdentificacionCliente">
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element name="id_cliente" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
-					</xsd:sequence>
-				</xsd:complexType>
-			</xsd:element>
-			<xsd:element name="ConsultarPorIdentificacionClienteResponse">
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element name="cliente" type="tb_b2:Cliente" maxOccurs="1" minOccurs="0"></xsd:element>
-					</xsd:sequence>
-				</xsd:complexType>
-			</xsd:element>
-			<xsd:element
-				name="ConsultarPorIdentificacionClienteFault">
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element
-							name="ConsultarPorIdentificacionClienteFault"
-							type="tb_b2:Error" maxOccurs="1" minOccurs="0">
-						</xsd:element>
-					</xsd:sequence>
-				</xsd:complexType>
-			</xsd:element>
-			<xsd:element name="ConsultarPorProductoCliente">
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element name="id_producto" type="xsd:int" maxOccurs="1" minOccurs="1"></xsd:element>
-					</xsd:sequence>
-				</xsd:complexType>
-			</xsd:element>
-			<xsd:element name="ConsultarPorProductoClienteResponse">
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element name="cliente" type="tb_b2:Cliente" maxOccurs="unbounded" minOccurs="0"></xsd:element>
-					</xsd:sequence>
-				</xsd:complexType>
-			</xsd:element>
-			<xsd:element name="ConsultarPorProductoClienteFault">
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element
-							name="ConsultarPorProductoClienteFault" type="tb_b2:Error" maxOccurs="1" minOccurs="0">
-						</xsd:element>
-					</xsd:sequence>
-				</xsd:complexType>
-			</xsd:element>
-			<xsd:element name="ConsultarPorFactRangoCliente">
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element name="fecha_ini" type="xsd:date" maxOccurs="1" minOccurs="1"></xsd:element>
-						<xsd:element name="fecha_fin"
-							type="xsd:date" maxOccurs="1" minOccurs="1">
-						</xsd:element>
-					</xsd:sequence>
-				</xsd:complexType>
-			</xsd:element>
-			<xsd:element name="ConsultarPorFactRangoClienteResponse">
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element name="cliente" type="tb_b2:Cliente" maxOccurs="unbounded" minOccurs="0"></xsd:element>
-					</xsd:sequence>
-				</xsd:complexType>
-			</xsd:element>
-			<xsd:element name="ConsultarPorFactRangoClienteFault">
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element
-							name="ConsultarPorFactRangoClienteFault" type="tb_b2:Error" maxOccurs="1" minOccurs="0">
-						</xsd:element>
-					</xsd:sequence>
-				</xsd:complexType>
-			</xsd:element>
-			<xsd:element name="ConsultarOrdenes">
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element name="criterios" type="tb_b2:CriterioConsultaOrden" maxOccurs="1" minOccurs="1"></xsd:element>
-					</xsd:sequence>
-				</xsd:complexType>
-			</xsd:element>
-			<xsd:element name="ConsultarOrdenesResponse">
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element name="ordenes" type="tb_b2:Orden" maxOccurs="unbounded" minOccurs="0"></xsd:element>
-					</xsd:sequence>
-				</xsd:complexType>
-			</xsd:element>
-			<xsd:element name="ConsultarOrdenesFault">
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element name="ConsultarOrdenesFault"
-							type="tb_b2:Error" maxOccurs="1" minOccurs="0">
-						</xsd:element>
-					</xsd:sequence>
-				</xsd:complexType>
-			</xsd:element>
 		
 			<xsd:simpleType name="TipoConsultaOrden">
 				<xsd:restriction base="xsd:string">
@@ -522,44 +397,6 @@
 					<xsd:element name="codigo" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
 				</xsd:sequence>
 			</xsd:complexType>
-			<xsd:element name="ConsultarRangoCerradoOrdenes">
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element name="mes" maxOccurs="1" minOccurs="1">
-							<xsd:simpleType>
-								<xsd:restriction base="xsd:int">
-									<xsd:minInclusive value="1"></xsd:minInclusive>
-									<xsd:maxInclusive value="12"></xsd:maxInclusive>
-								</xsd:restriction>
-							</xsd:simpleType>
-						</xsd:element>
-						<xsd:element name="anio" maxOccurs="1" minOccurs="1">
-							<xsd:simpleType>
-								<xsd:restriction base="xsd:int">
-									<xsd:minInclusive value="2000"></xsd:minInclusive>
-									<xsd:maxInclusive value="2050"></xsd:maxInclusive>
-								</xsd:restriction>
-							</xsd:simpleType>
-						</xsd:element>
-					</xsd:sequence>
-				</xsd:complexType>
-			</xsd:element>
-			<xsd:element name="ConsultarRangoCerradoOrdenesResponse">
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element name="ordenes_cerradas" type="tb_b2:RespuestaOrdenCerrada" maxOccurs="1" minOccurs="1"></xsd:element>
-					</xsd:sequence>
-				</xsd:complexType>
-			</xsd:element>
-			<xsd:element name="ConsultarRangoCerradoOrdenesFault">
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element
-							name="ConsultarRangoCerradoOrdenesFault" type="tb_b2:Error" maxOccurs="1" minOccurs="0">
-						</xsd:element>
-					</xsd:sequence>
-				</xsd:complexType>
-			</xsd:element>
 		
 			<xsd:complexType name="RespuestaOrdenCerrada">
 				<xsd:sequence>
@@ -569,46 +406,6 @@
 					<xsd:element name="total_mes" type="xsd:double" maxOccurs="1" minOccurs="1"></xsd:element>
 				</xsd:sequence>
 			</xsd:complexType>
-			<xsd:element name="ConsultarRankingAbiertasOrdenes">
-				<xsd:complexType>
-				</xsd:complexType>
-			</xsd:element>
-			<xsd:element name="ConsultarRankingAbiertasOrdenesResponse">
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element name="ordenes" type="tb_b2:Orden" maxOccurs="unbounded" minOccurs="0"></xsd:element>
-					</xsd:sequence>
-				</xsd:complexType>
-			</xsd:element>
-			<xsd:element name="ConsultarRankingAbiertasOrdenesFault">
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element
-							name="ConsultarRankingAbiertasOrdenesFault" type="tb_b2:Error" maxOccurs="1" minOccurs="0">
-						</xsd:element>
-					</xsd:sequence>
-				</xsd:complexType>
-			</xsd:element>
-			<xsd:element name="ConsultarRankingCerradoOrdenes">
-				<xsd:complexType>
-				</xsd:complexType>
-			</xsd:element>
-			<xsd:element name="ConsultarRankingCerradoOrdenesResponse">
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element name="ordenes" type="tb_b2:Orden" maxOccurs="unbounded" minOccurs="0"></xsd:element>
-					</xsd:sequence>
-				</xsd:complexType>
-			</xsd:element>
-			<xsd:element name="ConsultarRankingCerradoOrdenesFault">
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element
-							name="ConsultarRankingCerradoOrdenesFault" type="tb_b2:Error" maxOccurs="1" minOccurs="0">
-						</xsd:element>
-					</xsd:sequence>
-				</xsd:complexType>
-			</xsd:element>
 		
 			<xsd:complexType name="TipoConsultaProductoResponse">
 				<xsd:sequence>
@@ -616,15 +413,6 @@
 						maxOccurs="unbounded" minOccurs="0">
 					</xsd:element>
 					<xsd:element name="productos_top" type="tb_b2:Producto" maxOccurs="unbounded" minOccurs="0"></xsd:element>
-				</xsd:sequence>
-			</xsd:complexType>
-		
-			<xsd:complexType name="TipoGestionTarifaResponse">
-				<xsd:sequence>
-					<xsd:element name="respuesta"
-						type="tb_b2:RespuestaGenerica" maxOccurs="1" minOccurs="1">
-					</xsd:element>
-					<xsd:element name="tipo_tarifa" type="tb_b2:TipoTarifa" maxOccurs="1" minOccurs="1"></xsd:element>
 				</xsd:sequence>
 			</xsd:complexType>
 			
@@ -635,180 +423,7 @@
             		<xsd:enumeration value="ESPECTACULO"></xsd:enumeration>
             		<xsd:enumeration value="CIUDAD"></xsd:enumeration>
             	</xsd:restriction>
-            </xsd:simpleType>
-		
-            <xsd:element name="ConsultarPorEspectaculoProducto">
-            	<xsd:complexType>
-            		<xsd:sequence>
-            			<xsd:element name="espectaculo" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
-            		</xsd:sequence>
-            	</xsd:complexType>
-            </xsd:element>
-            <xsd:element name="ConsultarPorEspectaculoProductoResponse">
-            	<xsd:complexType>
-            		<xsd:sequence>
-            			<xsd:element name="productos" type="tb_b2:Producto" maxOccurs="unbounded" minOccurs="0"></xsd:element>
-            		</xsd:sequence>
-            	</xsd:complexType>
-            </xsd:element>
-            <xsd:element name="ConsultarPorEspectaculoProductoFault">
-            	<xsd:complexType>
-            		<xsd:sequence>
-            			<xsd:element
-            				name="ConsultarPorEspectaculoProductoFault"
-            				type="tb_b2:Error" maxOccurs="1" minOccurs="0">
-            			</xsd:element>
-            		</xsd:sequence>
-            	</xsd:complexType>
-            </xsd:element>
-            <xsd:element name="ConsultarRankingEspectaculosVendidosProducto">
-            	<xsd:complexType>
-            		<xsd:sequence>
-            			<xsd:element name="fecha_inicial"
-            				type="xsd:date" maxOccurs="1" minOccurs="1">
-            			</xsd:element>
-            			<xsd:element name="fecha_fin"
-            				type="xsd:date" maxOccurs="1" minOccurs="1">
-            			</xsd:element>
-            		</xsd:sequence>
-            	</xsd:complexType>
-            </xsd:element>
-            <xsd:element name="ConsultarRankingEspectaculosVendidosProductoResponse">
-            	<xsd:complexType>
-            		<xsd:sequence>
-            			<xsd:element name="tipo_espectaculo" type="tb_b2:TarifaValores" maxOccurs="unbounded" minOccurs="0"></xsd:element>
-            		</xsd:sequence>
-            	</xsd:complexType>
-            </xsd:element>
-            <xsd:element
-            	name="ConsultarRankingEspectaculosVendidosProductoFault">
-            	<xsd:complexType>
-            		<xsd:sequence>
-            			<xsd:element
-            				name="ConsultarRankingEspectaculosVendidosProductoFault"
-            				type="tb_b2:Error" maxOccurs="1" minOccurs="0">
-            			</xsd:element>
-            		</xsd:sequence>
-            	</xsd:complexType>
-            </xsd:element>
-            <xsd:element name="ConsultarRankingFechaProducto">
-            	<xsd:complexType>
-            		<xsd:sequence>
-            			<xsd:element name="fecha_inicial"
-            				type="xsd:date" maxOccurs="1" minOccurs="1">
-            			</xsd:element>
-            			<xsd:element name="fecha_fin"
-            				type="xsd:date" maxOccurs="1" minOccurs="1">
-            			</xsd:element>
-            		</xsd:sequence>
-            	</xsd:complexType>
-            </xsd:element>
-            <xsd:element name="ConsultarRankingFechaProductoResponse">
-            	<xsd:complexType>
-            		<xsd:sequence>
-            			<xsd:element name="productos" type="tb_b2:Producto" maxOccurs="unbounded" minOccurs="0"></xsd:element>
-            		</xsd:sequence>
-            	</xsd:complexType>
-            </xsd:element>
-            <xsd:element name="ConsultarRankingFechaProductoFault">
-            	<xsd:complexType>
-            		<xsd:sequence>
-            			<xsd:element
-            				name="ConsultarRankingFechaProductoFault"
-            				type="tb_b2:Error" maxOccurs="1" minOccurs="0">
-            			</xsd:element>
-            		</xsd:sequence>
-            	</xsd:complexType>
-            </xsd:element>
-            <xsd:element name="GestionCampaniaProducto">
-            	<xsd:complexType>
-            		<xsd:sequence>
-            			<xsd:element name="tipo_operacion"
-            				type="tb_b2:TipoConsultaProducto" maxOccurs="1"
-            				minOccurs="1">
-            			</xsd:element>
-            			<xsd:element name="campania"
-            				type="tb_b2:Campania" maxOccurs="1" minOccurs="0">
-            			</xsd:element>
-            		</xsd:sequence>
-            	</xsd:complexType>
-            </xsd:element>
-            <xsd:element name="GestionCampaniaProductoResponse">
-            	<xsd:complexType>
-            		<xsd:sequence>
-            			<xsd:element name="respuesta" type="tb_b2:RespuestaGenerica" maxOccurs="1" minOccurs="1"></xsd:element>
-            		</xsd:sequence>
-            	</xsd:complexType>
-            </xsd:element>
-            <xsd:element name="GestionCampaniaProductoFault">
-            	<xsd:complexType>
-            		<xsd:sequence>
-            			<xsd:element name="GestionCampaniaProductoFault"
-            				type="tb_b2:Error" maxOccurs="1" minOccurs="0">
-            			</xsd:element>
-            		</xsd:sequence>
-            	</xsd:complexType>
-            </xsd:element>
-            <xsd:element name="GestionProducto">
-            	<xsd:complexType>
-            		<xsd:sequence>
-            			<xsd:element name="tipo_operacion"
-            				type="tb_b2:TipoConsultaProducto" maxOccurs="1" minOccurs="1">
-            			</xsd:element>
-            			<xsd:element name="producto"
-            				type="tb_b2:Producto" maxOccurs="1" minOccurs="1">
-            			</xsd:element>
-            		</xsd:sequence>
-            	</xsd:complexType>
-            </xsd:element>
-            <xsd:element name="GestionProductoResponse">
-            	<xsd:complexType>
-            		<xsd:sequence>
-            			<xsd:element name="gestion_producto_reponse" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
-            		</xsd:sequence>
-            	</xsd:complexType>
-            </xsd:element>
-            <xsd:element name="GestionProductoFault">
-            	<xsd:complexType>
-            		<xsd:sequence>
-            			<xsd:element name="GestionProductoFault"
-            				type="tb_b2:Error" maxOccurs="1" minOccurs="0">
-            			</xsd:element>
-            		</xsd:sequence>
-            	</xsd:complexType>
-            </xsd:element>
-            <xsd:element name="GestionTarifa">
-            	<xsd:complexType>
-            		<xsd:sequence>
-            			<xsd:element name="tipo_operacion"
-            				type="tb_b2:TipoConsultaProducto" maxOccurs="1" minOccurs="1">
-            			</xsd:element>
-            			<xsd:element name="tipo_tarifa"
-            				type="tb_b2:TipoTarifa" maxOccurs="1" minOccurs="1">
-            			</xsd:element>
-            			<xsd:element name="tarifa"
-            				type="tb_b2:TarifaValores" maxOccurs="1" minOccurs="1">
-            			</xsd:element>
-            		</xsd:sequence>
-            	</xsd:complexType>
-            </xsd:element>
-            <xsd:element name="GestionTarifaResponse">
-            	<xsd:complexType>
-            		<xsd:sequence>
-            			<xsd:element name="tarifa" type="tb_b2:TipoGestionTarifaResponse" maxOccurs="1" minOccurs="1"></xsd:element>
-            		</xsd:sequence>
-            	</xsd:complexType>
-            </xsd:element>
-            <xsd:element name="GestionTarifaFault">
-            	<xsd:complexType>
-            		<xsd:sequence>
-            			<xsd:element name="GestionTarifaFault"
-            				type="tb_b2:Error" maxOccurs="1" minOccurs="0">
-            			</xsd:element>
-            		</xsd:sequence>
-            	</xsd:complexType>
-            </xsd:element>
-		
+            </xsd:simpleType>		
             <xsd:complexType name="Campania">
             	<xsd:sequence>
             		<xsd:element name="id_producto" type="xsd:string"
@@ -932,133 +547,6 @@
 	<wsdl:message name="CrearOrdenesFault">
 		<wsdl:part name="parameters" element="tb_b2:CrearOrdenesFault"></wsdl:part>
 	</wsdl:message>
-	<wsdl:message name="ActualizarEstatusClienteRequest">
-		<wsdl:part name="parameters" element="tb_b2:ActualizarEstatusCliente"></wsdl:part>
-	</wsdl:message>
-	<wsdl:message name="ActualizarEstatusClienteResponse">
-		<wsdl:part name="parameters" element="tb_b2:ActualizarEstatusClienteResponse"></wsdl:part>
-	</wsdl:message>
-	<wsdl:message name="ActualizarEstatusClienteFault">
-		<wsdl:part name="parameters" element="tb_b2:ActualizarEstatusClienteFault"></wsdl:part>
-	</wsdl:message>
-	<wsdl:message name="ConsultarPorIdentificacionClienteRequest">
-		<wsdl:part name="parameters" element="tb_b2:ConsultarPorIdentificacionCliente"></wsdl:part>
-	</wsdl:message>
-	<wsdl:message name="ConsultarPorIdentificacionClienteResponse">
-		<wsdl:part name="parameters" element="tb_b2:ConsultarPorIdentificacionClienteResponse"></wsdl:part>
-	</wsdl:message>
-	<wsdl:message name="ConsultarPorIdentificacionClienteFault">
-		<wsdl:part name="parameters" element="tb_b2:ConsultarPorIdentificacionClienteFault"></wsdl:part>
-	</wsdl:message>
-	<wsdl:message name="ConsultarPorProductoClienteRequest">
-		<wsdl:part name="parameters" element="tb_b2:ConsultarPorProductoCliente"></wsdl:part>
-	</wsdl:message>
-	<wsdl:message name="ConsultarPorProductoClienteResponse">
-		<wsdl:part name="parameters" element="tb_b2:ConsultarPorProductoClienteResponse"></wsdl:part>
-	</wsdl:message>
-	<wsdl:message name="ConsultarPorProductoClienteFault">
-		<wsdl:part name="parameters" element="tb_b2:ConsultarPorProductoClienteFault"></wsdl:part>
-	</wsdl:message>
-	<wsdl:message name="ConsultarPorFactRangoClienteRequest">
-		<wsdl:part name="parameters" element="tb_b2:ConsultarPorFactRangoCliente"></wsdl:part>
-	</wsdl:message>
-	<wsdl:message name="ConsultarPorFactRangoClienteResponse">
-		<wsdl:part name="parameters" element="tb_b2:ConsultarPorFactRangoClienteResponse"></wsdl:part>
-	</wsdl:message>
-	<wsdl:message name="ConsultarPorFactRangoClienteFault">
-		<wsdl:part name="parameters" element="tb_b2:ConsultarPorFactRangoClienteFault"></wsdl:part>
-	</wsdl:message>
-	<wsdl:message name="ConsultarOrdenesRequest">
-		<wsdl:part name="parameters" element="tb_b2:ConsultarOrdenes"></wsdl:part>
-	</wsdl:message>
-	<wsdl:message name="ConsultarOrdenesResponse">
-		<wsdl:part name="parameters" element="tb_b2:ConsultarOrdenesResponse"></wsdl:part>
-	</wsdl:message>
-	<wsdl:message name="ConsultarOrdenesFault">
-		<wsdl:part name="parameters" element="tb_b2:ConsultarOrdenesFault"></wsdl:part>
-	</wsdl:message>
-	<wsdl:message name="ConsultarRangoCerradoOrdenesRequest">
-		<wsdl:part name="parameters" element="tb_b2:ConsultarRangoCerradoOrdenes"></wsdl:part>
-	</wsdl:message>
-	<wsdl:message name="ConsultarRangoCerradoOrdenesResponse">
-		<wsdl:part name="parameters" element="tb_b2:ConsultarRangoCerradoOrdenesResponse"></wsdl:part>
-	</wsdl:message>
-	<wsdl:message name="ConsultarRangoCerradoOrdenesFault">
-		<wsdl:part name="parameters" element="tb_b2:ConsultarRangoCerradoOrdenesFault"></wsdl:part>
-	</wsdl:message>
-	<wsdl:message name="ConsultarRankingAbiertasOrdenesRequest">
-		<wsdl:part name="parameters" element="tb_b2:ConsultarRankingAbiertasOrdenes"></wsdl:part>
-	</wsdl:message>
-	<wsdl:message name="ConsultarRankingAbiertasOrdenesResponse">
-		<wsdl:part name="parameters" element="tb_b2:ConsultarRankingAbiertasOrdenesResponse"></wsdl:part>
-	</wsdl:message>
-	<wsdl:message name="ConsultarRankingAbiertasOrdenesFault">
-		<wsdl:part name="parameters" element="tb_b2:ConsultarRankingAbiertasOrdenesFault"></wsdl:part>
-	</wsdl:message>
-	<wsdl:message name="ConsultarRankingCerradoOrdenesRequest">
-		<wsdl:part name="parameters" element="tb_b2:ConsultarRankingCerradoOrdenes"></wsdl:part>
-	</wsdl:message>
-	<wsdl:message name="ConsultarRankingCerradoOrdenesResponse">
-		<wsdl:part name="parameters" element="tb_b2:ConsultarRankingCerradoOrdenesResponse"></wsdl:part>
-	</wsdl:message>
-	<wsdl:message name="ConsultarRankingCerradoOrdenesFault">
-		<wsdl:part name="parameters" element="tb_b2:ConsultarRankingCerradoOrdenesFault"></wsdl:part>
-	</wsdl:message>
-	<wsdl:message name="ConsultarPorEspectaculoProductoRequest">
-		<wsdl:part name="parameters" element="tb_b2:ConsultarPorEspectaculoProducto"></wsdl:part>
-	</wsdl:message>
-	<wsdl:message name="ConsultarPorEspectaculoProductoResponse">
-		<wsdl:part name="parameters" element="tb_b2:ConsultarPorEspectaculoProductoResponse"></wsdl:part>
-	</wsdl:message>
-	<wsdl:message name="ConsultarPorEspectaculoProductoFault">
-		<wsdl:part name="parameters" element="tb_b2:ConsultarPorEspectaculoProductoFault"></wsdl:part>
-	</wsdl:message>
-	<wsdl:message name="ConsultarRankingEspectaculosVendidosProductoRequest">
-		<wsdl:part name="parameters" element="tb_b2:ConsultarRankingEspectaculosVendidosProducto"></wsdl:part>
-	</wsdl:message>
-	<wsdl:message name="ConsultarRankingEspectaculosVendidosProductoResponse">
-		<wsdl:part name="parameters" element="tb_b2:ConsultarRankingEspectaculosVendidosProductoResponse"></wsdl:part>
-	</wsdl:message>
-	<wsdl:message
-		name="ConsultarRankingEspectaculosVendidosProductoFault">
-		<wsdl:part name="parameters" element="tb_b2:ConsultarRankingEspectaculosVendidosProductoFault"></wsdl:part>
-	</wsdl:message>
-	<wsdl:message name="ConsultarRankingFechaProductoRequest">
-		<wsdl:part name="parameters" element="tb_b2:ConsultarRankingFechaProducto"></wsdl:part>
-	</wsdl:message>
-	<wsdl:message name="ConsultarRankingFechaProductoResponse">
-		<wsdl:part name="parameters" element="tb_b2:ConsultarRankingFechaProductoResponse"></wsdl:part>
-	</wsdl:message>
-	<wsdl:message name="ConsultarRankingFechaProductoFault">
-		<wsdl:part name="parameters" element="tb_b2:ConsultarRankingFechaProductoFault"></wsdl:part>
-	</wsdl:message>
-	<wsdl:message name="GestionCampaniaProductoRequest">
-		<wsdl:part name="parameters" element="tb_b2:GestionCampaniaProducto"></wsdl:part>
-	</wsdl:message>
-	<wsdl:message name="GestionCampaniaProductoResponse">
-		<wsdl:part name="parameters" element="tb_b2:GestionCampaniaProductoResponse"></wsdl:part>
-	</wsdl:message>
-	<wsdl:message name="GestionCampaniaProductoFault">
-		<wsdl:part name="parameters" element="tb_b2:GestionCampaniaProductoFault"></wsdl:part>
-	</wsdl:message>
-	<wsdl:message name="GestionProductoRequest">
-		<wsdl:part name="parameters" element="tb_b2:GestionProducto"></wsdl:part>
-	</wsdl:message>
-	<wsdl:message name="GestionProductoResponse">
-		<wsdl:part name="parameters" element="tb_b2:GestionProductoResponse"></wsdl:part>
-	</wsdl:message>
-	<wsdl:message name="GestionProductoFault">
-		<wsdl:part name="parameters" element="tb_b2:GestionProductoFault"></wsdl:part>
-	</wsdl:message>
-	<wsdl:message name="GestionTarifaRequest">
-		<wsdl:part name="parameters" element="tb_b2:GestionTarifa"></wsdl:part>
-	</wsdl:message>
-	<wsdl:message name="GestionTarifaResponse">
-		<wsdl:part name="parameters" element="tb_b2:GestionTarifaResponse"></wsdl:part>
-	</wsdl:message>
-	<wsdl:message name="GestionTarifaFault">
-		<wsdl:part name="parameters" element="tb_b2:GestionTarifaFault"></wsdl:part>
-	</wsdl:message>
 	<wsdl:message name="ConsultaTop5ProductosRequest">
 		<wsdl:part name="parameters" element="tb_b2:ConsultaTop5Productos"></wsdl:part>
 	</wsdl:message>
@@ -1114,83 +602,14 @@
 			<wsdl:output message="tb_b2:CrearOrdenesResponse"></wsdl:output>
             <wsdl:fault name="fault" message="tb_b2:CrearOrdenesFault"></wsdl:fault>
         </wsdl:operation>
-		<wsdl:operation name="ActualizarEstatusCliente">
-			<wsdl:input message="tb_b2:ActualizarEstatusClienteRequest"></wsdl:input>
-			<wsdl:output message="tb_b2:ActualizarEstatusClienteResponse"></wsdl:output>
-            <wsdl:fault name="fault" message="tb_b2:ActualizarEstatusClienteFault"></wsdl:fault>
-        </wsdl:operation>
-		<wsdl:operation name="ConsultarPorIdentificacionCliente">
-			<wsdl:input message="tb_b2:ConsultarPorIdentificacionClienteRequest"></wsdl:input>
-			<wsdl:output message="tb_b2:ConsultarPorIdentificacionClienteResponse"></wsdl:output>
-            <wsdl:fault name="fault" message="tb_b2:ConsultarPorIdentificacionClienteFault"></wsdl:fault>
-        </wsdl:operation>
-		<wsdl:operation name="ConsultarPorProductoCliente">
-			<wsdl:input message="tb_b2:ConsultarPorProductoClienteRequest"></wsdl:input>
-			<wsdl:output message="tb_b2:ConsultarPorProductoClienteResponse"></wsdl:output>
-            <wsdl:fault name="fault" message="tb_b2:ConsultarPorProductoClienteFault"></wsdl:fault>
-        </wsdl:operation>
-		<wsdl:operation name="ConsultarPorFactRangoCliente">
-			<wsdl:input message="tb_b2:ConsultarPorFactRangoClienteRequest"></wsdl:input>
-			<wsdl:output message="tb_b2:ConsultarPorFactRangoClienteResponse"></wsdl:output>
-            <wsdl:fault name="fault" message="tb_b2:ConsultarPorFactRangoClienteFault"></wsdl:fault>
-        </wsdl:operation>
-		<wsdl:operation name="ConsultarOrdenes">
-			<wsdl:input message="tb_b2:ConsultarOrdenesRequest"></wsdl:input>
-			<wsdl:output message="tb_b2:ConsultarOrdenesResponse"></wsdl:output>
-            <wsdl:fault name="fault" message="tb_b2:ConsultarOrdenesFault"></wsdl:fault>
-        </wsdl:operation>
-		<wsdl:operation name="ConsultarRangoCerradoOrdenes">
-			<wsdl:input message="tb_b2:ConsultarRangoCerradoOrdenesRequest"></wsdl:input>
-			<wsdl:output message="tb_b2:ConsultarRangoCerradoOrdenesResponse"></wsdl:output>
-            <wsdl:fault name="fault" message="tb_b2:ConsultarRangoCerradoOrdenesFault"></wsdl:fault>
-        </wsdl:operation>
-		<wsdl:operation name="ConsultarRankingAbiertasOrdenes">
-			<wsdl:input message="tb_b2:ConsultarRankingAbiertasOrdenesRequest"></wsdl:input>
-			<wsdl:output message="tb_b2:ConsultarRankingAbiertasOrdenesResponse"></wsdl:output>
-            <wsdl:fault name="fault" message="tb_b2:ConsultarRankingAbiertasOrdenesFault"></wsdl:fault>
-        </wsdl:operation>
-		<wsdl:operation name="ConsultarRankingCerradoOrdenes">
-			<wsdl:input message="tb_b2:ConsultarRankingCerradoOrdenesRequest"></wsdl:input>
-			<wsdl:output message="tb_b2:ConsultarRankingCerradoOrdenesResponse"></wsdl:output>
-            <wsdl:fault name="fault" message="tb_b2:ConsultarRankingCerradoOrdenesFault"></wsdl:fault>
-        </wsdl:operation>
-		<wsdl:operation name="ConsultarPorEspectaculoProducto">
-			<wsdl:input message="tb_b2:ConsultarPorEspectaculoProductoRequest"></wsdl:input>
-			<wsdl:output message="tb_b2:ConsultarPorEspectaculoProductoResponse"></wsdl:output>
-            <wsdl:fault name="fault" message="tb_b2:ConsultarPorEspectaculoProductoFault"></wsdl:fault>
-        </wsdl:operation>
-		<wsdl:operation name="ConsultarRankingEspectaculosVendidosProducto">
-			<wsdl:input message="tb_b2:ConsultarRankingEspectaculosVendidosProductoRequest"></wsdl:input>
-			<wsdl:output message="tb_b2:ConsultarRankingEspectaculosVendidosProductoResponse"></wsdl:output>
-            <wsdl:fault name="fault" message="tb_b2:ConsultarRankingEspectaculosVendidosProductoFault"></wsdl:fault>
-        </wsdl:operation>
-		<wsdl:operation name="ConsultarRankingFechaProducto">
-			<wsdl:input message="tb_b2:ConsultarRankingFechaProductoRequest"></wsdl:input>
-			<wsdl:output message="tb_b2:ConsultarRankingFechaProductoResponse"></wsdl:output>
-            <wsdl:fault name="fault" message="tb_b2:ConsultarRankingFechaProductoFault"></wsdl:fault>
-        </wsdl:operation>
-		<wsdl:operation name="GestionCampaniaProducto">
-			<wsdl:input message="tb_b2:GestionCampaniaProductoRequest"></wsdl:input>
-			<wsdl:output message="tb_b2:GestionCampaniaProductoResponse"></wsdl:output>
-            <wsdl:fault name="fault" message="tb_b2:GestionCampaniaProductoFault"></wsdl:fault>
-        </wsdl:operation>
-		<wsdl:operation name="GestionProducto">
-			<wsdl:input message="tb_b2:GestionProductoRequest"></wsdl:input>
-			<wsdl:output message="tb_b2:GestionProductoResponse"></wsdl:output>
-            <wsdl:fault name="fault" message="tb_b2:GestionProductoFault"></wsdl:fault>
-        </wsdl:operation>
-		<wsdl:operation name="GestionTarifa">
-			<wsdl:input message="tb_b2:GestionTarifaRequest"></wsdl:input>
-			<wsdl:output message="tb_b2:GestionTarifaResponse"></wsdl:output>
-            <wsdl:fault name="fault" message="tb_b2:GestionTarifaFault"></wsdl:fault>
-        </wsdl:operation>
 		<wsdl:operation name="ConsultaTop5Productos">
 			<wsdl:input message="tb_b2:ConsultaTop5ProductosRequest"></wsdl:input>
 			<wsdl:output message="tb_b2:ConsultaTop5ProductosResponse"></wsdl:output>
             <wsdl:fault name="fault" message="tb_b2:ConsultaTop5ProductosFault"></wsdl:fault>
         </wsdl:operation>
 	</wsdl:portType>
-	<wsdl:binding name="ServiceProxyB2CSOAP" type="tb_b2:ServiceProxyB2C">
+	<wsdl:binding name="ServiceProxyB2CSOAP"
+		type="tb_b2:ServiceProxyB2C">
 		<soap:binding style="document"
 			transport="http://schemas.xmlsoap.org/soap/http" />
 		<wsdl:operation name="RegistrarCliente">
@@ -1202,6 +621,9 @@
 			<wsdl:output>
 				<soap:body use="literal" />
 			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>			
 		</wsdl:operation>
 		<wsdl:operation name="AutenticarCliente">
 			<soap:operation
@@ -1212,6 +634,9 @@
 			<wsdl:output>
 				<soap:body use="literal" />
 			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>			
 		</wsdl:operation>
 		<wsdl:operation name="ActualizarCliente">
 			<soap:operation
@@ -1222,6 +647,9 @@
 			<wsdl:output>
 				<soap:body use="literal" />
 			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>			
 		</wsdl:operation>
 		<wsdl:operation name="ActualizarContraseniaCliente">
 			<soap:operation
@@ -1232,6 +660,9 @@
 			<wsdl:output>
 				<soap:body use="literal" />
 			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>			
 		</wsdl:operation>
 		<wsdl:operation name="ConsultarProducto">
 			<soap:operation
@@ -1242,6 +673,9 @@
 			<wsdl:output>
 				<soap:body use="literal" />
 			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>			
 		</wsdl:operation>
 		<wsdl:operation name="ConsultarCampaniaProducto">
 			<soap:operation
@@ -1252,6 +686,9 @@
 			<wsdl:output>
 				<soap:body use="literal" />
 			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>			
 		</wsdl:operation>
 		<wsdl:operation name="ConsultarClientesOrdenes">
 			<soap:operation
@@ -1262,6 +699,9 @@
 			<wsdl:output>
 				<soap:body use="literal" />
 			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>			
 		</wsdl:operation>
 		<wsdl:operation name="CancelarOrdenes">
 			<soap:operation
@@ -1272,6 +712,9 @@
 			<wsdl:output>
 				<soap:body use="literal" />
 			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>			
 		</wsdl:operation>
 		<wsdl:operation name="CrearOrdenes">
 			<soap:operation
@@ -1282,6 +725,22 @@
 			<wsdl:output>
 				<soap:body use="literal" />
 			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>			
+		</wsdl:operation>
+		<wsdl:operation name="ConsultaTop5Productos">
+			<soap:operation
+				soapAction="http://www.touresbalon.com/ServiceProxyB2C/ConsultaTop5Productos" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>
 		</wsdl:operation>
 	</wsdl:binding>
 	<wsdl:service name="ServiceProxyB2C">
