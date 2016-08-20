@@ -16,7 +16,7 @@
       </xsd:element>
       <xsd:element name="ConsultarProductoResponse">
         <xsd:complexType>
-                    <xsd:sequence>
+                    <xsd:sequence>
                         <xsd:element name="productos" type="tb_p:TipoConsultaProductoResponse" maxOccurs="unbounded" minOccurs="0" />
                     </xsd:sequence>
 
@@ -32,13 +32,13 @@
       		</xsd:element>
       		<xsd:element name="fecha_llegada" type="xsd:date" maxOccurs="1" minOccurs="0"></xsd:element>
       		<xsd:element name="fecha_salida" type="xsd:date" maxOccurs="1" minOccurs="0"></xsd:element>
-      		<xsd:element name="tipo_transporte" type="tb_p:TarifaTipo"
+      		<xsd:element name="tipo_transporte" type="tb_p:TarifaValores"
       			maxOccurs="1" minOccurs="0">
       		</xsd:element>
       		<xsd:element name="tipo_espectaculo"
-      			type="tb_p:TarifaTipo" maxOccurs="1" minOccurs="1">
+      			type="tb_p:TarifaValores" maxOccurs="1" minOccurs="1">
       		</xsd:element>
-      		<xsd:element name="tipo_hospedaje" type="tb_p:TarifaTipo"
+      		<xsd:element name="tipo_hospedaje" type="tb_p:TarifaValores"
       			maxOccurs="1" minOccurs="0">
       		</xsd:element>
       		<xsd:element name="imagen_producto" type="xsd:base64Binary" maxOccurs="1" minOccurs="0"></xsd:element>
@@ -53,7 +53,7 @@
       	</xsd:restriction>
       </xsd:simpleType>
       
-            <xsd:complexType name="TarifaTipo">
+            <xsd:complexType name="TarifaValores">
             	<xsd:sequence>
             		<xsd:element name="id" type="xsd:int" maxOccurs="1" minOccurs="1"></xsd:element>
             		<xsd:element name="nombre_tipo" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
@@ -65,7 +65,7 @@
             	<xsd:sequence>
             		<xsd:element name="id_ciudad" type="xsd:int"></xsd:element>
             		<xsd:element name="pais" type="xsd:string"></xsd:element>
-            		<xsd:element name="tipo_ciudad" type="tb_p:TarifaTipo"></xsd:element>
+            		<xsd:element name="tipo_ciudad" type="tb_p:TarifaValores"></xsd:element>
             	</xsd:sequence>
             </xsd:complexType>
     
@@ -124,7 +124,7 @@
             	<xsd:complexType>
                     <xsd:sequence>
 
-                    	<xsd:element name="tipo_espectaculo" type="tb_p:TarifaTipo" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+                    	<xsd:element name="tipo_espectaculo" type="tb_p:TarifaValores" maxOccurs="unbounded" minOccurs="0"></xsd:element>
                     </xsd:sequence>
                     
             	</xsd:complexType>
@@ -206,7 +206,7 @@
                         <xsd:element name="tipo_tarifa" type="tb_p:TipoTarifa" maxOccurs="1" minOccurs="1">
             			</xsd:element>
                         <xsd:element name="tarifa"
-            				type="tb_p:TarifaTipo" maxOccurs="1" minOccurs="1">
+            				type="tb_p:TarifaValores" maxOccurs="1" minOccurs="1">
             			</xsd:element>
             		</xsd:sequence>
             	</xsd:complexType>
@@ -223,7 +223,12 @@
             </xsd:element>
     
             <xsd:simpleType name="TipoTarifa">
-            	<xsd:restriction base="xsd:string"></xsd:restriction>
+            	<xsd:restriction base="xsd:string">
+            		<xsd:enumeration value="TRANSPORTE"></xsd:enumeration>
+            		<xsd:enumeration value="HOSPEDAJE"></xsd:enumeration>
+            		<xsd:enumeration value="ESPECTACULO"></xsd:enumeration>
+            		<xsd:enumeration value="CIUDAD"></xsd:enumeration>
+            	</xsd:restriction>
             </xsd:simpleType>
             <xsd:element name="ConsultarProductoFault">
             	<xsd:complexType>
@@ -328,7 +333,7 @@
     
             <xsd:complexType name="TipoGestProdReponse">
             	<xsd:sequence>
-            		<xsd:element name="respuesta" type="tb_p:Error" maxOccurs="1" minOccurs="1"></xsd:element>
+            		<xsd:element name="respuesta" type="tb_p:RespuestaGenerica" maxOccurs="1" minOccurs="1"></xsd:element>
             		<xsd:element name="producto" type="tb_p:Producto" maxOccurs="1" minOccurs="1"></xsd:element>
             	</xsd:sequence>
             </xsd:complexType>
