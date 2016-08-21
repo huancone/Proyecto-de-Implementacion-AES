@@ -24,5 +24,11 @@ namespace B2C_TouresBalon.Models
 
             return true;
         }
+
+        public bool EliminarProducto(ItemCarrito i)
+        {
+            return true;
+        }
+
     }
 }
