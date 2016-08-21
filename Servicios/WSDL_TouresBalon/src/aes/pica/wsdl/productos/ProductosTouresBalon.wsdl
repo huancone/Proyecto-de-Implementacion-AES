@@ -17,7 +17,7 @@
       <xsd:element name="ConsultarProductoResponse">
         <xsd:complexType>
                     <xsd:sequence>
-                        <xsd:element name="productos" type="tb_p:TipoConsultaProductoResponse" maxOccurs="unbounded" minOccurs="0" />
+                        <xsd:element name="productos" type="tb_p:Producto" maxOccurs="unbounded" minOccurs="0" />
                     </xsd:sequence>
 
         </xsd:complexType>
@@ -315,13 +315,6 @@
             	</xsd:complexType>
             </xsd:element>
     
-            <xsd:complexType name="TipoConsultaProductoResponse">
-            	<xsd:sequence>
-            		<xsd:element name="productos" type="tb_p:Producto"
-            			maxOccurs="unbounded" minOccurs="0">
-            		</xsd:element>
-            	</xsd:sequence>
-            </xsd:complexType>
     
             <xsd:complexType name="TipoGestionTarifaResponse">
             	<xsd:sequence>
@@ -340,7 +333,7 @@
             <xsd:element name="ConsultaTop5ProductosResponse">
             	<xsd:complexType>
             		<xsd:sequence>
-            			<xsd:element name="lista_productos_top" type="tb_p:ListaTop5Productos" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+            			<xsd:element name="lista_productos_top" type="tb_p:Producto" maxOccurs="unbounded" minOccurs="0"></xsd:element>
             		</xsd:sequence>
             	</xsd:complexType>
             </xsd:element>
@@ -354,11 +347,6 @@
             	</xsd:complexType>
             </xsd:element>
     
-            <xsd:complexType name="ListaTop5Productos">
-            	<xsd:sequence>
-            		<xsd:element name="productos_top" type="tb_p:Producto" maxOccurs="unbounded" minOccurs="0"></xsd:element>
-            	</xsd:sequence>
-            </xsd:complexType>
     
             <xsd:complexType name="Campania">
             	<xsd:sequence>
