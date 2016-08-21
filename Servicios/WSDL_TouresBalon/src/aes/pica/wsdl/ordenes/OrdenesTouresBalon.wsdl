@@ -80,13 +80,13 @@
             <xsd:element name="CrearOrdenes">
             	<xsd:complexType>
             		<xsd:sequence>
-            			<xsd:element name="orden" type="tb_o:Orden" maxOccurs="unbounded" minOccurs="1"></xsd:element>
+            			<xsd:element name="orden" type="tb_o:Orden" maxOccurs="1" minOccurs="1"></xsd:element>
             		</xsd:sequence>
             	</xsd:complexType>
             </xsd:element>
             <xsd:element name="CrearOrdenesResponse">
             	<xsd:complexType>
-          			<xsd:sequence><xsd:element name="respuesta" type="tb_o:RespuestaGenerica" maxOccurs="1" minOccurs="0">
+          			<xsd:sequence><xsd:element name="respuesta" type="tb_o:CrearOrdenResponse" maxOccurs="1" minOccurs="1">
           			</xsd:element></xsd:sequence>
             	</xsd:complexType>
             </xsd:element>
@@ -108,7 +108,7 @@
             </xsd:element>
             <xsd:element name="ConsultarOrdenesResponse">
             	<xsd:complexType>
-           			<xsd:sequence><xsd:element name="orden" type="tb_o:Orden" maxOccurs="1" minOccurs="0">
+           			<xsd:sequence><xsd:element name="orden" type="tb_o:Orden" maxOccurs="unbounded" minOccurs="0">
            			</xsd:element></xsd:sequence>
             	</xsd:complexType>
             </xsd:element>
@@ -137,8 +137,8 @@
             				minOccurs="1">
             				<xsd:simpleType>
             					<xsd:restriction base="xsd:int">
-            						<xsd:minInclusive value="2015"></xsd:minInclusive>
-            						<xsd:maxInclusive value="2020"></xsd:maxInclusive>
+            						<xsd:minInclusive value="2000"></xsd:minInclusive>
+            						<xsd:maxInclusive value="2050"></xsd:maxInclusive>
             					</xsd:restriction>
             				</xsd:simpleType>
             			</xsd:element>
@@ -241,9 +241,9 @@
 			<xsd:complexType name="CriterioConsultaOrden">
             	<xsd:sequence>
             		<xsd:element name="tipo_consulta"
-            			type="tb_o:TipoConsultaOrden">
+            			type="tb_o:TipoConsultaOrden" maxOccurs="1" minOccurs="1">
             		</xsd:element>
-            		<xsd:element name="codigo" type="xsd:string"></xsd:element>
+            		<xsd:element name="codigo" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
             	</xsd:sequence>
             </xsd:complexType>
     
@@ -254,6 +254,15 @@
             			type="xsd:int" maxOccurs="1" minOccurs="1">
             		</xsd:element>
             		<xsd:element name="total_mes" type="xsd:double" maxOccurs="1" minOccurs="1"></xsd:element>
+            	</xsd:sequence>
+            </xsd:complexType>
+    
+            <xsd:complexType name="CrearOrdenResponse">
+            	<xsd:sequence>
+            		<xsd:element name="respuesta"
+            			type="tb_o:RespuestaGenerica" maxOccurs="1" minOccurs="1">
+            		</xsd:element>
+            		<xsd:element name="id_orden" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
             	</xsd:sequence>
             </xsd:complexType>
     </xsd:schema>

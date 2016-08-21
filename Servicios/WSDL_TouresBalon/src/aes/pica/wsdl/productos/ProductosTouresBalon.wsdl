@@ -16,19 +16,9 @@
       </xsd:element>
       <xsd:element name="ConsultarProductoResponse">
         <xsd:complexType>
-                    <xsd:choice>
-                    	<xsd:sequence>
-                    		<xsd:element name="producto"
-                    			type="tb_p:Producto" maxOccurs="unbounded"
-                    			minOccurs="0" />
-                    		<xsd:element name="producto_top"
-                    			type="tb_p:Producto" maxOccurs="unbounded" minOccurs="0">
-                    		</xsd:element>
-                    	</xsd:sequence>
-                    	<xsd:element name="error"
-                    		type="tb_p:Error" maxOccurs="1" minOccurs="0">
-                    	</xsd:element>
-                    </xsd:choice>
+                    <xsd:sequence>
+                        <xsd:element name="productos" type="tb_p:Producto" maxOccurs="unbounded" minOccurs="0" />
+                    </xsd:sequence>
 
         </xsd:complexType>
       </xsd:element>
@@ -42,13 +32,13 @@
       		</xsd:element>
       		<xsd:element name="fecha_llegada" type="xsd:date" maxOccurs="1" minOccurs="0"></xsd:element>
       		<xsd:element name="fecha_salida" type="xsd:date" maxOccurs="1" minOccurs="0"></xsd:element>
-      		<xsd:element name="tipo_transporte" type="tb_p:TarifaTipo"
+      		<xsd:element name="tipo_transporte" type="tb_p:TarifaValores"
       			maxOccurs="1" minOccurs="0">
       		</xsd:element>
       		<xsd:element name="tipo_espectaculo"
-      			type="tb_p:TarifaTipo" maxOccurs="1" minOccurs="1">
+      			type="tb_p:TarifaValores" maxOccurs="1" minOccurs="1">
       		</xsd:element>
-      		<xsd:element name="tipo_hospedaje" type="tb_p:TarifaTipo"
+      		<xsd:element name="tipo_hospedaje" type="tb_p:TarifaValores"
       			maxOccurs="1" minOccurs="0">
       		</xsd:element>
       		<xsd:element name="imagen_producto" type="xsd:base64Binary" maxOccurs="1" minOccurs="0"></xsd:element>
@@ -63,7 +53,7 @@
       	</xsd:restriction>
       </xsd:simpleType>
       
-            <xsd:complexType name="TarifaTipo">
+            <xsd:complexType name="TarifaValores">
             	<xsd:sequence>
             		<xsd:element name="id" type="xsd:int" maxOccurs="1" minOccurs="1"></xsd:element>
             		<xsd:element name="nombre_tipo" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
@@ -75,7 +65,7 @@
             	<xsd:sequence>
             		<xsd:element name="id_ciudad" type="xsd:int"></xsd:element>
             		<xsd:element name="pais" type="xsd:string"></xsd:element>
-            		<xsd:element name="tipo_ciudad" type="tb_p:TarifaTipo"></xsd:element>
+            		<xsd:element name="tipo_ciudad" type="tb_p:TarifaValores"></xsd:element>
             	</xsd:sequence>
             </xsd:complexType>
     
@@ -85,23 +75,18 @@
             		<xsd:element name="mensaje" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
             	</xsd:sequence>
             </xsd:complexType>
-            <xsd:element name="ConsultarCampanias">
+            <xsd:element name="ConsultarCampaniaProducto">
             	<xsd:complexType>
             		<xsd:sequence>
             		</xsd:sequence>
             	</xsd:complexType>
             </xsd:element>
-            <xsd:element name="ConsultarCampaniasResponse">
+            <xsd:element name="ConsultarCampaniaProductoResponse">
             	<xsd:complexType>
-                    <xsd:choice>
-                    	<xsd:element name="producto"
-                    		type="tb_p:Producto" maxOccurs="unbounded"
-                    		minOccurs="0">
+                    <xsd:sequence>
+                    	<xsd:element name="campanias" type="tb_p:Campania" maxOccurs="unbounded" minOccurs="0">
                     	</xsd:element>
-                    	<xsd:element name="error"
-                    		type="tb_p:Error" maxOccurs="1" minOccurs="0">
-                    	</xsd:element>
-                    </xsd:choice>
+                    </xsd:sequence>
                     
             	</xsd:complexType>
             </xsd:element>
@@ -115,13 +100,10 @@
             </xsd:element>
             <xsd:element name="ConsultarPorEspectaculoProductoResponse">
             	<xsd:complexType>
-                    <xsd:choice>
+                    <xsd:sequence>
 
-                    	<xsd:element name="producto" type="tb_p:Producto" maxOccurs="unbounded" minOccurs="0"></xsd:element>
-                    	<xsd:element name="error"
-                    		type="tb_p:Error" maxOccurs="1" minOccurs="0">
-                    	</xsd:element>
-                    </xsd:choice>
+                    	<xsd:element name="productos" type="tb_p:Producto" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+                    </xsd:sequence>
                     
             	</xsd:complexType>
             </xsd:element>
@@ -140,13 +122,10 @@
             </xsd:element>
             <xsd:element name="ConsultarRankingEspectaculosVendidosProductoResponse">
             	<xsd:complexType>
-                    <xsd:choice>
+                    <xsd:sequence>
 
-                    	<xsd:element name="tipo_espectaculo" type="tb_p:TarifaTipo" maxOccurs="unbounded" minOccurs="0"></xsd:element>
-                    	<xsd:element name="error"
-                    		type="tb_p:Error" maxOccurs="1" minOccurs="0">
-                    	</xsd:element>
-                    </xsd:choice>
+                    	<xsd:element name="tipo_espectaculo" type="tb_p:TarifaValores" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+                    </xsd:sequence>
                     
             	</xsd:complexType>
             </xsd:element>
@@ -163,41 +142,31 @@
             </xsd:element>
             <xsd:element name="ConsultarRankingFechaProductoResponse">
             	<xsd:complexType>
-                    <xsd:choice>
+                    <xsd:sequence>
 
                     	<xsd:element name="productos" type="tb_p:Producto" maxOccurs="unbounded" minOccurs="0"></xsd:element>
-                    	<xsd:element name="error"
-                    		type="tb_p:Error" maxOccurs="1" minOccurs="0">
-                    	</xsd:element>
-                    </xsd:choice>
+                    </xsd:sequence>
                     
             	</xsd:complexType>
             </xsd:element>
-            <xsd:element name="GestionCampañaProducto">
+            <xsd:element name="GestionCampaniaProducto">
             	<xsd:complexType>
                     <xsd:sequence>
 
                     	<xsd:element name="tipo_operacion" type="tb_p:TipoConsultaProducto" maxOccurs="1" minOccurs="1"></xsd:element>
-                    	<xsd:element name="producto" type="tb_p:Producto" maxOccurs="1" minOccurs="0">
+                    	<xsd:element name="campania" type="tb_p:Campania" maxOccurs="1" minOccurs="0">
                     	</xsd:element>
                     </xsd:sequence>
                     
             	</xsd:complexType>
             </xsd:element>
-            <xsd:element name="GestionCampañaProductoResponse">
+            <xsd:element name="GestionCampaniaProductoResponse">
             	<xsd:complexType>
-                    <xsd:choice>
+                    <xsd:sequence>
 
-                    	<xsd:sequence>
-                    		<xsd:element name="respuesta"
-                    			type="tb_p:RespuestaGenerica" maxOccurs="1" minOccurs="1">
+                        <xsd:element name="respuesta" type="tb_p:RespuestaGenerica" maxOccurs="1" minOccurs="1">
                     		</xsd:element>
-                    		<xsd:element name="producto"
-                    			type="tb_p:Producto" maxOccurs="1" minOccurs="1">
-                    		</xsd:element>
-                    	</xsd:sequence>
-                    	<xsd:element name="error" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
-                    </xsd:choice>
+                    </xsd:sequence>
                     
             	</xsd:complexType>
             </xsd:element>
@@ -218,18 +187,11 @@
             </xsd:element>
             <xsd:element name="GestionProductoResponse">
             	<xsd:complexType>
-                    <xsd:choice>
+                    <xsd:sequence>
 
-                    	<xsd:sequence>
-                    		<xsd:element name="respuesta"
-                    			type="tb_p:RespuestaGenerica" maxOccurs="1" minOccurs="1">
+                        <xsd:element name="gestion_producto_reponse" type="xsd:string" maxOccurs="1" minOccurs="1">
                     		</xsd:element>
-                    		<xsd:element name="producto"
-                    			type="tb_p:Producto" maxOccurs="1" minOccurs="1">
-                    		</xsd:element>
-                    	</xsd:sequence>
-                    	<xsd:element name="error" type="tb_p:Error" maxOccurs="1" minOccurs="0"></xsd:element>
-                    </xsd:choice>
+                    </xsd:sequence>
                     
             	</xsd:complexType>
             </xsd:element>
@@ -244,33 +206,159 @@
                         <xsd:element name="tipo_tarifa" type="tb_p:TipoTarifa" maxOccurs="1" minOccurs="1">
             			</xsd:element>
                         <xsd:element name="tarifa"
-            				type="tb_p:TarifaTipo" maxOccurs="1" minOccurs="1">
+            				type="tb_p:TarifaValores" maxOccurs="1" minOccurs="1">
             			</xsd:element>
             		</xsd:sequence>
             	</xsd:complexType>
             </xsd:element>
             <xsd:element name="GestionTarifaResponse">
             	<xsd:complexType>
-                    <xsd:choice>
+                    <xsd:sequence>
 
-                    	<xsd:sequence>
-                    		<xsd:element name="respuesta"
-                    			type="tb_p:RespuestaGenerica" maxOccurs="1"
-                    			minOccurs="1">
+                        <xsd:element name="tarifa" type="tb_p:TipoGestionTarifaResponse" maxOccurs="1" minOccurs="1">
                     		</xsd:element>
-                    		<xsd:element name="tarifa"
-                    			type="tb_p:TipoTarifa" maxOccurs="1" minOccurs="1">
-                    		</xsd:element>
-                    	</xsd:sequence>
-                    	<xsd:element name="error" type="tb_p:Error" maxOccurs="1" minOccurs="0"></xsd:element>
-                    </xsd:choice>
+                    </xsd:sequence>
                     
             	</xsd:complexType>
             </xsd:element>
     
             <xsd:simpleType name="TipoTarifa">
-            	<xsd:restriction base="xsd:string"></xsd:restriction>
+            	<xsd:restriction base="xsd:string">
+            		<xsd:enumeration value="TRANSPORTE"></xsd:enumeration>
+            		<xsd:enumeration value="HOSPEDAJE"></xsd:enumeration>
+            		<xsd:enumeration value="ESPECTACULO"></xsd:enumeration>
+            		<xsd:enumeration value="CIUDAD"></xsd:enumeration>
+            	</xsd:restriction>
             </xsd:simpleType>
+            <xsd:element name="ConsultarProductoFault">
+            	<xsd:complexType>
+            		<xsd:sequence>
+
+            			<xsd:element name="ConsultarProductoFault"
+            				type="tb_p:Error" maxOccurs="1" minOccurs="0">
+            			</xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+            <xsd:element name="ConsultarCampaniaProductoFault">
+            	<xsd:complexType>
+            		<xsd:sequence>
+
+            			<xsd:element name="ConsultarCampaniaProductoFault"
+            				type="tb_p:Error" maxOccurs="1" minOccurs="0">
+            			</xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+            <xsd:element name="ConsultarPorEspectaculoProductoFault">
+            	<xsd:complexType>
+            		<xsd:sequence>
+
+            			<xsd:element
+            				name="ConsultarPorEspectaculoProductoFault"
+            				type="tb_p:Error" maxOccurs="1" minOccurs="0">
+            			</xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+            <xsd:element
+            	name="ConsultarRankingEspectaculosVendidosProductoFault">
+            	<xsd:complexType>
+            		<xsd:sequence>
+
+            			<xsd:element
+            				name="ConsultarRankingEspectaculosVendidosProductoFault"
+            				type="tb_p:Error" maxOccurs="1" minOccurs="0">
+            			</xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+            <xsd:element name="ConsultarRankingFechaProductoFault">
+            	<xsd:complexType>
+            		<xsd:sequence>
+
+            			<xsd:element
+            				name="ConsultarRankingFechaProductoFault"
+            				type="tb_p:Error" maxOccurs="1" minOccurs="0">
+            			</xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+            <xsd:element name="GestionCampaniaProductoFault">
+            	<xsd:complexType>
+            		<xsd:sequence>
+
+            			<xsd:element name="GestionCampañaProductoFault"
+            				type="tb_p:Error" maxOccurs="1" minOccurs="0">
+            			</xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+            <xsd:element name="GestionProductoFault">
+            	<xsd:complexType>
+            		<xsd:sequence>
+
+            			<xsd:element name="GestionProductoFault"
+            				type="tb_p:Error" maxOccurs="1" minOccurs="0">
+            			</xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+            <xsd:element name="GestionTarifaFault">
+            	<xsd:complexType>
+            		<xsd:sequence>
+
+            			<xsd:element name="GestionTarifaFault"
+            				type="tb_p:Error" maxOccurs="1" minOccurs="0">
+            			</xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+    
+    
+            <xsd:complexType name="TipoGestionTarifaResponse">
+            	<xsd:sequence>
+            		<xsd:element name="respuesta" type="tb_p:RespuestaGenerica" maxOccurs="1" minOccurs="1"></xsd:element>
+                    <xsd:element name="tarifa" type="tb_p:TipoTarifa" maxOccurs="1" minOccurs="1"></xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+    
+            <xsd:element name="ConsultaTop5Productos">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="id_producto" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+            <xsd:element name="ConsultaTop5ProductosResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="lista_productos_top" type="tb_p:Producto" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+            <xsd:element name="ConsultaTop5ProductosFault">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="ConsultaTop5ProductosFault"
+            				type="tb_p:Error" maxOccurs="1" minOccurs="0">
+            			</xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+    
+    
+            <xsd:complexType name="Campania">
+            	<xsd:sequence>
+            		<xsd:element name="id_producto" type="xsd:string"
+            			maxOccurs="1" minOccurs="1">
+            		</xsd:element>
+            		<xsd:element name="fecha_inicio_campania"
+            			type="xsd:date" maxOccurs="1" minOccurs="1">
+            		</xsd:element>
+            		<xsd:element name="fecha_fin_campania" type="xsd:date" maxOccurs="1" minOccurs="1"></xsd:element>
+            	</xsd:sequence>
+            </xsd:complexType>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="ConsultarProductoRequest">
@@ -279,11 +367,11 @@
   <wsdl:message name="ConsultarProductoResponse">
     <wsdl:part element="tb_p:ConsultarProductoResponse" name="parameters"/>
   </wsdl:message>
-  <wsdl:message name="ConsultarCampaniasRequest">
-  	<wsdl:part name="parameters" element="tb_p:ConsultarCampanias"></wsdl:part>
+  <wsdl:message name="ConsultarCampaniaProductoRequest">
+  	<wsdl:part name="parameters" element="tb_p:ConsultarCampaniaProducto"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ConsultarCampaniasResponse">
-  	<wsdl:part name="parameters" element="tb_p:ConsultarCampaniasResponse"></wsdl:part>
+  <wsdl:message name="ConsultarCampaniaProductoResponse">
+  	<wsdl:part name="parameters" element="tb_p:ConsultarCampaniaProductoResponse"></wsdl:part>
   </wsdl:message>
   <wsdl:message name="ConsultarPorEspectaculoProductoRequest">
   	<wsdl:part name="parameters" element="tb_p:ConsultarPorEspectaculoProducto"></wsdl:part>
@@ -303,11 +391,11 @@
   <wsdl:message name="ConsultarRankingFechaProductoResponse">
   	<wsdl:part name="parameters" element="tb_p:ConsultarRankingFechaProductoResponse"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="GestionCampañaProductoRequest">
-  	<wsdl:part name="parameters" element="tb_p:GestionCampañaProducto"></wsdl:part>
+  <wsdl:message name="GestionCampaniaProductoRequest">
+  	<wsdl:part name="parameters" element="tb_p:GestionCampaniaProducto"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="GestionCampañaProductoResponse">
-  	<wsdl:part name="parameters" element="tb_p:GestionCampañaProductoResponse"></wsdl:part>
+  <wsdl:message name="GestionCampaniaProductoResponse">
+  	<wsdl:part name="parameters" element="tb_p:GestionCampaniaProductoResponse"></wsdl:part>
   </wsdl:message>
   <wsdl:message name="GestionProductoRequest">
   	<wsdl:part name="parameters" element="tb_p:GestionProducto"></wsdl:part>
@@ -321,39 +409,86 @@
   <wsdl:message name="GestionTarifaResponse">
   	<wsdl:part name="parameters" element="tb_p:GestionTarifaResponse"></wsdl:part>
   </wsdl:message>
+  <wsdl:message name="ConsultarProductoFault">
+  	<wsdl:part name="parameters" element="tb_p:ConsultarProductoFault"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarCampaniaProductoFault">
+  	<wsdl:part name="parameters" element="tb_p:ConsultarCampaniaProductoFault"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarPorEspectaculoProductoFault">
+  	<wsdl:part name="parameters" element="tb_p:ConsultarPorEspectaculoProductoFault"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message
+  	name="ConsultarRankingEspectaculosVendidosProductoFault">
+  	<wsdl:part name="parameters" element="tb_p:ConsultarRankingEspectaculosVendidosProductoFault"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarRankingFechaProductoFault">
+  	<wsdl:part name="parameters" element="tb_p:ConsultarRankingFechaProductoFault"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GestionCampaniaProductoFault">
+  	<wsdl:part name="parameters" element="tb_p:GestionCampaniaProductoFault"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GestionProductoFault">
+  	<wsdl:part name="parameters" element="tb_p:GestionProductoFault"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GestionTarifaFault">
+  	<wsdl:part name="parameters" element="tb_p:GestionTarifaFault"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultaTop5ProductosRequest">
+  	<wsdl:part name="parameters" element="tb_p:ConsultaTop5Productos"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultaTop5ProductosResponse">
+  	<wsdl:part name="parameters" element="tb_p:ConsultaTop5ProductosResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultaTop5ProductosFault">
+  	<wsdl:part name="parameters" element="tb_p:ConsultaTop5ProductosFault"></wsdl:part>
+  </wsdl:message>
   <wsdl:portType name="ProductosTouresBalon">
     <wsdl:operation name="ConsultarProducto">
       <wsdl:input message="tb_p:ConsultarProductoRequest"/>
       <wsdl:output message="tb_p:ConsultarProductoResponse"/>
-    </wsdl:operation>
-    <wsdl:operation name="ConsultarCampanias">
-    	<wsdl:input message="tb_p:ConsultarCampaniasRequest"></wsdl:input>
-    	<wsdl:output message="tb_p:ConsultarCampaniasResponse"></wsdl:output>
-    </wsdl:operation>
+            <wsdl:fault name="fault" message="tb_p:ConsultarProductoFault"></wsdl:fault>
+        </wsdl:operation>
+    <wsdl:operation name="ConsultarCampaniaProducto">
+    	<wsdl:input message="tb_p:ConsultarCampaniaProductoRequest"></wsdl:input>
+    	<wsdl:output message="tb_p:ConsultarCampaniaProductoResponse"></wsdl:output>
+            <wsdl:fault name="fault" message="tb_p:ConsultarCampaniaProductoFault"></wsdl:fault>
+        </wsdl:operation>
     <wsdl:operation name="ConsultarPorEspectaculoProducto">
     	<wsdl:input message="tb_p:ConsultarPorEspectaculoProductoRequest"></wsdl:input>
     	<wsdl:output message="tb_p:ConsultarPorEspectaculoProductoResponse"></wsdl:output>
-    </wsdl:operation>
+            <wsdl:fault name="fault" message="tb_p:ConsultarPorEspectaculoProductoFault"></wsdl:fault>
+        </wsdl:operation>
     <wsdl:operation name="ConsultarRankingEspectaculosVendidosProducto">
     	<wsdl:input message="tb_p:ConsultarRankingEspectaculosVendidosProductoRequest"></wsdl:input>
     	<wsdl:output message="tb_p:ConsultarRankingEspectaculosVendidosProductoResponse"></wsdl:output>
-    </wsdl:operation>
+            <wsdl:fault name="fault" message="tb_p:ConsultarRankingEspectaculosVendidosProductoFault"></wsdl:fault>
+        </wsdl:operation>
     <wsdl:operation name="ConsultarRankingFechaProducto">
     	<wsdl:input message="tb_p:ConsultarRankingFechaProductoRequest"></wsdl:input>
     	<wsdl:output message="tb_p:ConsultarRankingFechaProductoResponse"></wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GestionCampañaProducto">
-    	<wsdl:input message="tb_p:GestionCampañaProductoRequest"></wsdl:input>
-    	<wsdl:output message="tb_p:GestionCampañaProductoResponse"></wsdl:output>
-    </wsdl:operation>
+            <wsdl:fault name="fault" message="tb_p:ConsultarRankingFechaProductoFault"></wsdl:fault>
+        </wsdl:operation>
+    <wsdl:operation name="GestionCampaniaProducto">
+    	<wsdl:input message="tb_p:GestionCampaniaProductoRequest"></wsdl:input>
+    	<wsdl:output message="tb_p:GestionCampaniaProductoResponse"></wsdl:output>
+            <wsdl:fault name="fault" message="tb_p:GestionCampaniaProductoFault"></wsdl:fault>
+        </wsdl:operation>
     <wsdl:operation name="GestionProducto">
     	<wsdl:input message="tb_p:GestionProductoRequest"></wsdl:input>
     	<wsdl:output message="tb_p:GestionProductoResponse"></wsdl:output>
-    </wsdl:operation>
+            <wsdl:fault name="fault" message="tb_p:GestionProductoFault"></wsdl:fault>
+        </wsdl:operation>
     <wsdl:operation name="GestionTarifa">
     	<wsdl:input message="tb_p:GestionTarifaRequest"></wsdl:input>
     	<wsdl:output message="tb_p:GestionTarifaResponse"></wsdl:output>
-    </wsdl:operation>
+            <wsdl:fault name="fault" message="tb_p:GestionTarifaFault"></wsdl:fault>
+        </wsdl:operation>
+    <wsdl:operation name="ConsultaTop5Productos">
+    	<wsdl:input message="tb_p:ConsultaTop5ProductosRequest"></wsdl:input>
+    	<wsdl:output message="tb_p:ConsultaTop5ProductosResponse"></wsdl:output>
+            <wsdl:fault name="fault" message="tb_p:ConsultaTop5ProductosFault"></wsdl:fault>
+        </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ProductosTouresBalonSOAP"
   	type="tb_p:ProductosTouresBalon">
@@ -368,16 +503,114 @@
   		<wsdl:output>
   			<soap:body use="literal" />
   		</wsdl:output>
+  		<wsdl:fault name="fault">
+  			<soap:fault use="literal" name="fault" />
+  		</wsdl:fault>
   	</wsdl:operation>
-  	<wsdl:operation name="ConsultarCampanias">
+  	<wsdl:operation name="ConsultarCampaniaProducto">
   		<soap:operation
-  			soapAction="http://www.touresbalon.com/ProductosTouresBalon/ConsultarCampanias" />
+  			soapAction="http://www.touresbalon.com/ProductosTouresBalon/ConsultarCampaniaProducto" />
   		<wsdl:input>
   			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
   			<soap:body use="literal" />
   		</wsdl:output>
+  		<wsdl:fault name="fault">
+  			<soap:fault use="literal" name="fault" />
+  		</wsdl:fault>
+  	</wsdl:operation>
+  	<wsdl:operation name="ConsultarPorEspectaculoProducto">
+  		<soap:operation
+  			soapAction="http://www.touresbalon.com/ProductosTouresBalon/ConsultarPorEspectaculoProducto" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  		<wsdl:fault name="fault">
+  			<soap:fault use="literal" name="fault" />
+  		</wsdl:fault>
+  	</wsdl:operation>
+  	<wsdl:operation
+  		name="ConsultarRankingEspectaculosVendidosProducto">
+  		<soap:operation
+  			soapAction="http://www.touresbalon.com/ProductosTouresBalon/ConsultarRankingEspectaculosVendidosProducto" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  		<wsdl:fault name="fault">
+  			<soap:fault use="literal" name="fault" />
+  		</wsdl:fault>
+  	</wsdl:operation>
+  	<wsdl:operation name="ConsultarRankingFechaProducto">
+  		<soap:operation
+  			soapAction="http://www.touresbalon.com/ProductosTouresBalon/ConsultarRankingFechaProducto" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  		<wsdl:fault name="fault">
+  			<soap:fault use="literal" name="fault" />
+  		</wsdl:fault>
+  	</wsdl:operation>
+  	<wsdl:operation name="GestionCampaniaProducto">
+  		<soap:operation
+  			soapAction="http://www.touresbalon.com/ProductosTouresBalon/GestionCampaniaProducto" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  		<wsdl:fault name="fault">
+  			<soap:fault use="literal" name="fault" />
+  		</wsdl:fault>
+  	</wsdl:operation>
+  	<wsdl:operation name="GestionProducto">
+  		<soap:operation
+  			soapAction="http://www.touresbalon.com/ProductosTouresBalon/GestionProducto" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  		<wsdl:fault name="fault">
+  			<soap:fault use="literal" name="fault" />
+  		</wsdl:fault>
+  	</wsdl:operation>
+  	<wsdl:operation name="GestionTarifa">
+  		<soap:operation
+  			soapAction="http://www.touresbalon.com/ProductosTouresBalon/GestionTarifa" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  		<wsdl:fault name="fault">
+  			<soap:fault use="literal" name="fault" />
+  		</wsdl:fault>
+  	</wsdl:operation>
+  	<wsdl:operation name="ConsultaTop5Productos">
+  		<soap:operation
+  			soapAction="http://www.touresbalon.com/ProductosTouresBalon/ConsultaTop5Productos" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  		<wsdl:fault name="fault">
+  			<soap:fault use="literal" name="fault" />
+  		</wsdl:fault>
   	</wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="ProductosTouresBalon">
