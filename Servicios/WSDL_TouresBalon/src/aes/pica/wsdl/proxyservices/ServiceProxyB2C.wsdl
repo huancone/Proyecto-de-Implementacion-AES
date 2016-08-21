@@ -71,8 +71,16 @@
 			<xsd:element name="ConsultarProducto">
 				<xsd:complexType>
 					<xsd:sequence>
-						<xsd:element name="tipo_consulta" type="tb_b2:TipoConsultaProducto"
-							maxOccurs="1" minOccurs="1">
+						<xsd:element name="tipo_consulta" maxOccurs="1"
+							minOccurs="1">
+							<xsd:simpleType>
+								<xsd:restriction
+									base="tb_b2:TipoConsultaProducto">
+									<xsd:enumeration value="CODIGO"></xsd:enumeration>
+									<xsd:enumeration value="NOMBRE"></xsd:enumeration>
+									<xsd:enumeration value="DESCRIPCION"></xsd:enumeration>
+								</xsd:restriction>
+							</xsd:simpleType>
 						</xsd:element>
 						<xsd:element name="codigo" type="xsd:string"
 							maxOccurs="1" minOccurs="0">
@@ -88,7 +96,7 @@
 			</xsd:element>
 			<xsd:element name="ConsultarProductoResponse">
 				<xsd:complexType>
-					<xsd:sequence><xsd:element name="productos" type="tb_b2:TipoConsultaProductoResponse" maxOccurs="unbounded" minOccurs="0">
+					<xsd:sequence><xsd:element name="productos" type="tb_b2:Producto" maxOccurs="unbounded" minOccurs="0">
 					</xsd:element></xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>
@@ -135,13 +143,13 @@
 				<xsd:complexType>
 					<xsd:sequence>
 						<xsd:element name="orden" type="tb_b2:Orden"
-							maxOccurs="unbounded" minOccurs="1"></xsd:element>
+							maxOccurs="1" minOccurs="1"></xsd:element>
 					</xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>
 			<xsd:element name="CrearOrdenesResponse">
 				<xsd:complexType>
-					<xsd:sequence><xsd:element name="respuesta" type="tb_b2:RespuestaGenerica" maxOccurs="1" minOccurs="0">
+					<xsd:sequence><xsd:element name="respuesta" type="tb_b2:RespuestaGenerica" maxOccurs="1" minOccurs="1">
 					</xsd:element></xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>
@@ -407,14 +415,6 @@
 				</xsd:sequence>
 			</xsd:complexType>
 		
-			<xsd:complexType name="TipoConsultaProductoResponse">
-				<xsd:sequence>
-					<xsd:element name="productos" type="tb_b2:Producto"
-						maxOccurs="unbounded" minOccurs="0">
-					</xsd:element>
-					<xsd:element name="productos_top" type="tb_b2:Producto" maxOccurs="unbounded" minOccurs="0"></xsd:element>
-				</xsd:sequence>
-			</xsd:complexType>
 			
             <xsd:simpleType name="TipoTarifa">
             	<xsd:restriction base="xsd:string">
@@ -445,7 +445,7 @@
             <xsd:element name="ConsultaTop5ProductosResponse">
             	<xsd:complexType>
             		<xsd:sequence>
-            			<xsd:element name="lista_productos_top" type="tb_b2:ListaTop5Productos" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+            			<xsd:element name="lista_productos_top" type="tb_b2:Producto" maxOccurs="unbounded" minOccurs="0"></xsd:element>
             		</xsd:sequence>
             	</xsd:complexType>
             </xsd:element>
@@ -459,11 +459,6 @@
             	</xsd:complexType>
             </xsd:element>
 		
-            <xsd:complexType name="ListaTop5Productos">
-            	<xsd:sequence>
-                    <xsd:element name="productos_top" type="tb_b2:Producto" maxOccurs="unbounded" minOccurs="0"></xsd:element>
-            	</xsd:sequence>
-            </xsd:complexType>
 		</xsd:schema>
 	</wsdl:types>
 	<wsdl:message name="RegistrarClienteRequest">
