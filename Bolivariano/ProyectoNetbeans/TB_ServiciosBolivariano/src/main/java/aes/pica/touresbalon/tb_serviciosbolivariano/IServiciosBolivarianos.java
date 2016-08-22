@@ -16,7 +16,10 @@ import java.util.List;
 public interface IServiciosBolivarianos {
     
     //Metodos para consultar viajes de Bolivariano
+    //Sin criterio de hora de salida
     public List<ViajeVO> consultarViajes(String fechaViaje, String ciudadOrigen, String ciudadDestino);
+    
+    //Con criterio de hora de salida
     public List<ViajeVO> consultarViajes(String fechaViaje, String ciudadOrigen, String ciudadDestino,String horaSalida);
     
     //Metodo para crear un archivo de reserva
