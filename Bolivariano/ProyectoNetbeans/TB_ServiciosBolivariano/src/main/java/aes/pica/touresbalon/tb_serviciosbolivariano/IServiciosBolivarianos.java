@@ -12,6 +12,7 @@ import java.util.List;
 /**
  *
  * @author jdtrujillop
+ * @version 1.0
  */
 public interface IServiciosBolivarianos {
     
