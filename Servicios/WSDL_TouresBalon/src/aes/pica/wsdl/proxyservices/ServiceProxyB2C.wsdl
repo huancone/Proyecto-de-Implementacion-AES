@@ -109,7 +109,7 @@
 			<xsd:element name="ConsultarCampaniaProductoResponse">
 				<xsd:complexType>
                     <xsd:sequence>
-						<xsd:element name="campanias" type="tb_b2:Campania" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+						<xsd:element name="Productos" type="tb_b2:Producto" maxOccurs="unbounded" minOccurs="0"></xsd:element>
 					</xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>
