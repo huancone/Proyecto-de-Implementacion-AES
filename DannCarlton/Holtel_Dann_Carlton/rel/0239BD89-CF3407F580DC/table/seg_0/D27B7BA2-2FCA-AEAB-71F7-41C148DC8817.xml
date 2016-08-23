@@ -1,0 +1,60 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="D27B7BA2-2FCA-AEAB-71F7-41C148DC8817" schemaObject="BBF96A7D-BA72-AAA1-BAC0-002574E44943" name="ROOM">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-08-22 03:09:32 UTC</createdTime>
+<ownerDesignName>Holtel_Dann_Carlton</ownerDesignName>
+<ordsAlias>table_4</ordsAlias>
+<abbreviation>ROOM</abbreviation>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ROOM_NUMBER" id="6A9BCB18-34EC-7C27-9DE7-F528E3045592">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-08-22 03:11:20 UTC</createdTime>
+<ownerDesignName>Holtel_Dann_Carlton</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TYPE" id="5A9D1799-E183-843F-E407-EFA40A4AB991">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-08-22 03:11:20 UTC</createdTime>
+<ownerDesignName>Holtel_Dann_Carlton</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4000 CHAR</dataTypeSize>
+<ownDataTypeParameters>4000 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PRICE" id="552C3AC0-FDCE-F564-6704-F2D1AE3A4332">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-08-22 03:11:20 UTC</createdTime>
+<ownerDesignName>Holtel_Dann_Carlton</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4000 CHAR</dataTypeSize>
+<ownDataTypeParameters>4000 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="0EA31683-9B0B-D870-77C0-C67AC4F32B7D" name="ROOM_PK">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-08-22 03:11:20 UTC</createdTime>
+<ownerDesignName>Holtel_Dann_Carlton</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6A9BCB18-34EC-7C27-9DE7-F528E3045592"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

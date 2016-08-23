@@ -243,3 +243,5 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/Bolivariano/TB_ServiciosBolivariano/target/
+/Bolivariano/ProyectoNetbeans/TB_ServiciosBolivariano/target/

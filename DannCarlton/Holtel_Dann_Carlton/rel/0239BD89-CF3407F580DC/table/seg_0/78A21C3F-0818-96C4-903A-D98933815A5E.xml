@@ -1,0 +1,85 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="78A21C3F-0818-96C4-903A-D98933815A5E" schemaObject="BBF96A7D-BA72-AAA1-BAC0-002574E44943" name="PUBLIC_RESERVATIONS">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-08-22 03:13:59 UTC</createdTime>
+<ownerDesignName>Holtel_Dann_Carlton</ownerDesignName>
+<ordsAlias>table_6</ordsAlias>
+<abbreviation>PRES</abbreviation>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_PUBLIC_RESERVATION" id="C52021AD-05BF-6F86-92C8-B862BE7821FD">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-08-22 03:15:57 UTC</createdTime>
+<ownerDesignName>Holtel_Dann_Carlton</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementSequenceName>PUBLIC_RESERVATION_SEC</autoIncrementSequenceName>
+<autoIncrementGenerateTrigger>false</autoIncrementGenerateTrigger>
+</Column>
+<Column name="CHECK_IN_DATE" id="9D85D6F7-E51F-EF27-4DCA-888BF4604940">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-08-22 03:15:57 UTC</createdTime>
+<ownerDesignName>Holtel_Dann_Carlton</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CHECK_OUT_DATE" id="0200AE92-0F96-C15F-4C2A-4F1693EEA218">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-08-22 03:15:57 UTC</createdTime>
+<ownerDesignName>Holtel_Dann_Carlton</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ROOM_NUMBER" id="0B8DB99C-9266-6636-0995-F5BDC0CF863F">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-08-22 03:17:55 UTC</createdTime>
+<ownerDesignName>Holtel_Dann_Carlton</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1CD0C723-0339-0817-751F-32650DC87EB0" referredColumn="6A9BCB18-34EC-7C27-9DE7-F528E3045592"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="2DFED06F-DDD5-1D7A-D814-B2B23E161A94" name="PUBLIC_RESERVATIONS_PK">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-08-22 03:15:57 UTC</createdTime>
+<ownerDesignName>Holtel_Dann_Carlton</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C52021AD-05BF-6F86-92C8-B862BE7821FD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3957E9B2-D273-8E41-1417-B1C57FC8DB30" name="PUBLIC_RESERVATIONS_ROOM_FK">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-08-22 03:17:55 UTC</createdTime>
+<ownerDesignName>Holtel_Dann_Carlton</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0B8DB99C-9266-6636-0995-F5BDC0CF863F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

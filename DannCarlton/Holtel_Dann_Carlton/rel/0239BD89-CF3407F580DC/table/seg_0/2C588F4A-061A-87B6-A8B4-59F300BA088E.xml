@@ -1,0 +1,85 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="2C588F4A-061A-87B6-A8B4-59F300BA088E" schemaObject="BBF96A7D-BA72-AAA1-BAC0-002574E44943" name="TOURESBALON_RESERVATIONS">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-08-22 03:18:57 UTC</createdTime>
+<ownerDesignName>Holtel_Dann_Carlton</ownerDesignName>
+<ordsAlias>table_7</ordsAlias>
+<abbreviation>TB_RESERVATIONS</abbreviation>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="RESER_ID" id="B2D440E6-E074-61AC-306E-02DC1787822A">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-08-22 03:24:33 UTC</createdTime>
+<ownerDesignName>Holtel_Dann_Carlton</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementSequenceName>RES_TB_SEC</autoIncrementSequenceName>
+</Column>
+<Column name="STATE" id="FB9C3470-67CE-CDA4-66F3-721668E65C67">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-08-22 03:24:33 UTC</createdTime>
+<ownerDesignName>Holtel_Dann_Carlton</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="GUEST_NAME" id="04B5D927-21D7-EE2A-00F0-60CDBF7D578A">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-08-22 03:24:33 UTC</createdTime>
+<ownerDesignName>Holtel_Dann_Carlton</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4000 CHAR</dataTypeSize>
+<ownDataTypeParameters>4000 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PUBLIC_RESERVATIONS_ID" id="22A38B80-D73F-EDA3-B35C-A04AFB1D32FD">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-08-22 03:24:57 UTC</createdTime>
+<ownerDesignName>Holtel_Dann_Carlton</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E3292280-F2B1-1362-40DB-BD1306DE447A" referredColumn="C52021AD-05BF-6F86-92C8-B862BE7821FD"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="B06D05A9-9D4E-5BF8-0D24-EE2D6A52CE5E" name="TOURESBALON_RESERVATIONS_PK">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-08-22 03:24:33 UTC</createdTime>
+<ownerDesignName>Holtel_Dann_Carlton</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B2D440E6-E074-61AC-306E-02DC1787822A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0AB27F80-14CD-3047-DCB7-F7BA49FD2ACC" name="PUBLIC_RESERVATIONS_FK">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-08-22 03:24:57 UTC</createdTime>
+<ownerDesignName>Holtel_Dann_Carlton</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="22A38B80-D73F-EDA3-B35C-A04AFB1D32FD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

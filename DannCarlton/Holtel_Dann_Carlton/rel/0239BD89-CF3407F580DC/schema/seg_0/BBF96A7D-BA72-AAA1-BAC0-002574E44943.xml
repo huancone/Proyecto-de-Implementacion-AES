@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SchemaObject class="oracle.dbtools.crest.model.design.relational.SchemaObject" name="touresbalon" directorySegmentName="seg_0" id="BBF96A7D-BA72-AAA1-BAC0-002574E44943">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-08-22 03:02:19 UTC</createdTime>
+<ownerDesignName>Holtel_Dann_Carlton</ownerDesignName>
+<ordsAlias>schema_1</ordsAlias>
+</SchemaObject>

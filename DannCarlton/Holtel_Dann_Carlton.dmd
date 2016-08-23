@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="Holtel_Dann_Carlton" id="D0E979D1-526E-95E8-A3F2-4D184DD7DD7C" version="3.5">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-08-22 03:00:05 UTC</createdTime>
+<ownerDesignName>Holtel_Dann_Carlton</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>D0E979D1-526E-95E8-A3F2-4D184DD7DD7C</designId>
+</OSDM_Design>

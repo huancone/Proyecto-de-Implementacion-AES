@@ -1,0 +1,111 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="FBD8A625-2005-31D9-6AD4-4FEFC700A435" schemaObject="BBF96A7D-BA72-AAA1-BAC0-002574E44943" name="HOTEL">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-08-22 03:02:34 UTC</createdTime>
+<ownerDesignName>Holtel_Dann_Carlton</ownerDesignName>
+<ordsAlias>table_3</ordsAlias>
+<abbreviation>HOTEL</abbreviation>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="HOTEL_ID" id="D261CE31-DC01-BFC2-4166-A50DB2178747">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-08-22 03:08:36 UTC</createdTime>
+<ownerDesignName>Holtel_Dann_Carlton</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementSequenceName>HOTEL_ID_SEC</autoIncrementSequenceName>
+<autoIncrementGenerateTrigger>false</autoIncrementGenerateTrigger>
+</Column>
+<Column name="NAME" id="C4174049-77D5-7BE0-E45C-62ED283090C6">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-08-22 03:08:36 UTC</createdTime>
+<ownerDesignName>Holtel_Dann_Carlton</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4000 CHAR</dataTypeSize>
+<ownDataTypeParameters>4000 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ADDRESS" id="2674DF73-954A-2CD8-164E-CFF367306DDD">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-08-22 03:08:36 UTC</createdTime>
+<ownerDesignName>Holtel_Dann_Carlton</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4000 CHAR</dataTypeSize>
+<ownDataTypeParameters>4000 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CITY" id="4E916B18-6C4D-9239-4A43-410C6BEDDC41">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-08-22 03:08:36 UTC</createdTime>
+<ownerDesignName>Holtel_Dann_Carlton</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4000 CHAR</dataTypeSize>
+<ownDataTypeParameters>4000 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="COUNTRY" id="5395F6C2-2EAA-3077-6591-84EA64FE328E">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-08-22 03:08:36 UTC</createdTime>
+<ownerDesignName>Holtel_Dann_Carlton</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4000 CHAR</dataTypeSize>
+<ownDataTypeParameters>4000 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ROOM_ROOM_NUMBER" id="8F41C026-C351-C3F2-10B8-E9CB8975AA90">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-08-22 03:11:33 UTC</createdTime>
+<ownerDesignName>Holtel_Dann_Carlton</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="C1270797-FF6D-53C3-ED69-5851CC7AF5DE" referredColumn="6A9BCB18-34EC-7C27-9DE7-F528E3045592"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="04AAC4E4-7856-CE85-3B02-3B014EB9A1F0" name="HOTEL_PK">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-08-22 03:08:36 UTC</createdTime>
+<ownerDesignName>Holtel_Dann_Carlton</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D261CE31-DC01-BFC2-4166-A50DB2178747"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="22B8BC01-0754-09BC-BA62-4613416DFD37" name="HOTEL_ROOM_FK">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-08-22 03:11:33 UTC</createdTime>
+<ownerDesignName>Holtel_Dann_Carlton</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8F41C026-C351-C3F2-10B8-E9CB8975AA90"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
