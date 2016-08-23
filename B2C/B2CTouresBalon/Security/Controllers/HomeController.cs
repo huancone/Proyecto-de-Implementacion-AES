@@ -8,7 +8,7 @@ namespace B2CTouresBalon.Controllers
         // GET: /Home/
         public ActionResult Index()
         {
-            var FullName = User.FirstName + " " + User.LastName;
+            //var FullName = User.FirstName + " " + User.LastName;
             return View();
         }
     }
