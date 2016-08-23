@@ -70,6 +70,26 @@ namespace B2CTouresBalon.Controllers
             return View(model);
         }
 
+
+        public ActionResult Manage()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Manage(ManageViewModel model, string returnUrl = "")
+        {
+            if(!ModelState.IsValid) return View(model);
+            var user = _context.ObtenerUsuario(model.FirstName, model.Password);
+            if (user != null)
+            {
+                return View();
+            }
+            return View(model);
+        }
+
+
         [AllowAnonymous]
         public ActionResult LogOut()
         {
