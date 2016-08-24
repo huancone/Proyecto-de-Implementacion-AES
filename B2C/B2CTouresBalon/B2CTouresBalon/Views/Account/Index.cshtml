@@ -11,7 +11,7 @@
     <div class="form-horizontal">
         <h4>User Login</h4>
         <hr />
-        @Html.ValidationSummary(true)
+        @Html.ValidationSummary("", new { @class = "text-danger" })
 
         <div class="form-group">
             @Html.LabelFor(model => model.Username, new { @class = "control-label col-md-2" })

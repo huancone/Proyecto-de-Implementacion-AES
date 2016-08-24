@@ -7,11 +7,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-
 namespace DataAccess
 {
+    using System;
+    using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
+    
     public partial class ClientsContext : DbContext
     {
         public ClientsContext()

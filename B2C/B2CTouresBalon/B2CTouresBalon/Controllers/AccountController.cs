@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -20,21 +21,20 @@ namespace B2CTouresBalon.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(LoginViewModel model, string returnUrl = "")
+        public async Task<ActionResult> Index(LoginViewModel model, string returnUrl = "")
         {
             if (!ModelState.IsValid) return View(model);
-            var user = _context.ObtenerUsuario(model.Username, model.Password);
+            var user = await _context.ObtenerUsuario(model.Username, model.Password);
             if (user != null)
             {
-                //var roles = user.Select(m => m.RoleName).ToArray();
 
                 var serializeModel = new CustomPrincipalSerializeModel
                 {
                     UserId = user.CUSTID,
                     FirstName = user.FNAME,
-                    LastName = user.LNAME
+                    LastName = user.LNAME,
+                    CustId = user.CUSTID
                 };
-                //serializeModel.roles = roles;
 
                 var userData = JsonConvert.SerializeObject(serializeModel);
                 var authTicket = new FormsAuthenticationTicket(
@@ -49,43 +49,56 @@ namespace B2CTouresBalon.Controllers
                 var faCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encTicket);
                 Response.Cookies.Add(faCookie);
 
-                //if (roles.Contains("Admin"))
-                //{
-                //    return RedirectToAction("Index", "Admin");
-                //}
-                //else if (roles.Contains("User"))
-                //{
-                //    return RedirectToAction("Index", "User");
-                //}
-                //else
-                //{
-                //    return RedirectToAction("Index", "Home");
-                //}
-
+                model.UserId = user.CUSTID;
                 return RedirectToAction("Index", "Home");
             }
 
             ModelState.AddModelError("", "Incorrect username and/or password");
-
             return View(model);
         }
 
 
-        public ActionResult Manage()
+        public async Task<ViewResult> Manage()
         {
-            return View();
+            if (!ModelState.IsValid) return View("Index");
+
+            var userId = User.Identity.Name;
+            var user = await _context.ObtenerUsuario(userId);
+
+            var model = new ManageViewModel();
+            if (null != user)
+            {
+                model.FirstName = user.FNAME;
+                model.LastName = user.LNAME;
+                model.Email = user.EMAIL;
+                model.PhoneNumber = user.PHONENUMBER;
+                model.CreditCardType = user.CREDITCARDTYPE;
+                model.CreditCardNumber = user.CREDITCARDNUMBER;
+                model.CustomerId = user.CUSTID;
+            }
+            return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Manage(ManageViewModel model, string returnUrl = "")
+        public async Task<ViewResult> Manage(ManageViewModel model, AccountController.ManageMessageId? message)
         {
-            if(!ModelState.IsValid) return View(model);
-            var user = _context.ObtenerUsuario(model.FirstName, model.Password);
-            if (user != null)
+            ViewBag.StatusMessage =
+                message == ManageMessageId.UpdateSuccess ? "Your account has been updated."
+                : message == ManageMessageId.UpdateError ? "An error has occurred."
+                : "";
+            if (!ModelState.IsValid) return View(model);
+            if (await _context.ActualizarUsuario(
+                model.FirstName,
+                model.LastName,
+                model.Email,
+                model.PhoneNumber,
+                model.CreditCardType,
+                model.CreditCardNumber))
             {
-                return View();
+                return View(model);
             }
+            ViewBag.StatusMessage ="An error has occurred.";
             return View(model);
         }
 
@@ -96,5 +109,13 @@ namespace B2CTouresBalon.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Account", null);
         }
+
+        public enum ManageMessageId
+        {
+            UpdateSuccess,
+            UpdateError
+        }
     }
+
+
 }

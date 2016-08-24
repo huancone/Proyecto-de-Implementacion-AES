@@ -9,6 +9,9 @@
 
 namespace DataAccess
 {
+    using System;
+    using System.Collections.Generic;
+    
     public partial class CUSTOMER
     {
         public string CUSTID { get; set; }

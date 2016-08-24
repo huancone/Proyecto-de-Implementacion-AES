@@ -20,8 +20,6 @@ namespace B2CTouresBalon
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-
-            //Database.SetInitializer<DataContext>(new DataContextInitilizer());
         }
         protected void Application_PostAuthenticateRequest(Object sender, EventArgs e)
         {
@@ -36,6 +34,7 @@ namespace B2CTouresBalon
                 newUser.UserId = serializeModel.UserId;
                 newUser.FirstName = serializeModel.FirstName;
                 newUser.LastName = serializeModel.LastName;
+                newUser.CustId = serializeModel.CustId;
                 newUser.roles = serializeModel.roles;
 
                 HttpContext.Current.User = newUser;
