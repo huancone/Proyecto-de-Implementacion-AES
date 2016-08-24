@@ -62,20 +62,21 @@ namespace B2CTouresBalon.Controllers
         {
             if (!ModelState.IsValid) return View("Index");
 
-            var userId = User.Identity.Name;
+            var currentuser = System.Web.HttpContext.Current.User as CustomPrincipal;
+
+
+            var userId = currentuser?.CustId;
             var user = await _context.ObtenerUsuario(userId);
 
             var model = new ManageViewModel();
-            if (null != user)
-            {
-                model.FirstName = user.FNAME;
-                model.LastName = user.LNAME;
-                model.Email = user.EMAIL;
-                model.PhoneNumber = user.PHONENUMBER;
-                model.CreditCardType = user.CREDITCARDTYPE;
-                model.CreditCardNumber = user.CREDITCARDNUMBER;
-                model.CustomerId = user.CUSTID;
-            }
+            if (null == user) return View(model);
+            model.FirstName = user.FNAME;
+            model.LastName = user.LNAME;
+            model.Email = user.EMAIL;
+            model.PhoneNumber = user.PHONENUMBER;
+            model.CreditCardType = user.CREDITCARDTYPE;
+            model.CreditCardNumber = user.CREDITCARDNUMBER;
+            model.CustomerId = user.CUSTID;
             return View(model);
         }
 

@@ -18,12 +18,12 @@ namespace DataAccess
             }
         }
 
-        public async Task<CUSTOMER> ObtenerUsuario(string email)
+        public async Task<CUSTOMER> ObtenerUsuario(string userid)
         {
             using (var db = new ClientsContext())
             {
                 var customer = from c in db.CUSTOMER
-                               where c.EMAIL == email
+                               where c.CUSTID == userid
                                select c;
                 return await customer.SingleOrDefaultAsync();
             }

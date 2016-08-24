@@ -24,22 +24,20 @@ namespace B2CTouresBalon
         protected void Application_PostAuthenticateRequest(Object sender, EventArgs e)
         {
             var authCookie = Request.Cookies[FormsAuthentication.FormsCookieName];
-            if (authCookie != null)
+            if (authCookie == null) return;
+            var authTicket = FormsAuthentication.Decrypt(authCookie.Value);
+
+            var serializeModel = JsonConvert.DeserializeObject<CustomPrincipalSerializeModel>(authTicket.UserData);
+            var newUser = new CustomPrincipal(authTicket.Name)
             {
+                UserId = serializeModel.UserId,
+                FirstName = serializeModel.FirstName,
+                LastName = serializeModel.LastName,
+                CustId = serializeModel.CustId,
+                roles = serializeModel.roles
+            };
 
-                var authTicket = FormsAuthentication.Decrypt(authCookie.Value);
-
-                var serializeModel = JsonConvert.DeserializeObject<CustomPrincipalSerializeModel>(authTicket.UserData);
-                var newUser = new CustomPrincipal(authTicket.Name);
-                newUser.UserId = serializeModel.UserId;
-                newUser.FirstName = serializeModel.FirstName;
-                newUser.LastName = serializeModel.LastName;
-                newUser.CustId = serializeModel.CustId;
-                newUser.roles = serializeModel.roles;
-
-                HttpContext.Current.User = newUser;
-            }
-
+            HttpContext.Current.User = newUser;
         }
     }
 }
