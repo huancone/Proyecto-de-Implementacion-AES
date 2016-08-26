@@ -171,6 +171,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="DAL\Client.cs" />
     <Compile Include="DAL\Role.cs" />
     <Compile Include="DAL\Security\BaseViewPage.cs" />
@@ -181,7 +182,8 @@
     </Compile>
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\ManageViewModel.cs" />
-    <Compile Include="Models\ProductsViewModel.cs" />
+    <Compile Include="Models\ProductosViewModel.cs" />
+    <Compile Include="Models\PromocionesViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\ServiceProxyB2C\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -283,19 +285,7 @@
     <Content Include="Service References\ServiceProxyB2C\B2CTouresBalon.ServiceProxyB2C.CrearOrdenesResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\ServiceProxyB2C\B2CTouresBalon.ServiceProxyB2C.Orden.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\ServiceProxyB2C\B2CTouresBalon.ServiceProxyB2C.Producto.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\ServiceProxyB2C\B2CTouresBalon.ServiceProxyB2C.RegistrarClienteReponseType.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <Content Include="Service References\ServiceProxyB2C\B2CTouresBalon.ServiceProxyB2C.RegistrarClienteResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\ServiceProxyB2C\B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Service References\ServiceProxyB2C\configuration91.svcinfo" />
@@ -323,11 +313,11 @@
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\Manage.cshtml" />
-    <Content Include="Views\Home\_PartialProductList.cshtml" />
     <None Include="Service References\ServiceProxyB2C\ServiceProxyB2C.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Product\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

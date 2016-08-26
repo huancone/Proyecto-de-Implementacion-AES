@@ -14,19 +14,9 @@ namespace B2CTouresBalon.Controllers
         public ActionResult Index()
         {
             var proxy   = new ServiceProxyB2CClient();
-            var productos = new ProductsViewModel();
+            var productos = new PromocionesViewModel();
             productos.Promociones = proxy.ConsultarCampaniaProducto();
             return View(productos);
         }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Index(ProductsViewModel model)
-        {
-            var proxy = new ServiceProxyB2CClient();
-            model.Productos = proxy.ConsultarProducto(model.CadenaBusqueda);
-            return View("_PartialProductList" ,model);
-        }
-
     }
 }

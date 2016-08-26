@@ -1,19 +1,15 @@
-﻿@using B2CTouresBalon.Models
-@using B2CTouresBalon.ServiceProxyB2C
-@model B2CTouresBalon.Models.ProductsViewModel
+﻿@model B2CTouresBalon.Models.PromocionesViewModel
 @{
     ViewBag.Title = "Home Page";
 }
 
 <!-- Carousel -->
 <div id="Promotions" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
     <ol class="carousel-indicators">
         @{
             var i = 0;
-            foreach (var producto in Model.Promociones)
+            foreach (var itemClass in Model.Promociones.Select(producto => i++ == 0 ? "active" : ""))
             {
-                var itemClass = i++ == 0 ? "active" : "";
                 <li data-target="#Promotions" data-slide-to="@i" class="@itemClass"></li>
             }
         }
@@ -29,8 +25,7 @@
                     <div class="container">
                         <div class="carousel-caption">
                             <h1>@producto.espectaculo</h1>
-                            <p>Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.</p>
-                            <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+                            <p>@producto.tipo_espectaculo</p>
                         </div>
                     </div>
                 </div>
