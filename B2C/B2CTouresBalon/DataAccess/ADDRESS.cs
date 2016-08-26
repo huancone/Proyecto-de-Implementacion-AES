@@ -12,28 +12,23 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class CUSTOMER
+    public partial class ADDRESS
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CUSTOMER()
+        public ADDRESS()
         {
             this.CUSTOMER_ADDRESS = new HashSet<CUSTOMER_ADDRESS>();
-            this.ORDERS = new HashSet<ORDERS>();
         }
     
-        public decimal CUSTID { get; set; }
-        public string FNAME { get; set; }
-        public string LNAME { get; set; }
-        public string PHONENUMBER { get; set; }
-        public string EMAIL { get; set; }
-        public string PASSWORD { get; set; }
-        public string CREDITCARDTYPE { get; set; }
-        public string CREDITCARDNUMBER { get; set; }
-        public string STATUS { get; set; }
+        public string STREET { get; set; }
+        public string STATE { get; set; }
+        public string ZIP { get; set; }
+        public string COUNTRY { get; set; }
+        public string ADDRESSTYPE { get; set; }
+        public decimal ADDRID { get; set; }
+        public string CITY { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CUSTOMER_ADDRESS> CUSTOMER_ADDRESS { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ORDERS> ORDERS { get; set; }
     }
 }

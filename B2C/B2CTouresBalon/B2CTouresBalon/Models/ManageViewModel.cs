@@ -10,7 +10,7 @@ namespace B2CTouresBalon.Models
     public class ManageViewModel
     {
 
-        public string CustomerId { get; set; }
+        public decimal CustomerId { get; set; }
 
         [DataType(DataType.Text)]
         public string FirstName { get; set; }

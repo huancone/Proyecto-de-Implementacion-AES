@@ -9,18 +9,18 @@ namespace B2CTouresBalon.DAL
         public int UserId { get; set; }
 
         [Required]
-        public String Username { get; set; }
+        public string Username { get; set; }
 
         [Required]
-        public String Email { get; set; }
+        public string Email { get; set; }
 
         [Required]
-        public String Password { get; set; }
+        public string Password { get; set; }
 
-        public String FirstName { get; set; }
-        public String LastName { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
 
-        public Boolean IsActive { get; set; }
+        public bool IsActive { get; set; }
         public DateTime CreateDate { get; set; }
 
         public virtual ICollection<Role> Roles { get; set; }

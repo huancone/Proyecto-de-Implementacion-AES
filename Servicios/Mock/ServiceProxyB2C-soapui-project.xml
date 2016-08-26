@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:soapui-project id="50d07169-873c-4c2f-9957-49e0a2b3ba84" activeEnvironment="Default" name="ServiceProxyB2C" resourceRoot="" soapui-version="5.2.1" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="9a6ed4a8-3098-429f-807b-32dfd140b635" wsaVersion="NONE" name="ServiceProxyB2CSOAP" type="wsdl" bindingName="{http://www.touresbalon.com/ServiceProxyB2C/}ServiceProxyB2CSOAP" soapVersion="1_1" anonymous="optional" definition="file:/D:/Documents/GitHub/Proyecto-de-Implementacion-AES/Servicios/WSDL_TouresBalon/bin/aes/pica/wsdl/proxyservices/ServiceProxyB2C.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\D:\Documents\GitHub\Proyecto-de-Implementacion-AES\Servicios\WSDL_TouresBalon\bin\aes\pica\wsdl\proxyservices\ServiceProxyB2C.wsdl"><con:part><con:url>file:\D:\Documents\GitHub\Proyecto-de-Implementacion-AES\Servicios\WSDL_TouresBalon\bin\aes\pica\wsdl\proxyservices\ServiceProxyB2C.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="ServiceProxyB2C" targetNamespace="http://www.touresbalon.com/ServiceProxyB2C/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tb_b2="http://www.touresbalon.com/ServiceProxyB2C/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<con:soapui-project id="50d07169-873c-4c2f-9957-49e0a2b3ba84" activeEnvironment="Default" name="ServiceProxyB2C" resourceRoot="" soapui-version="5.2.1" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="9a6ed4a8-3098-429f-807b-32dfd140b635" wsaVersion="NONE" name="ServiceProxyB2CSOAP" type="wsdl" bindingName="{http://www.touresbalon.com/ServiceProxyB2C/}ServiceProxyB2CSOAP" soapVersion="1_1" anonymous="optional" definition="file:/D:/Documents/GitHub/Proyecto-de-Implementacion-AES/Servicios/WSDL_TouresBalon/bin/aes/pica/wsdl/proxyservices/ServiceProxyB2C.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\D:\Documents\GitHub\Proyecto-de-Implementacion-AES\Servicios\WSDL_TouresBalon\bin\aes\pica\wsdl\proxyservices\ServiceProxyB2C.wsdl"><con:part><con:url>file:\D:\Documents\GitHub\Proyecto-de-Implementacion-AES\Servicios\WSDL_TouresBalon\bin\aes\pica\wsdl\proxyservices\ServiceProxyB2C.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="ServiceProxyB2C" targetNamespace="http://www.touresbalon.com/ServiceProxyB2C/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tb_b2="http://www.touresbalon.com/ServiceProxyB2C/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <wsdl:types>
     <xsd:schema targetNamespace="http://www.touresbalon.com/ServiceProxyB2C/">
       <xsd:element name="RegistrarCliente">
@@ -691,7 +691,7 @@
          <id_orden>?</id_orden>\r
       </ser:CancelarOrdenes>\r
    </soapenv:Body>\r
-</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.touresbalon.com/ServiceProxyB2C/CancelarOrdenes"/></con:call></con:operation><con:operation id="6d980cee-351b-43c3-91cb-e7bcacded3f1" isOneWay="false" action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarCampaniaProducto" name="ConsultarCampaniaProducto" bindingOperationName="ConsultarCampaniaProducto" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="91ce4e0b-c07d-4ce4-bef1-5ec39cd6e66d" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/MockServiceProxyB2C</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://www.touresbalon.com/ServiceProxyB2C/">\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.touresbalon.com/ServiceProxyB2C/CancelarOrdenes"/></con:call></con:operation><con:operation id="6d980cee-351b-43c3-91cb-e7bcacded3f1" isOneWay="false" action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarCampaniaProducto" name="ConsultarCampaniaProducto" bindingOperationName="ConsultarCampaniaProducto" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="91ce4e0b-c07d-4ce4-bef1-5ec39cd6e66d" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/MockServiceProxyB2C</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://www.touresbalon.com/ServiceProxyB2C/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
       <ser:ConsultarCampaniaProducto/>\r
@@ -703,20 +703,14 @@
          <id_cliente>?</id_cliente>\r
       </ser:ConsultarClientesOrdenes>\r
    </soapenv:Body>\r
-</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarClientesOrdenes"/></con:call></con:operation><con:operation id="5eaf4f92-f243-45ea-8184-ff84067dad7a" isOneWay="false" action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarProducto" name="ConsultarProducto" bindingOperationName="ConsultarProducto" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="09623afd-041c-46e7-ba81-6c8df96a5abf" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.touresbalon.com/ServiceProxyB2C</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://www.touresbalon.com/ServiceProxyB2C/">\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarClientesOrdenes"/></con:call></con:operation><con:operation id="5eaf4f92-f243-45ea-8184-ff84067dad7a" isOneWay="false" action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarProducto" name="ConsultarProducto" bindingOperationName="ConsultarProducto" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="09623afd-041c-46e7-ba81-6c8df96a5abf" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/MockServiceProxyB2C?WSDL</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://www.touresbalon.com/ServiceProxyB2C/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
       <ser:ConsultarProducto>\r
-         <tipo_consulta>?</tipo_consulta>\r
-         <!--Optional:-->\r
-         <codigo>?</codigo>\r
-         <!--Optional:-->\r
-         <nombre>?</nombre>\r
-         <!--Optional:-->\r
-         <descripcion>?</descripcion>\r
+         <cadena>hola</cadena>
       </ser:ConsultarProducto>\r
    </soapenv:Body>\r
-</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarProducto"/></con:call></con:operation><con:operation id="5e6c7e83-8c7a-4549-8880-d5639c3798b7" isOneWay="false" action="http://www.touresbalon.com/ServiceProxyB2C/ConsultaTop5Productos" name="ConsultaTop5Productos" bindingOperationName="ConsultaTop5Productos" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="24286dab-551d-4b98-88ef-2d4fea056d8a" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.touresbalon.com/ServiceProxyB2C</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://www.touresbalon.com/ServiceProxyB2C/">\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarProducto"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="5e6c7e83-8c7a-4549-8880-d5639c3798b7" isOneWay="false" action="http://www.touresbalon.com/ServiceProxyB2C/ConsultaTop5Productos" name="ConsultaTop5Productos" bindingOperationName="ConsultaTop5Productos" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="24286dab-551d-4b98-88ef-2d4fea056d8a" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.touresbalon.com/ServiceProxyB2C</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://www.touresbalon.com/ServiceProxyB2C/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
       <ser:ConsultaTop5Productos>\r
@@ -780,10 +774,208 @@
          </cliente>\r
       </ser:RegistrarCliente>\r
    </soapenv:Body>\r
-</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.touresbalon.com/ServiceProxyB2C/RegistrarCliente"/></con:call></con:operation></con:interface><con:mockService id="5aafe2b5-2e19-4d08-9068-ffc4c75ab1dd" port="8080" path="/MockServiceProxyB2C" host="localhost" name="MockServiceProxyB2C" bindToHostOnly="false" docroot=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting></con:settings><con:properties/><con:mockOperation name="ConsultarCampaniaProducto" id="0823e0c8-d01a-474b-9e4c-df2a99a81677" interface="ServiceProxyB2CSOAP" operation="ConsultarCampaniaProducto"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" id="178a081a-c034-4386-80c9-89a44ffb5bc1" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://www.touresbalon.com/ServiceProxyB2C/">
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.touresbalon.com/ServiceProxyB2C/RegistrarCliente"/></con:call></con:operation></con:interface><con:mockService id="5aafe2b5-2e19-4d08-9068-ffc4c75ab1dd" port="8081" path="/MockServiceProxyB2C" host="localhost" name="MockServiceProxyB2C" bindToHostOnly="false" docroot=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting></con:settings><con:properties/><con:mockOperation name="ConsultarCampaniaProducto" id="0823e0c8-d01a-474b-9e4c-df2a99a81677" interface="ServiceProxyB2CSOAP" operation="ConsultarCampaniaProducto"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" id="178a081a-c034-4386-80c9-89a44ffb5bc1" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://www.touresbalon.com/ServiceProxyB2C/">
    <soapenv:Header/>
    <soapenv:Body>
       <ser:ConsultarCampaniaProductoResponse>
+         <!--Zero or more repetitions:-->
+         <Productos>
+            <id_producto>1</id_producto>
+            <espectaculo>Juegos Olimpicos</espectaculo>
+            <ciudad_espectaculo>
+               <id_ciudad>1</id_ciudad>
+               <pais>Brasil</pais>
+               <tipo_ciudad>
+                  <id>1</id>
+                  <nombre_tipo>Tipo 1</nombre_tipo>
+                  <precio>1000</precio>
+               </tipo_ciudad>
+            </ciudad_espectaculo>
+            <!--Optional:-->
+
+            <!--Optional:-->
+            <tipo_transporte>
+               <id>1</id>
+               <nombre_tipo>Tipo 1</nombre_tipo>
+               <precio>1500</precio>
+            </tipo_transporte>
+            <tipo_espectaculo>
+               <id>1</id>
+               <nombre_tipo>Tipo 1</nombre_tipo>
+               <precio>500</precio>
+            </tipo_espectaculo>
+            <!--Optional:-->
+            <tipo_hospedaje>
+               <id>1</id>
+               <nombre_tipo>Tipo 1</nombre_tipo>
+               <precio>750</precio>
+            </tipo_hospedaje>
+         </Productos>
+         <Productos>
+            <id_producto>2</id_producto>
+            <espectaculo>Juegos ParaOlimpicos</espectaculo>
+            <ciudad_espectaculo>
+               <id_ciudad>1</id_ciudad>
+               <pais>Brasil</pais>
+               <tipo_ciudad>
+                  <id>1</id>
+                  <nombre_tipo>Tipo 1</nombre_tipo>
+                  <precio>1000</precio>
+               </tipo_ciudad>
+            </ciudad_espectaculo>
+            <!--Optional:-->
+
+            <!--Optional:-->
+            <tipo_transporte>
+               <id>1</id>
+               <nombre_tipo>Tipo 1</nombre_tipo>
+               <precio>1500</precio>
+            </tipo_transporte>
+            <tipo_espectaculo>
+               <id>1</id>
+               <nombre_tipo>Tipo 1</nombre_tipo>
+               <precio>500</precio>
+            </tipo_espectaculo>
+            <!--Optional:-->
+            <tipo_hospedaje>
+               <id>1</id>
+               <nombre_tipo>Tipo 1</nombre_tipo>
+               <precio>750</precio>
+            </tipo_hospedaje>
+         </Productos>
+         <Productos>
+            <id_producto>3</id_producto>
+            <espectaculo>Copa Mundial de Futbol</espectaculo>
+            <ciudad_espectaculo>
+               <id_ciudad>2</id_ciudad>
+               <pais>Reino Unido</pais>
+               <tipo_ciudad>
+                  <id>1</id>
+                  <nombre_tipo>Tipo 1</nombre_tipo>
+                  <precio>1000</precio>
+               </tipo_ciudad>
+            </ciudad_espectaculo>
+            <!--Optional:-->
+
+            <tipo_transporte>
+               <id>1</id>
+               <nombre_tipo>Tipo 1</nombre_tipo>
+               <precio>1500</precio>
+            </tipo_transporte>
+            <tipo_espectaculo>
+               <id>1</id>
+               <nombre_tipo>Tipo 1</nombre_tipo>
+               <precio>500</precio>
+            </tipo_espectaculo>
+            <!--Optional:-->
+            <tipo_hospedaje>
+               <id>1</id>
+               <nombre_tipo>Tipo 1</nombre_tipo>
+               <precio>750</precio>
+            </tipo_hospedaje>
+         </Productos>
+         <Productos>
+            <id_producto>1</id_producto>
+            <espectaculo>Juegos Olimpicos</espectaculo>
+            <ciudad_espectaculo>
+               <id_ciudad>1</id_ciudad>
+               <pais>Brasil</pais>
+               <tipo_ciudad>
+                  <id>1</id>
+                  <nombre_tipo>Tipo 1</nombre_tipo>
+                  <precio>1000</precio>
+               </tipo_ciudad>
+            </ciudad_espectaculo>
+            <!--Optional:-->
+
+            <!--Optional:-->
+            <tipo_transporte>
+               <id>1</id>
+               <nombre_tipo>Tipo 1</nombre_tipo>
+               <precio>1500</precio>
+            </tipo_transporte>
+            <tipo_espectaculo>
+               <id>1</id>
+               <nombre_tipo>Tipo 1</nombre_tipo>
+               <precio>500</precio>
+            </tipo_espectaculo>
+            <!--Optional:-->
+            <tipo_hospedaje>
+               <id>1</id>
+               <nombre_tipo>Tipo 1</nombre_tipo>
+               <precio>750</precio>
+            </tipo_hospedaje>
+         </Productos>
+         <Productos>
+            <id_producto>2</id_producto>
+            <espectaculo>Juegos ParaOlimpicos</espectaculo>
+            <ciudad_espectaculo>
+               <id_ciudad>1</id_ciudad>
+               <pais>Brasil</pais>
+               <tipo_ciudad>
+                  <id>1</id>
+                  <nombre_tipo>Tipo 1</nombre_tipo>
+                  <precio>1000</precio>
+               </tipo_ciudad>
+            </ciudad_espectaculo>
+            <!--Optional:-->
+
+            <!--Optional:-->
+            <tipo_transporte>
+               <id>1</id>
+               <nombre_tipo>Tipo 1</nombre_tipo>
+               <precio>1500</precio>
+            </tipo_transporte>
+            <tipo_espectaculo>
+               <id>1</id>
+               <nombre_tipo>Tipo 1</nombre_tipo>
+               <precio>500</precio>
+            </tipo_espectaculo>
+            <!--Optional:-->
+            <tipo_hospedaje>
+               <id>1</id>
+               <nombre_tipo>Tipo 1</nombre_tipo>
+               <precio>750</precio>
+            </tipo_hospedaje>
+         </Productos>
+         <Productos>
+            <id_producto>3</id_producto>
+            <espectaculo>Copa Mundial de Futbol</espectaculo>
+            <ciudad_espectaculo>
+               <id_ciudad>2</id_ciudad>
+               <pais>Reino Unido</pais>
+               <tipo_ciudad>
+                  <id>1</id>
+                  <nombre_tipo>Tipo 1</nombre_tipo>
+                  <precio>1000</precio>
+               </tipo_ciudad>
+            </ciudad_espectaculo>
+            <!--Optional:-->
+
+            <!--Optional:-->
+            <tipo_transporte>
+               <id>1</id>
+               <nombre_tipo>Tipo 1</nombre_tipo>
+               <precio>1500</precio>
+            </tipo_transporte>
+            <tipo_espectaculo>
+               <id>1</id>
+               <nombre_tipo>Tipo 1</nombre_tipo>
+               <precio>500</precio>
+            </tipo_espectaculo>
+            <!--Optional:-->
+            <tipo_hospedaje>
+               <id>1</id>
+               <nombre_tipo>Tipo 1</nombre_tipo>
+               <precio>750</precio>
+            </tipo_hospedaje>
+         </Productos>
+      </ser:ConsultarCampaniaProductoResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarCampaniaProducto"/></con:response><con:dispatchConfig/></con:mockOperation><con:mockOperation name="ConsultarProducto" id="47a48d59-d486-4716-bddc-9f21378480d1" interface="ServiceProxyB2CSOAP" operation="ConsultarProducto"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" id="cbb54d89-7f96-42eb-9fbf-50e2fbc0d7d4" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://www.touresbalon.com/ServiceProxyB2C/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:ConsultarProductoResponse>
          <!--Zero or more repetitions:-->
          <Productos>
             <id_producto>1</id_producto>
@@ -818,11 +1010,10 @@
                <nombre_tipo>Tipo 1</nombre_tipo>
                <precio>750</precio>
             </tipo_hospedaje>
-            <!--Optional:-->
-            <imagen_producto></imagen_producto>
          </Productos>
-                  <Productos>
-            <id_producto>1</id_producto>
+         
+         <Productos>
+            <id_producto>2</id_producto>
             <espectaculo>Juegos ParaOlimpicos</espectaculo>
             <ciudad_espectaculo>
                <id_ciudad>1</id_ciudad>
@@ -854,9 +1045,147 @@
                <nombre_tipo>Tipo 1</nombre_tipo>
                <precio>750</precio>
             </tipo_hospedaje>
-            <!--Optional:-->
-            <imagen_producto></imagen_producto>
          </Productos>
-      </ser:ConsultarCampaniaProductoResponse>
+		
+		<Productos>
+            <id_producto>3</id_producto>
+            <espectaculo>Copa Mundial de Futbol</espectaculo>
+            <ciudad_espectaculo>
+               <id_ciudad>2</id_ciudad>
+               <pais>Reino Unido</pais>
+               <tipo_ciudad>
+                  <id>1</id>
+                  <nombre_tipo>Tipo 1</nombre_tipo>
+                  <precio>1000</precio>
+               </tipo_ciudad>
+            </ciudad_espectaculo>
+            <!--Optional:-->
+            <fecha_llegada>2018-06-01</fecha_llegada>
+            <!--Optional:-->
+            <fecha_salida>2018-06-31</fecha_salida>
+            <!--Optional:-->
+            <tipo_transporte>
+               <id>1</id>
+               <nombre_tipo>Tipo 1</nombre_tipo>
+               <precio>1500</precio>
+            </tipo_transporte>
+            <tipo_espectaculo>
+               <id>1</id>
+               <nombre_tipo>Tipo 1</nombre_tipo>
+               <precio>500</precio>
+            </tipo_espectaculo>
+            <!--Optional:-->
+            <tipo_hospedaje>
+               <id>1</id>
+               <nombre_tipo>Tipo 1</nombre_tipo>
+               <precio>750</precio>
+            </tipo_hospedaje>
+         </Productos>
+		<Productos>
+            <id_producto>1</id_producto>
+            <espectaculo>Juegos Olimpicos</espectaculo>
+            <ciudad_espectaculo>
+               <id_ciudad>1</id_ciudad>
+               <pais>Brasil</pais>
+               <tipo_ciudad>
+                  <id>1</id>
+                  <nombre_tipo>Tipo 1</nombre_tipo>
+                  <precio>1000</precio>
+               </tipo_ciudad>
+            </ciudad_espectaculo>
+            <!--Optional:-->
+            <fecha_llegada>2016-08-01</fecha_llegada>
+            <!--Optional:-->
+            <fecha_salida>2016-08-20</fecha_salida>
+            <!--Optional:-->
+            <tipo_transporte>
+               <id>1</id>
+               <nombre_tipo>Tipo 1</nombre_tipo>
+               <precio>1500</precio>
+            </tipo_transporte>
+            <tipo_espectaculo>
+               <id>1</id>
+               <nombre_tipo>Tipo 1</nombre_tipo>
+               <precio>500</precio>
+            </tipo_espectaculo>
+            <!--Optional:-->
+            <tipo_hospedaje>
+               <id>1</id>
+               <nombre_tipo>Tipo 1</nombre_tipo>
+               <precio>750</precio>
+            </tipo_hospedaje>
+         </Productos>
+         
+         <Productos>
+            <id_producto>2</id_producto>
+            <espectaculo>Juegos ParaOlimpicos</espectaculo>
+            <ciudad_espectaculo>
+               <id_ciudad>1</id_ciudad>
+               <pais>Brasil</pais>
+               <tipo_ciudad>
+                  <id>1</id>
+                  <nombre_tipo>Tipo 1</nombre_tipo>
+                  <precio>1000</precio>
+               </tipo_ciudad>
+            </ciudad_espectaculo>
+            <!--Optional:-->
+            <fecha_llegada>2016-08-21</fecha_llegada>
+            <!--Optional:-->
+            <fecha_salida>2016-08-30</fecha_salida>
+            <!--Optional:-->
+            <tipo_transporte>
+               <id>1</id>
+               <nombre_tipo>Tipo 1</nombre_tipo>
+               <precio>1500</precio>
+            </tipo_transporte>
+            <tipo_espectaculo>
+               <id>1</id>
+               <nombre_tipo>Tipo 1</nombre_tipo>
+               <precio>500</precio>
+            </tipo_espectaculo>
+            <!--Optional:-->
+            <tipo_hospedaje>
+               <id>1</id>
+               <nombre_tipo>Tipo 1</nombre_tipo>
+               <precio>750</precio>
+            </tipo_hospedaje>
+         </Productos>
+		
+		<Productos>
+            <id_producto>3</id_producto>
+            <espectaculo>Copa Mundial de Futbol</espectaculo>
+            <ciudad_espectaculo>
+               <id_ciudad>2</id_ciudad>
+               <pais>Reino Unido</pais>
+               <tipo_ciudad>
+                  <id>1</id>
+                  <nombre_tipo>Tipo 1</nombre_tipo>
+                  <precio>1000</precio>
+               </tipo_ciudad>
+            </ciudad_espectaculo>
+            <!--Optional:-->
+            <fecha_llegada>2018-06-01</fecha_llegada>
+            <!--Optional:-->
+            <fecha_salida>2018-06-31</fecha_salida>
+            <!--Optional:-->
+            <tipo_transporte>
+               <id>1</id>
+               <nombre_tipo>Tipo 1</nombre_tipo>
+               <precio>1500</precio>
+            </tipo_transporte>
+            <tipo_espectaculo>
+               <id>1</id>
+               <nombre_tipo>Tipo 1</nombre_tipo>
+               <precio>500</precio>
+            </tipo_espectaculo>
+            <!--Optional:-->
+            <tipo_hospedaje>
+               <id>1</id>
+               <nombre_tipo>Tipo 1</nombre_tipo>
+               <precio>750</precio>
+            </tipo_hospedaje>
+         </Productos>
+         
+      </ser:ConsultarProductoResponse>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarCampaniaProducto"/></con:response><con:dispatchConfig/></con:mockOperation></con:mockService><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/></con:soapui-project>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarProducto"/></con:response><con:dispatchConfig/></con:mockOperation></con:mockService><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/></con:soapui-project>

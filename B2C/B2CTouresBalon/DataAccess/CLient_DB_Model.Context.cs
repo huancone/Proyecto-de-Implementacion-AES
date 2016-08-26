@@ -13,10 +13,10 @@ namespace DataAccess
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ClientsContext : DbContext
+    public partial class ClientContext : DbContext
     {
-        public ClientsContext()
-            : base("name=ClientsContext")
+        public ClientContext()
+            : base("name=ClientContext")
         {
         }
     
@@ -25,6 +25,10 @@ namespace DataAccess
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<ADDRESS> ADDRESS { get; set; }
         public virtual DbSet<CUSTOMER> CUSTOMER { get; set; }
+        public virtual DbSet<CUSTOMER_ADDRESS> CUSTOMER_ADDRESS { get; set; }
+        public virtual DbSet<ITEMS> ITEMS { get; set; }
+        public virtual DbSet<ORDERS> ORDERS { get; set; }
     }
 }

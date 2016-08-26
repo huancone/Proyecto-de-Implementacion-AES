@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4b4d8511ba0c41acaad206f0d0e81b05" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.ADDRESS" Width="1.5" PointX="5.875" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.CUSTOMER" Width="1.5" PointX="0.5" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.CUSTOMER_ADDRESS" Width="1.5" PointX="3" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ITEMS" Width="1.5" PointX="5.875" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ORDERS" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_CUSTOMER_ADDRESS_CUSTOMER" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ORDERS_CUSTOMER" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ITEMS_ORDERS" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_CUSTOMER_ADDRESS_ADDRESS" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

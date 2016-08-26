@@ -20,20 +20,20 @@ namespace B2CTouresBalon.DAL.Security
             Identity = new GenericIdentity(Username);
         }
 
-        public string UserId { get; set; }
+        public decimal UserId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
-        public string CustId { get; set; }
+        public decimal CustId { get; set; }
         public string[] roles { get; set; }
     }
 
     public class CustomPrincipalSerializeModel
     {
-        public string UserId { get; set; }
+        public decimal UserId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string CustId { get; set; }
+        public decimal CustId { get; set; }
         public string[] roles { get; set; }
     }
 }

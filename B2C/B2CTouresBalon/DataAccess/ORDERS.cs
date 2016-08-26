@@ -12,28 +12,23 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class CUSTOMER
+    public partial class ORDERS
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CUSTOMER()
+        public ORDERS()
         {
-            this.CUSTOMER_ADDRESS = new HashSet<CUSTOMER_ADDRESS>();
-            this.ORDERS = new HashSet<ORDERS>();
+            this.ITEMS = new HashSet<ITEMS>();
         }
     
-        public decimal CUSTID { get; set; }
-        public string FNAME { get; set; }
-        public string LNAME { get; set; }
-        public string PHONENUMBER { get; set; }
-        public string EMAIL { get; set; }
-        public string PASSWORD { get; set; }
-        public string CREDITCARDTYPE { get; set; }
-        public string CREDITCARDNUMBER { get; set; }
+        public Nullable<decimal> CUSTID { get; set; }
+        public decimal ORDID { get; set; }
+        public Nullable<System.DateTime> ORDERDATE { get; set; }
+        public Nullable<decimal> PRICE { get; set; }
         public string STATUS { get; set; }
+        public string COMMENTS { get; set; }
     
+        public virtual CUSTOMER CUSTOMER { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CUSTOMER_ADDRESS> CUSTOMER_ADDRESS { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ORDERS> ORDERS { get; set; }
+        public virtual ICollection<ITEMS> ITEMS { get; set; }
     }
 }

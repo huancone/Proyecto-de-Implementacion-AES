@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using System.Globalization;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -23,10 +24,10 @@ namespace B2CTouresBalon.DAL.Security
                 var authorizedUsers = ConfigurationManager.AppSettings[UsersConfigKey];
                 var authorizedRoles = ConfigurationManager.AppSettings[RolesConfigKey];
 
-                Users = String.IsNullOrEmpty(Users) ? authorizedUsers : Users;
-                Roles = String.IsNullOrEmpty(Roles) ? authorizedRoles : Roles;
+                Users = string.IsNullOrEmpty(Users) ? authorizedUsers : Users;
+                Roles = string.IsNullOrEmpty(Roles) ? authorizedRoles : Roles;
 
-                if (!String.IsNullOrEmpty(Roles))
+                if (!string.IsNullOrEmpty(Roles))
                 {
                     if (!CurrentUser.IsInRole(Roles))
                     {
@@ -37,15 +38,13 @@ namespace B2CTouresBalon.DAL.Security
                     }
                 }
 
-                if (!String.IsNullOrEmpty(Users))
+                if (string.IsNullOrEmpty(Users)) return;
+                if (!Users.Contains(CurrentUser.UserId.ToString(CultureInfo.InvariantCulture)))
                 {
-                    if (!Users.Contains(CurrentUser.UserId))
-                    {
-                        filterContext.Result = new RedirectToRouteResult(new
+                    filterContext.Result = new RedirectToRouteResult(new
                         RouteValueDictionary(new { controller = "Error", action = "AccessDenied" }));
 
-                        // base.OnAuthorization(filterContext); //returns to login url
-                    }
+                    // base.OnAuthorization(filterContext); //returns to login url
                 }
             }
 

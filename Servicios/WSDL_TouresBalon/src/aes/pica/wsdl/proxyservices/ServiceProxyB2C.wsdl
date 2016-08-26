@@ -71,25 +71,8 @@
 			<xsd:element name="ConsultarProducto">
 				<xsd:complexType>
 					<xsd:sequence>
-						<xsd:element name="tipo_consulta" maxOccurs="1"
-							minOccurs="1">
-							<xsd:simpleType>
-								<xsd:restriction
-									base="tb_b2:TipoConsultaProducto">
-									<xsd:enumeration value="CODIGO"></xsd:enumeration>
-									<xsd:enumeration value="NOMBRE"></xsd:enumeration>
-									<xsd:enumeration value="DESCRIPCION"></xsd:enumeration>
-								</xsd:restriction>
-							</xsd:simpleType>
-						</xsd:element>
-						<xsd:element name="codigo" type="xsd:string"
-							maxOccurs="1" minOccurs="0">
-						</xsd:element>
-						<xsd:element name="nombre" type="xsd:string"
-							maxOccurs="1" minOccurs="0">
-						</xsd:element>
-						<xsd:element name="descripcion" type="xsd:string"
-							maxOccurs="1" minOccurs="0">
+						<xsd:element name="cadena" maxOccurs="1"
+							minOccurs="1" type="xsd:string">
 						</xsd:element>
 					</xsd:sequence>
 				</xsd:complexType>

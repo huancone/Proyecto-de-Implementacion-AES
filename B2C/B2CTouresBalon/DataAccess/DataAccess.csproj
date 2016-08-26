@@ -59,35 +59,47 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClientDataModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ClientDataModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ClientDataModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ClientDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ClientDataModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ClientDataModel.edmx</DependentUpon>
+    <Compile Include="ADDRESS.cs">
+      <DependentUpon>CLient_DB_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Clientes.cs" />
+    <Compile Include="CLient_DB_Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CLient_DB_Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CLient_DB_Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CLient_DB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CLient_DB_Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CLient_DB_Model.edmx</DependentUpon>
+    </Compile>
     <Compile Include="CUSTOMER.cs">
-      <DependentUpon>ClientDataModel.tt</DependentUpon>
+      <DependentUpon>CLient_DB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CUSTOMER_ADDRESS.cs">
+      <DependentUpon>CLient_DB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ITEMS.cs">
+      <DependentUpon>CLient_DB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ORDERS.cs">
+      <DependentUpon>CLient_DB_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="ClientDataModel.edmx">
+    <EntityDeploy Include="CLient_DB_Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ClientDataModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>CLient_DB_Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="ClientDataModel.edmx.diagram">
-      <DependentUpon>ClientDataModel.edmx</DependentUpon>
+    <None Include="CLient_DB_Model.edmx.diagram">
+      <DependentUpon>CLient_DB_Model.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -95,15 +107,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ClientDataModel.Context.tt">
+    <Content Include="CLient_DB_Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ClientDataModel.edmx</DependentUpon>
-      <LastGenOutput>ClientDataModel.Context.cs</LastGenOutput>
+      <DependentUpon>CLient_DB_Model.edmx</DependentUpon>
+      <LastGenOutput>CLient_DB_Model.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="ClientDataModel.tt">
+    <Content Include="CLient_DB_Model.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ClientDataModel.edmx</DependentUpon>
-      <LastGenOutput>ClientDataModel.cs</LastGenOutput>
+      <DependentUpon>CLient_DB_Model.edmx</DependentUpon>
+      <LastGenOutput>CLient_DB_Model.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

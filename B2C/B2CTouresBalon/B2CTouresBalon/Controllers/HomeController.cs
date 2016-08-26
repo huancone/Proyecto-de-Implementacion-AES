@@ -1,4 +1,9 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Web.Mvc;
+using B2CTouresBalon.DAL.Security;
+using B2CTouresBalon.Models;
+using B2CTouresBalon.ServiceProxyB2C;
 
 namespace B2CTouresBalon.Controllers
 {
@@ -8,8 +13,20 @@ namespace B2CTouresBalon.Controllers
         // GET: /Home/
         public ActionResult Index()
         {
-            //string FullName = User.FirstName + " " + User.LastName;
-            return View();
+            var proxy   = new ServiceProxyB2CClient();
+            var productos = new ProductsViewModel();
+            productos.Promociones = proxy.ConsultarCampaniaProducto();
+            return View(productos);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Index(ProductsViewModel model)
+        {
+            var proxy = new ServiceProxyB2CClient();
+            model.Productos = proxy.ConsultarProducto(model.CadenaBusqueda);
+            return View("_PartialProductList" ,model);
+        }
+
     }
 }

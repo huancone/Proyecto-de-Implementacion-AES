@@ -65,7 +65,7 @@ namespace B2CTouresBalon.Controllers
             var currentuser = System.Web.HttpContext.Current.User as CustomPrincipal;
 
 
-            var userId = currentuser?.CustId;
+            var userId = Convert.ToInt64(currentuser?.CustId);
             var user = await _context.ObtenerUsuario(userId);
 
             var model = new ManageViewModel();
@@ -89,7 +89,7 @@ namespace B2CTouresBalon.Controllers
                 : message == ManageMessageId.UpdateError ? "An error has occurred."
                 : "";
             if (!ModelState.IsValid) return View(model);
-            if (await _context.ActualizarUsuario(
+            if (await _context.ActualizarUsuario(model.CustomerId,
                 model.FirstName,
                 model.LastName,
                 model.Email,
@@ -97,9 +97,10 @@ namespace B2CTouresBalon.Controllers
                 model.CreditCardType,
                 model.CreditCardNumber))
             {
+                ModelState.AddModelError("", "Your account has been updated.");
                 return View(model);
             }
-            ViewBag.StatusMessage ="An error has occurred.";
+            ModelState.AddModelError("", "An error has occurred.");
             return View(model);
         }
 

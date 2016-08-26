@@ -1,0 +1,372 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ADDRESS">
+          <Key>
+            <PropertyRef Name="ADDRID" />
+          </Key>
+          <Property Name="STREET" Type="varchar2" MaxLength="40" />
+          <Property Name="STATE" Type="varchar2" MaxLength="40" />
+          <Property Name="ZIP" Type="varchar2" MaxLength="10" />
+          <Property Name="COUNTRY" Type="varchar2" MaxLength="40" />
+          <Property Name="ADDRESSTYPE" Type="varchar2" MaxLength="10" />
+          <Property Name="ADDRID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CITY" Type="varchar2" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="CUSTOMER">
+          <Key>
+            <PropertyRef Name="CUSTID" />
+          </Key>
+          <Property Name="CUSTID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FNAME" Type="varchar2" MaxLength="40" />
+          <Property Name="LNAME" Type="varchar2" MaxLength="40" />
+          <Property Name="PHONENUMBER" Type="varchar2" MaxLength="40" />
+          <Property Name="EMAIL" Type="varchar2" MaxLength="80" Nullable="false" />
+          <Property Name="PASSWORD" Type="varchar2" MaxLength="40" />
+          <Property Name="CREDITCARDTYPE" Type="varchar2" MaxLength="40" />
+          <Property Name="CREDITCARDNUMBER" Type="varchar2" MaxLength="40" />
+          <Property Name="STATUS" Type="varchar2" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CLIENT_DB.CUSTOMER_ADDRESS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CUSTOMER_ADDRESS">
+          <Key>
+            
+            <PropertyRef Name="ADDRESSID" />
+          </Key>
+          <Property Name="CUSTID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ADDRESSID" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ITEMS">
+          <Key>
+            <PropertyRef Name="ITEMID" />
+          </Key>
+          <Property Name="ITEMID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="PRODID" Type="number" Precision="22" Scale="0" />
+          <Property Name="PRODUCTNAME" Type="varchar2" MaxLength="50" />
+          <Property Name="PARTNUM" Type="varchar2" MaxLength="20" />
+          <Property Name="PRICE" Type="number" Precision="9" Scale="2" />
+          <Property Name="QUANTITY" Type="number" Precision="9" Scale="0" />
+          <Property Name="ORDID" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ORDERS">
+          <Key>
+            <PropertyRef Name="ORDID" />
+          </Key>
+          <Property Name="CUSTID" Type="number" Precision="38" Scale="0" />
+          <Property Name="ORDID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ORDERDATE" Type="date" />
+          <Property Name="PRICE" Type="number" Precision="9" Scale="2" />
+          <Property Name="STATUS" Type="varchar2" MaxLength="10" />
+          <Property Name="COMMENTS" Type="varchar2" MaxLength="4000" />
+        </EntityType>
+        <Association Name="FK_CUSTOMER_ADDRESS_ADDRESS">
+          <End Role="ADDRESS" Type="Self.ADDRESS" Multiplicity="1" />
+          <End Role="CUSTOMER_ADDRESS" Type="Self.CUSTOMER_ADDRESS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADDRESS">
+              <PropertyRef Name="ADDRID" />
+            </Principal>
+            <Dependent Role="CUSTOMER_ADDRESS">
+              <PropertyRef Name="CUSTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CUSTOMER_ADDRESS_CUSTOMER">
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="1" />
+          <End Role="CUSTOMER_ADDRESS" Type="Self.CUSTOMER_ADDRESS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER">
+              <PropertyRef Name="CUSTID" />
+            </Principal>
+            <Dependent Role="CUSTOMER_ADDRESS">
+              <PropertyRef Name="CUSTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ITEMS_ORDERS">
+          <End Role="ORDERS" Type="Self.ORDERS" Multiplicity="1" />
+          <End Role="ITEMS" Type="Self.ITEMS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORDERS">
+              <PropertyRef Name="ORDID" />
+            </Principal>
+            <Dependent Role="ITEMS">
+              <PropertyRef Name="ORDID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ORDERS_CUSTOMER">
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="0..1" />
+          <End Role="ORDERS" Type="Self.ORDERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER">
+              <PropertyRef Name="CUSTID" />
+            </Principal>
+            <Dependent Role="ORDERS">
+              <PropertyRef Name="CUSTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="ADDRESS" EntityType="Self.ADDRESS" Schema="CLIENT_DB" store:Type="Tables" />
+          <EntitySet Name="CUSTOMER" EntityType="Self.CUSTOMER" Schema="CLIENT_DB" store:Type="Tables" />
+          <EntitySet Name="ITEMS" EntityType="Self.ITEMS" Schema="CLIENT_DB" store:Type="Tables" />
+          <EntitySet Name="ORDERS" EntityType="Self.ORDERS" Schema="CLIENT_DB" store:Type="Tables" />
+          <EntitySet Name="CUSTOMER_ADDRESS" EntityType="Self.CUSTOMER_ADDRESS" store:Type="Tables" store:Schema="CLIENT_DB">
+            <DefiningQuery>SELECT 
+"CUSTOMER_ADDRESS"."CUSTID" AS "CUSTID", 
+"CUSTOMER_ADDRESS"."ADDRESSID" AS "ADDRESSID"
+FROM "CLIENT_DB"."CUSTOMER_ADDRESS" "CUSTOMER_ADDRESS"</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_CUSTOMER_ADDRESS_ADDRESS" Association="Self.FK_CUSTOMER_ADDRESS_ADDRESS">
+            <End Role="ADDRESS" EntitySet="ADDRESS" />
+            <End Role="CUSTOMER_ADDRESS" EntitySet="CUSTOMER_ADDRESS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CUSTOMER_ADDRESS_CUSTOMER" Association="Self.FK_CUSTOMER_ADDRESS_CUSTOMER">
+            <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+            <End Role="CUSTOMER_ADDRESS" EntitySet="CUSTOMER_ADDRESS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ITEMS_ORDERS" Association="Self.FK_ITEMS_ORDERS">
+            <End Role="ORDERS" EntitySet="ORDERS" />
+            <End Role="ITEMS" EntitySet="ITEMS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ORDERS_CUSTOMER" Association="Self.FK_ORDERS_CUSTOMER">
+            <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+            <End Role="ORDERS" EntitySet="ORDERS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ADDRESS">
+          <Key>
+            <PropertyRef Name="ADDRID" />
+          </Key>
+          <Property Name="STREET" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="STATE" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="ZIP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="COUNTRY" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="ADDRESSTYPE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ADDRID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CITY" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CUSTOMER_ADDRESS" Relationship="Model.FK_CUSTOMER_ADDRESS_ADDRESS" FromRole="ADDRESS" ToRole="CUSTOMER_ADDRESS" />
+        </EntityType>
+        <EntityType Name="CUSTOMER">
+          <Key>
+            <PropertyRef Name="CUSTID" />
+          </Key>
+          <Property Name="CUSTID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FNAME" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="LNAME" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="PHONENUMBER" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="CREDITCARDTYPE" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="CREDITCARDNUMBER" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CUSTOMER_ADDRESS" Relationship="Self.FK_CUSTOMER_ADDRESS_CUSTOMER" FromRole="CUSTOMER" ToRole="CUSTOMER_ADDRESS" />
+          <NavigationProperty Name="ORDERS" Relationship="Self.FK_ORDERS_CUSTOMER" FromRole="CUSTOMER" ToRole="ORDERS" />
+        </EntityType>
+        <EntityType Name="CUSTOMER_ADDRESS">
+          <Key>
+            <PropertyRef Name="ADDRESSID" />
+          </Key>
+          <Property Name="CUSTID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ADDRESSID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="CUSTOMER" Relationship="Self.FK_CUSTOMER_ADDRESS_CUSTOMER" FromRole="CUSTOMER_ADDRESS" ToRole="CUSTOMER" />
+          <NavigationProperty Name="ADDRESS" Relationship="Model.FK_CUSTOMER_ADDRESS_ADDRESS" FromRole="CUSTOMER_ADDRESS" ToRole="ADDRESS" />
+        </EntityType>
+        <EntityType Name="ITEMS">
+          <Key>
+            <PropertyRef Name="ITEMID" />
+          </Key>
+          <Property Name="ITEMID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="PRODID" Type="Decimal" Precision="22" Scale="0" />
+          <Property Name="PRODUCTNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PARTNUM" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PRICE" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="QUANTITY" Type="Int32" />
+          <Property Name="ORDID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="ORDERS" Relationship="Self.FK_ITEMS_ORDERS" FromRole="ITEMS" ToRole="ORDERS" />
+        </EntityType>
+        <EntityType Name="ORDERS">
+          <Key>
+            <PropertyRef Name="ORDID" />
+          </Key>
+          <Property Name="CUSTID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ORDID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ORDERDATE" Type="DateTime" />
+          <Property Name="PRICE" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="STATUS" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="COMMENTS" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CUSTOMER" Relationship="Self.FK_ORDERS_CUSTOMER" FromRole="ORDERS" ToRole="CUSTOMER" />
+          <NavigationProperty Name="ITEMS" Relationship="Self.FK_ITEMS_ORDERS" FromRole="ORDERS" ToRole="ITEMS" />
+        </EntityType>
+        <Association Name="FK_CUSTOMER_ADDRESS_CUSTOMER">
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="1" />
+          <End Role="CUSTOMER_ADDRESS" Type="Self.CUSTOMER_ADDRESS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER">
+              <PropertyRef Name="CUSTID" />
+            </Principal>
+            <Dependent Role="CUSTOMER_ADDRESS">
+              <PropertyRef Name="CUSTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ORDERS_CUSTOMER">
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="0..1" />
+          <End Role="ORDERS" Type="Self.ORDERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER">
+              <PropertyRef Name="CUSTID" />
+            </Principal>
+            <Dependent Role="ORDERS">
+              <PropertyRef Name="CUSTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ITEMS_ORDERS">
+          <End Role="ORDERS" Type="Self.ORDERS" Multiplicity="1" />
+          <End Role="ITEMS" Type="Self.ITEMS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORDERS">
+              <PropertyRef Name="ORDID" />
+            </Principal>
+            <Dependent Role="ITEMS">
+              <PropertyRef Name="ORDID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ClientContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ADDRESS" EntityType="Self.ADDRESS" />
+          <EntitySet Name="CUSTOMER" EntityType="Self.CUSTOMER" />
+          <EntitySet Name="CUSTOMER_ADDRESS" EntityType="Self.CUSTOMER_ADDRESS" />
+          <EntitySet Name="ITEMS" EntityType="Self.ITEMS" />
+          <EntitySet Name="ORDERS" EntityType="Self.ORDERS" />
+          <AssociationSet Name="FK_CUSTOMER_ADDRESS_CUSTOMER" Association="Self.FK_CUSTOMER_ADDRESS_CUSTOMER">
+            <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+            <End Role="CUSTOMER_ADDRESS" EntitySet="CUSTOMER_ADDRESS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ORDERS_CUSTOMER" Association="Self.FK_ORDERS_CUSTOMER">
+            <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+            <End Role="ORDERS" EntitySet="ORDERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ITEMS_ORDERS" Association="Self.FK_ITEMS_ORDERS">
+            <End Role="ORDERS" EntitySet="ORDERS" />
+            <End Role="ITEMS" EntitySet="ITEMS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CUSTOMER_ADDRESS_ADDRESS" Association="Model.FK_CUSTOMER_ADDRESS_ADDRESS">
+            <End Role="ADDRESS" EntitySet="ADDRESS" />
+            <End Role="CUSTOMER_ADDRESS" EntitySet="CUSTOMER_ADDRESS" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_CUSTOMER_ADDRESS_ADDRESS">
+          <End Type="Model.ADDRESS" Role="ADDRESS" Multiplicity="1" />
+          <End Type="Model.CUSTOMER_ADDRESS" Role="CUSTOMER_ADDRESS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADDRESS">
+              <PropertyRef Name="ADDRID" />
+            </Principal>
+            <Dependent Role="CUSTOMER_ADDRESS">
+              <PropertyRef Name="CUSTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="ClientContext">
+          <EntitySetMapping Name="ADDRESS">
+            <EntityTypeMapping TypeName="Model.ADDRESS">
+              <MappingFragment StoreEntitySet="ADDRESS">
+                <ScalarProperty Name="STREET" ColumnName="STREET" />
+                <ScalarProperty Name="STATE" ColumnName="STATE" />
+                <ScalarProperty Name="ZIP" ColumnName="ZIP" />
+                <ScalarProperty Name="COUNTRY" ColumnName="COUNTRY" />
+                <ScalarProperty Name="ADDRESSTYPE" ColumnName="ADDRESSTYPE" />
+                <ScalarProperty Name="ADDRID" ColumnName="ADDRID" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CUSTOMER">
+            <EntityTypeMapping TypeName="Model.CUSTOMER">
+              <MappingFragment StoreEntitySet="CUSTOMER">
+                <ScalarProperty Name="CUSTID" ColumnName="CUSTID" />
+                <ScalarProperty Name="FNAME" ColumnName="FNAME" />
+                <ScalarProperty Name="LNAME" ColumnName="LNAME" />
+                <ScalarProperty Name="PHONENUMBER" ColumnName="PHONENUMBER" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="CREDITCARDTYPE" ColumnName="CREDITCARDTYPE" />
+                <ScalarProperty Name="CREDITCARDNUMBER" ColumnName="CREDITCARDNUMBER" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CUSTOMER_ADDRESS">
+            <EntityTypeMapping TypeName="Model.CUSTOMER_ADDRESS">
+              <MappingFragment StoreEntitySet="CUSTOMER_ADDRESS">
+                <ScalarProperty Name="CUSTID" ColumnName="CUSTID" />
+                <ScalarProperty Name="ADDRESSID" ColumnName="ADDRESSID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ITEMS">
+            <EntityTypeMapping TypeName="Model.ITEMS">
+              <MappingFragment StoreEntitySet="ITEMS">
+                <ScalarProperty Name="ITEMID" ColumnName="ITEMID" />
+                <ScalarProperty Name="PRODID" ColumnName="PRODID" />
+                <ScalarProperty Name="PRODUCTNAME" ColumnName="PRODUCTNAME" />
+                <ScalarProperty Name="PARTNUM" ColumnName="PARTNUM" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+                <ScalarProperty Name="ORDID" ColumnName="ORDID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ORDERS">
+            <EntityTypeMapping TypeName="Model.ORDERS">
+              <MappingFragment StoreEntitySet="ORDERS">
+                <ScalarProperty Name="CUSTID" ColumnName="CUSTID" />
+                <ScalarProperty Name="ORDID" ColumnName="ORDID" />
+                <ScalarProperty Name="ORDERDATE" ColumnName="ORDERDATE" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="COMMENTS" ColumnName="COMMENTS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
