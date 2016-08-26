@@ -12,10 +12,20 @@ namespace B2CTouresBalon.DAL
         public String Username { get; set; }
 
         [Required]
+        [DataType(DataType.EmailAddress)]
+        [Display(Name = "Correo Electronico") ]
         public String Email { get; set; }
 
         [Required]
+        [DataType(DataType.Password) ]
+        [Display(Name ="Contraseña")]
         public String Password { get; set; }
+
+
+
+
+        [Required]
+        [Display(Name = "Contraseña")]
 
         public String FirstName { get; set; }
         public String LastName { get; set; }
