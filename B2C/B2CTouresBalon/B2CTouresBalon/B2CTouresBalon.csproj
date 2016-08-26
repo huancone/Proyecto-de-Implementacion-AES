@@ -172,6 +172,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="DAL\Client.cs" />
     <Compile Include="DAL\Role.cs" />
     <Compile Include="DAL\Security\BaseViewPage.cs" />
@@ -184,6 +185,7 @@
     <Compile Include="Models\ManageViewModel.cs" />
     <Compile Include="Models\ProductosViewModel.cs" />
     <Compile Include="Models\PromocionesViewModel.cs" />
+    <Compile Include="Models\ShoppingCartViewmodel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\ServiceProxyB2C\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -288,6 +290,18 @@
     <Content Include="Service References\ServiceProxyB2C\B2CTouresBalon.ServiceProxyB2C.RegistrarClienteResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\ServiceProxyB2C\B2CTouresBalon.ServiceProxyB2C.Orden1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceProxyB2C\B2CTouresBalon.ServiceProxyB2C.Producto1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceProxyB2C\B2CTouresBalon.ServiceProxyB2C.RegistrarClienteReponseType1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceProxyB2C\B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\ServiceProxyB2C\configuration91.svcinfo" />
     <None Include="Service References\ServiceProxyB2C\configuration.svcinfo" />
     <None Include="Service References\ServiceProxyB2C\Reference.svcmap">
@@ -313,11 +327,12 @@
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\Manage.cshtml" />
-    <None Include="Service References\ServiceProxyB2C\ServiceProxyB2C.wsdl" />
+    <None Include="Service References\ServiceProxyB2C\ServiceProxyB2C1.wsdl" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\ShoppingCart\_ShoppingCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Product\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

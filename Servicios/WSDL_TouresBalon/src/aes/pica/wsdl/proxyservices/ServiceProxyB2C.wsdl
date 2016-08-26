@@ -71,8 +71,8 @@
 			<xsd:element name="ConsultarProducto">
 				<xsd:complexType>
 					<xsd:sequence>
-						<xsd:element name="cadena" maxOccurs="1"
-							minOccurs="1" type="xsd:string">
+						<xsd:element maxOccurs="1" minOccurs="1"
+							ref="tb_b2:cadena">
 						</xsd:element>
 					</xsd:sequence>
 				</xsd:complexType>
@@ -443,6 +443,7 @@
             	</xsd:complexType>
             </xsd:element>
 		
+            <xsd:element name="cadena" type="xsd:string"></xsd:element>
 		</xsd:schema>
 	</wsdl:types>
 	<wsdl:message name="RegistrarClienteRequest">

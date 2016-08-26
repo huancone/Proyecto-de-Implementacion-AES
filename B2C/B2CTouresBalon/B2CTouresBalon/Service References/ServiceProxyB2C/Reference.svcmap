@@ -9,7 +9,9 @@
     <GenerateInternalTypes>false</GenerateInternalTypes>
     <GenerateMessageContracts>false</GenerateMessageContracts>
     <NamespaceMappings />
-    <CollectionMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.ArrayList" Category="List" />
+    </CollectionMappings>
     <GenerateSerializableTypes>true</GenerateSerializableTypes>
     <Serializer>Auto</Serializer>
     <UseSerializerForFaults>true</UseSerializerForFaults>
@@ -19,10 +21,10 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:8082/MockServiceProxyB2C?WSDL" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:8082/ServiceProxyB2C?WSDL" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ServiceProxyB2C.wsdl" MetadataType="Wsdl" ID="4dfdb513-35d5-4503-b8ed-280bc3c5c669" SourceId="1" SourceUrl="http://localhost:8082/MockServiceProxyB2C?WSDL" />
+    <MetadataFile FileName="ServiceProxyB2C1.wsdl" MetadataType="Wsdl" ID="9a73148a-b24b-4ca4-84e0-382bd4f53a35" SourceId="1" SourceUrl="http://localhost:8082/ServiceProxyB2C?WSDL" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

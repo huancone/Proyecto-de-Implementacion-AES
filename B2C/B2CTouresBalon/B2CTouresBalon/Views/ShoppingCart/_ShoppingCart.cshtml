@@ -1,0 +1,16 @@
+﻿@model IEnumerable<B2CTouresBalon.Models.ShoppingCartViewmodel>
+
+<table class="table">
+    <tr>
+        <th>Shooping Cart</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

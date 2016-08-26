@@ -63,18 +63,7 @@
       <xsd:element name="ConsultarProducto">
         <xsd:complexType>
           <xsd:sequence>
-            <xsd:element minOccurs="1" maxOccurs="1" name="tipo_consulta">
-              <xsd:simpleType>
-                <xsd:restriction base="tb_b2:TipoConsultaProducto">
-                  <xsd:enumeration value="CODIGO" />
-                  <xsd:enumeration value="NOMBRE" />
-                  <xsd:enumeration value="DESCRIPCION" />
-                </xsd:restriction>
-              </xsd:simpleType>
-            </xsd:element>
-            <xsd:element minOccurs="0" maxOccurs="1" name="codigo" type="xsd:string" />
-            <xsd:element minOccurs="0" maxOccurs="1" name="nombre" type="xsd:string" />
-            <xsd:element minOccurs="0" maxOccurs="1" name="descripcion" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="cadena" type="xsd:string" />
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
@@ -631,7 +620,7 @@
   </wsdl:binding>
   <wsdl:service name="ServiceProxyB2C">
     <wsdl:port name="ServiceProxyB2CSOAP" binding="tb_b2:ServiceProxyB2CSOAP">
-      <soap:address location="http://localhost:8082/MockServiceProxyB2C" />
+      <soap:address location="http://localhost:8082/ServiceProxyB2C" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

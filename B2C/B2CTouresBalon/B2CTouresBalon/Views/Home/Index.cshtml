@@ -1,4 +1,5 @@
-﻿@model B2CTouresBalon.Models.PromocionesViewModel
+﻿@using System.Web.UI.HtmlControls
+@model B2CTouresBalon.Models.PromocionesViewModel
 @{
     ViewBag.Title = "Home Page";
 }
@@ -21,11 +22,11 @@
             {
                 var itemClass = j++ == 0 ? "item active" : "item";
                 <div class="@itemClass">
-                    <img class="first-slide" src="http://placehold.it/1200x300" alt="slide">
+                    <img class="first-slide" src="http://placehold.it/1280x300" alt="slide">
                     <div class="container">
                         <div class="carousel-caption">
                             <h1>@producto.espectaculo</h1>
-                            <p>@producto.tipo_espectaculo</p>
+                            <p>@producto.tipo_espectaculo.precio</p>
                         </div>
                     </div>
                 </div>
@@ -41,3 +42,12 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
+<hr/>
+
+@using (Html.BeginForm("Index", "Product", FormMethod.Get))
+{
+    <p>
+        @Html.TextBox("SearchString")
+        <input type="submit" value="Search..." />
+    </p>
+}

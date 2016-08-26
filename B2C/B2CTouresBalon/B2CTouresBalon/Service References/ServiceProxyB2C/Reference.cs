@@ -930,22 +930,6 @@ namespace B2CTouresBalon.ServiceProxyB2C {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
-    public enum ConsultarProductoTipo_consulta {
-        
-        /// <remarks/>
-        CODIGO,
-        
-        /// <remarks/>
-        NOMBRE,
-        
-        /// <remarks/>
-        DESCRIPCION,
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
-    [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
@@ -1243,28 +1227,13 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public B2CTouresBalon.ServiceProxyB2C.ConsultarProductoTipo_consulta tipo_consulta;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string codigo;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=2)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string nombre;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=3)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string descripcion;
+        public string cadena;
         
         public ConsultarProductoRequest() {
         }
         
-        public ConsultarProductoRequest(B2CTouresBalon.ServiceProxyB2C.ConsultarProductoTipo_consulta tipo_consulta, string codigo, string nombre, string descripcion) {
-            this.tipo_consulta = tipo_consulta;
-            this.codigo = codigo;
-            this.nombre = nombre;
-            this.descripcion = descripcion;
+        public ConsultarProductoRequest(string cadena) {
+            this.cadena = cadena;
         }
     }
     
@@ -1812,12 +1781,9 @@ namespace B2CTouresBalon.ServiceProxyB2C {
             return base.Channel.ConsultarProducto(request);
         }
         
-        public B2CTouresBalon.ServiceProxyB2C.Producto[] ConsultarProducto(B2CTouresBalon.ServiceProxyB2C.ConsultarProductoTipo_consulta tipo_consulta, string codigo, string nombre, string descripcion) {
+        public B2CTouresBalon.ServiceProxyB2C.Producto[] ConsultarProducto(string cadena) {
             B2CTouresBalon.ServiceProxyB2C.ConsultarProductoRequest inValue = new B2CTouresBalon.ServiceProxyB2C.ConsultarProductoRequest();
-            inValue.tipo_consulta = tipo_consulta;
-            inValue.codigo = codigo;
-            inValue.nombre = nombre;
-            inValue.descripcion = descripcion;
+            inValue.cadena = cadena;
             B2CTouresBalon.ServiceProxyB2C.ConsultarProductoResponse retVal = ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).ConsultarProducto(inValue);
             return retVal.productos;
         }
@@ -1827,12 +1793,9 @@ namespace B2CTouresBalon.ServiceProxyB2C {
             return base.Channel.ConsultarProductoAsync(request);
         }
         
-        public System.Threading.Tasks.Task<B2CTouresBalon.ServiceProxyB2C.ConsultarProductoResponse> ConsultarProductoAsync(B2CTouresBalon.ServiceProxyB2C.ConsultarProductoTipo_consulta tipo_consulta, string codigo, string nombre, string descripcion) {
+        public System.Threading.Tasks.Task<B2CTouresBalon.ServiceProxyB2C.ConsultarProductoResponse> ConsultarProductoAsync(string cadena) {
             B2CTouresBalon.ServiceProxyB2C.ConsultarProductoRequest inValue = new B2CTouresBalon.ServiceProxyB2C.ConsultarProductoRequest();
-            inValue.tipo_consulta = tipo_consulta;
-            inValue.codigo = codigo;
-            inValue.nombre = nombre;
-            inValue.descripcion = descripcion;
+            inValue.cadena = cadena;
             return ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).ConsultarProductoAsync(inValue);
         }
         

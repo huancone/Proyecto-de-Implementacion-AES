@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="WRxcPQoDUEmPaZlhvlN5x20rRDU=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="YbW8yLykymwPKTQ6wH9OjxZxoUo=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="ServiceProxyB2CSOAP">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="ServiceProxyB2CSOAP" contract="ServiceProxyB2C.ServiceProxyB2C" bindingType="basicHttpBinding" address="http://localhost:8082/MockServiceProxyB2C" bindingConfiguration="ServiceProxyB2CSOAP">
+    <endpoint name="ServiceProxyB2CSOAP" contract="ServiceProxyB2C.ServiceProxyB2C" bindingType="basicHttpBinding" address="http://localhost:8082/ServiceProxyB2C" bindingConfiguration="ServiceProxyB2CSOAP">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:8082/MockServiceProxyB2C</serializedValue>
+          <serializedValue>http://localhost:8082/ServiceProxyB2C</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
