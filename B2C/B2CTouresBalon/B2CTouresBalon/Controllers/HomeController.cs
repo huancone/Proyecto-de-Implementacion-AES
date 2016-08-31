@@ -14,7 +14,7 @@ namespace B2CTouresBalon.Controllers
         public ActionResult Index()
         {
             var proxy   = new ServiceProxyB2CClient();
-            var productos = new PromocionesViewModel();
+            var productos = new PromocionesModel();
             productos.Promociones = proxy.ConsultarCampaniaProducto();
             return View(productos);
         }

@@ -63,7 +63,10 @@
       <xsd:element name="ConsultarProducto">
         <xsd:complexType>
           <xsd:sequence>
-            <xsd:element minOccurs="1" maxOccurs="1" name="cadena" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="tipo_consulta" type="tb_b2:TipoConsultaProducto" />
+            <xsd:element minOccurs="0" maxOccurs="1" name="codigo" type="xsd:string" />
+            <xsd:element minOccurs="0" maxOccurs="1" name="nombre" type="xsd:string" />
+            <xsd:element minOccurs="0" maxOccurs="1" name="descripcion" type="xsd:string" />
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
@@ -82,7 +85,7 @@
       <xsd:element name="ConsultarCampaniaProductoResponse">
         <xsd:complexType>
           <xsd:sequence>
-            <xsd:element minOccurs="0" maxOccurs="unbounded" name="Productos" type="tb_b2:Producto" />
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="productos" type="tb_b2:Producto" />
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
@@ -192,7 +195,11 @@
         </xsd:restriction>
       </xsd:simpleType>
       <xsd:simpleType name="TipoConsultaProducto">
-        <xsd:restriction base="xsd:string" />
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="description" />
+          <xsd:enumeration value="Id" />
+          <xsd:enumeration value="nombre" />
+        </xsd:restriction>
       </xsd:simpleType>
       <xsd:complexType name="TarifaValores">
         <xsd:sequence>

@@ -16,13 +16,13 @@ namespace B2CTouresBalon.Controllers
             if (string.IsNullOrEmpty(searchString))
             {
                 var proxy = new ServiceProxyB2CClient();
-                var productos = new ProductosViewModel { Productos = proxy.ConsultarCampaniaProducto() };
+                var productos = new ProductosModel { Productos = proxy.ConsultarCampaniaProducto() };
                 return View(productos);
             }
             else
             {
                 var proxy = new ServiceProxyB2CClient();
-                var productos = new ProductosViewModel { Productos = proxy.ConsultarProducto(searchString) };
+                var productos = new ProductosModel { Productos = proxy.ConsultarProducto(TipoConsultaProducto.description, null, searchString, null) };
                 return View(productos);
             }
 

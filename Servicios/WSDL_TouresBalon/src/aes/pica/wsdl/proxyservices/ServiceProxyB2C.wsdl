@@ -71,8 +71,17 @@
 			<xsd:element name="ConsultarProducto">
 				<xsd:complexType>
 					<xsd:sequence>
-						<xsd:element maxOccurs="1" minOccurs="1"
-							ref="tb_b2:cadena">
+						<xsd:element name="tipo_consulta" maxOccurs="1"
+							minOccurs="1" type="tb_b2:TipoConsultaProducto">
+						</xsd:element>
+						<xsd:element name="codigo" type="xsd:string"
+							maxOccurs="1" minOccurs="0">
+						</xsd:element>
+						<xsd:element name="nombre" type="xsd:string"
+							maxOccurs="1" minOccurs="0">
+						</xsd:element>
+						<xsd:element name="descripcion" type="xsd:string"
+							maxOccurs="1" minOccurs="0">
 						</xsd:element>
 					</xsd:sequence>
 				</xsd:complexType>
@@ -85,14 +94,14 @@
 			</xsd:element>
 			<xsd:element name="ConsultarCampaniaProducto">
 				<xsd:complexType>
-					<xsd:sequence>
+					<xsd:sequence>
 					</xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>
 			<xsd:element name="ConsultarCampaniaProductoResponse">
 				<xsd:complexType>
                     <xsd:sequence>
-						<xsd:element name="Productos" type="tb_b2:Producto" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+						<xsd:element name="productos" type="tb_b2:Producto" maxOccurs="unbounded" minOccurs="0"></xsd:element>
 					</xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>
@@ -230,7 +239,11 @@
 				</xsd:restriction>
 			</xsd:simpleType>
 			<xsd:simpleType name="TipoConsultaProducto">
-				<xsd:restriction base="xsd:string"></xsd:restriction>
+				<xsd:restriction base="xsd:string">
+					<xsd:enumeration value="description"></xsd:enumeration>
+					<xsd:enumeration value="Id"></xsd:enumeration>
+					<xsd:enumeration value="nombre"></xsd:enumeration>
+				</xsd:restriction>
 			</xsd:simpleType>
 			<xsd:complexType name="TarifaValores">
 				<xsd:sequence>
@@ -443,7 +456,6 @@
             	</xsd:complexType>
             </xsd:element>
 		
-            <xsd:element name="cadena" type="xsd:string"></xsd:element>
 		</xsd:schema>
 	</wsdl:types>
 	<wsdl:message name="RegistrarClienteRequest">

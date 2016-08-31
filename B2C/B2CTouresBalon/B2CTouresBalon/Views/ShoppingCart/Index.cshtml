@@ -1,0 +1,36 @@
+﻿@using B2CTouresBalon.Controllers
+
+<table class="table">
+    <tr>
+        <th>
+            Espectaculo
+        </th>
+        <th>
+            Ciudad
+        </th>
+        <th>
+            Fecha
+        </th>
+        <th>
+            Precio
+        </th>
+    </tr>
+
+    @foreach (var item in (List<Item>)Session["cart"])
+    {
+        <tr>
+            <td>
+                @item.Producto.espectaculo
+            </td>
+            <td>
+                @item.Producto.ciudad_espectaculo
+            </td>
+            <td>
+                @item.Producto.fecha_llegada
+            </td>
+            <td>
+                @item.Producto.tipo_espectaculo.precio
+            </td>
+        </tr>
+    }
+</table>

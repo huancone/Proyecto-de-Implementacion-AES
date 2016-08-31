@@ -171,6 +171,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Item.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="DAL\Client.cs" />
@@ -183,9 +184,8 @@
     </Compile>
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\ManageViewModel.cs" />
-    <Compile Include="Models\ProductosViewModel.cs" />
-    <Compile Include="Models\PromocionesViewModel.cs" />
-    <Compile Include="Models\ShoppingCartViewmodel.cs" />
+    <Compile Include="Models\ProductosModel.cs" />
+    <Compile Include="Models\PromocionesModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\ServiceProxyB2C\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -329,7 +329,8 @@
     <Content Include="Views\Account\Manage.cshtml" />
     <None Include="Service References\ServiceProxyB2C\ServiceProxyB2C1.wsdl" />
     <Content Include="Views\Product\Index.cshtml" />
-    <Content Include="Views\ShoppingCart\_ShoppingCart.cshtml" />
+    <Content Include="Views\ShoppingCart\Index.cshtml" />
+    <Content Include="Views\ShoppingCart\Cart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

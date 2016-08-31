@@ -1,5 +1,5 @@
 ﻿@using System.Activities.Statements
-@model B2CTouresBalon.Models.ProductosViewModel
+@model B2CTouresBalon.Models.ProductosModel
 
 <hr />
 @using (Html.BeginForm("Index", "Product", FormMethod.Get))
@@ -40,7 +40,7 @@
                                     <span class="glyphicon glyphicon-star"></span>
                                 </p>
                             </div>
-                            @Html.ActionLink("Add to Cart", "Index", "ShoppingCart", new { id = producto.id_producto, quantity = 1 })
+                            @Html.ActionLink("Add to Cart", "OrderNow", "ShoppingCart",null, new { id = producto.id_producto, quantity = 1 })
                         </div>
                     </div>
                 }

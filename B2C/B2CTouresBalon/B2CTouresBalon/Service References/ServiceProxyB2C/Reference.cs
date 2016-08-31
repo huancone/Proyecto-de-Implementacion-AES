@@ -722,11 +722,11 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         [System.ServiceModel.OperationContractAttribute(Action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarProducto", ReplyAction="*")]
         System.Threading.Tasks.Task<B2CTouresBalon.ServiceProxyB2C.ConsultarProductoResponse> ConsultarProductoAsync(B2CTouresBalon.ServiceProxyB2C.ConsultarProductoRequest request);
         
-        // CODEGEN: Parameter 'Productos' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
+        // CODEGEN: Parameter 'productos' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarCampaniaProducto", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(B2CTouresBalon.ServiceProxyB2C.ConsultarCampaniaProductoFault), Action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarCampaniaProducto", Name="ConsultarCampaniaProductoFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="Productos")]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="productos")]
         B2CTouresBalon.ServiceProxyB2C.ConsultarCampaniaProductoResponse ConsultarCampaniaProducto(B2CTouresBalon.ServiceProxyB2C.ConsultarCampaniaProductoRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarCampaniaProducto", ReplyAction="*")]
@@ -925,6 +925,22 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         public ActualizarContraseniaClienteResponse(B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica respuesta) {
             this.respuesta = respuesta;
         }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
+    public enum TipoConsultaProducto {
+        
+        /// <remarks/>
+        description,
+        
+        /// <remarks/>
+        Id,
+        
+        /// <remarks/>
+        nombre,
     }
     
     /// <remarks/>
@@ -1227,13 +1243,28 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string cadena;
+        public B2CTouresBalon.ServiceProxyB2C.TipoConsultaProducto tipo_consulta;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string codigo;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string nombre;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=3)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string descripcion;
         
         public ConsultarProductoRequest() {
         }
         
-        public ConsultarProductoRequest(string cadena) {
-            this.cadena = cadena;
+        public ConsultarProductoRequest(B2CTouresBalon.ServiceProxyB2C.TipoConsultaProducto tipo_consulta, string codigo, string nombre, string descripcion) {
+            this.tipo_consulta = tipo_consulta;
+            this.codigo = codigo;
+            this.nombre = nombre;
+            this.descripcion = descripcion;
         }
     }
     
@@ -1272,14 +1303,14 @@ namespace B2CTouresBalon.ServiceProxyB2C {
     public partial class ConsultarCampaniaProductoResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("Productos", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public B2CTouresBalon.ServiceProxyB2C.Producto[] Productos;
+        [System.Xml.Serialization.XmlElementAttribute("productos", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public B2CTouresBalon.ServiceProxyB2C.Producto[] productos;
         
         public ConsultarCampaniaProductoResponse() {
         }
         
-        public ConsultarCampaniaProductoResponse(B2CTouresBalon.ServiceProxyB2C.Producto[] Productos) {
-            this.Productos = Productos;
+        public ConsultarCampaniaProductoResponse(B2CTouresBalon.ServiceProxyB2C.Producto[] productos) {
+            this.productos = productos;
         }
     }
     
@@ -1781,9 +1812,12 @@ namespace B2CTouresBalon.ServiceProxyB2C {
             return base.Channel.ConsultarProducto(request);
         }
         
-        public B2CTouresBalon.ServiceProxyB2C.Producto[] ConsultarProducto(string cadena) {
+        public B2CTouresBalon.ServiceProxyB2C.Producto[] ConsultarProducto(B2CTouresBalon.ServiceProxyB2C.TipoConsultaProducto tipo_consulta, string codigo, string nombre, string descripcion) {
             B2CTouresBalon.ServiceProxyB2C.ConsultarProductoRequest inValue = new B2CTouresBalon.ServiceProxyB2C.ConsultarProductoRequest();
-            inValue.cadena = cadena;
+            inValue.tipo_consulta = tipo_consulta;
+            inValue.codigo = codigo;
+            inValue.nombre = nombre;
+            inValue.descripcion = descripcion;
             B2CTouresBalon.ServiceProxyB2C.ConsultarProductoResponse retVal = ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).ConsultarProducto(inValue);
             return retVal.productos;
         }
@@ -1793,9 +1827,12 @@ namespace B2CTouresBalon.ServiceProxyB2C {
             return base.Channel.ConsultarProductoAsync(request);
         }
         
-        public System.Threading.Tasks.Task<B2CTouresBalon.ServiceProxyB2C.ConsultarProductoResponse> ConsultarProductoAsync(string cadena) {
+        public System.Threading.Tasks.Task<B2CTouresBalon.ServiceProxyB2C.ConsultarProductoResponse> ConsultarProductoAsync(B2CTouresBalon.ServiceProxyB2C.TipoConsultaProducto tipo_consulta, string codigo, string nombre, string descripcion) {
             B2CTouresBalon.ServiceProxyB2C.ConsultarProductoRequest inValue = new B2CTouresBalon.ServiceProxyB2C.ConsultarProductoRequest();
-            inValue.cadena = cadena;
+            inValue.tipo_consulta = tipo_consulta;
+            inValue.codigo = codigo;
+            inValue.nombre = nombre;
+            inValue.descripcion = descripcion;
             return ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).ConsultarProductoAsync(inValue);
         }
         
@@ -1807,7 +1844,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         public B2CTouresBalon.ServiceProxyB2C.Producto[] ConsultarCampaniaProducto() {
             B2CTouresBalon.ServiceProxyB2C.ConsultarCampaniaProductoRequest inValue = new B2CTouresBalon.ServiceProxyB2C.ConsultarCampaniaProductoRequest();
             B2CTouresBalon.ServiceProxyB2C.ConsultarCampaniaProductoResponse retVal = ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).ConsultarCampaniaProducto(inValue);
-            return retVal.Productos;
+            return retVal.productos;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
