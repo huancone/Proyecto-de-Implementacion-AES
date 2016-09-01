@@ -40,7 +40,7 @@
                                     <span class="glyphicon glyphicon-star"></span>
                                 </p>
                             </div>
-                            @Html.ActionLink("Add to Cart", "OrderNow", "ShoppingCart",null, new { id = producto.id_producto, quantity = 1 })
+                            @Html.ActionLink("Add to Cart", "OrderNow", "ShoppingCart", new { id = producto.id_producto, cantidad = 1 }, null)
                         </div>
                     </div>
                 }

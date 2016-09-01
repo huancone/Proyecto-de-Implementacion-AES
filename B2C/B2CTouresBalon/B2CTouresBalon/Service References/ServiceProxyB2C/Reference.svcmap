@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="14096122-7285-4498-a4ed-34c6125a18f6" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="38342b05-5f7b-4e56-8713-1236495fc4c0" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
-    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
-    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
     <ExcludedTypes />
     <ImportXmlTypes>false</ImportXmlTypes>
@@ -10,7 +9,7 @@
     <GenerateMessageContracts>false</GenerateMessageContracts>
     <NamespaceMappings />
     <CollectionMappings>
-      <CollectionMapping TypeName="System.Collections.ArrayList" Category="List" />
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
     </CollectionMappings>
     <GenerateSerializableTypes>true</GenerateSerializableTypes>
     <Serializer>Auto</Serializer>
@@ -24,7 +23,7 @@
     <MetadataSource Address="http://localhost:8082/ServiceProxyB2C?WSDL" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ServiceProxyB2C1.wsdl" MetadataType="Wsdl" ID="9a73148a-b24b-4ca4-84e0-382bd4f53a35" SourceId="1" SourceUrl="http://localhost:8082/ServiceProxyB2C?WSDL" />
+    <MetadataFile FileName="ServiceProxyB2C.wsdl" MetadataType="Wsdl" ID="b64aea1c-11e9-4365-a06c-9ad300a8d5ef" SourceId="1" SourceUrl="http://localhost:8082/ServiceProxyB2C?WSDL" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

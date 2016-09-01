@@ -679,8 +679,10 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         [return: System.ServiceModel.MessageParameterAttribute(Name="registrarClienteResponse")]
         B2CTouresBalon.ServiceProxyB2C.RegistrarClienteResponse RegistrarCliente(B2CTouresBalon.ServiceProxyB2C.RegistrarClienteRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://www.touresbalon.com/ServiceProxyB2C/RegistrarCliente", ReplyAction="*")]
-        System.Threading.Tasks.Task<B2CTouresBalon.ServiceProxyB2C.RegistrarClienteResponse> RegistrarClienteAsync(B2CTouresBalon.ServiceProxyB2C.RegistrarClienteRequest request);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://www.touresbalon.com/ServiceProxyB2C/RegistrarCliente", ReplyAction="*")]
+        System.IAsyncResult BeginRegistrarCliente(B2CTouresBalon.ServiceProxyB2C.RegistrarClienteRequest request, System.AsyncCallback callback, object asyncState);
+        
+        B2CTouresBalon.ServiceProxyB2C.RegistrarClienteResponse EndRegistrarCliente(System.IAsyncResult result);
         
         // CODEGEN: Parameter 'respuesta' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://www.touresbalon.com/ServiceProxyB2C/AutenticarCliente", ReplyAction="*")]
@@ -689,8 +691,10 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         [return: System.ServiceModel.MessageParameterAttribute(Name="respuesta")]
         B2CTouresBalon.ServiceProxyB2C.AutenticarClienteResponse AutenticarCliente(B2CTouresBalon.ServiceProxyB2C.AutenticarClienteRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://www.touresbalon.com/ServiceProxyB2C/AutenticarCliente", ReplyAction="*")]
-        System.Threading.Tasks.Task<B2CTouresBalon.ServiceProxyB2C.AutenticarClienteResponse> AutenticarClienteAsync(B2CTouresBalon.ServiceProxyB2C.AutenticarClienteRequest request);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://www.touresbalon.com/ServiceProxyB2C/AutenticarCliente", ReplyAction="*")]
+        System.IAsyncResult BeginAutenticarCliente(B2CTouresBalon.ServiceProxyB2C.AutenticarClienteRequest request, System.AsyncCallback callback, object asyncState);
+        
+        B2CTouresBalon.ServiceProxyB2C.AutenticarClienteResponse EndAutenticarCliente(System.IAsyncResult result);
         
         // CODEGEN: Parameter 'respuesta' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://www.touresbalon.com/ServiceProxyB2C/ActualizarCliente", ReplyAction="*")]
@@ -699,8 +703,10 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         [return: System.ServiceModel.MessageParameterAttribute(Name="respuesta")]
         B2CTouresBalon.ServiceProxyB2C.ActualizarClienteResponse ActualizarCliente(B2CTouresBalon.ServiceProxyB2C.ActualizarClienteRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://www.touresbalon.com/ServiceProxyB2C/ActualizarCliente", ReplyAction="*")]
-        System.Threading.Tasks.Task<B2CTouresBalon.ServiceProxyB2C.ActualizarClienteResponse> ActualizarClienteAsync(B2CTouresBalon.ServiceProxyB2C.ActualizarClienteRequest request);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://www.touresbalon.com/ServiceProxyB2C/ActualizarCliente", ReplyAction="*")]
+        System.IAsyncResult BeginActualizarCliente(B2CTouresBalon.ServiceProxyB2C.ActualizarClienteRequest request, System.AsyncCallback callback, object asyncState);
+        
+        B2CTouresBalon.ServiceProxyB2C.ActualizarClienteResponse EndActualizarCliente(System.IAsyncResult result);
         
         // CODEGEN: Parameter 'respuesta' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://www.touresbalon.com/ServiceProxyB2C/ActualizarContraseniaCliente", ReplyAction="*")]
@@ -709,8 +715,10 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         [return: System.ServiceModel.MessageParameterAttribute(Name="respuesta")]
         B2CTouresBalon.ServiceProxyB2C.ActualizarContraseniaClienteResponse ActualizarContraseniaCliente(B2CTouresBalon.ServiceProxyB2C.ActualizarContraseniaClienteRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://www.touresbalon.com/ServiceProxyB2C/ActualizarContraseniaCliente", ReplyAction="*")]
-        System.Threading.Tasks.Task<B2CTouresBalon.ServiceProxyB2C.ActualizarContraseniaClienteResponse> ActualizarContraseniaClienteAsync(B2CTouresBalon.ServiceProxyB2C.ActualizarContraseniaClienteRequest request);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://www.touresbalon.com/ServiceProxyB2C/ActualizarContraseniaCliente", ReplyAction="*")]
+        System.IAsyncResult BeginActualizarContraseniaCliente(B2CTouresBalon.ServiceProxyB2C.ActualizarContraseniaClienteRequest request, System.AsyncCallback callback, object asyncState);
+        
+        B2CTouresBalon.ServiceProxyB2C.ActualizarContraseniaClienteResponse EndActualizarContraseniaCliente(System.IAsyncResult result);
         
         // CODEGEN: Parameter 'productos' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarProducto", ReplyAction="*")]
@@ -719,8 +727,10 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         [return: System.ServiceModel.MessageParameterAttribute(Name="productos")]
         B2CTouresBalon.ServiceProxyB2C.ConsultarProductoResponse ConsultarProducto(B2CTouresBalon.ServiceProxyB2C.ConsultarProductoRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarProducto", ReplyAction="*")]
-        System.Threading.Tasks.Task<B2CTouresBalon.ServiceProxyB2C.ConsultarProductoResponse> ConsultarProductoAsync(B2CTouresBalon.ServiceProxyB2C.ConsultarProductoRequest request);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarProducto", ReplyAction="*")]
+        System.IAsyncResult BeginConsultarProducto(B2CTouresBalon.ServiceProxyB2C.ConsultarProductoRequest request, System.AsyncCallback callback, object asyncState);
+        
+        B2CTouresBalon.ServiceProxyB2C.ConsultarProductoResponse EndConsultarProducto(System.IAsyncResult result);
         
         // CODEGEN: Parameter 'productos' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarCampaniaProducto", ReplyAction="*")]
@@ -729,8 +739,10 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         [return: System.ServiceModel.MessageParameterAttribute(Name="productos")]
         B2CTouresBalon.ServiceProxyB2C.ConsultarCampaniaProductoResponse ConsultarCampaniaProducto(B2CTouresBalon.ServiceProxyB2C.ConsultarCampaniaProductoRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarCampaniaProducto", ReplyAction="*")]
-        System.Threading.Tasks.Task<B2CTouresBalon.ServiceProxyB2C.ConsultarCampaniaProductoResponse> ConsultarCampaniaProductoAsync(B2CTouresBalon.ServiceProxyB2C.ConsultarCampaniaProductoRequest request);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarCampaniaProducto", ReplyAction="*")]
+        System.IAsyncResult BeginConsultarCampaniaProducto(B2CTouresBalon.ServiceProxyB2C.ConsultarCampaniaProductoRequest request, System.AsyncCallback callback, object asyncState);
+        
+        B2CTouresBalon.ServiceProxyB2C.ConsultarCampaniaProductoResponse EndConsultarCampaniaProducto(System.IAsyncResult result);
         
         // CODEGEN: Parameter 'orden' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarClientesOrdenes", ReplyAction="*")]
@@ -739,8 +751,10 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         [return: System.ServiceModel.MessageParameterAttribute(Name="orden")]
         B2CTouresBalon.ServiceProxyB2C.ConsultarClientesOrdenesResponse ConsultarClientesOrdenes(B2CTouresBalon.ServiceProxyB2C.ConsultarClientesOrdenesRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarClientesOrdenes", ReplyAction="*")]
-        System.Threading.Tasks.Task<B2CTouresBalon.ServiceProxyB2C.ConsultarClientesOrdenesResponse> ConsultarClientesOrdenesAsync(B2CTouresBalon.ServiceProxyB2C.ConsultarClientesOrdenesRequest request);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarClientesOrdenes", ReplyAction="*")]
+        System.IAsyncResult BeginConsultarClientesOrdenes(B2CTouresBalon.ServiceProxyB2C.ConsultarClientesOrdenesRequest request, System.AsyncCallback callback, object asyncState);
+        
+        B2CTouresBalon.ServiceProxyB2C.ConsultarClientesOrdenesResponse EndConsultarClientesOrdenes(System.IAsyncResult result);
         
         // CODEGEN: Parameter 'respuesta' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://www.touresbalon.com/ServiceProxyB2C/CancelarOrdenes", ReplyAction="*")]
@@ -749,8 +763,10 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         [return: System.ServiceModel.MessageParameterAttribute(Name="respuesta")]
         B2CTouresBalon.ServiceProxyB2C.CancelarOrdenesResponse CancelarOrdenes(B2CTouresBalon.ServiceProxyB2C.CancelarOrdenesRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://www.touresbalon.com/ServiceProxyB2C/CancelarOrdenes", ReplyAction="*")]
-        System.Threading.Tasks.Task<B2CTouresBalon.ServiceProxyB2C.CancelarOrdenesResponse> CancelarOrdenesAsync(B2CTouresBalon.ServiceProxyB2C.CancelarOrdenesRequest request);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://www.touresbalon.com/ServiceProxyB2C/CancelarOrdenes", ReplyAction="*")]
+        System.IAsyncResult BeginCancelarOrdenes(B2CTouresBalon.ServiceProxyB2C.CancelarOrdenesRequest request, System.AsyncCallback callback, object asyncState);
+        
+        B2CTouresBalon.ServiceProxyB2C.CancelarOrdenesResponse EndCancelarOrdenes(System.IAsyncResult result);
         
         // CODEGEN: Parameter 'respuesta' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://www.touresbalon.com/ServiceProxyB2C/CrearOrdenes", ReplyAction="*")]
@@ -759,8 +775,10 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         [return: System.ServiceModel.MessageParameterAttribute(Name="respuesta")]
         B2CTouresBalon.ServiceProxyB2C.CrearOrdenesResponse CrearOrdenes(B2CTouresBalon.ServiceProxyB2C.CrearOrdenesRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://www.touresbalon.com/ServiceProxyB2C/CrearOrdenes", ReplyAction="*")]
-        System.Threading.Tasks.Task<B2CTouresBalon.ServiceProxyB2C.CrearOrdenesResponse> CrearOrdenesAsync(B2CTouresBalon.ServiceProxyB2C.CrearOrdenesRequest request);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://www.touresbalon.com/ServiceProxyB2C/CrearOrdenes", ReplyAction="*")]
+        System.IAsyncResult BeginCrearOrdenes(B2CTouresBalon.ServiceProxyB2C.CrearOrdenesRequest request, System.AsyncCallback callback, object asyncState);
+        
+        B2CTouresBalon.ServiceProxyB2C.CrearOrdenesResponse EndCrearOrdenes(System.IAsyncResult result);
         
         // CODEGEN: Parameter 'lista_productos_top' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://www.touresbalon.com/ServiceProxyB2C/ConsultaTop5Productos", ReplyAction="*")]
@@ -769,8 +787,10 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         [return: System.ServiceModel.MessageParameterAttribute(Name="lista_productos_top")]
         B2CTouresBalon.ServiceProxyB2C.ConsultaTop5ProductosResponse ConsultaTop5Productos(B2CTouresBalon.ServiceProxyB2C.ConsultaTop5ProductosRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://www.touresbalon.com/ServiceProxyB2C/ConsultaTop5Productos", ReplyAction="*")]
-        System.Threading.Tasks.Task<B2CTouresBalon.ServiceProxyB2C.ConsultaTop5ProductosResponse> ConsultaTop5ProductosAsync(B2CTouresBalon.ServiceProxyB2C.ConsultaTop5ProductosRequest request);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://www.touresbalon.com/ServiceProxyB2C/ConsultaTop5Productos", ReplyAction="*")]
+        System.IAsyncResult BeginConsultaTop5Productos(B2CTouresBalon.ServiceProxyB2C.ConsultaTop5ProductosRequest request, System.AsyncCallback callback, object asyncState);
+        
+        B2CTouresBalon.ServiceProxyB2C.ConsultaTop5ProductosResponse EndConsultaTop5Productos(System.IAsyncResult result);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -1690,7 +1710,257 @@ namespace B2CTouresBalon.ServiceProxyB2C {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class RegistrarClienteCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public RegistrarClienteCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public B2CTouresBalon.ServiceProxyB2C.RegistrarClienteReponseType Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((B2CTouresBalon.ServiceProxyB2C.RegistrarClienteReponseType)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class AutenticarClienteCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public AutenticarClienteCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ActualizarClienteCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public ActualizarClienteCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ActualizarContraseniaClienteCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public ActualizarContraseniaClienteCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ConsultarProductoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public ConsultarProductoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public B2CTouresBalon.ServiceProxyB2C.Producto[] Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((B2CTouresBalon.ServiceProxyB2C.Producto[])(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ConsultarCampaniaProductoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public ConsultarCampaniaProductoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public B2CTouresBalon.ServiceProxyB2C.Producto[] Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((B2CTouresBalon.ServiceProxyB2C.Producto[])(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ConsultarClientesOrdenesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public ConsultarClientesOrdenesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public B2CTouresBalon.ServiceProxyB2C.Orden[] Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((B2CTouresBalon.ServiceProxyB2C.Orden[])(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class CancelarOrdenesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public CancelarOrdenesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class CrearOrdenesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public CrearOrdenesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ConsultaTop5ProductosCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public ConsultaTop5ProductosCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public B2CTouresBalon.ServiceProxyB2C.Producto[] Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((B2CTouresBalon.ServiceProxyB2C.Producto[])(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class ServiceProxyB2CClient : System.ServiceModel.ClientBase<B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C>, B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C {
+        
+        private BeginOperationDelegate onBeginRegistrarClienteDelegate;
+        
+        private EndOperationDelegate onEndRegistrarClienteDelegate;
+        
+        private System.Threading.SendOrPostCallback onRegistrarClienteCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginAutenticarClienteDelegate;
+        
+        private EndOperationDelegate onEndAutenticarClienteDelegate;
+        
+        private System.Threading.SendOrPostCallback onAutenticarClienteCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginActualizarClienteDelegate;
+        
+        private EndOperationDelegate onEndActualizarClienteDelegate;
+        
+        private System.Threading.SendOrPostCallback onActualizarClienteCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginActualizarContraseniaClienteDelegate;
+        
+        private EndOperationDelegate onEndActualizarContraseniaClienteDelegate;
+        
+        private System.Threading.SendOrPostCallback onActualizarContraseniaClienteCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginConsultarProductoDelegate;
+        
+        private EndOperationDelegate onEndConsultarProductoDelegate;
+        
+        private System.Threading.SendOrPostCallback onConsultarProductoCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginConsultarCampaniaProductoDelegate;
+        
+        private EndOperationDelegate onEndConsultarCampaniaProductoDelegate;
+        
+        private System.Threading.SendOrPostCallback onConsultarCampaniaProductoCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginConsultarClientesOrdenesDelegate;
+        
+        private EndOperationDelegate onEndConsultarClientesOrdenesDelegate;
+        
+        private System.Threading.SendOrPostCallback onConsultarClientesOrdenesCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginCancelarOrdenesDelegate;
+        
+        private EndOperationDelegate onEndCancelarOrdenesDelegate;
+        
+        private System.Threading.SendOrPostCallback onCancelarOrdenesCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginCrearOrdenesDelegate;
+        
+        private EndOperationDelegate onEndCrearOrdenesDelegate;
+        
+        private System.Threading.SendOrPostCallback onCrearOrdenesCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginConsultaTop5ProductosDelegate;
+        
+        private EndOperationDelegate onEndConsultaTop5ProductosDelegate;
+        
+        private System.Threading.SendOrPostCallback onConsultaTop5ProductosCompletedDelegate;
         
         public ServiceProxyB2CClient() {
         }
@@ -1711,6 +1981,26 @@ namespace B2CTouresBalon.ServiceProxyB2C {
                 base(binding, remoteAddress) {
         }
         
+        public event System.EventHandler<RegistrarClienteCompletedEventArgs> RegistrarClienteCompleted;
+        
+        public event System.EventHandler<AutenticarClienteCompletedEventArgs> AutenticarClienteCompleted;
+        
+        public event System.EventHandler<ActualizarClienteCompletedEventArgs> ActualizarClienteCompleted;
+        
+        public event System.EventHandler<ActualizarContraseniaClienteCompletedEventArgs> ActualizarContraseniaClienteCompleted;
+        
+        public event System.EventHandler<ConsultarProductoCompletedEventArgs> ConsultarProductoCompleted;
+        
+        public event System.EventHandler<ConsultarCampaniaProductoCompletedEventArgs> ConsultarCampaniaProductoCompleted;
+        
+        public event System.EventHandler<ConsultarClientesOrdenesCompletedEventArgs> ConsultarClientesOrdenesCompleted;
+        
+        public event System.EventHandler<CancelarOrdenesCompletedEventArgs> CancelarOrdenesCompleted;
+        
+        public event System.EventHandler<CrearOrdenesCompletedEventArgs> CrearOrdenesCompleted;
+        
+        public event System.EventHandler<ConsultaTop5ProductosCompletedEventArgs> ConsultaTop5ProductosCompleted;
+        
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         B2CTouresBalon.ServiceProxyB2C.RegistrarClienteResponse B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.RegistrarCliente(B2CTouresBalon.ServiceProxyB2C.RegistrarClienteRequest request) {
             return base.Channel.RegistrarCliente(request);
@@ -1724,14 +2014,62 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<B2CTouresBalon.ServiceProxyB2C.RegistrarClienteResponse> B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.RegistrarClienteAsync(B2CTouresBalon.ServiceProxyB2C.RegistrarClienteRequest request) {
-            return base.Channel.RegistrarClienteAsync(request);
+        System.IAsyncResult B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.BeginRegistrarCliente(B2CTouresBalon.ServiceProxyB2C.RegistrarClienteRequest request, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginRegistrarCliente(request, callback, asyncState);
         }
         
-        public System.Threading.Tasks.Task<B2CTouresBalon.ServiceProxyB2C.RegistrarClienteResponse> RegistrarClienteAsync(B2CTouresBalon.ServiceProxyB2C.Cliente cliente) {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginRegistrarCliente(B2CTouresBalon.ServiceProxyB2C.Cliente cliente, System.AsyncCallback callback, object asyncState) {
             B2CTouresBalon.ServiceProxyB2C.RegistrarClienteRequest inValue = new B2CTouresBalon.ServiceProxyB2C.RegistrarClienteRequest();
             inValue.cliente = cliente;
-            return ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).RegistrarClienteAsync(inValue);
+            return ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).BeginRegistrarCliente(inValue, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        B2CTouresBalon.ServiceProxyB2C.RegistrarClienteResponse B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.EndRegistrarCliente(System.IAsyncResult result) {
+            return base.Channel.EndRegistrarCliente(result);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public B2CTouresBalon.ServiceProxyB2C.RegistrarClienteReponseType EndRegistrarCliente(System.IAsyncResult result) {
+            B2CTouresBalon.ServiceProxyB2C.RegistrarClienteResponse retVal = ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).EndRegistrarCliente(result);
+            return retVal.registrarClienteResponse1;
+        }
+        
+        private System.IAsyncResult OnBeginRegistrarCliente(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            B2CTouresBalon.ServiceProxyB2C.Cliente cliente = ((B2CTouresBalon.ServiceProxyB2C.Cliente)(inValues[0]));
+            return this.BeginRegistrarCliente(cliente, callback, asyncState);
+        }
+        
+        private object[] OnEndRegistrarCliente(System.IAsyncResult result) {
+            B2CTouresBalon.ServiceProxyB2C.RegistrarClienteReponseType retVal = this.EndRegistrarCliente(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnRegistrarClienteCompleted(object state) {
+            if ((this.RegistrarClienteCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.RegistrarClienteCompleted(this, new RegistrarClienteCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void RegistrarClienteAsync(B2CTouresBalon.ServiceProxyB2C.Cliente cliente) {
+            this.RegistrarClienteAsync(cliente, null);
+        }
+        
+        public void RegistrarClienteAsync(B2CTouresBalon.ServiceProxyB2C.Cliente cliente, object userState) {
+            if ((this.onBeginRegistrarClienteDelegate == null)) {
+                this.onBeginRegistrarClienteDelegate = new BeginOperationDelegate(this.OnBeginRegistrarCliente);
+            }
+            if ((this.onEndRegistrarClienteDelegate == null)) {
+                this.onEndRegistrarClienteDelegate = new EndOperationDelegate(this.OnEndRegistrarCliente);
+            }
+            if ((this.onRegistrarClienteCompletedDelegate == null)) {
+                this.onRegistrarClienteCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnRegistrarClienteCompleted);
+            }
+            base.InvokeAsync(this.onBeginRegistrarClienteDelegate, new object[] {
+                        cliente}, this.onEndRegistrarClienteDelegate, this.onRegistrarClienteCompletedDelegate, userState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -1748,15 +2086,65 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<B2CTouresBalon.ServiceProxyB2C.AutenticarClienteResponse> B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.AutenticarClienteAsync(B2CTouresBalon.ServiceProxyB2C.AutenticarClienteRequest request) {
-            return base.Channel.AutenticarClienteAsync(request);
+        System.IAsyncResult B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.BeginAutenticarCliente(B2CTouresBalon.ServiceProxyB2C.AutenticarClienteRequest request, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginAutenticarCliente(request, callback, asyncState);
         }
         
-        public System.Threading.Tasks.Task<B2CTouresBalon.ServiceProxyB2C.AutenticarClienteResponse> AutenticarClienteAsync(string usuario, string contrasenia) {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginAutenticarCliente(string usuario, string contrasenia, System.AsyncCallback callback, object asyncState) {
             B2CTouresBalon.ServiceProxyB2C.AutenticarClienteRequest inValue = new B2CTouresBalon.ServiceProxyB2C.AutenticarClienteRequest();
             inValue.usuario = usuario;
             inValue.contrasenia = contrasenia;
-            return ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).AutenticarClienteAsync(inValue);
+            return ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).BeginAutenticarCliente(inValue, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        B2CTouresBalon.ServiceProxyB2C.AutenticarClienteResponse B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.EndAutenticarCliente(System.IAsyncResult result) {
+            return base.Channel.EndAutenticarCliente(result);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica EndAutenticarCliente(System.IAsyncResult result) {
+            B2CTouresBalon.ServiceProxyB2C.AutenticarClienteResponse retVal = ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).EndAutenticarCliente(result);
+            return retVal.respuesta;
+        }
+        
+        private System.IAsyncResult OnBeginAutenticarCliente(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string usuario = ((string)(inValues[0]));
+            string contrasenia = ((string)(inValues[1]));
+            return this.BeginAutenticarCliente(usuario, contrasenia, callback, asyncState);
+        }
+        
+        private object[] OnEndAutenticarCliente(System.IAsyncResult result) {
+            B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica retVal = this.EndAutenticarCliente(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnAutenticarClienteCompleted(object state) {
+            if ((this.AutenticarClienteCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.AutenticarClienteCompleted(this, new AutenticarClienteCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void AutenticarClienteAsync(string usuario, string contrasenia) {
+            this.AutenticarClienteAsync(usuario, contrasenia, null);
+        }
+        
+        public void AutenticarClienteAsync(string usuario, string contrasenia, object userState) {
+            if ((this.onBeginAutenticarClienteDelegate == null)) {
+                this.onBeginAutenticarClienteDelegate = new BeginOperationDelegate(this.OnBeginAutenticarCliente);
+            }
+            if ((this.onEndAutenticarClienteDelegate == null)) {
+                this.onEndAutenticarClienteDelegate = new EndOperationDelegate(this.OnEndAutenticarCliente);
+            }
+            if ((this.onAutenticarClienteCompletedDelegate == null)) {
+                this.onAutenticarClienteCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnAutenticarClienteCompleted);
+            }
+            base.InvokeAsync(this.onBeginAutenticarClienteDelegate, new object[] {
+                        usuario,
+                        contrasenia}, this.onEndAutenticarClienteDelegate, this.onAutenticarClienteCompletedDelegate, userState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -1772,14 +2160,62 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<B2CTouresBalon.ServiceProxyB2C.ActualizarClienteResponse> B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.ActualizarClienteAsync(B2CTouresBalon.ServiceProxyB2C.ActualizarClienteRequest request) {
-            return base.Channel.ActualizarClienteAsync(request);
+        System.IAsyncResult B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.BeginActualizarCliente(B2CTouresBalon.ServiceProxyB2C.ActualizarClienteRequest request, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginActualizarCliente(request, callback, asyncState);
         }
         
-        public System.Threading.Tasks.Task<B2CTouresBalon.ServiceProxyB2C.ActualizarClienteResponse> ActualizarClienteAsync(B2CTouresBalon.ServiceProxyB2C.Cliente cliente) {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginActualizarCliente(B2CTouresBalon.ServiceProxyB2C.Cliente cliente, System.AsyncCallback callback, object asyncState) {
             B2CTouresBalon.ServiceProxyB2C.ActualizarClienteRequest inValue = new B2CTouresBalon.ServiceProxyB2C.ActualizarClienteRequest();
             inValue.cliente = cliente;
-            return ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).ActualizarClienteAsync(inValue);
+            return ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).BeginActualizarCliente(inValue, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        B2CTouresBalon.ServiceProxyB2C.ActualizarClienteResponse B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.EndActualizarCliente(System.IAsyncResult result) {
+            return base.Channel.EndActualizarCliente(result);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica EndActualizarCliente(System.IAsyncResult result) {
+            B2CTouresBalon.ServiceProxyB2C.ActualizarClienteResponse retVal = ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).EndActualizarCliente(result);
+            return retVal.respuesta;
+        }
+        
+        private System.IAsyncResult OnBeginActualizarCliente(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            B2CTouresBalon.ServiceProxyB2C.Cliente cliente = ((B2CTouresBalon.ServiceProxyB2C.Cliente)(inValues[0]));
+            return this.BeginActualizarCliente(cliente, callback, asyncState);
+        }
+        
+        private object[] OnEndActualizarCliente(System.IAsyncResult result) {
+            B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica retVal = this.EndActualizarCliente(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnActualizarClienteCompleted(object state) {
+            if ((this.ActualizarClienteCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.ActualizarClienteCompleted(this, new ActualizarClienteCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void ActualizarClienteAsync(B2CTouresBalon.ServiceProxyB2C.Cliente cliente) {
+            this.ActualizarClienteAsync(cliente, null);
+        }
+        
+        public void ActualizarClienteAsync(B2CTouresBalon.ServiceProxyB2C.Cliente cliente, object userState) {
+            if ((this.onBeginActualizarClienteDelegate == null)) {
+                this.onBeginActualizarClienteDelegate = new BeginOperationDelegate(this.OnBeginActualizarCliente);
+            }
+            if ((this.onEndActualizarClienteDelegate == null)) {
+                this.onEndActualizarClienteDelegate = new EndOperationDelegate(this.OnEndActualizarCliente);
+            }
+            if ((this.onActualizarClienteCompletedDelegate == null)) {
+                this.onActualizarClienteCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnActualizarClienteCompleted);
+            }
+            base.InvokeAsync(this.onBeginActualizarClienteDelegate, new object[] {
+                        cliente}, this.onEndActualizarClienteDelegate, this.onActualizarClienteCompletedDelegate, userState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -1796,15 +2232,65 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<B2CTouresBalon.ServiceProxyB2C.ActualizarContraseniaClienteResponse> B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.ActualizarContraseniaClienteAsync(B2CTouresBalon.ServiceProxyB2C.ActualizarContraseniaClienteRequest request) {
-            return base.Channel.ActualizarContraseniaClienteAsync(request);
+        System.IAsyncResult B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.BeginActualizarContraseniaCliente(B2CTouresBalon.ServiceProxyB2C.ActualizarContraseniaClienteRequest request, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginActualizarContraseniaCliente(request, callback, asyncState);
         }
         
-        public System.Threading.Tasks.Task<B2CTouresBalon.ServiceProxyB2C.ActualizarContraseniaClienteResponse> ActualizarContraseniaClienteAsync(string usuario, string contrasenia) {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginActualizarContraseniaCliente(string usuario, string contrasenia, System.AsyncCallback callback, object asyncState) {
             B2CTouresBalon.ServiceProxyB2C.ActualizarContraseniaClienteRequest inValue = new B2CTouresBalon.ServiceProxyB2C.ActualizarContraseniaClienteRequest();
             inValue.usuario = usuario;
             inValue.contrasenia = contrasenia;
-            return ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).ActualizarContraseniaClienteAsync(inValue);
+            return ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).BeginActualizarContraseniaCliente(inValue, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        B2CTouresBalon.ServiceProxyB2C.ActualizarContraseniaClienteResponse B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.EndActualizarContraseniaCliente(System.IAsyncResult result) {
+            return base.Channel.EndActualizarContraseniaCliente(result);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica EndActualizarContraseniaCliente(System.IAsyncResult result) {
+            B2CTouresBalon.ServiceProxyB2C.ActualizarContraseniaClienteResponse retVal = ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).EndActualizarContraseniaCliente(result);
+            return retVal.respuesta;
+        }
+        
+        private System.IAsyncResult OnBeginActualizarContraseniaCliente(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string usuario = ((string)(inValues[0]));
+            string contrasenia = ((string)(inValues[1]));
+            return this.BeginActualizarContraseniaCliente(usuario, contrasenia, callback, asyncState);
+        }
+        
+        private object[] OnEndActualizarContraseniaCliente(System.IAsyncResult result) {
+            B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica retVal = this.EndActualizarContraseniaCliente(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnActualizarContraseniaClienteCompleted(object state) {
+            if ((this.ActualizarContraseniaClienteCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.ActualizarContraseniaClienteCompleted(this, new ActualizarContraseniaClienteCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void ActualizarContraseniaClienteAsync(string usuario, string contrasenia) {
+            this.ActualizarContraseniaClienteAsync(usuario, contrasenia, null);
+        }
+        
+        public void ActualizarContraseniaClienteAsync(string usuario, string contrasenia, object userState) {
+            if ((this.onBeginActualizarContraseniaClienteDelegate == null)) {
+                this.onBeginActualizarContraseniaClienteDelegate = new BeginOperationDelegate(this.OnBeginActualizarContraseniaCliente);
+            }
+            if ((this.onEndActualizarContraseniaClienteDelegate == null)) {
+                this.onEndActualizarContraseniaClienteDelegate = new EndOperationDelegate(this.OnEndActualizarContraseniaCliente);
+            }
+            if ((this.onActualizarContraseniaClienteCompletedDelegate == null)) {
+                this.onActualizarContraseniaClienteCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnActualizarContraseniaClienteCompleted);
+            }
+            base.InvokeAsync(this.onBeginActualizarContraseniaClienteDelegate, new object[] {
+                        usuario,
+                        contrasenia}, this.onEndActualizarContraseniaClienteDelegate, this.onActualizarContraseniaClienteCompletedDelegate, userState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -1823,17 +2309,71 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<B2CTouresBalon.ServiceProxyB2C.ConsultarProductoResponse> B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.ConsultarProductoAsync(B2CTouresBalon.ServiceProxyB2C.ConsultarProductoRequest request) {
-            return base.Channel.ConsultarProductoAsync(request);
+        System.IAsyncResult B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.BeginConsultarProducto(B2CTouresBalon.ServiceProxyB2C.ConsultarProductoRequest request, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginConsultarProducto(request, callback, asyncState);
         }
         
-        public System.Threading.Tasks.Task<B2CTouresBalon.ServiceProxyB2C.ConsultarProductoResponse> ConsultarProductoAsync(B2CTouresBalon.ServiceProxyB2C.TipoConsultaProducto tipo_consulta, string codigo, string nombre, string descripcion) {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginConsultarProducto(B2CTouresBalon.ServiceProxyB2C.TipoConsultaProducto tipo_consulta, string codigo, string nombre, string descripcion, System.AsyncCallback callback, object asyncState) {
             B2CTouresBalon.ServiceProxyB2C.ConsultarProductoRequest inValue = new B2CTouresBalon.ServiceProxyB2C.ConsultarProductoRequest();
             inValue.tipo_consulta = tipo_consulta;
             inValue.codigo = codigo;
             inValue.nombre = nombre;
             inValue.descripcion = descripcion;
-            return ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).ConsultarProductoAsync(inValue);
+            return ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).BeginConsultarProducto(inValue, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        B2CTouresBalon.ServiceProxyB2C.ConsultarProductoResponse B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.EndConsultarProducto(System.IAsyncResult result) {
+            return base.Channel.EndConsultarProducto(result);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public B2CTouresBalon.ServiceProxyB2C.Producto[] EndConsultarProducto(System.IAsyncResult result) {
+            B2CTouresBalon.ServiceProxyB2C.ConsultarProductoResponse retVal = ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).EndConsultarProducto(result);
+            return retVal.productos;
+        }
+        
+        private System.IAsyncResult OnBeginConsultarProducto(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            B2CTouresBalon.ServiceProxyB2C.TipoConsultaProducto tipo_consulta = ((B2CTouresBalon.ServiceProxyB2C.TipoConsultaProducto)(inValues[0]));
+            string codigo = ((string)(inValues[1]));
+            string nombre = ((string)(inValues[2]));
+            string descripcion = ((string)(inValues[3]));
+            return this.BeginConsultarProducto(tipo_consulta, codigo, nombre, descripcion, callback, asyncState);
+        }
+        
+        private object[] OnEndConsultarProducto(System.IAsyncResult result) {
+            B2CTouresBalon.ServiceProxyB2C.Producto[] retVal = this.EndConsultarProducto(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnConsultarProductoCompleted(object state) {
+            if ((this.ConsultarProductoCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.ConsultarProductoCompleted(this, new ConsultarProductoCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void ConsultarProductoAsync(B2CTouresBalon.ServiceProxyB2C.TipoConsultaProducto tipo_consulta, string codigo, string nombre, string descripcion) {
+            this.ConsultarProductoAsync(tipo_consulta, codigo, nombre, descripcion, null);
+        }
+        
+        public void ConsultarProductoAsync(B2CTouresBalon.ServiceProxyB2C.TipoConsultaProducto tipo_consulta, string codigo, string nombre, string descripcion, object userState) {
+            if ((this.onBeginConsultarProductoDelegate == null)) {
+                this.onBeginConsultarProductoDelegate = new BeginOperationDelegate(this.OnBeginConsultarProducto);
+            }
+            if ((this.onEndConsultarProductoDelegate == null)) {
+                this.onEndConsultarProductoDelegate = new EndOperationDelegate(this.OnEndConsultarProducto);
+            }
+            if ((this.onConsultarProductoCompletedDelegate == null)) {
+                this.onConsultarProductoCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnConsultarProductoCompleted);
+            }
+            base.InvokeAsync(this.onBeginConsultarProductoDelegate, new object[] {
+                        tipo_consulta,
+                        codigo,
+                        nombre,
+                        descripcion}, this.onEndConsultarProductoDelegate, this.onConsultarProductoCompletedDelegate, userState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -1848,13 +2388,59 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<B2CTouresBalon.ServiceProxyB2C.ConsultarCampaniaProductoResponse> B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.ConsultarCampaniaProductoAsync(B2CTouresBalon.ServiceProxyB2C.ConsultarCampaniaProductoRequest request) {
-            return base.Channel.ConsultarCampaniaProductoAsync(request);
+        System.IAsyncResult B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.BeginConsultarCampaniaProducto(B2CTouresBalon.ServiceProxyB2C.ConsultarCampaniaProductoRequest request, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginConsultarCampaniaProducto(request, callback, asyncState);
         }
         
-        public System.Threading.Tasks.Task<B2CTouresBalon.ServiceProxyB2C.ConsultarCampaniaProductoResponse> ConsultarCampaniaProductoAsync() {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginConsultarCampaniaProducto(System.AsyncCallback callback, object asyncState) {
             B2CTouresBalon.ServiceProxyB2C.ConsultarCampaniaProductoRequest inValue = new B2CTouresBalon.ServiceProxyB2C.ConsultarCampaniaProductoRequest();
-            return ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).ConsultarCampaniaProductoAsync(inValue);
+            return ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).BeginConsultarCampaniaProducto(inValue, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        B2CTouresBalon.ServiceProxyB2C.ConsultarCampaniaProductoResponse B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.EndConsultarCampaniaProducto(System.IAsyncResult result) {
+            return base.Channel.EndConsultarCampaniaProducto(result);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public B2CTouresBalon.ServiceProxyB2C.Producto[] EndConsultarCampaniaProducto(System.IAsyncResult result) {
+            B2CTouresBalon.ServiceProxyB2C.ConsultarCampaniaProductoResponse retVal = ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).EndConsultarCampaniaProducto(result);
+            return retVal.productos;
+        }
+        
+        private System.IAsyncResult OnBeginConsultarCampaniaProducto(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            return this.BeginConsultarCampaniaProducto(callback, asyncState);
+        }
+        
+        private object[] OnEndConsultarCampaniaProducto(System.IAsyncResult result) {
+            B2CTouresBalon.ServiceProxyB2C.Producto[] retVal = this.EndConsultarCampaniaProducto(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnConsultarCampaniaProductoCompleted(object state) {
+            if ((this.ConsultarCampaniaProductoCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.ConsultarCampaniaProductoCompleted(this, new ConsultarCampaniaProductoCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void ConsultarCampaniaProductoAsync() {
+            this.ConsultarCampaniaProductoAsync(null);
+        }
+        
+        public void ConsultarCampaniaProductoAsync(object userState) {
+            if ((this.onBeginConsultarCampaniaProductoDelegate == null)) {
+                this.onBeginConsultarCampaniaProductoDelegate = new BeginOperationDelegate(this.OnBeginConsultarCampaniaProducto);
+            }
+            if ((this.onEndConsultarCampaniaProductoDelegate == null)) {
+                this.onEndConsultarCampaniaProductoDelegate = new EndOperationDelegate(this.OnEndConsultarCampaniaProducto);
+            }
+            if ((this.onConsultarCampaniaProductoCompletedDelegate == null)) {
+                this.onConsultarCampaniaProductoCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnConsultarCampaniaProductoCompleted);
+            }
+            base.InvokeAsync(this.onBeginConsultarCampaniaProductoDelegate, null, this.onEndConsultarCampaniaProductoDelegate, this.onConsultarCampaniaProductoCompletedDelegate, userState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -1870,14 +2456,62 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<B2CTouresBalon.ServiceProxyB2C.ConsultarClientesOrdenesResponse> B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.ConsultarClientesOrdenesAsync(B2CTouresBalon.ServiceProxyB2C.ConsultarClientesOrdenesRequest request) {
-            return base.Channel.ConsultarClientesOrdenesAsync(request);
+        System.IAsyncResult B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.BeginConsultarClientesOrdenes(B2CTouresBalon.ServiceProxyB2C.ConsultarClientesOrdenesRequest request, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginConsultarClientesOrdenes(request, callback, asyncState);
         }
         
-        public System.Threading.Tasks.Task<B2CTouresBalon.ServiceProxyB2C.ConsultarClientesOrdenesResponse> ConsultarClientesOrdenesAsync(string id_cliente) {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginConsultarClientesOrdenes(string id_cliente, System.AsyncCallback callback, object asyncState) {
             B2CTouresBalon.ServiceProxyB2C.ConsultarClientesOrdenesRequest inValue = new B2CTouresBalon.ServiceProxyB2C.ConsultarClientesOrdenesRequest();
             inValue.id_cliente = id_cliente;
-            return ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).ConsultarClientesOrdenesAsync(inValue);
+            return ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).BeginConsultarClientesOrdenes(inValue, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        B2CTouresBalon.ServiceProxyB2C.ConsultarClientesOrdenesResponse B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.EndConsultarClientesOrdenes(System.IAsyncResult result) {
+            return base.Channel.EndConsultarClientesOrdenes(result);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public B2CTouresBalon.ServiceProxyB2C.Orden[] EndConsultarClientesOrdenes(System.IAsyncResult result) {
+            B2CTouresBalon.ServiceProxyB2C.ConsultarClientesOrdenesResponse retVal = ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).EndConsultarClientesOrdenes(result);
+            return retVal.orden;
+        }
+        
+        private System.IAsyncResult OnBeginConsultarClientesOrdenes(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string id_cliente = ((string)(inValues[0]));
+            return this.BeginConsultarClientesOrdenes(id_cliente, callback, asyncState);
+        }
+        
+        private object[] OnEndConsultarClientesOrdenes(System.IAsyncResult result) {
+            B2CTouresBalon.ServiceProxyB2C.Orden[] retVal = this.EndConsultarClientesOrdenes(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnConsultarClientesOrdenesCompleted(object state) {
+            if ((this.ConsultarClientesOrdenesCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.ConsultarClientesOrdenesCompleted(this, new ConsultarClientesOrdenesCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void ConsultarClientesOrdenesAsync(string id_cliente) {
+            this.ConsultarClientesOrdenesAsync(id_cliente, null);
+        }
+        
+        public void ConsultarClientesOrdenesAsync(string id_cliente, object userState) {
+            if ((this.onBeginConsultarClientesOrdenesDelegate == null)) {
+                this.onBeginConsultarClientesOrdenesDelegate = new BeginOperationDelegate(this.OnBeginConsultarClientesOrdenes);
+            }
+            if ((this.onEndConsultarClientesOrdenesDelegate == null)) {
+                this.onEndConsultarClientesOrdenesDelegate = new EndOperationDelegate(this.OnEndConsultarClientesOrdenes);
+            }
+            if ((this.onConsultarClientesOrdenesCompletedDelegate == null)) {
+                this.onConsultarClientesOrdenesCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnConsultarClientesOrdenesCompleted);
+            }
+            base.InvokeAsync(this.onBeginConsultarClientesOrdenesDelegate, new object[] {
+                        id_cliente}, this.onEndConsultarClientesOrdenesDelegate, this.onConsultarClientesOrdenesCompletedDelegate, userState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -1893,14 +2527,62 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<B2CTouresBalon.ServiceProxyB2C.CancelarOrdenesResponse> B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.CancelarOrdenesAsync(B2CTouresBalon.ServiceProxyB2C.CancelarOrdenesRequest request) {
-            return base.Channel.CancelarOrdenesAsync(request);
+        System.IAsyncResult B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.BeginCancelarOrdenes(B2CTouresBalon.ServiceProxyB2C.CancelarOrdenesRequest request, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginCancelarOrdenes(request, callback, asyncState);
         }
         
-        public System.Threading.Tasks.Task<B2CTouresBalon.ServiceProxyB2C.CancelarOrdenesResponse> CancelarOrdenesAsync(string[] id_orden) {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginCancelarOrdenes(string[] id_orden, System.AsyncCallback callback, object asyncState) {
             B2CTouresBalon.ServiceProxyB2C.CancelarOrdenesRequest inValue = new B2CTouresBalon.ServiceProxyB2C.CancelarOrdenesRequest();
             inValue.id_orden = id_orden;
-            return ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).CancelarOrdenesAsync(inValue);
+            return ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).BeginCancelarOrdenes(inValue, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        B2CTouresBalon.ServiceProxyB2C.CancelarOrdenesResponse B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.EndCancelarOrdenes(System.IAsyncResult result) {
+            return base.Channel.EndCancelarOrdenes(result);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica EndCancelarOrdenes(System.IAsyncResult result) {
+            B2CTouresBalon.ServiceProxyB2C.CancelarOrdenesResponse retVal = ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).EndCancelarOrdenes(result);
+            return retVal.respuesta;
+        }
+        
+        private System.IAsyncResult OnBeginCancelarOrdenes(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string[] id_orden = ((string[])(inValues[0]));
+            return this.BeginCancelarOrdenes(id_orden, callback, asyncState);
+        }
+        
+        private object[] OnEndCancelarOrdenes(System.IAsyncResult result) {
+            B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica retVal = this.EndCancelarOrdenes(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnCancelarOrdenesCompleted(object state) {
+            if ((this.CancelarOrdenesCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.CancelarOrdenesCompleted(this, new CancelarOrdenesCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void CancelarOrdenesAsync(string[] id_orden) {
+            this.CancelarOrdenesAsync(id_orden, null);
+        }
+        
+        public void CancelarOrdenesAsync(string[] id_orden, object userState) {
+            if ((this.onBeginCancelarOrdenesDelegate == null)) {
+                this.onBeginCancelarOrdenesDelegate = new BeginOperationDelegate(this.OnBeginCancelarOrdenes);
+            }
+            if ((this.onEndCancelarOrdenesDelegate == null)) {
+                this.onEndCancelarOrdenesDelegate = new EndOperationDelegate(this.OnEndCancelarOrdenes);
+            }
+            if ((this.onCancelarOrdenesCompletedDelegate == null)) {
+                this.onCancelarOrdenesCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnCancelarOrdenesCompleted);
+            }
+            base.InvokeAsync(this.onBeginCancelarOrdenesDelegate, new object[] {
+                        id_orden}, this.onEndCancelarOrdenesDelegate, this.onCancelarOrdenesCompletedDelegate, userState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -1916,14 +2598,62 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<B2CTouresBalon.ServiceProxyB2C.CrearOrdenesResponse> B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.CrearOrdenesAsync(B2CTouresBalon.ServiceProxyB2C.CrearOrdenesRequest request) {
-            return base.Channel.CrearOrdenesAsync(request);
+        System.IAsyncResult B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.BeginCrearOrdenes(B2CTouresBalon.ServiceProxyB2C.CrearOrdenesRequest request, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginCrearOrdenes(request, callback, asyncState);
         }
         
-        public System.Threading.Tasks.Task<B2CTouresBalon.ServiceProxyB2C.CrearOrdenesResponse> CrearOrdenesAsync(B2CTouresBalon.ServiceProxyB2C.Orden orden) {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginCrearOrdenes(B2CTouresBalon.ServiceProxyB2C.Orden orden, System.AsyncCallback callback, object asyncState) {
             B2CTouresBalon.ServiceProxyB2C.CrearOrdenesRequest inValue = new B2CTouresBalon.ServiceProxyB2C.CrearOrdenesRequest();
             inValue.orden = orden;
-            return ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).CrearOrdenesAsync(inValue);
+            return ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).BeginCrearOrdenes(inValue, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        B2CTouresBalon.ServiceProxyB2C.CrearOrdenesResponse B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.EndCrearOrdenes(System.IAsyncResult result) {
+            return base.Channel.EndCrearOrdenes(result);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica EndCrearOrdenes(System.IAsyncResult result) {
+            B2CTouresBalon.ServiceProxyB2C.CrearOrdenesResponse retVal = ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).EndCrearOrdenes(result);
+            return retVal.respuesta;
+        }
+        
+        private System.IAsyncResult OnBeginCrearOrdenes(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            B2CTouresBalon.ServiceProxyB2C.Orden orden = ((B2CTouresBalon.ServiceProxyB2C.Orden)(inValues[0]));
+            return this.BeginCrearOrdenes(orden, callback, asyncState);
+        }
+        
+        private object[] OnEndCrearOrdenes(System.IAsyncResult result) {
+            B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica retVal = this.EndCrearOrdenes(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnCrearOrdenesCompleted(object state) {
+            if ((this.CrearOrdenesCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.CrearOrdenesCompleted(this, new CrearOrdenesCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void CrearOrdenesAsync(B2CTouresBalon.ServiceProxyB2C.Orden orden) {
+            this.CrearOrdenesAsync(orden, null);
+        }
+        
+        public void CrearOrdenesAsync(B2CTouresBalon.ServiceProxyB2C.Orden orden, object userState) {
+            if ((this.onBeginCrearOrdenesDelegate == null)) {
+                this.onBeginCrearOrdenesDelegate = new BeginOperationDelegate(this.OnBeginCrearOrdenes);
+            }
+            if ((this.onEndCrearOrdenesDelegate == null)) {
+                this.onEndCrearOrdenesDelegate = new EndOperationDelegate(this.OnEndCrearOrdenes);
+            }
+            if ((this.onCrearOrdenesCompletedDelegate == null)) {
+                this.onCrearOrdenesCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnCrearOrdenesCompleted);
+            }
+            base.InvokeAsync(this.onBeginCrearOrdenesDelegate, new object[] {
+                        orden}, this.onEndCrearOrdenesDelegate, this.onCrearOrdenesCompletedDelegate, userState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -1939,14 +2669,62 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<B2CTouresBalon.ServiceProxyB2C.ConsultaTop5ProductosResponse> B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.ConsultaTop5ProductosAsync(B2CTouresBalon.ServiceProxyB2C.ConsultaTop5ProductosRequest request) {
-            return base.Channel.ConsultaTop5ProductosAsync(request);
+        System.IAsyncResult B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.BeginConsultaTop5Productos(B2CTouresBalon.ServiceProxyB2C.ConsultaTop5ProductosRequest request, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginConsultaTop5Productos(request, callback, asyncState);
         }
         
-        public System.Threading.Tasks.Task<B2CTouresBalon.ServiceProxyB2C.ConsultaTop5ProductosResponse> ConsultaTop5ProductosAsync(string id_producto) {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginConsultaTop5Productos(string id_producto, System.AsyncCallback callback, object asyncState) {
             B2CTouresBalon.ServiceProxyB2C.ConsultaTop5ProductosRequest inValue = new B2CTouresBalon.ServiceProxyB2C.ConsultaTop5ProductosRequest();
             inValue.id_producto = id_producto;
-            return ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).ConsultaTop5ProductosAsync(inValue);
+            return ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).BeginConsultaTop5Productos(inValue, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        B2CTouresBalon.ServiceProxyB2C.ConsultaTop5ProductosResponse B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.EndConsultaTop5Productos(System.IAsyncResult result) {
+            return base.Channel.EndConsultaTop5Productos(result);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public B2CTouresBalon.ServiceProxyB2C.Producto[] EndConsultaTop5Productos(System.IAsyncResult result) {
+            B2CTouresBalon.ServiceProxyB2C.ConsultaTop5ProductosResponse retVal = ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).EndConsultaTop5Productos(result);
+            return retVal.lista_productos_top;
+        }
+        
+        private System.IAsyncResult OnBeginConsultaTop5Productos(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string id_producto = ((string)(inValues[0]));
+            return this.BeginConsultaTop5Productos(id_producto, callback, asyncState);
+        }
+        
+        private object[] OnEndConsultaTop5Productos(System.IAsyncResult result) {
+            B2CTouresBalon.ServiceProxyB2C.Producto[] retVal = this.EndConsultaTop5Productos(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnConsultaTop5ProductosCompleted(object state) {
+            if ((this.ConsultaTop5ProductosCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.ConsultaTop5ProductosCompleted(this, new ConsultaTop5ProductosCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void ConsultaTop5ProductosAsync(string id_producto) {
+            this.ConsultaTop5ProductosAsync(id_producto, null);
+        }
+        
+        public void ConsultaTop5ProductosAsync(string id_producto, object userState) {
+            if ((this.onBeginConsultaTop5ProductosDelegate == null)) {
+                this.onBeginConsultaTop5ProductosDelegate = new BeginOperationDelegate(this.OnBeginConsultaTop5Productos);
+            }
+            if ((this.onEndConsultaTop5ProductosDelegate == null)) {
+                this.onEndConsultaTop5ProductosDelegate = new EndOperationDelegate(this.OnEndConsultaTop5Productos);
+            }
+            if ((this.onConsultaTop5ProductosCompletedDelegate == null)) {
+                this.onConsultaTop5ProductosCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnConsultaTop5ProductosCompleted);
+            }
+            base.InvokeAsync(this.onBeginConsultaTop5ProductosDelegate, new object[] {
+                        id_producto}, this.onEndConsultaTop5ProductosDelegate, this.onConsultaTop5ProductosCompletedDelegate, userState);
         }
     }
 }

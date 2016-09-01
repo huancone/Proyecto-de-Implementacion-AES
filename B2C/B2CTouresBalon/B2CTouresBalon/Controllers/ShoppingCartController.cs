@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using B2CTouresBalon.ServiceProxyB2C;
+using Enyim.Caching;
+using Enyim.Caching.Memcached;
 
 namespace B2CTouresBalon.Controllers
 {
@@ -17,6 +20,12 @@ namespace B2CTouresBalon.Controllers
 
         public ActionResult OrderNow(int id, int cantidad)
         {
+
+            using (var client = new MemcachedClient())
+            {
+                client.Store(StoreMode.Set, "currentTime", DateTime.Now.ToString(CultureInfo.InvariantCulture));
+                var value = client.Get<string>("currentTime");
+            }
             if (Session["cart"]==null )
             {
                 var proxyProductos = new ServiceProxyB2CClient();
