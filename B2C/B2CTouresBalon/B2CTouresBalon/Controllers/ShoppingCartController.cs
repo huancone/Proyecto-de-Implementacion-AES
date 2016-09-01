@@ -40,7 +40,14 @@ namespace B2CTouresBalon.Controllers
             }
             else
             {
-                
+                var cart = (List<Item>)Session["cart"];
+                var proxyProductos = new ServiceProxyB2CClient();
+                var item = new Item
+                {
+                    Producto = proxyProductos.ConsultarProducto(TipoConsultaProducto.Id, id.ToString(), null, null).First(),
+                    Cantidad = cantidad
+                };
+                cart.Add(item);
             }
             return View("cart");
         }
