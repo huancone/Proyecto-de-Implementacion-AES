@@ -4,9 +4,12 @@ using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using B2CTouresBalon.DAL.Security;
+using B2CTouresBalon.Models;
 using B2CTouresBalon.ServiceProxyB2C;
 using Enyim.Caching;
 using Enyim.Caching.Memcached;
+using Item = B2CTouresBalon.Models.Item;
 
 namespace B2CTouresBalon.Controllers
 {
@@ -20,34 +23,45 @@ namespace B2CTouresBalon.Controllers
 
         public ActionResult OrderNow(int id, int cantidad)
         {
+            if (!ModelState.IsValid) return View("Index");
+
+            var currentUser = System.Web.HttpContext.Current.User as CustomPrincipal;
+            if (currentUser == null) return View("Index");
 
             using (var client = new MemcachedClient())
             {
-                client.Store(StoreMode.Set, "currentTime", DateTime.Now.ToString(CultureInfo.InvariantCulture));
-                var value = client.Get<string>("currentTime");
-            }
-            if (Session["cart"]==null )
-            {
-                var proxyProductos = new ServiceProxyB2CClient();
-                var item = new Item
+                var userCache = client.Get<Cart>(currentUser.CustId.ToString(CultureInfo.InvariantCulture));
+                if (null == userCache)
                 {
-                    Producto = proxyProductos.ConsultarProducto(TipoConsultaProducto.Id, id.ToString(), null, null).First(),
-                    Cantidad = cantidad
-                };
-                var cart = new List<Item> {item};
-                Session["cart"] = cart;
+                    var proxyProductos = new ServiceProxyB2CClient();
+                    var item = new Item
+                    {
+                        Producto = proxyProductos.ConsultarProducto(TipoConsultaProducto.Id, id.ToString(), null, null).First(),
+                        Cantidad = cantidad
+                    };
+                    var cart = new Cart {UserId = (int) currentUser.CustId};
+                    cart.Items.Add(item);
+                    client.Store(StoreMode.Set, currentUser.CustId.ToString(CultureInfo.InvariantCulture), cart);
+                }
+                else
+                {
+                    var cart = new Cart { UserId = (int)currentUser.CustId };
+                    var found = false;
+                    foreach (var i in cart.Items.Where(i => i.Producto.id_producto == id))
+                    {
+                        i.Cantidad = i.Cantidad + cantidad;
+                        found = true;
+                    }
+                    if (found) return View("cart");
+                    var proxyProductos = new ServiceProxyB2CClient();
+                    var item = new Item
+                    {
+                        Producto = proxyProductos.ConsultarProducto(TipoConsultaProducto.Id, id.ToString(), null, null).First(),
+                        Cantidad = cantidad
+                    };
+                    cart.Items.Add(item);
+                }
 
-            }
-            else
-            {
-                var cart = (List<Item>)Session["cart"];
-                var proxyProductos = new ServiceProxyB2CClient();
-                var item = new Item
-                {
-                    Producto = proxyProductos.ConsultarProducto(TipoConsultaProducto.Id, id.ToString(), null, null).First(),
-                    Cantidad = cantidad
-                };
-                cart.Add(item);
             }
             return View("cart");
         }
