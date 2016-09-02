@@ -18,7 +18,13 @@ namespace B2CTouresBalon.Controllers
         // GET: ShoppingCart
         public ActionResult Index()
         {
-            return View();
+            using (var client = new MemcachedClient())
+            {
+                var currentUser = System.Web.HttpContext.Current.User as CustomPrincipal;
+                var model = new Cart();
+                model = client.Get<Cart>(currentUser.CustId.ToString(CultureInfo.InvariantCulture));
+                    return View();
+            }
         }
 
         public ActionResult OrderNow(int id, int cantidad)
