@@ -63,6 +63,7 @@ namespace B2CTouresBalon.Controllers
                     //guardo el nuevo carrito en memcached
                     client.Store(StoreMode.Set, currentUser.UserName, serializedCart);
                     var temp = client.Get<string>(currentUser.UserName);
+                    var i = 0;
                 }
                 else
                 {
