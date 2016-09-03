@@ -30,7 +30,7 @@ namespace B2CTouresBalon.Controllers
 
                 var serializeModel = new CustomPrincipalSerializeModel
                 {
-                    UserId = user.CUSTID,
+                    UserName = user.EMAIL,
                     FirstName = user.FNAME,
                     LastName = user.LNAME,
                     CustId = user.CUSTID
@@ -47,9 +47,10 @@ namespace B2CTouresBalon.Controllers
 
                 var encTicket = FormsAuthentication.Encrypt(authTicket);
                 var faCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encTicket);
+
                 Response.Cookies.Add(faCookie);
 
-                model.UserId = user.CUSTID;
+                model.CustId = user.CUSTID;
                 return RedirectToAction("Index", "Home");
             }
 

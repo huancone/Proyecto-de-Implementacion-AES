@@ -1,5 +1,6 @@
 ﻿@using B2CTouresBalon.Controllers
 @using B2CTouresBalon.Models
+@model Cart
 
 <table class="table">
     <tr>
@@ -17,7 +18,7 @@
         </th>
     </tr>
 
-    @foreach (var item in (List<Item>)Session["cart"])
+    @foreach (var item in Model.Items)
     {
         <tr>
             <td>
@@ -30,7 +31,7 @@
                 @item.Producto.fecha_llegada
             </td>
             <td>
-                @item.Producto.tipo_espectaculo.precio
+                @item.Producto.ciudad_espectaculo.tipo_ciudad.precio
             </td>
         </tr>
     }

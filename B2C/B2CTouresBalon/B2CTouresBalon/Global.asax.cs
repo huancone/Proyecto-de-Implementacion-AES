@@ -30,7 +30,7 @@ namespace B2CTouresBalon
             var serializeModel = JsonConvert.DeserializeObject<CustomPrincipalSerializeModel>(authTicket.UserData);
             var newUser = new CustomPrincipal(authTicket.Name)
             {
-                UserId = serializeModel.UserId,
+                UserName = serializeModel.UserName,
                 FirstName = serializeModel.FirstName,
                 LastName = serializeModel.LastName,
                 CustId = serializeModel.CustId,

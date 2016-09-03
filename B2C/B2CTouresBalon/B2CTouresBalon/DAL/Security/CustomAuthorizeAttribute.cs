@@ -39,7 +39,7 @@ namespace B2CTouresBalon.DAL.Security
                 }
 
                 if (string.IsNullOrEmpty(Users)) return;
-                if (!Users.Contains(CurrentUser.UserId.ToString(CultureInfo.InvariantCulture)))
+                if (!Users.Contains(CurrentUser.CustId.ToString(CultureInfo.InvariantCulture)))
                 {
                     filterContext.Result = new RedirectToRouteResult(new
                         RouteValueDictionary(new { controller = "Error", action = "AccessDenied" }));

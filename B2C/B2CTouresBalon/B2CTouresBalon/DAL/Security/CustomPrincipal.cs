@@ -8,19 +8,15 @@ namespace B2CTouresBalon.DAL.Security
         public IIdentity Identity { get; }
         public bool IsInRole(string role)
         {
-            if (roles.Any(r => role.Contains(r)))
-            {
-                return true;
-            }
-            return false;
+            return roles.Any(role.Contains);
         }
 
-        public CustomPrincipal(string Username)
+        public CustomPrincipal(string username)
         {
-            Identity = new GenericIdentity(Username);
+            Identity = new GenericIdentity(username);
         }
 
-        public decimal UserId { get; set; }
+        public string UserName { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
@@ -30,7 +26,7 @@ namespace B2CTouresBalon.DAL.Security
 
     public class CustomPrincipalSerializeModel
     {
-        public decimal UserId { get; set; }
+        public string UserName { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public decimal CustId { get; set; }

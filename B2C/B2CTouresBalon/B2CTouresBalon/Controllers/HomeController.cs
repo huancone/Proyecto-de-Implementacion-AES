@@ -17,12 +17,6 @@ namespace B2CTouresBalon.Controllers
             var proxy   = new ServiceProxyB2CClient();
             var productos = new PromocionesModel {Promociones = proxy.ConsultarCampaniaProducto()};
 
-            using (var client = new MemcachedClient())
-            {
-                client.Store(StoreMode.Set, "currentTime", DateTime.Now.ToString(CultureInfo.InvariantCulture));
-                var value = client.Get<string>("currentTime");
-            }
-
             return View(productos);
         }
     }
