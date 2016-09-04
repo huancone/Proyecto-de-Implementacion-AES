@@ -204,6 +204,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrdenController.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
@@ -218,6 +219,7 @@
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\ManageViewModel.cs" />
+    <Compile Include="Models\OrdenModel.cs" />
     <Compile Include="Models\ProductosModel.cs" />
     <Compile Include="Models\PromocionesModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -252,6 +254,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="image\shopping-cart-cancel-button.png" />
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -344,6 +347,9 @@
     <Content Include="Views\ShoppingCart\Index.cshtml" />
     <Content Include="Views\ShoppingCart\Cart.cshtml" />
     <None Include="Service References\ServiceProxyB2C\ServiceProxyB2C.wsdl" />
+    <Content Include="Views\Orden\Index.cshtml" />
+    <Content Include="Views\Orden\_Cancelar.cshtml" />
+    <Content Include="Views\Orden\_Detalle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
