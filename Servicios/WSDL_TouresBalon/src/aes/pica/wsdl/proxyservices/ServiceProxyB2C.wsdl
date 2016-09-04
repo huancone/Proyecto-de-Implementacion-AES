@@ -150,7 +150,7 @@
 			</xsd:element>
 			<xsd:element name="CrearOrdenesResponse">
 				<xsd:complexType>
-					<xsd:sequence><xsd:element name="respuesta" type="tb_b2:RespuestaGenerica" maxOccurs="1" minOccurs="1">
+					<xsd:sequence><xsd:element name="respuesta" type="tb_b2:CrearOrdenResponse" maxOccurs="1" minOccurs="1">
 					</xsd:element></xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>
@@ -223,13 +223,13 @@
 			<xsd:complexType name="Orden">
 				<xsd:sequence>
 					<xsd:element name="id_orden" type="xsd:string"
-						maxOccurs="1" minOccurs="1"></xsd:element>
+						maxOccurs="1" minOccurs="0"></xsd:element>
 					<xsd:element name="fecha_orden" type="xsd:date"
 						maxOccurs="1" minOccurs="1"></xsd:element>
 					<xsd:element name="precio" type="xsd:double" maxOccurs="1"
 						minOccurs="1"></xsd:element>
 					<xsd:element name="estatus" type="tb_b2:EstatusOrden"
-						maxOccurs="1" minOccurs="1">
+						maxOccurs="1" minOccurs="0">
 					</xsd:element>
 					<xsd:element name="comentarios" type="xsd:string"
 						maxOccurs="unbounded" minOccurs="0"></xsd:element>
@@ -460,6 +460,13 @@
             	</xsd:complexType>
             </xsd:element>
 		
+		
+            <xsd:complexType name="CrearOrdenResponse">
+            	<xsd:sequence>
+            		<xsd:element name="id_orden" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+            		<xsd:element name="estatus_orden" type="tb_b2:EstatusOrden" maxOccurs="1" minOccurs="0"></xsd:element>
+            	</xsd:sequence>
+            </xsd:complexType>
 		</xsd:schema>
 	</wsdl:types>
 	<wsdl:message name="RegistrarClienteRequest">
