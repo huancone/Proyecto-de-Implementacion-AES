@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.ServiceModel;
 using System.Web.Mvc;
 using B2CTouresBalon.Models;
-using System.ServiceModel;
+using B2CTouresBalon.ServiceProxyB2C;
+using Item = B2CTouresBalon.ServiceProxyB2C.Item;
 
 namespace B2CTouresBalon.Controllers
 {
     public class OrdenController : Controller
     {
-        List<Models.OrdenModel> lstordenes = new List<OrdenModel>();
+        List<OrdenModel> lstordenes = new List<OrdenModel>();
         // GET: Orden
         public ActionResult Index()
         {
@@ -57,16 +57,16 @@ namespace B2CTouresBalon.Controllers
 
         public ActionResult  Cancelar(string idOrden)
         {
-            ServiceProxyB2C.ServiceProxyB2CClient cancela = new ServiceProxyB2C.ServiceProxyB2CClient();
-            ServiceProxyB2C.RespuestaGenerica rpta = new ServiceProxyB2C.RespuestaGenerica();
-            RespuestaCancelacionModel valorcancela = new Models.RespuestaCancelacionModel();
+            ServiceProxyB2CClient cancela = new ServiceProxyB2CClient();
+            RespuestaGenerica rpta = new RespuestaGenerica();
+            RespuestaCancelacionModel valorcancela = new RespuestaCancelacionModel();
             string[] IdOrdenes = new string[1] { idOrden } ;
 
             try
             {
                 rpta = cancela.CancelarOrdenes(IdOrdenes);
             }
-            catch ( FaultException<ServiceProxyB2C.CancelarOrdenesFault> exf )
+            catch ( FaultException<CancelarOrdenesFault> exf )
             {
                 valorcancela.respuesta = "Se presento un error al cancelar la orden " + idOrden + ". Intentelo más tarde (" + exf.Message + ")"   ;
                 return View("_Cancelar", valorcancela);
@@ -76,7 +76,7 @@ namespace B2CTouresBalon.Controllers
                 valorcancela.respuesta = "Se presento un error al cancelar la orden " + idOrden + ". Intentelo más tarde";
                 return View("_Cancelar", valorcancela);
             }
-            if (rpta == ServiceProxyB2C.RespuestaGenerica.OK)
+            if (rpta == RespuestaGenerica.OK)
                 valorcancela.respuesta  = "Se cancelo la orden " + idOrden + " de forma exitosa";
             else
                 valorcancela.respuesta  = "Se presento un problema al cancelar la orden " + idOrden + ". Intentelo más tarde";
@@ -90,7 +90,7 @@ namespace B2CTouresBalon.Controllers
             lstordenes =(List<OrdenModel>)HttpContext.Session["ListaOrden"] ;
 
 
-            List<ServiceProxyB2C.Item> LstItems = lstordenes.Find(ord => ord.id_orden == IdOrden).detalle;  
+            List<Item> LstItems = lstordenes.Find(ord => ord.id_orden == IdOrden).detalle;  
             ViewBag.IdOrden = IdOrden;
          
 

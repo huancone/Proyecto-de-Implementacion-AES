@@ -7,11 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System;
+
 namespace DataAccess
 {
-    using System;
-    using System.Collections.Generic;
-    
     public partial class ITEMS
     {
         public decimal ITEMID { get; set; }

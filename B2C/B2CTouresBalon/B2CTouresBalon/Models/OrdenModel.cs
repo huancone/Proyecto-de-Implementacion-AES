@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using B2CTouresBalon.ServiceProxyB2C;
 
 namespace B2CTouresBalon.Models
@@ -13,7 +11,7 @@ namespace B2CTouresBalon.Models
 
         public DateTime fechaOrden { get; set; } 
 
-        public ServiceProxyB2C.EstatusOrden estatus { get; set; } 
+        public EstatusOrden estatus { get; set; } 
 
         public string id_orden { get; set; }
 

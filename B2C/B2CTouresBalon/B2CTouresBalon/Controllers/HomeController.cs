@@ -1,10 +1,6 @@
-﻿using System;
-using System.Globalization;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using B2CTouresBalon.Models;
 using B2CTouresBalon.ServiceProxyB2C;
-using Enyim.Caching;
-using Enyim.Caching.Memcached;
 
 namespace B2CTouresBalon.Controllers
 {

@@ -8,13 +8,7 @@
             Espectaculo
         </th>
         <th>
-            Ciudad
-        </th>
-        <th>
-            Fecha
-        </th>
-        <th>
-            Precio
+            Cantidad
         </th>
     </tr>
 
@@ -22,16 +16,10 @@
     {
         <tr>
             <td>
-                @item.Producto.espectaculo
+                @item.Producto
             </td>
             <td>
-                @item.Producto.ciudad_espectaculo
-            </td>
-            <td>
-                @item.Producto.fecha_llegada
-            </td>
-            <td>
-                @item.Producto.ciudad_espectaculo.tipo_ciudad.precio
+                @item.Cantidad
             </td>
         </tr>
     }

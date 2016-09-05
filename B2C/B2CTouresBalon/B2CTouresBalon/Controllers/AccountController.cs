@@ -83,7 +83,7 @@ namespace B2CTouresBalon.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ViewResult> Manage(ManageViewModel model, AccountController.ManageMessageId? message)
+        public async Task<ViewResult> Manage(ManageViewModel model, ManageMessageId? message)
         {
             ViewBag.StatusMessage =
                 message == ManageMessageId.UpdateSuccess ? "Your account has been updated."

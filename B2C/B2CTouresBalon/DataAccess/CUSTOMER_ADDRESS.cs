@@ -9,9 +9,6 @@
 
 namespace DataAccess
 {
-    using System;
-    using System.Collections.Generic;
-    
     public partial class CUSTOMER_ADDRESS
     {
         public decimal CUSTID { get; set; }
