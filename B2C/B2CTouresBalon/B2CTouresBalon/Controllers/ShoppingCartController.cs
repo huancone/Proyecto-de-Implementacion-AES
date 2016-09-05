@@ -18,10 +18,10 @@ namespace B2CTouresBalon.Controllers
         {
             using (var client = new MemcachedClient())
             {
-                var model = new Cart();
                 var currentUser = System.Web.HttpContext.Current.User as CustomPrincipal;
-                if (currentUser != null)
-                    model = client.Get<Cart>(currentUser.CustId.ToString(CultureInfo.InvariantCulture));
+                if (currentUser == null) return RedirectToAction("Index","Account");
+                var model = client.Get<Cart>(currentUser.CustId.ToString(CultureInfo.InvariantCulture));
+                if (model == null) return RedirectToAction("Index", "Product");
                 return View(model);
             }
         }
@@ -32,25 +32,24 @@ namespace B2CTouresBalon.Controllers
 
             //consulto el usuario logueado
             var currentUser = System.Web.HttpContext.Current.User as CustomPrincipal;
-            if (currentUser == null) return View("Index");
+            if (currentUser == null) return RedirectToAction("Index", "Account");
 
-            //creo un carrito vacio
-            var cart = new Cart
-            {
-                UserId = (int) currentUser.CustId,
-                Items = new List<Item>()
-            };
-            MemcachedClientConfiguration clientConfiguration = new MemcachedClientConfiguration();
-            clientConfiguration.Protocol = MemcachedProtocol.Binary;
+            var clientConfiguration = new MemcachedClientConfiguration {Protocol = MemcachedProtocol.Binary};
             clientConfiguration.Servers.Add( new IPEndPoint(IPAddress.Parse("127.0.0.1"), 32768));
 
             using (var client = new MemcachedClient(clientConfiguration))
             {
                 //consulto el cache del usuario logueado
-                var userCartCache = client.Get<Cart>(currentUser.UserName);
+                var cart = client.Get<Cart>(currentUser.UserName);
                 
-                if (null == userCartCache)//si el carrito es vacio cree uno nuevo
+                if (null == cart)//si el carrito es vacio cree uno nuevo
                 {
+                    cart = new Cart
+                    {
+                        UserId = (int)currentUser.CustId,
+                        Items = new List<Item>()
+                    };
+
                     var item = new Item
                     {
                         Producto = idProducto,
@@ -59,15 +58,13 @@ namespace B2CTouresBalon.Controllers
                     cart.Items.Add(item);
 
                     client.Store(StoreMode.Set, currentUser.UserName, cart);
-                    userCartCache = client.Get<Cart>(currentUser.UserName);
                 }
                 else
                 {
-                    foreach (var i in userCartCache.Items.Where(i => i.Producto == idProducto))
+                    foreach (var i in cart.Items.Where(i => i.Producto == idProducto))
                     {
                         i.Cantidad = i.Cantidad + cantidad;
-                        cart = userCartCache;
-                        client.Store(StoreMode.Set, currentUser.UserName, userCartCache);
+                        client.Store(StoreMode.Set, currentUser.UserName, cart);
                         return View("cart", cart);
                     }
                     var item = new Item
@@ -75,12 +72,11 @@ namespace B2CTouresBalon.Controllers
                         Producto = idProducto,
                         Cantidad = cantidad
                     };
-                    userCartCache.Items.Add(item);
-                    client.Store(StoreMode.Set, currentUser.UserName, userCartCache);
-                    cart = userCartCache;
+                    cart.Items.Add(item);
+                    client.Store(StoreMode.Set, currentUser.UserName, cart);
                 }
+                return View("Cart", cart);
             }
-            return View("Cart", cart);
         }
     }
 }
