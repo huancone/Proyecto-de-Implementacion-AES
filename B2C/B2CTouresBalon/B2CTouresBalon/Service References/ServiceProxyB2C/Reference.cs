@@ -46,7 +46,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         public event PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
-            PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            var propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
@@ -92,7 +92,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         public event PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
-            PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            var propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
@@ -138,7 +138,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         public event PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
-            PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            var propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
@@ -253,7 +253,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         public event PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
-            PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            var propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
@@ -383,7 +383,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         public event PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
-            PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            var propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
@@ -415,7 +415,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         public event PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
-            PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            var propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
@@ -447,7 +447,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         public event PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
-            PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            var propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
@@ -479,7 +479,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         public event PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
-            PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            var propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
@@ -511,7 +511,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         public event PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
-            PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            var propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
@@ -543,7 +543,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         public event PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
-            PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            var propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
@@ -575,7 +575,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         public event PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
-            PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            var propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
@@ -607,7 +607,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         public event PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
-            PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            var propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
@@ -639,7 +639,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         public event PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
-            PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            var propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
@@ -671,7 +671,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         public event PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
-            PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            var propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
@@ -1138,7 +1138,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         public event PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
-            PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            var propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
@@ -1198,7 +1198,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         public event PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
-            PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            var propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
@@ -1258,7 +1258,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         public event PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
-            PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            var propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
@@ -1439,7 +1439,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         public event PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
-            PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            var propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
@@ -1563,7 +1563,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         public event PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
-            PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            var propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
@@ -2017,9 +2017,9 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         public RegistrarClienteReponseType RegistrarCliente(Cliente cliente) {
-            RegistrarClienteRequest inValue = new RegistrarClienteRequest();
+            var inValue = new RegistrarClienteRequest();
             inValue.cliente = cliente;
-            RegistrarClienteResponse retVal = ((ServiceProxyB2C)(this)).RegistrarCliente(inValue);
+            var retVal = ((ServiceProxyB2C)(this)).RegistrarCliente(inValue);
             return retVal.registrarClienteResponse1;
         }
         
@@ -2030,7 +2030,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         
         [EditorBrowsable(EditorBrowsableState.Advanced)]
         public IAsyncResult BeginRegistrarCliente(Cliente cliente, AsyncCallback callback, object asyncState) {
-            RegistrarClienteRequest inValue = new RegistrarClienteRequest();
+            var inValue = new RegistrarClienteRequest();
             inValue.cliente = cliente;
             return ((ServiceProxyB2C)(this)).BeginRegistrarCliente(inValue, callback, asyncState);
         }
@@ -2042,24 +2042,24 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         
         [EditorBrowsable(EditorBrowsableState.Advanced)]
         public RegistrarClienteReponseType EndRegistrarCliente(IAsyncResult result) {
-            RegistrarClienteResponse retVal = ((ServiceProxyB2C)(this)).EndRegistrarCliente(result);
+            var retVal = ((ServiceProxyB2C)(this)).EndRegistrarCliente(result);
             return retVal.registrarClienteResponse1;
         }
         
         private IAsyncResult OnBeginRegistrarCliente(object[] inValues, AsyncCallback callback, object asyncState) {
-            Cliente cliente = ((Cliente)(inValues[0]));
+            var cliente = ((Cliente)(inValues[0]));
             return this.BeginRegistrarCliente(cliente, callback, asyncState);
         }
         
         private object[] OnEndRegistrarCliente(IAsyncResult result) {
-            RegistrarClienteReponseType retVal = this.EndRegistrarCliente(result);
+            var retVal = this.EndRegistrarCliente(result);
             return new object[] {
                     retVal};
         }
         
         private void OnRegistrarClienteCompleted(object state) {
             if ((this.RegistrarClienteCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                var e = ((InvokeAsyncCompletedEventArgs)(state));
                 this.RegistrarClienteCompleted(this, new RegistrarClienteCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
             }
         }
@@ -2088,10 +2088,10 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         public RespuestaGenerica AutenticarCliente(string usuario, string contrasenia) {
-            AutenticarClienteRequest inValue = new AutenticarClienteRequest();
+            var inValue = new AutenticarClienteRequest();
             inValue.usuario = usuario;
             inValue.contrasenia = contrasenia;
-            AutenticarClienteResponse retVal = ((ServiceProxyB2C)(this)).AutenticarCliente(inValue);
+            var retVal = ((ServiceProxyB2C)(this)).AutenticarCliente(inValue);
             return retVal.respuesta;
         }
         
@@ -2102,7 +2102,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         
         [EditorBrowsable(EditorBrowsableState.Advanced)]
         public IAsyncResult BeginAutenticarCliente(string usuario, string contrasenia, AsyncCallback callback, object asyncState) {
-            AutenticarClienteRequest inValue = new AutenticarClienteRequest();
+            var inValue = new AutenticarClienteRequest();
             inValue.usuario = usuario;
             inValue.contrasenia = contrasenia;
             return ((ServiceProxyB2C)(this)).BeginAutenticarCliente(inValue, callback, asyncState);
@@ -2115,25 +2115,25 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         
         [EditorBrowsable(EditorBrowsableState.Advanced)]
         public RespuestaGenerica EndAutenticarCliente(IAsyncResult result) {
-            AutenticarClienteResponse retVal = ((ServiceProxyB2C)(this)).EndAutenticarCliente(result);
+            var retVal = ((ServiceProxyB2C)(this)).EndAutenticarCliente(result);
             return retVal.respuesta;
         }
         
         private IAsyncResult OnBeginAutenticarCliente(object[] inValues, AsyncCallback callback, object asyncState) {
-            string usuario = ((string)(inValues[0]));
-            string contrasenia = ((string)(inValues[1]));
+            var usuario = ((string)(inValues[0]));
+            var contrasenia = ((string)(inValues[1]));
             return this.BeginAutenticarCliente(usuario, contrasenia, callback, asyncState);
         }
         
         private object[] OnEndAutenticarCliente(IAsyncResult result) {
-            RespuestaGenerica retVal = this.EndAutenticarCliente(result);
+            var retVal = this.EndAutenticarCliente(result);
             return new object[] {
                     retVal};
         }
         
         private void OnAutenticarClienteCompleted(object state) {
             if ((this.AutenticarClienteCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                var e = ((InvokeAsyncCompletedEventArgs)(state));
                 this.AutenticarClienteCompleted(this, new AutenticarClienteCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
             }
         }
@@ -2163,9 +2163,9 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         public RespuestaGenerica ActualizarCliente(Cliente cliente) {
-            ActualizarClienteRequest inValue = new ActualizarClienteRequest();
+            var inValue = new ActualizarClienteRequest();
             inValue.cliente = cliente;
-            ActualizarClienteResponse retVal = ((ServiceProxyB2C)(this)).ActualizarCliente(inValue);
+            var retVal = ((ServiceProxyB2C)(this)).ActualizarCliente(inValue);
             return retVal.respuesta;
         }
         
@@ -2176,7 +2176,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         
         [EditorBrowsable(EditorBrowsableState.Advanced)]
         public IAsyncResult BeginActualizarCliente(Cliente cliente, AsyncCallback callback, object asyncState) {
-            ActualizarClienteRequest inValue = new ActualizarClienteRequest();
+            var inValue = new ActualizarClienteRequest();
             inValue.cliente = cliente;
             return ((ServiceProxyB2C)(this)).BeginActualizarCliente(inValue, callback, asyncState);
         }
@@ -2188,24 +2188,24 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         
         [EditorBrowsable(EditorBrowsableState.Advanced)]
         public RespuestaGenerica EndActualizarCliente(IAsyncResult result) {
-            ActualizarClienteResponse retVal = ((ServiceProxyB2C)(this)).EndActualizarCliente(result);
+            var retVal = ((ServiceProxyB2C)(this)).EndActualizarCliente(result);
             return retVal.respuesta;
         }
         
         private IAsyncResult OnBeginActualizarCliente(object[] inValues, AsyncCallback callback, object asyncState) {
-            Cliente cliente = ((Cliente)(inValues[0]));
+            var cliente = ((Cliente)(inValues[0]));
             return this.BeginActualizarCliente(cliente, callback, asyncState);
         }
         
         private object[] OnEndActualizarCliente(IAsyncResult result) {
-            RespuestaGenerica retVal = this.EndActualizarCliente(result);
+            var retVal = this.EndActualizarCliente(result);
             return new object[] {
                     retVal};
         }
         
         private void OnActualizarClienteCompleted(object state) {
             if ((this.ActualizarClienteCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                var e = ((InvokeAsyncCompletedEventArgs)(state));
                 this.ActualizarClienteCompleted(this, new ActualizarClienteCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
             }
         }
@@ -2234,10 +2234,10 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         public RespuestaGenerica ActualizarContraseniaCliente(string usuario, string contrasenia) {
-            ActualizarContraseniaClienteRequest inValue = new ActualizarContraseniaClienteRequest();
+            var inValue = new ActualizarContraseniaClienteRequest();
             inValue.usuario = usuario;
             inValue.contrasenia = contrasenia;
-            ActualizarContraseniaClienteResponse retVal = ((ServiceProxyB2C)(this)).ActualizarContraseniaCliente(inValue);
+            var retVal = ((ServiceProxyB2C)(this)).ActualizarContraseniaCliente(inValue);
             return retVal.respuesta;
         }
         
@@ -2248,7 +2248,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         
         [EditorBrowsable(EditorBrowsableState.Advanced)]
         public IAsyncResult BeginActualizarContraseniaCliente(string usuario, string contrasenia, AsyncCallback callback, object asyncState) {
-            ActualizarContraseniaClienteRequest inValue = new ActualizarContraseniaClienteRequest();
+            var inValue = new ActualizarContraseniaClienteRequest();
             inValue.usuario = usuario;
             inValue.contrasenia = contrasenia;
             return ((ServiceProxyB2C)(this)).BeginActualizarContraseniaCliente(inValue, callback, asyncState);
@@ -2261,25 +2261,25 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         
         [EditorBrowsable(EditorBrowsableState.Advanced)]
         public RespuestaGenerica EndActualizarContraseniaCliente(IAsyncResult result) {
-            ActualizarContraseniaClienteResponse retVal = ((ServiceProxyB2C)(this)).EndActualizarContraseniaCliente(result);
+            var retVal = ((ServiceProxyB2C)(this)).EndActualizarContraseniaCliente(result);
             return retVal.respuesta;
         }
         
         private IAsyncResult OnBeginActualizarContraseniaCliente(object[] inValues, AsyncCallback callback, object asyncState) {
-            string usuario = ((string)(inValues[0]));
-            string contrasenia = ((string)(inValues[1]));
+            var usuario = ((string)(inValues[0]));
+            var contrasenia = ((string)(inValues[1]));
             return this.BeginActualizarContraseniaCliente(usuario, contrasenia, callback, asyncState);
         }
         
         private object[] OnEndActualizarContraseniaCliente(IAsyncResult result) {
-            RespuestaGenerica retVal = this.EndActualizarContraseniaCliente(result);
+            var retVal = this.EndActualizarContraseniaCliente(result);
             return new object[] {
                     retVal};
         }
         
         private void OnActualizarContraseniaClienteCompleted(object state) {
             if ((this.ActualizarContraseniaClienteCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                var e = ((InvokeAsyncCompletedEventArgs)(state));
                 this.ActualizarContraseniaClienteCompleted(this, new ActualizarContraseniaClienteCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
             }
         }
@@ -2309,12 +2309,12 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         public Producto[] ConsultarProducto(TipoConsultaProducto tipo_consulta, string codigo, string nombre, string descripcion) {
-            ConsultarProductoRequest inValue = new ConsultarProductoRequest();
+            var inValue = new ConsultarProductoRequest();
             inValue.tipo_consulta = tipo_consulta;
             inValue.codigo = codigo;
             inValue.nombre = nombre;
             inValue.descripcion = descripcion;
-            ConsultarProductoResponse retVal = ((ServiceProxyB2C)(this)).ConsultarProducto(inValue);
+            var retVal = ((ServiceProxyB2C)(this)).ConsultarProducto(inValue);
             return retVal.productos;
         }
         
@@ -2325,7 +2325,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         
         [EditorBrowsable(EditorBrowsableState.Advanced)]
         public IAsyncResult BeginConsultarProducto(TipoConsultaProducto tipo_consulta, string codigo, string nombre, string descripcion, AsyncCallback callback, object asyncState) {
-            ConsultarProductoRequest inValue = new ConsultarProductoRequest();
+            var inValue = new ConsultarProductoRequest();
             inValue.tipo_consulta = tipo_consulta;
             inValue.codigo = codigo;
             inValue.nombre = nombre;
@@ -2340,27 +2340,27 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         
         [EditorBrowsable(EditorBrowsableState.Advanced)]
         public Producto[] EndConsultarProducto(IAsyncResult result) {
-            ConsultarProductoResponse retVal = ((ServiceProxyB2C)(this)).EndConsultarProducto(result);
+            var retVal = ((ServiceProxyB2C)(this)).EndConsultarProducto(result);
             return retVal.productos;
         }
         
         private IAsyncResult OnBeginConsultarProducto(object[] inValues, AsyncCallback callback, object asyncState) {
-            TipoConsultaProducto tipo_consulta = ((TipoConsultaProducto)(inValues[0]));
-            string codigo = ((string)(inValues[1]));
-            string nombre = ((string)(inValues[2]));
-            string descripcion = ((string)(inValues[3]));
+            var tipo_consulta = ((TipoConsultaProducto)(inValues[0]));
+            var codigo = ((string)(inValues[1]));
+            var nombre = ((string)(inValues[2]));
+            var descripcion = ((string)(inValues[3]));
             return this.BeginConsultarProducto(tipo_consulta, codigo, nombre, descripcion, callback, asyncState);
         }
         
         private object[] OnEndConsultarProducto(IAsyncResult result) {
-            Producto[] retVal = this.EndConsultarProducto(result);
+            var retVal = this.EndConsultarProducto(result);
             return new object[] {
                     retVal};
         }
         
         private void OnConsultarProductoCompleted(object state) {
             if ((this.ConsultarProductoCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                var e = ((InvokeAsyncCompletedEventArgs)(state));
                 this.ConsultarProductoCompleted(this, new ConsultarProductoCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
             }
         }
@@ -2392,8 +2392,8 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         public Producto[] ConsultarCampaniaProducto() {
-            ConsultarCampaniaProductoRequest inValue = new ConsultarCampaniaProductoRequest();
-            ConsultarCampaniaProductoResponse retVal = ((ServiceProxyB2C)(this)).ConsultarCampaniaProducto(inValue);
+            var inValue = new ConsultarCampaniaProductoRequest();
+            var retVal = ((ServiceProxyB2C)(this)).ConsultarCampaniaProducto(inValue);
             return retVal.productos;
         }
         
@@ -2404,7 +2404,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         
         [EditorBrowsable(EditorBrowsableState.Advanced)]
         public IAsyncResult BeginConsultarCampaniaProducto(AsyncCallback callback, object asyncState) {
-            ConsultarCampaniaProductoRequest inValue = new ConsultarCampaniaProductoRequest();
+            var inValue = new ConsultarCampaniaProductoRequest();
             return ((ServiceProxyB2C)(this)).BeginConsultarCampaniaProducto(inValue, callback, asyncState);
         }
         
@@ -2415,7 +2415,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         
         [EditorBrowsable(EditorBrowsableState.Advanced)]
         public Producto[] EndConsultarCampaniaProducto(IAsyncResult result) {
-            ConsultarCampaniaProductoResponse retVal = ((ServiceProxyB2C)(this)).EndConsultarCampaniaProducto(result);
+            var retVal = ((ServiceProxyB2C)(this)).EndConsultarCampaniaProducto(result);
             return retVal.productos;
         }
         
@@ -2424,14 +2424,14 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         private object[] OnEndConsultarCampaniaProducto(IAsyncResult result) {
-            Producto[] retVal = this.EndConsultarCampaniaProducto(result);
+            var retVal = this.EndConsultarCampaniaProducto(result);
             return new object[] {
                     retVal};
         }
         
         private void OnConsultarCampaniaProductoCompleted(object state) {
             if ((this.ConsultarCampaniaProductoCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                var e = ((InvokeAsyncCompletedEventArgs)(state));
                 this.ConsultarCampaniaProductoCompleted(this, new ConsultarCampaniaProductoCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
             }
         }
@@ -2459,9 +2459,9 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         public Orden[] ConsultarClientesOrdenes(string id_cliente) {
-            ConsultarClientesOrdenesRequest inValue = new ConsultarClientesOrdenesRequest();
+            var inValue = new ConsultarClientesOrdenesRequest();
             inValue.id_cliente = id_cliente;
-            ConsultarClientesOrdenesResponse retVal = ((ServiceProxyB2C)(this)).ConsultarClientesOrdenes(inValue);
+            var retVal = ((ServiceProxyB2C)(this)).ConsultarClientesOrdenes(inValue);
             return retVal.orden;
         }
         
@@ -2472,7 +2472,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         
         [EditorBrowsable(EditorBrowsableState.Advanced)]
         public IAsyncResult BeginConsultarClientesOrdenes(string id_cliente, AsyncCallback callback, object asyncState) {
-            ConsultarClientesOrdenesRequest inValue = new ConsultarClientesOrdenesRequest();
+            var inValue = new ConsultarClientesOrdenesRequest();
             inValue.id_cliente = id_cliente;
             return ((ServiceProxyB2C)(this)).BeginConsultarClientesOrdenes(inValue, callback, asyncState);
         }
@@ -2484,24 +2484,24 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         
         [EditorBrowsable(EditorBrowsableState.Advanced)]
         public Orden[] EndConsultarClientesOrdenes(IAsyncResult result) {
-            ConsultarClientesOrdenesResponse retVal = ((ServiceProxyB2C)(this)).EndConsultarClientesOrdenes(result);
+            var retVal = ((ServiceProxyB2C)(this)).EndConsultarClientesOrdenes(result);
             return retVal.orden;
         }
         
         private IAsyncResult OnBeginConsultarClientesOrdenes(object[] inValues, AsyncCallback callback, object asyncState) {
-            string id_cliente = ((string)(inValues[0]));
+            var id_cliente = ((string)(inValues[0]));
             return this.BeginConsultarClientesOrdenes(id_cliente, callback, asyncState);
         }
         
         private object[] OnEndConsultarClientesOrdenes(IAsyncResult result) {
-            Orden[] retVal = this.EndConsultarClientesOrdenes(result);
+            var retVal = this.EndConsultarClientesOrdenes(result);
             return new object[] {
                     retVal};
         }
         
         private void OnConsultarClientesOrdenesCompleted(object state) {
             if ((this.ConsultarClientesOrdenesCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                var e = ((InvokeAsyncCompletedEventArgs)(state));
                 this.ConsultarClientesOrdenesCompleted(this, new ConsultarClientesOrdenesCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
             }
         }
@@ -2530,9 +2530,9 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         public RespuestaGenerica CancelarOrdenes(string[] id_orden) {
-            CancelarOrdenesRequest inValue = new CancelarOrdenesRequest();
+            var inValue = new CancelarOrdenesRequest();
             inValue.id_orden = id_orden;
-            CancelarOrdenesResponse retVal = ((ServiceProxyB2C)(this)).CancelarOrdenes(inValue);
+            var retVal = ((ServiceProxyB2C)(this)).CancelarOrdenes(inValue);
             return retVal.respuesta;
         }
         
@@ -2543,7 +2543,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         
         [EditorBrowsable(EditorBrowsableState.Advanced)]
         public IAsyncResult BeginCancelarOrdenes(string[] id_orden, AsyncCallback callback, object asyncState) {
-            CancelarOrdenesRequest inValue = new CancelarOrdenesRequest();
+            var inValue = new CancelarOrdenesRequest();
             inValue.id_orden = id_orden;
             return ((ServiceProxyB2C)(this)).BeginCancelarOrdenes(inValue, callback, asyncState);
         }
@@ -2555,24 +2555,24 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         
         [EditorBrowsable(EditorBrowsableState.Advanced)]
         public RespuestaGenerica EndCancelarOrdenes(IAsyncResult result) {
-            CancelarOrdenesResponse retVal = ((ServiceProxyB2C)(this)).EndCancelarOrdenes(result);
+            var retVal = ((ServiceProxyB2C)(this)).EndCancelarOrdenes(result);
             return retVal.respuesta;
         }
         
         private IAsyncResult OnBeginCancelarOrdenes(object[] inValues, AsyncCallback callback, object asyncState) {
-            string[] id_orden = ((string[])(inValues[0]));
+            var id_orden = ((string[])(inValues[0]));
             return this.BeginCancelarOrdenes(id_orden, callback, asyncState);
         }
         
         private object[] OnEndCancelarOrdenes(IAsyncResult result) {
-            RespuestaGenerica retVal = this.EndCancelarOrdenes(result);
+            var retVal = this.EndCancelarOrdenes(result);
             return new object[] {
                     retVal};
         }
         
         private void OnCancelarOrdenesCompleted(object state) {
             if ((this.CancelarOrdenesCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                var e = ((InvokeAsyncCompletedEventArgs)(state));
                 this.CancelarOrdenesCompleted(this, new CancelarOrdenesCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
             }
         }
@@ -2601,9 +2601,9 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         public RespuestaGenerica CrearOrdenes(Orden orden) {
-            CrearOrdenesRequest inValue = new CrearOrdenesRequest();
+            var inValue = new CrearOrdenesRequest();
             inValue.orden = orden;
-            CrearOrdenesResponse retVal = ((ServiceProxyB2C)(this)).CrearOrdenes(inValue);
+            var retVal = ((ServiceProxyB2C)(this)).CrearOrdenes(inValue);
             return retVal.respuesta;
         }
         
@@ -2614,7 +2614,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         
         [EditorBrowsable(EditorBrowsableState.Advanced)]
         public IAsyncResult BeginCrearOrdenes(Orden orden, AsyncCallback callback, object asyncState) {
-            CrearOrdenesRequest inValue = new CrearOrdenesRequest();
+            var inValue = new CrearOrdenesRequest();
             inValue.orden = orden;
             return ((ServiceProxyB2C)(this)).BeginCrearOrdenes(inValue, callback, asyncState);
         }
@@ -2626,24 +2626,24 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         
         [EditorBrowsable(EditorBrowsableState.Advanced)]
         public RespuestaGenerica EndCrearOrdenes(IAsyncResult result) {
-            CrearOrdenesResponse retVal = ((ServiceProxyB2C)(this)).EndCrearOrdenes(result);
+            var retVal = ((ServiceProxyB2C)(this)).EndCrearOrdenes(result);
             return retVal.respuesta;
         }
         
         private IAsyncResult OnBeginCrearOrdenes(object[] inValues, AsyncCallback callback, object asyncState) {
-            Orden orden = ((Orden)(inValues[0]));
+            var orden = ((Orden)(inValues[0]));
             return this.BeginCrearOrdenes(orden, callback, asyncState);
         }
         
         private object[] OnEndCrearOrdenes(IAsyncResult result) {
-            RespuestaGenerica retVal = this.EndCrearOrdenes(result);
+            var retVal = this.EndCrearOrdenes(result);
             return new object[] {
                     retVal};
         }
         
         private void OnCrearOrdenesCompleted(object state) {
             if ((this.CrearOrdenesCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                var e = ((InvokeAsyncCompletedEventArgs)(state));
                 this.CrearOrdenesCompleted(this, new CrearOrdenesCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
             }
         }
@@ -2672,9 +2672,9 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         public Producto[] ConsultaTop5Productos(string id_producto) {
-            ConsultaTop5ProductosRequest inValue = new ConsultaTop5ProductosRequest();
+            var inValue = new ConsultaTop5ProductosRequest();
             inValue.id_producto = id_producto;
-            ConsultaTop5ProductosResponse retVal = ((ServiceProxyB2C)(this)).ConsultaTop5Productos(inValue);
+            var retVal = ((ServiceProxyB2C)(this)).ConsultaTop5Productos(inValue);
             return retVal.lista_productos_top;
         }
         
@@ -2685,7 +2685,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         
         [EditorBrowsable(EditorBrowsableState.Advanced)]
         public IAsyncResult BeginConsultaTop5Productos(string id_producto, AsyncCallback callback, object asyncState) {
-            ConsultaTop5ProductosRequest inValue = new ConsultaTop5ProductosRequest();
+            var inValue = new ConsultaTop5ProductosRequest();
             inValue.id_producto = id_producto;
             return ((ServiceProxyB2C)(this)).BeginConsultaTop5Productos(inValue, callback, asyncState);
         }
@@ -2697,24 +2697,24 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         
         [EditorBrowsable(EditorBrowsableState.Advanced)]
         public Producto[] EndConsultaTop5Productos(IAsyncResult result) {
-            ConsultaTop5ProductosResponse retVal = ((ServiceProxyB2C)(this)).EndConsultaTop5Productos(result);
+            var retVal = ((ServiceProxyB2C)(this)).EndConsultaTop5Productos(result);
             return retVal.lista_productos_top;
         }
         
         private IAsyncResult OnBeginConsultaTop5Productos(object[] inValues, AsyncCallback callback, object asyncState) {
-            string id_producto = ((string)(inValues[0]));
+            var id_producto = ((string)(inValues[0]));
             return this.BeginConsultaTop5Productos(id_producto, callback, asyncState);
         }
         
         private object[] OnEndConsultaTop5Productos(IAsyncResult result) {
-            Producto[] retVal = this.EndConsultaTop5Productos(result);
+            var retVal = this.EndConsultaTop5Productos(result);
             return new object[] {
                     retVal};
         }
         
         private void OnConsultaTop5ProductosCompleted(object state) {
             if ((this.ConsultaTop5ProductosCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                var e = ((InvokeAsyncCompletedEventArgs)(state));
                 this.ConsultaTop5ProductosCompleted(this, new ConsultaTop5ProductosCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
             }
         }

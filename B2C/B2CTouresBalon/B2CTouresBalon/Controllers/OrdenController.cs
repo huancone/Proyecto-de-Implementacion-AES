@@ -57,10 +57,10 @@ namespace B2CTouresBalon.Controllers
 
         public ActionResult  Cancelar(string idOrden)
         {
-            ServiceProxyB2CClient cancela = new ServiceProxyB2CClient();
-            RespuestaGenerica rpta = new RespuestaGenerica();
-            RespuestaCancelacionModel valorcancela = new RespuestaCancelacionModel();
-            string[] IdOrdenes = new string[1] { idOrden } ;
+            var cancela = new ServiceProxyB2CClient();
+            var rpta = new RespuestaGenerica();
+            var valorcancela = new RespuestaCancelacionModel();
+            var IdOrdenes = new string[1] { idOrden } ;
 
             try
             {
@@ -90,7 +90,7 @@ namespace B2CTouresBalon.Controllers
             lstordenes =(List<OrdenModel>)HttpContext.Session["ListaOrden"] ;
 
 
-            List<Item> LstItems = lstordenes.Find(ord => ord.id_orden == IdOrden).detalle;  
+            var LstItems = lstordenes.Find(ord => ord.id_orden == IdOrden).detalle;  
             ViewBag.IdOrden = IdOrden;
          
 

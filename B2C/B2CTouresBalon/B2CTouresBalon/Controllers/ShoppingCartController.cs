@@ -18,6 +18,7 @@ namespace B2CTouresBalon.Controllers
         {
             using (var client = new MemcachedClient())
             {
+                if (!ModelState.IsValid) return RedirectToAction("Index", "Product");
                 var currentUser = System.Web.HttpContext.Current.User as CustomPrincipal;
                 if (currentUser == null) return RedirectToAction("Index","Account");
                 var model = client.Get<Cart>(currentUser.CustId.ToString(CultureInfo.InvariantCulture));
@@ -74,6 +75,38 @@ namespace B2CTouresBalon.Controllers
                     };
                     cart.Items.Add(item);
                     client.Store(StoreMode.Set, currentUser.UserName, cart);
+                }
+                return View("Cart", cart);
+            }
+        }
+
+        public ActionResult DeleteItem(int idProducto, int cantidad)
+        {
+            if (!ModelState.IsValid) return View("Index");
+
+            //consulto el usuario logueado
+            var currentUser = System.Web.HttpContext.Current.User as CustomPrincipal;
+            if (currentUser == null) return RedirectToAction("Index", "Account");
+            var clientConfiguration = new MemcachedClientConfiguration { Protocol = MemcachedProtocol.Binary };
+            clientConfiguration.Servers.Add(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 32768));
+
+            using (var client = new MemcachedClient(clientConfiguration))
+            {
+                //consulto el cache del usuario logueado
+                var cart = client.Get<Cart>(currentUser.UserName);
+                if (cart == null) return View("Cart", cart);
+                foreach (var i in cart.Items.Where(i => i.Producto == idProducto))
+                {
+                    if (i.Cantidad >= cantidad)
+                    {
+                        i.Cantidad = i.Cantidad - cantidad;
+                    }
+                    else
+                    {
+                        i.Cantidad = 0;
+                    }
+                    client.Store(StoreMode.Set, currentUser.UserName, cart);
+                    return View("cart", cart);
                 }
                 return View("Cart", cart);
             }
