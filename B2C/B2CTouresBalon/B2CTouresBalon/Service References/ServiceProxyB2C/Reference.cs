@@ -8,31 +8,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.CodeDom.Compiler;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.ServiceModel;
-using System.ServiceModel.Channels;
-using System.Threading;
-using System.Xml.Schema;
-using System.Xml.Serialization;
-
 namespace B2CTouresBalon.ServiceProxyB2C {
     
     
     /// <remarks/>
-    [GeneratedCode("System.Xml", "4.6.1064.2")]
-    [Serializable()]
-    [DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(AnonymousType=true, Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
-    public partial class RegistrarClienteFault : object, INotifyPropertyChanged {
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
+    public partial class RegistrarClienteFault : object, System.ComponentModel.INotifyPropertyChanged {
         
         private Error registrarClienteFault1Field;
         
         /// <remarks/>
-        [XmlElement("RegistrarClienteFault", Form=XmlSchemaForm.Unqualified, Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("RegistrarClienteFault", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
         public Error RegistrarClienteFault1 {
             get {
                 return this.registrarClienteFault1Field;
@@ -43,30 +33,30 @@ namespace B2CTouresBalon.ServiceProxyB2C {
             }
         }
         
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
-            var propertyChanged = this.PropertyChanged;
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
-                propertyChanged(this, new PropertyChangedEventArgs(propertyName));
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Xml", "4.6.1064.2")]
-    [Serializable()]
-    [DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
-    public partial class Error : object, INotifyPropertyChanged {
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
+    public partial class Error : object, System.ComponentModel.INotifyPropertyChanged {
         
         private string codigoField;
         
         private string mensajeField;
         
         /// <remarks/>
-        [XmlElement(Form=XmlSchemaForm.Unqualified, Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
         public string codigo {
             get {
                 return this.codigoField;
@@ -78,7 +68,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         /// <remarks/>
-        [XmlElement(Form=XmlSchemaForm.Unqualified, Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
         public string mensaje {
             get {
                 return this.mensajeField;
@@ -89,30 +79,30 @@ namespace B2CTouresBalon.ServiceProxyB2C {
             }
         }
         
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
-            var propertyChanged = this.PropertyChanged;
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
-                propertyChanged(this, new PropertyChangedEventArgs(propertyName));
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Xml", "4.6.1064.2")]
-    [Serializable()]
-    [DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
-    public partial class RegistrarClienteReponseType : object, INotifyPropertyChanged {
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
+    public partial class RegistrarClienteReponseType : object, System.ComponentModel.INotifyPropertyChanged {
         
         private RespuestaGenerica respuestaField;
         
         private string id_clienteField;
         
         /// <remarks/>
-        [XmlElement(Form=XmlSchemaForm.Unqualified, Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
         public RespuestaGenerica respuesta {
             get {
                 return this.respuestaField;
@@ -124,7 +114,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         /// <remarks/>
-        [XmlElement(Form=XmlSchemaForm.Unqualified, Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
         public string id_cliente {
             get {
                 return this.id_clienteField;
@@ -135,20 +125,20 @@ namespace B2CTouresBalon.ServiceProxyB2C {
             }
         }
         
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
-            var propertyChanged = this.PropertyChanged;
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
-                propertyChanged(this, new PropertyChangedEventArgs(propertyName));
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Xml", "4.6.1064.2")]
-    [Serializable()]
-    [XmlType(Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
     public enum RespuestaGenerica {
         
         /// <remarks/>
@@ -159,12 +149,12 @@ namespace B2CTouresBalon.ServiceProxyB2C {
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Xml", "4.6.1064.2")]
-    [Serializable()]
-    [DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
-    public partial class Direccion : object, INotifyPropertyChanged {
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
+    public partial class Direccion : object, System.ComponentModel.INotifyPropertyChanged {
         
         private string paisField;
         
@@ -179,7 +169,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         private string dir_calleField;
         
         /// <remarks/>
-        [XmlElement(Form=XmlSchemaForm.Unqualified, Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
         public string pais {
             get {
                 return this.paisField;
@@ -191,7 +181,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         /// <remarks/>
-        [XmlElement(Form=XmlSchemaForm.Unqualified, Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
         public string ciudad {
             get {
                 return this.ciudadField;
@@ -203,7 +193,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         /// <remarks/>
-        [XmlElement(Form=XmlSchemaForm.Unqualified, Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
         public string estado {
             get {
                 return this.estadoField;
@@ -215,7 +205,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         /// <remarks/>
-        [XmlElement(Form=XmlSchemaForm.Unqualified, Order=3)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
         public string cod_postal {
             get {
                 return this.cod_postalField;
@@ -227,7 +217,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         /// <remarks/>
-        [XmlElement(Form=XmlSchemaForm.Unqualified, Order=4)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
         public string tipo_dir {
             get {
                 return this.tipo_dirField;
@@ -239,7 +229,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         /// <remarks/>
-        [XmlElement(Form=XmlSchemaForm.Unqualified, Order=5)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
         public string dir_calle {
             get {
                 return this.dir_calleField;
@@ -250,23 +240,23 @@ namespace B2CTouresBalon.ServiceProxyB2C {
             }
         }
         
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
-            var propertyChanged = this.PropertyChanged;
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
-                propertyChanged(this, new PropertyChangedEventArgs(propertyName));
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Xml", "4.6.1064.2")]
-    [Serializable()]
-    [DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
-    public partial class Cliente : object, INotifyPropertyChanged {
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
+    public partial class Cliente : object, System.ComponentModel.INotifyPropertyChanged {
         
         private string nombresField;
         
@@ -285,7 +275,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         private Direccion[] direccionField;
         
         /// <remarks/>
-        [XmlElement(Form=XmlSchemaForm.Unqualified, Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
         public string nombres {
             get {
                 return this.nombresField;
@@ -297,7 +287,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         /// <remarks/>
-        [XmlElement(Form=XmlSchemaForm.Unqualified, Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
         public string apellidos {
             get {
                 return this.apellidosField;
@@ -309,7 +299,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         /// <remarks/>
-        [XmlElement(Form=XmlSchemaForm.Unqualified, Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
         public string num_tel {
             get {
                 return this.num_telField;
@@ -321,7 +311,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         /// <remarks/>
-        [XmlElement(Form=XmlSchemaForm.Unqualified, Order=3)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
         public string email {
             get {
                 return this.emailField;
@@ -333,7 +323,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         /// <remarks/>
-        [XmlElement(Form=XmlSchemaForm.Unqualified, Order=4)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
         public string contrasenia {
             get {
                 return this.contraseniaField;
@@ -345,7 +335,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         /// <remarks/>
-        [XmlElement(Form=XmlSchemaForm.Unqualified, Order=5)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
         public string tipo_tarjeta {
             get {
                 return this.tipo_tarjetaField;
@@ -357,7 +347,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         /// <remarks/>
-        [XmlElement(Form=XmlSchemaForm.Unqualified, Order=6)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=6)]
         public string numero_tarjeta {
             get {
                 return this.numero_tarjetaField;
@@ -369,7 +359,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         /// <remarks/>
-        [XmlElement("direccion", Form=XmlSchemaForm.Unqualified, Order=7)]
+        [System.Xml.Serialization.XmlElementAttribute("direccion", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=7)]
         public Direccion[] direccion {
             get {
                 return this.direccionField;
@@ -380,28 +370,28 @@ namespace B2CTouresBalon.ServiceProxyB2C {
             }
         }
         
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
-            var propertyChanged = this.PropertyChanged;
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
-                propertyChanged(this, new PropertyChangedEventArgs(propertyName));
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Xml", "4.6.1064.2")]
-    [Serializable()]
-    [DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(AnonymousType=true, Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
-    public partial class AutenticarClienteFault : object, INotifyPropertyChanged {
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
+    public partial class AutenticarClienteFault : object, System.ComponentModel.INotifyPropertyChanged {
         
         private Error autenticarClienteFault1Field;
         
         /// <remarks/>
-        [XmlElement("AutenticarClienteFault", Form=XmlSchemaForm.Unqualified, Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("AutenticarClienteFault", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
         public Error AutenticarClienteFault1 {
             get {
                 return this.autenticarClienteFault1Field;
@@ -412,28 +402,28 @@ namespace B2CTouresBalon.ServiceProxyB2C {
             }
         }
         
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
-            var propertyChanged = this.PropertyChanged;
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
-                propertyChanged(this, new PropertyChangedEventArgs(propertyName));
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Xml", "4.6.1064.2")]
-    [Serializable()]
-    [DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(AnonymousType=true, Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
-    public partial class ActualizarClienteFault : object, INotifyPropertyChanged {
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
+    public partial class ActualizarClienteFault : object, System.ComponentModel.INotifyPropertyChanged {
         
         private Error actualizarClienteFault1Field;
         
         /// <remarks/>
-        [XmlElement("ActualizarClienteFault", Form=XmlSchemaForm.Unqualified, Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("ActualizarClienteFault", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
         public Error ActualizarClienteFault1 {
             get {
                 return this.actualizarClienteFault1Field;
@@ -444,28 +434,28 @@ namespace B2CTouresBalon.ServiceProxyB2C {
             }
         }
         
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
-            var propertyChanged = this.PropertyChanged;
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
-                propertyChanged(this, new PropertyChangedEventArgs(propertyName));
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Xml", "4.6.1064.2")]
-    [Serializable()]
-    [DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(AnonymousType=true, Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
-    public partial class ActualizarContraseniaClienteFault : object, INotifyPropertyChanged {
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
+    public partial class ActualizarContraseniaClienteFault : object, System.ComponentModel.INotifyPropertyChanged {
         
         private Error actualizarContraseniaClienteFault1Field;
         
         /// <remarks/>
-        [XmlElement("ActualizarContraseniaClienteFault", Form=XmlSchemaForm.Unqualified, Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("ActualizarContraseniaClienteFault", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
         public Error ActualizarContraseniaClienteFault1 {
             get {
                 return this.actualizarContraseniaClienteFault1Field;
@@ -476,28 +466,28 @@ namespace B2CTouresBalon.ServiceProxyB2C {
             }
         }
         
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
-            var propertyChanged = this.PropertyChanged;
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
-                propertyChanged(this, new PropertyChangedEventArgs(propertyName));
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Xml", "4.6.1064.2")]
-    [Serializable()]
-    [DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(AnonymousType=true, Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
-    public partial class ConsultarProductoFault : object, INotifyPropertyChanged {
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
+    public partial class ConsultarProductoFault : object, System.ComponentModel.INotifyPropertyChanged {
         
         private Error consultarProductoFault1Field;
         
         /// <remarks/>
-        [XmlElement("ConsultarProductoFault", Form=XmlSchemaForm.Unqualified, Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("ConsultarProductoFault", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
         public Error ConsultarProductoFault1 {
             get {
                 return this.consultarProductoFault1Field;
@@ -508,28 +498,28 @@ namespace B2CTouresBalon.ServiceProxyB2C {
             }
         }
         
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
-            var propertyChanged = this.PropertyChanged;
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
-                propertyChanged(this, new PropertyChangedEventArgs(propertyName));
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Xml", "4.6.1064.2")]
-    [Serializable()]
-    [DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(AnonymousType=true, Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
-    public partial class ConsultarCampaniaProductoFault : object, INotifyPropertyChanged {
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
+    public partial class ConsultarCampaniaProductoFault : object, System.ComponentModel.INotifyPropertyChanged {
         
         private Error consultarCampaniaProductoFault1Field;
         
         /// <remarks/>
-        [XmlElement("ConsultarCampaniaProductoFault", Form=XmlSchemaForm.Unqualified, Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("ConsultarCampaniaProductoFault", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
         public Error ConsultarCampaniaProductoFault1 {
             get {
                 return this.consultarCampaniaProductoFault1Field;
@@ -540,28 +530,28 @@ namespace B2CTouresBalon.ServiceProxyB2C {
             }
         }
         
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
-            var propertyChanged = this.PropertyChanged;
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
-                propertyChanged(this, new PropertyChangedEventArgs(propertyName));
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Xml", "4.6.1064.2")]
-    [Serializable()]
-    [DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(AnonymousType=true, Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
-    public partial class ConsultarClientesOrdenesFault : object, INotifyPropertyChanged {
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
+    public partial class ConsultarClientesOrdenesFault : object, System.ComponentModel.INotifyPropertyChanged {
         
         private Error consultarClientesOrdenesFault1Field;
         
         /// <remarks/>
-        [XmlElement("ConsultarClientesOrdenesFault", Form=XmlSchemaForm.Unqualified, Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("ConsultarClientesOrdenesFault", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
         public Error ConsultarClientesOrdenesFault1 {
             get {
                 return this.consultarClientesOrdenesFault1Field;
@@ -572,28 +562,28 @@ namespace B2CTouresBalon.ServiceProxyB2C {
             }
         }
         
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
-            var propertyChanged = this.PropertyChanged;
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
-                propertyChanged(this, new PropertyChangedEventArgs(propertyName));
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Xml", "4.6.1064.2")]
-    [Serializable()]
-    [DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(AnonymousType=true, Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
-    public partial class CancelarOrdenesFault : object, INotifyPropertyChanged {
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
+    public partial class CancelarOrdenesFault : object, System.ComponentModel.INotifyPropertyChanged {
         
         private Error cancelarOrdenesFault1Field;
         
         /// <remarks/>
-        [XmlElement("CancelarOrdenesFault", Form=XmlSchemaForm.Unqualified, Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("CancelarOrdenesFault", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
         public Error CancelarOrdenesFault1 {
             get {
                 return this.cancelarOrdenesFault1Field;
@@ -604,28 +594,28 @@ namespace B2CTouresBalon.ServiceProxyB2C {
             }
         }
         
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
-            var propertyChanged = this.PropertyChanged;
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
-                propertyChanged(this, new PropertyChangedEventArgs(propertyName));
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Xml", "4.6.1064.2")]
-    [Serializable()]
-    [DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(AnonymousType=true, Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
-    public partial class CrearOrdenesFault : object, INotifyPropertyChanged {
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
+    public partial class CrearOrdenesFault : object, System.ComponentModel.INotifyPropertyChanged {
         
         private Error crearOrdenesFault1Field;
         
         /// <remarks/>
-        [XmlElement("CrearOrdenesFault", Form=XmlSchemaForm.Unqualified, Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("CrearOrdenesFault", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
         public Error CrearOrdenesFault1 {
             get {
                 return this.crearOrdenesFault1Field;
@@ -636,28 +626,28 @@ namespace B2CTouresBalon.ServiceProxyB2C {
             }
         }
         
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
-            var propertyChanged = this.PropertyChanged;
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
-                propertyChanged(this, new PropertyChangedEventArgs(propertyName));
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Xml", "4.6.1064.2")]
-    [Serializable()]
-    [DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(AnonymousType=true, Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
-    public partial class ConsultaTop5ProductosFault : object, INotifyPropertyChanged {
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
+    public partial class ConsultaTop5ProductosFault : object, System.ComponentModel.INotifyPropertyChanged {
         
         private Error consultaTop5ProductosFault1Field;
         
         /// <remarks/>
-        [XmlElement("ConsultaTop5ProductosFault", Form=XmlSchemaForm.Unqualified, Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("ConsultaTop5ProductosFault", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
         public Error ConsultaTop5ProductosFault1 {
             get {
                 return this.consultaTop5ProductosFault1Field;
@@ -668,189 +658,189 @@ namespace B2CTouresBalon.ServiceProxyB2C {
             }
         }
         
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
-            var propertyChanged = this.PropertyChanged;
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
-                propertyChanged(this, new PropertyChangedEventArgs(propertyName));
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
     }
     
-    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
-    [ServiceContract(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", ConfigurationName="ServiceProxyB2C.ServiceProxyB2C")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", ConfigurationName="ServiceProxyB2C.ServiceProxyB2C")]
     public interface ServiceProxyB2C {
         
         // CODEGEN: Parameter 'registrarClienteResponse' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [OperationContract(Action="http://www.touresbalon.com/ServiceProxyB2C/RegistrarCliente", ReplyAction="*")]
-        [FaultContract(typeof(RegistrarClienteFault), Action="http://www.touresbalon.com/ServiceProxyB2C/RegistrarCliente", Name="RegistrarClienteFault")]
-        [XmlSerializerFormat(SupportFaults=true)]
-        [return: MessageParameter(Name="registrarClienteResponse")]
-        RegistrarClienteResponse RegistrarCliente(RegistrarClienteRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.touresbalon.com/ServiceProxyB2C/RegistrarCliente", ReplyAction="*")]
+        [System.ServiceModel.FaultContractAttribute(typeof(B2CTouresBalon.ServiceProxyB2C.RegistrarClienteFault), Action="http://www.touresbalon.com/ServiceProxyB2C/RegistrarCliente", Name="RegistrarClienteFault")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="registrarClienteResponse")]
+        B2CTouresBalon.ServiceProxyB2C.RegistrarClienteResponse RegistrarCliente(B2CTouresBalon.ServiceProxyB2C.RegistrarClienteRequest request);
         
-        [OperationContract(AsyncPattern=true, Action="http://www.touresbalon.com/ServiceProxyB2C/RegistrarCliente", ReplyAction="*")]
-        IAsyncResult BeginRegistrarCliente(RegistrarClienteRequest request, AsyncCallback callback, object asyncState);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://www.touresbalon.com/ServiceProxyB2C/RegistrarCliente", ReplyAction="*")]
+        System.IAsyncResult BeginRegistrarCliente(B2CTouresBalon.ServiceProxyB2C.RegistrarClienteRequest request, System.AsyncCallback callback, object asyncState);
         
-        RegistrarClienteResponse EndRegistrarCliente(IAsyncResult result);
-        
-        // CODEGEN: Parameter 'respuesta' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [OperationContract(Action="http://www.touresbalon.com/ServiceProxyB2C/AutenticarCliente", ReplyAction="*")]
-        [FaultContract(typeof(AutenticarClienteFault), Action="http://www.touresbalon.com/ServiceProxyB2C/AutenticarCliente", Name="AutenticarClienteFault")]
-        [XmlSerializerFormat(SupportFaults=true)]
-        [return: MessageParameter(Name="respuesta")]
-        AutenticarClienteResponse AutenticarCliente(AutenticarClienteRequest request);
-        
-        [OperationContract(AsyncPattern=true, Action="http://www.touresbalon.com/ServiceProxyB2C/AutenticarCliente", ReplyAction="*")]
-        IAsyncResult BeginAutenticarCliente(AutenticarClienteRequest request, AsyncCallback callback, object asyncState);
-        
-        AutenticarClienteResponse EndAutenticarCliente(IAsyncResult result);
+        B2CTouresBalon.ServiceProxyB2C.RegistrarClienteResponse EndRegistrarCliente(System.IAsyncResult result);
         
         // CODEGEN: Parameter 'respuesta' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [OperationContract(Action="http://www.touresbalon.com/ServiceProxyB2C/ActualizarCliente", ReplyAction="*")]
-        [FaultContract(typeof(ActualizarClienteFault), Action="http://www.touresbalon.com/ServiceProxyB2C/ActualizarCliente", Name="ActualizarClienteFault")]
-        [XmlSerializerFormat(SupportFaults=true)]
-        [return: MessageParameter(Name="respuesta")]
-        ActualizarClienteResponse ActualizarCliente(ActualizarClienteRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.touresbalon.com/ServiceProxyB2C/AutenticarCliente", ReplyAction="*")]
+        [System.ServiceModel.FaultContractAttribute(typeof(B2CTouresBalon.ServiceProxyB2C.AutenticarClienteFault), Action="http://www.touresbalon.com/ServiceProxyB2C/AutenticarCliente", Name="AutenticarClienteFault")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="respuesta")]
+        B2CTouresBalon.ServiceProxyB2C.AutenticarClienteResponse AutenticarCliente(B2CTouresBalon.ServiceProxyB2C.AutenticarClienteRequest request);
         
-        [OperationContract(AsyncPattern=true, Action="http://www.touresbalon.com/ServiceProxyB2C/ActualizarCliente", ReplyAction="*")]
-        IAsyncResult BeginActualizarCliente(ActualizarClienteRequest request, AsyncCallback callback, object asyncState);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://www.touresbalon.com/ServiceProxyB2C/AutenticarCliente", ReplyAction="*")]
+        System.IAsyncResult BeginAutenticarCliente(B2CTouresBalon.ServiceProxyB2C.AutenticarClienteRequest request, System.AsyncCallback callback, object asyncState);
         
-        ActualizarClienteResponse EndActualizarCliente(IAsyncResult result);
+        B2CTouresBalon.ServiceProxyB2C.AutenticarClienteResponse EndAutenticarCliente(System.IAsyncResult result);
         
         // CODEGEN: Parameter 'respuesta' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [OperationContract(Action="http://www.touresbalon.com/ServiceProxyB2C/ActualizarContraseniaCliente", ReplyAction="*")]
-        [FaultContract(typeof(ActualizarContraseniaClienteFault), Action="http://www.touresbalon.com/ServiceProxyB2C/ActualizarContraseniaCliente", Name="ActualizarContraseniaClienteFault")]
-        [XmlSerializerFormat(SupportFaults=true)]
-        [return: MessageParameter(Name="respuesta")]
-        ActualizarContraseniaClienteResponse ActualizarContraseniaCliente(ActualizarContraseniaClienteRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.touresbalon.com/ServiceProxyB2C/ActualizarCliente", ReplyAction="*")]
+        [System.ServiceModel.FaultContractAttribute(typeof(B2CTouresBalon.ServiceProxyB2C.ActualizarClienteFault), Action="http://www.touresbalon.com/ServiceProxyB2C/ActualizarCliente", Name="ActualizarClienteFault")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="respuesta")]
+        B2CTouresBalon.ServiceProxyB2C.ActualizarClienteResponse ActualizarCliente(B2CTouresBalon.ServiceProxyB2C.ActualizarClienteRequest request);
         
-        [OperationContract(AsyncPattern=true, Action="http://www.touresbalon.com/ServiceProxyB2C/ActualizarContraseniaCliente", ReplyAction="*")]
-        IAsyncResult BeginActualizarContraseniaCliente(ActualizarContraseniaClienteRequest request, AsyncCallback callback, object asyncState);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://www.touresbalon.com/ServiceProxyB2C/ActualizarCliente", ReplyAction="*")]
+        System.IAsyncResult BeginActualizarCliente(B2CTouresBalon.ServiceProxyB2C.ActualizarClienteRequest request, System.AsyncCallback callback, object asyncState);
         
-        ActualizarContraseniaClienteResponse EndActualizarContraseniaCliente(IAsyncResult result);
+        B2CTouresBalon.ServiceProxyB2C.ActualizarClienteResponse EndActualizarCliente(System.IAsyncResult result);
+        
+        // CODEGEN: Parameter 'respuesta' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.touresbalon.com/ServiceProxyB2C/ActualizarContraseniaCliente", ReplyAction="*")]
+        [System.ServiceModel.FaultContractAttribute(typeof(B2CTouresBalon.ServiceProxyB2C.ActualizarContraseniaClienteFault), Action="http://www.touresbalon.com/ServiceProxyB2C/ActualizarContraseniaCliente", Name="ActualizarContraseniaClienteFault")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="respuesta")]
+        B2CTouresBalon.ServiceProxyB2C.ActualizarContraseniaClienteResponse ActualizarContraseniaCliente(B2CTouresBalon.ServiceProxyB2C.ActualizarContraseniaClienteRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://www.touresbalon.com/ServiceProxyB2C/ActualizarContraseniaCliente", ReplyAction="*")]
+        System.IAsyncResult BeginActualizarContraseniaCliente(B2CTouresBalon.ServiceProxyB2C.ActualizarContraseniaClienteRequest request, System.AsyncCallback callback, object asyncState);
+        
+        B2CTouresBalon.ServiceProxyB2C.ActualizarContraseniaClienteResponse EndActualizarContraseniaCliente(System.IAsyncResult result);
         
         // CODEGEN: Parameter 'productos' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [OperationContract(Action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarProducto", ReplyAction="*")]
-        [FaultContract(typeof(ConsultarProductoFault), Action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarProducto", Name="ConsultarProductoFault")]
-        [XmlSerializerFormat(SupportFaults=true)]
-        [return: MessageParameter(Name="productos")]
-        ConsultarProductoResponse ConsultarProducto(ConsultarProductoRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarProducto", ReplyAction="*")]
+        [System.ServiceModel.FaultContractAttribute(typeof(B2CTouresBalon.ServiceProxyB2C.ConsultarProductoFault), Action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarProducto", Name="ConsultarProductoFault")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="productos")]
+        B2CTouresBalon.ServiceProxyB2C.ConsultarProductoResponse ConsultarProducto(B2CTouresBalon.ServiceProxyB2C.ConsultarProductoRequest request);
         
-        [OperationContract(AsyncPattern=true, Action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarProducto", ReplyAction="*")]
-        IAsyncResult BeginConsultarProducto(ConsultarProductoRequest request, AsyncCallback callback, object asyncState);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarProducto", ReplyAction="*")]
+        System.IAsyncResult BeginConsultarProducto(B2CTouresBalon.ServiceProxyB2C.ConsultarProductoRequest request, System.AsyncCallback callback, object asyncState);
         
-        ConsultarProductoResponse EndConsultarProducto(IAsyncResult result);
+        B2CTouresBalon.ServiceProxyB2C.ConsultarProductoResponse EndConsultarProducto(System.IAsyncResult result);
         
         // CODEGEN: Parameter 'productos' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [OperationContract(Action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarCampaniaProducto", ReplyAction="*")]
-        [FaultContract(typeof(ConsultarCampaniaProductoFault), Action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarCampaniaProducto", Name="ConsultarCampaniaProductoFault")]
-        [XmlSerializerFormat(SupportFaults=true)]
-        [return: MessageParameter(Name="productos")]
-        ConsultarCampaniaProductoResponse ConsultarCampaniaProducto(ConsultarCampaniaProductoRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarCampaniaProducto", ReplyAction="*")]
+        [System.ServiceModel.FaultContractAttribute(typeof(B2CTouresBalon.ServiceProxyB2C.ConsultarCampaniaProductoFault), Action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarCampaniaProducto", Name="ConsultarCampaniaProductoFault")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="productos")]
+        B2CTouresBalon.ServiceProxyB2C.ConsultarCampaniaProductoResponse ConsultarCampaniaProducto(B2CTouresBalon.ServiceProxyB2C.ConsultarCampaniaProductoRequest request);
         
-        [OperationContract(AsyncPattern=true, Action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarCampaniaProducto", ReplyAction="*")]
-        IAsyncResult BeginConsultarCampaniaProducto(ConsultarCampaniaProductoRequest request, AsyncCallback callback, object asyncState);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarCampaniaProducto", ReplyAction="*")]
+        System.IAsyncResult BeginConsultarCampaniaProducto(B2CTouresBalon.ServiceProxyB2C.ConsultarCampaniaProductoRequest request, System.AsyncCallback callback, object asyncState);
         
-        ConsultarCampaniaProductoResponse EndConsultarCampaniaProducto(IAsyncResult result);
+        B2CTouresBalon.ServiceProxyB2C.ConsultarCampaniaProductoResponse EndConsultarCampaniaProducto(System.IAsyncResult result);
         
         // CODEGEN: Parameter 'orden' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [OperationContract(Action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarClientesOrdenes", ReplyAction="*")]
-        [FaultContract(typeof(ConsultarClientesOrdenesFault), Action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarClientesOrdenes", Name="ConsultarClientesOrdenesFault")]
-        [XmlSerializerFormat(SupportFaults=true)]
-        [return: MessageParameter(Name="orden")]
-        ConsultarClientesOrdenesResponse ConsultarClientesOrdenes(ConsultarClientesOrdenesRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarClientesOrdenes", ReplyAction="*")]
+        [System.ServiceModel.FaultContractAttribute(typeof(B2CTouresBalon.ServiceProxyB2C.ConsultarClientesOrdenesFault), Action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarClientesOrdenes", Name="ConsultarClientesOrdenesFault")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="orden")]
+        B2CTouresBalon.ServiceProxyB2C.ConsultarClientesOrdenesResponse ConsultarClientesOrdenes(B2CTouresBalon.ServiceProxyB2C.ConsultarClientesOrdenesRequest request);
         
-        [OperationContract(AsyncPattern=true, Action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarClientesOrdenes", ReplyAction="*")]
-        IAsyncResult BeginConsultarClientesOrdenes(ConsultarClientesOrdenesRequest request, AsyncCallback callback, object asyncState);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarClientesOrdenes", ReplyAction="*")]
+        System.IAsyncResult BeginConsultarClientesOrdenes(B2CTouresBalon.ServiceProxyB2C.ConsultarClientesOrdenesRequest request, System.AsyncCallback callback, object asyncState);
         
-        ConsultarClientesOrdenesResponse EndConsultarClientesOrdenes(IAsyncResult result);
-        
-        // CODEGEN: Parameter 'respuesta' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [OperationContract(Action="http://www.touresbalon.com/ServiceProxyB2C/CancelarOrdenes", ReplyAction="*")]
-        [FaultContract(typeof(CancelarOrdenesFault), Action="http://www.touresbalon.com/ServiceProxyB2C/CancelarOrdenes", Name="CancelarOrdenesFault")]
-        [XmlSerializerFormat(SupportFaults=true)]
-        [return: MessageParameter(Name="respuesta")]
-        CancelarOrdenesResponse CancelarOrdenes(CancelarOrdenesRequest request);
-        
-        [OperationContract(AsyncPattern=true, Action="http://www.touresbalon.com/ServiceProxyB2C/CancelarOrdenes", ReplyAction="*")]
-        IAsyncResult BeginCancelarOrdenes(CancelarOrdenesRequest request, AsyncCallback callback, object asyncState);
-        
-        CancelarOrdenesResponse EndCancelarOrdenes(IAsyncResult result);
+        B2CTouresBalon.ServiceProxyB2C.ConsultarClientesOrdenesResponse EndConsultarClientesOrdenes(System.IAsyncResult result);
         
         // CODEGEN: Parameter 'respuesta' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [OperationContract(Action="http://www.touresbalon.com/ServiceProxyB2C/CrearOrdenes", ReplyAction="*")]
-        [FaultContract(typeof(CrearOrdenesFault), Action="http://www.touresbalon.com/ServiceProxyB2C/CrearOrdenes", Name="CrearOrdenesFault")]
-        [XmlSerializerFormat(SupportFaults=true)]
-        [return: MessageParameter(Name="respuesta")]
-        CrearOrdenesResponse CrearOrdenes(CrearOrdenesRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.touresbalon.com/ServiceProxyB2C/CancelarOrdenes", ReplyAction="*")]
+        [System.ServiceModel.FaultContractAttribute(typeof(B2CTouresBalon.ServiceProxyB2C.CancelarOrdenesFault), Action="http://www.touresbalon.com/ServiceProxyB2C/CancelarOrdenes", Name="CancelarOrdenesFault")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="respuesta")]
+        B2CTouresBalon.ServiceProxyB2C.CancelarOrdenesResponse CancelarOrdenes(B2CTouresBalon.ServiceProxyB2C.CancelarOrdenesRequest request);
         
-        [OperationContract(AsyncPattern=true, Action="http://www.touresbalon.com/ServiceProxyB2C/CrearOrdenes", ReplyAction="*")]
-        IAsyncResult BeginCrearOrdenes(CrearOrdenesRequest request, AsyncCallback callback, object asyncState);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://www.touresbalon.com/ServiceProxyB2C/CancelarOrdenes", ReplyAction="*")]
+        System.IAsyncResult BeginCancelarOrdenes(B2CTouresBalon.ServiceProxyB2C.CancelarOrdenesRequest request, System.AsyncCallback callback, object asyncState);
         
-        CrearOrdenesResponse EndCrearOrdenes(IAsyncResult result);
+        B2CTouresBalon.ServiceProxyB2C.CancelarOrdenesResponse EndCancelarOrdenes(System.IAsyncResult result);
+        
+        // CODEGEN: Parameter 'respuesta' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.touresbalon.com/ServiceProxyB2C/CrearOrdenes", ReplyAction="*")]
+        [System.ServiceModel.FaultContractAttribute(typeof(B2CTouresBalon.ServiceProxyB2C.CrearOrdenesFault), Action="http://www.touresbalon.com/ServiceProxyB2C/CrearOrdenes", Name="CrearOrdenesFault")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="respuesta")]
+        B2CTouresBalon.ServiceProxyB2C.CrearOrdenesResponse CrearOrdenes(B2CTouresBalon.ServiceProxyB2C.CrearOrdenesRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://www.touresbalon.com/ServiceProxyB2C/CrearOrdenes", ReplyAction="*")]
+        System.IAsyncResult BeginCrearOrdenes(B2CTouresBalon.ServiceProxyB2C.CrearOrdenesRequest request, System.AsyncCallback callback, object asyncState);
+        
+        B2CTouresBalon.ServiceProxyB2C.CrearOrdenesResponse EndCrearOrdenes(System.IAsyncResult result);
         
         // CODEGEN: Parameter 'lista_productos_top' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [OperationContract(Action="http://www.touresbalon.com/ServiceProxyB2C/ConsultaTop5Productos", ReplyAction="*")]
-        [FaultContract(typeof(ConsultaTop5ProductosFault), Action="http://www.touresbalon.com/ServiceProxyB2C/ConsultaTop5Productos", Name="ConsultaTop5ProductosFault")]
-        [XmlSerializerFormat(SupportFaults=true)]
-        [return: MessageParameter(Name="lista_productos_top")]
-        ConsultaTop5ProductosResponse ConsultaTop5Productos(ConsultaTop5ProductosRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.touresbalon.com/ServiceProxyB2C/ConsultaTop5Productos", ReplyAction="*")]
+        [System.ServiceModel.FaultContractAttribute(typeof(B2CTouresBalon.ServiceProxyB2C.ConsultaTop5ProductosFault), Action="http://www.touresbalon.com/ServiceProxyB2C/ConsultaTop5Productos", Name="ConsultaTop5ProductosFault")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="lista_productos_top")]
+        B2CTouresBalon.ServiceProxyB2C.ConsultaTop5ProductosResponse ConsultaTop5Productos(B2CTouresBalon.ServiceProxyB2C.ConsultaTop5ProductosRequest request);
         
-        [OperationContract(AsyncPattern=true, Action="http://www.touresbalon.com/ServiceProxyB2C/ConsultaTop5Productos", ReplyAction="*")]
-        IAsyncResult BeginConsultaTop5Productos(ConsultaTop5ProductosRequest request, AsyncCallback callback, object asyncState);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://www.touresbalon.com/ServiceProxyB2C/ConsultaTop5Productos", ReplyAction="*")]
+        System.IAsyncResult BeginConsultaTop5Productos(B2CTouresBalon.ServiceProxyB2C.ConsultaTop5ProductosRequest request, System.AsyncCallback callback, object asyncState);
         
-        ConsultaTop5ProductosResponse EndConsultaTop5Productos(IAsyncResult result);
+        B2CTouresBalon.ServiceProxyB2C.ConsultaTop5ProductosResponse EndConsultaTop5Productos(System.IAsyncResult result);
     }
     
-    [DebuggerStepThrough()]
-    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
-    [EditorBrowsable(EditorBrowsableState.Advanced)]
-    [MessageContract(WrapperName="RegistrarCliente", WrapperNamespace="http://www.touresbalon.com/ServiceProxyB2C/", IsWrapped=true)]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="RegistrarCliente", WrapperNamespace="http://www.touresbalon.com/ServiceProxyB2C/", IsWrapped=true)]
     public partial class RegistrarClienteRequest {
         
-        [MessageBodyMember(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=0)]
-        [XmlElement(Form=XmlSchemaForm.Unqualified)]
-        public Cliente cliente;
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public B2CTouresBalon.ServiceProxyB2C.Cliente cliente;
         
         public RegistrarClienteRequest() {
         }
         
-        public RegistrarClienteRequest(Cliente cliente) {
+        public RegistrarClienteRequest(B2CTouresBalon.ServiceProxyB2C.Cliente cliente) {
             this.cliente = cliente;
         }
     }
     
-    [DebuggerStepThrough()]
-    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
-    [EditorBrowsable(EditorBrowsableState.Advanced)]
-    [MessageContract(WrapperName="RegistrarClienteResponse", WrapperNamespace="http://www.touresbalon.com/ServiceProxyB2C/", IsWrapped=true)]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="RegistrarClienteResponse", WrapperNamespace="http://www.touresbalon.com/ServiceProxyB2C/", IsWrapped=true)]
     public partial class RegistrarClienteResponse {
         
-        [MessageBodyMember(Name="registrarClienteResponse", Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=0)]
-        [XmlElement(Form=XmlSchemaForm.Unqualified)]
-        public RegistrarClienteReponseType registrarClienteResponse1;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="registrarClienteResponse", Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public B2CTouresBalon.ServiceProxyB2C.RegistrarClienteReponseType registrarClienteResponse1;
         
         public RegistrarClienteResponse() {
         }
         
-        public RegistrarClienteResponse(RegistrarClienteReponseType registrarClienteResponse1) {
+        public RegistrarClienteResponse(B2CTouresBalon.ServiceProxyB2C.RegistrarClienteReponseType registrarClienteResponse1) {
             this.registrarClienteResponse1 = registrarClienteResponse1;
         }
     }
     
-    [DebuggerStepThrough()]
-    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
-    [EditorBrowsable(EditorBrowsableState.Advanced)]
-    [MessageContract(WrapperName="AutenticarCliente", WrapperNamespace="http://www.touresbalon.com/ServiceProxyB2C/", IsWrapped=true)]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="AutenticarCliente", WrapperNamespace="http://www.touresbalon.com/ServiceProxyB2C/", IsWrapped=true)]
     public partial class AutenticarClienteRequest {
         
-        [MessageBodyMember(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=0)]
-        [XmlElement(Form=XmlSchemaForm.Unqualified)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string usuario;
         
-        [MessageBodyMember(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=1)]
-        [XmlElement(Form=XmlSchemaForm.Unqualified)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string contrasenia;
         
         public AutenticarClienteRequest() {
@@ -862,72 +852,72 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
     }
     
-    [DebuggerStepThrough()]
-    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
-    [EditorBrowsable(EditorBrowsableState.Advanced)]
-    [MessageContract(WrapperName="AutenticarClienteResponse", WrapperNamespace="http://www.touresbalon.com/ServiceProxyB2C/", IsWrapped=true)]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="AutenticarClienteResponse", WrapperNamespace="http://www.touresbalon.com/ServiceProxyB2C/", IsWrapped=true)]
     public partial class AutenticarClienteResponse {
         
-        [MessageBodyMember(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=0)]
-        [XmlElement(Form=XmlSchemaForm.Unqualified)]
-        public RespuestaGenerica respuesta;
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica respuesta;
         
         public AutenticarClienteResponse() {
         }
         
-        public AutenticarClienteResponse(RespuestaGenerica respuesta) {
+        public AutenticarClienteResponse(B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica respuesta) {
             this.respuesta = respuesta;
         }
     }
     
-    [DebuggerStepThrough()]
-    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
-    [EditorBrowsable(EditorBrowsableState.Advanced)]
-    [MessageContract(WrapperName="ActualizarCliente", WrapperNamespace="http://www.touresbalon.com/ServiceProxyB2C/", IsWrapped=true)]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ActualizarCliente", WrapperNamespace="http://www.touresbalon.com/ServiceProxyB2C/", IsWrapped=true)]
     public partial class ActualizarClienteRequest {
         
-        [MessageBodyMember(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=0)]
-        [XmlElement(Form=XmlSchemaForm.Unqualified)]
-        public Cliente cliente;
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public B2CTouresBalon.ServiceProxyB2C.Cliente cliente;
         
         public ActualizarClienteRequest() {
         }
         
-        public ActualizarClienteRequest(Cliente cliente) {
+        public ActualizarClienteRequest(B2CTouresBalon.ServiceProxyB2C.Cliente cliente) {
             this.cliente = cliente;
         }
     }
     
-    [DebuggerStepThrough()]
-    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
-    [EditorBrowsable(EditorBrowsableState.Advanced)]
-    [MessageContract(WrapperName="ActualizarClienteResponse", WrapperNamespace="http://www.touresbalon.com/ServiceProxyB2C/", IsWrapped=true)]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ActualizarClienteResponse", WrapperNamespace="http://www.touresbalon.com/ServiceProxyB2C/", IsWrapped=true)]
     public partial class ActualizarClienteResponse {
         
-        [MessageBodyMember(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=0)]
-        [XmlElement(Form=XmlSchemaForm.Unqualified)]
-        public RespuestaGenerica respuesta;
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica respuesta;
         
         public ActualizarClienteResponse() {
         }
         
-        public ActualizarClienteResponse(RespuestaGenerica respuesta) {
+        public ActualizarClienteResponse(B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica respuesta) {
             this.respuesta = respuesta;
         }
     }
     
-    [DebuggerStepThrough()]
-    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
-    [EditorBrowsable(EditorBrowsableState.Advanced)]
-    [MessageContract(WrapperName="ActualizarContraseniaCliente", WrapperNamespace="http://www.touresbalon.com/ServiceProxyB2C/", IsWrapped=true)]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ActualizarContraseniaCliente", WrapperNamespace="http://www.touresbalon.com/ServiceProxyB2C/", IsWrapped=true)]
     public partial class ActualizarContraseniaClienteRequest {
         
-        [MessageBodyMember(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=0)]
-        [XmlElement(Form=XmlSchemaForm.Unqualified)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string usuario;
         
-        [MessageBodyMember(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=1)]
-        [XmlElement(Form=XmlSchemaForm.Unqualified)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string contrasenia;
         
         public ActualizarContraseniaClienteRequest() {
@@ -939,28 +929,28 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
     }
     
-    [DebuggerStepThrough()]
-    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
-    [EditorBrowsable(EditorBrowsableState.Advanced)]
-    [MessageContract(WrapperName="ActualizarContraseniaClienteResponse", WrapperNamespace="http://www.touresbalon.com/ServiceProxyB2C/", IsWrapped=true)]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ActualizarContraseniaClienteResponse", WrapperNamespace="http://www.touresbalon.com/ServiceProxyB2C/", IsWrapped=true)]
     public partial class ActualizarContraseniaClienteResponse {
         
-        [MessageBodyMember(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=0)]
-        [XmlElement(Form=XmlSchemaForm.Unqualified)]
-        public RespuestaGenerica respuesta;
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica respuesta;
         
         public ActualizarContraseniaClienteResponse() {
         }
         
-        public ActualizarContraseniaClienteResponse(RespuestaGenerica respuesta) {
+        public ActualizarContraseniaClienteResponse(B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica respuesta) {
             this.respuesta = respuesta;
         }
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Xml", "4.6.1064.2")]
-    [Serializable()]
-    [XmlType(Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
     public enum TipoConsultaProducto {
         
         /// <remarks/>
@@ -974,12 +964,12 @@ namespace B2CTouresBalon.ServiceProxyB2C {
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Xml", "4.6.1064.2")]
-    [Serializable()]
-    [DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
-    public partial class Producto : object, INotifyPropertyChanged {
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
+    public partial class Producto : object, System.ComponentModel.INotifyPropertyChanged {
         
         private int id_productoField;
         
@@ -987,11 +977,11 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         
         private Ciudad ciudad_espectaculoField;
         
-        private DateTime fecha_llegadaField;
+        private System.DateTime fecha_llegadaField;
         
         private bool fecha_llegadaFieldSpecified;
         
-        private DateTime fecha_salidaField;
+        private System.DateTime fecha_salidaField;
         
         private bool fecha_salidaFieldSpecified;
         
@@ -1004,7 +994,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         private byte[] imagen_productoField;
         
         /// <remarks/>
-        [XmlElement(Form=XmlSchemaForm.Unqualified, Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
         public int id_producto {
             get {
                 return this.id_productoField;
@@ -1016,7 +1006,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         /// <remarks/>
-        [XmlElement(Form=XmlSchemaForm.Unqualified, Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
         public string espectaculo {
             get {
                 return this.espectaculoField;
@@ -1028,7 +1018,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         /// <remarks/>
-        [XmlElement(Form=XmlSchemaForm.Unqualified, Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
         public Ciudad ciudad_espectaculo {
             get {
                 return this.ciudad_espectaculoField;
@@ -1040,8 +1030,8 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         /// <remarks/>
-        [XmlElement(Form=XmlSchemaForm.Unqualified, DataType="date", Order=3)]
-        public DateTime fecha_llegada {
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="date", Order=3)]
+        public System.DateTime fecha_llegada {
             get {
                 return this.fecha_llegadaField;
             }
@@ -1052,7 +1042,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         /// <remarks/>
-        [XmlIgnore()]
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
         public bool fecha_llegadaSpecified {
             get {
                 return this.fecha_llegadaFieldSpecified;
@@ -1064,8 +1054,8 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         /// <remarks/>
-        [XmlElement(Form=XmlSchemaForm.Unqualified, DataType="date", Order=4)]
-        public DateTime fecha_salida {
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="date", Order=4)]
+        public System.DateTime fecha_salida {
             get {
                 return this.fecha_salidaField;
             }
@@ -1076,7 +1066,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         /// <remarks/>
-        [XmlIgnore()]
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
         public bool fecha_salidaSpecified {
             get {
                 return this.fecha_salidaFieldSpecified;
@@ -1088,7 +1078,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         /// <remarks/>
-        [XmlElement(Form=XmlSchemaForm.Unqualified, Order=5)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
         public TarifaValores tipo_transporte {
             get {
                 return this.tipo_transporteField;
@@ -1100,7 +1090,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         /// <remarks/>
-        [XmlElement(Form=XmlSchemaForm.Unqualified, Order=6)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=6)]
         public TarifaValores tipo_espectaculo {
             get {
                 return this.tipo_espectaculoField;
@@ -1112,7 +1102,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         /// <remarks/>
-        [XmlElement(Form=XmlSchemaForm.Unqualified, Order=7)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=7)]
         public TarifaValores tipo_hospedaje {
             get {
                 return this.tipo_hospedajeField;
@@ -1124,7 +1114,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         /// <remarks/>
-        [XmlElement(Form=XmlSchemaForm.Unqualified, DataType="base64Binary", Order=8)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="base64Binary", Order=8)]
         public byte[] imagen_producto {
             get {
                 return this.imagen_productoField;
@@ -1135,23 +1125,23 @@ namespace B2CTouresBalon.ServiceProxyB2C {
             }
         }
         
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
-            var propertyChanged = this.PropertyChanged;
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
-                propertyChanged(this, new PropertyChangedEventArgs(propertyName));
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Xml", "4.6.1064.2")]
-    [Serializable()]
-    [DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
-    public partial class Ciudad : object, INotifyPropertyChanged {
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
+    public partial class Ciudad : object, System.ComponentModel.INotifyPropertyChanged {
         
         private int id_ciudadField;
         
@@ -1160,7 +1150,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         private TarifaValores tipo_ciudadField;
         
         /// <remarks/>
-        [XmlElement(Form=XmlSchemaForm.Unqualified, Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
         public int id_ciudad {
             get {
                 return this.id_ciudadField;
@@ -1172,7 +1162,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         /// <remarks/>
-        [XmlElement(Form=XmlSchemaForm.Unqualified, Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
         public string pais {
             get {
                 return this.paisField;
@@ -1184,7 +1174,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         /// <remarks/>
-        [XmlElement(Form=XmlSchemaForm.Unqualified, Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
         public TarifaValores tipo_ciudad {
             get {
                 return this.tipo_ciudadField;
@@ -1195,23 +1185,23 @@ namespace B2CTouresBalon.ServiceProxyB2C {
             }
         }
         
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
-            var propertyChanged = this.PropertyChanged;
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
-                propertyChanged(this, new PropertyChangedEventArgs(propertyName));
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Xml", "4.6.1064.2")]
-    [Serializable()]
-    [DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
-    public partial class TarifaValores : object, INotifyPropertyChanged {
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
+    public partial class TarifaValores : object, System.ComponentModel.INotifyPropertyChanged {
         
         private int idField;
         
@@ -1220,7 +1210,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         private double precioField;
         
         /// <remarks/>
-        [XmlElement(Form=XmlSchemaForm.Unqualified, Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
         public int id {
             get {
                 return this.idField;
@@ -1232,7 +1222,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         /// <remarks/>
-        [XmlElement(Form=XmlSchemaForm.Unqualified, Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
         public string nombre_tipo {
             get {
                 return this.nombre_tipoField;
@@ -1244,7 +1234,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         /// <remarks/>
-        [XmlElement(Form=XmlSchemaForm.Unqualified, Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
         public double precio {
             get {
                 return this.precioField;
@@ -1255,42 +1245,42 @@ namespace B2CTouresBalon.ServiceProxyB2C {
             }
         }
         
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
-            var propertyChanged = this.PropertyChanged;
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
-                propertyChanged(this, new PropertyChangedEventArgs(propertyName));
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
     }
     
-    [DebuggerStepThrough()]
-    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
-    [EditorBrowsable(EditorBrowsableState.Advanced)]
-    [MessageContract(WrapperName="ConsultarProducto", WrapperNamespace="http://www.touresbalon.com/ServiceProxyB2C/", IsWrapped=true)]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ConsultarProducto", WrapperNamespace="http://www.touresbalon.com/ServiceProxyB2C/", IsWrapped=true)]
     public partial class ConsultarProductoRequest {
         
-        [MessageBodyMember(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=0)]
-        [XmlElement(Form=XmlSchemaForm.Unqualified)]
-        public TipoConsultaProducto tipo_consulta;
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public B2CTouresBalon.ServiceProxyB2C.TipoConsultaProducto tipo_consulta;
         
-        [MessageBodyMember(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=1)]
-        [XmlElement(Form=XmlSchemaForm.Unqualified)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string codigo;
         
-        [MessageBodyMember(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=2)]
-        [XmlElement(Form=XmlSchemaForm.Unqualified)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string nombre;
         
-        [MessageBodyMember(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=3)]
-        [XmlElement(Form=XmlSchemaForm.Unqualified)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=3)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string descripcion;
         
         public ConsultarProductoRequest() {
         }
         
-        public ConsultarProductoRequest(TipoConsultaProducto tipo_consulta, string codigo, string nombre, string descripcion) {
+        public ConsultarProductoRequest(B2CTouresBalon.ServiceProxyB2C.TipoConsultaProducto tipo_consulta, string codigo, string nombre, string descripcion) {
             this.tipo_consulta = tipo_consulta;
             this.codigo = codigo;
             this.nombre = nombre;
@@ -1298,63 +1288,63 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
     }
     
-    [DebuggerStepThrough()]
-    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
-    [EditorBrowsable(EditorBrowsableState.Advanced)]
-    [MessageContract(WrapperName="ConsultarProductoResponse", WrapperNamespace="http://www.touresbalon.com/ServiceProxyB2C/", IsWrapped=true)]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ConsultarProductoResponse", WrapperNamespace="http://www.touresbalon.com/ServiceProxyB2C/", IsWrapped=true)]
     public partial class ConsultarProductoResponse {
         
-        [MessageBodyMember(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=0)]
-        [XmlElement("productos", Form=XmlSchemaForm.Unqualified)]
-        public Producto[] productos;
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("productos", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public B2CTouresBalon.ServiceProxyB2C.Producto[] productos;
         
         public ConsultarProductoResponse() {
         }
         
-        public ConsultarProductoResponse(Producto[] productos) {
+        public ConsultarProductoResponse(B2CTouresBalon.ServiceProxyB2C.Producto[] productos) {
             this.productos = productos;
         }
     }
     
-    [DebuggerStepThrough()]
-    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
-    [EditorBrowsable(EditorBrowsableState.Advanced)]
-    [MessageContract(WrapperName="ConsultarCampaniaProducto", WrapperNamespace="http://www.touresbalon.com/ServiceProxyB2C/", IsWrapped=true)]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ConsultarCampaniaProducto", WrapperNamespace="http://www.touresbalon.com/ServiceProxyB2C/", IsWrapped=true)]
     public partial class ConsultarCampaniaProductoRequest {
         
         public ConsultarCampaniaProductoRequest() {
         }
     }
     
-    [DebuggerStepThrough()]
-    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
-    [EditorBrowsable(EditorBrowsableState.Advanced)]
-    [MessageContract(WrapperName="ConsultarCampaniaProductoResponse", WrapperNamespace="http://www.touresbalon.com/ServiceProxyB2C/", IsWrapped=true)]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ConsultarCampaniaProductoResponse", WrapperNamespace="http://www.touresbalon.com/ServiceProxyB2C/", IsWrapped=true)]
     public partial class ConsultarCampaniaProductoResponse {
         
-        [MessageBodyMember(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=0)]
-        [XmlElement("productos", Form=XmlSchemaForm.Unqualified)]
-        public Producto[] productos;
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("productos", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public B2CTouresBalon.ServiceProxyB2C.Producto[] productos;
         
         public ConsultarCampaniaProductoResponse() {
         }
         
-        public ConsultarCampaniaProductoResponse(Producto[] productos) {
+        public ConsultarCampaniaProductoResponse(B2CTouresBalon.ServiceProxyB2C.Producto[] productos) {
             this.productos = productos;
         }
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Xml", "4.6.1064.2")]
-    [Serializable()]
-    [DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
-    public partial class Orden : object, INotifyPropertyChanged {
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
+    public partial class Orden : object, System.ComponentModel.INotifyPropertyChanged {
         
         private string id_ordenField;
         
-        private DateTime fecha_ordenField;
+        private System.DateTime fecha_ordenField;
         
         private double precioField;
         
@@ -1365,7 +1355,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         private Item[] itemField;
         
         /// <remarks/>
-        [XmlElement(Form=XmlSchemaForm.Unqualified, Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
         public string id_orden {
             get {
                 return this.id_ordenField;
@@ -1377,8 +1367,8 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         /// <remarks/>
-        [XmlElement(Form=XmlSchemaForm.Unqualified, DataType="date", Order=1)]
-        public DateTime fecha_orden {
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="date", Order=1)]
+        public System.DateTime fecha_orden {
             get {
                 return this.fecha_ordenField;
             }
@@ -1389,7 +1379,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         /// <remarks/>
-        [XmlElement(Form=XmlSchemaForm.Unqualified, Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
         public double precio {
             get {
                 return this.precioField;
@@ -1401,7 +1391,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         /// <remarks/>
-        [XmlElement(Form=XmlSchemaForm.Unqualified, Order=3)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
         public EstatusOrden estatus {
             get {
                 return this.estatusField;
@@ -1413,7 +1403,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         /// <remarks/>
-        [XmlElement("comentarios", Form=XmlSchemaForm.Unqualified, Order=4)]
+        [System.Xml.Serialization.XmlElementAttribute("comentarios", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
         public string[] comentarios {
             get {
                 return this.comentariosField;
@@ -1425,7 +1415,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         /// <remarks/>
-        [XmlElement("item", Form=XmlSchemaForm.Unqualified, Order=5)]
+        [System.Xml.Serialization.XmlElementAttribute("item", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
         public Item[] item {
             get {
                 return this.itemField;
@@ -1436,20 +1426,20 @@ namespace B2CTouresBalon.ServiceProxyB2C {
             }
         }
         
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
-            var propertyChanged = this.PropertyChanged;
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
-                propertyChanged(this, new PropertyChangedEventArgs(propertyName));
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Xml", "4.6.1064.2")]
-    [Serializable()]
-    [XmlType(Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
     public enum EstatusOrden {
         
         /// <remarks/>
@@ -1469,12 +1459,12 @@ namespace B2CTouresBalon.ServiceProxyB2C {
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Xml", "4.6.1064.2")]
-    [Serializable()]
-    [DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
-    public partial class Item : object, INotifyPropertyChanged {
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
+    public partial class Item : object, System.ComponentModel.INotifyPropertyChanged {
         
         private string id_itemField;
         
@@ -1489,7 +1479,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         private int cantidadField;
         
         /// <remarks/>
-        [XmlElement(Form=XmlSchemaForm.Unqualified, Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
         public string id_item {
             get {
                 return this.id_itemField;
@@ -1501,7 +1491,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         /// <remarks/>
-        [XmlElement(Form=XmlSchemaForm.Unqualified, Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
         public int id_prod {
             get {
                 return this.id_prodField;
@@ -1513,7 +1503,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         /// <remarks/>
-        [XmlElement(Form=XmlSchemaForm.Unqualified, Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
         public string nombre_prod {
             get {
                 return this.nombre_prodField;
@@ -1525,7 +1515,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         /// <remarks/>
-        [XmlElement(Form=XmlSchemaForm.Unqualified, Order=3)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
         public string part_num {
             get {
                 return this.part_numField;
@@ -1537,7 +1527,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         /// <remarks/>
-        [XmlElement(Form=XmlSchemaForm.Unqualified, Order=4)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
         public double precio {
             get {
                 return this.precioField;
@@ -1549,7 +1539,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         /// <remarks/>
-        [XmlElement(Form=XmlSchemaForm.Unqualified, Order=5)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
         public int cantidad {
             get {
                 return this.cantidadField;
@@ -1560,24 +1550,24 @@ namespace B2CTouresBalon.ServiceProxyB2C {
             }
         }
         
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
-            var propertyChanged = this.PropertyChanged;
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
-                propertyChanged(this, new PropertyChangedEventArgs(propertyName));
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
     }
     
-    [DebuggerStepThrough()]
-    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
-    [EditorBrowsable(EditorBrowsableState.Advanced)]
-    [MessageContract(WrapperName="ConsultarClientesOrdenes", WrapperNamespace="http://www.touresbalon.com/ServiceProxyB2C/", IsWrapped=true)]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ConsultarClientesOrdenes", WrapperNamespace="http://www.touresbalon.com/ServiceProxyB2C/", IsWrapped=true)]
     public partial class ConsultarClientesOrdenesRequest {
         
-        [MessageBodyMember(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=0)]
-        [XmlElement(Form=XmlSchemaForm.Unqualified)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string id_cliente;
         
         public ConsultarClientesOrdenesRequest() {
@@ -1588,32 +1578,32 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
     }
     
-    [DebuggerStepThrough()]
-    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
-    [EditorBrowsable(EditorBrowsableState.Advanced)]
-    [MessageContract(WrapperName="ConsultarClientesOrdenesResponse", WrapperNamespace="http://www.touresbalon.com/ServiceProxyB2C/", IsWrapped=true)]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ConsultarClientesOrdenesResponse", WrapperNamespace="http://www.touresbalon.com/ServiceProxyB2C/", IsWrapped=true)]
     public partial class ConsultarClientesOrdenesResponse {
         
-        [MessageBodyMember(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=0)]
-        [XmlElement("orden", Form=XmlSchemaForm.Unqualified)]
-        public Orden[] orden;
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("orden", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public B2CTouresBalon.ServiceProxyB2C.Orden[] orden;
         
         public ConsultarClientesOrdenesResponse() {
         }
         
-        public ConsultarClientesOrdenesResponse(Orden[] orden) {
+        public ConsultarClientesOrdenesResponse(B2CTouresBalon.ServiceProxyB2C.Orden[] orden) {
             this.orden = orden;
         }
     }
     
-    [DebuggerStepThrough()]
-    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
-    [EditorBrowsable(EditorBrowsableState.Advanced)]
-    [MessageContract(WrapperName="CancelarOrdenes", WrapperNamespace="http://www.touresbalon.com/ServiceProxyB2C/", IsWrapped=true)]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="CancelarOrdenes", WrapperNamespace="http://www.touresbalon.com/ServiceProxyB2C/", IsWrapped=true)]
     public partial class CancelarOrdenesRequest {
         
-        [MessageBodyMember(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=0)]
-        [XmlElement("id_orden", Form=XmlSchemaForm.Unqualified)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("id_orden", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string[] id_orden;
         
         public CancelarOrdenesRequest() {
@@ -1624,68 +1614,68 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
     }
     
-    [DebuggerStepThrough()]
-    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
-    [EditorBrowsable(EditorBrowsableState.Advanced)]
-    [MessageContract(WrapperName="CancelarOrdenesResponse", WrapperNamespace="http://www.touresbalon.com/ServiceProxyB2C/", IsWrapped=true)]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="CancelarOrdenesResponse", WrapperNamespace="http://www.touresbalon.com/ServiceProxyB2C/", IsWrapped=true)]
     public partial class CancelarOrdenesResponse {
         
-        [MessageBodyMember(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=0)]
-        [XmlElement(Form=XmlSchemaForm.Unqualified)]
-        public RespuestaGenerica respuesta;
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica respuesta;
         
         public CancelarOrdenesResponse() {
         }
         
-        public CancelarOrdenesResponse(RespuestaGenerica respuesta) {
+        public CancelarOrdenesResponse(B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica respuesta) {
             this.respuesta = respuesta;
         }
     }
     
-    [DebuggerStepThrough()]
-    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
-    [EditorBrowsable(EditorBrowsableState.Advanced)]
-    [MessageContract(WrapperName="CrearOrdenes", WrapperNamespace="http://www.touresbalon.com/ServiceProxyB2C/", IsWrapped=true)]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="CrearOrdenes", WrapperNamespace="http://www.touresbalon.com/ServiceProxyB2C/", IsWrapped=true)]
     public partial class CrearOrdenesRequest {
         
-        [MessageBodyMember(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=0)]
-        [XmlElement(Form=XmlSchemaForm.Unqualified)]
-        public Orden orden;
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public B2CTouresBalon.ServiceProxyB2C.Orden orden;
         
         public CrearOrdenesRequest() {
         }
         
-        public CrearOrdenesRequest(Orden orden) {
+        public CrearOrdenesRequest(B2CTouresBalon.ServiceProxyB2C.Orden orden) {
             this.orden = orden;
         }
     }
     
-    [DebuggerStepThrough()]
-    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
-    [EditorBrowsable(EditorBrowsableState.Advanced)]
-    [MessageContract(WrapperName="CrearOrdenesResponse", WrapperNamespace="http://www.touresbalon.com/ServiceProxyB2C/", IsWrapped=true)]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="CrearOrdenesResponse", WrapperNamespace="http://www.touresbalon.com/ServiceProxyB2C/", IsWrapped=true)]
     public partial class CrearOrdenesResponse {
         
-        [MessageBodyMember(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=0)]
-        [XmlElement(Form=XmlSchemaForm.Unqualified)]
-        public RespuestaGenerica respuesta;
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica respuesta;
         
         public CrearOrdenesResponse() {
         }
         
-        public CrearOrdenesResponse(RespuestaGenerica respuesta) {
+        public CrearOrdenesResponse(B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica respuesta) {
             this.respuesta = respuesta;
         }
     }
     
-    [DebuggerStepThrough()]
-    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
-    [EditorBrowsable(EditorBrowsableState.Advanced)]
-    [MessageContract(WrapperName="ConsultaTop5Productos", WrapperNamespace="http://www.touresbalon.com/ServiceProxyB2C/", IsWrapped=true)]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ConsultaTop5Productos", WrapperNamespace="http://www.touresbalon.com/ServiceProxyB2C/", IsWrapped=true)]
     public partial class ConsultaTop5ProductosRequest {
         
-        [MessageBodyMember(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=0)]
-        [XmlElement(Form=XmlSchemaForm.Unqualified)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string id_producto;
         
         public ConsultaTop5ProductosRequest() {
@@ -1696,281 +1686,281 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
     }
     
-    [DebuggerStepThrough()]
-    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
-    [EditorBrowsable(EditorBrowsableState.Advanced)]
-    [MessageContract(WrapperName="ConsultaTop5ProductosResponse", WrapperNamespace="http://www.touresbalon.com/ServiceProxyB2C/", IsWrapped=true)]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ConsultaTop5ProductosResponse", WrapperNamespace="http://www.touresbalon.com/ServiceProxyB2C/", IsWrapped=true)]
     public partial class ConsultaTop5ProductosResponse {
         
-        [MessageBodyMember(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=0)]
-        [XmlElement("lista_productos_top", Form=XmlSchemaForm.Unqualified)]
-        public Producto[] lista_productos_top;
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("lista_productos_top", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public B2CTouresBalon.ServiceProxyB2C.Producto[] lista_productos_top;
         
         public ConsultaTop5ProductosResponse() {
         }
         
-        public ConsultaTop5ProductosResponse(Producto[] lista_productos_top) {
+        public ConsultaTop5ProductosResponse(B2CTouresBalon.ServiceProxyB2C.Producto[] lista_productos_top) {
             this.lista_productos_top = lista_productos_top;
         }
     }
     
-    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
-    public interface ServiceProxyB2CChannel : ServiceProxyB2C, IClientChannel {
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface ServiceProxyB2CChannel : B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C, System.ServiceModel.IClientChannel {
     }
     
-    [DebuggerStepThrough()]
-    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
-    public partial class RegistrarClienteCompletedEventArgs : AsyncCompletedEventArgs {
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class RegistrarClienteCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        public RegistrarClienteCompletedEventArgs(object[] results, Exception exception, bool cancelled, object userState) : 
+        public RegistrarClienteCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
         
-        public RegistrarClienteReponseType Result {
+        public B2CTouresBalon.ServiceProxyB2C.RegistrarClienteReponseType Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((RegistrarClienteReponseType)(this.results[0]));
+                return ((B2CTouresBalon.ServiceProxyB2C.RegistrarClienteReponseType)(this.results[0]));
             }
         }
     }
     
-    [DebuggerStepThrough()]
-    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
-    public partial class AutenticarClienteCompletedEventArgs : AsyncCompletedEventArgs {
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class AutenticarClienteCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        public AutenticarClienteCompletedEventArgs(object[] results, Exception exception, bool cancelled, object userState) : 
+        public AutenticarClienteCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
         
-        public RespuestaGenerica Result {
+        public B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((RespuestaGenerica)(this.results[0]));
+                return ((B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica)(this.results[0]));
             }
         }
     }
     
-    [DebuggerStepThrough()]
-    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
-    public partial class ActualizarClienteCompletedEventArgs : AsyncCompletedEventArgs {
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ActualizarClienteCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        public ActualizarClienteCompletedEventArgs(object[] results, Exception exception, bool cancelled, object userState) : 
+        public ActualizarClienteCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
         
-        public RespuestaGenerica Result {
+        public B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((RespuestaGenerica)(this.results[0]));
+                return ((B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica)(this.results[0]));
             }
         }
     }
     
-    [DebuggerStepThrough()]
-    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
-    public partial class ActualizarContraseniaClienteCompletedEventArgs : AsyncCompletedEventArgs {
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ActualizarContraseniaClienteCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        public ActualizarContraseniaClienteCompletedEventArgs(object[] results, Exception exception, bool cancelled, object userState) : 
+        public ActualizarContraseniaClienteCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
         
-        public RespuestaGenerica Result {
+        public B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((RespuestaGenerica)(this.results[0]));
+                return ((B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica)(this.results[0]));
             }
         }
     }
     
-    [DebuggerStepThrough()]
-    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
-    public partial class ConsultarProductoCompletedEventArgs : AsyncCompletedEventArgs {
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ConsultarProductoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        public ConsultarProductoCompletedEventArgs(object[] results, Exception exception, bool cancelled, object userState) : 
+        public ConsultarProductoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
         
-        public Producto[] Result {
+        public B2CTouresBalon.ServiceProxyB2C.Producto[] Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((Producto[])(this.results[0]));
+                return ((B2CTouresBalon.ServiceProxyB2C.Producto[])(this.results[0]));
             }
         }
     }
     
-    [DebuggerStepThrough()]
-    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
-    public partial class ConsultarCampaniaProductoCompletedEventArgs : AsyncCompletedEventArgs {
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ConsultarCampaniaProductoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        public ConsultarCampaniaProductoCompletedEventArgs(object[] results, Exception exception, bool cancelled, object userState) : 
+        public ConsultarCampaniaProductoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
         
-        public Producto[] Result {
+        public B2CTouresBalon.ServiceProxyB2C.Producto[] Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((Producto[])(this.results[0]));
+                return ((B2CTouresBalon.ServiceProxyB2C.Producto[])(this.results[0]));
             }
         }
     }
     
-    [DebuggerStepThrough()]
-    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
-    public partial class ConsultarClientesOrdenesCompletedEventArgs : AsyncCompletedEventArgs {
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ConsultarClientesOrdenesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        public ConsultarClientesOrdenesCompletedEventArgs(object[] results, Exception exception, bool cancelled, object userState) : 
+        public ConsultarClientesOrdenesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
         
-        public Orden[] Result {
+        public B2CTouresBalon.ServiceProxyB2C.Orden[] Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((Orden[])(this.results[0]));
+                return ((B2CTouresBalon.ServiceProxyB2C.Orden[])(this.results[0]));
             }
         }
     }
     
-    [DebuggerStepThrough()]
-    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
-    public partial class CancelarOrdenesCompletedEventArgs : AsyncCompletedEventArgs {
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class CancelarOrdenesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        public CancelarOrdenesCompletedEventArgs(object[] results, Exception exception, bool cancelled, object userState) : 
+        public CancelarOrdenesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
         
-        public RespuestaGenerica Result {
+        public B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((RespuestaGenerica)(this.results[0]));
+                return ((B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica)(this.results[0]));
             }
         }
     }
     
-    [DebuggerStepThrough()]
-    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
-    public partial class CrearOrdenesCompletedEventArgs : AsyncCompletedEventArgs {
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class CrearOrdenesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        public CrearOrdenesCompletedEventArgs(object[] results, Exception exception, bool cancelled, object userState) : 
+        public CrearOrdenesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
         
-        public RespuestaGenerica Result {
+        public B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((RespuestaGenerica)(this.results[0]));
+                return ((B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica)(this.results[0]));
             }
         }
     }
     
-    [DebuggerStepThrough()]
-    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
-    public partial class ConsultaTop5ProductosCompletedEventArgs : AsyncCompletedEventArgs {
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ConsultaTop5ProductosCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        public ConsultaTop5ProductosCompletedEventArgs(object[] results, Exception exception, bool cancelled, object userState) : 
+        public ConsultaTop5ProductosCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
         
-        public Producto[] Result {
+        public B2CTouresBalon.ServiceProxyB2C.Producto[] Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((Producto[])(this.results[0]));
+                return ((B2CTouresBalon.ServiceProxyB2C.Producto[])(this.results[0]));
             }
         }
     }
     
-    [DebuggerStepThrough()]
-    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
-    public partial class ServiceProxyB2CClient : ClientBase<ServiceProxyB2C>, ServiceProxyB2C {
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ServiceProxyB2CClient : System.ServiceModel.ClientBase<B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C>, B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C {
         
         private BeginOperationDelegate onBeginRegistrarClienteDelegate;
         
         private EndOperationDelegate onEndRegistrarClienteDelegate;
         
-        private SendOrPostCallback onRegistrarClienteCompletedDelegate;
+        private System.Threading.SendOrPostCallback onRegistrarClienteCompletedDelegate;
         
         private BeginOperationDelegate onBeginAutenticarClienteDelegate;
         
         private EndOperationDelegate onEndAutenticarClienteDelegate;
         
-        private SendOrPostCallback onAutenticarClienteCompletedDelegate;
+        private System.Threading.SendOrPostCallback onAutenticarClienteCompletedDelegate;
         
         private BeginOperationDelegate onBeginActualizarClienteDelegate;
         
         private EndOperationDelegate onEndActualizarClienteDelegate;
         
-        private SendOrPostCallback onActualizarClienteCompletedDelegate;
+        private System.Threading.SendOrPostCallback onActualizarClienteCompletedDelegate;
         
         private BeginOperationDelegate onBeginActualizarContraseniaClienteDelegate;
         
         private EndOperationDelegate onEndActualizarContraseniaClienteDelegate;
         
-        private SendOrPostCallback onActualizarContraseniaClienteCompletedDelegate;
+        private System.Threading.SendOrPostCallback onActualizarContraseniaClienteCompletedDelegate;
         
         private BeginOperationDelegate onBeginConsultarProductoDelegate;
         
         private EndOperationDelegate onEndConsultarProductoDelegate;
         
-        private SendOrPostCallback onConsultarProductoCompletedDelegate;
+        private System.Threading.SendOrPostCallback onConsultarProductoCompletedDelegate;
         
         private BeginOperationDelegate onBeginConsultarCampaniaProductoDelegate;
         
         private EndOperationDelegate onEndConsultarCampaniaProductoDelegate;
         
-        private SendOrPostCallback onConsultarCampaniaProductoCompletedDelegate;
+        private System.Threading.SendOrPostCallback onConsultarCampaniaProductoCompletedDelegate;
         
         private BeginOperationDelegate onBeginConsultarClientesOrdenesDelegate;
         
         private EndOperationDelegate onEndConsultarClientesOrdenesDelegate;
         
-        private SendOrPostCallback onConsultarClientesOrdenesCompletedDelegate;
+        private System.Threading.SendOrPostCallback onConsultarClientesOrdenesCompletedDelegate;
         
         private BeginOperationDelegate onBeginCancelarOrdenesDelegate;
         
         private EndOperationDelegate onEndCancelarOrdenesDelegate;
         
-        private SendOrPostCallback onCancelarOrdenesCompletedDelegate;
+        private System.Threading.SendOrPostCallback onCancelarOrdenesCompletedDelegate;
         
         private BeginOperationDelegate onBeginCrearOrdenesDelegate;
         
         private EndOperationDelegate onEndCrearOrdenesDelegate;
         
-        private SendOrPostCallback onCrearOrdenesCompletedDelegate;
+        private System.Threading.SendOrPostCallback onCrearOrdenesCompletedDelegate;
         
         private BeginOperationDelegate onBeginConsultaTop5ProductosDelegate;
         
         private EndOperationDelegate onEndConsultaTop5ProductosDelegate;
         
-        private SendOrPostCallback onConsultaTop5ProductosCompletedDelegate;
+        private System.Threading.SendOrPostCallback onConsultaTop5ProductosCompletedDelegate;
         
         public ServiceProxyB2CClient() {
         }
@@ -1983,92 +1973,92 @@ namespace B2CTouresBalon.ServiceProxyB2C {
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public ServiceProxyB2CClient(string endpointConfigurationName, EndpointAddress remoteAddress) : 
+        public ServiceProxyB2CClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public ServiceProxyB2CClient(Binding binding, EndpointAddress remoteAddress) : 
+        public ServiceProxyB2CClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
-        public event EventHandler<RegistrarClienteCompletedEventArgs> RegistrarClienteCompleted;
+        public event System.EventHandler<RegistrarClienteCompletedEventArgs> RegistrarClienteCompleted;
         
-        public event EventHandler<AutenticarClienteCompletedEventArgs> AutenticarClienteCompleted;
+        public event System.EventHandler<AutenticarClienteCompletedEventArgs> AutenticarClienteCompleted;
         
-        public event EventHandler<ActualizarClienteCompletedEventArgs> ActualizarClienteCompleted;
+        public event System.EventHandler<ActualizarClienteCompletedEventArgs> ActualizarClienteCompleted;
         
-        public event EventHandler<ActualizarContraseniaClienteCompletedEventArgs> ActualizarContraseniaClienteCompleted;
+        public event System.EventHandler<ActualizarContraseniaClienteCompletedEventArgs> ActualizarContraseniaClienteCompleted;
         
-        public event EventHandler<ConsultarProductoCompletedEventArgs> ConsultarProductoCompleted;
+        public event System.EventHandler<ConsultarProductoCompletedEventArgs> ConsultarProductoCompleted;
         
-        public event EventHandler<ConsultarCampaniaProductoCompletedEventArgs> ConsultarCampaniaProductoCompleted;
+        public event System.EventHandler<ConsultarCampaniaProductoCompletedEventArgs> ConsultarCampaniaProductoCompleted;
         
-        public event EventHandler<ConsultarClientesOrdenesCompletedEventArgs> ConsultarClientesOrdenesCompleted;
+        public event System.EventHandler<ConsultarClientesOrdenesCompletedEventArgs> ConsultarClientesOrdenesCompleted;
         
-        public event EventHandler<CancelarOrdenesCompletedEventArgs> CancelarOrdenesCompleted;
+        public event System.EventHandler<CancelarOrdenesCompletedEventArgs> CancelarOrdenesCompleted;
         
-        public event EventHandler<CrearOrdenesCompletedEventArgs> CrearOrdenesCompleted;
+        public event System.EventHandler<CrearOrdenesCompletedEventArgs> CrearOrdenesCompleted;
         
-        public event EventHandler<ConsultaTop5ProductosCompletedEventArgs> ConsultaTop5ProductosCompleted;
+        public event System.EventHandler<ConsultaTop5ProductosCompletedEventArgs> ConsultaTop5ProductosCompleted;
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        RegistrarClienteResponse ServiceProxyB2C.RegistrarCliente(RegistrarClienteRequest request) {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        B2CTouresBalon.ServiceProxyB2C.RegistrarClienteResponse B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.RegistrarCliente(B2CTouresBalon.ServiceProxyB2C.RegistrarClienteRequest request) {
             return base.Channel.RegistrarCliente(request);
         }
         
-        public RegistrarClienteReponseType RegistrarCliente(Cliente cliente) {
-            var inValue = new RegistrarClienteRequest();
+        public B2CTouresBalon.ServiceProxyB2C.RegistrarClienteReponseType RegistrarCliente(B2CTouresBalon.ServiceProxyB2C.Cliente cliente) {
+            B2CTouresBalon.ServiceProxyB2C.RegistrarClienteRequest inValue = new B2CTouresBalon.ServiceProxyB2C.RegistrarClienteRequest();
             inValue.cliente = cliente;
-            var retVal = ((ServiceProxyB2C)(this)).RegistrarCliente(inValue);
+            B2CTouresBalon.ServiceProxyB2C.RegistrarClienteResponse retVal = ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).RegistrarCliente(inValue);
             return retVal.registrarClienteResponse1;
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        IAsyncResult ServiceProxyB2C.BeginRegistrarCliente(RegistrarClienteRequest request, AsyncCallback callback, object asyncState) {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.BeginRegistrarCliente(B2CTouresBalon.ServiceProxyB2C.RegistrarClienteRequest request, System.AsyncCallback callback, object asyncState) {
             return base.Channel.BeginRegistrarCliente(request, callback, asyncState);
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        public IAsyncResult BeginRegistrarCliente(Cliente cliente, AsyncCallback callback, object asyncState) {
-            var inValue = new RegistrarClienteRequest();
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginRegistrarCliente(B2CTouresBalon.ServiceProxyB2C.Cliente cliente, System.AsyncCallback callback, object asyncState) {
+            B2CTouresBalon.ServiceProxyB2C.RegistrarClienteRequest inValue = new B2CTouresBalon.ServiceProxyB2C.RegistrarClienteRequest();
             inValue.cliente = cliente;
-            return ((ServiceProxyB2C)(this)).BeginRegistrarCliente(inValue, callback, asyncState);
+            return ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).BeginRegistrarCliente(inValue, callback, asyncState);
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        RegistrarClienteResponse ServiceProxyB2C.EndRegistrarCliente(IAsyncResult result) {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        B2CTouresBalon.ServiceProxyB2C.RegistrarClienteResponse B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.EndRegistrarCliente(System.IAsyncResult result) {
             return base.Channel.EndRegistrarCliente(result);
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        public RegistrarClienteReponseType EndRegistrarCliente(IAsyncResult result) {
-            var retVal = ((ServiceProxyB2C)(this)).EndRegistrarCliente(result);
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public B2CTouresBalon.ServiceProxyB2C.RegistrarClienteReponseType EndRegistrarCliente(System.IAsyncResult result) {
+            B2CTouresBalon.ServiceProxyB2C.RegistrarClienteResponse retVal = ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).EndRegistrarCliente(result);
             return retVal.registrarClienteResponse1;
         }
         
-        private IAsyncResult OnBeginRegistrarCliente(object[] inValues, AsyncCallback callback, object asyncState) {
-            var cliente = ((Cliente)(inValues[0]));
+        private System.IAsyncResult OnBeginRegistrarCliente(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            B2CTouresBalon.ServiceProxyB2C.Cliente cliente = ((B2CTouresBalon.ServiceProxyB2C.Cliente)(inValues[0]));
             return this.BeginRegistrarCliente(cliente, callback, asyncState);
         }
         
-        private object[] OnEndRegistrarCliente(IAsyncResult result) {
-            var retVal = this.EndRegistrarCliente(result);
+        private object[] OnEndRegistrarCliente(System.IAsyncResult result) {
+            B2CTouresBalon.ServiceProxyB2C.RegistrarClienteReponseType retVal = this.EndRegistrarCliente(result);
             return new object[] {
                     retVal};
         }
         
         private void OnRegistrarClienteCompleted(object state) {
             if ((this.RegistrarClienteCompleted != null)) {
-                var e = ((InvokeAsyncCompletedEventArgs)(state));
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
                 this.RegistrarClienteCompleted(this, new RegistrarClienteCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
             }
         }
         
-        public void RegistrarClienteAsync(Cliente cliente) {
+        public void RegistrarClienteAsync(B2CTouresBalon.ServiceProxyB2C.Cliente cliente) {
             this.RegistrarClienteAsync(cliente, null);
         }
         
-        public void RegistrarClienteAsync(Cliente cliente, object userState) {
+        public void RegistrarClienteAsync(B2CTouresBalon.ServiceProxyB2C.Cliente cliente, object userState) {
             if ((this.onBeginRegistrarClienteDelegate == null)) {
                 this.onBeginRegistrarClienteDelegate = new BeginOperationDelegate(this.OnBeginRegistrarCliente);
             }
@@ -2076,64 +2066,64 @@ namespace B2CTouresBalon.ServiceProxyB2C {
                 this.onEndRegistrarClienteDelegate = new EndOperationDelegate(this.OnEndRegistrarCliente);
             }
             if ((this.onRegistrarClienteCompletedDelegate == null)) {
-                this.onRegistrarClienteCompletedDelegate = new SendOrPostCallback(this.OnRegistrarClienteCompleted);
+                this.onRegistrarClienteCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnRegistrarClienteCompleted);
             }
             base.InvokeAsync(this.onBeginRegistrarClienteDelegate, new object[] {
                         cliente}, this.onEndRegistrarClienteDelegate, this.onRegistrarClienteCompletedDelegate, userState);
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        AutenticarClienteResponse ServiceProxyB2C.AutenticarCliente(AutenticarClienteRequest request) {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        B2CTouresBalon.ServiceProxyB2C.AutenticarClienteResponse B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.AutenticarCliente(B2CTouresBalon.ServiceProxyB2C.AutenticarClienteRequest request) {
             return base.Channel.AutenticarCliente(request);
         }
         
-        public RespuestaGenerica AutenticarCliente(string usuario, string contrasenia) {
-            var inValue = new AutenticarClienteRequest();
+        public B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica AutenticarCliente(string usuario, string contrasenia) {
+            B2CTouresBalon.ServiceProxyB2C.AutenticarClienteRequest inValue = new B2CTouresBalon.ServiceProxyB2C.AutenticarClienteRequest();
             inValue.usuario = usuario;
             inValue.contrasenia = contrasenia;
-            var retVal = ((ServiceProxyB2C)(this)).AutenticarCliente(inValue);
+            B2CTouresBalon.ServiceProxyB2C.AutenticarClienteResponse retVal = ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).AutenticarCliente(inValue);
             return retVal.respuesta;
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        IAsyncResult ServiceProxyB2C.BeginAutenticarCliente(AutenticarClienteRequest request, AsyncCallback callback, object asyncState) {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.BeginAutenticarCliente(B2CTouresBalon.ServiceProxyB2C.AutenticarClienteRequest request, System.AsyncCallback callback, object asyncState) {
             return base.Channel.BeginAutenticarCliente(request, callback, asyncState);
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        public IAsyncResult BeginAutenticarCliente(string usuario, string contrasenia, AsyncCallback callback, object asyncState) {
-            var inValue = new AutenticarClienteRequest();
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginAutenticarCliente(string usuario, string contrasenia, System.AsyncCallback callback, object asyncState) {
+            B2CTouresBalon.ServiceProxyB2C.AutenticarClienteRequest inValue = new B2CTouresBalon.ServiceProxyB2C.AutenticarClienteRequest();
             inValue.usuario = usuario;
             inValue.contrasenia = contrasenia;
-            return ((ServiceProxyB2C)(this)).BeginAutenticarCliente(inValue, callback, asyncState);
+            return ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).BeginAutenticarCliente(inValue, callback, asyncState);
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        AutenticarClienteResponse ServiceProxyB2C.EndAutenticarCliente(IAsyncResult result) {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        B2CTouresBalon.ServiceProxyB2C.AutenticarClienteResponse B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.EndAutenticarCliente(System.IAsyncResult result) {
             return base.Channel.EndAutenticarCliente(result);
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        public RespuestaGenerica EndAutenticarCliente(IAsyncResult result) {
-            var retVal = ((ServiceProxyB2C)(this)).EndAutenticarCliente(result);
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica EndAutenticarCliente(System.IAsyncResult result) {
+            B2CTouresBalon.ServiceProxyB2C.AutenticarClienteResponse retVal = ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).EndAutenticarCliente(result);
             return retVal.respuesta;
         }
         
-        private IAsyncResult OnBeginAutenticarCliente(object[] inValues, AsyncCallback callback, object asyncState) {
-            var usuario = ((string)(inValues[0]));
-            var contrasenia = ((string)(inValues[1]));
+        private System.IAsyncResult OnBeginAutenticarCliente(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string usuario = ((string)(inValues[0]));
+            string contrasenia = ((string)(inValues[1]));
             return this.BeginAutenticarCliente(usuario, contrasenia, callback, asyncState);
         }
         
-        private object[] OnEndAutenticarCliente(IAsyncResult result) {
-            var retVal = this.EndAutenticarCliente(result);
+        private object[] OnEndAutenticarCliente(System.IAsyncResult result) {
+            B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica retVal = this.EndAutenticarCliente(result);
             return new object[] {
                     retVal};
         }
         
         private void OnAutenticarClienteCompleted(object state) {
             if ((this.AutenticarClienteCompleted != null)) {
-                var e = ((InvokeAsyncCompletedEventArgs)(state));
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
                 this.AutenticarClienteCompleted(this, new AutenticarClienteCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
             }
         }
@@ -2150,71 +2140,71 @@ namespace B2CTouresBalon.ServiceProxyB2C {
                 this.onEndAutenticarClienteDelegate = new EndOperationDelegate(this.OnEndAutenticarCliente);
             }
             if ((this.onAutenticarClienteCompletedDelegate == null)) {
-                this.onAutenticarClienteCompletedDelegate = new SendOrPostCallback(this.OnAutenticarClienteCompleted);
+                this.onAutenticarClienteCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnAutenticarClienteCompleted);
             }
             base.InvokeAsync(this.onBeginAutenticarClienteDelegate, new object[] {
                         usuario,
                         contrasenia}, this.onEndAutenticarClienteDelegate, this.onAutenticarClienteCompletedDelegate, userState);
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        ActualizarClienteResponse ServiceProxyB2C.ActualizarCliente(ActualizarClienteRequest request) {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        B2CTouresBalon.ServiceProxyB2C.ActualizarClienteResponse B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.ActualizarCliente(B2CTouresBalon.ServiceProxyB2C.ActualizarClienteRequest request) {
             return base.Channel.ActualizarCliente(request);
         }
         
-        public RespuestaGenerica ActualizarCliente(Cliente cliente) {
-            var inValue = new ActualizarClienteRequest();
+        public B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica ActualizarCliente(B2CTouresBalon.ServiceProxyB2C.Cliente cliente) {
+            B2CTouresBalon.ServiceProxyB2C.ActualizarClienteRequest inValue = new B2CTouresBalon.ServiceProxyB2C.ActualizarClienteRequest();
             inValue.cliente = cliente;
-            var retVal = ((ServiceProxyB2C)(this)).ActualizarCliente(inValue);
+            B2CTouresBalon.ServiceProxyB2C.ActualizarClienteResponse retVal = ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).ActualizarCliente(inValue);
             return retVal.respuesta;
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        IAsyncResult ServiceProxyB2C.BeginActualizarCliente(ActualizarClienteRequest request, AsyncCallback callback, object asyncState) {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.BeginActualizarCliente(B2CTouresBalon.ServiceProxyB2C.ActualizarClienteRequest request, System.AsyncCallback callback, object asyncState) {
             return base.Channel.BeginActualizarCliente(request, callback, asyncState);
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        public IAsyncResult BeginActualizarCliente(Cliente cliente, AsyncCallback callback, object asyncState) {
-            var inValue = new ActualizarClienteRequest();
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginActualizarCliente(B2CTouresBalon.ServiceProxyB2C.Cliente cliente, System.AsyncCallback callback, object asyncState) {
+            B2CTouresBalon.ServiceProxyB2C.ActualizarClienteRequest inValue = new B2CTouresBalon.ServiceProxyB2C.ActualizarClienteRequest();
             inValue.cliente = cliente;
-            return ((ServiceProxyB2C)(this)).BeginActualizarCliente(inValue, callback, asyncState);
+            return ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).BeginActualizarCliente(inValue, callback, asyncState);
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        ActualizarClienteResponse ServiceProxyB2C.EndActualizarCliente(IAsyncResult result) {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        B2CTouresBalon.ServiceProxyB2C.ActualizarClienteResponse B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.EndActualizarCliente(System.IAsyncResult result) {
             return base.Channel.EndActualizarCliente(result);
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        public RespuestaGenerica EndActualizarCliente(IAsyncResult result) {
-            var retVal = ((ServiceProxyB2C)(this)).EndActualizarCliente(result);
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica EndActualizarCliente(System.IAsyncResult result) {
+            B2CTouresBalon.ServiceProxyB2C.ActualizarClienteResponse retVal = ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).EndActualizarCliente(result);
             return retVal.respuesta;
         }
         
-        private IAsyncResult OnBeginActualizarCliente(object[] inValues, AsyncCallback callback, object asyncState) {
-            var cliente = ((Cliente)(inValues[0]));
+        private System.IAsyncResult OnBeginActualizarCliente(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            B2CTouresBalon.ServiceProxyB2C.Cliente cliente = ((B2CTouresBalon.ServiceProxyB2C.Cliente)(inValues[0]));
             return this.BeginActualizarCliente(cliente, callback, asyncState);
         }
         
-        private object[] OnEndActualizarCliente(IAsyncResult result) {
-            var retVal = this.EndActualizarCliente(result);
+        private object[] OnEndActualizarCliente(System.IAsyncResult result) {
+            B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica retVal = this.EndActualizarCliente(result);
             return new object[] {
                     retVal};
         }
         
         private void OnActualizarClienteCompleted(object state) {
             if ((this.ActualizarClienteCompleted != null)) {
-                var e = ((InvokeAsyncCompletedEventArgs)(state));
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
                 this.ActualizarClienteCompleted(this, new ActualizarClienteCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
             }
         }
         
-        public void ActualizarClienteAsync(Cliente cliente) {
+        public void ActualizarClienteAsync(B2CTouresBalon.ServiceProxyB2C.Cliente cliente) {
             this.ActualizarClienteAsync(cliente, null);
         }
         
-        public void ActualizarClienteAsync(Cliente cliente, object userState) {
+        public void ActualizarClienteAsync(B2CTouresBalon.ServiceProxyB2C.Cliente cliente, object userState) {
             if ((this.onBeginActualizarClienteDelegate == null)) {
                 this.onBeginActualizarClienteDelegate = new BeginOperationDelegate(this.OnBeginActualizarCliente);
             }
@@ -2222,64 +2212,64 @@ namespace B2CTouresBalon.ServiceProxyB2C {
                 this.onEndActualizarClienteDelegate = new EndOperationDelegate(this.OnEndActualizarCliente);
             }
             if ((this.onActualizarClienteCompletedDelegate == null)) {
-                this.onActualizarClienteCompletedDelegate = new SendOrPostCallback(this.OnActualizarClienteCompleted);
+                this.onActualizarClienteCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnActualizarClienteCompleted);
             }
             base.InvokeAsync(this.onBeginActualizarClienteDelegate, new object[] {
                         cliente}, this.onEndActualizarClienteDelegate, this.onActualizarClienteCompletedDelegate, userState);
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        ActualizarContraseniaClienteResponse ServiceProxyB2C.ActualizarContraseniaCliente(ActualizarContraseniaClienteRequest request) {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        B2CTouresBalon.ServiceProxyB2C.ActualizarContraseniaClienteResponse B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.ActualizarContraseniaCliente(B2CTouresBalon.ServiceProxyB2C.ActualizarContraseniaClienteRequest request) {
             return base.Channel.ActualizarContraseniaCliente(request);
         }
         
-        public RespuestaGenerica ActualizarContraseniaCliente(string usuario, string contrasenia) {
-            var inValue = new ActualizarContraseniaClienteRequest();
+        public B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica ActualizarContraseniaCliente(string usuario, string contrasenia) {
+            B2CTouresBalon.ServiceProxyB2C.ActualizarContraseniaClienteRequest inValue = new B2CTouresBalon.ServiceProxyB2C.ActualizarContraseniaClienteRequest();
             inValue.usuario = usuario;
             inValue.contrasenia = contrasenia;
-            var retVal = ((ServiceProxyB2C)(this)).ActualizarContraseniaCliente(inValue);
+            B2CTouresBalon.ServiceProxyB2C.ActualizarContraseniaClienteResponse retVal = ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).ActualizarContraseniaCliente(inValue);
             return retVal.respuesta;
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        IAsyncResult ServiceProxyB2C.BeginActualizarContraseniaCliente(ActualizarContraseniaClienteRequest request, AsyncCallback callback, object asyncState) {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.BeginActualizarContraseniaCliente(B2CTouresBalon.ServiceProxyB2C.ActualizarContraseniaClienteRequest request, System.AsyncCallback callback, object asyncState) {
             return base.Channel.BeginActualizarContraseniaCliente(request, callback, asyncState);
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        public IAsyncResult BeginActualizarContraseniaCliente(string usuario, string contrasenia, AsyncCallback callback, object asyncState) {
-            var inValue = new ActualizarContraseniaClienteRequest();
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginActualizarContraseniaCliente(string usuario, string contrasenia, System.AsyncCallback callback, object asyncState) {
+            B2CTouresBalon.ServiceProxyB2C.ActualizarContraseniaClienteRequest inValue = new B2CTouresBalon.ServiceProxyB2C.ActualizarContraseniaClienteRequest();
             inValue.usuario = usuario;
             inValue.contrasenia = contrasenia;
-            return ((ServiceProxyB2C)(this)).BeginActualizarContraseniaCliente(inValue, callback, asyncState);
+            return ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).BeginActualizarContraseniaCliente(inValue, callback, asyncState);
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        ActualizarContraseniaClienteResponse ServiceProxyB2C.EndActualizarContraseniaCliente(IAsyncResult result) {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        B2CTouresBalon.ServiceProxyB2C.ActualizarContraseniaClienteResponse B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.EndActualizarContraseniaCliente(System.IAsyncResult result) {
             return base.Channel.EndActualizarContraseniaCliente(result);
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        public RespuestaGenerica EndActualizarContraseniaCliente(IAsyncResult result) {
-            var retVal = ((ServiceProxyB2C)(this)).EndActualizarContraseniaCliente(result);
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica EndActualizarContraseniaCliente(System.IAsyncResult result) {
+            B2CTouresBalon.ServiceProxyB2C.ActualizarContraseniaClienteResponse retVal = ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).EndActualizarContraseniaCliente(result);
             return retVal.respuesta;
         }
         
-        private IAsyncResult OnBeginActualizarContraseniaCliente(object[] inValues, AsyncCallback callback, object asyncState) {
-            var usuario = ((string)(inValues[0]));
-            var contrasenia = ((string)(inValues[1]));
+        private System.IAsyncResult OnBeginActualizarContraseniaCliente(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string usuario = ((string)(inValues[0]));
+            string contrasenia = ((string)(inValues[1]));
             return this.BeginActualizarContraseniaCliente(usuario, contrasenia, callback, asyncState);
         }
         
-        private object[] OnEndActualizarContraseniaCliente(IAsyncResult result) {
-            var retVal = this.EndActualizarContraseniaCliente(result);
+        private object[] OnEndActualizarContraseniaCliente(System.IAsyncResult result) {
+            B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica retVal = this.EndActualizarContraseniaCliente(result);
             return new object[] {
                     retVal};
         }
         
         private void OnActualizarContraseniaClienteCompleted(object state) {
             if ((this.ActualizarContraseniaClienteCompleted != null)) {
-                var e = ((InvokeAsyncCompletedEventArgs)(state));
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
                 this.ActualizarContraseniaClienteCompleted(this, new ActualizarContraseniaClienteCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
             }
         }
@@ -2296,80 +2286,80 @@ namespace B2CTouresBalon.ServiceProxyB2C {
                 this.onEndActualizarContraseniaClienteDelegate = new EndOperationDelegate(this.OnEndActualizarContraseniaCliente);
             }
             if ((this.onActualizarContraseniaClienteCompletedDelegate == null)) {
-                this.onActualizarContraseniaClienteCompletedDelegate = new SendOrPostCallback(this.OnActualizarContraseniaClienteCompleted);
+                this.onActualizarContraseniaClienteCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnActualizarContraseniaClienteCompleted);
             }
             base.InvokeAsync(this.onBeginActualizarContraseniaClienteDelegate, new object[] {
                         usuario,
                         contrasenia}, this.onEndActualizarContraseniaClienteDelegate, this.onActualizarContraseniaClienteCompletedDelegate, userState);
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        ConsultarProductoResponse ServiceProxyB2C.ConsultarProducto(ConsultarProductoRequest request) {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        B2CTouresBalon.ServiceProxyB2C.ConsultarProductoResponse B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.ConsultarProducto(B2CTouresBalon.ServiceProxyB2C.ConsultarProductoRequest request) {
             return base.Channel.ConsultarProducto(request);
         }
         
-        public Producto[] ConsultarProducto(TipoConsultaProducto tipo_consulta, string codigo, string nombre, string descripcion) {
-            var inValue = new ConsultarProductoRequest();
+        public B2CTouresBalon.ServiceProxyB2C.Producto[] ConsultarProducto(B2CTouresBalon.ServiceProxyB2C.TipoConsultaProducto tipo_consulta, string codigo, string nombre, string descripcion) {
+            B2CTouresBalon.ServiceProxyB2C.ConsultarProductoRequest inValue = new B2CTouresBalon.ServiceProxyB2C.ConsultarProductoRequest();
             inValue.tipo_consulta = tipo_consulta;
             inValue.codigo = codigo;
             inValue.nombre = nombre;
             inValue.descripcion = descripcion;
-            var retVal = ((ServiceProxyB2C)(this)).ConsultarProducto(inValue);
+            B2CTouresBalon.ServiceProxyB2C.ConsultarProductoResponse retVal = ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).ConsultarProducto(inValue);
             return retVal.productos;
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        IAsyncResult ServiceProxyB2C.BeginConsultarProducto(ConsultarProductoRequest request, AsyncCallback callback, object asyncState) {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.BeginConsultarProducto(B2CTouresBalon.ServiceProxyB2C.ConsultarProductoRequest request, System.AsyncCallback callback, object asyncState) {
             return base.Channel.BeginConsultarProducto(request, callback, asyncState);
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        public IAsyncResult BeginConsultarProducto(TipoConsultaProducto tipo_consulta, string codigo, string nombre, string descripcion, AsyncCallback callback, object asyncState) {
-            var inValue = new ConsultarProductoRequest();
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginConsultarProducto(B2CTouresBalon.ServiceProxyB2C.TipoConsultaProducto tipo_consulta, string codigo, string nombre, string descripcion, System.AsyncCallback callback, object asyncState) {
+            B2CTouresBalon.ServiceProxyB2C.ConsultarProductoRequest inValue = new B2CTouresBalon.ServiceProxyB2C.ConsultarProductoRequest();
             inValue.tipo_consulta = tipo_consulta;
             inValue.codigo = codigo;
             inValue.nombre = nombre;
             inValue.descripcion = descripcion;
-            return ((ServiceProxyB2C)(this)).BeginConsultarProducto(inValue, callback, asyncState);
+            return ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).BeginConsultarProducto(inValue, callback, asyncState);
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        ConsultarProductoResponse ServiceProxyB2C.EndConsultarProducto(IAsyncResult result) {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        B2CTouresBalon.ServiceProxyB2C.ConsultarProductoResponse B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.EndConsultarProducto(System.IAsyncResult result) {
             return base.Channel.EndConsultarProducto(result);
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        public Producto[] EndConsultarProducto(IAsyncResult result) {
-            var retVal = ((ServiceProxyB2C)(this)).EndConsultarProducto(result);
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public B2CTouresBalon.ServiceProxyB2C.Producto[] EndConsultarProducto(System.IAsyncResult result) {
+            B2CTouresBalon.ServiceProxyB2C.ConsultarProductoResponse retVal = ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).EndConsultarProducto(result);
             return retVal.productos;
         }
         
-        private IAsyncResult OnBeginConsultarProducto(object[] inValues, AsyncCallback callback, object asyncState) {
-            var tipo_consulta = ((TipoConsultaProducto)(inValues[0]));
-            var codigo = ((string)(inValues[1]));
-            var nombre = ((string)(inValues[2]));
-            var descripcion = ((string)(inValues[3]));
+        private System.IAsyncResult OnBeginConsultarProducto(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            B2CTouresBalon.ServiceProxyB2C.TipoConsultaProducto tipo_consulta = ((B2CTouresBalon.ServiceProxyB2C.TipoConsultaProducto)(inValues[0]));
+            string codigo = ((string)(inValues[1]));
+            string nombre = ((string)(inValues[2]));
+            string descripcion = ((string)(inValues[3]));
             return this.BeginConsultarProducto(tipo_consulta, codigo, nombre, descripcion, callback, asyncState);
         }
         
-        private object[] OnEndConsultarProducto(IAsyncResult result) {
-            var retVal = this.EndConsultarProducto(result);
+        private object[] OnEndConsultarProducto(System.IAsyncResult result) {
+            B2CTouresBalon.ServiceProxyB2C.Producto[] retVal = this.EndConsultarProducto(result);
             return new object[] {
                     retVal};
         }
         
         private void OnConsultarProductoCompleted(object state) {
             if ((this.ConsultarProductoCompleted != null)) {
-                var e = ((InvokeAsyncCompletedEventArgs)(state));
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
                 this.ConsultarProductoCompleted(this, new ConsultarProductoCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
             }
         }
         
-        public void ConsultarProductoAsync(TipoConsultaProducto tipo_consulta, string codigo, string nombre, string descripcion) {
+        public void ConsultarProductoAsync(B2CTouresBalon.ServiceProxyB2C.TipoConsultaProducto tipo_consulta, string codigo, string nombre, string descripcion) {
             this.ConsultarProductoAsync(tipo_consulta, codigo, nombre, descripcion, null);
         }
         
-        public void ConsultarProductoAsync(TipoConsultaProducto tipo_consulta, string codigo, string nombre, string descripcion, object userState) {
+        public void ConsultarProductoAsync(B2CTouresBalon.ServiceProxyB2C.TipoConsultaProducto tipo_consulta, string codigo, string nombre, string descripcion, object userState) {
             if ((this.onBeginConsultarProductoDelegate == null)) {
                 this.onBeginConsultarProductoDelegate = new BeginOperationDelegate(this.OnBeginConsultarProducto);
             }
@@ -2377,7 +2367,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
                 this.onEndConsultarProductoDelegate = new EndOperationDelegate(this.OnEndConsultarProducto);
             }
             if ((this.onConsultarProductoCompletedDelegate == null)) {
-                this.onConsultarProductoCompletedDelegate = new SendOrPostCallback(this.OnConsultarProductoCompleted);
+                this.onConsultarProductoCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnConsultarProductoCompleted);
             }
             base.InvokeAsync(this.onBeginConsultarProductoDelegate, new object[] {
                         tipo_consulta,
@@ -2386,52 +2376,52 @@ namespace B2CTouresBalon.ServiceProxyB2C {
                         descripcion}, this.onEndConsultarProductoDelegate, this.onConsultarProductoCompletedDelegate, userState);
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        ConsultarCampaniaProductoResponse ServiceProxyB2C.ConsultarCampaniaProducto(ConsultarCampaniaProductoRequest request) {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        B2CTouresBalon.ServiceProxyB2C.ConsultarCampaniaProductoResponse B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.ConsultarCampaniaProducto(B2CTouresBalon.ServiceProxyB2C.ConsultarCampaniaProductoRequest request) {
             return base.Channel.ConsultarCampaniaProducto(request);
         }
         
-        public Producto[] ConsultarCampaniaProducto() {
-            var inValue = new ConsultarCampaniaProductoRequest();
-            var retVal = ((ServiceProxyB2C)(this)).ConsultarCampaniaProducto(inValue);
+        public B2CTouresBalon.ServiceProxyB2C.Producto[] ConsultarCampaniaProducto() {
+            B2CTouresBalon.ServiceProxyB2C.ConsultarCampaniaProductoRequest inValue = new B2CTouresBalon.ServiceProxyB2C.ConsultarCampaniaProductoRequest();
+            B2CTouresBalon.ServiceProxyB2C.ConsultarCampaniaProductoResponse retVal = ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).ConsultarCampaniaProducto(inValue);
             return retVal.productos;
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        IAsyncResult ServiceProxyB2C.BeginConsultarCampaniaProducto(ConsultarCampaniaProductoRequest request, AsyncCallback callback, object asyncState) {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.BeginConsultarCampaniaProducto(B2CTouresBalon.ServiceProxyB2C.ConsultarCampaniaProductoRequest request, System.AsyncCallback callback, object asyncState) {
             return base.Channel.BeginConsultarCampaniaProducto(request, callback, asyncState);
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        public IAsyncResult BeginConsultarCampaniaProducto(AsyncCallback callback, object asyncState) {
-            var inValue = new ConsultarCampaniaProductoRequest();
-            return ((ServiceProxyB2C)(this)).BeginConsultarCampaniaProducto(inValue, callback, asyncState);
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginConsultarCampaniaProducto(System.AsyncCallback callback, object asyncState) {
+            B2CTouresBalon.ServiceProxyB2C.ConsultarCampaniaProductoRequest inValue = new B2CTouresBalon.ServiceProxyB2C.ConsultarCampaniaProductoRequest();
+            return ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).BeginConsultarCampaniaProducto(inValue, callback, asyncState);
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        ConsultarCampaniaProductoResponse ServiceProxyB2C.EndConsultarCampaniaProducto(IAsyncResult result) {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        B2CTouresBalon.ServiceProxyB2C.ConsultarCampaniaProductoResponse B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.EndConsultarCampaniaProducto(System.IAsyncResult result) {
             return base.Channel.EndConsultarCampaniaProducto(result);
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        public Producto[] EndConsultarCampaniaProducto(IAsyncResult result) {
-            var retVal = ((ServiceProxyB2C)(this)).EndConsultarCampaniaProducto(result);
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public B2CTouresBalon.ServiceProxyB2C.Producto[] EndConsultarCampaniaProducto(System.IAsyncResult result) {
+            B2CTouresBalon.ServiceProxyB2C.ConsultarCampaniaProductoResponse retVal = ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).EndConsultarCampaniaProducto(result);
             return retVal.productos;
         }
         
-        private IAsyncResult OnBeginConsultarCampaniaProducto(object[] inValues, AsyncCallback callback, object asyncState) {
+        private System.IAsyncResult OnBeginConsultarCampaniaProducto(object[] inValues, System.AsyncCallback callback, object asyncState) {
             return this.BeginConsultarCampaniaProducto(callback, asyncState);
         }
         
-        private object[] OnEndConsultarCampaniaProducto(IAsyncResult result) {
-            var retVal = this.EndConsultarCampaniaProducto(result);
+        private object[] OnEndConsultarCampaniaProducto(System.IAsyncResult result) {
+            B2CTouresBalon.ServiceProxyB2C.Producto[] retVal = this.EndConsultarCampaniaProducto(result);
             return new object[] {
                     retVal};
         }
         
         private void OnConsultarCampaniaProductoCompleted(object state) {
             if ((this.ConsultarCampaniaProductoCompleted != null)) {
-                var e = ((InvokeAsyncCompletedEventArgs)(state));
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
                 this.ConsultarCampaniaProductoCompleted(this, new ConsultarCampaniaProductoCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
             }
         }
@@ -2448,60 +2438,60 @@ namespace B2CTouresBalon.ServiceProxyB2C {
                 this.onEndConsultarCampaniaProductoDelegate = new EndOperationDelegate(this.OnEndConsultarCampaniaProducto);
             }
             if ((this.onConsultarCampaniaProductoCompletedDelegate == null)) {
-                this.onConsultarCampaniaProductoCompletedDelegate = new SendOrPostCallback(this.OnConsultarCampaniaProductoCompleted);
+                this.onConsultarCampaniaProductoCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnConsultarCampaniaProductoCompleted);
             }
             base.InvokeAsync(this.onBeginConsultarCampaniaProductoDelegate, null, this.onEndConsultarCampaniaProductoDelegate, this.onConsultarCampaniaProductoCompletedDelegate, userState);
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        ConsultarClientesOrdenesResponse ServiceProxyB2C.ConsultarClientesOrdenes(ConsultarClientesOrdenesRequest request) {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        B2CTouresBalon.ServiceProxyB2C.ConsultarClientesOrdenesResponse B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.ConsultarClientesOrdenes(B2CTouresBalon.ServiceProxyB2C.ConsultarClientesOrdenesRequest request) {
             return base.Channel.ConsultarClientesOrdenes(request);
         }
         
-        public Orden[] ConsultarClientesOrdenes(string id_cliente) {
-            var inValue = new ConsultarClientesOrdenesRequest();
+        public B2CTouresBalon.ServiceProxyB2C.Orden[] ConsultarClientesOrdenes(string id_cliente) {
+            B2CTouresBalon.ServiceProxyB2C.ConsultarClientesOrdenesRequest inValue = new B2CTouresBalon.ServiceProxyB2C.ConsultarClientesOrdenesRequest();
             inValue.id_cliente = id_cliente;
-            var retVal = ((ServiceProxyB2C)(this)).ConsultarClientesOrdenes(inValue);
+            B2CTouresBalon.ServiceProxyB2C.ConsultarClientesOrdenesResponse retVal = ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).ConsultarClientesOrdenes(inValue);
             return retVal.orden;
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        IAsyncResult ServiceProxyB2C.BeginConsultarClientesOrdenes(ConsultarClientesOrdenesRequest request, AsyncCallback callback, object asyncState) {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.BeginConsultarClientesOrdenes(B2CTouresBalon.ServiceProxyB2C.ConsultarClientesOrdenesRequest request, System.AsyncCallback callback, object asyncState) {
             return base.Channel.BeginConsultarClientesOrdenes(request, callback, asyncState);
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        public IAsyncResult BeginConsultarClientesOrdenes(string id_cliente, AsyncCallback callback, object asyncState) {
-            var inValue = new ConsultarClientesOrdenesRequest();
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginConsultarClientesOrdenes(string id_cliente, System.AsyncCallback callback, object asyncState) {
+            B2CTouresBalon.ServiceProxyB2C.ConsultarClientesOrdenesRequest inValue = new B2CTouresBalon.ServiceProxyB2C.ConsultarClientesOrdenesRequest();
             inValue.id_cliente = id_cliente;
-            return ((ServiceProxyB2C)(this)).BeginConsultarClientesOrdenes(inValue, callback, asyncState);
+            return ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).BeginConsultarClientesOrdenes(inValue, callback, asyncState);
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        ConsultarClientesOrdenesResponse ServiceProxyB2C.EndConsultarClientesOrdenes(IAsyncResult result) {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        B2CTouresBalon.ServiceProxyB2C.ConsultarClientesOrdenesResponse B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.EndConsultarClientesOrdenes(System.IAsyncResult result) {
             return base.Channel.EndConsultarClientesOrdenes(result);
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        public Orden[] EndConsultarClientesOrdenes(IAsyncResult result) {
-            var retVal = ((ServiceProxyB2C)(this)).EndConsultarClientesOrdenes(result);
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public B2CTouresBalon.ServiceProxyB2C.Orden[] EndConsultarClientesOrdenes(System.IAsyncResult result) {
+            B2CTouresBalon.ServiceProxyB2C.ConsultarClientesOrdenesResponse retVal = ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).EndConsultarClientesOrdenes(result);
             return retVal.orden;
         }
         
-        private IAsyncResult OnBeginConsultarClientesOrdenes(object[] inValues, AsyncCallback callback, object asyncState) {
-            var id_cliente = ((string)(inValues[0]));
+        private System.IAsyncResult OnBeginConsultarClientesOrdenes(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string id_cliente = ((string)(inValues[0]));
             return this.BeginConsultarClientesOrdenes(id_cliente, callback, asyncState);
         }
         
-        private object[] OnEndConsultarClientesOrdenes(IAsyncResult result) {
-            var retVal = this.EndConsultarClientesOrdenes(result);
+        private object[] OnEndConsultarClientesOrdenes(System.IAsyncResult result) {
+            B2CTouresBalon.ServiceProxyB2C.Orden[] retVal = this.EndConsultarClientesOrdenes(result);
             return new object[] {
                     retVal};
         }
         
         private void OnConsultarClientesOrdenesCompleted(object state) {
             if ((this.ConsultarClientesOrdenesCompleted != null)) {
-                var e = ((InvokeAsyncCompletedEventArgs)(state));
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
                 this.ConsultarClientesOrdenesCompleted(this, new ConsultarClientesOrdenesCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
             }
         }
@@ -2518,61 +2508,61 @@ namespace B2CTouresBalon.ServiceProxyB2C {
                 this.onEndConsultarClientesOrdenesDelegate = new EndOperationDelegate(this.OnEndConsultarClientesOrdenes);
             }
             if ((this.onConsultarClientesOrdenesCompletedDelegate == null)) {
-                this.onConsultarClientesOrdenesCompletedDelegate = new SendOrPostCallback(this.OnConsultarClientesOrdenesCompleted);
+                this.onConsultarClientesOrdenesCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnConsultarClientesOrdenesCompleted);
             }
             base.InvokeAsync(this.onBeginConsultarClientesOrdenesDelegate, new object[] {
                         id_cliente}, this.onEndConsultarClientesOrdenesDelegate, this.onConsultarClientesOrdenesCompletedDelegate, userState);
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        CancelarOrdenesResponse ServiceProxyB2C.CancelarOrdenes(CancelarOrdenesRequest request) {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        B2CTouresBalon.ServiceProxyB2C.CancelarOrdenesResponse B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.CancelarOrdenes(B2CTouresBalon.ServiceProxyB2C.CancelarOrdenesRequest request) {
             return base.Channel.CancelarOrdenes(request);
         }
         
-        public RespuestaGenerica CancelarOrdenes(string[] id_orden) {
-            var inValue = new CancelarOrdenesRequest();
+        public B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica CancelarOrdenes(string[] id_orden) {
+            B2CTouresBalon.ServiceProxyB2C.CancelarOrdenesRequest inValue = new B2CTouresBalon.ServiceProxyB2C.CancelarOrdenesRequest();
             inValue.id_orden = id_orden;
-            var retVal = ((ServiceProxyB2C)(this)).CancelarOrdenes(inValue);
+            B2CTouresBalon.ServiceProxyB2C.CancelarOrdenesResponse retVal = ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).CancelarOrdenes(inValue);
             return retVal.respuesta;
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        IAsyncResult ServiceProxyB2C.BeginCancelarOrdenes(CancelarOrdenesRequest request, AsyncCallback callback, object asyncState) {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.BeginCancelarOrdenes(B2CTouresBalon.ServiceProxyB2C.CancelarOrdenesRequest request, System.AsyncCallback callback, object asyncState) {
             return base.Channel.BeginCancelarOrdenes(request, callback, asyncState);
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        public IAsyncResult BeginCancelarOrdenes(string[] id_orden, AsyncCallback callback, object asyncState) {
-            var inValue = new CancelarOrdenesRequest();
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginCancelarOrdenes(string[] id_orden, System.AsyncCallback callback, object asyncState) {
+            B2CTouresBalon.ServiceProxyB2C.CancelarOrdenesRequest inValue = new B2CTouresBalon.ServiceProxyB2C.CancelarOrdenesRequest();
             inValue.id_orden = id_orden;
-            return ((ServiceProxyB2C)(this)).BeginCancelarOrdenes(inValue, callback, asyncState);
+            return ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).BeginCancelarOrdenes(inValue, callback, asyncState);
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        CancelarOrdenesResponse ServiceProxyB2C.EndCancelarOrdenes(IAsyncResult result) {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        B2CTouresBalon.ServiceProxyB2C.CancelarOrdenesResponse B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.EndCancelarOrdenes(System.IAsyncResult result) {
             return base.Channel.EndCancelarOrdenes(result);
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        public RespuestaGenerica EndCancelarOrdenes(IAsyncResult result) {
-            var retVal = ((ServiceProxyB2C)(this)).EndCancelarOrdenes(result);
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica EndCancelarOrdenes(System.IAsyncResult result) {
+            B2CTouresBalon.ServiceProxyB2C.CancelarOrdenesResponse retVal = ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).EndCancelarOrdenes(result);
             return retVal.respuesta;
         }
         
-        private IAsyncResult OnBeginCancelarOrdenes(object[] inValues, AsyncCallback callback, object asyncState) {
-            var id_orden = ((string[])(inValues[0]));
+        private System.IAsyncResult OnBeginCancelarOrdenes(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string[] id_orden = ((string[])(inValues[0]));
             return this.BeginCancelarOrdenes(id_orden, callback, asyncState);
         }
         
-        private object[] OnEndCancelarOrdenes(IAsyncResult result) {
-            var retVal = this.EndCancelarOrdenes(result);
+        private object[] OnEndCancelarOrdenes(System.IAsyncResult result) {
+            B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica retVal = this.EndCancelarOrdenes(result);
             return new object[] {
                     retVal};
         }
         
         private void OnCancelarOrdenesCompleted(object state) {
             if ((this.CancelarOrdenesCompleted != null)) {
-                var e = ((InvokeAsyncCompletedEventArgs)(state));
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
                 this.CancelarOrdenesCompleted(this, new CancelarOrdenesCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
             }
         }
@@ -2589,70 +2579,70 @@ namespace B2CTouresBalon.ServiceProxyB2C {
                 this.onEndCancelarOrdenesDelegate = new EndOperationDelegate(this.OnEndCancelarOrdenes);
             }
             if ((this.onCancelarOrdenesCompletedDelegate == null)) {
-                this.onCancelarOrdenesCompletedDelegate = new SendOrPostCallback(this.OnCancelarOrdenesCompleted);
+                this.onCancelarOrdenesCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnCancelarOrdenesCompleted);
             }
             base.InvokeAsync(this.onBeginCancelarOrdenesDelegate, new object[] {
                         id_orden}, this.onEndCancelarOrdenesDelegate, this.onCancelarOrdenesCompletedDelegate, userState);
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        CrearOrdenesResponse ServiceProxyB2C.CrearOrdenes(CrearOrdenesRequest request) {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        B2CTouresBalon.ServiceProxyB2C.CrearOrdenesResponse B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.CrearOrdenes(B2CTouresBalon.ServiceProxyB2C.CrearOrdenesRequest request) {
             return base.Channel.CrearOrdenes(request);
         }
         
-        public RespuestaGenerica CrearOrdenes(Orden orden) {
-            var inValue = new CrearOrdenesRequest();
+        public B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica CrearOrdenes(B2CTouresBalon.ServiceProxyB2C.Orden orden) {
+            B2CTouresBalon.ServiceProxyB2C.CrearOrdenesRequest inValue = new B2CTouresBalon.ServiceProxyB2C.CrearOrdenesRequest();
             inValue.orden = orden;
-            var retVal = ((ServiceProxyB2C)(this)).CrearOrdenes(inValue);
+            B2CTouresBalon.ServiceProxyB2C.CrearOrdenesResponse retVal = ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).CrearOrdenes(inValue);
             return retVal.respuesta;
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        IAsyncResult ServiceProxyB2C.BeginCrearOrdenes(CrearOrdenesRequest request, AsyncCallback callback, object asyncState) {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.BeginCrearOrdenes(B2CTouresBalon.ServiceProxyB2C.CrearOrdenesRequest request, System.AsyncCallback callback, object asyncState) {
             return base.Channel.BeginCrearOrdenes(request, callback, asyncState);
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        public IAsyncResult BeginCrearOrdenes(Orden orden, AsyncCallback callback, object asyncState) {
-            var inValue = new CrearOrdenesRequest();
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginCrearOrdenes(B2CTouresBalon.ServiceProxyB2C.Orden orden, System.AsyncCallback callback, object asyncState) {
+            B2CTouresBalon.ServiceProxyB2C.CrearOrdenesRequest inValue = new B2CTouresBalon.ServiceProxyB2C.CrearOrdenesRequest();
             inValue.orden = orden;
-            return ((ServiceProxyB2C)(this)).BeginCrearOrdenes(inValue, callback, asyncState);
+            return ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).BeginCrearOrdenes(inValue, callback, asyncState);
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        CrearOrdenesResponse ServiceProxyB2C.EndCrearOrdenes(IAsyncResult result) {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        B2CTouresBalon.ServiceProxyB2C.CrearOrdenesResponse B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.EndCrearOrdenes(System.IAsyncResult result) {
             return base.Channel.EndCrearOrdenes(result);
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        public RespuestaGenerica EndCrearOrdenes(IAsyncResult result) {
-            var retVal = ((ServiceProxyB2C)(this)).EndCrearOrdenes(result);
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica EndCrearOrdenes(System.IAsyncResult result) {
+            B2CTouresBalon.ServiceProxyB2C.CrearOrdenesResponse retVal = ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).EndCrearOrdenes(result);
             return retVal.respuesta;
         }
         
-        private IAsyncResult OnBeginCrearOrdenes(object[] inValues, AsyncCallback callback, object asyncState) {
-            var orden = ((Orden)(inValues[0]));
+        private System.IAsyncResult OnBeginCrearOrdenes(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            B2CTouresBalon.ServiceProxyB2C.Orden orden = ((B2CTouresBalon.ServiceProxyB2C.Orden)(inValues[0]));
             return this.BeginCrearOrdenes(orden, callback, asyncState);
         }
         
-        private object[] OnEndCrearOrdenes(IAsyncResult result) {
-            var retVal = this.EndCrearOrdenes(result);
+        private object[] OnEndCrearOrdenes(System.IAsyncResult result) {
+            B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica retVal = this.EndCrearOrdenes(result);
             return new object[] {
                     retVal};
         }
         
         private void OnCrearOrdenesCompleted(object state) {
             if ((this.CrearOrdenesCompleted != null)) {
-                var e = ((InvokeAsyncCompletedEventArgs)(state));
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
                 this.CrearOrdenesCompleted(this, new CrearOrdenesCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
             }
         }
         
-        public void CrearOrdenesAsync(Orden orden) {
+        public void CrearOrdenesAsync(B2CTouresBalon.ServiceProxyB2C.Orden orden) {
             this.CrearOrdenesAsync(orden, null);
         }
         
-        public void CrearOrdenesAsync(Orden orden, object userState) {
+        public void CrearOrdenesAsync(B2CTouresBalon.ServiceProxyB2C.Orden orden, object userState) {
             if ((this.onBeginCrearOrdenesDelegate == null)) {
                 this.onBeginCrearOrdenesDelegate = new BeginOperationDelegate(this.OnBeginCrearOrdenes);
             }
@@ -2660,61 +2650,61 @@ namespace B2CTouresBalon.ServiceProxyB2C {
                 this.onEndCrearOrdenesDelegate = new EndOperationDelegate(this.OnEndCrearOrdenes);
             }
             if ((this.onCrearOrdenesCompletedDelegate == null)) {
-                this.onCrearOrdenesCompletedDelegate = new SendOrPostCallback(this.OnCrearOrdenesCompleted);
+                this.onCrearOrdenesCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnCrearOrdenesCompleted);
             }
             base.InvokeAsync(this.onBeginCrearOrdenesDelegate, new object[] {
                         orden}, this.onEndCrearOrdenesDelegate, this.onCrearOrdenesCompletedDelegate, userState);
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        ConsultaTop5ProductosResponse ServiceProxyB2C.ConsultaTop5Productos(ConsultaTop5ProductosRequest request) {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        B2CTouresBalon.ServiceProxyB2C.ConsultaTop5ProductosResponse B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.ConsultaTop5Productos(B2CTouresBalon.ServiceProxyB2C.ConsultaTop5ProductosRequest request) {
             return base.Channel.ConsultaTop5Productos(request);
         }
         
-        public Producto[] ConsultaTop5Productos(string id_producto) {
-            var inValue = new ConsultaTop5ProductosRequest();
+        public B2CTouresBalon.ServiceProxyB2C.Producto[] ConsultaTop5Productos(string id_producto) {
+            B2CTouresBalon.ServiceProxyB2C.ConsultaTop5ProductosRequest inValue = new B2CTouresBalon.ServiceProxyB2C.ConsultaTop5ProductosRequest();
             inValue.id_producto = id_producto;
-            var retVal = ((ServiceProxyB2C)(this)).ConsultaTop5Productos(inValue);
+            B2CTouresBalon.ServiceProxyB2C.ConsultaTop5ProductosResponse retVal = ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).ConsultaTop5Productos(inValue);
             return retVal.lista_productos_top;
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        IAsyncResult ServiceProxyB2C.BeginConsultaTop5Productos(ConsultaTop5ProductosRequest request, AsyncCallback callback, object asyncState) {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.BeginConsultaTop5Productos(B2CTouresBalon.ServiceProxyB2C.ConsultaTop5ProductosRequest request, System.AsyncCallback callback, object asyncState) {
             return base.Channel.BeginConsultaTop5Productos(request, callback, asyncState);
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        public IAsyncResult BeginConsultaTop5Productos(string id_producto, AsyncCallback callback, object asyncState) {
-            var inValue = new ConsultaTop5ProductosRequest();
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginConsultaTop5Productos(string id_producto, System.AsyncCallback callback, object asyncState) {
+            B2CTouresBalon.ServiceProxyB2C.ConsultaTop5ProductosRequest inValue = new B2CTouresBalon.ServiceProxyB2C.ConsultaTop5ProductosRequest();
             inValue.id_producto = id_producto;
-            return ((ServiceProxyB2C)(this)).BeginConsultaTop5Productos(inValue, callback, asyncState);
+            return ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).BeginConsultaTop5Productos(inValue, callback, asyncState);
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        ConsultaTop5ProductosResponse ServiceProxyB2C.EndConsultaTop5Productos(IAsyncResult result) {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        B2CTouresBalon.ServiceProxyB2C.ConsultaTop5ProductosResponse B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C.EndConsultaTop5Productos(System.IAsyncResult result) {
             return base.Channel.EndConsultaTop5Productos(result);
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        public Producto[] EndConsultaTop5Productos(IAsyncResult result) {
-            var retVal = ((ServiceProxyB2C)(this)).EndConsultaTop5Productos(result);
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public B2CTouresBalon.ServiceProxyB2C.Producto[] EndConsultaTop5Productos(System.IAsyncResult result) {
+            B2CTouresBalon.ServiceProxyB2C.ConsultaTop5ProductosResponse retVal = ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).EndConsultaTop5Productos(result);
             return retVal.lista_productos_top;
         }
         
-        private IAsyncResult OnBeginConsultaTop5Productos(object[] inValues, AsyncCallback callback, object asyncState) {
-            var id_producto = ((string)(inValues[0]));
+        private System.IAsyncResult OnBeginConsultaTop5Productos(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string id_producto = ((string)(inValues[0]));
             return this.BeginConsultaTop5Productos(id_producto, callback, asyncState);
         }
         
-        private object[] OnEndConsultaTop5Productos(IAsyncResult result) {
-            var retVal = this.EndConsultaTop5Productos(result);
+        private object[] OnEndConsultaTop5Productos(System.IAsyncResult result) {
+            B2CTouresBalon.ServiceProxyB2C.Producto[] retVal = this.EndConsultaTop5Productos(result);
             return new object[] {
                     retVal};
         }
         
         private void OnConsultaTop5ProductosCompleted(object state) {
             if ((this.ConsultaTop5ProductosCompleted != null)) {
-                var e = ((InvokeAsyncCompletedEventArgs)(state));
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
                 this.ConsultaTop5ProductosCompleted(this, new ConsultaTop5ProductosCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
             }
         }
@@ -2731,7 +2721,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
                 this.onEndConsultaTop5ProductosDelegate = new EndOperationDelegate(this.OnEndConsultaTop5Productos);
             }
             if ((this.onConsultaTop5ProductosCompletedDelegate == null)) {
-                this.onConsultaTop5ProductosCompletedDelegate = new SendOrPostCallback(this.OnConsultaTop5ProductosCompleted);
+                this.onConsultaTop5ProductosCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnConsultaTop5ProductosCompleted);
             }
             base.InvokeAsync(this.onBeginConsultaTop5ProductosDelegate, new object[] {
                         id_producto}, this.onEndConsultaTop5ProductosDelegate, this.onConsultaTop5ProductosCompletedDelegate, userState);
