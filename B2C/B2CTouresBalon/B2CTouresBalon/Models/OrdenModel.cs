@@ -9,7 +9,7 @@ namespace B2CTouresBalon.Models
 
 
 
-        public DateTime fechaOrden { get; set; } 
+        public DateTime fecha_orden { get; set; } 
 
         public EstatusOrden estatus { get; set; } 
 
@@ -17,7 +17,9 @@ namespace B2CTouresBalon.Models
 
         public double precio { get; set; }
 
-        public List<ServiceProxyB2C.Item> detalle { get; set; }
+        public List<ServiceProxyB2C.Item> item { get; set; }
+
+        public string[] comentarios { get; set; }
 
 
     }

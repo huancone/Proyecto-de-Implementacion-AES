@@ -12,9 +12,9 @@ namespace B2CTouresBalon.Controllers
     {
         List<OrdenModel> lstordenes = new List<OrdenModel>();
         // GET: Orden
-        public ActionResult Index()
+        public ActionResult Index(string idcliente)
         {
-            
+
 
             //for (int i=0;i<=10; i++)
             //{
@@ -35,7 +35,7 @@ namespace B2CTouresBalon.Controllers
             //        item.nombre_prod = "Prod-" + j.ToString();
             //        item.part_num = "Part-" + j.ToString();
             //        item.cantidad = 1;
-                   
+
             //        item.precio = Math.Round( r.NextDouble()*100000,0);
             //        valsum = valsum + item.precio;
             //        ord.detalle.Add(item);
@@ -46,12 +46,17 @@ namespace B2CTouresBalon.Controllers
             //}
 
 
+            var ordenes = new ServiceProxyB2CClient();
+            var lstorden = ordenes.ConsultarClientesOrdenes(idcliente);
+
+            
+         
+           
+
+            HttpContext.Session["ListaOrden"] = lstorden;
 
 
-            HttpContext.Session["ListaOrden"] = lstordenes;
-
-
-            return View(lstordenes);
+            return View(lstorden);
         }
 
 
@@ -90,7 +95,7 @@ namespace B2CTouresBalon.Controllers
             lstordenes =(List<OrdenModel>)HttpContext.Session["ListaOrden"] ;
 
 
-            var LstItems = lstordenes.Find(ord => ord.id_orden == IdOrden).detalle;  
+            var LstItems = lstordenes.Find(ord => ord.id_orden == IdOrden).item;  
             ViewBag.IdOrden = IdOrden;
          
 

@@ -1,6 +1,6 @@
 ﻿@using B2CTouresBalon.ServiceProxyB2C
 @using B2CTouresBalon.Models
-@model List<OrdenModel>   
+@model List<B2CTouresBalon.ServiceProxyB2C.Orden>   
 @{
     ViewBag.Title = "Ordenes";
 }
@@ -25,7 +25,7 @@
         {
             <tr>
                 <td>@ord.id_orden</td>
-                <td>@ord.fechaOrden.ToString("dd/MM/yyyy")</td> 
+                <td>@ord.fecha_orden.ToString("dd/MM/yyyy")</td> 
                 <td>@ord.precio.ToString("###,##0")</td>
                 <td>@ord.estatus.ToString()</td> 
                 <td>@Html.ActionLink("Detalle","Detalle",new { IdOrden = ord.id_orden})</td>
