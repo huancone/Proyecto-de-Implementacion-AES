@@ -30,7 +30,7 @@ namespace B2CTouresBalon.Controllers
 
                 var serializeModel = new CustomPrincipalSerializeModel
                 {
-                    UserId = user.CUSTID,
+                    UserName = user.EMAIL,
                     FirstName = user.FNAME,
                     LastName = user.LNAME,
                     CustId = user.CUSTID
@@ -47,9 +47,10 @@ namespace B2CTouresBalon.Controllers
 
                 var encTicket = FormsAuthentication.Encrypt(authTicket);
                 var faCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encTicket);
+
                 Response.Cookies.Add(faCookie);
 
-                model.UserId = user.CUSTID;
+                model.CustId = user.CUSTID;
                 return RedirectToAction("Index", "Home");
             }
 
@@ -65,7 +66,7 @@ namespace B2CTouresBalon.Controllers
             var currentuser = System.Web.HttpContext.Current.User as CustomPrincipal;
 
 
-            var userId = currentuser?.CustId;
+            var userId = Convert.ToInt64(currentuser?.CustId);
             var user = await _context.ObtenerUsuario(userId);
 
             var model = new ManageViewModel();
@@ -82,14 +83,14 @@ namespace B2CTouresBalon.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ViewResult> Manage(ManageViewModel model, AccountController.ManageMessageId? message)
+        public async Task<ViewResult> Manage(ManageViewModel model, ManageMessageId? message)
         {
             ViewBag.StatusMessage =
                 message == ManageMessageId.UpdateSuccess ? "Your account has been updated."
                 : message == ManageMessageId.UpdateError ? "An error has occurred."
                 : "";
             if (!ModelState.IsValid) return View(model);
-            if (await _context.ActualizarUsuario(
+            if (await _context.ActualizarUsuario(model.CustomerId,
                 model.FirstName,
                 model.LastName,
                 model.Email,
@@ -97,9 +98,10 @@ namespace B2CTouresBalon.Controllers
                 model.CreditCardType,
                 model.CreditCardNumber))
             {
+                ModelState.AddModelError("", "Your account has been updated.");
                 return View(model);
             }
-            ViewBag.StatusMessage ="An error has occurred.";
+            ModelState.AddModelError("", "An error has occurred.");
             return View(model);
         }
 

@@ -1,0 +1,39 @@
+﻿@using B2CCliente.Models
+@using B2CCliente.SrvProxyB2C
+
+@model List<Item > 
+@{
+    ViewBag.Title = "Detalle orden " + ViewBag.IdOrden;
+}
+
+<h1>Detalle orden @ViewBag.IdOrden</h1> 
+
+@Html.AntiForgeryToken()
+
+<table class="table table-stripped">
+    <thead>
+        <tr>
+            <th>Id Item</th>
+            <th>Id Producto</th>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (Item   ite in Model)
+        {
+            <tr>
+                <td>@ite.id_item </td>
+                <td>@ite.id_prod</td>
+                <td>@ite.nombre_prod</td>
+                <td>@ite.cantidad</td>
+                <td>@ite.precio.ToString("###,##0")</td>
+                
+            </tr>
+        }
+    </tbody>
+
+
+</table> 

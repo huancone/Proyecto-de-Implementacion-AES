@@ -7,14 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+
 namespace DataAccess
 {
-    using System;
-    using System.Collections.Generic;
-    
     public partial class CUSTOMER
     {
-        public string CUSTID { get; set; }
+        [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public CUSTOMER()
+        {
+            this.CUSTOMER_ADDRESS = new HashSet<CUSTOMER_ADDRESS>();
+            this.ORDERS = new HashSet<ORDERS>();
+        }
+    
+        public decimal CUSTID { get; set; }
         public string FNAME { get; set; }
         public string LNAME { get; set; }
         public string PHONENUMBER { get; set; }
@@ -23,5 +30,10 @@ namespace DataAccess
         public string CREDITCARDTYPE { get; set; }
         public string CREDITCARDNUMBER { get; set; }
         public string STATUS { get; set; }
+    
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CUSTOMER_ADDRESS> CUSTOMER_ADDRESS { get; set; }
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ORDERS> ORDERS { get; set; }
     }
 }

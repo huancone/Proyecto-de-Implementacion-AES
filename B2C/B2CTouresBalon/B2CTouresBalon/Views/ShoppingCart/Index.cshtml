@@ -1,0 +1,44 @@
+﻿@using B2CTouresBalon.Controllers
+@using B2CTouresBalon.Models
+
+<table class="table">
+    <tr>
+        <th>
+            Espectaculo
+        </th>
+        <th>
+            Ciudad
+        </th>
+        <th>
+            Fecha
+        </th>
+        <th>
+            Precio
+        </th>
+    </tr>
+
+    @{
+        if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Producto.espectaculo
+                    </td>
+                    <td>
+                        @item.Producto.ciudad_espectaculo
+                    </td>
+                    <td>
+                        @item.Producto.fecha_llegada
+                    </td>
+                    <td>
+                        @item.Producto.tipo_espectaculo.precio
+                    </td>
+                </tr>
+            }
+        }
+
+
+    }
+</table>

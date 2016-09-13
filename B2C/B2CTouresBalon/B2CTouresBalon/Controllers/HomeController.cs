@@ -1,4 +1,6 @@
 ﻿using System.Web.Mvc;
+using B2CTouresBalon.Models;
+using B2CTouresBalon.ServiceProxyB2C;
 
 namespace B2CTouresBalon.Controllers
 {
@@ -8,8 +10,10 @@ namespace B2CTouresBalon.Controllers
         // GET: /Home/
         public ActionResult Index()
         {
-            //string FullName = User.FirstName + " " + User.LastName;
-            return View();
+            var proxy   = new ServiceProxyB2CClient();
+            var productos = new PromocionesModel {Promociones = proxy.ConsultarCampaniaProducto()};
+
+            return View(productos);
         }
     }
 }

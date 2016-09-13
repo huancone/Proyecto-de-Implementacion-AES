@@ -247,7 +247,11 @@
 				</xsd:restriction>
 			</xsd:simpleType>
 			<xsd:simpleType name="TipoConsultaProducto">
-				<xsd:restriction base="xsd:string"></xsd:restriction>
+				<xsd:restriction base="xsd:string">
+					<xsd:enumeration value="description"></xsd:enumeration>
+					<xsd:enumeration value="Id"></xsd:enumeration>
+					<xsd:enumeration value="nombre"></xsd:enumeration>
+				</xsd:restriction>
 			</xsd:simpleType>
 			<xsd:complexType name="TarifaValores">
 				<xsd:sequence>

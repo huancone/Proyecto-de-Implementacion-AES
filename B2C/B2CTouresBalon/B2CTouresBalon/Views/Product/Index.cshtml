@@ -1,0 +1,55 @@
+﻿@using System.Activities.Statements
+@model B2CTouresBalon.Models.ProductosModel
+
+<hr />
+@using (Html.BeginForm("Index", "Product", FormMethod.Get))
+{
+    <p>
+        @Html.TextBox("SearchString")
+        <input type="submit" value="Search..." />
+    </p>
+}
+
+<div>
+    <h4>ProductosViewModel</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-8">
+            <div class="row">
+                @foreach (var producto in Model.Productos)
+                {
+                    <div class="col-sm-4 col-lg-4 col-md-4">
+                        <div class="thumbnail">
+                            <img src="http://placehold.it/320x150" alt="">
+                            <div class="caption">
+                                <h4 class="pull-right">$ @producto.ciudad_espectaculo.tipo_ciudad.precio</h4>
+                                <h4>
+                                    <a href="#">@producto.espectaculo</a>
+                                </h4>
+                                <p>
+                                    @producto.ciudad_espectaculo.pais
+                                </p>
+                            </div>
+                            <div class="ratings">
+                                <p class="pull-right">15 reviews</p>
+                                <p>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                </p>
+                            </div>
+                            @Html.ActionLink("Add to Cart", "AddItem", "ShoppingCart", new { idProducto = producto.id_producto, cantidad = 1 }, null)
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<p>
+    @Html.ActionLink("Back to Home", "Index", "Home")
+</p>

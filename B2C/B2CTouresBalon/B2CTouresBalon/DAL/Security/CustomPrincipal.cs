@@ -8,32 +8,28 @@ namespace B2CTouresBalon.DAL.Security
         public IIdentity Identity { get; }
         public bool IsInRole(string role)
         {
-            if (roles.Any(r => role.Contains(r)))
-            {
-                return true;
-            }
-            return false;
+            return roles.Any(role.Contains);
         }
 
-        public CustomPrincipal(string Username)
+        public CustomPrincipal(string username)
         {
-            Identity = new GenericIdentity(Username);
+            Identity = new GenericIdentity(username);
         }
 
-        public string UserId { get; set; }
+        public string UserName { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
-        public string CustId { get; set; }
+        public decimal CustId { get; set; }
         public string[] roles { get; set; }
     }
 
     public class CustomPrincipalSerializeModel
     {
-        public string UserId { get; set; }
+        public string UserName { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string CustId { get; set; }
+        public decimal CustId { get; set; }
         public string[] roles { get; set; }
     }
 }

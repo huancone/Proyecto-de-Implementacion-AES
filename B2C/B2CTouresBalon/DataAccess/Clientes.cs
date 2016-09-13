@@ -1,5 +1,4 @@
-﻿using System;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,7 +8,7 @@ namespace DataAccess
     {
         public async Task<CUSTOMER> ObtenerUsuario(string correo, string password)
         {
-            using (var db = new ClientsContext())
+            using (var db = new ClientContext())
             {
                 var customer = from c in db.CUSTOMER
                                where c.EMAIL == correo & c.PASSWORD == password
@@ -18,9 +17,9 @@ namespace DataAccess
             }
         }
 
-        public async Task<CUSTOMER> ObtenerUsuario(string userid)
+        public async Task<CUSTOMER> ObtenerUsuario(long userid)
         {
-            using (var db = new ClientsContext())
+            using (var db = new ClientContext())
             {
                 var customer = from c in db.CUSTOMER
                                where c.CUSTID == userid
@@ -29,13 +28,13 @@ namespace DataAccess
             }
         }
 
-        public async Task<bool> ActualizarUsuario(string firstName, string lastName, string email, string phoneNumber,
+        public async Task<bool> ActualizarUsuario(decimal userId, string firstName, string lastName, string email, string phoneNumber,
             string creditCardType, string creditCardNumber)
         {
-            using (var db = new ClientsContext())
+            using (var db = new ClientContext())
             {
                 var customer = from c in db.CUSTOMER
-                    where c.EMAIL == email
+                    where c.CUSTID == userId
                     select c;
 
                 var customer2 = await customer.SingleOrDefaultAsync();

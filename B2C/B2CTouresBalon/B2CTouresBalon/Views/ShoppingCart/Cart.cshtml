@@ -1,0 +1,30 @@
+﻿@using B2CTouresBalon.Controllers
+@using B2CTouresBalon.Models
+@model Cart
+
+<table class="table">
+    <tr>
+        <th>
+            Espectaculo
+        </th>
+        <th>
+            Cantidad
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Items)
+    {
+        <tr>
+            <td>
+                @item.Producto
+            </td>
+            <td>
+                @item.Cantidad
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "DeleteItem", "ShoppingCart", new { idProducto = item.Producto, cantidad = 1 }, null)
+            </td>
+        </tr>
+    }
+</table>
