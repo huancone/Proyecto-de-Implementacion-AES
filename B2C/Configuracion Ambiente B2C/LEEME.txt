@@ -1,0 +1,10 @@
+1. Instalar Docker
+	https://docs.docker.com/docker-for-windows/
+2. Instalar KiteMatic
+	En el area de Icon Tray click derecho a la ballena de Docker, y click on Open KiteMatic
+3. Instalar Oracle
+	Buscar en la interfaz de Kitematic "wnameless/oracle-xe-11g" instalar y dejar la configuracion por defecto.
+4. Instalar MEMCACHED repositorio oficial.
+	dejar la configuracion por defecto
+5. Clonar el branch Vistas de GITHUB.
+	

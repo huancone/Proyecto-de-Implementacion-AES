@@ -318,6 +318,9 @@
     <Content Include="Service References\ServiceProxyB2C\B2CTouresBalon.ServiceProxyB2C.RespuestaGenerica.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\ServiceProxyB2C\B2CTouresBalon.ServiceProxyB2C.CrearOrdenResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\ServiceProxyB2C\configuration91.svcinfo" />
     <None Include="Service References\ServiceProxyB2C\configuration.svcinfo" />
     <None Include="Service References\ServiceProxyB2C\Reference.svcmap">
@@ -350,6 +353,7 @@
     <Content Include="Views\Orden\Index.cshtml" />
     <Content Include="Views\Orden\_Cancelar.cshtml" />
     <Content Include="Views\Orden\_Detalle.cshtml" />
+    <Content Include="Views\Product\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

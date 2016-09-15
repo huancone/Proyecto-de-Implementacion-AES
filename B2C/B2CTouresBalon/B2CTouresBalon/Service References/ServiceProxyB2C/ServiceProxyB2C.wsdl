@@ -85,7 +85,7 @@
       <xsd:element name="ConsultarCampaniaProductoResponse">
         <xsd:complexType>
           <xsd:sequence>
-            <xsd:element minOccurs="0" maxOccurs="unbounded" name="productos" type="tb_b2:Producto" />
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="Productos" type="tb_b2:Producto" />
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
@@ -127,7 +127,7 @@
       <xsd:element name="CrearOrdenesResponse">
         <xsd:complexType>
           <xsd:sequence>
-            <xsd:element minOccurs="1" maxOccurs="1" name="respuesta" type="tb_b2:RespuestaGenerica" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="respuesta" type="tb_b2:CrearOrdenResponse" />
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
@@ -177,10 +177,10 @@
       </xsd:complexType>
       <xsd:complexType name="Orden">
         <xsd:sequence>
-          <xsd:element minOccurs="1" maxOccurs="1" name="id_orden" type="xsd:string" />
-          <xsd:element minOccurs="1" maxOccurs="1" name="fecha_orden" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="id_orden" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="fecha_orden" type="xsd:dateTime" />
           <xsd:element minOccurs="1" maxOccurs="1" name="precio" type="xsd:double" />
-          <xsd:element minOccurs="1" maxOccurs="1" name="estatus" type="tb_b2:EstatusOrden" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="estatus" type="tb_b2:EstatusOrden" />
           <xsd:element minOccurs="0" maxOccurs="unbounded" name="comentarios" type="xsd:string" />
           <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tb_b2:Item" />
         </xsd:sequence>
@@ -196,9 +196,9 @@
       </xsd:simpleType>
       <xsd:simpleType name="TipoConsultaProducto">
         <xsd:restriction base="xsd:string">
-          <xsd:enumeration value="description" />
-          <xsd:enumeration value="Id" />
-          <xsd:enumeration value="nombre" />
+          <xsd:enumeration value="DESCRIPCION" />
+          <xsd:enumeration value="ID" />
+          <xsd:enumeration value="NOMBRE" />
         </xsd:restriction>
       </xsd:simpleType>
       <xsd:complexType name="TarifaValores">
@@ -220,8 +220,8 @@
           <xsd:element minOccurs="1" maxOccurs="1" name="id_producto" type="xsd:int" />
           <xsd:element minOccurs="1" maxOccurs="1" name="espectaculo" type="xsd:string" />
           <xsd:element minOccurs="1" maxOccurs="1" name="ciudad_espectaculo" type="tb_b2:Ciudad" />
-          <xsd:element minOccurs="0" maxOccurs="1" name="fecha_llegada" type="xsd:date" />
-          <xsd:element minOccurs="0" maxOccurs="1" name="fecha_salida" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="fecha_llegada" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="fecha_salida" type="xsd:dateTime" />
           <xsd:element minOccurs="0" maxOccurs="1" name="tipo_transporte" type="tb_b2:TarifaValores" />
           <xsd:element minOccurs="1" maxOccurs="1" name="tipo_espectaculo" type="tb_b2:TarifaValores" />
           <xsd:element minOccurs="0" maxOccurs="1" name="tipo_hospedaje" type="tb_b2:TarifaValores" />
@@ -333,8 +333,8 @@
       <xsd:complexType name="Campania">
         <xsd:sequence>
           <xsd:element minOccurs="1" maxOccurs="1" name="id_producto" type="xsd:string" />
-          <xsd:element minOccurs="1" maxOccurs="1" name="fecha_inicio_campania" type="xsd:date" />
-          <xsd:element minOccurs="1" maxOccurs="1" name="fecha_fin_campania" type="xsd:date" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="fecha_inicio_campania" type="xsd:dateTime" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="fecha_fin_campania" type="xsd:dateTime" />
         </xsd:sequence>
       </xsd:complexType>
       <xsd:element name="ConsultaTop5Productos">
@@ -358,6 +358,12 @@
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
+      <xsd:complexType name="CrearOrdenResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="id_orden" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="estatus_orden" type="tb_b2:EstatusOrden" />
+        </xsd:sequence>
+      </xsd:complexType>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="CrearOrdenesFault">

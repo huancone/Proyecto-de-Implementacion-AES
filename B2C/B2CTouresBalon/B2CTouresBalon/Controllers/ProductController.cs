@@ -18,16 +18,18 @@ namespace B2CTouresBalon.Controllers
             else
             {
                 var proxy = new ServiceProxyB2CClient();
-                var productos = new ProductosModel { Productos = proxy.ConsultarProducto(TipoConsultaProducto.description, null, searchString, null) };
+                var productos = new ProductosModel { Productos = proxy.ConsultarProducto(TipoConsultaProducto.DESCRIPCION, null, searchString, null) };
                 return View(productos);
             }
 
         }
 
         // GET: Product/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int idProducto)
         {
-            return View();
+            var proxy = new ServiceProxyB2CClient();
+            var productos = new ProductosModel { Productos = proxy.ConsultarProducto(TipoConsultaProducto.ID, idProducto.ToString(), null, null) };
+            return View(productos.Productos);
         }
     }
 }

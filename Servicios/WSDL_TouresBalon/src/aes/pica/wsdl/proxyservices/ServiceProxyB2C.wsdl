@@ -72,15 +72,7 @@
 				<xsd:complexType>
 					<xsd:sequence>
 						<xsd:element name="tipo_consulta" maxOccurs="1"
-							minOccurs="1">
-							<xsd:simpleType>
-								<xsd:restriction
-									base="tb_b2:TipoConsultaProducto">
-									<xsd:enumeration value="CODIGO"></xsd:enumeration>
-									<xsd:enumeration value="NOMBRE"></xsd:enumeration>
-									<xsd:enumeration value="DESCRIPCION"></xsd:enumeration>
-								</xsd:restriction>
-							</xsd:simpleType>
+							minOccurs="1" type="tb_b2:TipoConsultaProducto">
 						</xsd:element>
 						<xsd:element name="codigo" type="xsd:string"
 							maxOccurs="1" minOccurs="0">
@@ -96,7 +88,7 @@
 			</xsd:element>
 			<xsd:element name="ConsultarProductoResponse">
 				<xsd:complexType>
-					<xsd:sequence><xsd:element name="productos" type="tb_b2:Producto" maxOccurs="unbounded" minOccurs="0">
+					<xsd:sequence><xsd:element name="Productos" type="tb_b2:Producto" maxOccurs="unbounded" minOccurs="0">
 					</xsd:element></xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>
@@ -224,7 +216,7 @@
 				<xsd:sequence>
 					<xsd:element name="id_orden" type="xsd:string"
 						maxOccurs="1" minOccurs="0"></xsd:element>
-					<xsd:element name="fecha_orden" type="xsd:date"
+					<xsd:element name="fecha_orden" type="xsd:dateTime"
 						maxOccurs="1" minOccurs="1"></xsd:element>
 					<xsd:element name="precio" type="xsd:double" maxOccurs="1"
 						minOccurs="1"></xsd:element>
@@ -248,9 +240,9 @@
 			</xsd:simpleType>
 			<xsd:simpleType name="TipoConsultaProducto">
 				<xsd:restriction base="xsd:string">
-					<xsd:enumeration value="description"></xsd:enumeration>
-					<xsd:enumeration value="Id"></xsd:enumeration>
-					<xsd:enumeration value="nombre"></xsd:enumeration>
+					<xsd:enumeration value="DESCRIPCION"></xsd:enumeration>
+					<xsd:enumeration value="ID"></xsd:enumeration>
+					<xsd:enumeration value="NOMBRE"></xsd:enumeration>
 				</xsd:restriction>
 			</xsd:simpleType>
 			<xsd:complexType name="TarifaValores">
@@ -279,9 +271,9 @@
 					<xsd:element name="ciudad_espectaculo" type="tb_b2:Ciudad"
 						maxOccurs="1" minOccurs="1">
 					</xsd:element>
-					<xsd:element name="fecha_llegada" type="xsd:date"
+					<xsd:element name="fecha_llegada" type="xsd:dateTime"
 						maxOccurs="1" minOccurs="0"></xsd:element>
-					<xsd:element name="fecha_salida" type="xsd:date"
+					<xsd:element name="fecha_salida" type="xsd:dateTime"
 						maxOccurs="1" minOccurs="0"></xsd:element>
 					<xsd:element name="tipo_transporte" type="tb_b2:TarifaValores"
 						maxOccurs="1" minOccurs="0">
@@ -435,9 +427,9 @@
             			maxOccurs="1" minOccurs="1">
             		</xsd:element>
             		<xsd:element name="fecha_inicio_campania"
-            			type="xsd:date" maxOccurs="1" minOccurs="1">
+            			type="xsd:dateTime" maxOccurs="1" minOccurs="1">
             		</xsd:element>
-            		<xsd:element name="fecha_fin_campania" type="xsd:date" maxOccurs="1" minOccurs="1"></xsd:element>
+            		<xsd:element name="fecha_fin_campania" type="xsd:dateTime" maxOccurs="1" minOccurs="1"></xsd:element>
             	</xsd:sequence>
             </xsd:complexType>
             <xsd:element name="ConsultaTop5Productos">

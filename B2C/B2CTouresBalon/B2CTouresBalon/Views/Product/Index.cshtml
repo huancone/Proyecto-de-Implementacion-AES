@@ -24,20 +24,10 @@
                             <div class="caption">
                                 <h4 class="pull-right">$ @producto.ciudad_espectaculo.tipo_ciudad.precio</h4>
                                 <h4>
-                                    <a href="#">@producto.espectaculo</a>
+                                    <a href="@Url.Action("Details", "Product", new { idProducto = producto.id_producto} )" class="elements"><span>@producto.espectaculo</span></a>
                                 </h4>
                                 <p>
                                     @producto.ciudad_espectaculo.pais
-                                </p>
-                            </div>
-                            <div class="ratings">
-                                <p class="pull-right">15 reviews</p>
-                                <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
                                 </p>
                             </div>
                             @Html.ActionLink("Add to Cart", "AddItem", "ShoppingCart", new { idProducto = producto.id_producto, cantidad = 1 }, null)
