@@ -5,9 +5,11 @@ using System.Net;
 using System.Web.Mvc;
 using B2CTouresBalon.DAL.Security;
 using B2CTouresBalon.Models;
+using B2CTouresBalon.ServiceProxyB2C;
 using Enyim.Caching;
 using Enyim.Caching.Configuration;
 using Enyim.Caching.Memcached;
+using Item = B2CTouresBalon.Models.Item;
 
 namespace B2CTouresBalon.Controllers
 {
@@ -20,8 +22,8 @@ namespace B2CTouresBalon.Controllers
             {
                 if (!ModelState.IsValid) return RedirectToAction("Index", "Product");
                 var currentUser = System.Web.HttpContext.Current.User as CustomPrincipal;
-                if (currentUser == null) return RedirectToAction("Index","Account");
-                var model = client.Get<Cart>(currentUser.CustId.ToString(CultureInfo.InvariantCulture));
+                if (currentUser == null) return RedirectToAction("Index", "Account");
+                var model = client.Get<Cart>("Cart-" + currentUser.CustId.ToString(CultureInfo.InvariantCulture));
                 if (model == null) return RedirectToAction("Index", "Product");
                 return View(model);
             }
@@ -35,16 +37,23 @@ namespace B2CTouresBalon.Controllers
             var currentUser = System.Web.HttpContext.Current.User as CustomPrincipal;
             if (currentUser == null) return RedirectToAction("Index", "Account");
 
-            var clientConfiguration = new MemcachedClientConfiguration {Protocol = MemcachedProtocol.Binary};
-            clientConfiguration.Servers.Add( new IPEndPoint(IPAddress.Parse("127.0.0.1"), 32768));
+            var clientConfiguration = new MemcachedClientConfiguration { Protocol = MemcachedProtocol.Binary };
+            clientConfiguration.Servers.Add(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 32768));
 
             using (var client = new MemcachedClient(clientConfiguration))
             {
                 //consulto el cache del usuario logueado
-                var cart = client.Get<Cart>(currentUser.UserName);
+                var cart = client.Get<Cart>("Cart-" + currentUser.UserName);
+
+                var proxy = new ServiceProxyB2CClient();
+                //var producto = proxy.ConsultarProducto(TipoConsultaProducto.ID, idProducto.ToString(), null, null).First();
                 
-                if (null == cart)//si el carrito es vacio cree uno nuevo
+                //No se porque el servicio de productos no devuelve datos.
+                var producto = proxy.ConsultarCampaniaProducto().First();
+                
+                if (null == cart)
                 {
+                    //si el carrito es vacio cree uno nuevo
                     cart = new Cart
                     {
                         UserId = (int)currentUser.CustId,
@@ -53,28 +62,31 @@ namespace B2CTouresBalon.Controllers
 
                     var item = new Item
                     {
-                        Producto = idProducto,
+                        Producto = producto,
                         Cantidad = cantidad
                     };
                     cart.Items.Add(item);
 
-                    client.Store(StoreMode.Set, currentUser.UserName, cart);
+                    client.Store(StoreMode.Set, "Cart-" + currentUser.UserName, cart);
                 }
                 else
                 {
-                    foreach (var i in cart.Items.Where(i => i.Producto == idProducto))
+                    foreach (var i in cart.Items.Where(i => i.Producto.id_producto == idProducto))
                     {
+                        //Si existe un carrito busco el item y adiciono la cantidad
                         i.Cantidad = i.Cantidad + cantidad;
-                        client.Store(StoreMode.Set, currentUser.UserName, cart);
+                        client.Store(StoreMode.Set, "Cart-" + currentUser.UserName, cart);
                         return View("cart", cart);
                     }
+
+                    //si no existe el item en el carrito lo agrego a la coleccion y guardo el carro
                     var item = new Item
                     {
-                        Producto = idProducto,
+                        Producto = producto,
                         Cantidad = cantidad
                     };
                     cart.Items.Add(item);
-                    client.Store(StoreMode.Set, currentUser.UserName, cart);
+                    client.Store(StoreMode.Set, "Cart-" + currentUser.UserName, cart);
                 }
                 return View("Cart", cart);
             }
@@ -87,15 +99,20 @@ namespace B2CTouresBalon.Controllers
             //consulto el usuario logueado
             var currentUser = System.Web.HttpContext.Current.User as CustomPrincipal;
             if (currentUser == null) return RedirectToAction("Index", "Account");
+
+
+            //Configuracion del MEMCACHED client
             var clientConfiguration = new MemcachedClientConfiguration { Protocol = MemcachedProtocol.Binary };
             clientConfiguration.Servers.Add(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 32768));
 
             using (var client = new MemcachedClient(clientConfiguration))
             {
                 //consulto el cache del usuario logueado
-                var cart = client.Get<Cart>(currentUser.UserName);
+                var cart = client.Get<Cart>("Cart-" + currentUser.UserName);
                 if (cart == null) return View("Cart", cart);
-                foreach (var i in cart.Items.Where(i => i.Producto == idProducto))
+
+                //Consulto el item en el carrito y le resto al cantidad si llega a cero lo elimino.
+                foreach (var i in cart.Items.Where(i => i.Producto.id_producto == idProducto))
                 {
                     if (i.Cantidad >= cantidad)
                     {
@@ -103,9 +120,9 @@ namespace B2CTouresBalon.Controllers
                     }
                     else
                     {
-                        i.Cantidad = 0;
-                    }
-                    client.Store(StoreMode.Set, currentUser.UserName, cart);
+                        cart.Items.Remove(i);
+                    }   
+                    client.Store(StoreMode.Set, "Cart-" + currentUser.UserName, cart);
                     return View("cart", cart);
                 }
                 return View("Cart", cart);

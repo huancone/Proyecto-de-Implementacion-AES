@@ -26,6 +26,7 @@
                     <div class="container">
                         <div class="carousel-caption">
                             <h1>@producto.espectaculo</h1>
+                            @Html.ActionLink("Add to Cart", "AddItem", "ShoppingCart", new { idProducto = producto.id_producto, cantidad = 1 }, null)
                         </div>
                     </div>
                 </div>
