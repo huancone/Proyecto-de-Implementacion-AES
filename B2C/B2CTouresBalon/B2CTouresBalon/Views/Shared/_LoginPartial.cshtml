@@ -8,6 +8,7 @@
             <li>
                 @Html.ActionLink("Hello " + User.FirstName + "!", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage", userId = User.CustId})
             </li>
+            <li>@Html.ActionLink("Mis Ordenes", "Index", "Orden", new { idcliente = User.CustId }) </li> 
             <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
         </ul>
     }
