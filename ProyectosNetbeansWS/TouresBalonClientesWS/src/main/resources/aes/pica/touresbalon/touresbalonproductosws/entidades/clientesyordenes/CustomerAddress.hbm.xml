@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 21-sep-2016 23:28:24 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="aes.pica.touresbalon.touresbalonproductosws.entidades.clientesyordenes.CustomerAddress" table="CUSTOMER_ADDRESS" schema="TOURESBALON" optimistic-lock="version">
+        <id name="addressid" type="string">
+            <column name="ADDRESSID" length="4000" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="customer" class="aes.pica.touresbalon.touresbalonproductosws.entidades.clientesyordenes.Customer" fetch="select">
+            <column name="CUSTID" length="40" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

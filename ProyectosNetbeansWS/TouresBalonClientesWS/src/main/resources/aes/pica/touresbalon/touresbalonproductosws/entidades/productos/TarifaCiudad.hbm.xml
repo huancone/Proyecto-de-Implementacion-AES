@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 21-sep-2016 23:29:49 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaCiudad" table="TARIFA_CIUDAD" schema="dbo" catalog="TB_PRODUCTOS" optimistic-lock="version">
+        <id name="idTarifaCiudad" type="int">
+            <column name="id_tarifa_ciudad" />
+            <generator class="assigned" />
+        </id>
+        <property name="tipoCiudad" type="string">
+            <column name="tipo_ciudad" length="50" />
+        </property>
+        <property name="precio" type="java.lang.Long">
+            <column name="precio" precision="18" scale="0" />
+        </property>
+        <set name="ciudads" table="CIUDAD" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_tarifa_ciudad" />
+            </key>
+            <one-to-many class="aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Ciudad" />
+        </set>
+    </class>
+</hibernate-mapping>
