@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-schema="TOURESBALON"/>
+  <table-filter match-name="ADDRESS"/>
+  <table-filter match-name="ITEMS"/>
+  <table-filter match-name="ORDERS"/>
+  <table-filter match-name="CUSTOMER"/>
+  <table-filter match-name="CUSTOMER_ADDRESS"/>
+</hibernate-reverse-engineering>

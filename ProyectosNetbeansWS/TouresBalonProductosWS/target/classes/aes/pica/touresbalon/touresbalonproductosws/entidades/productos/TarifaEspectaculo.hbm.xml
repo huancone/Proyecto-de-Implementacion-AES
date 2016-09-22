@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 21-sep-2016 23:29:49 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaEspectaculo" table="TARIFA_ESPECTACULO" schema="dbo" catalog="TB_PRODUCTOS"
+    optimistic-lock="version">
+        <id name="idEspectaculo" type="int">
+            <column name="id_espectaculo" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombreEspectaculo" type="string">
+            <column name="nombre_espectaculo" length="4000" />
+        </property>
+        <property name="precio" type="java.lang.Long">
+            <column name="precio" precision="18" scale="0" />
+        </property>
+        <set name="productos" table="PRODUCTO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_espectaculo" />
+            </key>
+            <one-to-many class="aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto" />
+        </set>
+    </class>
+</hibernate-mapping>
