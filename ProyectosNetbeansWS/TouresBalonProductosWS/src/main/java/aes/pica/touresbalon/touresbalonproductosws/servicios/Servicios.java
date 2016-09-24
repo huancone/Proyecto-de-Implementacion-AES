@@ -19,6 +19,7 @@ import com.touresbalon.productostouresbalon.GestionCampaniaProductoFault_Excepti
 import com.touresbalon.productostouresbalon.GestionProductoFault_Exception;
 import com.touresbalon.productostouresbalon.GestionTarifaFault_Exception;
 import com.touresbalon.productostouresbalon.Producto;
+import java.math.BigDecimal;
 import java.util.List;
 import javax.jws.WebService;
 import org.hibernate.Query;
@@ -73,18 +74,37 @@ public class Servicios {
         String res = "";
         sessionClientes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
         tx = sessionClientes.beginTransaction();
-        Query q = sessionClientes.createQuery("from Address");
-        List<Address> listAdd = q.list();
-        res = "ORACLE: "+listAdd.size();
+
+        Address addr = new Address();
+        addr.setZip("1010");
+        addr.setCity("bogota");
+        addr.setAddressType("calle");
+        addr.setCountry("Colombia");
+
+        Integer id = (Integer) sessionClientes.save(addr);
+        res = "este es el id: " + id;
+
+        //Query q = sessionClientes.
+//        Query q = sessionClientes.createQuery("from Address");
+//        List<Address> listAdd = q.list();
+//        res = "ORACLE: "+listAdd.size();
         tx.commit();
-        
+
         sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
         tx = sessionProductos.beginTransaction();
-        q = sessionProductos.createQuery("from TarifaCiudad");
-        List<TarifaCiudad> listProd = q.list();
-        res += " - SQLSERVER: "+listProd.size();
+        TarifaCiudad tc = new TarifaCiudad();
+        tc.setPrecio(BigDecimal.ZERO);
+        tc.setTipoCiudad("bogota");
+        id = (Integer) sessionProductos.save(tc);
+        res += " - SQLSERVER este es el id: "+id;
         tx.commit();
-        
+//        sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
+//        tx = sessionProductos.beginTransaction();
+//        Query q = sessionProductos.createQuery("from TarifaCiudad");
+//        List<TarifaCiudad> listProd = q.list();
+//        res += " - SQLSERVER: "+listProd.size();
+//        tx.commit();
+
 //        sessionClientes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
 //        tx = sessionClientes.beginTransaction();
 //        Query query = sessionClientes.createSQLQuery(
@@ -111,7 +131,6 @@ public class Servicios {
 //        } else {
 //            res += "- no funciono SQL Server";
 //        }
-        
         return res;
     }
 

@@ -1,5 +1,5 @@
 package aes.pica.touresbalon.touresbalonproductosws.entidades.productos;
-// Generated 21-sep-2016 23:29:49 by Hibernate Tools 4.3.1
+// Generated 24-sep-2016 13:11:22 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;

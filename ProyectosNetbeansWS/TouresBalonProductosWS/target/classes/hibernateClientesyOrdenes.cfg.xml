@@ -8,10 +8,10 @@
     <property name="hibernate.connection.username">touresbalon</property>
     <property name="hibernate.connection.password">touresbalon</property>
     <property name="hibernate.current_session_context_class">thread</property>
-    <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/clientesyordenes/Orders.hbm.xml"/>
-    <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/clientesyordenes/CustomerAddress.hbm.xml"/>
-    <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/clientesyordenes/Customer.hbm.xml"/>
     <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/clientesyordenes/Items.hbm.xml"/>
+    <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/clientesyordenes/CustomerAddress.hbm.xml"/>
     <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/clientesyordenes/Address.hbm.xml"/>
+    <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/clientesyordenes/Customer.hbm.xml"/>
+    <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/clientesyordenes/Orders.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

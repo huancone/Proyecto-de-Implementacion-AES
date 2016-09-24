@@ -1,6 +1,7 @@
 com/touresbalon/productostouresbalon/ConsultarProductoFault_Exception.class
 com/touresbalon/productostouresbalon/Producto.class
 com/touresbalon/productostouresbalon/Ciudad.class
+aes/pica/touresbalon/touresbalonproductosws/entidades/clientesyordenes/CustomerAddressId.class
 com/touresbalon/productostouresbalon/GestionCampaniaProductoFault.class
 aes/pica/touresbalon/touresbalonproductosws/entidades/clientesyordenes/CustomerAddress.class
 com/touresbalon/productostouresbalon/ConsultarPorEspectaculoProductoFault_Exception.class

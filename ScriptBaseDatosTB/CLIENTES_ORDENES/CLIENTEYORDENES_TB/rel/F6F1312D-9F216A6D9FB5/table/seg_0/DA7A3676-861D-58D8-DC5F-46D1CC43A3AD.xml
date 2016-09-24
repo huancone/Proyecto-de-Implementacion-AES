@@ -1,0 +1,121 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="DA7A3676-861D-58D8-DC5F-46D1CC43A3AD" schemaObject="A3119D76-498A-F878-3D3C-69C02037EA6E" name="ITEMS">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-09-24 16:16:27 UTC</createdTime>
+<ownerDesignName>CLIENTEYORDENES_TB</ownerDesignName>
+<ordsAlias>table_10</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ITEMID" id="AF9A7B47-793E-EFAF-A967-9B5B8B9587A7">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-09-24 16:18:52 UTC</createdTime>
+<ownerDesignName>CLIENTEYORDENES_TB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementSequenceName>SEC_ITEM_ID</autoIncrementSequenceName>
+<autoIncrementGenerateTrigger>false</autoIncrementGenerateTrigger>
+</Column>
+<Column name="PRODID" id="7561DC8D-EB7D-D654-13F7-EAAA219330DB">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-09-24 16:18:52 UTC</createdTime>
+<ownerDesignName>CLIENTEYORDENES_TB</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PRODUCTNAME" id="910AE04C-ECAC-A253-84FF-B298DCD3D103">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-09-24 16:18:52 UTC</createdTime>
+<ownerDesignName>CLIENTEYORDENES_TB</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 CHAR</dataTypeSize>
+<ownDataTypeParameters>100 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PARTNUM" id="FB6544E4-4C32-E9AE-BEC6-3A7E6D995F5B">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-09-24 16:18:52 UTC</createdTime>
+<ownerDesignName>CLIENTEYORDENES_TB</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 CHAR</dataTypeSize>
+<ownDataTypeParameters>100 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PRICE" id="F3220C1F-AEB5-FFA3-3618-5DCE12816A2E">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-09-24 16:18:52 UTC</createdTime>
+<ownerDesignName>CLIENTEYORDENES_TB</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>9</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,9,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="QUANTITY" id="288E7CD5-9A26-CC5A-53B3-45D195450621">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-09-24 16:18:52 UTC</createdTime>
+<ownerDesignName>CLIENTEYORDENES_TB</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ORDID" id="09500465-D8AE-41F4-802E-0E1E8828292A">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-09-24 16:20:41 UTC</createdTime>
+<ownerDesignName>CLIENTEYORDENES_TB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1A6E3A03-CAF2-A54F-7254-727F3E4EC6DF" referredColumn="558B0171-B5AF-3D59-C72C-E72A1D897AF8"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="4BD02A56-4634-8489-793C-EE5E6BF5327E" name="ITEMS_PK">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-09-24 16:18:52 UTC</createdTime>
+<ownerDesignName>CLIENTEYORDENES_TB</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="AF9A7B47-793E-EFAF-A967-9B5B8B9587A7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="91525DB0-D6E6-FE4C-6A8C-C9BAB9B40716" name="ITEMS_ORDERS_FK">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-09-24 16:20:41 UTC</createdTime>
+<ownerDesignName>CLIENTEYORDENES_TB</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="09500465-D8AE-41F4-802E-0E1E8828292A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,46 +1,48 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 21-sep-2016 23:28:24 by Hibernate Tools 4.3.1 -->
+<!-- Generated 24-sep-2016 11:53:17 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="aes.pica.touresbalon.touresbalonproductosws.entidades.clientesyordenes.Customer" table="CUSTOMER" schema="TOURESBALON" optimistic-lock="version">
-        <id name="custid" type="string">
-            <column name="CUSTID" length="40" />
-            <generator class="assigned" />
+        <id name="custid" type="integer">
+            <column name="CUSTID" />
+            <generator class="sequence">
+                <param name="sequence">SEC_CUSTUMER_ID</param>
+            </generator>
         </id>
         <property name="fname" type="string">
-            <column name="FNAME" length="40" />
+            <column name="FNAME" length="160" />
         </property>
         <property name="lname" type="string">
-            <column name="LNAME" length="40" />
+            <column name="LNAME" length="160" />
         </property>
         <property name="phonenumber" type="string">
-            <column name="PHONENUMBER" length="40" />
+            <column name="PHONENUMBER" length="160" />
         </property>
         <property name="email" type="string">
-            <column name="EMAIL" length="40" />
+            <column name="EMAIL" length="160" />
         </property>
         <property name="password" type="string">
-            <column name="PASSWORD" length="40" />
+            <column name="PASSWORD" length="160" />
         </property>
         <property name="creditcardtype" type="string">
-            <column name="CREDITCARDTYPE" length="40" />
+            <column name="CREDITCARDTYPE" length="160" />
         </property>
         <property name="creditcardnumber" type="string">
-            <column name="CREDITCARDNUMBER" length="40" />
+            <column name="CREDITCARDNUMBER" length="160" />
         </property>
         <property name="status" type="string">
-            <column name="STATUS" length="10" />
+            <column name="STATUS" length="40" />
         </property>
         <set name="customerAddresses" table="CUSTOMER_ADDRESS" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="CUSTID" length="40" not-null="true" />
+                <column name="CUSTID"  not-null="true" />
             </key>
             <one-to-many class="aes.pica.touresbalon.touresbalonproductosws.entidades.clientesyordenes.CustomerAddress" />
         </set>
         <set name="orderses" table="ORDERS" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="CUSTID" length="40" />
+                <column name="CUSTID"  not-null="true" />
             </key>
             <one-to-many class="aes.pica.touresbalon.touresbalonproductosws.entidades.clientesyordenes.Orders" />
         </set>
