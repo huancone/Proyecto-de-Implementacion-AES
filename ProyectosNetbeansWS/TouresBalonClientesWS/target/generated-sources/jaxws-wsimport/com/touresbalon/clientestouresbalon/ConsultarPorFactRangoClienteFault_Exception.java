@@ -23,8 +23,8 @@ public class ConsultarPorFactRangoClienteFault_Exception
 
     /**
      * 
-     * @param message
      * @param faultInfo
+     * @param message
      */
     public ConsultarPorFactRangoClienteFault_Exception(String message, ConsultarPorFactRangoClienteFault faultInfo) {
         super(message);
@@ -33,9 +33,9 @@ public class ConsultarPorFactRangoClienteFault_Exception
 
     /**
      * 
-     * @param message
      * @param faultInfo
      * @param cause
+     * @param message
      */
     public ConsultarPorFactRangoClienteFault_Exception(String message, ConsultarPorFactRangoClienteFault faultInfo, Throwable cause) {
         super(message, cause);

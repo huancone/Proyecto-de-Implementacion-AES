@@ -5,15 +5,25 @@
  */
 package aes.pica.touresbalon.touresbalonproductosws.servicios;
 
+import aes.pica.touresbalon.touresbalonproductosws.entidades.clientesyordenes.Address;
+import aes.pica.touresbalon.touresbalonproductosws.util.ClientesyOrdenesHU;
 import com.touresbalon.clientestouresbalon.ActualizarClienteFault_Exception;
 import com.touresbalon.clientestouresbalon.ActualizarContraseniaClienteFault_Exception;
 import com.touresbalon.clientestouresbalon.ActualizarEstatusClienteFault_Exception;
 import com.touresbalon.clientestouresbalon.AutenticarClienteFault_Exception;
+import com.touresbalon.clientestouresbalon.Cliente;
 import com.touresbalon.clientestouresbalon.ConsultarPorFactRangoClienteFault_Exception;
 import com.touresbalon.clientestouresbalon.ConsultarPorIdentificacionClienteFault_Exception;
 import com.touresbalon.clientestouresbalon.ConsultarPorProductoClienteFault_Exception;
 import com.touresbalon.clientestouresbalon.RegistrarClienteFault_Exception;
+import com.touresbalon.clientestouresbalon.RegistrarClienteReponseType;
+import com.touresbalon.clientestouresbalon.RespuestaGenerica;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import javax.jws.WebService;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 /**
  *
@@ -21,10 +31,34 @@ import javax.jws.WebService;
  */
 @WebService(serviceName = "ClientesTouresBalon", portName = "ClientesTouresBalonSOAP", endpointInterface = "com.touresbalon.clientestouresbalon.ClientesTouresBalon", targetNamespace = "http://www.touresbalon.com/ClientesTouresBalon/", wsdlLocation = "WEB-INF/wsdl/ClientesTouresBalon.wsdl")
 public class Services {
+    
+    //Variables globlales
+    private Session sessionClientes;
+    private Session sessionProductos;
+    private Transaction tx;
 
     public com.touresbalon.clientestouresbalon.RegistrarClienteReponseType registrarCliente(com.touresbalon.clientestouresbalon.Cliente cliente) throws RegistrarClienteFault_Exception {
+        
+                String res = "";
+                Cliente cl = new Cliente();
+
+                sessionClientes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
+                tx = sessionClientes.beginTransaction();
+
+                Address addr = new Address();
+                addr.setZip("1010");
+                addr.setCity("bogota");
+                addr.setAddressType("calle");
+                addr.setCountry("Colombia");
+
+                Integer id = (Integer) sessionClientes.save(addr);
+                System.out.println(res = "este es el id: " + id);
+                cl.setNombres(res);
+                RegistrarClienteReponseType respuesta = new RegistrarClienteReponseType();
+                respuesta.setRespuesta(RespuestaGenerica.OK);
+                return respuesta;
         //TODO implement this method
-        throw new UnsupportedOperationException("Not implemented yet.");
+        //throw new UnsupportedOperationException("Not implemented yet.");
     }
 
     public com.touresbalon.clientestouresbalon.RespuestaGenerica autenticarCliente(java.lang.String usuario, java.lang.String contrasenia) throws AutenticarClienteFault_Exception {

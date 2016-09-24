@@ -23,8 +23,8 @@ public class RegistrarClienteFault_Exception
 
     /**
      * 
-     * @param message
      * @param faultInfo
+     * @param message
      */
     public RegistrarClienteFault_Exception(String message, RegistrarClienteFault faultInfo) {
         super(message);
@@ -33,9 +33,9 @@ public class RegistrarClienteFault_Exception
 
     /**
      * 
-     * @param message
      * @param faultInfo
      * @param cause
+     * @param message
      */
     public RegistrarClienteFault_Exception(String message, RegistrarClienteFault faultInfo, Throwable cause) {
         super(message, cause);

@@ -23,8 +23,8 @@ public class AutenticarClienteFault_Exception
 
     /**
      * 
-     * @param message
      * @param faultInfo
+     * @param message
      */
     public AutenticarClienteFault_Exception(String message, AutenticarClienteFault faultInfo) {
         super(message);
@@ -33,9 +33,9 @@ public class AutenticarClienteFault_Exception
 
     /**
      * 
-     * @param message
      * @param faultInfo
      * @param cause
+     * @param message
      */
     public AutenticarClienteFault_Exception(String message, AutenticarClienteFault faultInfo, Throwable cause) {
         super(message, cause);

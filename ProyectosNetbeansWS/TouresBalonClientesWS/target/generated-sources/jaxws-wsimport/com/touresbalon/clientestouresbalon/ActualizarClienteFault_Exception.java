@@ -23,8 +23,8 @@ public class ActualizarClienteFault_Exception
 
     /**
      * 
-     * @param message
      * @param faultInfo
+     * @param message
      */
     public ActualizarClienteFault_Exception(String message, ActualizarClienteFault faultInfo) {
         super(message);
@@ -33,9 +33,9 @@ public class ActualizarClienteFault_Exception
 
     /**
      * 
-     * @param message
      * @param faultInfo
      * @param cause
+     * @param message
      */
     public ActualizarClienteFault_Exception(String message, ActualizarClienteFault faultInfo, Throwable cause) {
         super(message, cause);

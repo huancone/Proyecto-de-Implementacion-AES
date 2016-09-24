@@ -2,6 +2,7 @@
 <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
   <session-factory>
+    <!--
     <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
     <property name="hibernate.connection.url">jdbc:sqlserver://192.168.56.140:55977;databaseName=TB_PRODUCTOS</property>
     <property name="hibernate.connection.username">touresbalon</property>
@@ -13,5 +14,6 @@
     <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/productos/TarifaHospedaje.hbm.xml"/>
     <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/productos/TarifaEspectaculo.hbm.xml"/>
     <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/productos/TarifaTransporte.hbm.xml"/>
+    -->
   </session-factory>
 </hibernate-configuration>
