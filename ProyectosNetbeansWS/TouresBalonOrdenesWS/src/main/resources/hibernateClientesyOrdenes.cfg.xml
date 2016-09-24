@@ -4,14 +4,14 @@
   <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.OracleDialect</property>
     <property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
-    <property name="hibernate.connection.url">jdbc:oracle:thin:@192.168.99.100:32769:XE</property>
+    <property name="hibernate.connection.url">jdbc:oracle:thin:@192.168.99.100:32775:XE</property>
     <property name="hibernate.connection.username">touresbalon</property>
     <property name="hibernate.connection.password">touresbalon</property>
     <property name="hibernate.current_session_context_class">thread</property>
-    <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/clientesyordenes/Orders.hbm.xml"/>
-    <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/clientesyordenes/CustomerAddress.hbm.xml"/>
     <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/clientesyordenes/Customer.hbm.xml"/>
-    <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/clientesyordenes/Items.hbm.xml"/>
     <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/clientesyordenes/Address.hbm.xml"/>
+    <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/clientesyordenes/Orders.hbm.xml"/>
+    <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/clientesyordenes/Items.hbm.xml"/>
+    <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/clientesyordenes/CustomerAddress.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

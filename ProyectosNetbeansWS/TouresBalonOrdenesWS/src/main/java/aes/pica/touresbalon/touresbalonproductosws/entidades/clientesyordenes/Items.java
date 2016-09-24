@@ -1,5 +1,5 @@
 package aes.pica.touresbalon.touresbalonproductosws.entidades.clientesyordenes;
-// Generated 21-sep-2016 23:28:23 by Hibernate Tools 4.3.1
+// Generated 24-sep-2016 17:15:13 by Hibernate Tools 4.3.1
 
 
 import java.math.BigDecimal;
@@ -10,23 +10,23 @@ import java.math.BigDecimal;
 public class Items  implements java.io.Serializable {
 
 
-     private String itemid;
+     private int itemid;
      private Orders orders;
      private BigDecimal prodid;
      private String productname;
      private String partnum;
      private BigDecimal price;
-     private Integer quantity;
+     private BigDecimal quantity;
 
     public Items() {
     }
 
 	
-    public Items(String itemid, Orders orders) {
+    public Items(int itemid, Orders orders) {
         this.itemid = itemid;
         this.orders = orders;
     }
-    public Items(String itemid, Orders orders, BigDecimal prodid, String productname, String partnum, BigDecimal price, Integer quantity) {
+    public Items(int itemid, Orders orders, BigDecimal prodid, String productname, String partnum, BigDecimal price, BigDecimal quantity) {
        this.itemid = itemid;
        this.orders = orders;
        this.prodid = prodid;
@@ -36,11 +36,11 @@ public class Items  implements java.io.Serializable {
        this.quantity = quantity;
     }
    
-    public String getItemid() {
+    public int getItemid() {
         return this.itemid;
     }
     
-    public void setItemid(String itemid) {
+    public void setItemid(int itemid) {
         this.itemid = itemid;
     }
     public Orders getOrders() {
@@ -78,11 +78,11 @@ public class Items  implements java.io.Serializable {
     public void setPrice(BigDecimal price) {
         this.price = price;
     }
-    public Integer getQuantity() {
+    public BigDecimal getQuantity() {
         return this.quantity;
     }
     
-    public void setQuantity(Integer quantity) {
+    public void setQuantity(BigDecimal quantity) {
         this.quantity = quantity;
     }
 
