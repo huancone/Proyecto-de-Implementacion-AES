@@ -6,7 +6,9 @@
 package aes.pica.touresbalon.touresbalonproductosws.servicios;
 
 import aes.pica.touresbalon.touresbalonproductosws.entidades.clientesyordenes.Address;
+import aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaCiudad;
 import aes.pica.touresbalon.touresbalonproductosws.util.ClientesyOrdenesHU;
+import aes.pica.touresbalon.touresbalonproductosws.util.ProductosHU;
 import com.touresbalon.clientestouresbalon.ActualizarClienteFault_Exception;
 import com.touresbalon.clientestouresbalon.ActualizarContraseniaClienteFault_Exception;
 import com.touresbalon.clientestouresbalon.ActualizarEstatusClienteFault_Exception;
@@ -18,6 +20,7 @@ import com.touresbalon.clientestouresbalon.ConsultarPorProductoClienteFault_Exce
 import com.touresbalon.clientestouresbalon.RegistrarClienteFault_Exception;
 import com.touresbalon.clientestouresbalon.RegistrarClienteReponseType;
 import com.touresbalon.clientestouresbalon.RespuestaGenerica;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -52,10 +55,22 @@ public class Services {
                 addr.setCountry("Colombia");
 
                 Integer id = (Integer) sessionClientes.save(addr);
-                System.out.println(res = "este es el id: " + id);
+                tx.commit();
+                System.out.println("este es el id de Oracle: " + id);
                 cl.setNombres(res);
+            
+                sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
+                tx = sessionProductos.beginTransaction();
+                TarifaCiudad tc = new TarifaCiudad();
+                tc.setPrecio(BigDecimal.ZERO);
+                tc.setTipoCiudad("bogota");
+                id = (Integer) sessionProductos.save(tc);
+                System.out.println(" - este es el id de Sql Server: "+id);
+                tx.commit();
+                
                 RegistrarClienteReponseType respuesta = new RegistrarClienteReponseType();
                 respuesta.setRespuesta(RespuestaGenerica.OK);
+                
                 return respuesta;
         //TODO implement this method
         //throw new UnsupportedOperationException("Not implemented yet.");

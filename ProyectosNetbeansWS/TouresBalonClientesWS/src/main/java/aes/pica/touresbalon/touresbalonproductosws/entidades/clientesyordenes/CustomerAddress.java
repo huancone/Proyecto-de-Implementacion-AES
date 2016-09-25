@@ -1,5 +1,5 @@
 package aes.pica.touresbalon.touresbalonproductosws.entidades.clientesyordenes;
-// Generated 24/09/2016 12:25:36 PM by Hibernate Tools 4.3.1
+// Generated 24/09/2016 07:35:07 PM by Hibernate Tools 4.3.1
 
 
 

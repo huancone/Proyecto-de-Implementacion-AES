@@ -1,5 +1,5 @@
 package aes.pica.touresbalon.touresbalonproductosws.entidades.clientesyordenes;
-// Generated 24/09/2016 12:25:36 PM by Hibernate Tools 4.3.1
+// Generated 24/09/2016 07:35:07 PM by Hibernate Tools 4.3.1
 
 
 
@@ -9,31 +9,34 @@ package aes.pica.touresbalon.touresbalonproductosws.entidades.clientesyordenes;
 public class CustomerAddressId  implements java.io.Serializable {
 
 
-     private int custid;
-     private int addrid;
+     private Integer custid;
+     private Integer addrid;
 
     public CustomerAddressId() {
     }
 
-    public CustomerAddressId(int custid, int addrid) {
+    public CustomerAddressId(Integer custid, Integer addrid) {
        this.custid = custid;
        this.addrid = addrid;
     }
    
-    public int getCustid() {
+    public Integer getCustid() {
         return this.custid;
     }
     
-    public void setCustid(int custid) {
+    public void setCustid(Integer custid) {
         this.custid = custid;
     }
-    public int getAddrid() {
+    public Integer getAddrid() {
         return this.addrid;
     }
     
-    public void setAddrid(int addrid) {
+    public void setAddrid(Integer addrid) {
         this.addrid = addrid;
     }
+
+
+
 
 }
 

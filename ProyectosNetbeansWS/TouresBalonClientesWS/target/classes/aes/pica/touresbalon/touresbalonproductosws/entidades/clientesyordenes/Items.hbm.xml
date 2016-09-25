@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 24/09/2016 12:25:41 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 24/09/2016 07:35:08 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="aes.pica.touresbalon.touresbalonproductosws.entidades.clientesyordenes.Items" table="ITEMS" schema="TOURESBALON" optimistic-lock="version">
+    <class name="aes.pica.touresbalon.touresbalonproductosws.entidades.clientesyordenes.Items" table="ITEMS" schema="TOURESBALON">
         <id name="itemid" type="integer">
             <column name="ITEMID" />
             <generator class="sequence">
-               <param name="sequence">SEC_ITEM_ID</param>
-           </generator>
+                <param name="sequence">SEC_ITEM_ID</param>
+            </generator>
         </id>
         <many-to-one name="orders" class="aes.pica.touresbalon.touresbalonproductosws.entidades.clientesyordenes.Orders" fetch="select">
             <column name="ORDID" not-null="true" />

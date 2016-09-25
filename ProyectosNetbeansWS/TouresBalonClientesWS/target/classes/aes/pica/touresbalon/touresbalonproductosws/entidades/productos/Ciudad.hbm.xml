@@ -1,21 +1,23 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 21-sep-2016 23:29:49 by Hibernate Tools 4.3.1 -->
+<!-- Generated 24/09/2016 07:46:00 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Ciudad" table="CIUDAD" schema="dbo" catalog="TB_PRODUCTOS" optimistic-lock="version">
         <id name="idCiudad" type="int">
             <column name="id_ciudad" />
-            <generator class="assigned" />
+            <generator class="sequence">
+                <param name="sequence">SEC_CIUDAD_ID</param>
+            </generator>
         </id>
         <many-to-one name="tarifaCiudad" class="aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaCiudad" fetch="select">
             <column name="id_tarifa_ciudad" />
         </many-to-one>
         <property name="nombreCiudad" type="string">
-            <column name="nombre_ciudad" length="50" />
+            <column name="nombre_ciudad" length="40" />
         </property>
         <property name="pais" type="string">
-            <column name="pais" length="50" />
+            <column name="pais" length="100" />
         </property>
         <set name="productos" table="PRODUCTO" inverse="true" lazy="true" fetch="select">
             <key>
