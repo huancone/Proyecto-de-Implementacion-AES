@@ -1,12 +1,14 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 21-sep-2016 23:29:49 by Hibernate Tools 4.3.1 -->
+<!-- Generated 25/09/2016 10:00:02 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto" table="PRODUCTO" schema="dbo" catalog="TB_PRODUCTOS" optimistic-lock="version">
         <id name="idProducto" type="int">
             <column name="id_producto" />
-            <generator class="assigned" />
+            <generator class="sequence">
+                <param name="sequence">SEC_PRODUCTO_ID</param>
+            </generator>
         </id>
         <many-to-one name="ciudad" class="aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Ciudad" fetch="select">
             <column name="id_ciudad" />
@@ -21,7 +23,7 @@
             <column name="id_transporte" />
         </many-to-one>
         <property name="nombreProducto" type="string">
-            <column name="nombre_producto" length="4000" />
+            <column name="nombre_producto" length="100" />
         </property>
         <property name="fechaSalida" type="timestamp">
             <column name="fecha_salida" length="23" />

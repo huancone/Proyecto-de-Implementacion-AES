@@ -7,9 +7,12 @@ package aes.pica.touresbalon.touresbalonproductosws.servicios;
 
 import aes.pica.touresbalon.touresbalonproductosws.entidades.clientesyordenes.Customer;
 import aes.pica.touresbalon.touresbalonproductosws.entidades.clientesyordenes.Orders;
+import aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaCiudad;
 import aes.pica.touresbalon.touresbalonproductosws.util.ClientesyOrdenesHU;
+import aes.pica.touresbalon.touresbalonproductosws.util.ProductosHU;
 import com.touresbalon.ordenestouresbalon.CrearOrdenResponse;
 import com.touresbalon.ordenestouresbalon.EstatusOrden;
+import java.math.BigDecimal;
 import javax.jws.WebService;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -22,6 +25,7 @@ import org.hibernate.Transaction;
 public class Services {
     
     private Session sessionOrdenes;
+    private Session sessionProductos;
     private Transaction tx;
 
     public java.util.List<com.touresbalon.ordenestouresbalon.Orden> consultarClientesOrdenes(java.lang.String idCliente) throws com.touresbalon.ordenestouresbalon.ConsultarClientesOrdenesFault_Exception {
@@ -44,14 +48,25 @@ public class Services {
             Customer customer = new Customer(5);
             or.setCustomer(customer);
 
-            Integer id = (Integer) sessionOrdenes.save(or);
-            System.out.println(res = "este es el id: " + id);
-            
-            tx.commit();
-            
-            CrearOrdenResponse rta = new CrearOrdenResponse();
-            rta.setEstatusOrden(EstatusOrden.VALIDACION);
-            return rta;
+        Integer id = (Integer) sessionOrdenes.save(or);
+        System.out.println(res = "este es el id de Oracle: " + id);
+
+        //tx.commit();
+
+        CrearOrdenResponse rta = new CrearOrdenResponse();
+
+        sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
+        tx = sessionProductos.beginTransaction();
+        TarifaCiudad tc = new TarifaCiudad();
+        tc.setPrecio(BigDecimal.ZERO);
+        tc.setTipoCiudad("bogota");
+        id = (Integer) sessionProductos.save(tc);
+        System.out.println(" - este es el id de Sql Server: " + id);
+        tx.commit();
+
+        rta.setEstatusOrden(EstatusOrden.VALIDACION);
+
+        return rta;
     }
 
     public java.util.List<com.touresbalon.ordenestouresbalon.Orden> consultarOrdenes(com.touresbalon.ordenestouresbalon.CriterioConsultaOrden criterios) throws com.touresbalon.ordenestouresbalon.ConsultarOrdenesFault_Exception {

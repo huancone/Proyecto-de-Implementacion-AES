@@ -1,7 +1,8 @@
 package aes.pica.touresbalon.touresbalonproductosws.entidades.productos;
-// Generated 21-sep-2016 23:29:49 by Hibernate Tools 4.3.1
+// Generated 25/09/2016 09:59:59 AM by Hibernate Tools 4.3.1
 
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,7 +14,7 @@ public class TarifaEspectaculo  implements java.io.Serializable {
 
      private int idEspectaculo;
      private String nombreEspectaculo;
-     private Long precio;
+     private BigDecimal precio;
      private Set productos = new HashSet(0);
 
     public TarifaEspectaculo() {
@@ -23,7 +24,7 @@ public class TarifaEspectaculo  implements java.io.Serializable {
     public TarifaEspectaculo(int idEspectaculo) {
         this.idEspectaculo = idEspectaculo;
     }
-    public TarifaEspectaculo(int idEspectaculo, String nombreEspectaculo, Long precio, Set productos) {
+    public TarifaEspectaculo(int idEspectaculo, String nombreEspectaculo, BigDecimal precio, Set productos) {
        this.idEspectaculo = idEspectaculo;
        this.nombreEspectaculo = nombreEspectaculo;
        this.precio = precio;
@@ -44,11 +45,11 @@ public class TarifaEspectaculo  implements java.io.Serializable {
     public void setNombreEspectaculo(String nombreEspectaculo) {
         this.nombreEspectaculo = nombreEspectaculo;
     }
-    public Long getPrecio() {
+    public BigDecimal getPrecio() {
         return this.precio;
     }
     
-    public void setPrecio(Long precio) {
+    public void setPrecio(BigDecimal precio) {
         this.precio = precio;
     }
     public Set getProductos() {
