@@ -38,7 +38,7 @@ namespace B2CTouresBalon.Controllers
             var currentUser = System.Web.HttpContext.Current.User as CustomPrincipal;
             if (currentUser == null) return RedirectToAction("Index", "Account");
 
-            var clientConfiguration = new MemcachedClientConfiguration { Protocol = MemcachedProtocol.Binary };
+            var clientConfiguration = new MemcachedClientConfiguration {Protocol = MemcachedProtocol.Binary};
             clientConfiguration.Servers.Add(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 32768));
 
             using (var client = new MemcachedClient(clientConfiguration))
@@ -48,16 +48,16 @@ namespace B2CTouresBalon.Controllers
 
                 var proxy = new ServiceProxyB2CClient();
                 //var producto = proxy.ConsultarProducto(TipoConsultaProducto.ID, idProducto.ToString(), null, null).First();
-                
+
                 //No se porque el servicio de productos no devuelve datos.
                 var producto = proxy.ConsultarCampaniaProducto().First();
-                
+
                 if (null == cart)
                 {
                     //si el carrito es vacio cree uno nuevo
                     cart = new Cart
                     {
-                        UserId = (int)currentUser.CustId,
+                        UserId = (int) currentUser.CustId,
                         Items = new List<Item>()
                     };
 
@@ -103,7 +103,7 @@ namespace B2CTouresBalon.Controllers
 
 
             //Configuracion del MEMCACHED client
-            var clientConfiguration = new MemcachedClientConfiguration { Protocol = MemcachedProtocol.Binary };
+            var clientConfiguration = new MemcachedClientConfiguration {Protocol = MemcachedProtocol.Binary};
             clientConfiguration.Servers.Add(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 32768));
 
             using (var client = new MemcachedClient(clientConfiguration))
@@ -122,7 +122,7 @@ namespace B2CTouresBalon.Controllers
                     else
                     {
                         cart.Items.Remove(i);
-                    }   
+                    }
                     client.Store(StoreMode.Set, "Cart-" + currentUser.UserName, cart);
                     return View("cart", cart);
                 }
@@ -139,21 +139,21 @@ namespace B2CTouresBalon.Controllers
             var currentUser = System.Web.HttpContext.Current.User as CustomPrincipal;
             if (currentUser == null) return RedirectToAction("Index", "Account");
 
-            var clientConfiguration = new MemcachedClientConfiguration { Protocol = MemcachedProtocol.Binary };
+            var clientConfiguration = new MemcachedClientConfiguration {Protocol = MemcachedProtocol.Binary};
             clientConfiguration.Servers.Add(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 32768));
             ServiceProxyB2C.CrearOrdenResponse response = new ServiceProxyB2C.CrearOrdenResponse();
             using (var client = new MemcachedClient(clientConfiguration))
             {
                 //consulto el cache del usuario logueado
                 var cart = client.Get<Cart>("Cart-" + currentUser.UserName);
-               
+
                 if (cart != null)
                 {
                     var proxy = new ServiceProxyB2CClient();
-                    
+
                     // se crea una nueva orden
                     Orden orden = new Orden();
-                    
+
                     // se deja el estado en validacion
                     orden.estatus = EstatusOrden.VALIDACION;
                     orden.fecha_orden = DateTime.Now;
@@ -166,7 +166,7 @@ namespace B2CTouresBalon.Controllers
                         itemorden.id_prod = item.Producto.id_producto;
                         // el servicio pide el nombre del producto, en el carrito no hay se coloca el nombre del espectaculo
                         itemorden.nombre_prod = item.Producto.espectaculo;
-                        
+
                         // en el servicio se pide el precio, se deja un valor fijo para ajustar modelo
                         itemorden.precio = 100000;
                         itemorden.cantidad = item.Cantidad;
@@ -177,19 +177,18 @@ namespace B2CTouresBalon.Controllers
 
                     response = proxy.CrearOrdenes(orden);
 
-                    
+
                 }
                 else
                 {
                     response.id_orden = "";
                     response.estatus_orden = EstatusOrden.RECHAZADA;
-                    response.estatus_ordenSpecified = false; 
+                    response.estatus_ordenSpecified = false;
                 }
 
             }
             return View("_Compra", response);
 
-
-
         }
     }
+}
