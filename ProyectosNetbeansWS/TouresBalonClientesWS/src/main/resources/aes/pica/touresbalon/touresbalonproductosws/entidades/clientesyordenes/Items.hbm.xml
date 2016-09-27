@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/09/2016 07:35:08 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="aes.pica.touresbalon.touresbalonproductosws.entidades.clientesyordenes.Items" table="ITEMS" schema="TOURESBALON">
+        <id name="itemid" type="integer">
+            <column name="ITEMID" />
+            <generator class="sequence">
+                <param name="sequence">SEC_ITEM_ID</param>
+            </generator>
+        </id>
+        <many-to-one name="orders" class="aes.pica.touresbalon.touresbalonproductosws.entidades.clientesyordenes.Orders" fetch="select">
+            <column name="ORDID" not-null="true" />
+        </many-to-one>
+        <property name="prodid" type="big_decimal">
+            <column name="PRODID" precision="22" scale="0" />
+        </property>
+        <property name="productname" type="string">
+            <column name="PRODUCTNAME" length="400" />
+        </property>
+        <property name="partnum" type="string">
+            <column name="PARTNUM" length="400" />
+        </property>
+        <property name="price" type="big_decimal">
+            <column name="PRICE" precision="9" />
+        </property>
+        <property name="quantity" type="big_decimal">
+            <column name="QUANTITY" precision="22" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

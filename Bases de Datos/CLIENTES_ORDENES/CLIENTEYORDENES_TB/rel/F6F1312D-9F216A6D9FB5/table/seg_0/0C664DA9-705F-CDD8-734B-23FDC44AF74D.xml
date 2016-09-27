@@ -1,0 +1,62 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="0C664DA9-705F-CDD8-734B-23FDC44AF74D" schemaObject="A3119D76-498A-F878-3D3C-69C02037EA6E" name="CUSTOMER_ADDRESS">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-09-24 16:09:02 UTC</createdTime>
+<ownerDesignName>CLIENTEYORDENES_TB</ownerDesignName>
+<ordsAlias>table_8</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="CUSTID" id="0121CFC2-B637-F9BC-7B93-BB7F41B05B66">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-09-24 16:09:31 UTC</createdTime>
+<ownerDesignName>CLIENTEYORDENES_TB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="123F4B49-02A5-2E34-F74F-C560467C9879" referredColumn="3EE05350-29B7-8C75-8EA4-4FFB7976A6F9"/>
+</associations>
+</Column>
+<Column name="ADDRID" id="0E92DC33-A5E9-C911-2986-DD4E382EFFC4">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-09-24 16:09:55 UTC</createdTime>
+<ownerDesignName>CLIENTEYORDENES_TB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="13F6A447-CCFF-6470-A94F-93F695E7EA95" referredColumn="14A2714D-6560-667C-B971-F90E55F42E23"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="A30CF5E2-3F7C-3512-FA55-E6C7C45E7FA0" name="CUS_ADD_CUSTOMER_FK">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-09-24 16:09:31 UTC</createdTime>
+<ownerDesignName>CLIENTEYORDENES_TB</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0121CFC2-B637-F9BC-7B93-BB7F41B05B66"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="32A564E4-88D5-B207-7F13-EC2656EE70FC" name="CUST_ADDRESS_FK">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-09-24 16:09:55 UTC</createdTime>
+<ownerDesignName>CLIENTEYORDENES_TB</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0E92DC33-A5E9-C911-2986-DD4E382EFFC4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,110 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="50337AA6-DD1A-1353-8AA6-16E9B5785B66" schemaObject="A3119D76-498A-F878-3D3C-69C02037EA6E" name="ADDRESS">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-09-24 15:56:44 UTC</createdTime>
+<ownerDesignName>CLIENTEYORDENES_TB</ownerDesignName>
+<ordsAlias>table_2</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ADDRID" id="14A2714D-6560-667C-B971-F90E55F42E23">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-09-24 16:01:16 UTC</createdTime>
+<ownerDesignName>CLIENTEYORDENES_TB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementSequenceName>SEC_ADDRESS_ID</autoIncrementSequenceName>
+<autoIncrementGenerateTrigger>false</autoIncrementGenerateTrigger>
+</Column>
+<Column name="STREET" id="302C62DF-2BAD-ACB1-3143-7B609E6CE2C6">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-09-24 16:01:16 UTC</createdTime>
+<ownerDesignName>CLIENTEYORDENES_TB</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1000 CHAR</dataTypeSize>
+<ownDataTypeParameters>1000 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="STATE" id="F188B596-772C-DE7E-B09A-5A52D2D2C1E8">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-09-24 16:01:16 UTC</createdTime>
+<ownerDesignName>CLIENTEYORDENES_TB</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1000 CHAR</dataTypeSize>
+<ownDataTypeParameters>1000 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ZIP" id="DF71AE30-DEA2-5B16-FCAA-B4C44E18BA5C">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-09-24 16:01:16 UTC</createdTime>
+<ownerDesignName>CLIENTEYORDENES_TB</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10 CHAR</dataTypeSize>
+<ownDataTypeParameters>10 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="COUNTRY" id="11108AB8-0610-DEBB-0310-6C6BDC719824">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-09-24 16:01:16 UTC</createdTime>
+<ownerDesignName>CLIENTEYORDENES_TB</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 CHAR</dataTypeSize>
+<ownDataTypeParameters>100 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ADDRESS_TYPE" id="7B17D80C-49E4-CBC9-3049-FB0591E11E5D">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-09-24 16:01:16 UTC</createdTime>
+<ownerDesignName>CLIENTEYORDENES_TB</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10 CHAR</dataTypeSize>
+<ownDataTypeParameters>10 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CITY" id="A7E83A8E-8023-68AE-6E4A-4D1DF17AD93C">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-09-24 16:01:16 UTC</createdTime>
+<ownerDesignName>CLIENTEYORDENES_TB</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40 CHAR</dataTypeSize>
+<ownDataTypeParameters>40 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="16CB322E-F1AD-A5A4-EC33-C3796CB3BDE0" name="ADDRESS_PK">
+<createdBy>jdtrujillop</createdBy>
+<createdTime>2016-09-24 16:01:16 UTC</createdTime>
+<ownerDesignName>CLIENTEYORDENES_TB</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="14A2714D-6560-667C-B971-F90E55F42E23"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

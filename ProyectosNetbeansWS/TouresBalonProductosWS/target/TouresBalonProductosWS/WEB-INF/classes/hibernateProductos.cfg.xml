@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+    <property name="hibernate.connection.url">jdbc:sqlserver://192.168.56.140:55977;databaseName=TB_PRODUCTOS</property>
+    <property name="hibernate.connection.username">touresbalon</property>
+    <property name="hibernate.connection.password">toures123$</property>
+    <property name="hibernate.current_session_context_class">thread</property>
+    <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/productos/TarifaHospedaje.hbm.xml"/>
+    <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/productos/TarifaCiudad.hbm.xml"/>
+    <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/productos/TarifaTransporte.hbm.xml"/>
+    <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/productos/Producto.hbm.xml"/>
+    <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/productos/TarifaEspectaculo.hbm.xml"/>
+    <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/productos/Ciudad.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

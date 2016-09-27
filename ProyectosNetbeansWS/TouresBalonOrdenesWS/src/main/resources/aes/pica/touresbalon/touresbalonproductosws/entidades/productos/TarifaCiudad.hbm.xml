@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 25/09/2016 10:00:02 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaCiudad" table="TARIFA_CIUDAD" schema="dbo" catalog="TB_PRODUCTOS" optimistic-lock="version">
+        <id name="idTarifaCiudad" type="int">
+            <column name="id_tarifa_ciudad" />
+            <generator class="sequence">
+                <param name="sequence">SEC_TARCIU_ID</param>
+            </generator>
+        </id>
+        <property name="tipoCiudad" type="string">
+            <column name="tipo_ciudad" length="50" />
+        </property>
+        <property name="precio" type="big_decimal">
+            <column name="precio" precision="9" />
+        </property>
+        <set name="ciudads" table="CIUDAD" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_tarifa_ciudad" />
+            </key>
+            <one-to-many class="aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Ciudad" />
+        </set>
+    </class>
+</hibernate-mapping>
