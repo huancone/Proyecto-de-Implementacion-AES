@@ -1,0 +1,15 @@
+﻿@using B2CTouresBalon.ServiceProxyB2C
+@model CrearOrdenResponse
+
+ 
+@if (Model.id_orden != "")
+{
+    <img alt="Orden creada" src="~/Image/Shopping-Cart-12.png" />
+    <h2>Se ha creado la orden @Model.id_orden</h2>
+
+}
+else
+{
+    <img alt="Orden creada" src="~/Image/shopping-cart-cancel-button.png" />
+    <h2>La orden no pudo ser creada, por favor intente mas tarde</h2>
+}

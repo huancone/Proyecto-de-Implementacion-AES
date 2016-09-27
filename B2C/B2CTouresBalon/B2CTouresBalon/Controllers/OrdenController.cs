@@ -10,6 +10,7 @@ using System.Net;
 using Enyim.Caching.Memcached;
 using Enyim.Caching;
 using B2CTouresBalon.DAL.Security;
+using System.Linq;
 
 namespace B2CTouresBalon.Controllers
 {
@@ -50,21 +51,30 @@ namespace B2CTouresBalon.Controllers
             //    lstordenes.Add(ord);
             //}
 
+            IEnumerable<Orden> lstorden;
             var currentUser = System.Web.HttpContext.Current.User as CustomPrincipal;
             var ordenes = new ServiceProxyB2CClient();
-            var lstorden = ordenes.ConsultarClientesOrdenes(currentUser.CustId.ToString());
+            try
+            {
+                 lstorden =ordenes.ConsultarClientesOrdenes(currentUser.CustId.ToString());
 
-            
+            }
+            catch (FaultException<ConsultarClientesOrdenesFault> exf )
+            {
+
+                throw new Exception("Error al traer las ordenes " + exf.Detail.ConsultarClientesOrdenesFault1.mensaje);
+            }
              
              
             var clientConfiguration = new MemcachedClientConfiguration { Protocol = MemcachedProtocol.Binary };
             clientConfiguration.Servers.Add(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 32768));
-
+              
             using (var ordencache = new MemcachedClient(clientConfiguration))
             {
                 // se almacena en cache el listado de ordenes del cliente
-                ordencache.Store(StoreMode.Set, "Orden-" + currentUser.UserName , lstorden);
+                ordencache.Store(StoreMode.Set, "Orden-" + currentUser.UserName, lstorden);
                 //HttpContext.Session["ListaOrden"] = lstorden;
+                
             }
 
             return View(lstorden);
@@ -108,14 +118,15 @@ namespace B2CTouresBalon.Controllers
             var clientConfiguration = new MemcachedClientConfiguration { Protocol = MemcachedProtocol.Binary };
             clientConfiguration.Servers.Add(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 32768));
             // se recupera la informacion de la orden en cache
+            List<Orden> lstordenes;
             using (var ordencache = new MemcachedClient(clientConfiguration))
             {
-                var lstordenes = (List<OrdenModel>)ordencache.Get("Orden-" + currentUser.UserName);
+                lstordenes = ((IEnumerable<Orden>)ordencache.Get("Orden-" + currentUser.UserName)).ToList();
             }
 
                // lstordenes =(List<OrdenModel>)HttpContext.Session["ListaOrden"] ;
 
-
+            // se filtra el detalle de la orden
             var LstItems = lstordenes.Find(ord => ord.id_orden == IdOrden).item;  
             ViewBag.IdOrden = IdOrden;
          

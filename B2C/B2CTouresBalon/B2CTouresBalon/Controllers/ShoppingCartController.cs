@@ -10,6 +10,7 @@ using Enyim.Caching;
 using Enyim.Caching.Configuration;
 using Enyim.Caching.Memcached;
 using Item = B2CTouresBalon.Models.Item;
+using System;
 
 namespace B2CTouresBalon.Controllers
 {
@@ -128,5 +129,67 @@ namespace B2CTouresBalon.Controllers
                 return View("Cart", cart);
             }
         }
+
+        public ActionResult Pagar()
+        {
+
+            if (!ModelState.IsValid) return View("Index");
+
+            //consulto el usuario logueado
+            var currentUser = System.Web.HttpContext.Current.User as CustomPrincipal;
+            if (currentUser == null) return RedirectToAction("Index", "Account");
+
+            var clientConfiguration = new MemcachedClientConfiguration { Protocol = MemcachedProtocol.Binary };
+            clientConfiguration.Servers.Add(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 32768));
+            ServiceProxyB2C.CrearOrdenResponse response = new ServiceProxyB2C.CrearOrdenResponse();
+            using (var client = new MemcachedClient(clientConfiguration))
+            {
+                //consulto el cache del usuario logueado
+                var cart = client.Get<Cart>("Cart-" + currentUser.UserName);
+               
+                if (cart != null)
+                {
+                    var proxy = new ServiceProxyB2CClient();
+                    
+                    // se crea una nueva orden
+                    Orden orden = new Orden();
+                    
+                    // se deja el estado en validacion
+                    orden.estatus = EstatusOrden.VALIDACION;
+                    orden.fecha_orden = DateTime.Now;
+
+                    // se crea una nueva lista de items del carrito
+                    List<ServiceProxyB2C.Item> lstitem = new List<ServiceProxyB2C.Item>();
+                    foreach (Models.Item  item in cart.Items)
+                    {
+                        ServiceProxyB2C.Item itemorden = new ServiceProxyB2C.Item();
+                        itemorden.id_prod = item.Producto.id_producto;
+                        // el servicio pide el nombre del producto, en el carrito no hay se coloca el nombre del espectaculo
+                        itemorden.nombre_prod = item.Producto.espectaculo;
+                        
+                        // en el servicio se pide el precio, se deja un valor fijo para ajustar modelo
+                        itemorden.precio = 100000;
+                        itemorden.cantidad = item.Cantidad;
+                        lstitem.Add(itemorden);
+
+                    }
+                    orden.item = lstitem.ToArray();
+
+                    response = proxy.CrearOrdenes(orden);
+
+                    
+                }
+                else
+                {
+                    response.id_orden = "";
+                    response.estatus_orden = EstatusOrden.RECHAZADA;
+                    response.estatus_ordenSpecified = false; 
+                }
+
+            }
+            return View("_Compra", response);
+
+
+
+        }
     }
-}
