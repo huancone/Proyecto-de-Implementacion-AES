@@ -48,10 +48,10 @@ namespace B2CTouresBalon.Controllers
 
                 var proxy = new ServiceProxyB2CClient();
                 //var producto = proxy.ConsultarProducto(TipoConsultaProducto.ID, idProducto.ToString(), null, null).First();
-                
+
                 //No se porque el servicio de productos no devuelve datos.
                 var producto = proxy.ConsultarCampaniaProducto().First();
-                
+
                 if (null == cart)
                 {
                     //si el carrito es vacio cree uno nuevo
@@ -122,7 +122,7 @@ namespace B2CTouresBalon.Controllers
                     else
                     {
                         cart.Items.Remove(i);
-                    }   
+                    }
                     client.Store(StoreMode.Set, "Cart-" + currentUser.UserName, cart);
                     return View("cart", cart);
                 }
@@ -146,27 +146,27 @@ namespace B2CTouresBalon.Controllers
             {
                 //consulto el cache del usuario logueado
                 var cart = client.Get<Cart>("Cart-" + currentUser.UserName);
-               
+
                 if (cart != null)
                 {
                     var proxy = new ServiceProxyB2CClient();
-                    
+
                     // se crea una nueva orden
                     Orden orden = new Orden();
-                    
+
                     // se deja el estado en validacion
                     orden.estatus = EstatusOrden.VALIDACION;
                     orden.fecha_orden = DateTime.Now;
 
                     // se crea una nueva lista de items del carrito
                     List<ServiceProxyB2C.Item> lstitem = new List<ServiceProxyB2C.Item>();
-                    foreach (Models.Item  item in cart.Items)
+                    foreach (Models.Item item in cart.Items)
                     {
                         ServiceProxyB2C.Item itemorden = new ServiceProxyB2C.Item();
                         itemorden.id_prod = item.Producto.id_producto;
                         // el servicio pide el nombre del producto, en el carrito no hay se coloca el nombre del espectaculo
                         itemorden.nombre_prod = item.Producto.espectaculo;
-                        
+
                         // en el servicio se pide el precio, se deja un valor fijo para ajustar modelo
                         itemorden.precio = 100000;
                         itemorden.cantidad = item.Cantidad;
@@ -177,13 +177,13 @@ namespace B2CTouresBalon.Controllers
 
                     response = proxy.CrearOrdenes(orden);
 
-                    
+
                 }
                 else
                 {
                     response.id_orden = "";
                     response.estatus_orden = EstatusOrden.RECHAZADA;
-                    response.estatus_ordenSpecified = false; 
+                    response.estatus_ordenSpecified = false;
                 }
 
             }
@@ -193,3 +193,4 @@ namespace B2CTouresBalon.Controllers
 
         }
     }
+}
