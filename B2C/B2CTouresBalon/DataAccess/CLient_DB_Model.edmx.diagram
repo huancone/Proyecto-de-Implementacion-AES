@@ -5,15 +5,13 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="4b4d8511ba0c41acaad206f0d0e81b05" Name="Diagram1">
-        <EntityTypeShape EntityType="Model.ADDRESS" Width="1.5" PointX="5.875" PointY="0.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.CUSTOMER" Width="1.5" PointX="0.5" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.CUSTOMER_ADDRESS" Width="1.5" PointX="3" PointY="0.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.ITEMS" Width="1.5" PointX="5.875" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.ORDERS" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
-        <AssociationConnector Association="Model.FK_CUSTOMER_ADDRESS_CUSTOMER" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_ORDERS_CUSTOMER" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_ITEMS_ORDERS" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_CUSTOMER_ADDRESS_ADDRESS" />
+        <EntityTypeShape EntityType="Model.ADDRESS" Width="1.5" PointX="6.25" PointY="4.625" />
+        <EntityTypeShape EntityType="Model.CUSTOMER" Width="1.5" PointX="0.75" PointY="2.5" />
+        <EntityTypeShape EntityType="Model.ITEMS" Width="1.5" PointX="5.25" PointY="1.125" />
+        <EntityTypeShape EntityType="Model.ORDERS" Width="1.5" PointX="3" PointY="1.125" />
+        <AssociationConnector Association="Model.ORDERS_CUSTOMER_FK" />
+        <AssociationConnector Association="Model.ITEMS_ORDERS_FK" />
+        <AssociationConnector Association="Model.CUSTOMER_ADDRESS" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

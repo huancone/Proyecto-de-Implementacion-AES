@@ -7,10 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-
 namespace DataAccess
 {
+    using System;
+    using System.Collections.Generic;
+    
     public partial class ITEMS
     {
         public decimal ITEMID { get; set; }
@@ -18,7 +19,7 @@ namespace DataAccess
         public string PRODUCTNAME { get; set; }
         public string PARTNUM { get; set; }
         public Nullable<decimal> PRICE { get; set; }
-        public Nullable<int> QUANTITY { get; set; }
+        public Nullable<decimal> QUANTITY { get; set; }
         public decimal ORDID { get; set; }
     
         public virtual ORDERS ORDERS { get; set; }

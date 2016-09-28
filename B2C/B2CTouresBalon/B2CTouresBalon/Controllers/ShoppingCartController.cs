@@ -38,7 +38,7 @@ namespace B2CTouresBalon.Controllers
             var currentUser = System.Web.HttpContext.Current.User as CustomPrincipal;
             if (currentUser == null) return RedirectToAction("Index", "Account");
 
-            var clientConfiguration = new MemcachedClientConfiguration { Protocol = MemcachedProtocol.Binary };
+            var clientConfiguration = new MemcachedClientConfiguration {Protocol = MemcachedProtocol.Binary};
             clientConfiguration.Servers.Add(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 32768));
 
             using (var client = new MemcachedClient(clientConfiguration))
@@ -57,7 +57,7 @@ namespace B2CTouresBalon.Controllers
                     //si el carrito es vacio cree uno nuevo
                     cart = new Cart
                     {
-                        UserId = (int)currentUser.CustId,
+                        UserId = (int) currentUser.CustId,
                         Items = new List<Item>()
                     };
 
@@ -103,7 +103,7 @@ namespace B2CTouresBalon.Controllers
 
 
             //Configuracion del MEMCACHED client
-            var clientConfiguration = new MemcachedClientConfiguration { Protocol = MemcachedProtocol.Binary };
+            var clientConfiguration = new MemcachedClientConfiguration {Protocol = MemcachedProtocol.Binary};
             clientConfiguration.Servers.Add(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 32768));
 
             using (var client = new MemcachedClient(clientConfiguration))
@@ -139,7 +139,7 @@ namespace B2CTouresBalon.Controllers
             var currentUser = System.Web.HttpContext.Current.User as CustomPrincipal;
             if (currentUser == null) return RedirectToAction("Index", "Account");
 
-            var clientConfiguration = new MemcachedClientConfiguration { Protocol = MemcachedProtocol.Binary };
+            var clientConfiguration = new MemcachedClientConfiguration {Protocol = MemcachedProtocol.Binary};
             clientConfiguration.Servers.Add(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 32768));
             ServiceProxyB2C.CrearOrdenResponse response = new ServiceProxyB2C.CrearOrdenResponse();
             using (var client = new MemcachedClient(clientConfiguration))
@@ -188,8 +188,6 @@ namespace B2CTouresBalon.Controllers
 
             }
             return View("_Compra", response);
-
-
 
         }
     }
