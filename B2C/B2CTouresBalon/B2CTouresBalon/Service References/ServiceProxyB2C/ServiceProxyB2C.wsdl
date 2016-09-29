@@ -73,7 +73,7 @@
       <xsd:element name="ConsultarProductoResponse">
         <xsd:complexType>
           <xsd:sequence>
-            <xsd:element minOccurs="0" maxOccurs="unbounded" name="productos" type="tb_b2:Producto" />
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="Productos" type="tb_b2:Producto" />
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>

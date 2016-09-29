@@ -65,7 +65,6 @@ namespace B2CTouresBalon.Controllers
 
             var currentuser = System.Web.HttpContext.Current.User as CustomPrincipal;
 
-
             var userId = Convert.ToInt64(currentuser?.CustId);
             var user = await _context.ObtenerUsuario(userId);
 

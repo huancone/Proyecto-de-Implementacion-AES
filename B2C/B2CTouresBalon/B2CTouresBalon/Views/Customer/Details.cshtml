@@ -1,0 +1,82 @@
+﻿@model DataAccess.CUSTOMER
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CUSTOMER</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FNAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FNAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LNAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LNAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PHONENUMBER)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PHONENUMBER)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EMAIL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EMAIL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PASSWORD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PASSWORD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CREDITCARDTYPE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CREDITCARDTYPE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CREDITCARDNUMBER)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CREDITCARDNUMBER)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.STATUS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STATUS)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CUSTID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
