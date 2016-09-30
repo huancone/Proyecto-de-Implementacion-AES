@@ -115,7 +115,7 @@ namespace B2CTouresBalon.Controllers
             var currentUser = System.Web.HttpContext.Current.User as CustomPrincipal;
 
             var clientConfiguration = new MemcachedClientConfiguration { Protocol = MemcachedProtocol.Binary };
-            clientConfiguration.Servers.Add(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 32768));
+            clientConfiguration.Servers.Add(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 32769));
             // se recupera la informacion de la orden en cache
             List<Orden> lstOrdenes;
             using (var ordencache = new MemcachedClient(clientConfiguration))
