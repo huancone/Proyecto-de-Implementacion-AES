@@ -42,7 +42,7 @@ namespace B2CTouresBalon.Controllers
                     user.EMAIL,
                     DateTime.Now,
                     DateTime.Now.AddMinutes(15),
-                    false, //pass here true, if you want to implement remember me functionality
+                    true, //pass here true, if you want to implement remember me functionality
                     userData);
 
                 var encTicket = FormsAuthentication.Encrypt(authTicket);
@@ -57,53 +57,6 @@ namespace B2CTouresBalon.Controllers
             ModelState.AddModelError("", "Incorrect username and/or password");
             return View(model);
         }
-
-
-        public async Task<ViewResult> Manage()
-        {
-            if (!ModelState.IsValid) return View("Index");
-
-            var currentuser = System.Web.HttpContext.Current.User as CustomPrincipal;
-
-            var userId = Convert.ToInt64(currentuser?.CustId);
-            var user = await _context.ObtenerUsuario(userId);
-
-            var model = new ManageViewModel();
-            if (null == user) return View(model);
-            model.FirstName = user.FNAME;
-            model.LastName = user.LNAME;
-            model.Email = user.EMAIL;
-            model.PhoneNumber = user.PHONENUMBER;
-            model.CreditCardType = user.CREDITCARDTYPE;
-            model.CreditCardNumber = user.CREDITCARDNUMBER;
-            model.CustomerId = user.CUSTID;
-            return View(model);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ViewResult> Manage(ManageViewModel model, ManageMessageId? message)
-        {
-            ViewBag.StatusMessage =
-                message == ManageMessageId.UpdateSuccess ? "Your account has been updated."
-                : message == ManageMessageId.UpdateError ? "An error has occurred."
-                : "";
-            if (!ModelState.IsValid) return View(model);
-            if (await _context.ActualizarUsuario(model.CustomerId,
-                model.FirstName,
-                model.LastName,
-                model.Email,
-                model.PhoneNumber,
-                model.CreditCardType,
-                model.CreditCardNumber))
-            {
-                ModelState.AddModelError("", "Your account has been updated.");
-                return View(model);
-            }
-            ModelState.AddModelError("", "An error has occurred.");
-            return View(model);
-        }
-
 
         [AllowAnonymous]
         public ActionResult LogOut()

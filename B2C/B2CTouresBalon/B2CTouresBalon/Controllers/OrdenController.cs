@@ -16,7 +16,6 @@ namespace B2CTouresBalon.Controllers
 {
     public class OrdenController : Controller
     {
-        List<OrdenModel> lstordenes = new List<OrdenModel>();
         // GET: Orden
         public ActionResult Index()
         {
@@ -51,12 +50,12 @@ namespace B2CTouresBalon.Controllers
             //    lstordenes.Add(ord);
             //}
 
-            IEnumerable<Orden> lstorden;
+            IEnumerable<Orden> lstOrden;
             var currentUser = System.Web.HttpContext.Current.User as CustomPrincipal;
             var ordenes = new ServiceProxyB2CClient();
             try
             {
-                 lstorden =ordenes.ConsultarClientesOrdenes(currentUser.CustId.ToString());
+                 lstOrden =ordenes.ConsultarClientesOrdenes(currentUser.CustId.ToString());
 
             }
             catch (FaultException<ConsultarClientesOrdenesFault> exf )
@@ -67,17 +66,17 @@ namespace B2CTouresBalon.Controllers
              
              
             var clientConfiguration = new MemcachedClientConfiguration { Protocol = MemcachedProtocol.Binary };
-            clientConfiguration.Servers.Add(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 32768));
+            clientConfiguration.Servers.Add(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 32769));
               
             using (var ordencache = new MemcachedClient(clientConfiguration))
             {
                 // se almacena en cache el listado de ordenes del cliente
-                ordencache.Store(StoreMode.Set, "Orden-" + currentUser.UserName, lstorden);
+                ordencache.Store(StoreMode.Set, "Orden-" + currentUser.UserName, lstOrden);
                 //HttpContext.Session["ListaOrden"] = lstorden;
                 
             }
 
-            return View(lstorden);
+            return View(lstOrden.ToList());
         }
 
 
@@ -86,11 +85,11 @@ namespace B2CTouresBalon.Controllers
             var cancela = new ServiceProxyB2CClient();
             var rpta = new RespuestaGenerica();
             var valorcancela = new RespuestaCancelacionModel();
-            var IdOrdenes = new string[1] { idOrden } ;
+            var idOrdenes = new string[1] { idOrden } ;
 
             try
             {
-                rpta = cancela.CancelarOrdenes(IdOrdenes);
+                rpta = cancela.CancelarOrdenes(idOrdenes);
             }
             catch ( FaultException<CancelarOrdenesFault> exf )
             {
@@ -118,20 +117,20 @@ namespace B2CTouresBalon.Controllers
             var clientConfiguration = new MemcachedClientConfiguration { Protocol = MemcachedProtocol.Binary };
             clientConfiguration.Servers.Add(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 32768));
             // se recupera la informacion de la orden en cache
-            List<Orden> lstordenes;
+            List<Orden> lstOrdenes;
             using (var ordencache = new MemcachedClient(clientConfiguration))
             {
-                lstordenes = ((IEnumerable<Orden>)ordencache.Get("Orden-" + currentUser.UserName)).ToList();
+                lstOrdenes = ((IEnumerable<Orden>)ordencache.Get("Orden-" + currentUser.UserName)).ToList();
             }
 
                // lstordenes =(List<OrdenModel>)HttpContext.Session["ListaOrden"] ;
 
             // se filtra el detalle de la orden
-            var LstItems = lstordenes.Find(ord => ord.id_orden == IdOrden).item;  
+            var lstItems = lstOrdenes.Find(ord => ord.id_orden == IdOrden).item;  
             ViewBag.IdOrden = IdOrden;
          
 
-            return View("_Detalle", LstItems); 
+            return View("_Detalle", lstItems.ToList()); 
         }
     }
 }
