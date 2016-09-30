@@ -1,0 +1,75 @@
+﻿@model IEnumerable<DataAccess.CUSTOMER>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FNAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LNAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PHONENUMBER)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EMAIL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PASSWORD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CREDITCARDTYPE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CREDITCARDNUMBER)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.STATUS)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FNAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LNAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PHONENUMBER)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EMAIL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PASSWORD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CREDITCARDTYPE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CREDITCARDNUMBER)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.STATUS)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CUSTID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CUSTID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CUSTID })
+        </td>
+    </tr>
+}
+
+</table>

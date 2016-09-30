@@ -7,6 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+
 namespace DataAccess
 {
     using System;
@@ -19,16 +22,36 @@ namespace DataAccess
         {
             this.ORDERS = new HashSet<ORDERS>();
             this.ADDRESS = new HashSet<ADDRESS>();
+            this.STATUS = "Activo";
         }
     
         public decimal CUSTID { get; set; }
+
+        [DisplayName("Firt Name")]
         public string FNAME { get; set; }
+
+        [DisplayName("Last Name")]
         public string LNAME { get; set; }
+
+        [DisplayName("Phone")]
+        [DataType(DataType.PhoneNumber)]
         public string PHONENUMBER { get; set; }
+
+        [DisplayName("Email")]
+        [DataType(DataType.EmailAddress)]
         public string EMAIL { get; set; }
+
+        [DisplayName("Password")]
+        [DataType(DataType.Password)]
         public string PASSWORD { get; set; }
+
+        [DisplayName("Credit Card Type")]
         public string CREDITCARDTYPE { get; set; }
+
+        [DisplayName("Credit Card Number")]
+        [DataType(DataType.CreditCard)]
         public string CREDITCARDNUMBER { get; set; }
+
         public string STATUS { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
