@@ -53,6 +53,9 @@ namespace B2CTouresBalon.Controllers
             IEnumerable<Orden> lstOrden;
             var currentUser = System.Web.HttpContext.Current.User as CustomPrincipal;
             var ordenes = new ServiceProxyB2CClient();
+            //Orden o = new Orden();
+            //o.estatus = EstatusOrden.VALIDACION   
+
             try
             {
                  lstOrden =ordenes.ConsultarClientesOrdenes(currentUser.CustId.ToString());
@@ -63,11 +66,19 @@ namespace B2CTouresBalon.Controllers
 
                 throw new Exception("Error al traer las ordenes " + exf.Detail.ConsultarClientesOrdenesFault1.mensaje);
             }
+            catch (CommunicationException cex)
+            {
+
+                throw new CommunicationException("Error de conmunicacion " + cex.ToString());
+            }
              
              
             var clientConfiguration = new MemcachedClientConfiguration { Protocol = MemcachedProtocol.Binary };
-            clientConfiguration.Servers.Add(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 32769));
-              
+            //clientConfiguration.Servers.Add(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 32768));
+            clientConfiguration.Servers.Add(new IPEndPoint(IPAddress.Parse("192.168.99.100"), 32769));
+            
+
+
             using (var ordencache = new MemcachedClient(clientConfiguration))
             {
                 // se almacena en cache el listado de ordenes del cliente
@@ -82,7 +93,7 @@ namespace B2CTouresBalon.Controllers
 
         public ActionResult  Cancelar(string idOrden)
         {
-            var cancela = new ServiceProxyB2CClient();
+            var cancela = new ServiceProxyB2CClient(); 
             var rpta = new RespuestaGenerica();
             var valorcancela = new RespuestaCancelacionModel();
             var idOrdenes = new string[1] { idOrden } ;
@@ -115,7 +126,8 @@ namespace B2CTouresBalon.Controllers
             var currentUser = System.Web.HttpContext.Current.User as CustomPrincipal;
 
             var clientConfiguration = new MemcachedClientConfiguration { Protocol = MemcachedProtocol.Binary };
-            clientConfiguration.Servers.Add(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 32769));
+            //clientConfiguration.Servers.Add(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 32768));
+            clientConfiguration.Servers.Add(new IPEndPoint(IPAddress.Parse("192.168.99.100"), 32769));
             // se recupera la informacion de la orden en cache
             List<Orden> lstOrdenes;
             using (var ordencache = new MemcachedClient(clientConfiguration))

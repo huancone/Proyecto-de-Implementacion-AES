@@ -184,6 +184,7 @@ namespace B2CTouresBalon.Controllers
                     response.id_orden = "";
                     response.estatus_orden = EstatusOrden.RECHAZADA;
                     response.estatus_ordenSpecified = false;
+                    
                 }
 
             }
