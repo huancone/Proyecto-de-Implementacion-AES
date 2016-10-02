@@ -1,6 +1,7 @@
-﻿@using B2CTouresBalon.ServiceProxyB2C
+﻿@using System.Activities.Statements
+@using B2CTouresBalon.ServiceProxyB2C
 @using B2CTouresBalon.Models
-@model List<B2CTouresBalon.ServiceProxyB2C.Orden>   
+@model List<B2CTouresBalon.ServiceProxyB2C.Orden>
 @{
     ViewBag.Title = "Ordenes";
 }
@@ -9,36 +10,40 @@
 
 @Html.AntiForgeryToken()
 
-<table class="table table-stripped">
-    <thead>
-        <tr>
-            <th>Id Orden</th> 
-            <th>Fecha</th> 
-            <th>Precio</th> 
-            <th>Estado</th> 
-            <th>Detalle</th> 
-        </tr>
-
-    </thead> 
-    <tbody>
-        @foreach (var ord in Model)
-        {
+@if (null != Model)
+            {
+    <table class="table table-stripped">
+        <thead>
             <tr>
-                <td>@ord.id_orden</td>
-                <td>@ord.fecha_orden.ToString("dd/MM/yyyy")</td> 
-                <td>@ord.precio.ToString("###,##0")</td>
-                <td>@ord.estatus.ToString()</td> 
-                <td>@Html.ActionLink("Detalle","Detalle",new { IdOrden = ord.id_orden})</td>
-                <td>@Html.ActionLink("Cancelar", "Cancelar",new { idOrden = ord.id_orden }, new { onclick = "return confirm('Esta seguro de cancelar la orden?');" } )</td>
-</tr>
-        }
-    </tbody> 
+                <th>Id Orden</th>
+                <th>Fecha</th>
+                <th>Precio</th>
+                <th>Estado</th>
+                <th>Detalle</th>
+            </tr>
+
+        </thead>
+        <tbody>
+            @foreach (var ord in Model)
+            {
+                <tr>
+                    <td>@ord.id_orden</td>
+                    <td>@ord.fecha_orden.ToString("dd/MM/yyyy")</td>
+                    <td>@ord.precio.ToString("###,##0")</td>
+                    <td>@ord.estado.ToString()</td>
+                    <td>@Html.ActionLink("Detalle", "Detalle", new { IdOrden = ord.id_orden })</td>
+                    <td>@Html.ActionLink("Cancelar", "Cancelar", new { idOrden = ord.id_orden }, new { onclick = "return confirm('Esta seguro de cancelar la orden?');" })</td>
+                </tr>
+            }
+
+        </tbody>
 
 
-</table> 
+    </table>
+}
 <div>
 
-    
 
-</div> 
+
+</div>
 

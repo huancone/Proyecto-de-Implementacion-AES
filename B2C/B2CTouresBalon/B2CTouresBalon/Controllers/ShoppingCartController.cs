@@ -21,12 +21,11 @@ namespace B2CTouresBalon.Controllers
         {
             using (var client = new MemcachedClient())
             {
-                if (!ModelState.IsValid) return RedirectToAction("Index", "Product");
                 var currentUser = System.Web.HttpContext.Current.User as CustomPrincipal;
                 if (currentUser == null) return RedirectToAction("Index", "Account");
                 var model = client.Get<Cart>("Cart-" + currentUser.CustId.ToString(CultureInfo.InvariantCulture));
                 if (model == null) return RedirectToAction("Index", "Product");
-                return View(model);
+                return View("Cart", model);
             }
         }
 
@@ -141,7 +140,8 @@ namespace B2CTouresBalon.Controllers
 
             var clientConfiguration = new MemcachedClientConfiguration {Protocol = MemcachedProtocol.Binary};
             clientConfiguration.Servers.Add(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 32769));
-            ServiceProxyB2C.CrearOrdenResponse response = new ServiceProxyB2C.CrearOrdenResponse();
+            var response = new CrearOrdenResponse();
+
             using (var client = new MemcachedClient(clientConfiguration))
             {
                 //consulto el cache del usuario logueado
@@ -152,23 +152,25 @@ namespace B2CTouresBalon.Controllers
                     var proxy = new ServiceProxyB2CClient();
 
                     // se crea una nueva orden
-                    Orden orden = new Orden();
+                    var orden = new Orden
+                    {
+                        estado = EstadoOrden.VALIDACION,
+                        fecha_orden = DateTime.Now
+                    };
 
                     // se deja el estado en validacion
-                    orden.estatus = EstatusOrden.VALIDACION;
-                    orden.fecha_orden = DateTime.Now;
 
                     // se crea una nueva lista de items del carrito
-                    List<ServiceProxyB2C.Item> lstitem = new List<ServiceProxyB2C.Item>();
-                    foreach (Models.Item item in cart.Items)
+                    var lstitem = new List<ServiceProxyB2C.Item>();
+                    foreach (var item in cart.Items)
                     {
-                        ServiceProxyB2C.Item itemorden = new ServiceProxyB2C.Item();
+                        var itemorden = new ServiceProxyB2C.Item();
                         itemorden.id_prod = item.Producto.id_producto;
                         // el servicio pide el nombre del producto, en el carrito no hay se coloca el nombre del espectaculo
                         itemorden.nombre_prod = item.Producto.espectaculo;
 
                         // en el servicio se pide el precio, se deja un valor fijo para ajustar modelo
-                        itemorden.precio = 100000;
+                        itemorden.precio = item.Producto.ciudad_espectaculo.tipo_ciudad.precio + item.Producto.tipo_espectaculo.precio + item.Producto.tipo_hospedaje.precio + item.Producto.tipo_transporte.precio;
                         itemorden.cantidad = item.Cantidad;
                         lstitem.Add(itemorden);
 
@@ -182,8 +184,8 @@ namespace B2CTouresBalon.Controllers
                 else
                 {
                     response.id_orden = "";
-                    response.estatus_orden = EstatusOrden.RECHAZADA;
-                    response.estatus_ordenSpecified = false;
+                    response.estado_orden = EstadoOrden.RECHAZADA;
+                    response.estado_ordenSpecified = false;
                     
                 }
 
