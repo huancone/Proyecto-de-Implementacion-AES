@@ -142,10 +142,10 @@
             <xsd:element name="ConsultarRangoCerradoOrdenes">
             	<xsd:complexType>
             		<xsd:sequence>
-            			<xsd:element name="fecha_inicial" maxOccurs="1" minOccurs="1" type="xsd:dateTime">
+            			<xsd:element name="fecha_inicial" maxOccurs="1" minOccurs="1" type="xsd:dateTime">
             			</xsd:element>
             			<xsd:element name="fecha_final" maxOccurs="1"
-            				minOccurs="1" type="xsd:dateTime">
+            				minOccurs="1" type="xsd:dateTime">
             			</xsd:element>
             		</xsd:sequence>
             	</xsd:complexType>
@@ -161,7 +161,7 @@
             </xsd:element>
             <xsd:element name="ConsultarRankingAbiertasOrdenes">
             	<xsd:complexType>
-            		<xsd:sequence>
+            		<xsd:sequence>
             		</xsd:sequence>
             	</xsd:complexType>
             </xsd:element>
@@ -275,7 +275,7 @@
             		</xsd:element>
             		<xsd:element name="estatus_orden"
             			type="tb_o:EstatusOrden" maxOccurs="1" minOccurs="0">
-            		</xsd:element>
+            		</xsd:element>
             	</xsd:sequence>
             </xsd:complexType>
     </xsd:schema>
