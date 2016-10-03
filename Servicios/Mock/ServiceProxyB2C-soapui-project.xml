@@ -73,7 +73,7 @@
       <xsd:element name="ConsultarProductoResponse">
         <xsd:complexType>
           <xsd:sequence>
-            <xsd:element name="productos" type="tb_b2:Producto" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+            <xsd:element name="Productos" type="tb_b2:Producto" maxOccurs="unbounded" minOccurs="0"></xsd:element>
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
@@ -180,12 +180,12 @@
           <xsd:element name="id_orden" type="xsd:string" maxOccurs="1" minOccurs="0"/>
           <xsd:element name="fecha_orden" type="xsd:dateTime" maxOccurs="1" minOccurs="1"/>
           <xsd:element name="precio" type="xsd:double" maxOccurs="1" minOccurs="1"/>
-          <xsd:element name="estado" type="tb_b2:EstadoOrden" maxOccurs="1" minOccurs="0"></xsd:element>
+          <xsd:element name="estatus" type="tb_b2:EstatusOrden" maxOccurs="1" minOccurs="0"></xsd:element>
           <xsd:element name="comentarios" type="xsd:string" maxOccurs="unbounded" minOccurs="0"/>
           <xsd:element name="item" type="tb_b2:Item" maxOccurs="unbounded" minOccurs="0"/>
         </xsd:sequence>
       </xsd:complexType>
-      <xsd:simpleType name="EstadoOrden">
+      <xsd:simpleType name="EstatusOrden">
         <xsd:restriction base="xsd:string">
           <xsd:enumeration value="VALIDACION"/>
           <xsd:enumeration value="RESERVACION"/>
@@ -225,7 +225,7 @@
           <xsd:element name="tipo_transporte" type="tb_b2:TarifaValores" maxOccurs="1" minOccurs="0"></xsd:element>
           <xsd:element name="tipo_espectaculo" type="tb_b2:TarifaValores" maxOccurs="1" minOccurs="1"></xsd:element>
           <xsd:element name="tipo_hospedaje" type="tb_b2:TarifaValores" maxOccurs="1" minOccurs="0"></xsd:element>
-          <xsd:element name="imagen_producto" type="xsd:string" maxOccurs="1" minOccurs="0"/>
+          <xsd:element name="imagen_producto" type="xsd:base64Binary" maxOccurs="1" minOccurs="0"/>
         </xsd:sequence>
       </xsd:complexType>
       <xsd:complexType name="RegistrarClienteReponseType">
@@ -234,7 +234,7 @@
           <xsd:element name="id_cliente" type="xsd:string" maxOccurs="1" minOccurs="0"/>
         </xsd:sequence>
       </xsd:complexType>
-      <xsd:simpleType name="EstadoCliente">
+      <xsd:simpleType name="EstatusCliente">
         <xsd:restriction base="xsd:string">
           <xsd:enumeration value="PLATINO"/>
           <xsd:enumeration value="DORADO"/>
@@ -332,7 +332,7 @@
       </xsd:simpleType>
       <xsd:complexType name="Campania">
         <xsd:sequence>
-          <xsd:element name="id_producto" type="tb_b2:Producto" maxOccurs="1" minOccurs="1"></xsd:element>
+          <xsd:element name="id_producto" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
           <xsd:element name="fecha_inicio_campania" type="xsd:dateTime" maxOccurs="1" minOccurs="1"></xsd:element>
           <xsd:element name="fecha_fin_campania" type="xsd:dateTime" maxOccurs="1" minOccurs="1"/>
         </xsd:sequence>
@@ -340,7 +340,7 @@
       <xsd:element name="ConsultaTop5Productos">
         <xsd:complexType>
           <xsd:sequence>
-            <xsd:element name="id_producto" type="xsd:string" maxOccurs="unbounded" minOccurs="0"/>
+            <xsd:element name="id_producto" type="xsd:string" maxOccurs="1" minOccurs="1"/>
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
@@ -361,7 +361,7 @@
       <xsd:complexType name="CrearOrdenResponse">
         <xsd:sequence>
           <xsd:element name="id_orden" type="xsd:string" maxOccurs="1" minOccurs="0"/>
-          <xsd:element name="estado_orden" type="tb_b2:EstadoOrden" maxOccurs="1" minOccurs="0"/>
+          <xsd:element name="estatus_orden" type="tb_b2:EstatusOrden" maxOccurs="1" minOccurs="0"/>
         </xsd:sequence>
       </xsd:complexType>
     </xsd:schema>
@@ -698,18 +698,18 @@
    <soapenv:Body>\r
       <ser:ConsultarCampaniaProducto/>\r
    </soapenv:Body>\r
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarCampaniaProducto"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="bc047084-452b-4912-9bca-4f613d7bf475" isOneWay="false" action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarClientesOrdenes" name="ConsultarClientesOrdenes" bindingOperationName="ConsultarClientesOrdenes" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f94dccea-2dc2-4864-872d-ded6e8c45385" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.touresbalon.com/ServiceProxyB2C</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://www.touresbalon.com/ServiceProxyB2C/">
-   <soapenv:Header/>
-   <soapenv:Body>
-      <ser:ConsultarClientesOrdenes>
-         <id_cliente>?</id_cliente>
-      </ser:ConsultarClientesOrdenes>
-   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarCampaniaProducto"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="bc047084-452b-4912-9bca-4f613d7bf475" isOneWay="false" action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarClientesOrdenes" name="ConsultarClientesOrdenes" bindingOperationName="ConsultarClientesOrdenes" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f94dccea-2dc2-4864-872d-ded6e8c45385" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.touresbalon.com/ServiceProxyB2C</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://www.touresbalon.com/ServiceProxyB2C/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ser:ConsultarClientesOrdenes>\r
+         <id_cliente>?</id_cliente>\r
+      </ser:ConsultarClientesOrdenes>\r
+   </soapenv:Body>\r
 </soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarClientesOrdenes"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="7327ec69-f3a9-42ee-bf49-9e63ab180b6e" isOneWay="false" action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarProducto" name="ConsultarProducto" bindingOperationName="ConsultarProducto" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="6e70998c-9e1c-40f9-ba0a-1663be2610d8" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8082/ServiceProxyB2C</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://www.touresbalon.com/ServiceProxyB2C/">
    <soapenv:Header/>
    <soapenv:Body>
       <ser:ConsultarProducto>
-         <tipo_consulta>DESCRIPCION</tipo_consulta>
+         <tipo_consulta>?</tipo_consulta>
          <!--Optional:-->
          <codigo>?</codigo>
          <!--Optional:-->
@@ -725,33 +725,33 @@
          <id_producto>?</id_producto>\r
       </ser:ConsultaTop5Productos>\r
    </soapenv:Body>\r
-</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.touresbalon.com/ServiceProxyB2C/ConsultaTop5Productos"/></con:call></con:operation><con:operation id="bb0e9d6b-533d-4029-acd9-c69a8574ee06" isOneWay="false" action="http://www.touresbalon.com/ServiceProxyB2C/CrearOrdenes" name="CrearOrdenes" bindingOperationName="CrearOrdenes" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="bc541870-31d8-4597-b1fc-f93ca588a88a" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.touresbalon.com/ServiceProxyB2C</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://www.touresbalon.com/ServiceProxyB2C/">
-   <soapenv:Header/>
-   <soapenv:Body>
-      <ser:CrearOrdenes>
-         <orden>
-            <!--Optional:-->
-            <id_orden>?</id_orden>
-            <fecha_orden>?</fecha_orden>
-            <precio>?</precio>
-            <!--Optional:-->
-            <estado>?</estado>
-            <!--Zero or more repetitions:-->
-            <comentarios>?</comentarios>
-            <!--Zero or more repetitions:-->
-            <item>
-               <id_item>?</id_item>
-               <id_prod>?</id_prod>
-               <nombre_prod>?</nombre_prod>
-               <!--Optional:-->
-               <part_num>?</part_num>
-               <precio>?</precio>
-               <cantidad>?</cantidad>
-            </item>
-         </orden>
-      </ser:CrearOrdenes>
-   </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.touresbalon.com/ServiceProxyB2C/CrearOrdenes"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="346e9f87-327a-4a51-af03-0af37123e1de" isOneWay="false" action="http://www.touresbalon.com/ServiceProxyB2C/RegistrarCliente" name="RegistrarCliente" bindingOperationName="RegistrarCliente" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="90c6cf77-98fe-42f4-9e00-3ba21f1cc2fd" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.touresbalon.com/ServiceProxyB2C</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://www.touresbalon.com/ServiceProxyB2C/">\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.touresbalon.com/ServiceProxyB2C/ConsultaTop5Productos"/></con:call></con:operation><con:operation id="bb0e9d6b-533d-4029-acd9-c69a8574ee06" isOneWay="false" action="http://www.touresbalon.com/ServiceProxyB2C/CrearOrdenes" name="CrearOrdenes" bindingOperationName="CrearOrdenes" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="bc541870-31d8-4597-b1fc-f93ca588a88a" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.touresbalon.com/ServiceProxyB2C</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://www.touresbalon.com/ServiceProxyB2C/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ser:CrearOrdenes>\r
+         <orden>\r
+            <!--Optional:-->\r
+            <id_orden>?</id_orden>\r
+            <fecha_orden>?</fecha_orden>\r
+            <precio>?</precio>\r
+            <!--Optional:-->\r
+            <estatus>?</estatus>\r
+            <!--Zero or more repetitions:-->\r
+            <comentarios>?</comentarios>\r
+            <!--Zero or more repetitions:-->\r
+            <item>\r
+               <id_item>?</id_item>\r
+               <id_prod>?</id_prod>\r
+               <nombre_prod>?</nombre_prod>\r
+               <!--Optional:-->\r
+               <part_num>?</part_num>\r
+               <precio>?</precio>\r
+               <cantidad>?</cantidad>\r
+            </item>\r
+         </orden>\r
+      </ser:CrearOrdenes>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.touresbalon.com/ServiceProxyB2C/CrearOrdenes"/></con:call></con:operation><con:operation id="346e9f87-327a-4a51-af03-0af37123e1de" isOneWay="false" action="http://www.touresbalon.com/ServiceProxyB2C/RegistrarCliente" name="RegistrarCliente" bindingOperationName="RegistrarCliente" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="90c6cf77-98fe-42f4-9e00-3ba21f1cc2fd" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.touresbalon.com/ServiceProxyB2C</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://www.touresbalon.com/ServiceProxyB2C/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
       <ser:RegistrarCliente>\r
@@ -974,13 +974,14 @@
    <soapenv:Header/>
    <soapenv:Body>
       <ser:ConsultarClientesOrdenesResponse>
-                  <orden>
+         <!--Zero or more repetitions:-->
+         <orden>
             <!--Optional:-->
             <id_orden>1</id_orden>
             <fecha_orden>2016-09-13T15:43:00.9138001-05:00</fecha_orden>
             <precio>5000</precio>
             <!--Optional:-->
-            <estado>VALIDACION</estado>
+            <estatus>1</estatus>
             <!--Zero or more repetitions:-->
             <comentarios>Comentario normal</comentarios>
             <!--Zero or more repetitions:-->
@@ -996,24 +997,4 @@
          </orden>
       </ser:ConsultarClientesOrdenesResponse>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarClientesOrdenes"/></con:response><con:dispatchConfig/></con:mockOperation><con:mockOperation name="CrearOrdenes" id="a621c941-ef45-4895-99ea-8a89e46a5ec0" interface="ServiceProxyB2CSOAP" operation="CrearOrdenes"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" id="19496509-458a-469f-bd2c-65f2130040ab" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://www.touresbalon.com/ServiceProxyB2C/">
-   <soapenv:Header/>
-   <soapenv:Body>
-      <ser:CrearOrdenesResponse>
-         <respuesta>
-            <!--Optional:-->
-            <id_orden>1</id_orden>
-            <!--Optional:-->
-            <estatus_orden>VALIDACION</estatus_orden>
-         </respuesta>
-      </ser:CrearOrdenesResponse>
-   </soapenv:Body>
-</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.touresbalon.com/ServiceProxyB2C/CrearOrdenes"/></con:response><con:dispatchConfig/></con:mockOperation><con:mockOperation name="CancelarOrdenes" id="08a8499a-b844-4310-9bac-f503b75dcf14" interface="ServiceProxyB2CSOAP" operation="CancelarOrdenes"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" id="4d3378b2-3438-4fd7-95a1-7972c8327060" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://www.touresbalon.com/ServiceProxyB2C/">
-   <soapenv:Header/>
-   <soapenv:Body>
-      <ser:CancelarOrdenesResponse>
-         <!--Optional:-->
-         <respuesta>OK</respuesta>
-      </ser:CancelarOrdenesResponse>
-   </soapenv:Body>
-</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.touresbalon.com/ServiceProxyB2C/CancelarOrdenes"/></con:response><con:dispatchConfig/></con:mockOperation></con:mockService><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/></con:soapui-project>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarClientesOrdenes"/></con:response><con:dispatchConfig/></con:mockOperation></con:mockService><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/></con:soapui-project>

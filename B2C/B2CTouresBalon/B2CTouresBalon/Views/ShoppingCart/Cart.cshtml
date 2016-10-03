@@ -23,14 +23,11 @@
                 @item.Cantidad
             </td>
             <td>
-                @Html.ActionLink("Delete", "DeleteItem", "ShoppingCart", new { idProducto = item.Producto.id_producto, cantidad = 1 }, null)
+                @Html.ActionLink("Delete", "DeleteItem", "ShoppingCart", new {idProducto = item.Producto.id_producto, cantidad = 1}, null)
             </td>
         </tr>
     }
 </table>
-<p>
-    @Html.ActionLink("Pagar", "Pagar", new { idOrden = "2" }, new { onclick = "return confirm('Confirma el pago?');" })
-</p>
 <p>
     @Html.ActionLink("Back to Home", "Index", "Product")
 </p>

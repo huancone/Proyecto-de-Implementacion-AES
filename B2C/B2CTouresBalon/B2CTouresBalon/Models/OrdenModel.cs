@@ -11,7 +11,7 @@ namespace B2CTouresBalon.Models
 
         public DateTime fecha_orden { get; set; } 
 
-        public EstadoOrden estadoOrden { get; set; } 
+        public EstatusOrden estatus { get; set; } 
 
         public string id_orden { get; set; }
 
