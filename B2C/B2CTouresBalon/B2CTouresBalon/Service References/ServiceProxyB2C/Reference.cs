@@ -720,11 +720,11 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         
         B2CTouresBalon.ServiceProxyB2C.ActualizarContraseniaClienteResponse EndActualizarContraseniaCliente(System.IAsyncResult result);
         
-        // CODEGEN: Parameter 'Productos' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
+        // CODEGEN: Parameter 'productos' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarProducto", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(B2CTouresBalon.ServiceProxyB2C.ConsultarProductoFault), Action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarProducto", Name="ConsultarProductoFault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="Productos")]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="productos")]
         B2CTouresBalon.ServiceProxyB2C.ConsultarProductoResponse ConsultarProducto(B2CTouresBalon.ServiceProxyB2C.ConsultarProductoRequest request);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://www.touresbalon.com/ServiceProxyB2C/ConsultarProducto", ReplyAction="*")]
@@ -991,7 +991,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         
         private TarifaValores tipo_hospedajeField;
         
-        private byte[] imagen_productoField;
+        private string imagen_productoField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
@@ -1114,8 +1114,8 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="base64Binary", Order=8)]
-        public byte[] imagen_producto {
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=8)]
+        public string imagen_producto {
             get {
                 return this.imagen_productoField;
             }
@@ -1295,14 +1295,14 @@ namespace B2CTouresBalon.ServiceProxyB2C {
     public partial class ConsultarProductoResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("Productos", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public B2CTouresBalon.ServiceProxyB2C.Producto[] Productos;
+        [System.Xml.Serialization.XmlElementAttribute("productos", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public B2CTouresBalon.ServiceProxyB2C.Producto[] productos;
         
         public ConsultarProductoResponse() {
         }
         
-        public ConsultarProductoResponse(B2CTouresBalon.ServiceProxyB2C.Producto[] Productos) {
-            this.Productos = Productos;
+        public ConsultarProductoResponse(B2CTouresBalon.ServiceProxyB2C.Producto[] productos) {
+            this.productos = productos;
         }
     }
     
@@ -1348,9 +1348,9 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         
         private double precioField;
         
-        private EstatusOrden estatusField;
+        private EstadoOrden estadoField;
         
-        private bool estatusFieldSpecified;
+        private bool estadoFieldSpecified;
         
         private string[] comentariosField;
         
@@ -1394,25 +1394,25 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
-        public EstatusOrden estatus {
+        public EstadoOrden estado {
             get {
-                return this.estatusField;
+                return this.estadoField;
             }
             set {
-                this.estatusField = value;
-                this.RaisePropertyChanged("estatus");
+                this.estadoField = value;
+                this.RaisePropertyChanged("estado");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool estatusSpecified {
+        public bool estadoSpecified {
             get {
-                return this.estatusFieldSpecified;
+                return this.estadoFieldSpecified;
             }
             set {
-                this.estatusFieldSpecified = value;
-                this.RaisePropertyChanged("estatusSpecified");
+                this.estadoFieldSpecified = value;
+                this.RaisePropertyChanged("estadoSpecified");
             }
         }
         
@@ -1454,7 +1454,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/")]
-    public enum EstatusOrden {
+    public enum EstadoOrden {
         
         /// <remarks/>
         VALIDACION,
@@ -1656,9 +1656,9 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         
         private string id_ordenField;
         
-        private EstatusOrden estatus_ordenField;
+        private EstadoOrden estado_ordenField;
         
-        private bool estatus_ordenFieldSpecified;
+        private bool estado_ordenFieldSpecified;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
@@ -1674,25 +1674,25 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public EstatusOrden estatus_orden {
+        public EstadoOrden estado_orden {
             get {
-                return this.estatus_ordenField;
+                return this.estado_ordenField;
             }
             set {
-                this.estatus_ordenField = value;
-                this.RaisePropertyChanged("estatus_orden");
+                this.estado_ordenField = value;
+                this.RaisePropertyChanged("estado_orden");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool estatus_ordenSpecified {
+        public bool estado_ordenSpecified {
             get {
-                return this.estatus_ordenFieldSpecified;
+                return this.estado_ordenFieldSpecified;
             }
             set {
-                this.estatus_ordenFieldSpecified = value;
-                this.RaisePropertyChanged("estatus_ordenSpecified");
+                this.estado_ordenFieldSpecified = value;
+                this.RaisePropertyChanged("estado_ordenSpecified");
             }
         }
         
@@ -1749,13 +1749,13 @@ namespace B2CTouresBalon.ServiceProxyB2C {
     public partial class ConsultaTop5ProductosRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.touresbalon.com/ServiceProxyB2C/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string id_producto;
+        [System.Xml.Serialization.XmlElementAttribute("id_producto", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string[] id_producto;
         
         public ConsultaTop5ProductosRequest() {
         }
         
-        public ConsultaTop5ProductosRequest(string id_producto) {
+        public ConsultaTop5ProductosRequest(string[] id_producto) {
             this.id_producto = id_producto;
         }
     }
@@ -2379,7 +2379,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
             inValue.nombre = nombre;
             inValue.descripcion = descripcion;
             B2CTouresBalon.ServiceProxyB2C.ConsultarProductoResponse retVal = ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).ConsultarProducto(inValue);
-            return retVal.Productos;
+            return retVal.productos;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -2405,7 +2405,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         public B2CTouresBalon.ServiceProxyB2C.Producto[] EndConsultarProducto(System.IAsyncResult result) {
             B2CTouresBalon.ServiceProxyB2C.ConsultarProductoResponse retVal = ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).EndConsultarProducto(result);
-            return retVal.Productos;
+            return retVal.productos;
         }
         
         private System.IAsyncResult OnBeginConsultarProducto(object[] inValues, System.AsyncCallback callback, object asyncState) {
@@ -2735,7 +2735,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
             return base.Channel.ConsultaTop5Productos(request);
         }
         
-        public B2CTouresBalon.ServiceProxyB2C.Producto[] ConsultaTop5Productos(string id_producto) {
+        public B2CTouresBalon.ServiceProxyB2C.Producto[] ConsultaTop5Productos(string[] id_producto) {
             B2CTouresBalon.ServiceProxyB2C.ConsultaTop5ProductosRequest inValue = new B2CTouresBalon.ServiceProxyB2C.ConsultaTop5ProductosRequest();
             inValue.id_producto = id_producto;
             B2CTouresBalon.ServiceProxyB2C.ConsultaTop5ProductosResponse retVal = ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).ConsultaTop5Productos(inValue);
@@ -2748,7 +2748,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginConsultaTop5Productos(string id_producto, System.AsyncCallback callback, object asyncState) {
+        public System.IAsyncResult BeginConsultaTop5Productos(string[] id_producto, System.AsyncCallback callback, object asyncState) {
             B2CTouresBalon.ServiceProxyB2C.ConsultaTop5ProductosRequest inValue = new B2CTouresBalon.ServiceProxyB2C.ConsultaTop5ProductosRequest();
             inValue.id_producto = id_producto;
             return ((B2CTouresBalon.ServiceProxyB2C.ServiceProxyB2C)(this)).BeginConsultaTop5Productos(inValue, callback, asyncState);
@@ -2766,7 +2766,7 @@ namespace B2CTouresBalon.ServiceProxyB2C {
         }
         
         private System.IAsyncResult OnBeginConsultaTop5Productos(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            string id_producto = ((string)(inValues[0]));
+            string[] id_producto = ((string[])(inValues[0]));
             return this.BeginConsultaTop5Productos(id_producto, callback, asyncState);
         }
         
@@ -2783,11 +2783,11 @@ namespace B2CTouresBalon.ServiceProxyB2C {
             }
         }
         
-        public void ConsultaTop5ProductosAsync(string id_producto) {
+        public void ConsultaTop5ProductosAsync(string[] id_producto) {
             this.ConsultaTop5ProductosAsync(id_producto, null);
         }
         
-        public void ConsultaTop5ProductosAsync(string id_producto, object userState) {
+        public void ConsultaTop5ProductosAsync(string[] id_producto, object userState) {
             if ((this.onBeginConsultaTop5ProductosDelegate == null)) {
                 this.onBeginConsultaTop5ProductosDelegate = new BeginOperationDelegate(this.OnBeginConsultaTop5Productos);
             }

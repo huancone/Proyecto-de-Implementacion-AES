@@ -5,12 +5,18 @@
         @Html.AntiForgeryToken()
 
         <ul class="nav navbar-nav navbar-right">
-            
             <li>
                 @Html.ActionLink("Hello " + User.FirstName + "!", "Details", "Customer", new { id = (int)(User.CustId)}, null)
             </li>
-            <li>@Html.ActionLink("Mis Ordenes", "Index", "Orden") </li>
-            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+            <li>
+                @Html.ActionLink("Mis Ordenes", "Index", "Orden")
+            </li>
+            <li>
+                @Html.ActionLink("Carrito de Compra", "Index", "ShoppingCart")
+            </li>
+            <li>
+                <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+            </li>
         </ul>
     }
 }
