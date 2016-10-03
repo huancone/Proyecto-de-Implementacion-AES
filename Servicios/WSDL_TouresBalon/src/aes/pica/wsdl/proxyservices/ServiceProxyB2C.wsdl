@@ -243,6 +243,7 @@
 					<xsd:enumeration value="DESCRIPCION"></xsd:enumeration>
 					<xsd:enumeration value="ID"></xsd:enumeration>
 					<xsd:enumeration value="NOMBRE"></xsd:enumeration>
+					<xsd:enumeration value="ESPECTACULO"></xsd:enumeration>
 				</xsd:restriction>
 			</xsd:simpleType>
 			<xsd:complexType name="TarifaValores">
