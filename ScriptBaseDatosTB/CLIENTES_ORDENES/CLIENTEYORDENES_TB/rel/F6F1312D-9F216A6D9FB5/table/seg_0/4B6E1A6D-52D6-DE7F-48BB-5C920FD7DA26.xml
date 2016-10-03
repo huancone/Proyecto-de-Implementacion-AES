@@ -130,5 +130,15 @@
 <colUsage columnID="3EE05350-29B7-8C75-8EA4-4FFB7976A6F9"/>
 </indexColumnUsage>
 </ind_PK_UK>
+<ind_PK_UK id="5E0149B1-2ADB-2B48-621E-9ADBA364DF19" name="EMAIL__UN">
+<createdBy>huan</createdBy>
+<createdTime>2016-10-03 01:40:49 UTC</createdTime>
+<ownerDesignName>CLIENTEYORDENES_TB</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E6F60467-9FEE-B63F-26A4-A217F4C794DC"/>
+</indexColumnUsage>
+</ind_PK_UK>
 </indexes>
 </Table>
