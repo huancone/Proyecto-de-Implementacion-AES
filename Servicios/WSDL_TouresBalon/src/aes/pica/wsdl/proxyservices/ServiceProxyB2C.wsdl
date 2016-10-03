@@ -73,22 +73,16 @@
 					<xsd:sequence>
 						<xsd:element name="tipo_consulta" maxOccurs="1"
 							minOccurs="1" type="tb_b2:TipoConsultaProducto">
-						</xsd:element>
-						<xsd:element name="codigo" type="xsd:string"
-							maxOccurs="1" minOccurs="0">
-						</xsd:element>
-						<xsd:element name="nombre" type="xsd:string"
-							maxOccurs="1" minOccurs="0">
-						</xsd:element>
-						<xsd:element name="descripcion" type="xsd:string"
-							maxOccurs="1" minOccurs="0">
+						</xsd:element>
+						<xsd:element name="cadena_consulta" type="xsd:string"
+							maxOccurs="1" minOccurs="1">
 						</xsd:element>
 					</xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>
 			<xsd:element name="ConsultarProductoResponse">
 				<xsd:complexType>
-					<xsd:sequence><xsd:element name="campanias" type="tb_b2:Campania" maxOccurs="unbounded" minOccurs="0">
+					<xsd:sequence><xsd:element name="productos" type="tb_b2:Producto" maxOccurs="unbounded" minOccurs="0">
 					</xsd:element></xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>
@@ -101,14 +95,14 @@
 			<xsd:element name="ConsultarCampaniaProductoResponse">
 				<xsd:complexType>
                     <xsd:sequence>
-						<xsd:element name="Productos" type="tb_b2:Producto" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+						<xsd:element name="productos" type="tb_b2:Producto" maxOccurs="unbounded" minOccurs="0"></xsd:element>
 					</xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>
 			<xsd:element name="ConsultarClientesOrdenes">
 				<xsd:complexType>
 					<xsd:sequence>
-						<xsd:element name="id_cliente" type="xsd:string"
+						<xsd:element name="id_cliente" type="xsd:int"
 							maxOccurs="1" minOccurs="1" />
 					</xsd:sequence>
 				</xsd:complexType>
@@ -121,7 +115,7 @@
 			<xsd:element name="CancelarOrdenes">
 				<xsd:complexType>
 					<xsd:sequence>
-						<xsd:element name="id_orden" type="xsd:string" maxOccurs="unbounded" minOccurs="1"></xsd:element>
+						<xsd:element name="id_orden" type="xsd:int" maxOccurs="unbounded" minOccurs="1"></xsd:element>
 					</xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>
@@ -162,71 +156,100 @@
 			</xsd:complexType>
 			<xsd:complexType name="Direccion">
 				<xsd:sequence>
-					<xsd:element name="pais" type="xsd:string" maxOccurs="1"
-						minOccurs="0"></xsd:element>
-					<xsd:element name="ciudad" type="xsd:string" maxOccurs="1"
-						minOccurs="0"></xsd:element>
-					<xsd:element name="estado" type="xsd:string" maxOccurs="1"
-						minOccurs="0"></xsd:element>
+					<xsd:element name="id_direccion" type="xsd:int" maxOccurs="1" minOccurs="0"></xsd:element>
+					<xsd:element name="pais" type="xsd:string"
+						maxOccurs="1" minOccurs="0">
+					</xsd:element>
+					<xsd:element name="ciudad" type="xsd:string"
+						maxOccurs="1" minOccurs="0">
+					</xsd:element>
+					<xsd:element name="estado" type="xsd:string"
+						maxOccurs="1" minOccurs="0">
+					</xsd:element>
 					<xsd:element name="cod_postal" type="xsd:string"
-						maxOccurs="1" minOccurs="0"></xsd:element>
+						maxOccurs="1" minOccurs="0">
+					</xsd:element>
 					<xsd:element name="tipo_dir" type="xsd:string"
-						maxOccurs="1" minOccurs="0"></xsd:element>
+						maxOccurs="1" minOccurs="0">
+					</xsd:element>
 					<xsd:element name="dir_calle" type="xsd:string"
-						maxOccurs="1" minOccurs="0"></xsd:element>
+						maxOccurs="1" minOccurs="0">
+					</xsd:element>
 				</xsd:sequence>
 			</xsd:complexType>
 			<xsd:complexType name="Cliente">
 				<xsd:sequence>
+					<xsd:element name="id_cliente" type="xsd:int" maxOccurs="1" minOccurs="0"></xsd:element>
 					<xsd:element name="nombres" type="xsd:string"
-						maxOccurs="1" minOccurs="1"></xsd:element>
+						maxOccurs="1" minOccurs="1">
+					</xsd:element>
 					<xsd:element name="apellidos" type="xsd:string"
-						maxOccurs="1" minOccurs="1"></xsd:element>
+						maxOccurs="1" minOccurs="1">
+					</xsd:element>
 					<xsd:element name="num_tel" type="xsd:string"
-						maxOccurs="1" minOccurs="0"></xsd:element>
-					<xsd:element name="email" type="xsd:string" maxOccurs="1"
-						minOccurs="1"></xsd:element>
+						maxOccurs="1" minOccurs="0">
+					</xsd:element>
+					<xsd:element name="email" type="xsd:string"
+						maxOccurs="1" minOccurs="1">
+					</xsd:element>
 					<xsd:element name="contrasenia" type="xsd:string"
-						maxOccurs="1" minOccurs="1"></xsd:element>
+						maxOccurs="1" minOccurs="1">
+					</xsd:element>
 					<xsd:element name="tipo_tarjeta" type="xsd:string"
-						maxOccurs="1" minOccurs="0"></xsd:element>
+						maxOccurs="1" minOccurs="0">
+					</xsd:element>
 					<xsd:element name="numero_tarjeta" type="xsd:string"
-						maxOccurs="1" minOccurs="0"></xsd:element>
+						maxOccurs="1" minOccurs="0">
+					</xsd:element>
 					<xsd:element name="direccion" type="tb_b2:Direccion"
-						maxOccurs="unbounded" minOccurs="0"></xsd:element>
+						maxOccurs="unbounded" minOccurs="0">
+					</xsd:element>
 				</xsd:sequence>
 			</xsd:complexType>
 			<xsd:complexType name="Item">
 				<xsd:sequence>
-					<xsd:element name="id_item" type="xsd:string"
-						maxOccurs="1" minOccurs="1"></xsd:element>
-					<xsd:element name="id_prod" type="xsd:int" maxOccurs="1"
-						minOccurs="1"></xsd:element>
+					<xsd:element name="id_item" type="xsd:int"
+						maxOccurs="1" minOccurs="1">
+					</xsd:element>
+					<xsd:element name="id_prod" type="xsd:int"
+						maxOccurs="1" minOccurs="1">
+					</xsd:element>
 					<xsd:element name="nombre_prod" type="xsd:string"
-						maxOccurs="1" minOccurs="1"></xsd:element>
+						maxOccurs="1" minOccurs="1">
+					</xsd:element>
 					<xsd:element name="part_num" type="xsd:string"
-						maxOccurs="1" minOccurs="0"></xsd:element>
-					<xsd:element name="precio" type="xsd:double" maxOccurs="1"
-						minOccurs="1"></xsd:element>
-					<xsd:element name="cantidad" type="xsd:int" maxOccurs="1"
-						minOccurs="1"></xsd:element>
+						maxOccurs="1" minOccurs="0">
+					</xsd:element>
+					<xsd:element name="precio" type="xsd:double"
+						maxOccurs="1" minOccurs="1">
+					</xsd:element>
+					<xsd:element name="cantidad" type="xsd:int"
+						maxOccurs="1" minOccurs="1">
+					</xsd:element>
+					<xsd:element name="id_orden" type="xsd:int" maxOccurs="1" minOccurs="0"></xsd:element>
 				</xsd:sequence>
 			</xsd:complexType>
 			<xsd:complexType name="Orden">
 				<xsd:sequence>
-					<xsd:element name="id_orden" type="xsd:string"
-						maxOccurs="1" minOccurs="0"></xsd:element>
-					<xsd:element name="fecha_orden" type="xsd:dateTime"
-						maxOccurs="1" minOccurs="1"></xsd:element>
-					<xsd:element name="precio" type="xsd:double" maxOccurs="1"
-						minOccurs="1"></xsd:element>
-					<xsd:element name="estatus" type="tb_b2:EstatusOrden"
+					<xsd:element name="id_cliente" type="xsd:int" maxOccurs="1" minOccurs="1"></xsd:element>
+					<xsd:element name="id_orden" type="xsd:int"
 						maxOccurs="1" minOccurs="0">
 					</xsd:element>
+					<xsd:element name="fecha_orden" type="xsd:dateTime"
+						maxOccurs="1" minOccurs="1">
+					</xsd:element>
+					<xsd:element name="precio" type="xsd:double"
+						maxOccurs="1" minOccurs="1">
+					</xsd:element>
+					<xsd:element name="estatus"
+						type="tb_b2:EstatusOrden" maxOccurs="1" minOccurs="0">
+					</xsd:element>
 					<xsd:element name="comentarios" type="xsd:string"
-						maxOccurs="unbounded" minOccurs="0"></xsd:element>
-					<xsd:element name="item" type="tb_b2:Item" maxOccurs="unbounded"
-						minOccurs="0"></xsd:element>
+						maxOccurs="unbounded" minOccurs="0">
+					</xsd:element>
+					<xsd:element name="item" type="tb_b2:Item"
+						maxOccurs="unbounded" minOccurs="0">
+					</xsd:element>
 				</xsd:sequence>
 			</xsd:complexType>
 			<xsd:simpleType name="EstatusOrden">
@@ -242,7 +265,7 @@
 				<xsd:restriction base="xsd:string">
 					<xsd:enumeration value="DESCRIPCION"></xsd:enumeration>
 					<xsd:enumeration value="ID"></xsd:enumeration>
-					<xsd:enumeration value="NOMBRE"></xsd:enumeration>
+					<xsd:enumeration value="NOMBRE"></xsd:enumeration>
 				</xsd:restriction>
 			</xsd:simpleType>
 			<xsd:complexType name="TarifaValores">
@@ -257,35 +280,44 @@
 			</xsd:complexType>
 			<xsd:complexType name="Ciudad">
 				<xsd:sequence>
-					<xsd:element name="id_ciudad" type="xsd:int"></xsd:element>
-					<xsd:element name="pais" type="xsd:string"></xsd:element>
-					<xsd:element name="tipo_ciudad" type="tb_b2:TarifaValores"></xsd:element>
+					<xsd:element name="id_ciudad" type="xsd:int" maxOccurs="1" minOccurs="0"></xsd:element>
+					<xsd:element name="pais" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+					<xsd:element name="tipo_ciudad" type="tb_b2:TarifaValores" maxOccurs="unbounded" minOccurs="0"></xsd:element>
 				</xsd:sequence>
 			</xsd:complexType>
 			<xsd:complexType name="Producto">
 				<xsd:sequence>
 					<xsd:element name="id_producto" type="xsd:int"
-						maxOccurs="1" minOccurs="1"></xsd:element>
+						maxOccurs="1" minOccurs="1">
+					</xsd:element>
 					<xsd:element name="espectaculo" type="xsd:string"
-						maxOccurs="1" minOccurs="1"></xsd:element>
-					<xsd:element name="ciudad_espectaculo" type="tb_b2:Ciudad"
 						maxOccurs="1" minOccurs="1">
 					</xsd:element>
-					<xsd:element name="fecha_llegada" type="xsd:dateTime"
-						maxOccurs="1" minOccurs="0"></xsd:element>
+					<xsd:element name="descripcion" type="xsd:string"
+						maxOccurs="1" minOccurs="1">
+					</xsd:element>
+					<xsd:element name="ciudad_espectaculo"
+						type="tb_b2:Ciudad" maxOccurs="1" minOccurs="1">
+					</xsd:element>
+					<xsd:element name="fecha_llegada"
+						type="xsd:dateTime" maxOccurs="1" minOccurs="0">
+					</xsd:element>
 					<xsd:element name="fecha_salida" type="xsd:dateTime"
-						maxOccurs="1" minOccurs="0"></xsd:element>
-					<xsd:element name="tipo_transporte" type="tb_b2:TarifaValores"
 						maxOccurs="1" minOccurs="0">
 					</xsd:element>
-					<xsd:element name="tipo_espectaculo" type="tb_b2:TarifaValores"
-						maxOccurs="1" minOccurs="1">
+					<xsd:element name="fecha_espectaculo" type="xsd:dateTime" maxOccurs="1" minOccurs="0"></xsd:element>
+					<xsd:element name="tipo_transporte"
+						type="tb_b2:TarifaValores" maxOccurs="1" minOccurs="0">
 					</xsd:element>
-					<xsd:element name="tipo_hospedaje" type="tb_b2:TarifaValores"
-						maxOccurs="1" minOccurs="0">
+					<xsd:element name="tipo_espectaculo"
+						type="tb_b2:TarifaValores" maxOccurs="1" minOccurs="1">
 					</xsd:element>
-					<xsd:element name="imagen_producto" type="xsd:string"
-						maxOccurs="1" minOccurs="0"></xsd:element>
+					<xsd:element name="tipo_hospedaje"
+						type="tb_b2:TarifaValores" maxOccurs="1" minOccurs="0">
+					</xsd:element>
+					<xsd:element name="imagen_producto"
+						type="xsd:string" maxOccurs="1" minOccurs="0">
+					</xsd:element>
 				</xsd:sequence>
 			</xsd:complexType>
 		
@@ -294,7 +326,7 @@
 					<xsd:element name="respuesta"
 						type="tb_b2:RespuestaGenerica" maxOccurs="1" minOccurs="1">
 					</xsd:element>
-					<xsd:element name="id_cliente" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+					<xsd:element name="id_cliente" type="xsd:int" maxOccurs="1" minOccurs="0"></xsd:element>
 				</xsd:sequence>
 			</xsd:complexType>
 		
@@ -399,7 +431,7 @@
 					<xsd:element name="tipo_consulta"
 						type="tb_b2:TipoConsultaOrden" maxOccurs="1" minOccurs="1">
 					</xsd:element>
-					<xsd:element name="codigo" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+					<xsd:element name="codigo" type="xsd:int" maxOccurs="1" minOccurs="1"></xsd:element>
 				</xsd:sequence>
 			</xsd:complexType>
 		
@@ -408,7 +440,7 @@
 					<xsd:element name="ordenes_cerradas"
 						type="xsd:int" maxOccurs="1" minOccurs="1">
 					</xsd:element>
-					<xsd:element name="total_mes" type="xsd:double" maxOccurs="1" minOccurs="1"></xsd:element>
+					<xsd:element name="total" type="xsd:double" maxOccurs="1" minOccurs="1"></xsd:element>
 				</xsd:sequence>
 			</xsd:complexType>
 		
@@ -459,8 +491,13 @@
 		
             <xsd:complexType name="CrearOrdenResponse">
             	<xsd:sequence>
-            		<xsd:element name="id_orden" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
-            		<xsd:element name="estatus_orden" type="tb_b2:EstatusOrden" maxOccurs="1" minOccurs="0"></xsd:element>
+                    <xsd:element name="respuesta" type="tb_b2:RespuestaGenerica" maxOccurs="1" minOccurs="1"></xsd:element>
+                    <xsd:element name="id_orden" type="xsd:int"
+            			maxOccurs="1" minOccurs="0">
+            		</xsd:element>
+            		<xsd:element name="estatus_orden"
+            			type="tb_b2:EstatusOrden" maxOccurs="1" minOccurs="0">
+            		</xsd:element>
             	</xsd:sequence>
             </xsd:complexType>
 		</xsd:schema>
@@ -609,135 +646,176 @@
 	</wsdl:portType>
 	<wsdl:binding name="ServiceProxyB2CSOAP"
 		type="tb_b2:ServiceProxyB2C">
+
 		<soap:binding style="document"
 			transport="http://schemas.xmlsoap.org/soap/http" />
 		<wsdl:operation name="RegistrarCliente">
+
 			<soap:operation
 				soapAction="http://www.touresbalon.com/ServiceProxyB2C/RegistrarCliente" />
 			<wsdl:input>
+
 				<soap:body use="literal" />
 			</wsdl:input>
 			<wsdl:output>
+
 				<soap:body use="literal" />
 			</wsdl:output>
 			<wsdl:fault name="fault">
+
 				<soap:fault use="literal" name="fault" />
-			</wsdl:fault>			
+			</wsdl:fault>
 		</wsdl:operation>
 		<wsdl:operation name="AutenticarCliente">
+
 			<soap:operation
 				soapAction="http://www.touresbalon.com/ServiceProxyB2C/AutenticarCliente" />
 			<wsdl:input>
+
 				<soap:body use="literal" />
 			</wsdl:input>
 			<wsdl:output>
+
 				<soap:body use="literal" />
 			</wsdl:output>
 			<wsdl:fault name="fault">
+
 				<soap:fault use="literal" name="fault" />
-			</wsdl:fault>			
+			</wsdl:fault>
 		</wsdl:operation>
 		<wsdl:operation name="ActualizarCliente">
+
 			<soap:operation
 				soapAction="http://www.touresbalon.com/ServiceProxyB2C/ActualizarCliente" />
 			<wsdl:input>
+
 				<soap:body use="literal" />
 			</wsdl:input>
 			<wsdl:output>
+
 				<soap:body use="literal" />
 			</wsdl:output>
 			<wsdl:fault name="fault">
+
 				<soap:fault use="literal" name="fault" />
-			</wsdl:fault>			
+			</wsdl:fault>
 		</wsdl:operation>
 		<wsdl:operation name="ActualizarContraseniaCliente">
+
 			<soap:operation
 				soapAction="http://www.touresbalon.com/ServiceProxyB2C/ActualizarContraseniaCliente" />
 			<wsdl:input>
+
 				<soap:body use="literal" />
 			</wsdl:input>
 			<wsdl:output>
+
 				<soap:body use="literal" />
 			</wsdl:output>
 			<wsdl:fault name="fault">
+
 				<soap:fault use="literal" name="fault" />
-			</wsdl:fault>			
+			</wsdl:fault>
 		</wsdl:operation>
 		<wsdl:operation name="ConsultarProducto">
+
 			<soap:operation
 				soapAction="http://www.touresbalon.com/ServiceProxyB2C/ConsultarProducto" />
 			<wsdl:input>
+
 				<soap:body use="literal" />
 			</wsdl:input>
 			<wsdl:output>
+
 				<soap:body use="literal" />
 			</wsdl:output>
 			<wsdl:fault name="fault">
+
 				<soap:fault use="literal" name="fault" />
-			</wsdl:fault>			
+			</wsdl:fault>
 		</wsdl:operation>
 		<wsdl:operation name="ConsultarCampaniaProducto">
+
 			<soap:operation
 				soapAction="http://www.touresbalon.com/ServiceProxyB2C/ConsultarCampaniaProducto" />
 			<wsdl:input>
+
 				<soap:body use="literal" />
 			</wsdl:input>
 			<wsdl:output>
+
 				<soap:body use="literal" />
 			</wsdl:output>
 			<wsdl:fault name="fault">
+
 				<soap:fault use="literal" name="fault" />
-			</wsdl:fault>			
+			</wsdl:fault>
 		</wsdl:operation>
 		<wsdl:operation name="ConsultarClientesOrdenes">
+
 			<soap:operation
 				soapAction="http://www.touresbalon.com/ServiceProxyB2C/ConsultarClientesOrdenes" />
 			<wsdl:input>
+
 				<soap:body use="literal" />
 			</wsdl:input>
 			<wsdl:output>
+
 				<soap:body use="literal" />
 			</wsdl:output>
 			<wsdl:fault name="fault">
+
 				<soap:fault use="literal" name="fault" />
-			</wsdl:fault>			
+			</wsdl:fault>
 		</wsdl:operation>
 		<wsdl:operation name="CancelarOrdenes">
+
 			<soap:operation
 				soapAction="http://www.touresbalon.com/ServiceProxyB2C/CancelarOrdenes" />
 			<wsdl:input>
+
 				<soap:body use="literal" />
 			</wsdl:input>
 			<wsdl:output>
+
 				<soap:body use="literal" />
 			</wsdl:output>
 			<wsdl:fault name="fault">
+
 				<soap:fault use="literal" name="fault" />
-			</wsdl:fault>			
+			</wsdl:fault>
 		</wsdl:operation>
 		<wsdl:operation name="CrearOrdenes">
+
 			<soap:operation
 				soapAction="http://www.touresbalon.com/ServiceProxyB2C/CrearOrdenes" />
 			<wsdl:input>
+
 				<soap:body use="literal" />
 			</wsdl:input>
 			<wsdl:output>
+
 				<soap:body use="literal" />
 			</wsdl:output>
 			<wsdl:fault name="fault">
+
 				<soap:fault use="literal" name="fault" />
-			</wsdl:fault>			
+			</wsdl:fault>
 		</wsdl:operation>
 		<wsdl:operation name="ConsultaTop5Productos">
+
 			<soap:operation
 				soapAction="http://www.touresbalon.com/ServiceProxyB2C/ConsultaTop5Productos" />
 			<wsdl:input>
+
 				<soap:body use="literal" />
 			</wsdl:input>
 			<wsdl:output>
+
 				<soap:body use="literal" />
 			</wsdl:output>
 			<wsdl:fault name="fault">
+
 				<soap:fault use="literal" name="fault" />
 			</wsdl:fault>
 		</wsdl:operation>
