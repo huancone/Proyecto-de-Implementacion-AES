@@ -1,7 +1,8 @@
 package aes.pica.touresbalon.touresbalonproductosws.entidades.clientesyordenes;
-// Generated 24-sep-2016 17:15:13 by Hibernate Tools 4.3.1
+// Generated 3/10/2016 10:30:09 PM by Hibernate Tools 4.3.1
 
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 

@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="respuesta" type="{http://www.touresbalon.com/ClientesTouresBalon/}RespuestaGenerica"/>
- *         &lt;element name="id_cliente" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="id_cliente" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -37,7 +37,7 @@ public class RegistrarClienteReponseType {
     @XmlElement(required = true)
     protected RespuestaGenerica respuesta;
     @XmlElement(name = "id_cliente")
-    protected String idCliente;
+    protected Integer idCliente;
 
     /**
      * Obtiene el valor de la propiedad respuesta.
@@ -68,10 +68,10 @@ public class RegistrarClienteReponseType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link Integer }
      *     
      */
-    public String getIdCliente() {
+    public Integer getIdCliente() {
         return idCliente;
     }
 
@@ -80,10 +80,10 @@ public class RegistrarClienteReponseType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link Integer }
      *     
      */
-    public void setIdCliente(String value) {
+    public void setIdCliente(Integer value) {
         this.idCliente = value;
     }
 

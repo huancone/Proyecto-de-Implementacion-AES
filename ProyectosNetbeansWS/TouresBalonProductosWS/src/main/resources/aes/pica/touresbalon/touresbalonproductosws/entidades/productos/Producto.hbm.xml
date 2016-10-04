@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 24-sep-2016 13:11:22 by Hibernate Tools 4.3.1 -->
+<!-- Generated 3/10/2016 11:01:42 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto" table="PRODUCTO" schema="dbo" catalog="TB_PRODUCTOS" optimistic-lock="version">
         <id name="idProducto" type="int">
@@ -22,8 +22,11 @@
         <many-to-one name="tarifaTransporte" class="aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaTransporte" fetch="select">
             <column name="id_transporte" />
         </many-to-one>
-        <property name="nombreProducto" type="string">
-            <column name="nombre_producto" length="100" />
+        <property name="espectaculo" type="string">
+            <column name="espectaculo" length="100" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" />
         </property>
         <property name="fechaSalida" type="timestamp">
             <column name="fecha_salida" length="23" />

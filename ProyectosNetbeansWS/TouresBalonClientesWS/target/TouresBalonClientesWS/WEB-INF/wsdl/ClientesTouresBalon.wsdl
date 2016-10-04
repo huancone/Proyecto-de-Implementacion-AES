@@ -21,8 +21,9 @@
       </xsd:element>
     
       <xsd:complexType name="Cliente">
-      	<xsd:sequence>
-      		<xsd:element name="nombres" type="xsd:string"
+      	<xsd:sequence>
+                    <xsd:element name="id_cliente" type="xsd:int" maxOccurs="1" minOccurs="0"></xsd:element>
+                    <xsd:element name="nombres" type="xsd:string"
       			maxOccurs="1" minOccurs="1">
       		</xsd:element>
       		<xsd:element name="apellidos" type="xsd:string"
@@ -51,12 +52,25 @@
     
       <xsd:complexType name="Direccion">
       	<xsd:sequence>
-      		<xsd:element name="pais" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
-      		<xsd:element name="ciudad" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
-      		<xsd:element name="estado" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
-      		<xsd:element name="cod_postal" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
-      		<xsd:element name="tipo_dir" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
-      		<xsd:element name="dir_calle" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      		<xsd:element name="id_direccion" type="xsd:int" maxOccurs="1" minOccurs="0"></xsd:element>
+      		<xsd:element name="pais" type="xsd:string" maxOccurs="1"
+      			minOccurs="0">
+      		</xsd:element>
+      		<xsd:element name="ciudad" type="xsd:string" maxOccurs="1"
+      			minOccurs="0">
+      		</xsd:element>
+      		<xsd:element name="estado" type="xsd:string" maxOccurs="1"
+      			minOccurs="0">
+      		</xsd:element>
+      		<xsd:element name="cod_postal" type="xsd:string"
+      			maxOccurs="1" minOccurs="0">
+      		</xsd:element>
+      		<xsd:element name="tipo_dir" type="xsd:string"
+      			maxOccurs="1" minOccurs="0">
+      		</xsd:element>
+      		<xsd:element name="dir_calle" type="xsd:string"
+      			maxOccurs="1" minOccurs="0">
+      		</xsd:element>
       	</xsd:sequence>
       </xsd:complexType>
     
@@ -127,7 +141,7 @@
       <xsd:element name="ActualizarEstatusCliente">
       	<xsd:complexType>
       		<xsd:sequence>
-      			<xsd:element name="id_cliente" type="xsd:string"
+      			<xsd:element name="id_cliente" type="xsd:int"
       				maxOccurs="1" minOccurs="1">
       			</xsd:element>
       			<xsd:element name="estatus" type="t:EstatusCliente" maxOccurs="1" minOccurs="1"></xsd:element>
@@ -137,7 +151,7 @@
       <xsd:element name="ActualizarEstatusClienteResponse">
       	<xsd:complexType>
                     <xsd:sequence>
-                    	<xsd:element name="respuesta" type="t:RespuestaGenerica" maxOccurs="1" minOccurs="0"></xsd:element>
+                    	<xsd:element name="respuesta" type="t:RespuestaGenerica" maxOccurs="1" minOccurs="1"></xsd:element>
                     </xsd:sequence>
                     
       	</xsd:complexType>
@@ -145,7 +159,7 @@
       <xsd:element name="ConsultarPorIdentificacionCliente">
       	<xsd:complexType>
       		<xsd:sequence>
-      			<xsd:element name="id_cliente" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      			<xsd:element name="id_cliente" type="xsd:int" maxOccurs="1" minOccurs="1"></xsd:element>
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
@@ -277,7 +291,7 @@
       		<xsd:element name="respuesta"
       			type="t:RespuestaGenerica" maxOccurs="1" minOccurs="1">
       		</xsd:element>
-      		<xsd:element name="id_cliente" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      		<xsd:element name="id_cliente" type="xsd:int" maxOccurs="1" minOccurs="0"></xsd:element>
       	</xsd:sequence>
       </xsd:complexType>
     </xsd:schema>
@@ -398,109 +412,142 @@
   </wsdl:portType>
   <wsdl:binding name="ClientesTouresBalonSOAP"
   	type="t:ClientesTouresBalon">
+
   	<soap:binding style="document"
   		transport="http://schemas.xmlsoap.org/soap/http" />
   	<wsdl:operation name="RegistrarCliente">
+
   		<soap:operation
   			soapAction="http://www.touresbalon.com/ClientesTouresBalon/RegistrarCliente" />
   		<wsdl:input>
+
   			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
+
   			<soap:body use="literal" />
   		</wsdl:output>
   		<wsdl:fault name="fault">
+
   			<soap:fault use="literal" name="fault" />
   		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="AutenticarCliente">
+
   		<soap:operation
   			soapAction="http://www.touresbalon.com/ClientesTouresBalon/AutenticarCliente" />
   		<wsdl:input>
+
   			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
+
   			<soap:body use="literal" />
   		</wsdl:output>
   		<wsdl:fault name="fault">
+
   			<soap:fault use="literal" name="fault" />
   		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="ActualizarCliente">
+
   		<soap:operation
   			soapAction="http://www.touresbalon.com/ClientesTouresBalon/ActualizarCliente" />
   		<wsdl:input>
+
   			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
+
   			<soap:body use="literal" />
   		</wsdl:output>
   		<wsdl:fault name="fault">
+
   			<soap:fault use="literal" name="fault" />
   		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="ActualizarContraseniaCliente">
+
   		<soap:operation
   			soapAction="http://www.touresbalon.com/ClientesTouresBalon/ActualizarContraseniaCliente" />
   		<wsdl:input>
+
   			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
+
   			<soap:body use="literal" />
   		</wsdl:output>
   		<wsdl:fault name="fault">
+
   			<soap:fault use="literal" name="fault" />
   		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="ActualizarEstatusCliente">
+
   		<soap:operation
   			soapAction="http://www.touresbalon.com/ClientesTouresBalon/ActualizarEstatusCliente" />
   		<wsdl:input>
+
   			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
+
   			<soap:body use="literal" />
   		</wsdl:output>
   		<wsdl:fault name="fault">
+
   			<soap:fault use="literal" name="fault" />
   		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="ConsultarPorIdentificacionCliente">
+
   		<soap:operation
   			soapAction="http://www.touresbalon.com/ClientesTouresBalon/ConsultarPorIdentificacionCliente" />
   		<wsdl:input>
+
   			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
+
   			<soap:body use="literal" />
   		</wsdl:output>
   		<wsdl:fault name="fault">
+
   			<soap:fault use="literal" name="fault" />
   		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="ConsultarPorProductoCliente">
+
   		<soap:operation
   			soapAction="http://www.touresbalon.com/ClientesTouresBalon/ConsultarPorProductoCliente" />
   		<wsdl:input>
+
   			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
+
   			<soap:body use="literal" />
   		</wsdl:output>
   		<wsdl:fault name="fault">
+
   			<soap:fault use="literal" name="fault" />
   		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="ConsultarPorFactRangoCliente">
+
   		<soap:operation
   			soapAction="http://www.touresbalon.com/ClientesTouresBalon/ConsultarPorFactRangoCliente" />
   		<wsdl:input>
+
   			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
+
   			<soap:body use="literal" />
   		</wsdl:output>
   		<wsdl:fault name="fault">
+
   			<soap:fault use="literal" name="fault" />
   		</wsdl:fault>
   	</wsdl:operation>

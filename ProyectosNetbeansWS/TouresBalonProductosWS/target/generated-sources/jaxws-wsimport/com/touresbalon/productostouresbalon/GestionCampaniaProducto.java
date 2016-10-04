@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="tipo_operacion" type="{http://www.touresbalon.com/ProductosTouresBalon/}TipoConsultaProducto"/>
+ *         &lt;element name="tipo_operacion" type="{http://www.touresbalon.com/ProductosTouresBalon/}TipoAccion"/>
  *         &lt;element name="campania" type="{http://www.touresbalon.com/ProductosTouresBalon/}Campania" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -37,7 +37,7 @@ import javax.xml.bind.annotation.XmlType;
 public class GestionCampaniaProducto {
 
     @XmlElement(name = "tipo_operacion", required = true)
-    protected TipoConsultaProducto tipoOperacion;
+    protected TipoAccion tipoOperacion;
     protected Campania campania;
 
     /**
@@ -45,10 +45,10 @@ public class GestionCampaniaProducto {
      * 
      * @return
      *     possible object is
-     *     {@link TipoConsultaProducto }
+     *     {@link TipoAccion }
      *     
      */
-    public TipoConsultaProducto getTipoOperacion() {
+    public TipoAccion getTipoOperacion() {
         return tipoOperacion;
     }
 
@@ -57,10 +57,10 @@ public class GestionCampaniaProducto {
      * 
      * @param value
      *     allowed object is
-     *     {@link TipoConsultaProducto }
+     *     {@link TipoAccion }
      *     
      */
-    public void setTipoOperacion(TipoConsultaProducto value) {
+    public void setTipoOperacion(TipoAccion value) {
         this.tipoOperacion = value;
     }
 

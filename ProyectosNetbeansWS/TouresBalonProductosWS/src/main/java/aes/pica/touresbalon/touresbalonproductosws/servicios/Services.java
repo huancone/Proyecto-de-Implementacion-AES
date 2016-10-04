@@ -5,10 +5,6 @@
  */
 package aes.pica.touresbalon.touresbalonproductosws.servicios;
 
-import aes.pica.touresbalon.touresbalonproductosws.entidades.clientesyordenes.Address;
-import aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaCiudad;
-import aes.pica.touresbalon.touresbalonproductosws.util.ClientesyOrdenesHU;
-import aes.pica.touresbalon.touresbalonproductosws.util.ProductosHU;
 import com.touresbalon.productostouresbalon.ConsultaTop5ProductosFault_Exception;
 import com.touresbalon.productostouresbalon.ConsultarCampaniaProductoFault_Exception;
 import com.touresbalon.productostouresbalon.ConsultarPorEspectaculoProductoFault_Exception;
@@ -18,33 +14,28 @@ import com.touresbalon.productostouresbalon.ConsultarRankingFechaProductoFault_E
 import com.touresbalon.productostouresbalon.GestionCampaniaProductoFault_Exception;
 import com.touresbalon.productostouresbalon.GestionProductoFault_Exception;
 import com.touresbalon.productostouresbalon.GestionTarifaFault_Exception;
-import com.touresbalon.productostouresbalon.Producto;
-import java.math.BigDecimal;
-import java.util.List;
 import javax.jws.WebService;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 /**
  *
- * @author jdtrujillop
+ * @author braatz
  */
 @WebService(serviceName = "ProductosTouresBalon", portName = "ProductosTouresBalonSOAP", endpointInterface = "com.touresbalon.productostouresbalon.ProductosTouresBalon", targetNamespace = "http://www.touresbalon.com/ProductosTouresBalon/", wsdlLocation = "WEB-INF/wsdl/ProductosTouresBalon.wsdl")
-public class Servicios {
-
+public class Services {
+    
     //Variables globlales
     private Session sessionClientes;
     private Session sessionProductos;
     private Transaction tx;
 
-    public java.util.List<com.touresbalon.productostouresbalon.Producto> consultarProducto(com.touresbalon.productostouresbalon.TipoConsultaProducto tipoConsulta, java.lang.String codigo, java.lang.String nombre, java.lang.String descripcion) throws ConsultarProductoFault_Exception {
+    public java.util.List<com.touresbalon.productostouresbalon.Producto> consultarProducto(com.touresbalon.productostouresbalon.TipoConsultaProducto tipoConsulta, java.lang.String cadenaConsulta) throws ConsultarProductoFault_Exception {
         //TODO implement this method
-
         throw new UnsupportedOperationException("Not implemented yet.");
     }
 
-    public java.util.List<com.touresbalon.productostouresbalon.Campania> consultarCampaniaProducto() throws ConsultarCampaniaProductoFault_Exception {
+    public java.util.List<com.touresbalon.productostouresbalon.Producto> consultarCampaniaProducto() throws ConsultarCampaniaProductoFault_Exception {
         //TODO implement this method
         throw new UnsupportedOperationException("Not implemented yet.");
     }
@@ -64,40 +55,40 @@ public class Servicios {
         throw new UnsupportedOperationException("Not implemented yet.");
     }
 
-    public com.touresbalon.productostouresbalon.RespuestaGenerica gestionCampaniaProducto(com.touresbalon.productostouresbalon.TipoConsultaProducto tipoOperacion, com.touresbalon.productostouresbalon.Campania campania) throws GestionCampaniaProductoFault_Exception {
+    public com.touresbalon.productostouresbalon.TipoGestionCampaniaResponse gestionCampaniaProducto(com.touresbalon.productostouresbalon.TipoAccion tipoOperacion, com.touresbalon.productostouresbalon.Campania campania) throws GestionCampaniaProductoFault_Exception {
         //TODO implement this method
         throw new UnsupportedOperationException("Not implemented yet.");
     }
 
-    public java.lang.String gestionProducto(com.touresbalon.productostouresbalon.TipoConsultaProducto tipoOperacion, com.touresbalon.productostouresbalon.Producto producto) throws GestionProductoFault_Exception {
+    public com.touresbalon.productostouresbalon.TipoGestionProductoResponse gestionProducto(com.touresbalon.productostouresbalon.TipoAccion tipoOperacion, com.touresbalon.productostouresbalon.Producto producto) throws GestionProductoFault_Exception {
         //TODO implement this method
-        String res = "";
-        sessionClientes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
-        tx = sessionClientes.beginTransaction();
+//        String res = "";
+//        sessionClientes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
+//        tx = sessionClientes.beginTransaction();
 
-        Address addr = new Address();
-        addr.setZip("1010");
-        addr.setCity("bogota");
-        addr.setAddressType("calle");
-        addr.setCountry("Colombia");
+//        Address addr = new Address();
+//        addr.setZip("1010");
+//        addr.setCity("bogota");
+//        addr.setAddressType("calle");
+//        addr.setCountry("Colombia");
 
-        Integer id = (Integer) sessionClientes.save(addr);
-        res = "este es el id: " + id;
+//        Integer id = (Integer) sessionClientes.save(addr);
+//        res = "este es el id: " + id;
 
         //Query q = sessionClientes.
 //        Query q = sessionClientes.createQuery("from Address");
 //        List<Address> listAdd = q.list();
 //        res = "ORACLE: "+listAdd.size();
-        tx.commit();
-
-        sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
-        tx = sessionProductos.beginTransaction();
-        TarifaCiudad tc = new TarifaCiudad();
-        tc.setPrecio(BigDecimal.ZERO);
-        tc.setTipoCiudad("bogota");
-        id = (Integer) sessionProductos.save(tc);
-        res += " - SQLSERVER este es el id: "+id;
-        tx.commit();
+//        tx.commit();
+//
+//        sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
+//        tx = sessionProductos.beginTransaction();
+//        TarifaCiudad tc = new TarifaCiudad();
+//        tc.setPrecio(BigDecimal.ZERO);
+//        tc.setTipoCiudad("bogota");
+//        id = (Integer) sessionProductos.save(tc);
+//        res += " - SQLSERVER este es el id: "+id;
+//        tx.commit();
 //        sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
 //        tx = sessionProductos.beginTransaction();
 //        Query q = sessionProductos.createQuery("from TarifaCiudad");
@@ -131,18 +122,18 @@ public class Servicios {
 //        } else {
 //            res += "- no funciono SQL Server";
 //        }
-        return res;
-    }
-
-    public com.touresbalon.productostouresbalon.TipoGestionTarifaResponse gestionTarifa(com.touresbalon.productostouresbalon.TipoConsultaProducto tipoOperacion, com.touresbalon.productostouresbalon.TipoTarifa tipoTarifa, com.touresbalon.productostouresbalon.TarifaValores tarifa) throws GestionTarifaFault_Exception {
-        //TODO implement this method
-
+//        return res;
         throw new UnsupportedOperationException("Not implemented yet.");
     }
 
-    public java.util.List<com.touresbalon.productostouresbalon.Producto> consultaTop5Productos(java.util.List<java.lang.String> idProducto) throws ConsultaTop5ProductosFault_Exception {
+    public com.touresbalon.productostouresbalon.TipoGestionTarifaResponse gestionTarifa(com.touresbalon.productostouresbalon.TipoAccion tipoOperacion, com.touresbalon.productostouresbalon.TipoTarifa tipoTarifa, com.touresbalon.productostouresbalon.TarifaValores tarifa) throws GestionTarifaFault_Exception {
         //TODO implement this method
         throw new UnsupportedOperationException("Not implemented yet.");
     }
 
+    public java.util.List<com.touresbalon.productostouresbalon.Producto> consultaTop5Productos(java.util.List<java.lang.Integer> idProducto) throws ConsultaTop5ProductosFault_Exception {
+        //TODO implement this method
+        throw new UnsupportedOperationException("Not implemented yet.");
+    }
+    
 }

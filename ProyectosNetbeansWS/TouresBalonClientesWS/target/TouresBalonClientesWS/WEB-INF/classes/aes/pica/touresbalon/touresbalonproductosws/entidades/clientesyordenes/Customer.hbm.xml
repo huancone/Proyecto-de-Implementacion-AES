@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 24/09/2016 07:35:08 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 3/10/2016 09:51:17 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="aes.pica.touresbalon.touresbalonproductosws.entidades.clientesyordenes.Customer" table="CUSTOMER" schema="TOURESBALON">
+    <class name="aes.pica.touresbalon.touresbalonproductosws.entidades.clientesyordenes.Customer" table="CUSTOMER" schema="TOURESBALON" optimistic-lock="version">
         <id name="custid" type="integer">
             <column name="CUSTID" />
             <generator class="sequence">
-                <param name="sequence">SEC_CUSTOMER_ID</param>
+                <param name="sequence">SEC_CUSTUMER_ID</param>
             </generator>
         </id>
         <property name="fname" type="string">

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 24-sep-2016 17:15:14 by Hibernate Tools 4.3.1 -->
+<!-- Generated 3/10/2016 10:30:09 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="aes.pica.touresbalon.touresbalonproductosws.entidades.clientesyordenes.Customer" table="CUSTOMER" schema="TOURESBALON" optimistic-lock="version">
         <id name="custid" type="integer">
@@ -36,7 +36,7 @@
         </property>
         <set name="customerAddresses" table="CUSTOMER_ADDRESS" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="CUSTID" precision="22" scale="0" not-null="true" />
+                <column name="CUSTID" not-null="true" />
             </key>
             <one-to-many class="aes.pica.touresbalon.touresbalonproductosws.entidades.clientesyordenes.CustomerAddress" />
         </set>

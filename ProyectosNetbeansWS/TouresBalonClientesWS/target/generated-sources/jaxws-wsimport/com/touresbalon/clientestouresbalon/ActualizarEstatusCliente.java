@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="id_cliente" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="id_cliente" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="estatus" type="{http://www.touresbalon.com/ClientesTouresBalon/}EstatusCliente"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -36,32 +36,24 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "ActualizarEstatusCliente")
 public class ActualizarEstatusCliente {
 
-    @XmlElement(name = "id_cliente", required = true)
-    protected String idCliente;
+    @XmlElement(name = "id_cliente")
+    protected int idCliente;
     @XmlElement(required = true)
     protected EstatusCliente estatus;
 
     /**
      * Obtiene el valor de la propiedad idCliente.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
      */
-    public String getIdCliente() {
+    public int getIdCliente() {
         return idCliente;
     }
 
     /**
      * Define el valor de la propiedad idCliente.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
      */
-    public void setIdCliente(String value) {
+    public void setIdCliente(int value) {
         this.idCliente = value;
     }
 

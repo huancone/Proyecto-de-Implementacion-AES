@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 24-sep-2016 11:53:17 by Hibernate Tools 4.3.1 -->
+<!-- Generated 3/10/2016 10:58:47 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="aes.pica.touresbalon.touresbalonproductosws.entidades.clientesyordenes.Address" table="ADDRESS" schema="TOURESBALON" optimistic-lock="version">
         <id name="addrid" type="integer">
-            <column name="ADDRID"  />
+            <column name="ADDRID" />
             <generator class="sequence">
                 <param name="sequence">SEC_ADDRESS_ID</param>
             </generator>

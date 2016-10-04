@@ -27,10 +27,8 @@ public interface ProductosTouresBalon {
 
     /**
      * 
-     * @param nombre
-     * @param codigo
-     * @param descripcion
      * @param tipoConsulta
+     * @param cadenaConsulta
      * @return
      *     returns java.util.List<com.touresbalon.productostouresbalon.Producto>
      * @throws ConsultarProductoFault_Exception
@@ -42,26 +40,22 @@ public interface ProductosTouresBalon {
     public List<Producto> consultarProducto(
         @WebParam(name = "tipo_consulta", targetNamespace = "")
         TipoConsultaProducto tipoConsulta,
-        @WebParam(name = "codigo", targetNamespace = "")
-        String codigo,
-        @WebParam(name = "nombre", targetNamespace = "")
-        String nombre,
-        @WebParam(name = "descripcion", targetNamespace = "")
-        String descripcion)
+        @WebParam(name = "cadena_consulta", targetNamespace = "")
+        String cadenaConsulta)
         throws ConsultarProductoFault_Exception
     ;
 
     /**
      * 
      * @return
-     *     returns java.util.List<com.touresbalon.productostouresbalon.Campania>
+     *     returns java.util.List<com.touresbalon.productostouresbalon.Producto>
      * @throws ConsultarCampaniaProductoFault_Exception
      */
     @WebMethod(operationName = "ConsultarCampaniaProducto", action = "http://www.touresbalon.com/ProductosTouresBalon/ConsultarCampaniaProducto")
-    @WebResult(name = "campanias", targetNamespace = "")
+    @WebResult(name = "productos", targetNamespace = "")
     @RequestWrapper(localName = "ConsultarCampaniaProducto", targetNamespace = "http://www.touresbalon.com/ProductosTouresBalon/", className = "com.touresbalon.productostouresbalon.ConsultarCampaniaProducto")
     @ResponseWrapper(localName = "ConsultarCampaniaProductoResponse", targetNamespace = "http://www.touresbalon.com/ProductosTouresBalon/", className = "com.touresbalon.productostouresbalon.ConsultarCampaniaProductoResponse")
-    public List<Campania> consultarCampaniaProducto()
+    public List<Producto> consultarCampaniaProducto()
         throws ConsultarCampaniaProductoFault_Exception
     ;
 
@@ -124,19 +118,19 @@ public interface ProductosTouresBalon {
 
     /**
      * 
-     * @param campania
      * @param tipoOperacion
+     * @param campania
      * @return
-     *     returns com.touresbalon.productostouresbalon.RespuestaGenerica
+     *     returns com.touresbalon.productostouresbalon.TipoGestionCampaniaResponse
      * @throws GestionCampaniaProductoFault_Exception
      */
     @WebMethod(operationName = "GestionCampaniaProducto", action = "http://www.touresbalon.com/ProductosTouresBalon/GestionCampaniaProducto")
-    @WebResult(name = "respuesta", targetNamespace = "")
+    @WebResult(name = "gestioncampaniaResponse", targetNamespace = "")
     @RequestWrapper(localName = "GestionCampaniaProducto", targetNamespace = "http://www.touresbalon.com/ProductosTouresBalon/", className = "com.touresbalon.productostouresbalon.GestionCampaniaProducto")
     @ResponseWrapper(localName = "GestionCampaniaProductoResponse", targetNamespace = "http://www.touresbalon.com/ProductosTouresBalon/", className = "com.touresbalon.productostouresbalon.GestionCampaniaProductoResponse")
-    public RespuestaGenerica gestionCampaniaProducto(
+    public TipoGestionCampaniaResponse gestionCampaniaProducto(
         @WebParam(name = "tipo_operacion", targetNamespace = "")
-        TipoConsultaProducto tipoOperacion,
+        TipoAccion tipoOperacion,
         @WebParam(name = "campania", targetNamespace = "")
         Campania campania)
         throws GestionCampaniaProductoFault_Exception
@@ -147,16 +141,16 @@ public interface ProductosTouresBalon {
      * @param tipoOperacion
      * @param producto
      * @return
-     *     returns java.lang.String
+     *     returns com.touresbalon.productostouresbalon.TipoGestionProductoResponse
      * @throws GestionProductoFault_Exception
      */
     @WebMethod(operationName = "GestionProducto", action = "http://www.touresbalon.com/ProductosTouresBalon/GestionProducto")
     @WebResult(name = "gestion_producto_reponse", targetNamespace = "")
     @RequestWrapper(localName = "GestionProducto", targetNamespace = "http://www.touresbalon.com/ProductosTouresBalon/", className = "com.touresbalon.productostouresbalon.GestionProducto")
     @ResponseWrapper(localName = "GestionProductoResponse", targetNamespace = "http://www.touresbalon.com/ProductosTouresBalon/", className = "com.touresbalon.productostouresbalon.GestionProductoResponse")
-    public String gestionProducto(
+    public TipoGestionProductoResponse gestionProducto(
         @WebParam(name = "tipo_operacion", targetNamespace = "")
-        TipoConsultaProducto tipoOperacion,
+        TipoAccion tipoOperacion,
         @WebParam(name = "producto", targetNamespace = "")
         Producto producto)
         throws GestionProductoFault_Exception
@@ -165,19 +159,19 @@ public interface ProductosTouresBalon {
     /**
      * 
      * @param tipoTarifa
-     * @param tipoOperacion
      * @param tarifa
+     * @param tipoOperacion
      * @return
      *     returns com.touresbalon.productostouresbalon.TipoGestionTarifaResponse
      * @throws GestionTarifaFault_Exception
      */
     @WebMethod(operationName = "GestionTarifa", action = "http://www.touresbalon.com/ProductosTouresBalon/GestionTarifa")
-    @WebResult(name = "tarifa", targetNamespace = "")
+    @WebResult(name = "respuesta", targetNamespace = "")
     @RequestWrapper(localName = "GestionTarifa", targetNamespace = "http://www.touresbalon.com/ProductosTouresBalon/", className = "com.touresbalon.productostouresbalon.GestionTarifa")
     @ResponseWrapper(localName = "GestionTarifaResponse", targetNamespace = "http://www.touresbalon.com/ProductosTouresBalon/", className = "com.touresbalon.productostouresbalon.GestionTarifaResponse")
     public TipoGestionTarifaResponse gestionTarifa(
         @WebParam(name = "tipo_operacion", targetNamespace = "")
-        TipoConsultaProducto tipoOperacion,
+        TipoAccion tipoOperacion,
         @WebParam(name = "tipo_tarifa", targetNamespace = "")
         TipoTarifa tipoTarifa,
         @WebParam(name = "tarifa", targetNamespace = "")
@@ -198,7 +192,7 @@ public interface ProductosTouresBalon {
     @ResponseWrapper(localName = "ConsultaTop5ProductosResponse", targetNamespace = "http://www.touresbalon.com/ProductosTouresBalon/", className = "com.touresbalon.productostouresbalon.ConsultaTop5ProductosResponse")
     public List<Producto> consultaTop5Productos(
         @WebParam(name = "id_producto", targetNamespace = "")
-        List<String> idProducto)
+        List<Integer> idProducto)
         throws ConsultaTop5ProductosFault_Exception
     ;
 

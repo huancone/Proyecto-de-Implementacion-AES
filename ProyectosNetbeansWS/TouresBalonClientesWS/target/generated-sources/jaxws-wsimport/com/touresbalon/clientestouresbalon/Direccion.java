@@ -17,6 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
+ *         &lt;element name="id_direccion" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="pais" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="ciudad" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="estado" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -33,6 +34,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Direccion", propOrder = {
+    "idDireccion",
     "pais",
     "ciudad",
     "estado",
@@ -42,6 +44,8 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class Direccion {
 
+    @XmlElement(name = "id_direccion")
+    protected Integer idDireccion;
     protected String pais;
     protected String ciudad;
     protected String estado;
@@ -51,6 +55,30 @@ public class Direccion {
     protected String tipoDir;
     @XmlElement(name = "dir_calle")
     protected String dirCalle;
+
+    /**
+     * Obtiene el valor de la propiedad idDireccion.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getIdDireccion() {
+        return idDireccion;
+    }
+
+    /**
+     * Define el valor de la propiedad idDireccion.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setIdDireccion(Integer value) {
+        this.idDireccion = value;
+    }
 
     /**
      * Obtiene el valor de la propiedad pais.

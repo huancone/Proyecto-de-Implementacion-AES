@@ -3,6 +3,7 @@ package com.touresbalon.clientestouresbalon;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -17,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="respuesta" type="{http://www.touresbalon.com/ClientesTouresBalon/}RespuestaGenerica" minOccurs="0"/>
+ *         &lt;element name="respuesta" type="{http://www.touresbalon.com/ClientesTouresBalon/}RespuestaGenerica"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -33,6 +34,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "ActualizarEstatusClienteResponse")
 public class ActualizarEstatusClienteResponse {
 
+    @XmlElement(required = true)
     protected RespuestaGenerica respuesta;
 
     /**

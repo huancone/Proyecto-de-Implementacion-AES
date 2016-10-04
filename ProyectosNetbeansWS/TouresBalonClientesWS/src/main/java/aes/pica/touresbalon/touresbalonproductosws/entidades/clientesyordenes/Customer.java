@@ -1,7 +1,8 @@
 package aes.pica.touresbalon.touresbalonproductosws.entidades.clientesyordenes;
-// Generated 24/09/2016 07:35:07 PM by Hibernate Tools 4.3.1
+// Generated 3/10/2016 09:51:13 PM by Hibernate Tools 4.3.1
 
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,7 +12,7 @@ import java.util.Set;
 public class Customer  implements java.io.Serializable {
 
 
-     private Integer custid;
+     private int custid;
      private String fname;
      private String lname;
      private String phonenumber;
@@ -26,7 +27,12 @@ public class Customer  implements java.io.Serializable {
     public Customer() {
     }
 
-    public Customer(String fname, String lname, String phonenumber, String email, String password, String creditcardtype, String creditcardnumber, String status, Set customerAddresses, Set orderses) {
+	
+    public Customer(int custid) {
+        this.custid = custid;
+    }
+    public Customer(int custid, String fname, String lname, String phonenumber, String email, String password, String creditcardtype, String creditcardnumber, String status, Set customerAddresses, Set orderses) {
+       this.custid = custid;
        this.fname = fname;
        this.lname = lname;
        this.phonenumber = phonenumber;
@@ -39,11 +45,11 @@ public class Customer  implements java.io.Serializable {
        this.orderses = orderses;
     }
    
-    public Integer getCustid() {
+    public int getCustid() {
         return this.custid;
     }
     
-    public void setCustid(Integer custid) {
+    public void setCustid(int custid) {
         this.custid = custid;
     }
     public String getFname() {

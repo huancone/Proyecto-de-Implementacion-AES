@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="tarifa" type="{http://www.touresbalon.com/ProductosTouresBalon/}TipoGestionTarifaResponse"/>
+ *         &lt;element name="respuesta" type="{http://www.touresbalon.com/ProductosTouresBalon/}TipoGestionTarifaResponse"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -29,36 +29,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "tarifa"
+    "respuesta"
 })
 @XmlRootElement(name = "GestionTarifaResponse")
 public class GestionTarifaResponse {
 
     @XmlElement(required = true)
-    protected TipoGestionTarifaResponse tarifa;
+    protected TipoGestionTarifaResponse respuesta;
 
     /**
-     * Obtiene el valor de la propiedad tarifa.
+     * Obtiene el valor de la propiedad respuesta.
      * 
      * @return
      *     possible object is
      *     {@link TipoGestionTarifaResponse }
      *     
      */
-    public TipoGestionTarifaResponse getTarifa() {
-        return tarifa;
+    public TipoGestionTarifaResponse getRespuesta() {
+        return respuesta;
     }
 
     /**
-     * Define el valor de la propiedad tarifa.
+     * Define el valor de la propiedad respuesta.
      * 
      * @param value
      *     allowed object is
      *     {@link TipoGestionTarifaResponse }
      *     
      */
-    public void setTarifa(TipoGestionTarifaResponse value) {
-        this.tarifa = value;
+    public void setRespuesta(TipoGestionTarifaResponse value) {
+        this.respuesta = value;
     }
 
 }

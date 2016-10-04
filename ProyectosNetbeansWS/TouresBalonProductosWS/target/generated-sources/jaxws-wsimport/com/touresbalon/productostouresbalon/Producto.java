@@ -21,9 +21,11 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *       &lt;sequence>
  *         &lt;element name="id_producto" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="espectaculo" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="descripcion" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="ciudad_espectaculo" type="{http://www.touresbalon.com/ProductosTouresBalon/}Ciudad"/>
  *         &lt;element name="fecha_llegada" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="fecha_salida" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+ *         &lt;element name="fecha_espectaculo" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="tipo_transporte" type="{http://www.touresbalon.com/ProductosTouresBalon/}TarifaValores" minOccurs="0"/>
  *         &lt;element name="tipo_espectaculo" type="{http://www.touresbalon.com/ProductosTouresBalon/}TarifaValores"/>
  *         &lt;element name="tipo_hospedaje" type="{http://www.touresbalon.com/ProductosTouresBalon/}TarifaValores" minOccurs="0"/>
@@ -40,9 +42,11 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlType(name = "Producto", propOrder = {
     "idProducto",
     "espectaculo",
+    "descripcion",
     "ciudadEspectaculo",
     "fechaLlegada",
     "fechaSalida",
+    "fechaEspectaculo",
     "tipoTransporte",
     "tipoEspectaculo",
     "tipoHospedaje",
@@ -54,6 +58,8 @@ public class Producto {
     protected int idProducto;
     @XmlElement(required = true)
     protected String espectaculo;
+    @XmlElement(required = true)
+    protected String descripcion;
     @XmlElement(name = "ciudad_espectaculo", required = true)
     protected Ciudad ciudadEspectaculo;
     @XmlElement(name = "fecha_llegada")
@@ -62,6 +68,9 @@ public class Producto {
     @XmlElement(name = "fecha_salida")
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar fechaSalida;
+    @XmlElement(name = "fecha_espectaculo")
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar fechaEspectaculo;
     @XmlElement(name = "tipo_transporte")
     protected TarifaValores tipoTransporte;
     @XmlElement(name = "tipo_espectaculo", required = true)
@@ -109,6 +118,30 @@ public class Producto {
      */
     public void setEspectaculo(String value) {
         this.espectaculo = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad descripcion.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    /**
+     * Define el valor de la propiedad descripcion.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setDescripcion(String value) {
+        this.descripcion = value;
     }
 
     /**
@@ -181,6 +214,30 @@ public class Producto {
      */
     public void setFechaSalida(XMLGregorianCalendar value) {
         this.fechaSalida = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad fechaEspectaculo.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getFechaEspectaculo() {
+        return fechaEspectaculo;
+    }
+
+    /**
+     * Define el valor de la propiedad fechaEspectaculo.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setFechaEspectaculo(XMLGregorianCalendar value) {
+        this.fechaEspectaculo = value;
     }
 
     /**

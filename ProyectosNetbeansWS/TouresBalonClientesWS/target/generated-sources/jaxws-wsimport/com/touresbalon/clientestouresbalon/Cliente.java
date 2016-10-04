@@ -19,6 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
+ *         &lt;element name="id_cliente" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="nombres" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="apellidos" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="num_tel" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -37,6 +38,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Cliente", propOrder = {
+    "idCliente",
     "nombres",
     "apellidos",
     "numTel",
@@ -48,6 +50,8 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class Cliente {
 
+    @XmlElement(name = "id_cliente")
+    protected Integer idCliente;
     @XmlElement(required = true)
     protected String nombres;
     @XmlElement(required = true)
@@ -63,6 +67,30 @@ public class Cliente {
     @XmlElement(name = "numero_tarjeta")
     protected String numeroTarjeta;
     protected List<Direccion> direccion;
+
+    /**
+     * Obtiene el valor de la propiedad idCliente.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getIdCliente() {
+        return idCliente;
+    }
+
+    /**
+     * Define el valor de la propiedad idCliente.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setIdCliente(Integer value) {
+        this.idCliente = value;
+    }
 
     /**
      * Obtiene el valor de la propiedad nombres.

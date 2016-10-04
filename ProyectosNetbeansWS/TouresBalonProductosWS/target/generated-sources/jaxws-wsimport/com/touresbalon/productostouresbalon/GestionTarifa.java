@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="tipo_operacion" type="{http://www.touresbalon.com/ProductosTouresBalon/}TipoConsultaProducto"/>
+ *         &lt;element name="tipo_operacion" type="{http://www.touresbalon.com/ProductosTouresBalon/}TipoAccion"/>
  *         &lt;element name="tipo_tarifa" type="{http://www.touresbalon.com/ProductosTouresBalon/}TipoTarifa"/>
  *         &lt;element name="tarifa" type="{http://www.touresbalon.com/ProductosTouresBalon/}TarifaValores"/>
  *       &lt;/sequence>
@@ -39,7 +39,7 @@ import javax.xml.bind.annotation.XmlType;
 public class GestionTarifa {
 
     @XmlElement(name = "tipo_operacion", required = true)
-    protected TipoConsultaProducto tipoOperacion;
+    protected TipoAccion tipoOperacion;
     @XmlElement(name = "tipo_tarifa", required = true)
     protected TipoTarifa tipoTarifa;
     @XmlElement(required = true)
@@ -50,10 +50,10 @@ public class GestionTarifa {
      * 
      * @return
      *     possible object is
-     *     {@link TipoConsultaProducto }
+     *     {@link TipoAccion }
      *     
      */
-    public TipoConsultaProducto getTipoOperacion() {
+    public TipoAccion getTipoOperacion() {
         return tipoOperacion;
     }
 
@@ -62,10 +62,10 @@ public class GestionTarifa {
      * 
      * @param value
      *     allowed object is
-     *     {@link TipoConsultaProducto }
+     *     {@link TipoAccion }
      *     
      */
-    public void setTipoOperacion(TipoConsultaProducto value) {
+    public void setTipoOperacion(TipoAccion value) {
         this.tipoOperacion = value;
     }
 

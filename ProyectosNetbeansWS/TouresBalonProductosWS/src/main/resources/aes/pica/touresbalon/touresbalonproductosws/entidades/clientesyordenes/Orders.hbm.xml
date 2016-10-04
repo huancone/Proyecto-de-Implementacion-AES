@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 24-sep-2016 11:53:17 by Hibernate Tools 4.3.1 -->
+<!-- Generated 3/10/2016 10:58:47 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="aes.pica.touresbalon.touresbalonproductosws.entidades.clientesyordenes.Orders" table="ORDERS" schema="TOURESBALON" optimistic-lock="version">
         <id name="ordid" type="integer">
-            <column name="ORDID"  />
+            <column name="ORDID" />
             <generator class="sequence">
                 <param name="sequence">SEC_ORDEN_ID</param>
             </generator>
         </id>
         <many-to-one name="customer" class="aes.pica.touresbalon.touresbalonproductosws.entidades.clientesyordenes.Customer" fetch="select">
-            <column name="CUSTID"  not-null="true" />
+            <column name="CUSTID" not-null="true" />
         </many-to-one>
         <property name="orderdate" type="date">
             <column name="ORDERDATE" length="7" />

@@ -1,5 +1,5 @@
 package aes.pica.touresbalon.touresbalonproductosws.entidades.productos;
-// Generated 24-sep-2016 13:11:22 by Hibernate Tools 4.3.1
+// Generated 3/10/2016 11:01:42 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -15,7 +15,8 @@ public class Producto  implements java.io.Serializable {
      private TarifaEspectaculo tarifaEspectaculo;
      private TarifaHospedaje tarifaHospedaje;
      private TarifaTransporte tarifaTransporte;
-     private String nombreProducto;
+     private String espectaculo;
+     private String descripcion;
      private Date fechaSalida;
      private Date fechaLlegada;
      private Date fechaEspectaculo;
@@ -28,13 +29,14 @@ public class Producto  implements java.io.Serializable {
     public Producto(int idProducto) {
         this.idProducto = idProducto;
     }
-    public Producto(int idProducto, Ciudad ciudad, TarifaEspectaculo tarifaEspectaculo, TarifaHospedaje tarifaHospedaje, TarifaTransporte tarifaTransporte, String nombreProducto, Date fechaSalida, Date fechaLlegada, Date fechaEspectaculo, String urlImagen) {
+    public Producto(int idProducto, Ciudad ciudad, TarifaEspectaculo tarifaEspectaculo, TarifaHospedaje tarifaHospedaje, TarifaTransporte tarifaTransporte, String espectaculo, String descripcion, Date fechaSalida, Date fechaLlegada, Date fechaEspectaculo, String urlImagen) {
        this.idProducto = idProducto;
        this.ciudad = ciudad;
        this.tarifaEspectaculo = tarifaEspectaculo;
        this.tarifaHospedaje = tarifaHospedaje;
        this.tarifaTransporte = tarifaTransporte;
-       this.nombreProducto = nombreProducto;
+       this.espectaculo = espectaculo;
+       this.descripcion = descripcion;
        this.fechaSalida = fechaSalida;
        this.fechaLlegada = fechaLlegada;
        this.fechaEspectaculo = fechaEspectaculo;
@@ -76,12 +78,19 @@ public class Producto  implements java.io.Serializable {
     public void setTarifaTransporte(TarifaTransporte tarifaTransporte) {
         this.tarifaTransporte = tarifaTransporte;
     }
-    public String getNombreProducto() {
-        return this.nombreProducto;
+    public String getEspectaculo() {
+        return this.espectaculo;
     }
     
-    public void setNombreProducto(String nombreProducto) {
-        this.nombreProducto = nombreProducto;
+    public void setEspectaculo(String espectaculo) {
+        this.espectaculo = espectaculo;
+    }
+    public String getDescripcion() {
+        return this.descripcion;
+    }
+    
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
     public Date getFechaSalida() {
         return this.fechaSalida;

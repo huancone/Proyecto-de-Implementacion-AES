@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="gestion_producto_reponse" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="gestion_producto_reponse" type="{http://www.touresbalon.com/ProductosTouresBalon/}TipoGestionProductoResponse"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,17 +35,17 @@ import javax.xml.bind.annotation.XmlType;
 public class GestionProductoResponse {
 
     @XmlElement(name = "gestion_producto_reponse", required = true)
-    protected String gestionProductoReponse;
+    protected TipoGestionProductoResponse gestionProductoReponse;
 
     /**
      * Obtiene el valor de la propiedad gestionProductoReponse.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link TipoGestionProductoResponse }
      *     
      */
-    public String getGestionProductoReponse() {
+    public TipoGestionProductoResponse getGestionProductoReponse() {
         return gestionProductoReponse;
     }
 
@@ -54,10 +54,10 @@ public class GestionProductoResponse {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link TipoGestionProductoResponse }
      *     
      */
-    public void setGestionProductoReponse(String value) {
+    public void setGestionProductoReponse(TipoGestionProductoResponse value) {
         this.gestionProductoReponse = value;
     }
 

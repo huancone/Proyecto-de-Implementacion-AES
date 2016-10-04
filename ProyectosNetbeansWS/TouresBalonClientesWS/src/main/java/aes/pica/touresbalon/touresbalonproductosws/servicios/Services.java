@@ -21,16 +21,13 @@ import com.touresbalon.clientestouresbalon.RegistrarClienteFault_Exception;
 import com.touresbalon.clientestouresbalon.RegistrarClienteReponseType;
 import com.touresbalon.clientestouresbalon.RespuestaGenerica;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 import javax.jws.WebService;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 /**
  *
- * @author jdtrujillop
+ * @author braatz
  */
 @WebService(serviceName = "ClientesTouresBalon", portName = "ClientesTouresBalonSOAP", endpointInterface = "com.touresbalon.clientestouresbalon.ClientesTouresBalon", targetNamespace = "http://www.touresbalon.com/ClientesTouresBalon/", wsdlLocation = "WEB-INF/wsdl/ClientesTouresBalon.wsdl")
 public class Services {
@@ -42,36 +39,36 @@ public class Services {
 
     public com.touresbalon.clientestouresbalon.RegistrarClienteReponseType registrarCliente(com.touresbalon.clientestouresbalon.Cliente cliente) throws RegistrarClienteFault_Exception {
         
-                String res = "";
-                Cliente cl = new Cliente();
+        String res = "";
+        Cliente cl = new Cliente();
 
-                sessionClientes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
-                tx = sessionClientes.beginTransaction();
+        sessionClientes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
+        tx = sessionClientes.beginTransaction();
 
-                Address addr = new Address();
-                addr.setZip("1010");
-                addr.setCity("bogota");
-                addr.setAddressType("calle");
-                addr.setCountry("Colombia");
+        Address addr = new Address();
+        addr.setZip("1010");
+        addr.setCity("bogota");
+        addr.setAddressType("calle");
+        addr.setCountry("Colombia");
 
-                Integer id = (Integer) sessionClientes.save(addr);
-                tx.commit();
-                System.out.println("este es el id de Oracle: " + id);
-                cl.setNombres(res);
-            
-                sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
-                tx = sessionProductos.beginTransaction();
-                TarifaCiudad tc = new TarifaCiudad();
-                tc.setPrecio(BigDecimal.ZERO);
-                tc.setTipoCiudad("bogota");
-                id = (Integer) sessionProductos.save(tc);
-                System.out.println(" - este es el id de Sql Server: "+id);
-                tx.commit();
-                
-                RegistrarClienteReponseType respuesta = new RegistrarClienteReponseType();
-                respuesta.setRespuesta(RespuestaGenerica.OK);
-                
-                return respuesta;
+        Integer id = (Integer) sessionClientes.save(addr);
+        tx.commit();
+        System.out.println("este es el id de Oracle: " + id);
+        cl.setNombres(res);
+
+        sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
+        tx = sessionProductos.beginTransaction();
+        TarifaCiudad tc = new TarifaCiudad();
+        tc.setPrecio(BigDecimal.ZERO);
+        tc.setTipoCiudad("bogota");
+        id = (Integer) sessionProductos.save(tc);
+        System.out.println(" - este es el id de Sql Server: "+id);
+        tx.commit();
+
+        RegistrarClienteReponseType respuesta = new RegistrarClienteReponseType();
+        respuesta.setRespuesta(RespuestaGenerica.OK);
+
+        return respuesta;
         //TODO implement this method
         //throw new UnsupportedOperationException("Not implemented yet.");
     }
@@ -91,12 +88,12 @@ public class Services {
         throw new UnsupportedOperationException("Not implemented yet.");
     }
 
-    public com.touresbalon.clientestouresbalon.RespuestaGenerica actualizarEstatusCliente(java.lang.String idCliente, com.touresbalon.clientestouresbalon.EstatusCliente estatus) throws ActualizarEstatusClienteFault_Exception {
+    public com.touresbalon.clientestouresbalon.RespuestaGenerica actualizarEstatusCliente(int idCliente, com.touresbalon.clientestouresbalon.EstatusCliente estatus) throws ActualizarEstatusClienteFault_Exception {
         //TODO implement this method
         throw new UnsupportedOperationException("Not implemented yet.");
     }
 
-    public com.touresbalon.clientestouresbalon.Cliente consultarPorIdentificacionCliente(java.lang.String idCliente) throws ConsultarPorIdentificacionClienteFault_Exception {
+    public com.touresbalon.clientestouresbalon.Cliente consultarPorIdentificacionCliente(int idCliente) throws ConsultarPorIdentificacionClienteFault_Exception {
         //TODO implement this method
         throw new UnsupportedOperationException("Not implemented yet.");
     }

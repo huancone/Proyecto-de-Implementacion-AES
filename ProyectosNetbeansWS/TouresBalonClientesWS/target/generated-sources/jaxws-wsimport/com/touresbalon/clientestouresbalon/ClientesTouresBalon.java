@@ -113,7 +113,7 @@ public interface ClientesTouresBalon {
     @ResponseWrapper(localName = "ActualizarEstatusClienteResponse", targetNamespace = "http://www.touresbalon.com/ClientesTouresBalon/", className = "com.touresbalon.clientestouresbalon.ActualizarEstatusClienteResponse")
     public RespuestaGenerica actualizarEstatusCliente(
         @WebParam(name = "id_cliente", targetNamespace = "")
-        String idCliente,
+        int idCliente,
         @WebParam(name = "estatus", targetNamespace = "")
         EstatusCliente estatus)
         throws ActualizarEstatusClienteFault_Exception
@@ -132,7 +132,7 @@ public interface ClientesTouresBalon {
     @ResponseWrapper(localName = "ConsultarPorIdentificacionClienteResponse", targetNamespace = "http://www.touresbalon.com/ClientesTouresBalon/", className = "com.touresbalon.clientestouresbalon.ConsultarPorIdentificacionClienteResponse")
     public Cliente consultarPorIdentificacionCliente(
         @WebParam(name = "id_cliente", targetNamespace = "")
-        String idCliente)
+        int idCliente)
         throws ConsultarPorIdentificacionClienteFault_Exception
     ;
 

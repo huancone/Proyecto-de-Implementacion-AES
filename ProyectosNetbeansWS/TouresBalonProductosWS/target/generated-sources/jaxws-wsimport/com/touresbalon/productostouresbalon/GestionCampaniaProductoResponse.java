@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="respuesta" type="{http://www.touresbalon.com/ProductosTouresBalon/}RespuestaGenerica"/>
+ *         &lt;element name="gestioncampaniaResponse" type="{http://www.touresbalon.com/ProductosTouresBalon/}TipoGestionCampaniaResponse"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -29,36 +29,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "respuesta"
+    "gestioncampaniaResponse"
 })
 @XmlRootElement(name = "GestionCampaniaProductoResponse")
 public class GestionCampaniaProductoResponse {
 
     @XmlElement(required = true)
-    protected RespuestaGenerica respuesta;
+    protected TipoGestionCampaniaResponse gestioncampaniaResponse;
 
     /**
-     * Obtiene el valor de la propiedad respuesta.
+     * Obtiene el valor de la propiedad gestioncampaniaResponse.
      * 
      * @return
      *     possible object is
-     *     {@link RespuestaGenerica }
+     *     {@link TipoGestionCampaniaResponse }
      *     
      */
-    public RespuestaGenerica getRespuesta() {
-        return respuesta;
+    public TipoGestionCampaniaResponse getGestioncampaniaResponse() {
+        return gestioncampaniaResponse;
     }
 
     /**
-     * Define el valor de la propiedad respuesta.
+     * Define el valor de la propiedad gestioncampaniaResponse.
      * 
      * @param value
      *     allowed object is
-     *     {@link RespuestaGenerica }
+     *     {@link TipoGestionCampaniaResponse }
      *     
      */
-    public void setRespuesta(RespuestaGenerica value) {
-        this.respuesta = value;
+    public void setGestioncampaniaResponse(TipoGestionCampaniaResponse value) {
+        this.gestioncampaniaResponse = value;
     }
 
 }

@@ -19,9 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="tipo_consulta" type="{http://www.touresbalon.com/ProductosTouresBalon/}TipoConsultaProducto"/>
- *         &lt;element name="codigo" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="descripcion" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="cadena_consulta" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -33,18 +31,15 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "tipoConsulta",
-    "codigo",
-    "nombre",
-    "descripcion"
+    "cadenaConsulta"
 })
 @XmlRootElement(name = "ConsultarProducto")
 public class ConsultarProducto {
 
     @XmlElement(name = "tipo_consulta", required = true)
     protected TipoConsultaProducto tipoConsulta;
-    protected String codigo;
-    protected String nombre;
-    protected String descripcion;
+    @XmlElement(name = "cadena_consulta", required = true)
+    protected String cadenaConsulta;
 
     /**
      * Obtiene el valor de la propiedad tipoConsulta.
@@ -71,75 +66,27 @@ public class ConsultarProducto {
     }
 
     /**
-     * Obtiene el valor de la propiedad codigo.
+     * Obtiene el valor de la propiedad cadenaConsulta.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getCodigo() {
-        return codigo;
+    public String getCadenaConsulta() {
+        return cadenaConsulta;
     }
 
     /**
-     * Define el valor de la propiedad codigo.
+     * Define el valor de la propiedad cadenaConsulta.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setCodigo(String value) {
-        this.codigo = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad nombre.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getNombre() {
-        return nombre;
-    }
-
-    /**
-     * Define el valor de la propiedad nombre.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setNombre(String value) {
-        this.nombre = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad descripcion.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    /**
-     * Define el valor de la propiedad descripcion.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDescripcion(String value) {
-        this.descripcion = value;
+    public void setCadenaConsulta(String value) {
+        this.cadenaConsulta = value;
     }
 
 }

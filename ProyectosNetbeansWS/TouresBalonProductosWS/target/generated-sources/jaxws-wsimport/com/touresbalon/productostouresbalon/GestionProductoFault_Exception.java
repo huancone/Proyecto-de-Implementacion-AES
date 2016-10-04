@@ -23,8 +23,8 @@ public class GestionProductoFault_Exception
 
     /**
      * 
-     * @param message
      * @param faultInfo
+     * @param message
      */
     public GestionProductoFault_Exception(String message, GestionProductoFault faultInfo) {
         super(message);
@@ -33,9 +33,9 @@ public class GestionProductoFault_Exception
 
     /**
      * 
-     * @param message
      * @param faultInfo
      * @param cause
+     * @param message
      */
     public GestionProductoFault_Exception(String message, GestionProductoFault faultInfo, Throwable cause) {
         super(message, cause);

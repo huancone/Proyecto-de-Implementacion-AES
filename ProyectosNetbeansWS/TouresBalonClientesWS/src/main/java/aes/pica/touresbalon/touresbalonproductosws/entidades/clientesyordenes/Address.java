@@ -1,7 +1,8 @@
 package aes.pica.touresbalon.touresbalonproductosws.entidades.clientesyordenes;
-// Generated 24/09/2016 07:35:07 PM by Hibernate Tools 4.3.1
+// Generated 3/10/2016 09:51:13 PM by Hibernate Tools 4.3.1
 
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,7 +12,7 @@ import java.util.Set;
 public class Address  implements java.io.Serializable {
 
 
-     private Integer addrid;
+     private int addrid;
      private String street;
      private String state;
      private String zip;
@@ -23,7 +24,12 @@ public class Address  implements java.io.Serializable {
     public Address() {
     }
 
-    public Address(String street, String state, String zip, String country, String addressType, String city, Set customerAddresses) {
+	
+    public Address(int addrid) {
+        this.addrid = addrid;
+    }
+    public Address(int addrid, String street, String state, String zip, String country, String addressType, String city, Set customerAddresses) {
+       this.addrid = addrid;
        this.street = street;
        this.state = state;
        this.zip = zip;
@@ -33,11 +39,11 @@ public class Address  implements java.io.Serializable {
        this.customerAddresses = customerAddresses;
     }
    
-    public Integer getAddrid() {
+    public int getAddrid() {
         return this.addrid;
     }
     
-    public void setAddrid(Integer addrid) {
+    public void setAddrid(int addrid) {
         this.addrid = addrid;
     }
     public String getStreet() {

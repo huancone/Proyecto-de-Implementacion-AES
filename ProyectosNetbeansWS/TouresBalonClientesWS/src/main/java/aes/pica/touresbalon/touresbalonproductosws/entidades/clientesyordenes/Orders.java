@@ -1,5 +1,5 @@
 package aes.pica.touresbalon.touresbalonproductosws.entidades.clientesyordenes;
-// Generated 24/09/2016 07:35:07 PM by Hibernate Tools 4.3.1
+// Generated 3/10/2016 09:51:13 PM by Hibernate Tools 4.3.1
 
 
 import java.math.BigDecimal;
@@ -13,7 +13,7 @@ import java.util.Set;
 public class Orders  implements java.io.Serializable {
 
 
-     private Integer ordid;
+     private int ordid;
      private Customer customer;
      private Date orderdate;
      private BigDecimal price;
@@ -25,10 +25,12 @@ public class Orders  implements java.io.Serializable {
     }
 
 	
-    public Orders(Customer customer) {
+    public Orders(int ordid, Customer customer) {
+        this.ordid = ordid;
         this.customer = customer;
     }
-    public Orders(Customer customer, Date orderdate, BigDecimal price, String status, String comments, Set itemses) {
+    public Orders(int ordid, Customer customer, Date orderdate, BigDecimal price, String status, String comments, Set itemses) {
+       this.ordid = ordid;
        this.customer = customer;
        this.orderdate = orderdate;
        this.price = price;
@@ -37,11 +39,11 @@ public class Orders  implements java.io.Serializable {
        this.itemses = itemses;
     }
    
-    public Integer getOrdid() {
+    public int getOrdid() {
         return this.ordid;
     }
     
-    public void setOrdid(Integer ordid) {
+    public void setOrdid(int ordid) {
         this.ordid = ordid;
     }
     public Customer getCustomer() {

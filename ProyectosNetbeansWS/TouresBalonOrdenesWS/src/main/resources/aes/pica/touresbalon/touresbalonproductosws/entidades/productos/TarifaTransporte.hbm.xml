@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 25/09/2016 10:00:02 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 3/10/2016 10:31:27 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaTransporte" table="tarifa_transporte" schema="dbo" catalog="TB_PRODUCTOS"
     optimistic-lock="version">

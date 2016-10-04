@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="campanias" type="{http://www.touresbalon.com/ProductosTouresBalon/}Campania" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="productos" type="{http://www.touresbalon.com/ProductosTouresBalon/}Producto" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -30,40 +30,40 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "campanias"
+    "productos"
 })
 @XmlRootElement(name = "ConsultarCampaniaProductoResponse")
 public class ConsultarCampaniaProductoResponse {
 
-    protected List<Campania> campanias;
+    protected List<Producto> productos;
 
     /**
-     * Gets the value of the campanias property.
+     * Gets the value of the productos property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the campanias property.
+     * This is why there is not a <CODE>set</CODE> method for the productos property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getCampanias().add(newItem);
+     *    getProductos().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Campania }
+     * {@link Producto }
      * 
      * 
      */
-    public List<Campania> getCampanias() {
-        if (campanias == null) {
-            campanias = new ArrayList<Campania>();
+    public List<Producto> getProductos() {
+        if (productos == null) {
+            productos = new ArrayList<Producto>();
         }
-        return this.campanias;
+        return this.productos;
     }
 
 }
