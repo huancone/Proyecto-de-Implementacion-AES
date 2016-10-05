@@ -2,28 +2,28 @@
 <wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tb_om="http://www.example.org/ServiceProxyOMS/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ServiceProxyOMS" targetNamespace="http://www.example.org/ServiceProxyOMS/">
   <wsdl:types>
     <xsd:schema targetNamespace="http://www.example.org/ServiceProxyOMS/">
-      <xsd:element name="RegistrarCliente">
+      <xsd:element name="registrarCliente">
         <xsd:complexType>
           <xsd:sequence>
             <xsd:element name="cliente" type="xsd:string" maxOccurs="1" minOccurs="1"/>
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
-      <xsd:element name="RegistrarClienteResponse">
+      <xsd:element name="registrarClienteResponse">
         <xsd:complexType>
                     <xsd:sequence>
                     	<xsd:element name="registrarClienteResponse"
-                    		type="tb_om:RegistrarClienteReponseType" maxOccurs="1" minOccurs="1">
+                    		type="tb_om:registrarClienteReponseType" maxOccurs="1" minOccurs="1">
                     	</xsd:element>
                     </xsd:sequence>
                     
         </xsd:complexType>
       </xsd:element>
-      <xsd:element name="RegistrarClienteFault">
+      <xsd:element name="registrarClienteFault">
       	<xsd:complexType>
       		<xsd:sequence>
 
-      			<xsd:element name="RegistrarClienteFault"
+      			<xsd:element name="registrarClienteFault"
       				type="tb_om:Error">
       			</xsd:element>
       		</xsd:sequence>
@@ -85,7 +85,7 @@
       	</xsd:sequence>
       </xsd:complexType>
         
-      <xsd:complexType name="RegistrarClienteReponseType">
+      <xsd:complexType name="registrarClienteReponseType">
       	<xsd:sequence>
       		<xsd:element name="respuesta"
       			type="tb_om:RespuestaGenerica" maxOccurs="1" minOccurs="1">
@@ -100,14 +100,15 @@
       		<xsd:enumeration value="KO"></xsd:enumeration>
       	</xsd:restriction>
       </xsd:simpleType>
-      <xsd:element name="ActualizarCliente">
+      <xsd:element name="actualizarCliente">
       	<xsd:complexType>
-      		<xsd:sequence>
+      		<xsd:sequence>
+
       			<xsd:element name="cliente" type="tb_om:Cliente" maxOccurs="1" minOccurs="1"></xsd:element>
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
-      <xsd:element name="ActualizarClienteResponse">
+      <xsd:element name="actualizarClienteResponse">
       	<xsd:complexType>
       		<xsd:sequence>
 
@@ -115,17 +116,17 @@
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
-      <xsd:element name="ActualizarClienteFault">
+      <xsd:element name="actualizarClienteFault">
       	<xsd:complexType>
       		<xsd:sequence>
 
-      			<xsd:element name="ActualizarClienteFault"
+      			<xsd:element name="actualizarClienteFault"
       				type="tb_om:Error">
       			</xsd:element>
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
-      <xsd:element name="ActualizarContraseniaCliente">
+      <xsd:element name="actualizarContraseniaCliente">
       	<xsd:complexType>
       		<xsd:sequence>
 
@@ -134,7 +135,7 @@
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
-      <xsd:element name="ActualizarContraseniaClienteResponse">
+      <xsd:element name="actualizarContraseniaClienteResponse">
       	<xsd:complexType>
       		<xsd:sequence>
 
@@ -142,17 +143,17 @@
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
-      <xsd:element name="ActualizarContraseniaClienteFault">
+      <xsd:element name="actualizarContraseniaClienteFault">
       	<xsd:complexType>
       		<xsd:sequence>
 
-      			<xsd:element name="ActualizarContraseniaClienteFault"
+      			<xsd:element name="actualizarContraseniaClienteFault"
       				type="tb_om:Error">
       			</xsd:element>
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
-      <xsd:element name="ActualizarEstatusCliente">
+      <xsd:element name="actualizarEstatusCliente">
       	<xsd:complexType>
       		<xsd:sequence>
       			<xsd:element name="id_cliente" type="xsd:int"
@@ -162,7 +163,7 @@
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
-      <xsd:element name="ActualizarEstatusClienteResponse">
+      <xsd:element name="actualizarEstatusClienteResponse">
       	<xsd:complexType>
       		<xsd:sequence>
 
@@ -170,11 +171,11 @@
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
-      <xsd:element name="ActualizarEstatusClienteFault">
+      <xsd:element name="actualizarEstatusClienteFault">
       	<xsd:complexType>
       		<xsd:sequence>
 
-      			<xsd:element name="ActualizarEstatusClienteFault"
+      			<xsd:element name="actualizarEstatusClienteFault"
       				type="tb_om:Error">
       			</xsd:element>
       		</xsd:sequence>
@@ -188,7 +189,7 @@
       		<xsd:enumeration value="PLATEADO"></xsd:enumeration>
       	</xsd:restriction>
       </xsd:simpleType>
-      <xsd:element name="ConsultarPorIdentificacionCliente">
+      <xsd:element name="consultarPorIdentificacionCliente">
       	<xsd:complexType>
       		<xsd:sequence>
 
@@ -196,7 +197,7 @@
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
-      <xsd:element name="ConsultarPorIdentificacionClienteResponse">
+      <xsd:element name="consultarPorIdentificacionClienteResponse">
       	<xsd:complexType>
       		<xsd:sequence>
 
@@ -204,18 +205,18 @@
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
-      <xsd:element name="ConsultarPorIdentificacionClienteFault">
+      <xsd:element name="consultarPorIdentificacionClienteFault">
       	<xsd:complexType>
       		<xsd:sequence>
 
       			<xsd:element
-      				name="ConsultarPorIdentificacionClienteFault"
+      				name="consultarPorIdentificacionClienteFault"
       				type="tb_om:Error">
       			</xsd:element>
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
-      <xsd:element name="ConsultarPorProductoCliente">
+      <xsd:element name="consultarPorProductoCliente">
       	<xsd:complexType>
       		<xsd:sequence>
 
@@ -223,7 +224,7 @@
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
-      <xsd:element name="ConsultarPorProductoClienteResponse">
+      <xsd:element name="consultarPorProductoClienteResponse">
       	<xsd:complexType>
       		<xsd:sequence>
 
@@ -231,17 +232,17 @@
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
-      <xsd:element name="ConsultarPorProductoClienteFault">
+      <xsd:element name="consultarPorProductoClienteFault">
       	<xsd:complexType>
       		<xsd:sequence>
 
-      			<xsd:element name="ConsultarPorProductoClienteFault"
+      			<xsd:element name="consultarPorProductoClienteFault"
       				type="tb_om:Error">
       			</xsd:element>
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
-      <xsd:element name="ConsultarPorFactRangoCliente">
+      <xsd:element name="consultarPorFactRangoCliente">
       	<xsd:complexType>
       		<xsd:sequence>
 
@@ -252,7 +253,7 @@
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
-      <xsd:element name="ConsultarPorFactRangoClienteResponse">
+      <xsd:element name="consultarPorFactRangoClienteResponse">
       	<xsd:complexType>
       		<xsd:sequence>
 
@@ -260,17 +261,17 @@
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
-      <xsd:element name="ConsultarPorFactRangoClienteFault">
+      <xsd:element name="consultarPorFactRangoClienteFault">
       	<xsd:complexType>
       		<xsd:sequence>
 
-      			<xsd:element name="ConsultarPorFactRangoClienteFault"
+      			<xsd:element name="consultarPorFactRangoClienteFault"
       				type="tb_om:Error">
       			</xsd:element>
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
-      <xsd:element name="ConsultarProducto">
+      <xsd:element name="consultarProducto">
       	<xsd:complexType>
       		<xsd:sequence>
 
@@ -279,7 +280,7 @@
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
-      <xsd:element name="ConsultarProductoResponse">
+      <xsd:element name="consultarProductoResponse">
       	<xsd:complexType>
       		<xsd:sequence>
 
@@ -287,11 +288,11 @@
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
-      <xsd:element name="ConsultarProductoFault">
+      <xsd:element name="consultarProductoFault">
       	<xsd:complexType>
       		<xsd:sequence>
 
-      			<xsd:element name="ConsultarProductoFault"
+      			<xsd:element name="consultarProductoFault"
       				type="tb_om:Error">
       			</xsd:element>
       		</xsd:sequence>
@@ -360,14 +361,14 @@
             		<xsd:element name="precio" type="xsd:double" maxOccurs="1" minOccurs="1"></xsd:element>
             	</xsd:sequence>
             </xsd:complexType>
-      <xsd:element name="ConsultarPorEspectaculoProducto">
+      <xsd:element name="consultarPorEspectaculoProducto">
       	<xsd:complexType>
       		<xsd:sequence>
       			<xsd:element name="espectaculo" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
-      <xsd:element name="ConsultarPorEspectaculoProductoResponse">
+      <xsd:element name="consultarPorEspectaculoProductoResponse">
       	<xsd:complexType>
       		<xsd:sequence>
 
@@ -375,18 +376,18 @@
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
-      <xsd:element name="ConsultarPorEspectaculoProductoFault">
+      <xsd:element name="consultarPorEspectaculoProductoFault">
       	<xsd:complexType>
       		<xsd:sequence>
 
       			<xsd:element
-      				name="ConsultarPorEspectaculoProductoFault"
+      				name="consultarPorEspectaculoProductoFault"
       				type="tb_om:Error">
       			</xsd:element>
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
-      <xsd:element name="ConsultarRankingFechaProducto">
+      <xsd:element name="consultarRankingFechaProducto">
       	<xsd:complexType>
       		<xsd:sequence>
 
@@ -397,7 +398,7 @@
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
-      <xsd:element name="ConsultarRankingFechaProductoResponse">
+      <xsd:element name="consultarRankingFechaProductoResponse">
       	<xsd:complexType>
       		<xsd:sequence>
 
@@ -405,17 +406,17 @@
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
-      <xsd:element name="ConsultarRankingFechaProductoFault">
+      <xsd:element name="consultarRankingFechaProductoFault">
       	<xsd:complexType>
       		<xsd:sequence>
 
-      			<xsd:element name="ConsultarRankingFechaProductoFault"
+      			<xsd:element name="consultarRankingFechaProductoFault"
       				type="tb_om:Error">
       			</xsd:element>
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
-      <xsd:element name="ConsultarRankingEspectaculosVendidosProducto">
+      <xsd:element name="consultarRankingEspectaculosVendidosProducto">
       	<xsd:complexType>
       		<xsd:sequence>
 
@@ -426,7 +427,7 @@
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
-      <xsd:element name="ConsultarRankingEspectaculosVendidosProductoResponse">
+      <xsd:element name="consultarRankingEspectaculosVendidosProductoResponse">
       	<xsd:complexType>
       		<xsd:sequence>
 
@@ -435,25 +436,25 @@
       	</xsd:complexType>
       </xsd:element>
       <xsd:element
-      	name="ConsultarRankingEspectaculosVendidosProductoFault">
+      	name="consultarRankingEspectaculosVendidosProductoFault">
       	<xsd:complexType>
       		<xsd:sequence>
 
       			<xsd:element
-      				name="ConsultarRankingEspectaculosVendidosProductoFault"
+      				name="consultarRankingEspectaculosVendidosProductoFault"
       				type="tb_om:Error">
       			</xsd:element>
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
-      <xsd:element name="ConsultarCampaniaProducto">
+      <xsd:element name="consultarCampaniaProducto">
       	<xsd:complexType>
       		<xsd:sequence>
 
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
-      <xsd:element name="ConsultarCampaniaProductoResponse">
+      <xsd:element name="consultarCampaniaProductoResponse">
       	<xsd:complexType>
       		<xsd:sequence>
 
@@ -461,17 +462,17 @@
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
-      <xsd:element name="ConsultarCampaniaProductoFault">
+      <xsd:element name="consultarCampaniaProductoFault">
       	<xsd:complexType>
       		<xsd:sequence>
 
-      			<xsd:element name="ConsultarCampaniaProductoFault"
+      			<xsd:element name="consultarCampaniaProductoFault"
       				type="tb_om:Error">
       			</xsd:element>
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
-      <xsd:element name="GestionCampaniaProducto">
+      <xsd:element name="gestionCampaniaProducto">
       	<xsd:complexType>
       		<xsd:sequence>
 
@@ -482,7 +483,7 @@
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
-      <xsd:element name="GestionCampaniaProductoResponse">
+      <xsd:element name="gestionCampaniaProductoResponse">
       	<xsd:complexType>
       		<xsd:sequence>
 
@@ -490,11 +491,11 @@
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
-      <xsd:element name="GestionCampaniaProductoFault">
+      <xsd:element name="gestionCampaniaProductoFault">
       	<xsd:complexType>
       		<xsd:sequence>
 
-      			<xsd:element name="GestionCampaniaProductoFault"
+      			<xsd:element name="gestionCampaniaProductoFault"
       				type="tb_om:Error">
       			</xsd:element>
       		</xsd:sequence>
@@ -530,7 +531,7 @@
             		<xsd:element name="id_campania" type="xsd:int" maxOccurs="1" minOccurs="0"></xsd:element>
             	</xsd:sequence>
             </xsd:complexType>
-            <xsd:element name="GestionProducto">
+            <xsd:element name="gestionProducto">
             	<xsd:complexType>
             		<xsd:sequence>
             			<xsd:element name="tipo_operacion"
@@ -542,7 +543,7 @@
             		</xsd:sequence>
             	</xsd:complexType>
             </xsd:element>
-            <xsd:element name="GestionProductoResponse">
+            <xsd:element name="gestionProductoResponse">
             	<xsd:complexType>
             		<xsd:sequence>
 
@@ -550,11 +551,11 @@
             		</xsd:sequence>
             	</xsd:complexType>
             </xsd:element>
-            <xsd:element name="GestionProductoFault">
+            <xsd:element name="gestionProductoFault">
             	<xsd:complexType>
             		<xsd:sequence>
 
-            			<xsd:element name="GestionProductoFault"
+            			<xsd:element name="gestionProductoFault"
             				type="tb_om:Error">
             			</xsd:element>
             		</xsd:sequence>
@@ -569,7 +570,7 @@
             		<xsd:element name="id_producto" type="xsd:int" maxOccurs="1" minOccurs="0"></xsd:element>
             	</xsd:sequence>
             </xsd:complexType>
-            <xsd:element name="GestionTarifa">
+            <xsd:element name="gestionTarifa">
             	<xsd:complexType>
             		<xsd:sequence>
             			<xsd:element name="tipo_operacion"
@@ -584,7 +585,7 @@
             		</xsd:sequence>
             	</xsd:complexType>
             </xsd:element>
-            <xsd:element name="GestionTarifaResponse">
+            <xsd:element name="gestionTarifaResponse">
             	<xsd:complexType>
             		<xsd:sequence>
 
@@ -592,11 +593,11 @@
             		</xsd:sequence>
             	</xsd:complexType>
             </xsd:element>
-            <xsd:element name="GestionTarifaFault">
+            <xsd:element name="gestionTarifaFault">
             	<xsd:complexType>
             		<xsd:sequence>
 
-            			<xsd:element name="GestionTarifaFault"
+            			<xsd:element name="gestionTarifaFault"
             				type="tb_om:Error">
             			</xsd:element>
             		</xsd:sequence>
@@ -618,14 +619,14 @@
                     <xsd:element name="tarifa" type="tb_om:TipoTarifa" maxOccurs="1" minOccurs="1"></xsd:element>
                 </xsd:sequence>
             </xsd:complexType>
-            <xsd:element name="ConsultarOrdenes">
+            <xsd:element name="consultarOrdenes">
             	<xsd:complexType>
             		<xsd:sequence>
             			<xsd:element name="criterios" type="tb_om:CriterioConsultaOrden" maxOccurs="1" minOccurs="1"></xsd:element>
             		</xsd:sequence>
             	</xsd:complexType>
             </xsd:element>
-            <xsd:element name="ConsultarOrdenesResponse">
+            <xsd:element name="consultarOrdenesResponse">
             	<xsd:complexType>
             		<xsd:sequence>
 
@@ -633,18 +634,18 @@
             		</xsd:sequence>
             	</xsd:complexType>
             </xsd:element>
-            <xsd:element name="ConsultarOrdenesFault">
+            <xsd:element name="consultarOrdenesFault">
             	<xsd:complexType>
             		<xsd:sequence>
 
-            			<xsd:element name="ConsultarOrdenesFault"
+            			<xsd:element name="consultarOrdenesFault"
             				type="tb_om:Error">
             			</xsd:element>
             		</xsd:sequence>
             	</xsd:complexType>
             </xsd:element>
     
-			<xsd:complexType name="CriterioConsultaOrden">
+		<xsd:complexType name="CriterioConsultaOrden">
             	<xsd:sequence>
             		<xsd:element name="tipo_consulta"
             			type="tb_om:TipoConsultaOrden" maxOccurs="1" minOccurs="1">
@@ -717,7 +718,7 @@
             		<xsd:enumeration value="CANCELADA"></xsd:enumeration>
             	</xsd:restriction>
             </xsd:simpleType>
-            <xsd:element name="ConsultarRangoCerradoOrdenes">
+            <xsd:element name="consultarRangoCerradoOrdenes">
             	<xsd:complexType>
             		<xsd:sequence>
 
@@ -730,7 +731,7 @@
             		</xsd:sequence>
             	</xsd:complexType>
             </xsd:element>
-            <xsd:element name="ConsultarRangoCerradoOrdenesResponse">
+            <xsd:element name="consultarRangoCerradoOrdenesResponse">
             	<xsd:complexType>
             		<xsd:sequence>
 
@@ -738,12 +739,12 @@
             		</xsd:sequence>
             	</xsd:complexType>
             </xsd:element>
-            <xsd:element name="ConsultarRangoCerradoOrdenesFault">
+            <xsd:element name="consultarRangoCerradoOrdenesFault">
             	<xsd:complexType>
             		<xsd:sequence>
 
             			<xsd:element
-            				name="ConsultarRangoCerradoOrdenesFault"
+            				name="consultarRangoCerradoOrdenesFault"
             				type="tb_om:Error">
             			</xsd:element>
             		</xsd:sequence>
@@ -758,13 +759,13 @@
             		<xsd:element name="total" type="xsd:double" maxOccurs="1" minOccurs="1"></xsd:element>
             	</xsd:sequence>
             </xsd:complexType>
-            <xsd:element name="ConsultarRankingAbiertasOrdenes">
+            <xsd:element name="consultarRankingAbiertasOrdenes">
             	<xsd:complexType>
             		<xsd:sequence>
             		</xsd:sequence>
             	</xsd:complexType>
             </xsd:element>
-            <xsd:element name="ConsultarRankingAbiertasOrdenesResponse">
+            <xsd:element name="consultarRankingAbiertasOrdenesResponse">
             	<xsd:complexType>
             		<xsd:sequence>
 
@@ -772,25 +773,25 @@
             		</xsd:sequence>
             	</xsd:complexType>
             </xsd:element>
-            <xsd:element name="ConsultarRankingAbiertasOrdenesFault">
+            <xsd:element name="consultarRankingAbiertasOrdenesFault">
             	<xsd:complexType>
             		<xsd:sequence>
 
             			<xsd:element
-            				name="ConsultarRankingAbiertasOrdenesFault"
+            				name="consultarRankingAbiertasOrdenesFault"
             				type="tb_om:Error">
             			</xsd:element>
             		</xsd:sequence>
             	</xsd:complexType>
             </xsd:element>
-            <xsd:element name="ConsultarRankingCerradoOrdenes">
+            <xsd:element name="consultarRankingCerradoOrdenes">
             	<xsd:complexType>
             		<xsd:sequence>
 
             		</xsd:sequence>
             	</xsd:complexType>
             </xsd:element>
-            <xsd:element name="ConsultarRankingCerradoOrdenesResponse">
+            <xsd:element name="consultarRankingCerradoOrdenesResponse">
             	<xsd:complexType>
             		<xsd:sequence>
 
@@ -798,12 +799,12 @@
             		</xsd:sequence>
             	</xsd:complexType>
             </xsd:element>
-            <xsd:element name="ConsultarRankingCerradoOrdenesFault">
+            <xsd:element name="consultarRankingCerradoOrdenesFault">
             	<xsd:complexType>
             		<xsd:sequence>
 
             			<xsd:element
-            				name="ConsultarRankingCerradoOrdenesFault"
+            				name="consultarRankingCerradoOrdenesFault"
             				type="tb_om:Error" maxOccurs="1" minOccurs="0">
             			</xsd:element>
             		</xsd:sequence>
@@ -818,273 +819,273 @@
             </xsd:complexType>
         </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="RegistrarClienteRequest">
-    <wsdl:part element="tb_om:RegistrarCliente" name="parameters"/>
+  <wsdl:message name="registrarClienteRequest">
+    <wsdl:part element="tb_om:registrarCliente" name="parameters"/>
   </wsdl:message>
-  <wsdl:message name="RegistrarClienteResponse">
-    <wsdl:part element="tb_om:RegistrarClienteResponse" name="parameters"/>
+  <wsdl:message name="registrarClienteResponse">
+    <wsdl:part element="tb_om:registrarClienteResponse" name="parameters"/>
   </wsdl:message>
-  <wsdl:message name="RegistrarClienteFault">
-  	<wsdl:part name="parameters" element="tb_om:RegistrarClienteFault"></wsdl:part>
+  <wsdl:message name="registrarClienteFault">
+  	<wsdl:part name="parameters" element="tb_om:registrarClienteFault"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ActualizarClienteRequest">
-  	<wsdl:part name="parameters" element="tb_om:ActualizarCliente"></wsdl:part>
+  <wsdl:message name="actualizarClienteRequest">
+  	<wsdl:part name="parameters" element="tb_om:actualizarCliente"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ActualizarClienteResponse">
-  	<wsdl:part name="parameters" element="tb_om:ActualizarClienteResponse"></wsdl:part>
+  <wsdl:message name="actualizarClienteResponse">
+  	<wsdl:part name="parameters" element="tb_om:actualizarClienteResponse"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ActualizarClienteFault">
-  	<wsdl:part name="parameters" element="tb_om:ActualizarClienteFault"></wsdl:part>
+  <wsdl:message name="actualizarClienteFault">
+  	<wsdl:part name="parameters" element="tb_om:actualizarClienteFault"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ActualizarContraseniaClienteRequest">
-  	<wsdl:part name="parameters" element="tb_om:ActualizarContraseniaCliente"></wsdl:part>
+  <wsdl:message name="actualizarContraseniaClienteRequest">
+  	<wsdl:part name="parameters" element="tb_om:actualizarContraseniaCliente"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ActualizarContraseniaClienteResponse">
-  	<wsdl:part name="parameters" element="tb_om:ActualizarContraseniaClienteResponse"></wsdl:part>
+  <wsdl:message name="actualizarContraseniaClienteResponse">
+  	<wsdl:part name="parameters" element="tb_om:actualizarContraseniaClienteResponse"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ActualizarContraseniaClienteFault">
-  	<wsdl:part name="parameters" element="tb_om:ActualizarContraseniaClienteFault"></wsdl:part>
+  <wsdl:message name="actualizarContraseniaClienteFault">
+  	<wsdl:part name="parameters" element="tb_om:actualizarContraseniaClienteFault"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ActualizarEstatusClienteRequest">
-  	<wsdl:part name="parameters" element="tb_om:ActualizarEstatusCliente"></wsdl:part>
+  <wsdl:message name="actualizarEstatusClienteRequest">
+  	<wsdl:part name="parameters" element="tb_om:actualizarEstatusCliente"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ActualizarEstatusClienteResponse">
-  	<wsdl:part name="parameters" element="tb_om:ActualizarEstatusClienteResponse"></wsdl:part>
+  <wsdl:message name="actualizarEstatusClienteResponse">
+  	<wsdl:part name="parameters" element="tb_om:actualizarEstatusClienteResponse"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ActualizarEstatusClienteFault">
-  	<wsdl:part name="parameters" element="tb_om:ActualizarEstatusClienteFault"></wsdl:part>
+  <wsdl:message name="actualizarEstatusClienteFault">
+  	<wsdl:part name="parameters" element="tb_om:actualizarEstatusClienteFault"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ConsultarPorIdentificacionClienteRequest">
-  	<wsdl:part name="parameters" element="tb_om:ConsultarPorIdentificacionCliente"></wsdl:part>
+  <wsdl:message name="consultarPorIdentificacionClienteRequest">
+  	<wsdl:part name="parameters" element="tb_om:consultarPorIdentificacionCliente"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ConsultarPorIdentificacionClienteResponse">
-  	<wsdl:part name="parameters" element="tb_om:ConsultarPorIdentificacionClienteResponse"></wsdl:part>
+  <wsdl:message name="consultarPorIdentificacionClienteResponse">
+  	<wsdl:part name="parameters" element="tb_om:consultarPorIdentificacionClienteResponse"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ConsultarPorIdentificacionClienteFault">
-  	<wsdl:part name="parameters" element="tb_om:ConsultarPorIdentificacionClienteFault"></wsdl:part>
+  <wsdl:message name="consultarPorIdentificacionClienteFault">
+  	<wsdl:part name="parameters" element="tb_om:consultarPorIdentificacionClienteFault"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ConsultarPorProductoClienteRequest">
-  	<wsdl:part name="parameters" element="tb_om:ConsultarPorProductoCliente"></wsdl:part>
+  <wsdl:message name="consultarPorProductoClienteRequest">
+  	<wsdl:part name="parameters" element="tb_om:consultarPorProductoCliente"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ConsultarPorProductoClienteResponse">
-  	<wsdl:part name="parameters" element="tb_om:ConsultarPorProductoClienteResponse"></wsdl:part>
+  <wsdl:message name="consultarPorProductoClienteResponse">
+  	<wsdl:part name="parameters" element="tb_om:consultarPorProductoClienteResponse"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ConsultarPorProductoClienteFault">
-  	<wsdl:part name="parameters" element="tb_om:ConsultarPorProductoClienteFault"></wsdl:part>
+  <wsdl:message name="consultarPorProductoClienteFault">
+  	<wsdl:part name="parameters" element="tb_om:consultarPorProductoClienteFault"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ConsultarPorFactRangoClienteRequest">
-  	<wsdl:part name="parameters" element="tb_om:ConsultarPorFactRangoCliente"></wsdl:part>
+  <wsdl:message name="consultarPorFactRangoClienteRequest">
+  	<wsdl:part name="parameters" element="tb_om:consultarPorFactRangoCliente"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ConsultarPorFactRangoClienteResponse">
-  	<wsdl:part name="parameters" element="tb_om:ConsultarPorFactRangoClienteResponse"></wsdl:part>
+  <wsdl:message name="consultarPorFactRangoClienteResponse">
+  	<wsdl:part name="parameters" element="tb_om:consultarPorFactRangoClienteResponse"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ConsultarPorFactRangoClienteFault">
-  	<wsdl:part name="parameters" element="tb_om:ConsultarPorFactRangoClienteFault"></wsdl:part>
+  <wsdl:message name="consultarPorFactRangoClienteFault">
+  	<wsdl:part name="parameters" element="tb_om:consultarPorFactRangoClienteFault"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ConsultarProductoRequest">
-  	<wsdl:part name="parameters" element="tb_om:ConsultarProducto"></wsdl:part>
+  <wsdl:message name="consultarProductoRequest">
+  	<wsdl:part name="parameters" element="tb_om:consultarProducto"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ConsultarProductoResponse">
-  	<wsdl:part name="parameters" element="tb_om:ConsultarProductoResponse"></wsdl:part>
+  <wsdl:message name="consultarProductoResponse">
+  	<wsdl:part name="parameters" element="tb_om:consultarProductoResponse"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ConsultarProductoFault">
-  	<wsdl:part name="parameters" element="tb_om:ConsultarProductoFault"></wsdl:part>
+  <wsdl:message name="consultarProductoFault">
+  	<wsdl:part name="parameters" element="tb_om:consultarProductoFault"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ConsultarPorEspectaculoProductoRequest">
-  	<wsdl:part name="parameters" element="tb_om:ConsultarPorEspectaculoProducto"></wsdl:part>
+  <wsdl:message name="consultarPorEspectaculoProductoRequest">
+  	<wsdl:part name="parameters" element="tb_om:consultarPorEspectaculoProducto"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ConsultarPorEspectaculoProductoResponse">
-  	<wsdl:part name="parameters" element="tb_om:ConsultarPorEspectaculoProductoResponse"></wsdl:part>
+  <wsdl:message name="consultarPorEspectaculoProductoResponse">
+  	<wsdl:part name="parameters" element="tb_om:consultarPorEspectaculoProductoResponse"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ConsultarPorEspectaculoProductoFault">
-  	<wsdl:part name="parameters" element="tb_om:ConsultarPorEspectaculoProductoFault"></wsdl:part>
+  <wsdl:message name="consultarPorEspectaculoProductoFault">
+  	<wsdl:part name="parameters" element="tb_om:consultarPorEspectaculoProductoFault"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ConsultarRankingFechaProductoRequest">
-  	<wsdl:part name="parameters" element="tb_om:ConsultarRankingFechaProducto"></wsdl:part>
+  <wsdl:message name="consultarRankingFechaProductoRequest">
+  	<wsdl:part name="parameters" element="tb_om:consultarRankingFechaProducto"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ConsultarRankingFechaProductoResponse">
-  	<wsdl:part name="parameters" element="tb_om:ConsultarRankingFechaProductoResponse"></wsdl:part>
+  <wsdl:message name="consultarRankingFechaProductoResponse">
+  	<wsdl:part name="parameters" element="tb_om:consultarRankingFechaProductoResponse"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ConsultarRankingFechaProductoFault">
-  	<wsdl:part name="parameters" element="tb_om:ConsultarRankingFechaProductoFault"></wsdl:part>
+  <wsdl:message name="consultarRankingFechaProductoFault">
+  	<wsdl:part name="parameters" element="tb_om:consultarRankingFechaProductoFault"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ConsultarRankingEspectaculosVendidosProductoRequest">
-  	<wsdl:part name="parameters" element="tb_om:ConsultarRankingEspectaculosVendidosProducto"></wsdl:part>
+  <wsdl:message name="consultarRankingEspectaculosVendidosProductoRequest">
+  	<wsdl:part name="parameters" element="tb_om:consultarRankingEspectaculosVendidosProducto"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ConsultarRankingEspectaculosVendidosProductoResponse">
-  	<wsdl:part name="parameters" element="tb_om:ConsultarRankingEspectaculosVendidosProductoResponse"></wsdl:part>
+  <wsdl:message name="consultarRankingEspectaculosVendidosProductoResponse">
+  	<wsdl:part name="parameters" element="tb_om:consultarRankingEspectaculosVendidosProductoResponse"></wsdl:part>
   </wsdl:message>
   <wsdl:message
-  	name="ConsultarRankingEspectaculosVendidosProductoFault">
-  	<wsdl:part name="parameters" element="tb_om:ConsultarRankingEspectaculosVendidosProductoFault"></wsdl:part>
+  	name="consultarRankingEspectaculosVendidosProductoFault">
+  	<wsdl:part name="parameters" element="tb_om:consultarRankingEspectaculosVendidosProductoFault"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ConsultarCampaniaProductoRequest">
-  	<wsdl:part name="parameters" element="tb_om:ConsultarCampaniaProducto"></wsdl:part>
+  <wsdl:message name="consultarCampaniaProductoRequest">
+  	<wsdl:part name="parameters" element="tb_om:consultarCampaniaProducto"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ConsultarCampaniaProductoResponse">
-  	<wsdl:part name="parameters" element="tb_om:ConsultarCampaniaProductoResponse"></wsdl:part>
+  <wsdl:message name="consultarCampaniaProductoResponse">
+  	<wsdl:part name="parameters" element="tb_om:consultarCampaniaProductoResponse"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ConsultarCampaniaProductoFault">
-  	<wsdl:part name="parameters" element="tb_om:ConsultarCampaniaProductoFault"></wsdl:part>
+  <wsdl:message name="consultarCampaniaProductoFault">
+  	<wsdl:part name="parameters" element="tb_om:consultarCampaniaProductoFault"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="GestionCampaniaProductoRequest">
-  	<wsdl:part name="parameters" element="tb_om:GestionCampaniaProducto"></wsdl:part>
+  <wsdl:message name="gestionCampaniaProductoRequest">
+  	<wsdl:part name="parameters" element="tb_om:gestionCampaniaProducto"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="GestionCampaniaProductoResponse">
-  	<wsdl:part name="parameters" element="tb_om:GestionCampaniaProductoResponse"></wsdl:part>
+  <wsdl:message name="gestionCampaniaProductoResponse">
+  	<wsdl:part name="parameters" element="tb_om:gestionCampaniaProductoResponse"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="GestionCampaniaProductoFault">
-  	<wsdl:part name="parameters" element="tb_om:GestionCampaniaProductoFault"></wsdl:part>
+  <wsdl:message name="gestionCampaniaProductoFault">
+  	<wsdl:part name="parameters" element="tb_om:gestionCampaniaProductoFault"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="GestionProductoRequest">
-  	<wsdl:part name="parameters" element="tb_om:GestionProducto"></wsdl:part>
+  <wsdl:message name="gestionProductoRequest">
+  	<wsdl:part name="parameters" element="tb_om:gestionProducto"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="GestionProductoResponse">
-  	<wsdl:part name="parameters" element="tb_om:GestionProductoResponse"></wsdl:part>
+  <wsdl:message name="gestionProductoResponse">
+  	<wsdl:part name="parameters" element="tb_om:gestionProductoResponse"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="GestionProductoFault">
-  	<wsdl:part name="parameters" element="tb_om:GestionProductoFault"></wsdl:part>
+  <wsdl:message name="gestionProductoFault">
+  	<wsdl:part name="parameters" element="tb_om:gestionProductoFault"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="GestionTarifaRequest">
-  	<wsdl:part name="parameters" element="tb_om:GestionTarifa"></wsdl:part>
+  <wsdl:message name="gestionTarifaRequest">
+  	<wsdl:part name="parameters" element="tb_om:gestionTarifa"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="GestionTarifaResponse">
-  	<wsdl:part name="parameters" element="tb_om:GestionTarifaResponse"></wsdl:part>
+  <wsdl:message name="gestionTarifaResponse">
+  	<wsdl:part name="parameters" element="tb_om:gestionTarifaResponse"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="GestionTarifaFault">
-  	<wsdl:part name="parameters" element="tb_om:GestionTarifaFault"></wsdl:part>
+  <wsdl:message name="gestionTarifaFault">
+  	<wsdl:part name="parameters" element="tb_om:gestionTarifaFault"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ConsultarOrdenesRequest">
-  	<wsdl:part name="parameters" element="tb_om:ConsultarOrdenes"></wsdl:part>
+  <wsdl:message name="consultarOrdenesRequest">
+  	<wsdl:part name="parameters" element="tb_om:consultarOrdenes"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ConsultarOrdenesResponse">
-  	<wsdl:part name="parameters" element="tb_om:ConsultarOrdenesResponse"></wsdl:part>
+  <wsdl:message name="consultarOrdenesResponse">
+  	<wsdl:part name="parameters" element="tb_om:consultarOrdenesResponse"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ConsultarOrdenesFault">
-  	<wsdl:part name="parameters" element="tb_om:ConsultarOrdenesFault"></wsdl:part>
+  <wsdl:message name="consultarOrdenesFault">
+  	<wsdl:part name="parameters" element="tb_om:consultarOrdenesFault"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ConsultarRangoCerradoOrdenesRequest">
-  	<wsdl:part name="parameters" element="tb_om:ConsultarRangoCerradoOrdenes"></wsdl:part>
+  <wsdl:message name="consultarRangoCerradoOrdenesRequest">
+  	<wsdl:part name="parameters" element="tb_om:consultarRangoCerradoOrdenes"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ConsultarRangoCerradoOrdenesResponse">
-  	<wsdl:part name="parameters" element="tb_om:ConsultarRangoCerradoOrdenesResponse"></wsdl:part>
+  <wsdl:message name="consultarRangoCerradoOrdenesResponse">
+  	<wsdl:part name="parameters" element="tb_om:consultarRangoCerradoOrdenesResponse"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ConsultarRangoCerradoOrdenesFault">
-  	<wsdl:part name="parameters" element="tb_om:ConsultarRangoCerradoOrdenesFault"></wsdl:part>
+  <wsdl:message name="consultarRangoCerradoOrdenesFault">
+  	<wsdl:part name="parameters" element="tb_om:consultarRangoCerradoOrdenesFault"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ConsultarRankingAbiertasOrdenesRequest">
-  	<wsdl:part name="parameters" element="tb_om:ConsultarRankingAbiertasOrdenes"></wsdl:part>
+  <wsdl:message name="consultarRankingAbiertasOrdenesRequest">
+  	<wsdl:part name="parameters" element="tb_om:consultarRankingAbiertasOrdenes"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ConsultarRankingAbiertasOrdenesResponse">
-  	<wsdl:part name="parameters" element="tb_om:ConsultarRankingAbiertasOrdenesResponse"></wsdl:part>
+  <wsdl:message name="consultarRankingAbiertasOrdenesResponse">
+  	<wsdl:part name="parameters" element="tb_om:consultarRankingAbiertasOrdenesResponse"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ConsultarRankingAbiertasOrdenesFault">
-  	<wsdl:part name="parameters" element="tb_om:ConsultarRankingAbiertasOrdenesFault"></wsdl:part>
+  <wsdl:message name="consultarRankingAbiertasOrdenesFault">
+  	<wsdl:part name="parameters" element="tb_om:consultarRankingAbiertasOrdenesFault"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ConsultarRankingCerradoOrdenesRequest">
-  	<wsdl:part name="parameters" element="tb_om:ConsultarRankingCerradoOrdenes"></wsdl:part>
+  <wsdl:message name="consultarRankingCerradoOrdenesRequest">
+  	<wsdl:part name="parameters" element="tb_om:consultarRankingCerradoOrdenes"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ConsultarRankingCerradoOrdenesResponse">
-  	<wsdl:part name="parameters" element="tb_om:ConsultarRankingCerradoOrdenesResponse"></wsdl:part>
+  <wsdl:message name="consultarRankingCerradoOrdenesResponse">
+  	<wsdl:part name="parameters" element="tb_om:consultarRankingCerradoOrdenesResponse"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="ConsultarRankingCerradoOrdenesFault">
-  	<wsdl:part name="parameters" element="tb_om:ConsultarRankingCerradoOrdenesFault"></wsdl:part>
+  <wsdl:message name="consultarRankingCerradoOrdenesFault">
+  	<wsdl:part name="parameters" element="tb_om:consultarRankingCerradoOrdenesFault"></wsdl:part>
   </wsdl:message>
   <wsdl:portType name="ServiceProxyOMS">
-    <wsdl:operation name="RegistrarCliente">
-      <wsdl:input message="tb_om:RegistrarClienteRequest"/>
-      <wsdl:output message="tb_om:RegistrarClienteResponse"/>
-            <wsdl:fault name="fault" message="tb_om:RegistrarClienteFault"></wsdl:fault>
+    <wsdl:operation name="registrarCliente">
+      <wsdl:input message="tb_om:registrarClienteRequest"/>
+      <wsdl:output message="tb_om:registrarClienteResponse"/>
+            <wsdl:fault name="fault" message="tb_om:registrarClienteFault"></wsdl:fault>
         </wsdl:operation>
-    <wsdl:operation name="ActualizarCliente">
-    	<wsdl:input message="tb_om:ActualizarClienteRequest"></wsdl:input>
-    	<wsdl:output message="tb_om:ActualizarClienteResponse"></wsdl:output>
-            <wsdl:fault name="fault" message="tb_om:ActualizarClienteFault"></wsdl:fault>
+    <wsdl:operation name="actualizarCliente">
+    	<wsdl:input message="tb_om:actualizarClienteRequest"></wsdl:input>
+    	<wsdl:output message="tb_om:actualizarClienteResponse"></wsdl:output>
+            <wsdl:fault name="fault" message="tb_om:actualizarClienteFault"></wsdl:fault>
         </wsdl:operation>
-    <wsdl:operation name="ActualizarContraseniaCliente">
-    	<wsdl:input message="tb_om:ActualizarContraseniaClienteRequest"></wsdl:input>
-    	<wsdl:output message="tb_om:ActualizarContraseniaClienteResponse"></wsdl:output>
-            <wsdl:fault name="fault" message="tb_om:ActualizarContraseniaClienteFault"></wsdl:fault>
+    <wsdl:operation name="actualizarContraseniaCliente">
+    	<wsdl:input message="tb_om:actualizarContraseniaClienteRequest"></wsdl:input>
+    	<wsdl:output message="tb_om:actualizarContraseniaClienteResponse"></wsdl:output>
+            <wsdl:fault name="fault" message="tb_om:actualizarContraseniaClienteFault"></wsdl:fault>
         </wsdl:operation>
-    <wsdl:operation name="ActualizarEstatusCliente">
-    	<wsdl:input message="tb_om:ActualizarEstatusClienteRequest"></wsdl:input>
-    	<wsdl:output message="tb_om:ActualizarEstatusClienteResponse"></wsdl:output>
-            <wsdl:fault name="fault" message="tb_om:ActualizarEstatusClienteFault"></wsdl:fault>
+    <wsdl:operation name="actualizarEstatusCliente">
+    	<wsdl:input message="tb_om:actualizarEstatusClienteRequest"></wsdl:input>
+    	<wsdl:output message="tb_om:actualizarEstatusClienteResponse"></wsdl:output>
+            <wsdl:fault name="fault" message="tb_om:actualizarEstatusClienteFault"></wsdl:fault>
         </wsdl:operation>
-    <wsdl:operation name="ConsultarPorIdentificacionCliente">
-    	<wsdl:input message="tb_om:ConsultarPorIdentificacionClienteRequest"></wsdl:input>
-    	<wsdl:output message="tb_om:ConsultarPorIdentificacionClienteResponse"></wsdl:output>
-            <wsdl:fault name="fault" message="tb_om:ConsultarPorIdentificacionClienteFault"></wsdl:fault>
+    <wsdl:operation name="consultarPorIdentificacionCliente">
+    	<wsdl:input message="tb_om:consultarPorIdentificacionClienteRequest"></wsdl:input>
+    	<wsdl:output message="tb_om:consultarPorIdentificacionClienteResponse"></wsdl:output>
+            <wsdl:fault name="fault" message="tb_om:consultarPorIdentificacionClienteFault"></wsdl:fault>
         </wsdl:operation>
-    <wsdl:operation name="ConsultarPorProductoCliente">
-    	<wsdl:input message="tb_om:ConsultarPorProductoClienteRequest"></wsdl:input>
-    	<wsdl:output message="tb_om:ConsultarPorProductoClienteResponse"></wsdl:output>
-            <wsdl:fault name="fault" message="tb_om:ConsultarPorProductoClienteFault"></wsdl:fault>
+    <wsdl:operation name="consultarPorProductoCliente">
+    	<wsdl:input message="tb_om:consultarPorProductoClienteRequest"></wsdl:input>
+    	<wsdl:output message="tb_om:consultarPorProductoClienteResponse"></wsdl:output>
+            <wsdl:fault name="fault" message="tb_om:consultarPorProductoClienteFault"></wsdl:fault>
         </wsdl:operation>
-    <wsdl:operation name="ConsultarPorFactRangoCliente">
-    	<wsdl:input message="tb_om:ConsultarPorFactRangoClienteRequest"></wsdl:input>
-    	<wsdl:output message="tb_om:ConsultarPorFactRangoClienteResponse"></wsdl:output>
-            <wsdl:fault name="fault" message="tb_om:ConsultarPorFactRangoClienteFault"></wsdl:fault>
+    <wsdl:operation name="consultarPorFactRangoCliente">
+    	<wsdl:input message="tb_om:consultarPorFactRangoClienteRequest"></wsdl:input>
+    	<wsdl:output message="tb_om:consultarPorFactRangoClienteResponse"></wsdl:output>
+            <wsdl:fault name="fault" message="tb_om:consultarPorFactRangoClienteFault"></wsdl:fault>
         </wsdl:operation>
-    <wsdl:operation name="ConsultarProducto">
-    	<wsdl:input message="tb_om:ConsultarProductoRequest"></wsdl:input>
-    	<wsdl:output message="tb_om:ConsultarProductoResponse"></wsdl:output>
-            <wsdl:fault name="fault" message="tb_om:ConsultarProductoFault"></wsdl:fault>
+    <wsdl:operation name="consultarProducto">
+    	<wsdl:input message="tb_om:consultarProductoRequest"></wsdl:input>
+    	<wsdl:output message="tb_om:consultarProductoResponse"></wsdl:output>
+            <wsdl:fault name="fault" message="tb_om:consultarProductoFault"></wsdl:fault>
         </wsdl:operation>
-    <wsdl:operation name="ConsultarPorEspectaculoProducto">
-    	<wsdl:input message="tb_om:ConsultarPorEspectaculoProductoRequest"></wsdl:input>
-    	<wsdl:output message="tb_om:ConsultarPorEspectaculoProductoResponse"></wsdl:output>
-            <wsdl:fault name="fault" message="tb_om:ConsultarPorEspectaculoProductoFault"></wsdl:fault>
+    <wsdl:operation name="consultarPorEspectaculoProducto">
+    	<wsdl:input message="tb_om:consultarPorEspectaculoProductoRequest"></wsdl:input>
+    	<wsdl:output message="tb_om:consultarPorEspectaculoProductoResponse"></wsdl:output>
+            <wsdl:fault name="fault" message="tb_om:consultarPorEspectaculoProductoFault"></wsdl:fault>
         </wsdl:operation>
-    <wsdl:operation name="ConsultarRankingFechaProducto">
-    	<wsdl:input message="tb_om:ConsultarRankingFechaProductoRequest"></wsdl:input>
-    	<wsdl:output message="tb_om:ConsultarRankingFechaProductoResponse"></wsdl:output>
-            <wsdl:fault name="fault" message="tb_om:ConsultarRankingFechaProductoFault"></wsdl:fault>
+    <wsdl:operation name="consultarRankingFechaProducto">
+    	<wsdl:input message="tb_om:consultarRankingFechaProductoRequest"></wsdl:input>
+    	<wsdl:output message="tb_om:consultarRankingFechaProductoResponse"></wsdl:output>
+            <wsdl:fault name="fault" message="tb_om:consultarRankingFechaProductoFault"></wsdl:fault>
         </wsdl:operation>
-    <wsdl:operation name="ConsultarRankingEspectaculosVendidosProducto">
-    	<wsdl:input message="tb_om:ConsultarRankingEspectaculosVendidosProductoRequest"></wsdl:input>
-    	<wsdl:output message="tb_om:ConsultarRankingEspectaculosVendidosProductoResponse"></wsdl:output>
-            <wsdl:fault name="fault" message="tb_om:ConsultarRankingEspectaculosVendidosProductoFault"></wsdl:fault>
+    <wsdl:operation name="consultarRankingEspectaculosVendidosProducto">
+    	<wsdl:input message="tb_om:consultarRankingEspectaculosVendidosProductoRequest"></wsdl:input>
+    	<wsdl:output message="tb_om:consultarRankingEspectaculosVendidosProductoResponse"></wsdl:output>
+            <wsdl:fault name="fault" message="tb_om:consultarRankingEspectaculosVendidosProductoFault"></wsdl:fault>
         </wsdl:operation>
-    <wsdl:operation name="ConsultarCampaniaProducto">
-    	<wsdl:input message="tb_om:ConsultarCampaniaProductoRequest"></wsdl:input>
-    	<wsdl:output message="tb_om:ConsultarCampaniaProductoResponse"></wsdl:output>
-            <wsdl:fault name="fault" message="tb_om:ConsultarCampaniaProductoFault"></wsdl:fault>
+    <wsdl:operation name="consultarCampaniaProducto">
+    	<wsdl:input message="tb_om:consultarCampaniaProductoRequest"></wsdl:input>
+    	<wsdl:output message="tb_om:consultarCampaniaProductoResponse"></wsdl:output>
+            <wsdl:fault name="fault" message="tb_om:consultarCampaniaProductoFault"></wsdl:fault>
         </wsdl:operation>
-    <wsdl:operation name="GestionCampaniaProducto">
-    	<wsdl:input message="tb_om:GestionCampaniaProductoRequest"></wsdl:input>
-    	<wsdl:output message="tb_om:GestionCampaniaProductoResponse"></wsdl:output>
-            <wsdl:fault name="fault" message="tb_om:GestionCampaniaProductoFault"></wsdl:fault>
+    <wsdl:operation name="gestionCampaniaProducto">
+    	<wsdl:input message="tb_om:gestionCampaniaProductoRequest"></wsdl:input>
+    	<wsdl:output message="tb_om:gestionCampaniaProductoResponse"></wsdl:output>
+            <wsdl:fault name="fault" message="tb_om:gestionCampaniaProductoFault"></wsdl:fault>
         </wsdl:operation>
-    <wsdl:operation name="GestionProducto">
-    	<wsdl:input message="tb_om:GestionProductoRequest"></wsdl:input>
-    	<wsdl:output message="tb_om:GestionProductoResponse"></wsdl:output>
-            <wsdl:fault name="fault" message="tb_om:GestionProductoFault"></wsdl:fault>
+    <wsdl:operation name="gestionProducto">
+    	<wsdl:input message="tb_om:gestionProductoRequest"></wsdl:input>
+    	<wsdl:output message="tb_om:gestionProductoResponse"></wsdl:output>
+            <wsdl:fault name="fault" message="tb_om:gestionProductoFault"></wsdl:fault>
         </wsdl:operation>
-    <wsdl:operation name="GestionTarifa">
-    	<wsdl:input message="tb_om:GestionTarifaRequest"></wsdl:input>
-    	<wsdl:output message="tb_om:GestionTarifaResponse"></wsdl:output>
-            <wsdl:fault name="fault" message="tb_om:GestionTarifaFault"></wsdl:fault>
+    <wsdl:operation name="gestionTarifa">
+    	<wsdl:input message="tb_om:gestionTarifaRequest"></wsdl:input>
+    	<wsdl:output message="tb_om:gestionTarifaResponse"></wsdl:output>
+            <wsdl:fault name="fault" message="tb_om:gestionTarifaFault"></wsdl:fault>
         </wsdl:operation>
-    <wsdl:operation name="ConsultarOrdenes">
-    	<wsdl:input message="tb_om:ConsultarOrdenesRequest"></wsdl:input>
-    	<wsdl:output message="tb_om:ConsultarOrdenesResponse"></wsdl:output>
-            <wsdl:fault name="fault" message="tb_om:ConsultarOrdenesFault"></wsdl:fault>
+    <wsdl:operation name="consultarOrdenes">
+    	<wsdl:input message="tb_om:consultarOrdenesRequest"></wsdl:input>
+    	<wsdl:output message="tb_om:consultarOrdenesResponse"></wsdl:output>
+            <wsdl:fault name="fault" message="tb_om:consultarOrdenesFault"></wsdl:fault>
         </wsdl:operation>
-    <wsdl:operation name="ConsultarRangoCerradoOrdenes">
-    	<wsdl:input message="tb_om:ConsultarRangoCerradoOrdenesRequest"></wsdl:input>
-    	<wsdl:output message="tb_om:ConsultarRangoCerradoOrdenesResponse"></wsdl:output>
-            <wsdl:fault name="fault" message="tb_om:ConsultarRangoCerradoOrdenesFault"></wsdl:fault>
+    <wsdl:operation name="consultarRangoCerradoOrdenes">
+    	<wsdl:input message="tb_om:consultarRangoCerradoOrdenesRequest"></wsdl:input>
+    	<wsdl:output message="tb_om:consultarRangoCerradoOrdenesResponse"></wsdl:output>
+            <wsdl:fault name="fault" message="tb_om:consultarRangoCerradoOrdenesFault"></wsdl:fault>
         </wsdl:operation>
-    <wsdl:operation name="ConsultarRankingAbiertasOrdenes">
-    	<wsdl:input message="tb_om:ConsultarRankingAbiertasOrdenesRequest"></wsdl:input>
-    	<wsdl:output message="tb_om:ConsultarRankingAbiertasOrdenesResponse"></wsdl:output>
-            <wsdl:fault name="fault" message="tb_om:ConsultarRankingAbiertasOrdenesFault"></wsdl:fault>
+    <wsdl:operation name="consultarRankingAbiertasOrdenes">
+    	<wsdl:input message="tb_om:consultarRankingAbiertasOrdenesRequest"></wsdl:input>
+    	<wsdl:output message="tb_om:consultarRankingAbiertasOrdenesResponse"></wsdl:output>
+            <wsdl:fault name="fault" message="tb_om:consultarRankingAbiertasOrdenesFault"></wsdl:fault>
         </wsdl:operation>
-    <wsdl:operation name="ConsultarRankingCerradoOrdenes">
-    	<wsdl:input message="tb_om:ConsultarRankingCerradoOrdenesRequest"></wsdl:input>
-    	<wsdl:output message="tb_om:ConsultarRankingCerradoOrdenesResponse"></wsdl:output>
-            <wsdl:fault name="fault" message="tb_om:ConsultarRankingCerradoOrdenesFault"></wsdl:fault>
+    <wsdl:operation name="consultarRankingCerradoOrdenes">
+    	<wsdl:input message="tb_om:consultarRankingCerradoOrdenesRequest"></wsdl:input>
+    	<wsdl:output message="tb_om:consultarRankingCerradoOrdenesResponse"></wsdl:output>
+            <wsdl:fault name="fault" message="tb_om:consultarRankingCerradoOrdenesFault"></wsdl:fault>
         </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ServiceProxyOMSSOAP"
@@ -1092,10 +1093,10 @@
 
   	<soap:binding style="document"
   		transport="http://schemas.xmlsoap.org/soap/http" />
-  	<wsdl:operation name="RegistrarCliente">
+  	<wsdl:operation name="registrarCliente">
 
   		<soap:operation
-  			soapAction="http://www.example.org/ServiceProxyOMS/RegistrarCliente" />
+  			soapAction="http://www.example.org/ServiceProxyOMS/registrarCliente" />
   		<wsdl:input>
 
   			<soap:body use="literal" />
@@ -1109,10 +1110,10 @@
   			<soap:fault use="literal" name="fault" />
   		</wsdl:fault>
   	</wsdl:operation>
-  	<wsdl:operation name="ActualizarCliente">
+  	<wsdl:operation name="actualizarCliente">
 
   		<soap:operation
-  			soapAction="http://www.example.org/ServiceProxyOMS/ActualizarCliente" />
+  			soapAction="http://www.example.org/ServiceProxyOMS/actualizarCliente" />
   		<wsdl:input>
 
   			<soap:body use="literal" />
@@ -1126,10 +1127,10 @@
   			<soap:fault use="literal" name="fault" />
   		</wsdl:fault>
   	</wsdl:operation>
-  	<wsdl:operation name="ActualizarContraseniaCliente">
+  	<wsdl:operation name="actualizarContraseniaCliente">
 
   		<soap:operation
-  			soapAction="http://www.example.org/ServiceProxyOMS/ActualizarContraseniaCliente" />
+  			soapAction="http://www.example.org/ServiceProxyOMS/actualizarContraseniaCliente" />
   		<wsdl:input>
 
   			<soap:body use="literal" />
@@ -1143,10 +1144,10 @@
   			<soap:fault use="literal" name="fault" />
   		</wsdl:fault>
   	</wsdl:operation>
-  	<wsdl:operation name="ActualizarEstatusCliente">
+  	<wsdl:operation name="actualizarEstatusCliente">
 
   		<soap:operation
-  			soapAction="http://www.example.org/ServiceProxyOMS/ActualizarEstatusCliente" />
+  			soapAction="http://www.example.org/ServiceProxyOMS/actualizarEstatusCliente" />
   		<wsdl:input>
 
   			<soap:body use="literal" />
@@ -1160,10 +1161,10 @@
   			<soap:fault use="literal" name="fault" />
   		</wsdl:fault>
   	</wsdl:operation>
-  	<wsdl:operation name="ConsultarPorIdentificacionCliente">
+  	<wsdl:operation name="consultarPorIdentificacionCliente">
 
   		<soap:operation
-  			soapAction="http://www.example.org/ServiceProxyOMS/ConsultarPorIdentificacionCliente" />
+  			soapAction="http://www.example.org/ServiceProxyOMS/consultarPorIdentificacionCliente" />
   		<wsdl:input>
 
   			<soap:body use="literal" />
@@ -1177,10 +1178,10 @@
   			<soap:fault use="literal" name="fault" />
   		</wsdl:fault>
   	</wsdl:operation>
-  	<wsdl:operation name="ConsultarPorProductoCliente">
+  	<wsdl:operation name="consultarPorProductoCliente">
 
   		<soap:operation
-  			soapAction="http://www.example.org/ServiceProxyOMS/ConsultarPorProductoCliente" />
+  			soapAction="http://www.example.org/ServiceProxyOMS/consultarPorProductoCliente" />
   		<wsdl:input>
 
   			<soap:body use="literal" />
@@ -1194,10 +1195,10 @@
   			<soap:fault use="literal" name="fault" />
   		</wsdl:fault>
   	</wsdl:operation>
-  	<wsdl:operation name="ConsultarPorFactRangoCliente">
+  	<wsdl:operation name="consultarPorFactRangoCliente">
 
   		<soap:operation
-  			soapAction="http://www.example.org/ServiceProxyOMS/ConsultarPorFactRangoCliente" />
+  			soapAction="http://www.example.org/ServiceProxyOMS/consultarPorFactRangoCliente" />
   		<wsdl:input>
 
   			<soap:body use="literal" />
@@ -1211,10 +1212,10 @@
   			<soap:fault use="literal" name="fault" />
   		</wsdl:fault>
   	</wsdl:operation>
-  	<wsdl:operation name="ConsultarProducto">
+  	<wsdl:operation name="consultarProducto">
 
   		<soap:operation
-  			soapAction="http://www.example.org/ServiceProxyOMS/ConsultarProducto" />
+  			soapAction="http://www.example.org/ServiceProxyOMS/consultarProducto" />
   		<wsdl:input>
 
   			<soap:body use="literal" />
@@ -1228,10 +1229,10 @@
   			<soap:fault use="literal" name="fault" />
   		</wsdl:fault>
   	</wsdl:operation>
-  	<wsdl:operation name="ConsultarPorEspectaculoProducto">
+  	<wsdl:operation name="consultarPorEspectaculoProducto">
 
   		<soap:operation
-  			soapAction="http://www.example.org/ServiceProxyOMS/ConsultarPorEspectaculoProducto" />
+  			soapAction="http://www.example.org/ServiceProxyOMS/consultarPorEspectaculoProducto" />
   		<wsdl:input>
 
   			<soap:body use="literal" />
@@ -1245,10 +1246,10 @@
   			<soap:fault use="literal" name="fault" />
   		</wsdl:fault>
   	</wsdl:operation>
-  	<wsdl:operation name="ConsultarRankingFechaProducto">
+  	<wsdl:operation name="consultarRankingFechaProducto">
 
   		<soap:operation
-  			soapAction="http://www.example.org/ServiceProxyOMS/ConsultarRankingFechaProducto" />
+  			soapAction="http://www.example.org/ServiceProxyOMS/consultarRankingFechaProducto" />
   		<wsdl:input>
 
   			<soap:body use="literal" />
@@ -1263,10 +1264,10 @@
   		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation
-  		name="ConsultarRankingEspectaculosVendidosProducto">
+  		name="consultarRankingEspectaculosVendidosProducto">
 
   		<soap:operation
-  			soapAction="http://www.example.org/ServiceProxyOMS/ConsultarRankingEspectaculosVendidosProducto" />
+  			soapAction="http://www.example.org/ServiceProxyOMS/consultarRankingEspectaculosVendidosProducto" />
   		<wsdl:input>
 
   			<soap:body use="literal" />
@@ -1280,10 +1281,10 @@
   			<soap:fault use="literal" name="fault" />
   		</wsdl:fault>
   	</wsdl:operation>
-  	<wsdl:operation name="ConsultarCampaniaProducto">
+  	<wsdl:operation name="consultarCampaniaProducto">
 
   		<soap:operation
-  			soapAction="http://www.example.org/ServiceProxyOMS/ConsultarCampaniaProducto" />
+  			soapAction="http://www.example.org/ServiceProxyOMS/consultarCampaniaProducto" />
   		<wsdl:input>
 
   			<soap:body use="literal" />
@@ -1297,10 +1298,10 @@
   			<soap:fault use="literal" name="fault" />
   		</wsdl:fault>
   	</wsdl:operation>
-  	<wsdl:operation name="GestionCampaniaProducto">
+  	<wsdl:operation name="gestionCampaniaProducto">
 
   		<soap:operation
-  			soapAction="http://www.example.org/ServiceProxyOMS/GestionCampaniaProducto" />
+  			soapAction="http://www.example.org/ServiceProxyOMS/gestionCampaniaProducto" />
   		<wsdl:input>
 
   			<soap:body use="literal" />
@@ -1314,10 +1315,10 @@
   			<soap:fault use="literal" name="fault" />
   		</wsdl:fault>
   	</wsdl:operation>
-  	<wsdl:operation name="GestionProducto">
+  	<wsdl:operation name="gestionProducto">
 
   		<soap:operation
-  			soapAction="http://www.example.org/ServiceProxyOMS/GestionProducto" />
+  			soapAction="http://www.example.org/ServiceProxyOMS/gestionProducto" />
   		<wsdl:input>
 
   			<soap:body use="literal" />
@@ -1331,10 +1332,10 @@
   			<soap:fault use="literal" name="fault" />
   		</wsdl:fault>
   	</wsdl:operation>
-  	<wsdl:operation name="GestionTarifa">
+  	<wsdl:operation name="gestionTarifa">
 
   		<soap:operation
-  			soapAction="http://www.example.org/ServiceProxyOMS/GestionTarifa" />
+  			soapAction="http://www.example.org/ServiceProxyOMS/gestionTarifa" />
   		<wsdl:input>
 
   			<soap:body use="literal" />
@@ -1348,10 +1349,10 @@
   			<soap:fault use="literal" name="fault" />
   		</wsdl:fault>
   	</wsdl:operation>
-  	<wsdl:operation name="ConsultarOrdenes">
+  	<wsdl:operation name="consultarOrdenes">
 
   		<soap:operation
-  			soapAction="http://www.example.org/ServiceProxyOMS/ConsultarOrdenes" />
+  			soapAction="http://www.example.org/ServiceProxyOMS/consultarOrdenes" />
   		<wsdl:input>
 
   			<soap:body use="literal" />
@@ -1365,10 +1366,10 @@
   			<soap:fault use="literal" name="fault" />
   		</wsdl:fault>
   	</wsdl:operation>
-  	<wsdl:operation name="ConsultarRangoCerradoOrdenes">
+  	<wsdl:operation name="consultarRangoCerradoOrdenes">
 
   		<soap:operation
-  			soapAction="http://www.example.org/ServiceProxyOMS/ConsultarRangoCerradoOrdenes" />
+  			soapAction="http://www.example.org/ServiceProxyOMS/consultarRangoCerradoOrdenes" />
   		<wsdl:input>
 
   			<soap:body use="literal" />
@@ -1382,10 +1383,10 @@
   			<soap:fault use="literal" name="fault" />
   		</wsdl:fault>
   	</wsdl:operation>
-  	<wsdl:operation name="ConsultarRankingAbiertasOrdenes">
+  	<wsdl:operation name="consultarRankingAbiertasOrdenes">
 
   		<soap:operation
-  			soapAction="http://www.example.org/ServiceProxyOMS/ConsultarRankingAbiertasOrdenes" />
+  			soapAction="http://www.example.org/ServiceProxyOMS/consultarRankingAbiertasOrdenes" />
   		<wsdl:input>
 
   			<soap:body use="literal" />
@@ -1399,10 +1400,10 @@
   			<soap:fault use="literal" name="fault" />
   		</wsdl:fault>
   	</wsdl:operation>
-  	<wsdl:operation name="ConsultarRankingCerradoOrdenes">
+  	<wsdl:operation name="consultarRankingCerradoOrdenes">
 
   		<soap:operation
-  			soapAction="http://www.example.org/ServiceProxyOMS/ConsultarRankingCerradoOrdenes" />
+  			soapAction="http://www.example.org/ServiceProxyOMS/consultarRankingCerradoOrdenes" />
   		<wsdl:input>
 
   			<soap:body use="literal" />

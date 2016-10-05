@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
 	xmlns:tb_b2="http://www.touresbalon.com/ServiceProxyB2C/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
@@ -74,7 +73,7 @@
 					<xsd:sequence>
 						<xsd:element name="tipo_consulta" maxOccurs="1"
 							minOccurs="1" type="tb_b2:TipoConsultaProducto">
-						</xsd:element>
+						</xsd:element>
 						<xsd:element name="cadena_consulta" type="xsd:string"
 							maxOccurs="1" minOccurs="1">
 						</xsd:element>
@@ -266,7 +265,7 @@
 				<xsd:restriction base="xsd:string">
 					<xsd:enumeration value="DESCRIPCION"></xsd:enumeration>
 					<xsd:enumeration value="ID"></xsd:enumeration>
-					<xsd:enumeration value="NOMBRE"></xsd:enumeration>
+					<xsd:enumeration value="NOMBRE"></xsd:enumeration>
 				</xsd:restriction>
 			</xsd:simpleType>
 			<xsd:complexType name="TarifaValores">
@@ -498,7 +497,7 @@
             		</xsd:element>
             		<xsd:element name="estatus_orden"
             			type="tb_b2:EstatusOrden" maxOccurs="1" minOccurs="0">
-            		</xsd:element>
+            		</xsd:element>
             	</xsd:sequence>
             </xsd:complexType>
 		</xsd:schema>
@@ -1576,5 +1575,4 @@
 			<soap:address location="http://www.touresbalon.com/ServiceProxyB2C" />
 		</wsdl:port>
 	</wsdl:service>
->>>>>>> origin/master
 </wsdl:definitions>
