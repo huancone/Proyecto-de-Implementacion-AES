@@ -33,8 +33,10 @@
       <xsd:complexType name="Cliente">
       	<xsd:sequence>
 
-                    <xsd:element name="id_cliente" type="xsd:int" maxOccurs="1" minOccurs="0"></xsd:element>
-                    <xsd:element name="nombres" type="xsd:string"
+      		<xsd:element name="id_cliente" type="xsd:int"
+      			maxOccurs="1" minOccurs="0">
+      		</xsd:element>
+      		<xsd:element name="nombres" type="xsd:string"
       			maxOccurs="1" minOccurs="1">
       		</xsd:element>
       		<xsd:element name="apellidos" type="xsd:string"
@@ -58,6 +60,7 @@
       		<xsd:element name="direccion" type="tb_om:Direccion"
       			maxOccurs="unbounded" minOccurs="0">
       		</xsd:element>
+      		<xsd:element name="estatus" type="tb_om:EstatusCliente" maxOccurs="1" minOccurs="1"></xsd:element>
       	</xsd:sequence>
       </xsd:complexType>
         
