@@ -14,7 +14,7 @@ public class TarifaTransporte  implements java.io.Serializable {
 
      private int idTransporte;
      private String nombreTransporte;
-     private BigDecimal precio;
+     private double precio;
      private Set productos = new HashSet(0);
 
     public TarifaTransporte() {
@@ -24,7 +24,7 @@ public class TarifaTransporte  implements java.io.Serializable {
     public TarifaTransporte(int idTransporte) {
         this.idTransporte = idTransporte;
     }
-    public TarifaTransporte(int idTransporte, String nombreTransporte, BigDecimal precio, Set productos) {
+    public TarifaTransporte(int idTransporte, String nombreTransporte, double precio, Set productos) {
        this.idTransporte = idTransporte;
        this.nombreTransporte = nombreTransporte;
        this.precio = precio;
@@ -45,11 +45,11 @@ public class TarifaTransporte  implements java.io.Serializable {
     public void setNombreTransporte(String nombreTransporte) {
         this.nombreTransporte = nombreTransporte;
     }
-    public BigDecimal getPrecio() {
+    public double getPrecio() {
         return this.precio;
     }
     
-    public void setPrecio(BigDecimal precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
     public Set getProductos() {

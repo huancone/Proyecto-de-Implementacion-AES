@@ -14,7 +14,7 @@ public class TarifaEspectaculo  implements java.io.Serializable {
 
      private int idEspectaculo;
      private String nombreEspectaculo;
-     private BigDecimal precio;
+     private double precio;
      private Set productos = new HashSet(0);
 
     public TarifaEspectaculo() {
@@ -24,7 +24,7 @@ public class TarifaEspectaculo  implements java.io.Serializable {
     public TarifaEspectaculo(int idEspectaculo) {
         this.idEspectaculo = idEspectaculo;
     }
-    public TarifaEspectaculo(int idEspectaculo, String nombreEspectaculo, BigDecimal precio, Set productos) {
+    public TarifaEspectaculo(int idEspectaculo, String nombreEspectaculo, double precio, Set productos) {
        this.idEspectaculo = idEspectaculo;
        this.nombreEspectaculo = nombreEspectaculo;
        this.precio = precio;
@@ -45,11 +45,11 @@ public class TarifaEspectaculo  implements java.io.Serializable {
     public void setNombreEspectaculo(String nombreEspectaculo) {
         this.nombreEspectaculo = nombreEspectaculo;
     }
-    public BigDecimal getPrecio() {
+    public double getPrecio() {
         return this.precio;
     }
     
-    public void setPrecio(BigDecimal precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
     public Set getProductos() {

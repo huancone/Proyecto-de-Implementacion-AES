@@ -13,7 +13,7 @@
         <property name="tipoCiudad" type="string">
             <column name="tipo_ciudad" length="50" />
         </property>
-        <property name="precio" type="big_decimal">
+        <property name="precio" type="double">
             <column name="precio" precision="9" />
         </property>
         <set name="ciudads" table="CIUDAD" inverse="true" lazy="true" fetch="select">

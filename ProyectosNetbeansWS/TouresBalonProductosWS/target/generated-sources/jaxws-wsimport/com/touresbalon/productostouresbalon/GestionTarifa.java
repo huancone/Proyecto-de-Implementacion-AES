@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para anonymous complex type.
+ * <p>Java class for anonymous complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -46,7 +46,7 @@ public class GestionTarifa {
     protected TarifaValores tarifa;
 
     /**
-     * Obtiene el valor de la propiedad tipoOperacion.
+     * Gets the value of the tipoOperacion property.
      * 
      * @return
      *     possible object is
@@ -58,7 +58,7 @@ public class GestionTarifa {
     }
 
     /**
-     * Define el valor de la propiedad tipoOperacion.
+     * Sets the value of the tipoOperacion property.
      * 
      * @param value
      *     allowed object is
@@ -70,7 +70,7 @@ public class GestionTarifa {
     }
 
     /**
-     * Obtiene el valor de la propiedad tipoTarifa.
+     * Gets the value of the tipoTarifa property.
      * 
      * @return
      *     possible object is
@@ -82,7 +82,7 @@ public class GestionTarifa {
     }
 
     /**
-     * Define el valor de la propiedad tipoTarifa.
+     * Sets the value of the tipoTarifa property.
      * 
      * @param value
      *     allowed object is
@@ -94,7 +94,7 @@ public class GestionTarifa {
     }
 
     /**
-     * Obtiene el valor de la propiedad tarifa.
+     * Gets the value of the tarifa property.
      * 
      * @return
      *     possible object is
@@ -106,7 +106,7 @@ public class GestionTarifa {
     }
 
     /**
-     * Define el valor de la propiedad tarifa.
+     * Sets the value of the tarifa property.
      * 
      * @param value
      *     allowed object is

@@ -43,6 +43,7 @@ com\touresbalon\productostouresbalon\TipoTarifa.class
 com\touresbalon\productostouresbalon\ConsultarPorEspectaculoProductoResponse.class
 com\touresbalon\productostouresbalon\ConsultarRankingFechaProductoFault.class
 aes\pica\touresbalon\touresbalonproductosws\entidades\clientesyordenes\Orders.class
+aes\pica\touresbalon\touresbalonproductosws\servicios\Services$1.class
 com\touresbalon\productostouresbalon\ConsultaTop5ProductosResponse.class
 aes\pica\touresbalon\touresbalonproductosws\entidades\productos\TarifaTransporte.class
 com\touresbalon\productostouresbalon\ConsultaTop5ProductosFault.class
