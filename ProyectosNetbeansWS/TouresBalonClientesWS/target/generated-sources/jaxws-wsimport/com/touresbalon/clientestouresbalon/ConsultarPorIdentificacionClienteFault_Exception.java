@@ -23,8 +23,8 @@ public class ConsultarPorIdentificacionClienteFault_Exception
 
     /**
      * 
-     * @param message
      * @param faultInfo
+     * @param message
      */
     public ConsultarPorIdentificacionClienteFault_Exception(String message, ConsultarPorIdentificacionClienteFault faultInfo) {
         super(message);
@@ -33,9 +33,9 @@ public class ConsultarPorIdentificacionClienteFault_Exception
 
     /**
      * 
-     * @param message
      * @param faultInfo
      * @param cause
+     * @param message
      */
     public ConsultarPorIdentificacionClienteFault_Exception(String message, ConsultarPorIdentificacionClienteFault faultInfo, Throwable cause) {
         super(message, cause);

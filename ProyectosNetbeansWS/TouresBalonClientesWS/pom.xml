@@ -122,38 +122,6 @@
                         <id>wsimport-generate-ClientesTouresBalon</id>
                         <phase>generate-sources</phase>
                     </execution>
-                    <execution>
-                        <goals>
-                            <goal>wsimport</goal>
-                        </goals>
-                        <configuration>
-                            <wsdlFiles>
-                                <wsdlFile>ClientesTouresBalon.wsdl</wsdlFile>
-                            </wsdlFiles>
-                            <vmArgs>
-                                <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
-                            </vmArgs>
-                            <staleFile>${project.build.directory}/jaxws/stale/ClientesTouresBalon_1.stale</staleFile>
-                        </configuration>
-                        <id>wsimport-generate-ClientesTouresBalon_1</id>
-                        <phase>generate-sources</phase>
-                    </execution>
-                    <execution>
-                        <goals>
-                            <goal>wsimport</goal>
-                        </goals>
-                        <configuration>
-                            <wsdlFiles>
-                                <wsdlFile>ClientesTouresBalon.wsdl</wsdlFile>
-                            </wsdlFiles>
-                            <vmArgs>
-                                <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
-                            </vmArgs>
-                            <staleFile>${project.build.directory}/jaxws/stale/ClientesTouresBalon_2.stale</staleFile>
-                        </configuration>
-                        <id>wsimport-generate-ClientesTouresBalon_2</id>
-                        <phase>generate-sources</phase>
-                    </execution>
                 </executions>
                 <dependencies>
                     <dependency>

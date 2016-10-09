@@ -7,7 +7,7 @@
         <id name="custid" type="integer">
             <column name="CUSTID" />
             <generator class="sequence">
-                <param name="sequence">SEC_CUSTUMER_ID</param>
+                <param name="sequence">SEC_CUSTOMER_ID</param>
             </generator>
         </id>
         <property name="fname" type="string">

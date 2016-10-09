@@ -3,4 +3,5 @@
     <system systemId="file:/Users/jdtrujillop/GitHub/Proyecto-de-Implementacion-AES/Servicios/WSDL_TouresBalon/src/aes/pica/wsdl/productos/ProductosTouresBalon.wsdl" uri="wsdl/ProductosTouresBalon.wsdl"/>
     <system systemId="file:/Users/jdtrujillop/GitHub/Proyecto-de-Implementacion-AES/Servicios/WSDL_TouresBalon/src/aes/pica/wsdl/clientes/ClientesTouresBalon.wsdl" uri="wsdl/ClientesTouresBalon.wsdl"/>
     <system systemId="file:/D:/Development/GitHub/Proyecto-de-Implementacion-AES/Servicios/WSDL_TouresBalon/src/aes/pica/wsdl/clientes/ClientesTouresBalon.wsdl" uri="wsdl/ClientesTouresBalon.wsdl"/>
+    <system systemId="file:/Users/deirovir/Documents/Especializacion/git/PICA/Proyecto-de-Implementacion-AES/Servicios/WSDL_TouresBalon/src/aes/pica/wsdl/clientes/ClientesTouresBalon.wsdl" uri="wsdl/ClientesTouresBalon.wsdl"/>
 </catalog>

@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Cliente complex type.
+ * <p>Clase Java para Cliente complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="Cliente">
@@ -28,6 +28,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="tipo_tarjeta" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="numero_tarjeta" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="direccion" type="{http://www.touresbalon.com/ClientesTouresBalon/}Direccion" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="estatus" type="{http://www.touresbalon.com/ClientesTouresBalon/}EstatusCliente"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -46,7 +47,8 @@ import javax.xml.bind.annotation.XmlType;
     "contrasenia",
     "tipoTarjeta",
     "numeroTarjeta",
-    "direccion"
+    "direccion",
+    "estatus"
 })
 public class Cliente {
 
@@ -67,9 +69,11 @@ public class Cliente {
     @XmlElement(name = "numero_tarjeta")
     protected String numeroTarjeta;
     protected List<Direccion> direccion;
+    @XmlElement(required = true)
+    protected EstatusCliente estatus;
 
     /**
-     * Gets the value of the idCliente property.
+     * Obtiene el valor de la propiedad idCliente.
      * 
      * @return
      *     possible object is
@@ -81,7 +85,7 @@ public class Cliente {
     }
 
     /**
-     * Sets the value of the idCliente property.
+     * Define el valor de la propiedad idCliente.
      * 
      * @param value
      *     allowed object is
@@ -93,7 +97,7 @@ public class Cliente {
     }
 
     /**
-     * Gets the value of the nombres property.
+     * Obtiene el valor de la propiedad nombres.
      * 
      * @return
      *     possible object is
@@ -105,7 +109,7 @@ public class Cliente {
     }
 
     /**
-     * Sets the value of the nombres property.
+     * Define el valor de la propiedad nombres.
      * 
      * @param value
      *     allowed object is
@@ -117,7 +121,7 @@ public class Cliente {
     }
 
     /**
-     * Gets the value of the apellidos property.
+     * Obtiene el valor de la propiedad apellidos.
      * 
      * @return
      *     possible object is
@@ -129,7 +133,7 @@ public class Cliente {
     }
 
     /**
-     * Sets the value of the apellidos property.
+     * Define el valor de la propiedad apellidos.
      * 
      * @param value
      *     allowed object is
@@ -141,7 +145,7 @@ public class Cliente {
     }
 
     /**
-     * Gets the value of the numTel property.
+     * Obtiene el valor de la propiedad numTel.
      * 
      * @return
      *     possible object is
@@ -153,7 +157,7 @@ public class Cliente {
     }
 
     /**
-     * Sets the value of the numTel property.
+     * Define el valor de la propiedad numTel.
      * 
      * @param value
      *     allowed object is
@@ -165,7 +169,7 @@ public class Cliente {
     }
 
     /**
-     * Gets the value of the email property.
+     * Obtiene el valor de la propiedad email.
      * 
      * @return
      *     possible object is
@@ -177,7 +181,7 @@ public class Cliente {
     }
 
     /**
-     * Sets the value of the email property.
+     * Define el valor de la propiedad email.
      * 
      * @param value
      *     allowed object is
@@ -189,7 +193,7 @@ public class Cliente {
     }
 
     /**
-     * Gets the value of the contrasenia property.
+     * Obtiene el valor de la propiedad contrasenia.
      * 
      * @return
      *     possible object is
@@ -201,7 +205,7 @@ public class Cliente {
     }
 
     /**
-     * Sets the value of the contrasenia property.
+     * Define el valor de la propiedad contrasenia.
      * 
      * @param value
      *     allowed object is
@@ -213,7 +217,7 @@ public class Cliente {
     }
 
     /**
-     * Gets the value of the tipoTarjeta property.
+     * Obtiene el valor de la propiedad tipoTarjeta.
      * 
      * @return
      *     possible object is
@@ -225,7 +229,7 @@ public class Cliente {
     }
 
     /**
-     * Sets the value of the tipoTarjeta property.
+     * Define el valor de la propiedad tipoTarjeta.
      * 
      * @param value
      *     allowed object is
@@ -237,7 +241,7 @@ public class Cliente {
     }
 
     /**
-     * Gets the value of the numeroTarjeta property.
+     * Obtiene el valor de la propiedad numeroTarjeta.
      * 
      * @return
      *     possible object is
@@ -249,7 +253,7 @@ public class Cliente {
     }
 
     /**
-     * Sets the value of the numeroTarjeta property.
+     * Define el valor de la propiedad numeroTarjeta.
      * 
      * @param value
      *     allowed object is
@@ -287,6 +291,30 @@ public class Cliente {
             direccion = new ArrayList<Direccion>();
         }
         return this.direccion;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad estatus.
+     * 
+     * @return
+     *     possible object is
+     *     {@link EstatusCliente }
+     *     
+     */
+    public EstatusCliente getEstatus() {
+        return estatus;
+    }
+
+    /**
+     * Define el valor de la propiedad estatus.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link EstatusCliente }
+     *     
+     */
+    public void setEstatus(EstatusCliente value) {
+        this.estatus = value;
     }
 
 }
