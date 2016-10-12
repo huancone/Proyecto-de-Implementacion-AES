@@ -2,7 +2,6 @@ package aes.pica.touresbalon.touresbalonproductosws.entidades.clientesyordenes;
 // Generated 3/10/2016 10:30:09 PM by Hibernate Tools 4.3.1
 
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,7 +15,7 @@ public class Orders  implements java.io.Serializable {
      private int ordid;
      private Customer customer;
      private Date orderdate;
-     private BigDecimal price;
+     private double price;
      private String status;
      private String comments;
      private Set itemses = new HashSet(0);
@@ -29,7 +28,7 @@ public class Orders  implements java.io.Serializable {
         this.ordid = ordid;
         this.customer = customer;
     }
-    public Orders(int ordid, Customer customer, Date orderdate, BigDecimal price, String status, String comments, Set itemses) {
+    public Orders(int ordid, Customer customer, Date orderdate, double price, String status, String comments, Set itemses) {
        this.ordid = ordid;
        this.customer = customer;
        this.orderdate = orderdate;
@@ -60,11 +59,11 @@ public class Orders  implements java.io.Serializable {
     public void setOrderdate(Date orderdate) {
         this.orderdate = orderdate;
     }
-    public BigDecimal getPrice() {
+    public double getPrice() {
         return this.price;
     }
     
-    public void setPrice(BigDecimal price) {
+    public void setPrice(double price) {
         this.price = price;
     }
     public String getStatus() {

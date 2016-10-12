@@ -12,11 +12,11 @@ public class Items  implements java.io.Serializable {
 
      private int itemid;
      private Orders orders;
-     private BigDecimal prodid;
+     private int prodid;
      private String productname;
      private String partnum;
-     private BigDecimal price;
-     private BigDecimal quantity;
+     private double price;
+     private int quantity;
 
     public Items() {
     }
@@ -26,7 +26,7 @@ public class Items  implements java.io.Serializable {
         this.itemid = itemid;
         this.orders = orders;
     }
-    public Items(int itemid, Orders orders, BigDecimal prodid, String productname, String partnum, BigDecimal price, BigDecimal quantity) {
+    public Items(int itemid, Orders orders, int prodid, String productname, String partnum, double price, int quantity) {
        this.itemid = itemid;
        this.orders = orders;
        this.prodid = prodid;
@@ -50,11 +50,11 @@ public class Items  implements java.io.Serializable {
     public void setOrders(Orders orders) {
         this.orders = orders;
     }
-    public BigDecimal getProdid() {
+    public int getProdid() {
         return this.prodid;
     }
     
-    public void setProdid(BigDecimal prodid) {
+    public void setProdid(int prodid) {
         this.prodid = prodid;
     }
     public String getProductname() {
@@ -71,18 +71,18 @@ public class Items  implements java.io.Serializable {
     public void setPartnum(String partnum) {
         this.partnum = partnum;
     }
-    public BigDecimal getPrice() {
+    public double getPrice() {
         return this.price;
     }
     
-    public void setPrice(BigDecimal price) {
+    public void setPrice(double price) {
         this.price = price;
     }
-    public BigDecimal getQuantity() {
+    public int getQuantity() {
         return this.quantity;
     }
     
-    public void setQuantity(BigDecimal quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
