@@ -15,11 +15,7 @@ import com.touresbalon.ordenestouresbalon.Item;
 import com.touresbalon.ordenestouresbalon.Orden;
 import com.touresbalon.ordenestouresbalon.RespuestaGenerica;
 import com.touresbalon.ordenestouresbalon.RespuestaOrdenCerrada;
-import com.touresbalon.ordenestouresbalon.TipoConsultaOrden;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -40,17 +36,72 @@ public class Services {
 
     //Variables globlales
     private Session sessionOrdenes;
-    private Session sessionProductos;
     private Transaction tx;
 
     public java.util.List<com.touresbalon.ordenestouresbalon.Orden> consultarClientesOrdenes(int idCliente) throws com.touresbalon.ordenestouresbalon.ConsultarClientesOrdenesFault_Exception {
-        //TODO implement this method
-        throw new UnsupportedOperationException("Not implemented yet.");
+
+        System.out.println("--------------------------------------------------");
+        System.out.println("INICIO ::: consultarClientesOrdenes");
+
+        List<Orden> ordenes = new ArrayList<Orden>();
+        String strsql;
+
+        try {
+
+            sessionOrdenes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
+            tx = sessionOrdenes.beginTransaction();
+        
+            strsql = "from Orders where ordid = :idCustomer )";
+            sessionOrdenes.createQuery(strsql)
+                    .setParameter("idCustomer", idCliente);
+ 
+        } catch (Exception e) {
+
+            System.out.println("$$$ Error consultarClientesOrdenes" + e);
+
+        }
+
+        System.out.println("FINAL  ::: consultarClientesOrdenes");
+        System.out.println("--------------------------------------------------");
+
+        return ordenes;
+        
     }
 
     public com.touresbalon.ordenestouresbalon.RespuestaGenerica cancelarOrdenes(java.util.List<java.lang.Integer> idOrden) throws com.touresbalon.ordenestouresbalon.CancelarOrdenesFault_Exception {
-        //TODO implement this method
-        throw new UnsupportedOperationException("Not implemented yet.");
+
+        System.out.println("--------------------------------------------------");
+        System.out.println("INICIO ::: cancelarOrdenes");
+
+        RespuestaGenerica respuesta = RespuestaGenerica.KO;
+        Orders ordenDB = new Orders();
+        EstatusOrden estatusOrden = null;
+        Integer id = 0;
+
+        try {
+
+            sessionOrdenes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
+            tx = sessionOrdenes.beginTransaction();
+
+            ordenDB.setOrdid(idOrden.get(0));
+            ordenDB.setStatus(estatusOrden.CANCELADA.value());
+            sessionOrdenes.update(ordenDB);
+            tx.commit();
+
+        } catch (Exception e) {
+
+            System.out.println("$$$ ERROR: cancelarOrdenes: " + e);
+            respuesta = RespuestaGenerica.OK;
+
+        }
+
+        respuesta = RespuestaGenerica.OK;
+
+        System.out.println("FINAL  ::: cancelarOrdenes");
+        System.out.println("--------------------------------------------------");
+
+        return respuesta;
+        
     }
 
     public com.touresbalon.ordenestouresbalon.CrearOrdenResponse crearOrdenes(com.touresbalon.ordenestouresbalon.Orden orden) throws com.touresbalon.ordenestouresbalon.CrearOrdenesFault_Exception {
@@ -72,7 +123,7 @@ public class Services {
             ordenDB.setOrderdate(toDate(orden.getFechaOrden()));
             ordenDB.setPrice(orden.getPrecio());
             EstatusOrden estatusOrden = null;
-            ordenDB.setStatus(estatusOrden.VALIDACION.value());
+            ordenDB.setStatus(orden.getEstatus().toString());
             ordenDB.setComments(orden.getComentarios().get(0));
             ordenDB.setCustomer(new Customer());
             ordenDB.getCustomer().setCustid(orden.getIdCliente());
@@ -99,7 +150,7 @@ public class Services {
 
         }
 
-        respuesta.setEstatusOrden(EstatusOrden.VALIDACION);
+        respuesta.setEstatusOrden(EstatusOrden.fromValue(ordenDB.getStatus()));
         respuesta.setIdOrden(id);
         respuesta.setRespuesta(RespuestaGenerica.OK);
 
