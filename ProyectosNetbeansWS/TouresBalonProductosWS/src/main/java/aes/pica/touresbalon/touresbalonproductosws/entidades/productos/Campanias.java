@@ -1,5 +1,5 @@
 package aes.pica.touresbalon.touresbalonproductosws.entidades.productos;
-// Generated Oct 16, 2016 11:26:44 AM by Hibernate Tools 4.3.1
+// Generated Oct 16, 2016 3:40:40 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -11,16 +11,16 @@ public class Campanias  implements java.io.Serializable {
 
 
      private int idCampania;
-     private int idProducto;
+     private Producto producto;
      private Date fechaInicio;
      private Date fechaFin;
 
     public Campanias() {
     }
 
-    public Campanias(int idCampania, int idProducto, Date fechaInicio, Date fechaFin) {
+    public Campanias(int idCampania, Producto producto, Date fechaInicio, Date fechaFin) {
        this.idCampania = idCampania;
-       this.idProducto = idProducto;
+       this.producto = producto;
        this.fechaInicio = fechaInicio;
        this.fechaFin = fechaFin;
     }
@@ -32,12 +32,12 @@ public class Campanias  implements java.io.Serializable {
     public void setIdCampania(int idCampania) {
         this.idCampania = idCampania;
     }
-    public int getIdProducto() {
-        return this.idProducto;
+    public Producto getProducto() {
+        return this.producto;
     }
     
-    public void setIdProducto(int idProducto) {
-        this.idProducto = idProducto;
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
     public Date getFechaInicio() {
         return this.fechaInicio;

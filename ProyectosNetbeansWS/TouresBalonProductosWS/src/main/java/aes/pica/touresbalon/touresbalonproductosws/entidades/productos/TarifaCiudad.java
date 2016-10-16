@@ -1,6 +1,8 @@
 package aes.pica.touresbalon.touresbalonproductosws.entidades.productos;
-// Generated 3/10/2016 11:01:42 PM by Hibernate Tools 4.3.1
+// Generated Oct 16, 2016 3:40:40 PM by Hibernate Tools 4.3.1
 
+
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,7 +14,7 @@ public class TarifaCiudad  implements java.io.Serializable {
 
      private int idTarifaCiudad;
      private String tipoCiudad;
-     private double precio;
+     private BigDecimal precio;
      private Set ciudads = new HashSet(0);
 
     public TarifaCiudad() {
@@ -22,7 +24,7 @@ public class TarifaCiudad  implements java.io.Serializable {
     public TarifaCiudad(int idTarifaCiudad) {
         this.idTarifaCiudad = idTarifaCiudad;
     }
-    public TarifaCiudad(int idTarifaCiudad, String tipoCiudad, double precio, Set ciudads) {
+    public TarifaCiudad(int idTarifaCiudad, String tipoCiudad, BigDecimal precio, Set ciudads) {
        this.idTarifaCiudad = idTarifaCiudad;
        this.tipoCiudad = tipoCiudad;
        this.precio = precio;
@@ -43,11 +45,11 @@ public class TarifaCiudad  implements java.io.Serializable {
     public void setTipoCiudad(String tipoCiudad) {
         this.tipoCiudad = tipoCiudad;
     }
-    public double getPrecio() {
+    public BigDecimal getPrecio() {
         return this.precio;
     }
     
-    public void setPrecio(double precio) {
+    public void setPrecio(BigDecimal precio) {
         this.precio = precio;
     }
     public Set getCiudads() {

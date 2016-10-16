@@ -1,14 +1,12 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 3/10/2016 11:01:42 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Oct 16, 2016 3:40:42 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Ciudad" table="CIUDAD" schema="dbo" catalog="TB_PRODUCTOS" optimistic-lock="version">
         <id name="idCiudad" type="int">
             <column name="id_ciudad" />
-            <generator class="sequence">
-                <param name="sequence">SEC_CIUDAD_ID</param>
-            </generator>
+            <generator class="assigned" />
         </id>
         <many-to-one name="tarifaCiudad" class="aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaCiudad" fetch="select">
             <column name="id_tarifa_ciudad" />

@@ -3,7 +3,7 @@
 <hibernate-configuration>
   <session-factory>
       
-    <property name="hibernate.dialect">org.hibernate.dialect.OracleDialect</property>
+ <!--   <property name="hibernate.dialect">org.hibernate.dialect.OracleDialect</property>
     <property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
     <property name="hibernate.connection.url">jdbc:oracle:thin:@192.168.99.100:32781:XE</property>
     <property name="hibernate.connection.username">touresbalon</property>
@@ -15,5 +15,5 @@
     <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/clientesyordenes/Address.hbm.xml"/>
     <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/clientesyordenes/Items.hbm.xml"/>
   
-      </session-factory>
+    -->  </session-factory>
 </hibernate-configuration>

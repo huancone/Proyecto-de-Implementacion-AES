@@ -155,9 +155,9 @@ public class Services {
             prod.setCiudadEspectaculo(ciu);
             prod.setDescripcion(lstpro.get(i).getDescripcion());
             prod.setEspectaculo(lstpro.get(i).getEspectaculo());
-            prod.setFechaEspectaculo(toGregorian(lstpro.get(i).getFechaEspectaculo()));
-            prod.setFechaLlegada(toGregorian(lstpro.get(i).getFechaLlegada()));
-            prod.setFechaSalida(toGregorian(lstpro.get(i).getFechaSalida()));
+//            prod.setFechaEspectaculo(toGregorian(lstpro.get(i).getFechaEspectaculo()));
+//            prod.setFechaLlegada(toGregorian(lstpro.get(i).getFechaLlegada()));
+//            prod.setFechaSalida(toGregorian(lstpro.get(i).getFechaSalida()));
             prod.setIdProducto(lstpro.get(i).getIdProducto());
             prod.setImagenProducto(lstpro.get(i).getUrlImagen());
             
