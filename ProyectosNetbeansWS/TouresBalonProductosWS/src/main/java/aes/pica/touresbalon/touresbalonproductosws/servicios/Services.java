@@ -5,6 +5,8 @@
  */
 package aes.pica.touresbalon.touresbalonproductosws.servicios;
 
+import aes.pica.touresbalon.touresbalonproductosws.entidades.clientesyordenes.Orders;
+import aes.pica.touresbalon.touresbalonproductosws.util.ClientesyOrdenesHU;
 import aes.pica.touresbalon.touresbalonproductosws.util.ProductosHU;
 import com.touresbalon.productostouresbalon.ConsultaTop5ProductosFault_Exception;
 import com.touresbalon.productostouresbalon.ConsultarCampaniaProductoFault_Exception;
@@ -37,54 +39,57 @@ import org.hibernate.Transaction;
  */
 @WebService(serviceName = "ProductosTouresBalon", portName = "ProductosTouresBalonSOAP", endpointInterface = "com.touresbalon.productostouresbalon.ProductosTouresBalon", targetNamespace = "http://www.touresbalon.com/ProductosTouresBalon/", wsdlLocation = "WEB-INF/wsdl/ProductosTouresBalon.wsdl")
 public class Services {
-    
+
     //Variables globlales
-   // private Session sessionClientes;
+    // private Session sessionClientes;
     private Session sessionProductos;
-    private Transaction tx;
+    private Session sessionOrdenes;
+    private Transaction txProductos;
+    private Transaction txOrdenes;
 
     public java.util.List<com.touresbalon.productostouresbalon.Producto> consultarProducto(com.touresbalon.productostouresbalon.TipoConsultaProducto tipoConsulta, java.lang.String cadenaConsulta) throws ConsultarProductoFault_Exception, DatatypeConfigurationException {
-        
+
         sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
-        tx= sessionProductos.beginTransaction();
-       
-        String strsql ;
+        txProductos = sessionProductos.beginTransaction();
+
+        String strsql;
         Query q = null;
         List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto> lstpro = new ArrayList<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto>();
         List<Producto> lstprod = new ArrayList<Producto>();
         System.out.println("inicializa");
-        if (null!= tipoConsulta  )
-        switch (tipoConsulta) {
-            case DESCRIPCION:
-                strsql="from Producto where descripcion like :valorbuscar" ;
-                q=sessionProductos.createQuery(strsql)
-                        .setParameter("valorbuscar", "%" + cadenaConsulta + "%");
-                  lstpro=q.list();  ;
-                break;
-            case ID:
-                System.out.println("por ID");
-                strsql="from Producto where idProducto=" + cadenaConsulta;
-                q=sessionProductos.createQuery(strsql);
-                lstpro =q.list();
-                break;
-            default:
-                strsql="from Producto where espectaculo like :valorbuscar";
-                q=sessionProductos.createQuery(strsql)
-                        .setParameter("valorbuscar", "%" +  cadenaConsulta + "%");
-                lstpro =q.list();
-                break;
-        //TODO implement this method
-        //throw new UnsupportedOperationException("Not implemented yet.");
+        if (null != tipoConsulta) {
+            switch (tipoConsulta) {
+                case DESCRIPCION:
+                    strsql = "from Producto where descripcion like :valorbuscar";
+                    q = sessionProductos.createQuery(strsql)
+                            .setParameter("valorbuscar", "%" + cadenaConsulta + "%");
+                    lstpro = q.list();
+                    ;
+                    break;
+                case ID:
+                    System.out.println("por ID");
+                    strsql = "from Producto where idProducto=" + cadenaConsulta;
+                    q = sessionProductos.createQuery(strsql);
+                    lstpro = q.list();
+                    break;
+                default:
+                    strsql = "from Producto where espectaculo like :valorbuscar";
+                    q = sessionProductos.createQuery(strsql)
+                            .setParameter("valorbuscar", "%" + cadenaConsulta + "%");
+                    lstpro = q.list();
+                    break;
+                //TODO implement this method
+                //throw new UnsupportedOperationException("Not implemented yet.");
+            }
         }
-        
-        for(int i=0; i < lstpro.size(); i++)
-        {
-            com.touresbalon.productostouresbalon.Producto prod = new  com.touresbalon.productostouresbalon.Producto();
+
+        for (int i = 0; i < lstpro.size(); i++) {
+            com.touresbalon.productostouresbalon.Producto prod = new com.touresbalon.productostouresbalon.Producto();
             com.touresbalon.productostouresbalon.Ciudad ciu = new com.touresbalon.productostouresbalon.Ciudad();
-            
+
             ciu.setIdCiudad(lstpro.get(i).getCiudad().getIdCiudad());
             ciu.setPais(lstpro.get(i).getCiudad().getNombreCiudad() + " - " + lstpro.get(i).getCiudad().getPais());
-            
+
             prod.setCiudadEspectaculo(ciu);
             prod.setDescripcion(lstpro.get(i).getDescripcion());
             prod.setEspectaculo(lstpro.get(i).getEspectaculo());
@@ -93,36 +98,34 @@ public class Services {
             prod.setFechaSalida(toGregorian(lstpro.get(i).getFechaSalida()));
             prod.setIdProducto(lstpro.get(i).getIdProducto());
             prod.setImagenProducto(lstpro.get(i).getUrlImagen());
-            
+
             com.touresbalon.productostouresbalon.TarifaValores tarvalesp = new com.touresbalon.productostouresbalon.TarifaValores();
             com.touresbalon.productostouresbalon.TarifaValores tarvaltra = new com.touresbalon.productostouresbalon.TarifaValores();
             com.touresbalon.productostouresbalon.TarifaValores tarvalhos = new com.touresbalon.productostouresbalon.TarifaValores();
-            
+
             tarvalesp.setId(lstpro.get(i).getTarifaEspectaculo().getIdEspectaculo());
             tarvalesp.setNombreTipo(lstpro.get(i).getTarifaEspectaculo().getNombreEspectaculo());
             tarvalesp.setPrecio(lstpro.get(i).getTarifaEspectaculo().getPrecio());
-            
+
             tarvaltra.setId(lstpro.get(i).getTarifaTransporte().getIdTransporte());
             tarvaltra.setNombreTipo(lstpro.get(i).getTarifaTransporte().getNombreTransporte());
             tarvaltra.setPrecio(lstpro.get(i).getTarifaTransporte().getPrecio());
-            
+
             tarvalhos.setId(lstpro.get(i).getTarifaHospedaje().getIdHospedaje());
             tarvalhos.setNombreTipo(lstpro.get(i).getTarifaHospedaje().getNombreHospedaje());
             tarvalhos.setPrecio(lstpro.get(i).getTarifaHospedaje().getPrecio());
-             
+
             //tipoesp
             prod.setTipoEspectaculo(tarvalesp);
             prod.setTipoHospedaje(tarvalhos);
             prod.setTipoTransporte(tarvaltra);
-            
-            
+
             //prod.setTipoEspectaculo();
             lstprod.add(prod);
         }
-        
-       
-      System.out.println("cierre");
-       tx.commit();
+
+        System.out.println("cierre");
+        txProductos.commit();
         return lstprod;
         //TODO implement this method
         //throw new UnsupportedOperationException("Not implemented yet.");
@@ -130,29 +133,26 @@ public class Services {
 
     public java.util.List<com.touresbalon.productostouresbalon.Producto> consultarCampaniaProducto() throws ConsultarCampaniaProductoFault_Exception, DatatypeConfigurationException {
         //TODO implement this method
-       sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
-        tx= sessionProductos.beginTransaction();
-       
-        String strsql ;
+        sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
+        txProductos = sessionProductos.beginTransaction();
+
+        String strsql;
         Query q = null;
         List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto> lstpro = new ArrayList<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto>();
         List<Producto> lstprod = new ArrayList<Producto>();
-       
-       
-        strsql="from Campanias as c join c.producto as p where current_date>= c.fechaInicio and current_date<= c.fechaFin" ;
-        q=sessionProductos.createQuery(strsql);
-                
-        lstpro=q.list();  
-       
-        
-        for(int i=0; i < lstpro.size(); i++)
-        {
-            com.touresbalon.productostouresbalon.Producto prod = new  com.touresbalon.productostouresbalon.Producto();
+
+        strsql = "from Campanias as c join c.producto as p where current_date>= c.fechaInicio and current_date<= c.fechaFin";
+        q = sessionProductos.createQuery(strsql);
+
+        lstpro = q.list();
+
+        for (int i = 0; i < lstpro.size(); i++) {
+            com.touresbalon.productostouresbalon.Producto prod = new com.touresbalon.productostouresbalon.Producto();
             com.touresbalon.productostouresbalon.Ciudad ciu = new com.touresbalon.productostouresbalon.Ciudad();
-            
+
             ciu.setIdCiudad(lstpro.get(i).getCiudad().getIdCiudad());
             ciu.setPais(lstpro.get(i).getCiudad().getNombreCiudad() + " - " + lstpro.get(i).getCiudad().getPais());
-            
+
             prod.setCiudadEspectaculo(ciu);
             prod.setDescripcion(lstpro.get(i).getDescripcion());
             prod.setEspectaculo(lstpro.get(i).getEspectaculo());
@@ -161,42 +161,40 @@ public class Services {
             prod.setFechaSalida(toGregorian(lstpro.get(i).getFechaSalida()));
             prod.setIdProducto(lstpro.get(i).getIdProducto());
             prod.setImagenProducto(lstpro.get(i).getUrlImagen());
-            
+
             com.touresbalon.productostouresbalon.TarifaValores tarvalesp = new com.touresbalon.productostouresbalon.TarifaValores();
             com.touresbalon.productostouresbalon.TarifaValores tarvaltra = new com.touresbalon.productostouresbalon.TarifaValores();
             com.touresbalon.productostouresbalon.TarifaValores tarvalhos = new com.touresbalon.productostouresbalon.TarifaValores();
-            
+
             tarvalesp.setId(lstpro.get(i).getTarifaEspectaculo().getIdEspectaculo());
             tarvalesp.setNombreTipo(lstpro.get(i).getTarifaEspectaculo().getNombreEspectaculo());
             tarvalesp.setPrecio(lstpro.get(i).getTarifaEspectaculo().getPrecio());
-            
+
             tarvaltra.setId(lstpro.get(i).getTarifaTransporte().getIdTransporte());
             tarvaltra.setNombreTipo(lstpro.get(i).getTarifaTransporte().getNombreTransporte());
             tarvaltra.setPrecio(lstpro.get(i).getTarifaTransporte().getPrecio());
-            
+
             tarvalhos.setId(lstpro.get(i).getTarifaHospedaje().getIdHospedaje());
             tarvalhos.setNombreTipo(lstpro.get(i).getTarifaHospedaje().getNombreHospedaje());
             tarvalhos.setPrecio(lstpro.get(i).getTarifaHospedaje().getPrecio());
-             
+
             //tipoesp
             prod.setTipoEspectaculo(tarvalesp);
             prod.setTipoHospedaje(tarvalhos);
             prod.setTipoTransporte(tarvaltra);
-            
-            
+
             //prod.setTipoEspectaculo();
             lstprod.add(prod);
         }
-        
-       
-      System.out.println("cierre");
-       tx.commit();
+
+        System.out.println("cierre");
+        txProductos.commit();
         return lstprod;
     }
 
     public java.util.List<com.touresbalon.productostouresbalon.Producto> consultarPorEspectaculoProducto(java.lang.String espectaculo) throws ConsultarPorEspectaculoProductoFault_Exception, DatatypeConfigurationException {
         sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
-        tx = sessionProductos.beginTransaction();
+        txProductos = sessionProductos.beginTransaction();
 
         List<Producto> lstProductos = new ArrayList<>();
         List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto> lstProductEntity = new ArrayList<>();
@@ -204,7 +202,7 @@ public class Services {
         String sqlQuery;
         Query q = null;
 
-        sqlQuery = "from Producto where CONTAINS(espectaculo, ':espectaculo')";
+        sqlQuery = "from Producto where CONTAINS(espectaculo, :espectaculo)";
         sessionProductos.createQuery(sqlQuery).setParameter("espectaculo", espectaculo);
         q = sessionProductos.createQuery(sqlQuery);
 
@@ -221,24 +219,24 @@ public class Services {
             tarifaEspectaculo.setNombreTipo(lstProductEntity.get(i).getTarifaEspectaculo().getNombreEspectaculo());
             tarifaEspectaculo.setPrecio(lstProductEntity.get(i).getTarifaEspectaculo().getPrecio());
             p.setTipoEspectaculo(tarifaEspectaculo);
-            
+
             TarifaValores tarifaTransporte = new TarifaValores();
             tarifaTransporte.setId(lstProductEntity.get(i).getTarifaTransporte().getIdTransporte());
             tarifaTransporte.setNombreTipo(lstProductEntity.get(i).getTarifaTransporte().getNombreTransporte());
             tarifaTransporte.setPrecio(lstProductEntity.get(i).getTarifaTransporte().getPrecio());
             p.setTipoTransporte(tarifaTransporte);
-            
+
             TarifaValores tarifaHospedaje = new TarifaValores();
             tarifaHospedaje.setId(lstProductEntity.get(i).getTarifaHospedaje().getIdHospedaje());
             tarifaHospedaje.setNombreTipo(lstProductEntity.get(i).getTarifaHospedaje().getNombreHospedaje());
             tarifaHospedaje.setPrecio(lstProductEntity.get(i).getTarifaHospedaje().getPrecio());
             p.setTipoHospedaje(tarifaHospedaje);
-            
+
             p.setFechaSalida(toGregorian(lstProductEntity.get(i).getFechaSalida()));
             p.setFechaLlegada(toGregorian(lstProductEntity.get(i).getFechaLlegada()));
-            
+
             p.setImagenProducto(lstProductEntity.get(i).getUrlImagen());
-            
+
             lstProductos.add(p);
 
         }
@@ -247,12 +245,23 @@ public class Services {
     }
 
     public java.util.List<com.touresbalon.productostouresbalon.TarifaValores> consultarRankingEspectaculosVendidosProducto(javax.xml.datatype.XMLGregorianCalendar fechaInicial, javax.xml.datatype.XMLGregorianCalendar fechaFin) throws ConsultarRankingEspectaculosVendidosProductoFault_Exception {
-        //TODO implement this method
-        throw new UnsupportedOperationException("Not implemented yet.");
+        sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
+        txProductos = sessionProductos.beginTransaction();
+
+        sessionOrdenes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
+        txOrdenes = sessionOrdenes.beginTransaction();
+
+        List<TarifaValores> lstRankingEspectaculos = new ArrayList<>();
+        List<Orders> lstOrdenesEntity = new ArrayList<>();
+
+        List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaEspectaculo> lstRankingEspectaculosEntity = new ArrayList<>();
+        
+        String strSQL = "From Ordenes ";
+        return lstRankingEspectaculos;
     }
 
     public java.util.List<com.touresbalon.productostouresbalon.Producto> consultarRankingFechaProducto(javax.xml.datatype.XMLGregorianCalendar fechaInicial, javax.xml.datatype.XMLGregorianCalendar fechaFin) throws ConsultarRankingFechaProductoFault_Exception {
-        //TODO implement this method
+        
         throw new UnsupportedOperationException("Not implemented yet.");
     }
 
@@ -272,10 +281,8 @@ public class Services {
 //        addr.setCity("bogota");
 //        addr.setAddressType("calle");
 //        addr.setCountry("Colombia");
-
 //        Integer id = (Integer) sessionClientes.save(addr);
 //        res = "este es el id: " + id;
-
         //Query q = sessionClientes.
 //        Query q = sessionClientes.createQuery("from Address");
 //        List<Address> listAdd = q.list();
@@ -296,7 +303,6 @@ public class Services {
 //        List<TarifaCiudad> listProd = q.list();
 //        res += " - SQLSERVER: "+listProd.size();
 //        tx.commit();
-
 //        sessionClientes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
 //        tx = sessionClientes.beginTransaction();
 //        Query query = sessionClientes.createSQLQuery(
@@ -336,18 +342,19 @@ public class Services {
         //TODO implement this method
         throw new UnsupportedOperationException("Not implemented yet.");
     }
+
     public Date toDate(XMLGregorianCalendar calendar) {
 
         return calendar.toGregorianCalendar().getTime();
 
     }
-    
+
     public XMLGregorianCalendar toGregorian(Date fecha) throws DatatypeConfigurationException {
 
         GregorianCalendar gc = new GregorianCalendar();
         DatatypeFactory df = DatatypeFactory.newInstance();
-         gc.setTimeInMillis(fecha.getTime());
-         return df.newXMLGregorianCalendar(gc);
+        gc.setTimeInMillis(fecha.getTime());
+        return df.newXMLGregorianCalendar(gc);
 
     }
 }
