@@ -38,6 +38,7 @@ aes/pica/touresbalon/touresbalonproductosws/entidades/clientesyordenes/Orders.cl
 com/touresbalon/clientestouresbalon/Error.class
 com/touresbalon/clientestouresbalon/RegistrarClienteFault_Exception.class
 com/touresbalon/clientestouresbalon/ActualizarClienteFault.class
+aes/pica/touresbalon/touresbalonproductosws/util/Utils.class
 com/touresbalon/clientestouresbalon/ActualizarClienteResponse.class
 com/touresbalon/clientestouresbalon/ActualizarContraseniaClienteResponse.class
 com/touresbalon/clientestouresbalon/ConsultarPorFactRangoCliente.class

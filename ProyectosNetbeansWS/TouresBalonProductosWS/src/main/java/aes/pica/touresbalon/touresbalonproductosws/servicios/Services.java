@@ -137,20 +137,31 @@ public class Services {
         txProductos = sessionProductos.beginTransaction();
 
         String strsql;
+
         Query q = null;
         List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto> lstpro = new ArrayList<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto>();
+        
         List<Producto> lstprod = new ArrayList<Producto>();
-
-        strsql = "from Campanias as c join c.producto as p where current_date>= c.fechaInicio and current_date<= c.fechaFin";
-        q = sessionProductos.createQuery(strsql);
-
-        lstpro = q.list();
-
-        for (int i = 0; i < lstpro.size(); i++) {
-            com.touresbalon.productostouresbalon.Producto prod = new com.touresbalon.productostouresbalon.Producto();
+       
+       
+        strsql="SELECT dbo.PRODUCTO.* FROM dbo.CAMPANIAS INNER JOIN dbo.PRODUCTO ON PRODUCTO.id_producto = CAMPANIAS.id_producto WHERE GETDATE()>=fecha_inicio AND GETDATE() <= fecha_fin " ;
+//        q=sessionProductos.createSQLQuery(strsql);
+//                
+        
+//         strsql="Select Prod.idProducto, Prod.ciudad, Prod.tarifaEspectaculo, Prod.tarifaHospedaje, Prod.tarifaTransporte, Prod.espectaculo, Prod.descripcion, Prod.fechaSalida, Prod.fechaLlegada, Prod.fechaEspectaculo, Prod.urlImagen FROM Producto as Prod INNER JOIN Prod.campaniases as Cam";
+                q=sessionProductos.createSQLQuery(strsql).addEntity(aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto.class) ;
+              
+        lstpro = (List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto>)q.list();  
+       
+        
+        for(int i=0; i < lstpro.size(); i++)
+        {
+            com.touresbalon.productostouresbalon.Producto prod = new  com.touresbalon.productostouresbalon.Producto();
             com.touresbalon.productostouresbalon.Ciudad ciu = new com.touresbalon.productostouresbalon.Ciudad();
 
+
             ciu.setIdCiudad(lstpro.get(i).getCiudad().getIdCiudad());
+
             ciu.setPais(lstpro.get(i).getCiudad().getNombreCiudad() + " - " + lstpro.get(i).getCiudad().getPais());
 
             prod.setCiudadEspectaculo(ciu);
