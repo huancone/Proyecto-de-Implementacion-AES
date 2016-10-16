@@ -118,8 +118,8 @@ public interface ProductosTouresBalon {
 
     /**
      * 
-     * @param tipoOperacion
      * @param campania
+     * @param tipoOperacion
      * @return
      *     returns com.touresbalon.productostouresbalon.TipoGestionCampaniaResponse
      * @throws GestionCampaniaProductoFault_Exception
@@ -159,8 +159,8 @@ public interface ProductosTouresBalon {
     /**
      * 
      * @param tipoTarifa
-     * @param tarifa
      * @param tipoOperacion
+     * @param tarifa
      * @return
      *     returns com.touresbalon.productostouresbalon.TipoGestionTarifaResponse
      * @throws GestionTarifaFault_Exception

@@ -23,8 +23,8 @@ public class GestionTarifaFault_Exception
 
     /**
      * 
-     * @param faultInfo
      * @param message
+     * @param faultInfo
      */
     public GestionTarifaFault_Exception(String message, GestionTarifaFault faultInfo) {
         super(message);
@@ -33,9 +33,9 @@ public class GestionTarifaFault_Exception
 
     /**
      * 
+     * @param message
      * @param faultInfo
      * @param cause
-     * @param message
      */
     public GestionTarifaFault_Exception(String message, GestionTarifaFault faultInfo, Throwable cause) {
         super(message, cause);

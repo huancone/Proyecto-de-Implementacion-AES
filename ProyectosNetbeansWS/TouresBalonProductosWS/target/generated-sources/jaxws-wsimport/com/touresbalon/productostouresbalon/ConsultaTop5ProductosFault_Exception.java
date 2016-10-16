@@ -23,8 +23,8 @@ public class ConsultaTop5ProductosFault_Exception
 
     /**
      * 
-     * @param faultInfo
      * @param message
+     * @param faultInfo
      */
     public ConsultaTop5ProductosFault_Exception(String message, ConsultaTop5ProductosFault faultInfo) {
         super(message);
@@ -33,9 +33,9 @@ public class ConsultaTop5ProductosFault_Exception
 
     /**
      * 
+     * @param message
      * @param faultInfo
      * @param cause
-     * @param message
      */
     public ConsultaTop5ProductosFault_Exception(String message, ConsultaTop5ProductosFault faultInfo, Throwable cause) {
         super(message, cause);

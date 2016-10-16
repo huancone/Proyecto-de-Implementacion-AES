@@ -23,8 +23,8 @@ public class ConsultarPorEspectaculoProductoFault_Exception
 
     /**
      * 
-     * @param faultInfo
      * @param message
+     * @param faultInfo
      */
     public ConsultarPorEspectaculoProductoFault_Exception(String message, ConsultarPorEspectaculoProductoFault faultInfo) {
         super(message);
@@ -33,9 +33,9 @@ public class ConsultarPorEspectaculoProductoFault_Exception
 
     /**
      * 
+     * @param message
      * @param faultInfo
      * @param cause
-     * @param message
      */
     public ConsultarPorEspectaculoProductoFault_Exception(String message, ConsultarPorEspectaculoProductoFault faultInfo, Throwable cause) {
         super(message, cause);
