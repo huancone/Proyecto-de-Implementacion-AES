@@ -9,11 +9,12 @@
     <!--<property name="hibernate.connection.password">toures123$</property>-->
     <property name="hibernate.connection.password">touresbalon</property>
     <property name="hibernate.current_session_context_class">thread</property>
-    <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/productos/TarifaEspectaculo.hbm.xml"/>
-    <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/productos/Ciudad.hbm.xml"/>
-    <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/productos/TarifaTransporte.hbm.xml"/>
-    <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/productos/TarifaCiudad.hbm.xml"/>
-    <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/productos/Producto.hbm.xml"/>
     <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/productos/TarifaHospedaje.hbm.xml"/>
+    <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/productos/Campanias.hbm.xml"/>
+    <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/productos/Ciudad.hbm.xml"/>
+    <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/productos/TarifaCiudad.hbm.xml"/>
+    <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/productos/TarifaEspectaculo.hbm.xml"/>
+    <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/productos/Producto.hbm.xml"/>
+    <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/productos/TarifaTransporte.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
