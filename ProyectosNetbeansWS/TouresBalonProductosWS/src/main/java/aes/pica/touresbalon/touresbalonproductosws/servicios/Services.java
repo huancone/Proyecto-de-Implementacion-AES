@@ -127,7 +127,7 @@ public class Services {
         //throw new UnsupportedOperationException("Not implemented yet.");
     }
 
-    public java.util.List<com.touresbalon.productostouresbalon.Producto> consultarCampaniaProducto() throws ConsultarCampaniaProductoFault_Exception {
+    public java.util.List<com.touresbalon.productostouresbalon.Producto> consultarCampaniaProducto() throws ConsultarCampaniaProductoFault_Exception, DatatypeConfigurationException {
         //TODO implement this method
        sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
         tx= sessionProductos.beginTransaction();
@@ -138,7 +138,7 @@ public class Services {
         List<Producto> lstprod = new ArrayList<Producto>();
        
        
-        strsql="from Campanias inner join Producto on Campanias.idProducto = Productos.idProducto where current_date >= fecha_inicio and current_date <= fecha_fin" ;
+        strsql="from Campanias as c join c.producto as p where current_date>= c.fechaInicio and current_date<= c.fechaFin" ;
         q=sessionProductos.createQuery(strsql);
                 
         lstpro=q.list();  
@@ -155,9 +155,9 @@ public class Services {
             prod.setCiudadEspectaculo(ciu);
             prod.setDescripcion(lstpro.get(i).getDescripcion());
             prod.setEspectaculo(lstpro.get(i).getEspectaculo());
-//            prod.setFechaEspectaculo(toGregorian(lstpro.get(i).getFechaEspectaculo()));
-//            prod.setFechaLlegada(toGregorian(lstpro.get(i).getFechaLlegada()));
-//            prod.setFechaSalida(toGregorian(lstpro.get(i).getFechaSalida()));
+            prod.setFechaEspectaculo(toGregorian(lstpro.get(i).getFechaEspectaculo()));
+            prod.setFechaLlegada(toGregorian(lstpro.get(i).getFechaLlegada()));
+            prod.setFechaSalida(toGregorian(lstpro.get(i).getFechaSalida()));
             prod.setIdProducto(lstpro.get(i).getIdProducto());
             prod.setImagenProducto(lstpro.get(i).getUrlImagen());
             

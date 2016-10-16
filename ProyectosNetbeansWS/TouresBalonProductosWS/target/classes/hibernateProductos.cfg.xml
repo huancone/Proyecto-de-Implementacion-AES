@@ -6,6 +6,7 @@
     <property name="hibernate.connection.url">jdbc:sqlserver://localhost:1433;databaseName=TB_PRODUCTOS</property>
     <property name="hibernate.connection.username">touresbalon</property>
     <property name="hibernate.connection.password">touresbalon</property>
+    <property name="hibernate.current_session_context_class">thread</property>
     <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/productos/TarifaHospedaje.hbm.xml"/>
     <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/productos/Campanias.hbm.xml"/>
     <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/productos/Ciudad.hbm.xml"/>
