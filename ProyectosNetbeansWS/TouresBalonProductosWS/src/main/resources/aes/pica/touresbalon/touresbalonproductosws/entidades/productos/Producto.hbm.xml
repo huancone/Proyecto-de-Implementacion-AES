@@ -1,14 +1,12 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 3/10/2016 11:01:42 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Oct 16, 2016 3:40:42 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto" table="PRODUCTO" schema="dbo" catalog="TB_PRODUCTOS" optimistic-lock="version">
         <id name="idProducto" type="int">
             <column name="id_producto" />
-            <generator class="sequence">
-                <param name="sequence">SEC_PRODUCTO_ID</param>
-            </generator>
+            <generator class="assigned" />
         </id>
         <many-to-one name="ciudad" class="aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Ciudad" fetch="select">
             <column name="id_ciudad" />
@@ -40,5 +38,11 @@
         <property name="urlImagen" type="string">
             <column name="url_imagen" length="1000" />
         </property>
+        <set name="campaniases" table="CAMPANIAS" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_producto" not-null="true" />
+            </key>
+            <one-to-many class="aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias" />
+        </set>
     </class>
 </hibernate-mapping>

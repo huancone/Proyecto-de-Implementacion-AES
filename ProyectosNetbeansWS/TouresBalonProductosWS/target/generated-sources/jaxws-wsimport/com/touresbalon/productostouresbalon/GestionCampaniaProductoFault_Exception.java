@@ -23,8 +23,8 @@ public class GestionCampaniaProductoFault_Exception
 
     /**
      * 
-     * @param faultInfo
      * @param message
+     * @param faultInfo
      */
     public GestionCampaniaProductoFault_Exception(String message, GestionCampaniaProductoFault faultInfo) {
         super(message);
@@ -33,9 +33,9 @@ public class GestionCampaniaProductoFault_Exception
 
     /**
      * 
+     * @param message
      * @param faultInfo
      * @param cause
-     * @param message
      */
     public GestionCampaniaProductoFault_Exception(String message, GestionCampaniaProductoFault faultInfo, Throwable cause) {
         super(message, cause);

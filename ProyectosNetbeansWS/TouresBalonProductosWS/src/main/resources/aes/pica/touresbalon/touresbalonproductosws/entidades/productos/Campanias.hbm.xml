@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 16, 2016 3:40:42 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias" table="CAMPANIAS" schema="dbo" catalog="TB_PRODUCTOS" optimistic-lock="version">
+        <id name="idCampania" type="int">
+            <column name="id_campania" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="producto" class="aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto" fetch="select">
+            <column name="id_producto" not-null="true" />
+        </many-to-one>
+        <property name="fechaInicio" type="timestamp">
+            <column name="fecha_inicio" length="23" not-null="true" />
+        </property>
+        <property name="fechaFin" type="timestamp">
+            <column name="fecha_fin" length="23" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

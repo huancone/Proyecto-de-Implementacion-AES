@@ -14,7 +14,7 @@
         <property name="nombreEspectaculo" type="string">
             <column name="nombre_espectaculo" length="4000" />
         </property>
-        <property name="precio" type="big_decimal">
+        <property name="precio" type="double">
             <column name="precio" precision="9" />
         </property>
         <set name="productos" table="PRODUCTO" inverse="true" lazy="true" fetch="select">
@@ -25,3 +25,4 @@
         </set>
     </class>
 </hibernate-mapping>
+

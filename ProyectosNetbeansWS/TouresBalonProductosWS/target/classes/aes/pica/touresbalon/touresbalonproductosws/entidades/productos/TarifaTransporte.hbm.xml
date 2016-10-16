@@ -14,7 +14,7 @@
         <property name="nombreTransporte" type="string">
             <column name="nombre_transporte" length="4000" />
         </property>
-        <property name="precio" type="big_decimal">
+        <property name="precio" type="double">
             <column name="precio" precision="9" />
         </property>
         <set name="productos" table="PRODUCTO" inverse="true" lazy="true" fetch="select">

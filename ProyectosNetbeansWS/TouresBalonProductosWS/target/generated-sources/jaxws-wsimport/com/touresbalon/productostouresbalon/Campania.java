@@ -10,9 +10,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Clase Java para Campania complex type.
+ * <p>Java class for Campania complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="Campania">
@@ -48,7 +48,7 @@ public class Campania {
     protected XMLGregorianCalendar fechaFinCampania;
 
     /**
-     * Obtiene el valor de la propiedad idProducto.
+     * Gets the value of the idProducto property.
      * 
      * @return
      *     possible object is
@@ -60,7 +60,7 @@ public class Campania {
     }
 
     /**
-     * Define el valor de la propiedad idProducto.
+     * Sets the value of the idProducto property.
      * 
      * @param value
      *     allowed object is
@@ -72,7 +72,7 @@ public class Campania {
     }
 
     /**
-     * Obtiene el valor de la propiedad fechaInicioCampania.
+     * Gets the value of the fechaInicioCampania property.
      * 
      * @return
      *     possible object is
@@ -84,7 +84,7 @@ public class Campania {
     }
 
     /**
-     * Define el valor de la propiedad fechaInicioCampania.
+     * Sets the value of the fechaInicioCampania property.
      * 
      * @param value
      *     allowed object is
@@ -96,7 +96,7 @@ public class Campania {
     }
 
     /**
-     * Obtiene el valor de la propiedad fechaFinCampania.
+     * Gets the value of the fechaFinCampania property.
      * 
      * @return
      *     possible object is
@@ -108,7 +108,7 @@ public class Campania {
     }
 
     /**
-     * Define el valor de la propiedad fechaFinCampania.
+     * Sets the value of the fechaFinCampania property.
      * 
      * @param value
      *     allowed object is
