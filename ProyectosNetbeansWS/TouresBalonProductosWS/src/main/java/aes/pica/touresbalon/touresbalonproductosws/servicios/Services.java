@@ -142,8 +142,7 @@ public class Services {
         List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto> lstpro = new ArrayList<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto>();
         
         List<Producto> lstprod = new ArrayList<Producto>();
-       
-       
+              
         strsql="SELECT dbo.PRODUCTO.* FROM dbo.CAMPANIAS INNER JOIN dbo.PRODUCTO ON PRODUCTO.id_producto = CAMPANIAS.id_producto WHERE GETDATE()>=fecha_inicio AND GETDATE() <= fecha_fin " ;
 //        q=sessionProductos.createSQLQuery(strsql);
 //                
