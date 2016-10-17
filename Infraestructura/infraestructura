@@ -63,5 +63,34 @@ Bpel						169.254.40.165			bpel_svr
 # TOURES BALON
 
 
+--------------------------------------------------------------------------------
+Passwords máquinas
+--------------------------------------------------------------------------------
 
 ESB Password aes123$
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+MAQUINAS
+--------------------------------------------------------------------------------
+
+B2C 					Harold
+Memcache 				Harold
+OMS 					Alex
+OSB 					Deiver
+Bpel 					Juan Diego
+ProductosWS        		Christian
+OrdenesWS 				Christian
+ClientesWS 				Christian
+ReservasWS 				Juan Diego
+productos_sql			Hugo
+clientes_sql 			Hugo
+Directorio Activo 		Deiver
+FileServer 				Juan Diego
+SMTP 					Deiver
+Contabilidad			Juan Diego
+
+
+
+
+
