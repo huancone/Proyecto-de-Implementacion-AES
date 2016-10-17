@@ -76,6 +76,7 @@ com/aes/touresbalon/touresbalonoms/wsdl/client/RegistrarClienteResponse.class
 com/aes/touresbalon/touresbalonoms/wsdl/client/TipoGestionCampaniaResponse.class
 com/aes/touresbalon/touresbalonoms/wsdl/client/TipoGestionTarifaResponse.class
 com/aes/touresbalon/touresbalonoms/wsdl/client/GestionTarifaResponse.class
+com/aes/touresbalon/touresbalonoms/beans/TarifaValoresBean.class
 com/aes/touresbalon/touresbalonoms/wsdl/client/CriterioConsultaOrden.class
 com/aes/touresbalon/touresbalonoms/wsdl/client/Producto.class
 com/aes/touresbalon/touresbalonoms/wsdl/client/ConsultarRangoCerradoOrdenesResponse.class

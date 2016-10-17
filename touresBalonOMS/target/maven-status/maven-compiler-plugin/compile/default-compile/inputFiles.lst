@@ -80,6 +80,7 @@
 /Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/target/generated-sources/jaxws-wsimport/com/aes/touresbalon/touresbalonoms/wsdl/client/ConsultarPorEspectaculoProductoFault.java
 /Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/target/generated-sources/jaxws-wsimport/com/aes/touresbalon/touresbalonoms/wsdl/client/GestionProducto.java
 /Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/target/generated-sources/jaxws-wsimport/com/aes/touresbalon/touresbalonoms/wsdl/client/ConsultarProductoFault_Exception.java
+/Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/src/main/java/com/aes/touresbalon/touresbalonoms/beans/TarifaValoresBean.java
 /Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/target/generated-sources/jaxws-wsimport/com/aes/touresbalon/touresbalonoms/wsdl/client/Item.java
 /Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/target/generated-sources/jaxws-wsimport/com/aes/touresbalon/touresbalonoms/wsdl/client/TipoGestionTarifaResponse.java
 /Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/src/main/java/com/aes/touresbalon/touresbalonoms/services/ProductoService.java
