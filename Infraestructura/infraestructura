@@ -1,4 +1,4 @@
-/* *****************************************************************************
+ /* *****************************************************************************
 * PICA - TouresBalon: Configuración
 * @author  cbraatz
 * @version 1.0 
@@ -22,7 +22,7 @@ Fisica 						169.254.40.151			hchia_pc
 
 Christian Braatz
 --------------------------------------------------------------------------------
-Fisica						169.254.40.152			christian_pc
+Fisica						169.254.40.152			christian_pc reservas_svr
 --------------------------------------------------------------------------------
 
 
@@ -52,8 +52,7 @@ Bpel						169.254.40.165			bpel_svr
 # TOURES BALON
 
 169.254.40.151			hchia_pc
-169.254.40.152			christian_pc
-
+169.254.40.152			christian_pc	reservas_svr
 169.254.40.153			hmendoza_pc
 169.254.40.163			productos_sql
 169.254.40.173			clientes_sql
@@ -62,3 +61,7 @@ Bpel						169.254.40.165			bpel_svr
 169.254.40.165			bpel_svr
 
 # TOURES BALON
+
+
+
+ESB Password aes123$
