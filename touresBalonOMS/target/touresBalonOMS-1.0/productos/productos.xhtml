@@ -310,7 +310,7 @@
                         </p:tab>
                         <p:tab title="Eliminar Producto"> 
                             <h:form>
-                                <p:panel header="Eliminar Producto">
+                                <p:panel header="Consultar Producto">
                                     <h:panelGrid columns="2" cellpadding="4">
                                         <p:outputLabel for="consultaDel" value="Consultar Por"/>
                                         <p:selectOneRadio id="consultaDel" value="#{productosBean.tipoConsulta}">
@@ -324,6 +324,26 @@
                                         <br></br>
                                         <p:commandButton value="Consultar" onclick="#{productosBean.consultarProducto()}" />
                                         <br></br>
+                                    </h:panelGrid>
+                                </p:panel>
+                            </h:form>
+                            <h:form>
+                                <p:panel header="Eliminar Producto">
+                                    <h:panelGrid columns="2" cellpadding="4">
+                                        <p:dataTable id="dtProductoDel" var="producto" value="#{productosBean.idProducto}">
+                                                <f:facet name="header">
+                                                    Producto
+                                                </f:facet>
+                                                <p:column headerText="Id Producto">
+                                                    <h:outputText value="#{productosBean.idProducto}" />
+                                                </p:column>
+                                                <p:column headerText="Id Producto">
+                                                    <h:outputText value="#{productosBean.descripcion}" />
+                                                </p:column>
+                                                <p:column style="width:32px;text-align: center">
+                                                    <p:commandButton onclick="#{productosBean.eliminarProducto()}" icon="ui-icon-trash" title="View" />
+                                                </p:column>
+                                        </p:dataTable>
                                     </h:panelGrid>
                                 </p:panel>
                             </h:form>
