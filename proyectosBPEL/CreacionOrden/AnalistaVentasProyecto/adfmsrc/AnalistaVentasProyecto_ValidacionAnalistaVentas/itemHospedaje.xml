@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="itemHospedaje"
+          Package="AnalistaVentasProyecto_ValidacionAnalistaVentas"
+          BeanClass="AnalistaVentasProyecto_ValidacionAnalistaVentas.itemHospedaje"
+          isJavaBased="false">
+  <Attribute Name="idHospedaje" IsUpdateable="0" Type="java.math.BigInteger">
+    <Properties>
+      <CustomProperties>
+        <Property Name="nextSiblingNamespace"
+                  Value="http://xmlns.oracle.com/CreacionOrden/CreacionOrdenesBPEL/CreacionOrdenes"/>
+        <Property Name="nextSibling" Value="nombreHospedaje"/>
+        <Property Name="minOccurs" Value="0"/>
+        <Property Name="fractionDigits" Value="0"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Id Hospedaje"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="idHospedaje"/>
+        <Property Name="targetNamespace"
+                  Value="http://xmlns.oracle.com/CreacionOrden/CreacionOrdenesBPEL/CreacionOrdenes"/>
+        <Property Name="type" Value="java.math.BigInteger"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="nombreHospedaje" IsUpdateable="0" Type="java.lang.String">
+    <Properties>
+      <CustomProperties>
+        <Property Name="nextSiblingNamespace"
+                  Value="http://xmlns.oracle.com/CreacionOrden/CreacionOrdenesBPEL/CreacionOrdenes"/>
+        <Property Name="nextSibling" Value="precioHospedaje"/>
+        <Property Name="minOccurs" Value="0"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Nombre Hospedaje"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="nombreHospedaje"/>
+        <Property Name="targetNamespace"
+                  Value="http://xmlns.oracle.com/CreacionOrden/CreacionOrdenesBPEL/CreacionOrdenes"/>
+        <Property Name="type" Value="java.lang.String"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="precioHospedaje" IsUpdateable="0" Type="java.lang.Double">
+    <Properties>
+      <CustomProperties>
+        <Property Name="nextSiblingNamespace"
+                  Value="http://xmlns.oracle.com/CreacionOrden/CreacionOrdenesBPEL/CreacionOrdenes"/>
+        <Property Name="nextSibling" Value="cantHospedaje"/>
+        <Property Name="minOccurs" Value="0"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Precio Hospedaje"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="precioHospedaje"/>
+        <Property Name="targetNamespace"
+                  Value="http://xmlns.oracle.com/CreacionOrden/CreacionOrdenesBPEL/CreacionOrdenes"/>
+        <Property Name="type" Value="java.lang.Double"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="cantHospedaje" IsUpdateable="0" Type="java.math.BigInteger">
+    <Properties>
+      <CustomProperties>
+        <Property Name="minOccurs" Value="0"/>
+        <Property Name="fractionDigits" Value="0"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Cant Hospedaje"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="cantHospedaje"/>
+        <Property Name="targetNamespace"
+                  Value="http://xmlns.oracle.com/CreacionOrden/CreacionOrdenesBPEL/CreacionOrdenes"/>
+        <Property Name="type" Value="java.math.BigInteger"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+</JavaBean>

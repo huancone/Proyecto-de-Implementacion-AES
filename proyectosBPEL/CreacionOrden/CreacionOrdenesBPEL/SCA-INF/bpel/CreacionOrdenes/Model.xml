@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<process name="CreacionOrdenes" targetNamespace="http://xmlns.oracle.com/CreacionOrden/CreacionOrdenesBPEL/CreacionOrdenes" xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:client="http://xmlns.oracle.com/CreacionOrden/CreacionOrdenesBPEL/CreacionOrdenes" xmlns:ora="http://schemas.oracle.com/xpath/extension" xmlns:bpelx="http://schemas.oracle.com/bpel/extension" xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:ns1="http://www.touresbalon.com/ReservasTouresBalon/" xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20" xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc" xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue" xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath" xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath" xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions" xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk" xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions" xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap" xmlns:ns3="http://xmlns.oracle.com/bpel" xmlns:ns2="http://xmlns.oracle.com/RulesMontoGerencia/RulesMontoGerencia_DecisionService_1" xmlns:task="http://xmlns.oracle.com/bpel/workflow/task" xmlns:taskservice="http://xmlns.oracle.com/bpel/workflow/taskService" xmlns:wfcommon="http://xmlns.oracle.com/bpel/workflow/common" xmlns:wf="http://schemas.oracle.com/bpel/extensions/workflow" xmlns:ns4="http://xmlns.oracle.com/bpel/workflow/TaskEvidenceService" id="BpPrc0">
+
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        PARTNERLINKS                                                      
+        List of services participating in this BPEL process               
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    --> 
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="creacionordenes_client" partnerLinkType="client:CreacionOrdenes" myRole="CreacionOrdenesProvider"/>
+    <partnerLink name="ReservasTouresBalon" partnerLinkType="ns1:ReservasTouresBalon_PL" partnerRole="ReservasTouresBalon_Role"/>
+    <partnerLink name="RulesMontoGerencia.RulesMontoGerencia_DecisionService_1" partnerRole="IDecisionService_Role" partnerLinkType="ns2:IDecisionService_PL"/>
+    <partnerLink name="ValidacionAnalistaVentas.TaskService_1" partnerLinkType="taskservice:TaskService" partnerRole="TaskService" myRole="TaskServiceCallbackListener"/>
+  </partnerLinks>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="inputVariable" messageType="client:CreacionOrdenesRequestMessage"/>
+
+    <!-- Reference to the message that will be returned to the requester-->
+    <variable name="outputVariable" messageType="client:CreacionOrdenesResponseMessage"/>
+    <variable name="InvValRes_In" messageType="ns1:ValidarDisponibilidadReservasRequest"/>
+    <variable name="InvValRes_Out" messageType="ns1:ValidarDisponibilidadReservasResponse"/>
+    <variable name="InvReservarProducto_In" messageType="ns1:ReservarProductosRequest"/>
+    <variable name="InvReservarProducto_Out" messageType="ns1:ReservarProductosResponse"/>
+    <variable name="InvResDorado_In" messageType="ns1:ValidarDisponibilidadReservasRequest"/>
+    <variable name="InvResDorado_Out" messageType="ns1:ValidarDisponibilidadReservasResponse"/>
+    <variable name="ValidacionAnalistaVentas1_globalVariable" messageType="taskservice:taskMessage"/>
+    <variable name="InvRecAnaVen_In" messageType="ns1:CallbackValidacionAnalistaRequest"/>
+    <variable name="InvRecAnaVen_Out" messageType="ns1:CallbackValidacionAnalistaResponse"/>
+    <variable name="InvAcepAnaVen_In" messageType="ns1:CallbackValidacionAnalistaRequest"/>
+    <variable name="InvAcepAnaVen_Out" messageType="ns1:CallbackValidacionAnalistaResponse"/>
+  </variables>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main" id="BpSeq0">
+
+    <!-- Receive input from requestor. (Note: This maps to operation defined in CreacionOrdenes.wsdl) -->
+    <receive name="receiveInput" partnerLink="creacionordenes_client" portType="client:CreacionOrdenes" operation="process" variable="inputVariable" createInstance="yes" id="BpRcv0"/>
+    <assign name="AsigValRes" id="BpAss0">
+      <copy>
+        <from variable="inputVariable" part="payload" query="/client:process/client:itemEspectaculo/client:idEspectaculo"/>
+        <to variable="InvValRes_In" part="parameters" query="/ns1:ValidarDisponibilidadReservas/itemEspectaculo/idItem"/>
+      </copy>
+      <copy>
+        <from variable="inputVariable" part="payload" query="/client:process/client:itemEspectaculo/client:nombreEspectaculo"/>
+        <to variable="InvValRes_In" part="parameters" query="/ns1:ValidarDisponibilidadReservas/itemEspectaculo/nombreItem"/>
+      </copy>
+      <copy>
+        <from variable="inputVariable" part="payload" query="/client:process/client:itemEspectaculo/client:precioEspectaculo"/>
+        <to variable="InvValRes_In" part="parameters" query="/ns1:ValidarDisponibilidadReservas/itemEspectaculo/precioItem"/>
+      </copy>
+      <copy>
+        <from variable="inputVariable" part="payload" query="/client:process/client:itemEspectaculo/client:cantEspectaculo"/>
+        <to variable="InvValRes_In" part="parameters" query="/ns1:ValidarDisponibilidadReservas/itemEspectaculo/cantidad"/>
+      </copy>
+      <copy>
+        <from variable="inputVariable" part="payload" query="/client:process/client:itemTransporte/client:idTransporte"/>
+        <to variable="InvValRes_In" part="parameters" query="/ns1:ValidarDisponibilidadReservas/itemTransporte/idItem"/>
+      </copy>
+      <copy>
+        <from variable="inputVariable" part="payload" query="/client:process/client:itemTransporte/client:nombreTransporte"/>
+        <to variable="InvValRes_In" part="parameters" query="/ns1:ValidarDisponibilidadReservas/itemTransporte/nombreItem"/>
+      </copy>
+      <copy>
+        <from variable="inputVariable" part="payload" query="/client:process/client:itemTransporte/client:precioTransporte"/>
+        <to variable="InvValRes_In" part="parameters" query="/ns1:ValidarDisponibilidadReservas/itemTransporte/precioItem"/>
+      </copy>
+      <copy>
+        <from variable="inputVariable" part="payload" query="/client:process/client:itemTransporte/client:cantTransporte"/>
+        <to variable="InvValRes_In" part="parameters" query="/ns1:ValidarDisponibilidadReservas/itemTransporte/cantidad"/>
+      </copy>
+      <copy>
+        <from variable="inputVariable" part="payload" query="/client:process/client:itemHospedaje/client:idHospedaje"/>
+        <to variable="InvValRes_In" part="parameters" query="/ns1:ValidarDisponibilidadReservas/itemHospedaje/idItem"/>
+      </copy>
+      <copy>
+        <from variable="inputVariable" part="payload" query="/client:process/client:itemHospedaje/client:nombreHospedaje"/>
+        <to variable="InvValRes_In" part="parameters" query="/ns1:ValidarDisponibilidadReservas/itemHospedaje/nombreItem"/>
+      </copy>
+      <copy>
+        <from variable="inputVariable" part="payload" query="/client:process/client:itemHospedaje/client:precioHospedaje"/>
+        <to variable="InvValRes_In" part="parameters" query="/ns1:ValidarDisponibilidadReservas/itemHospedaje/precioItem"/>
+      </copy>
+      <copy>
+        <from variable="inputVariable" part="payload" query="/client:process/client:itemHospedaje/client:cantHospedaje"/>
+        <to variable="InvValRes_In" part="parameters" query="/ns1:ValidarDisponibilidadReservas/itemHospedaje/cantidad"/>
+      </copy>
+      <copy>
+        <from variable="inputVariable" part="payload" query="/client:process/client:itemCiudad/client:idCiudad"/>
+        <to variable="InvValRes_In" part="parameters" query="/ns1:ValidarDisponibilidadReservas/itemCiudad/idItem"/>
+      </copy>
+      <copy>
+        <from variable="inputVariable" part="payload" query="/client:process/client:itemCiudad/client:nombreCiudad"/>
+        <to variable="InvValRes_In" part="parameters" query="/ns1:ValidarDisponibilidadReservas/itemCiudad/nombreItem"/>
+      </copy>
+      <copy>
+        <from variable="inputVariable" part="payload" query="/client:process/client:itemCiudad/client:precioCiudad"/>
+        <to variable="InvValRes_In" part="parameters" query="/ns1:ValidarDisponibilidadReservas/itemCiudad/precioItem"/>
+      </copy>
+      <copy>
+        <from variable="inputVariable" part="payload" query="/client:process/client:itemCiudad/client:cantCiudad"/>
+        <to variable="InvValRes_In" part="parameters" query="/ns1:ValidarDisponibilidadReservas/itemCiudad/cantidad"/>
+      </copy>
+    </assign>
+    <invoke name="InvValRes" inputVariable="InvValRes_In" outputVariable="InvValRes_Out" partnerLink="ReservasTouresBalon" portType="ns1:ReservasTouresBalon" operation="ValidarDisponibilidadReservas" bpelx:invokeAsDetail="no" id="BpInv0"/>
+    <switch name="Switch1" id="BpSwt0">
+      <case condition="bpws:getVariableData('InvValRes_Out','parameters','/ns1:ValidarDisponibilidadReservasResponse/respuesta') =  &quot;OK&quot;">
+        <bpelx:annotation>
+          <bpelx:general>
+            <bpelx:property name="userLabel">
+              <![CDATA[HayDisponibilidaReservas]]>
+            </bpelx:property>
+          </bpelx:general>
+        </bpelx:annotation>
+        <sequence name="Sequence1" id="BpSeq1">
+          <switch name="Switch2" id="BpSwt1">
+            <case condition="bpws:getVariableData('inputVariable','payload','/client:process/client:clienteStatus') = &quot;PLATINO&quot;">
+              <bpelx:annotation>
+                <bpelx:general>
+                  <bpelx:property name="userLabel">
+                    <![CDATA[EsPlatino]]>
+                  </bpelx:property>
+                </bpelx:general>
+              </bpelx:annotation>
+              <sequence name="Sequence2" id="BpSeq2">
+                <assign name="AsigReserva" id="BpAss1">
+                  <copy>
+                    <from variable="inputVariable" part="payload" query="/client:process/client:itemEspectaculo/client:idEspectaculo"/>
+                    <to variable="InvReservarProducto_In" part="parameters" query="/ns1:ReservarProductos/itemEspectaculo/idItem"/>
+                  </copy>
+                  <copy>
+                    <from variable="inputVariable" part="payload" query="/client:process/client:itemEspectaculo/client:nombreEspectaculo"/>
+                    <to variable="InvReservarProducto_In" part="parameters" query="/ns1:ReservarProductos/itemEspectaculo/nombreItem"/>
+                  </copy>
+                  <copy>
+                    <from variable="inputVariable" part="payload" query="/client:process/client:itemEspectaculo/client:precioEspectaculo"/>
+                    <to variable="InvReservarProducto_In" part="parameters" query="/ns1:ReservarProductos/itemEspectaculo/precioItem"/>
+                  </copy>
+                  <copy>
+                    <from variable="inputVariable" part="payload" query="/client:process/client:itemEspectaculo/client:cantEspectaculo"/>
+                    <to variable="InvReservarProducto_In" part="parameters" query="/ns1:ReservarProductos/itemEspectaculo/cantidad"/>
+                  </copy>
+                  <copy>
+                    <from variable="inputVariable" part="payload" query="/client:process/client:itemTransporte/client:idTransporte"/>
+                    <to variable="InvReservarProducto_In" part="parameters" query="/ns1:ReservarProductos/itemTransporte/idItem"/>
+                  </copy>
+                  <copy>
+                    <from variable="inputVariable" part="payload" query="/client:process/client:itemTransporte/client:nombreTransporte"/>
+                    <to variable="InvReservarProducto_In" part="parameters" query="/ns1:ReservarProductos/itemTransporte/nombreItem"/>
+                  </copy>
+                  <copy>
+                    <from variable="inputVariable" part="payload" query="/client:process/client:itemTransporte/client:precioTransporte"/>
+                    <to variable="InvReservarProducto_In" part="parameters" query="/ns1:ReservarProductos/itemTransporte/precioItem"/>
+                  </copy>
+                  <copy>
+                    <from variable="inputVariable" part="payload" query="/client:process/client:itemTransporte/client:cantTransporte"/>
+                    <to variable="InvReservarProducto_In" part="parameters" query="/ns1:ReservarProductos/itemTransporte/cantidad"/>
+                  </copy>
+                  <copy>
+                    <from variable="inputVariable" part="payload" query="/client:process/client:itemHospedaje/client:idHospedaje"/>
+                    <to variable="InvReservarProducto_In" part="parameters" query="/ns1:ReservarProductos/itemHospedaje/idItem"/>
+                  </copy>
+                  <copy>
+                    <from variable="inputVariable" part="payload" query="/client:process/client:itemHospedaje/client:nombreHospedaje"/>
+                    <to variable="InvReservarProducto_In" part="parameters" query="/ns1:ReservarProductos/itemHospedaje/nombreItem"/>
+                  </copy>
+                  <copy>
+                    <from variable="inputVariable" part="payload" query="/client:process/client:itemHospedaje/client:precioHospedaje"/>
+                    <to variable="InvReservarProducto_In" part="parameters" query="/ns1:ReservarProductos/itemHospedaje/precioItem"/>
+                  </copy>
+                  <copy>
+                    <from variable="inputVariable" part="payload" query="/client:process/client:itemHospedaje/client:cantHospedaje"/>
+                    <to variable="InvReservarProducto_In" part="parameters" query="/ns1:ReservarProductos/itemHospedaje/cantidad"/>
+                  </copy>
+                  <copy>
+                    <from variable="inputVariable" part="payload" query="/client:process/client:itemCiudad/client:idCiudad"/>
+                    <to variable="InvReservarProducto_In" part="parameters" query="/ns1:ReservarProductos/itemCiudad/idItem"/>
+                  </copy>
+                  <copy>
+                    <from variable="inputVariable" part="payload" query="/client:process/client:itemCiudad/client:nombreCiudad"/>
+                    <to variable="InvReservarProducto_In" part="parameters" query="/ns1:ReservarProductos/itemCiudad/nombreItem"/>
+                  </copy>
+                  <copy>
+                    <from variable="inputVariable" part="payload" query="/client:process/client:itemCiudad/client:precioCiudad"/>
+                    <to variable="InvReservarProducto_In" part="parameters" query="/ns1:ReservarProductos/itemCiudad/precioItem"/>
+                  </copy>
+                  <copy>
+                    <from variable="inputVariable" part="payload" query="/client:process/client:itemCiudad/client:cantCiudad"/>
+                    <to variable="InvReservarProducto_In" part="parameters" query="/ns1:ReservarProductos/itemCiudad/cantidad"/>
+                  </copy>
+                </assign>
+                <invoke name="InvReservarProducto" inputVariable="InvReservarProducto_In" outputVariable="InvReservarProducto_Out" partnerLink="ReservasTouresBalon" portType="ns1:ReservasTouresBalon" operation="ReservarProductos" bpelx:invokeAsDetail="no" id="BpInv1"/>
+                <assign name="ResPlatinoReserva" id="BpAss2">
+                  <copy>
+                    <from expression="&quot;RESERVACION&quot;"/>
+                    <to variable="outputVariable" part="payload" query="/client:processResponse/client:estatusOrden"/>
+                  </copy>
+                </assign>
+              </sequence>
+            </case>
+            <otherwise>
+              <switch name="Switch3" id="BpSwt2">
+                <case condition="bpws:getVariableData('inputVariable','payload','/client:process/client:clienteStatus')=&quot;DORADO&quot;">
+                  <bpelx:annotation>
+                    <bpelx:general>
+                      <bpelx:property name="userLabel">
+                        <![CDATA[EsDorado]]>
+                      </bpelx:property>
+                    </bpelx:general>
+                  </bpelx:annotation>
+                  <sequence name="Sequence4" id="BpSeq3">
+                    <scope name="RulesMonto" variableAccessSerializable="no" id="BpScp0">
+                      <bpelx:annotation>
+                        <bpelx:pattern patternName="bpelx:decide"/>
+                      </bpelx:annotation>
+                      <variables>
+                        <variable name="dsIn" messageType="ns2:callFunctionStatelessMessage"/>
+                        <variable name="dsOut" messageType="ns2:callFunctionStatelessDecisionMessage"/>
+                      </variables>
+                      <sequence name="Sequence6" id="BpSeq4">
+                        <assign name="Facts_To_Rule_Service" id="BpAss3">
+                          <copy>
+                            <from variable="inputVariable" part="payload" query="/client:process"/>
+                            <to variable="dsIn" part="payload" query="/ns2:callFunctionStateless/ns2:parameterList/client:process"/>
+                          </copy>
+                        </assign>
+                        <assign name="BPEL_Header" id="BpAss4">
+                          <copy>
+                            <from expression="&quot;RulesMontoGerencia_DecisionService_1&quot;"/>
+                            <to variable="dsIn" part="payload" query="@name"/>
+                          </copy>
+                        </assign>
+                        <invoke name="Invoke" partnerLink="RulesMontoGerencia.RulesMontoGerencia_DecisionService_1" portType="ns2:IDecisionService" operation="callFunctionStateless" inputVariable="dsIn" outputVariable="dsOut" id="BpInv2"/>
+                        <assign name="Rule_Service_To_Facts" id="BpAss5">
+                          <copy>
+                            <from variable="dsOut" part="payload" query="/ns2:callFunctionStatelessDecision/ns2:resultList/client:processResponse"/>
+                            <to variable="outputVariable" part="payload" query="/client:processResponse"/>
+                          </copy>
+                        </assign>
+                      </sequence>
+                    </scope>
+                    <switch name="Switch4" id="BpSwt3">
+                      <case condition="bpws:getVariableData('outputVariable','payload','/client:processResponse/client:estatusOrden') = &quot;OK&quot;">
+                        <bpelx:annotation>
+                          <bpelx:general>
+                            <bpelx:property name="userLabel">
+                              <![CDATA[MontoMenorIgualGerencia]]>
+                            </bpelx:property>
+                          </bpelx:general>
+                        </bpelx:annotation>
+                        <sequence name="Sequence5" id="BpSeq5">
+                          <assign name="AsigDorado" id="BpAss6">
+                            <copy>
+                              <from variable="inputVariable" part="payload" query="/client:process/client:itemEspectaculo/client:idEspectaculo"/>
+                              <to variable="InvResDorado_In" part="parameters" query="/ns1:ValidarDisponibilidadReservas/itemEspectaculo/idItem"/>
+                            </copy>
+                            <copy>
+                              <from variable="inputVariable" part="payload" query="/client:process/client:itemEspectaculo/client:nombreEspectaculo"/>
+                              <to variable="InvResDorado_In" part="parameters" query="/ns1:ValidarDisponibilidadReservas/itemEspectaculo/nombreItem"/>
+                            </copy>
+                            <copy>
+                              <from variable="inputVariable" part="payload" query="/client:process/client:itemEspectaculo/client:precioEspectaculo"/>
+                              <to variable="InvResDorado_In" part="parameters" query="/ns1:ValidarDisponibilidadReservas/itemEspectaculo/precioItem"/>
+                            </copy>
+                            <copy>
+                              <from variable="inputVariable" part="payload" query="/client:process/client:itemEspectaculo/client:cantEspectaculo"/>
+                              <to variable="InvResDorado_In" part="parameters" query="/ns1:ValidarDisponibilidadReservas/itemEspectaculo/cantidad"/>
+                            </copy>
+                            <copy>
+                              <from variable="inputVariable" part="payload" query="/client:process/client:itemTransporte/client:idTransporte"/>
+                              <to variable="InvResDorado_In" part="parameters" query="/ns1:ValidarDisponibilidadReservas/itemTransporte/idItem"/>
+                            </copy>
+                            <copy>
+                              <from variable="inputVariable" part="payload" query="/client:process/client:itemTransporte/client:nombreTransporte"/>
+                              <to variable="InvResDorado_In" part="parameters" query="/ns1:ValidarDisponibilidadReservas/itemTransporte/nombreItem"/>
+                            </copy>
+                            <copy>
+                              <from variable="inputVariable" part="payload" query="/client:process/client:itemTransporte/client:precioTransporte"/>
+                              <to variable="InvResDorado_In" part="parameters" query="/ns1:ValidarDisponibilidadReservas/itemTransporte/precioItem"/>
+                            </copy>
+                            <copy>
+                              <from variable="inputVariable" part="payload" query="/client:process/client:itemTransporte/client:cantTransporte"/>
+                              <to variable="InvResDorado_In" part="parameters" query="/ns1:ValidarDisponibilidadReservas/itemTransporte/cantidad"/>
+                            </copy>
+                            <copy>
+                              <from variable="inputVariable" part="payload" query="/client:process/client:itemHospedaje/client:idHospedaje"/>
+                              <to variable="InvResDorado_In" part="parameters" query="/ns1:ValidarDisponibilidadReservas/itemHospedaje/idItem"/>
+                            </copy>
+                            <copy>
+                              <from variable="inputVariable" part="payload" query="/client:process/client:itemHospedaje/client:nombreHospedaje"/>
+                              <to variable="InvResDorado_In" part="parameters" query="/ns1:ValidarDisponibilidadReservas/itemHospedaje/nombreItem"/>
+                            </copy>
+                            <copy>
+                              <from variable="inputVariable" part="payload" query="/client:process/client:itemHospedaje/client:precioHospedaje"/>
+                              <to variable="InvResDorado_In" part="parameters" query="/ns1:ValidarDisponibilidadReservas/itemHospedaje/precioItem"/>
+                            </copy>
+                            <copy>
+                              <from variable="inputVariable" part="payload" query="/client:process/client:itemHospedaje/client:cantHospedaje"/>
+                              <to variable="InvResDorado_In" part="parameters" query="/ns1:ValidarDisponibilidadReservas/itemHospedaje/cantidad"/>
+                            </copy>
+                            <copy>
+                              <from variable="inputVariable" part="payload" query="/client:process/client:itemCiudad/client:idCiudad"/>
+                              <to variable="InvResDorado_In" part="parameters" query="/ns1:ValidarDisponibilidadReservas/itemCiudad/idItem"/>
+                            </copy>
+                            <copy>
+                              <from variable="inputVariable" part="payload" query="/client:process/client:itemCiudad/client:nombreCiudad"/>
+                              <to variable="InvResDorado_In" part="parameters" query="/ns1:ValidarDisponibilidadReservas/itemCiudad/nombreItem"/>
+                            </copy>
+                            <copy>
+                              <from variable="inputVariable" part="payload" query="/client:process/client:itemCiudad/client:precioCiudad"/>
+                              <to variable="InvResDorado_In" part="parameters" query="/ns1:ValidarDisponibilidadReservas/itemCiudad/precioItem"/>
+                            </copy>
+                            <copy>
+                              <from variable="inputVariable" part="payload" query="/client:process/client:itemCiudad/client:cantCiudad"/>
+                              <to variable="InvResDorado_In" part="parameters" query="/ns1:ValidarDisponibilidadReservas/itemCiudad/cantidad"/>
+                            </copy>
+                          </assign>
+                          <invoke name="InvResDorado" inputVariable="InvResDorado_In" outputVariable="InvResDorado_Out" partnerLink="ReservasTouresBalon" portType="ns1:ReservasTouresBalon" operation="ValidarDisponibilidadReservas" bpelx:invokeAsDetail="no" id="BpInv3"/>
+                          <assign name="ResDoradoAprobado" id="BpAss7">
+                            <copy>
+                              <from expression="&quot;RESERVACION&quot;"/>
+                              <to variable="outputVariable" part="payload" query="/client:processResponse/client:estatusOrden"/>
+                            </copy>
+                          </assign>
+                        </sequence>
+                      </case>
+                      <otherwise>
+                        <assign name="ResValidacionDorado" id="BpAss8">
+                          <copy>
+                            <from expression="&quot;VALIDACION&quot;"/>
+                            <to variable="outputVariable" part="payload" query="/client:processResponse/client:estatusOrden"/>
+                          </copy>
+                        </assign>
+                      </otherwise>
+                    </switch>
+                  </sequence>
+                </case>
+                <otherwise>
+                  <assign name="ResValidacionPlateado" id="BpAss9">
+                    <copy>
+                      <from expression="&quot;VALIDACION&quot;"/>
+                      <to variable="outputVariable" part="payload" query="/client:processResponse/client:estatusOrden"/>
+                    </copy>
+                  </assign>
+                </otherwise>
+              </switch>
+            </otherwise>
+          </switch>
+        </sequence>
+      </case>
+      <otherwise>
+        <assign name="AsigNoDisponible" id="BpAss10">
+          <copy>
+            <from expression="&quot;RECHAZADO&quot;"/>
+            <to variable="outputVariable" part="payload" query="/client:processResponse/client:estatusOrden"/>
+          </copy>
+        </assign>
+      </otherwise>
+    </switch>
+    <!-- Generate reply to synchronous request -->
+    <reply name="replyOutput" partnerLink="creacionordenes_client" portType="client:CreacionOrdenes" operation="process" variable="outputVariable" id="BpRpl0"/>
+    <switch name="Switch5" id="BpSwt4">
+      <case condition="bpws:getVariableData('outputVariable','payload','/client:processResponse/client:estatusOrden') = &quot;VALIDACION&quot;">
+        <bpelx:annotation>
+          <bpelx:general>
+            <bpelx:property name="userLabel">
+              <![CDATA[esValidacionHumana]]>
+            </bpelx:property>
+          </bpelx:general>
+        </bpelx:annotation>
+        <sequence id="BpSeq6">
+          <scope name="ValidacionAnalistaVentas1" xmlns:wf="http://schemas.oracle.com/bpel/extensions/workflow" wf:key="ValidacionAnalistaVentas1_globalVariable" id="BpScp1">
+            <bpelx:annotation>
+              <bpelx:pattern patternName="bpelx:workflow"/>
+            </bpelx:annotation>
+            <variables>
+              <variable name="initiateTaskInput" messageType="taskservice:initiateTaskMessage"/>
+              <variable name="initiateTaskResponseMessage" messageType="taskservice:initiateTaskResponseMessage"/>
+            </variables>
+            <sequence id="BpSeq7">
+              <assign name="ValidacionAnalistaVentas1_AssignTaskAttributes" id="BpAss11">
+                <copy>
+                  <from expression="number(3)"/>
+                  <to variable="initiateTaskInput" part="payload" query="/taskservice:initiateTask/task:task/task:priority"/>
+                </copy>
+                <copy>
+                  <from><payload xmlns="http://xmlns.oracle.com/bpel/workflow/task">
+	<process xmlns="http://xmlns.oracle.com/CreacionOrden/CreacionOrdenesBPEL/CreacionOrdenes"/> 
+</payload></from>
+                  <to variable="initiateTaskInput" part="payload" query="/taskservice:initiateTask/task:task/task:payload"/>
+                </copy>
+                <copy>
+                  <from variable="inputVariable" part="payload" query="/client:process"/>
+                  <to variable="initiateTaskInput" part="payload" query="/taskservice:initiateTask/task:task/task:payload/client:process"/>
+                </copy>
+              </assign>
+              <invoke name="initiateTask_ValidacionAnalistaVentas1" partnerLink="ValidacionAnalistaVentas.TaskService_1" operation="initiateTask" portType="taskservice:TaskService" inputVariable="initiateTaskInput" outputVariable="initiateTaskResponseMessage" id="BpInv4"/>
+              <receive name="receiveCompletedTask_ValidacionAnalistaVentas1" partnerLink="ValidacionAnalistaVentas.TaskService_1" portType="taskservice:TaskServiceCallback" operation="onTaskCompleted" variable="ValidacionAnalistaVentas1_globalVariable" createInstance="no" id="BpRcv1"/>
+            </sequence>
+          </scope>
+          <switch name="taskSwitch" id="BpSwt5">
+            <case condition="$ValidacionAnalistaVentas1_globalVariable.payload/task:systemAttributes/task:outcome = 'REJECT'">
+              <bpelx:annotation>
+                <bpelx:pattern>Task outcome is REJECT</bpelx:pattern>
+                <bpelx:general>
+                  <bpelx:property name="userLabel">
+                    <![CDATA[Task outcome is REJECT]]>
+                  </bpelx:property>
+                </bpelx:general>
+              </bpelx:annotation>
+              <sequence id="BpSeq8">
+                <assign id="BpAss12">
+                  <copy>
+                    <from variable="ValidacionAnalistaVentas1_globalVariable" part="payload" query="/task:task/task:payload/client:process"/>
+                    <to variable="inputVariable" part="payload" query="/client:process"/>
+                  </copy>
+                </assign>
+                <assign name="AsigRecha" id="BpAss13">
+                  <copy>
+                    <from variable="inputVariable" part="payload" query="/client:process/client:idOrden"/>
+                    <to variable="InvRecAnaVen_In" part="parameters" query="/ns1:CallbackValidacionAnalista/idOrden"/>
+                  </copy>
+                  <copy>
+                    <from expression="&quot;RECHAZADA&quot;"/>
+                    <to variable="InvRecAnaVen_In" part="parameters" query="/ns1:CallbackValidacionAnalista/estatusOrden"/>
+                  </copy>
+                </assign>
+                <invoke name="InvRecAnaVen" inputVariable="InvRecAnaVen_In" outputVariable="InvRecAnaVen_Out" partnerLink="ReservasTouresBalon" portType="ns1:ReservasTouresBalon" operation="CallbackValidacionAnalista" bpelx:invokeAsDetail="no" id="BpInv5"/>
+              </sequence>
+            </case>
+            <case condition="$ValidacionAnalistaVentas1_globalVariable.payload/task:systemAttributes/task:outcome = 'APPROVE'">
+              <bpelx:annotation>
+                <bpelx:pattern>Task outcome is APPROVE</bpelx:pattern>
+                <bpelx:general>
+                  <bpelx:property name="userLabel">
+                    <![CDATA[Task outcome is APPROVE]]>
+                  </bpelx:property>
+                </bpelx:general>
+              </bpelx:annotation>
+              <sequence id="BpSeq9">
+                <assign id="BpAss14">
+                  <copy>
+                    <from variable="ValidacionAnalistaVentas1_globalVariable" part="payload" query="/task:task/task:payload/client:process"/>
+                    <to variable="inputVariable" part="payload" query="/client:process"/>
+                  </copy>
+                </assign>
+                <assign name="AsigAcept" id="BpAss15">
+                  <copy>
+                    <from variable="inputVariable" part="payload" query="/client:process/client:idOrden"/>
+                    <to variable="InvAcepAnaVen_In" part="parameters" query="/ns1:CallbackValidacionAnalista/idOrden"/>
+                  </copy>
+                  <copy>
+                    <from expression="&quot;RESERVACION&quot;"/>
+                    <to variable="InvAcepAnaVen_In" part="parameters" query="/ns1:CallbackValidacionAnalista/estatusOrden"/>
+                  </copy>
+                </assign>
+                <invoke name="InvAcepAnaVen" inputVariable="InvAcepAnaVen_In" outputVariable="InvAcepAnaVen_Out" partnerLink="ReservasTouresBalon" portType="ns1:ReservasTouresBalon" operation="CallbackValidacionAnalista" bpelx:invokeAsDetail="no" id="BpInv6"/>
+              </sequence>
+            </case>
+            <otherwise>
+              <sequence id="BpSeq10">
+                <assign id="BpAss16">
+                  <copy>
+                    <from variable="ValidacionAnalistaVentas1_globalVariable" part="payload" query="/task:task/task:payload/client:process"/>
+                    <to variable="inputVariable" part="payload" query="/client:process"/>
+                  </copy>
+                </assign>
+              </sequence>
+            </otherwise>
+          </switch>
+        </sequence>
+      </case>
+      <otherwise/>
+    </switch>
+  </sequence>
+</process><!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Sun Oct 16 15:24:36 PDT 2016
+  Author:  oracle
+  Type: BPEL 1.1 Process
+  Purpose: Synchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->

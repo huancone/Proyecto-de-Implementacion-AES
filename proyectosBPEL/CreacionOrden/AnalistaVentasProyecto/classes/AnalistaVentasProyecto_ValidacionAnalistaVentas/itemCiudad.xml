@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="itemCiudad"
+          Package="AnalistaVentasProyecto_ValidacionAnalistaVentas"
+          BeanClass="AnalistaVentasProyecto_ValidacionAnalistaVentas.itemCiudad"
+          isJavaBased="false">
+  <Attribute Name="idCiudad" IsUpdateable="0" Type="java.math.BigInteger">
+    <Properties>
+      <CustomProperties>
+        <Property Name="nextSiblingNamespace"
+                  Value="http://xmlns.oracle.com/CreacionOrden/CreacionOrdenesBPEL/CreacionOrdenes"/>
+        <Property Name="nextSibling" Value="nombreCiudad"/>
+        <Property Name="minOccurs" Value="0"/>
+        <Property Name="fractionDigits" Value="0"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Id Ciudad"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="idCiudad"/>
+        <Property Name="targetNamespace"
+                  Value="http://xmlns.oracle.com/CreacionOrden/CreacionOrdenesBPEL/CreacionOrdenes"/>
+        <Property Name="type" Value="java.math.BigInteger"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="nombreCiudad" IsUpdateable="0" Type="java.lang.String">
+    <Properties>
+      <CustomProperties>
+        <Property Name="nextSiblingNamespace"
+                  Value="http://xmlns.oracle.com/CreacionOrden/CreacionOrdenesBPEL/CreacionOrdenes"/>
+        <Property Name="nextSibling" Value="precioCiudad"/>
+        <Property Name="minOccurs" Value="0"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Nombre Ciudad"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="nombreCiudad"/>
+        <Property Name="targetNamespace"
+                  Value="http://xmlns.oracle.com/CreacionOrden/CreacionOrdenesBPEL/CreacionOrdenes"/>
+        <Property Name="type" Value="java.lang.String"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="precioCiudad" IsUpdateable="0" Type="java.lang.Double">
+    <Properties>
+      <CustomProperties>
+        <Property Name="nextSiblingNamespace"
+                  Value="http://xmlns.oracle.com/CreacionOrden/CreacionOrdenesBPEL/CreacionOrdenes"/>
+        <Property Name="nextSibling" Value="cantCiudad"/>
+        <Property Name="minOccurs" Value="0"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Precio Ciudad"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="precioCiudad"/>
+        <Property Name="targetNamespace"
+                  Value="http://xmlns.oracle.com/CreacionOrden/CreacionOrdenesBPEL/CreacionOrdenes"/>
+        <Property Name="type" Value="java.lang.Double"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="cantCiudad" IsUpdateable="0" Type="java.math.BigInteger">
+    <Properties>
+      <CustomProperties>
+        <Property Name="minOccurs" Value="0"/>
+        <Property Name="fractionDigits" Value="0"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Cant Ciudad"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="cantCiudad"/>
+        <Property Name="targetNamespace"
+                  Value="http://xmlns.oracle.com/CreacionOrden/CreacionOrdenesBPEL/CreacionOrdenes"/>
+        <Property Name="type" Value="java.math.BigInteger"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+</JavaBean>

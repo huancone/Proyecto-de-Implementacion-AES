@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<schema attributeFormDefault="unqualified"
+	elementFormDefault="qualified"
+	targetNamespace="http://xmlns.oracle.com/CreacionOrden/CreacionOrdenesBPEL/CreacionOrdenes"
+	xmlns="http://www.w3.org/2001/XMLSchema">
+	<element name="process">
+			<complexType>
+			<sequence>
+    <element name="idOrden" type="integer"/>
+    <element name="clienteStatus" type="string"/>
+    <element name="precioTotal" type="double" minOccurs="0"/>
+    <element name="itemEspectaculo" minOccurs="0">
+     <complexType>
+      <sequence>
+       <element name="idEspectaculo" type="integer" minOccurs="0"/>
+       <element name="nombreEspectaculo" type="string" minOccurs="0"/>
+       <element name="precioEspectaculo" type="double" minOccurs="0"/>
+       <element name="cantEspectaculo" type="integer" minOccurs="0"/>
+      </sequence>
+     </complexType>
+    </element>
+    <element name="itemTransporte" minOccurs="0">
+     <complexType>
+      <sequence>
+       <element name="idTransporte" type="integer" minOccurs="0"/>
+       <element name="nombreTransporte" type="string" minOccurs="0"/>
+       <element name="precioTransporte" type="double" minOccurs="0"/>
+       <element name="cantTransporte" type="integer" minOccurs="0"/>
+      </sequence>
+     </complexType>
+    </element>
+    <element name="itemHospedaje" minOccurs="0">
+     <complexType>
+      <sequence>
+       <element name="idHospedaje" type="integer" minOccurs="0"/>
+       <element name="nombreHospedaje" type="string" minOccurs="0"/>
+       <element name="precioHospedaje" type="double" minOccurs="0"/>
+       <element name="cantHospedaje" type="integer" minOccurs="0"/>
+      </sequence>
+     </complexType>
+    </element>
+    <element name="itemCiudad" minOccurs="0">
+     <complexType>
+      <sequence>
+       <element name="idCiudad" type="integer" minOccurs="0"/>
+       <element name="nombreCiudad" type="string" minOccurs="0"/>
+       <element name="precioCiudad" type="double" minOccurs="0"/>
+       <element name="cantCiudad" type="integer" minOccurs="0"/>
+      </sequence>
+     </complexType>
+    </element>
+   </sequence>
+		</complexType>
+	</element>
+	<element name="processResponse">
+		<complexType>
+			<sequence>
+				<element name="estatusOrden" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+</schema>

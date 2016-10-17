@@ -1,0 +1,9 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<schema targetNamespace="http://xmlns.oracle.com/bpel/workflow/task" xmlns:tns="http://xmlns.oracle.com/bpel/workflow/task" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ns0="http://xmlns.oracle.com/CreacionOrden/CreacionOrdenesBPEL/CreacionOrdenes">
+   <import namespace="http://xmlns.oracle.com/CreacionOrden/CreacionOrdenesBPEL/CreacionOrdenes" schemaLocation="CreacionOrdenes.xsd"/>
+   <complexType name="ValidacionAnalistaVentasPayloadType">
+      <sequence>
+         <element ref="ns0:process"/>
+      </sequence>
+   </complexType>
+</schema>

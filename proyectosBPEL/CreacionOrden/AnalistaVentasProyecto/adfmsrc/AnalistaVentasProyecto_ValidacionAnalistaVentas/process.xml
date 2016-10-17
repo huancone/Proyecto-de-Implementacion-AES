@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="process" Package="AnalistaVentasProyecto_ValidacionAnalistaVentas"
+          BeanClass="AnalistaVentasProyecto_ValidacionAnalistaVentas.process"
+          isJavaBased="false">
+  <Attribute Name="clienteStatus" IsUpdateable="0" Type="java.lang.String">
+    <Properties>
+      <CustomProperties>
+        <Property Name="nextSiblingNamespace"
+                  Value="http://xmlns.oracle.com/CreacionOrden/CreacionOrdenesBPEL/CreacionOrdenes"/>
+        <Property Name="nextSibling" Value="precioTotal"/>
+        <Property Name="minOccurs" Value="1"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Cliente Status"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="clienteStatus"/>
+        <Property Name="targetNamespace"
+                  Value="http://xmlns.oracle.com/CreacionOrden/CreacionOrdenesBPEL/CreacionOrdenes"/>
+        <Property Name="type" Value="java.lang.String"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="precioTotal" IsUpdateable="0" Type="java.lang.Double">
+    <Properties>
+      <CustomProperties>
+        <Property Name="nextSiblingNamespace"
+                  Value="http://xmlns.oracle.com/CreacionOrden/CreacionOrdenesBPEL/CreacionOrdenes"/>
+        <Property Name="nextSibling" Value="itemEspectaculo"/>
+        <Property Name="minOccurs" Value="0"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Precio Total"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="precioTotal"/>
+        <Property Name="targetNamespace"
+                  Value="http://xmlns.oracle.com/CreacionOrden/CreacionOrdenesBPEL/CreacionOrdenes"/>
+        <Property Name="type" Value="java.lang.Double"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <AccessorAttribute id="itemEspectaculo" IsCollection="true"
+                     BeanClass="AnalistaVentasProyecto_ValidacionAnalistaVentas.itemEspectaculo"
+                     CollectionBeanClass="AnalistaVentasProyecto_ValidacionAnalistaVentas.itemEspectaculo_itemEspectaculo_Operations">
+    <Properties>
+      <Property Name="nextSiblingNamespace"
+                Value="http://xmlns.oracle.com/CreacionOrden/CreacionOrdenesBPEL/CreacionOrdenes"/>
+      <Property Name="nextSibling" Value="itemTransporte"/>
+      <Property Name="minOccurs" Value="0"/>
+      <Property Name="maxOccurs" Value="1"/>
+      <Property Name="LABEL" Value="Item Espectaculo"/>
+      <Property Name="nillable" Value="false"/>
+      <Property Name="originalName" Value="itemEspectaculo"/>
+      <Property Name="targetNamespace"
+                Value="http://xmlns.oracle.com/CreacionOrden/CreacionOrdenesBPEL/CreacionOrdenes"/>
+    </Properties>
+  </AccessorAttribute>
+  <AccessorAttribute id="itemTransporte" IsCollection="true"
+                     BeanClass="AnalistaVentasProyecto_ValidacionAnalistaVentas.itemTransporte"
+                     CollectionBeanClass="AnalistaVentasProyecto_ValidacionAnalistaVentas.itemTransporte_itemTransporte_Operations">
+    <Properties>
+      <Property Name="nextSiblingNamespace"
+                Value="http://xmlns.oracle.com/CreacionOrden/CreacionOrdenesBPEL/CreacionOrdenes"/>
+      <Property Name="nextSibling" Value="itemHospedaje"/>
+      <Property Name="minOccurs" Value="0"/>
+      <Property Name="maxOccurs" Value="1"/>
+      <Property Name="LABEL" Value="Item Transporte"/>
+      <Property Name="nillable" Value="false"/>
+      <Property Name="originalName" Value="itemTransporte"/>
+      <Property Name="targetNamespace"
+                Value="http://xmlns.oracle.com/CreacionOrden/CreacionOrdenesBPEL/CreacionOrdenes"/>
+    </Properties>
+  </AccessorAttribute>
+  <AccessorAttribute id="itemHospedaje" IsCollection="true"
+                     BeanClass="AnalistaVentasProyecto_ValidacionAnalistaVentas.itemHospedaje"
+                     CollectionBeanClass="AnalistaVentasProyecto_ValidacionAnalistaVentas.itemHospedaje_itemHospedaje_Operations">
+    <Properties>
+      <Property Name="nextSiblingNamespace"
+                Value="http://xmlns.oracle.com/CreacionOrden/CreacionOrdenesBPEL/CreacionOrdenes"/>
+      <Property Name="nextSibling" Value="itemCiudad"/>
+      <Property Name="minOccurs" Value="0"/>
+      <Property Name="maxOccurs" Value="1"/>
+      <Property Name="LABEL" Value="Item Hospedaje"/>
+      <Property Name="nillable" Value="false"/>
+      <Property Name="originalName" Value="itemHospedaje"/>
+      <Property Name="targetNamespace"
+                Value="http://xmlns.oracle.com/CreacionOrden/CreacionOrdenesBPEL/CreacionOrdenes"/>
+    </Properties>
+  </AccessorAttribute>
+  <AccessorAttribute id="itemCiudad" IsCollection="true"
+                     BeanClass="AnalistaVentasProyecto_ValidacionAnalistaVentas.itemCiudad"
+                     CollectionBeanClass="AnalistaVentasProyecto_ValidacionAnalistaVentas.itemCiudad_itemCiudad_Operations">
+    <Properties>
+      <Property Name="minOccurs" Value="0"/>
+      <Property Name="maxOccurs" Value="1"/>
+      <Property Name="LABEL" Value="Item Ciudad"/>
+      <Property Name="nillable" Value="false"/>
+      <Property Name="originalName" Value="itemCiudad"/>
+      <Property Name="targetNamespace"
+                Value="http://xmlns.oracle.com/CreacionOrden/CreacionOrdenesBPEL/CreacionOrdenes"/>
+    </Properties>
+  </AccessorAttribute>
+</JavaBean>
