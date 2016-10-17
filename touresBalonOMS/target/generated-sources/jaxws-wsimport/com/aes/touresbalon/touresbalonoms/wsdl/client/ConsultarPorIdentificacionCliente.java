@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para anonymous complex type.
+ * <p>Java class for anonymous complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -38,7 +38,7 @@ public class ConsultarPorIdentificacionCliente {
     protected int idCliente;
 
     /**
-     * Obtiene el valor de la propiedad idCliente.
+     * Gets the value of the idCliente property.
      * 
      */
     public int getIdCliente() {
@@ -46,7 +46,7 @@ public class ConsultarPorIdentificacionCliente {
     }
 
     /**
-     * Define el valor de la propiedad idCliente.
+     * Sets the value of the idCliente property.
      * 
      */
     public void setIdCliente(int value) {

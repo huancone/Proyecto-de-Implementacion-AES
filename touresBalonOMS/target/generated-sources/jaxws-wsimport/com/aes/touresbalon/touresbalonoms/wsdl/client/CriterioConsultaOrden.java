@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para CriterioConsultaOrden complex type.
+ * <p>Java class for CriterioConsultaOrden complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="CriterioConsultaOrden">
@@ -39,7 +39,7 @@ public class CriterioConsultaOrden {
     protected int codigo;
 
     /**
-     * Obtiene el valor de la propiedad tipoConsulta.
+     * Gets the value of the tipoConsulta property.
      * 
      * @return
      *     possible object is
@@ -51,7 +51,7 @@ public class CriterioConsultaOrden {
     }
 
     /**
-     * Define el valor de la propiedad tipoConsulta.
+     * Sets the value of the tipoConsulta property.
      * 
      * @param value
      *     allowed object is
@@ -63,7 +63,7 @@ public class CriterioConsultaOrden {
     }
 
     /**
-     * Obtiene el valor de la propiedad codigo.
+     * Gets the value of the codigo property.
      * 
      */
     public int getCodigo() {
@@ -71,7 +71,7 @@ public class CriterioConsultaOrden {
     }
 
     /**
-     * Define el valor de la propiedad codigo.
+     * Sets the value of the codigo property.
      * 
      */
     public void setCodigo(int value) {

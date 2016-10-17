@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para Item complex type.
+ * <p>Java class for Item complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="Item">
@@ -58,7 +58,7 @@ public class Item {
     protected Integer idOrden;
 
     /**
-     * Obtiene el valor de la propiedad idItem.
+     * Gets the value of the idItem property.
      * 
      */
     public int getIdItem() {
@@ -66,7 +66,7 @@ public class Item {
     }
 
     /**
-     * Define el valor de la propiedad idItem.
+     * Sets the value of the idItem property.
      * 
      */
     public void setIdItem(int value) {
@@ -74,7 +74,7 @@ public class Item {
     }
 
     /**
-     * Obtiene el valor de la propiedad idProd.
+     * Gets the value of the idProd property.
      * 
      */
     public int getIdProd() {
@@ -82,7 +82,7 @@ public class Item {
     }
 
     /**
-     * Define el valor de la propiedad idProd.
+     * Sets the value of the idProd property.
      * 
      */
     public void setIdProd(int value) {
@@ -90,7 +90,7 @@ public class Item {
     }
 
     /**
-     * Obtiene el valor de la propiedad nombreProd.
+     * Gets the value of the nombreProd property.
      * 
      * @return
      *     possible object is
@@ -102,7 +102,7 @@ public class Item {
     }
 
     /**
-     * Define el valor de la propiedad nombreProd.
+     * Sets the value of the nombreProd property.
      * 
      * @param value
      *     allowed object is
@@ -114,7 +114,7 @@ public class Item {
     }
 
     /**
-     * Obtiene el valor de la propiedad partNum.
+     * Gets the value of the partNum property.
      * 
      * @return
      *     possible object is
@@ -126,7 +126,7 @@ public class Item {
     }
 
     /**
-     * Define el valor de la propiedad partNum.
+     * Sets the value of the partNum property.
      * 
      * @param value
      *     allowed object is
@@ -138,7 +138,7 @@ public class Item {
     }
 
     /**
-     * Obtiene el valor de la propiedad precio.
+     * Gets the value of the precio property.
      * 
      */
     public double getPrecio() {
@@ -146,7 +146,7 @@ public class Item {
     }
 
     /**
-     * Define el valor de la propiedad precio.
+     * Sets the value of the precio property.
      * 
      */
     public void setPrecio(double value) {
@@ -154,7 +154,7 @@ public class Item {
     }
 
     /**
-     * Obtiene el valor de la propiedad cantidad.
+     * Gets the value of the cantidad property.
      * 
      */
     public int getCantidad() {
@@ -162,7 +162,7 @@ public class Item {
     }
 
     /**
-     * Define el valor de la propiedad cantidad.
+     * Sets the value of the cantidad property.
      * 
      */
     public void setCantidad(int value) {
@@ -170,7 +170,7 @@ public class Item {
     }
 
     /**
-     * Obtiene el valor de la propiedad idOrden.
+     * Gets the value of the idOrden property.
      * 
      * @return
      *     possible object is
@@ -182,7 +182,7 @@ public class Item {
     }
 
     /**
-     * Define el valor de la propiedad idOrden.
+     * Sets the value of the idOrden property.
      * 
      * @param value
      *     allowed object is

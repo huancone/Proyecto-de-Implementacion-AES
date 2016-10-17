@@ -10,9 +10,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Clase Java para Producto complex type.
+ * <p>Java class for Producto complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="Producto">
@@ -81,7 +81,7 @@ public class Producto {
     protected String imagenProducto;
 
     /**
-     * Obtiene el valor de la propiedad idProducto.
+     * Gets the value of the idProducto property.
      * 
      */
     public int getIdProducto() {
@@ -89,7 +89,7 @@ public class Producto {
     }
 
     /**
-     * Define el valor de la propiedad idProducto.
+     * Sets the value of the idProducto property.
      * 
      */
     public void setIdProducto(int value) {
@@ -97,7 +97,7 @@ public class Producto {
     }
 
     /**
-     * Obtiene el valor de la propiedad espectaculo.
+     * Gets the value of the espectaculo property.
      * 
      * @return
      *     possible object is
@@ -109,7 +109,7 @@ public class Producto {
     }
 
     /**
-     * Define el valor de la propiedad espectaculo.
+     * Sets the value of the espectaculo property.
      * 
      * @param value
      *     allowed object is
@@ -121,7 +121,7 @@ public class Producto {
     }
 
     /**
-     * Obtiene el valor de la propiedad descripcion.
+     * Gets the value of the descripcion property.
      * 
      * @return
      *     possible object is
@@ -133,7 +133,7 @@ public class Producto {
     }
 
     /**
-     * Define el valor de la propiedad descripcion.
+     * Sets the value of the descripcion property.
      * 
      * @param value
      *     allowed object is
@@ -145,7 +145,7 @@ public class Producto {
     }
 
     /**
-     * Obtiene el valor de la propiedad ciudadEspectaculo.
+     * Gets the value of the ciudadEspectaculo property.
      * 
      * @return
      *     possible object is
@@ -157,7 +157,7 @@ public class Producto {
     }
 
     /**
-     * Define el valor de la propiedad ciudadEspectaculo.
+     * Sets the value of the ciudadEspectaculo property.
      * 
      * @param value
      *     allowed object is
@@ -169,7 +169,7 @@ public class Producto {
     }
 
     /**
-     * Obtiene el valor de la propiedad fechaLlegada.
+     * Gets the value of the fechaLlegada property.
      * 
      * @return
      *     possible object is
@@ -181,7 +181,7 @@ public class Producto {
     }
 
     /**
-     * Define el valor de la propiedad fechaLlegada.
+     * Sets the value of the fechaLlegada property.
      * 
      * @param value
      *     allowed object is
@@ -193,7 +193,7 @@ public class Producto {
     }
 
     /**
-     * Obtiene el valor de la propiedad fechaSalida.
+     * Gets the value of the fechaSalida property.
      * 
      * @return
      *     possible object is
@@ -205,7 +205,7 @@ public class Producto {
     }
 
     /**
-     * Define el valor de la propiedad fechaSalida.
+     * Sets the value of the fechaSalida property.
      * 
      * @param value
      *     allowed object is
@@ -217,7 +217,7 @@ public class Producto {
     }
 
     /**
-     * Obtiene el valor de la propiedad fechaEspectaculo.
+     * Gets the value of the fechaEspectaculo property.
      * 
      * @return
      *     possible object is
@@ -229,7 +229,7 @@ public class Producto {
     }
 
     /**
-     * Define el valor de la propiedad fechaEspectaculo.
+     * Sets the value of the fechaEspectaculo property.
      * 
      * @param value
      *     allowed object is
@@ -241,7 +241,7 @@ public class Producto {
     }
 
     /**
-     * Obtiene el valor de la propiedad tipoTransporte.
+     * Gets the value of the tipoTransporte property.
      * 
      * @return
      *     possible object is
@@ -253,7 +253,7 @@ public class Producto {
     }
 
     /**
-     * Define el valor de la propiedad tipoTransporte.
+     * Sets the value of the tipoTransporte property.
      * 
      * @param value
      *     allowed object is
@@ -265,7 +265,7 @@ public class Producto {
     }
 
     /**
-     * Obtiene el valor de la propiedad tipoEspectaculo.
+     * Gets the value of the tipoEspectaculo property.
      * 
      * @return
      *     possible object is
@@ -277,7 +277,7 @@ public class Producto {
     }
 
     /**
-     * Define el valor de la propiedad tipoEspectaculo.
+     * Sets the value of the tipoEspectaculo property.
      * 
      * @param value
      *     allowed object is
@@ -289,7 +289,7 @@ public class Producto {
     }
 
     /**
-     * Obtiene el valor de la propiedad tipoHospedaje.
+     * Gets the value of the tipoHospedaje property.
      * 
      * @return
      *     possible object is
@@ -301,7 +301,7 @@ public class Producto {
     }
 
     /**
-     * Define el valor de la propiedad tipoHospedaje.
+     * Sets the value of the tipoHospedaje property.
      * 
      * @param value
      *     allowed object is
@@ -313,7 +313,7 @@ public class Producto {
     }
 
     /**
-     * Obtiene el valor de la propiedad imagenProducto.
+     * Gets the value of the imagenProducto property.
      * 
      * @return
      *     possible object is
@@ -325,7 +325,7 @@ public class Producto {
     }
 
     /**
-     * Define el valor de la propiedad imagenProducto.
+     * Sets the value of the imagenProducto property.
      * 
      * @param value
      *     allowed object is

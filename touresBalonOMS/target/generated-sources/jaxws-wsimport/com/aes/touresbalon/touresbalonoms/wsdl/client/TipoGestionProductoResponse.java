@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para TipoGestionProductoResponse complex type.
+ * <p>Java class for TipoGestionProductoResponse complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="TipoGestionProductoResponse">
@@ -40,7 +40,7 @@ public class TipoGestionProductoResponse {
     protected Integer idProducto;
 
     /**
-     * Obtiene el valor de la propiedad respuesta.
+     * Gets the value of the respuesta property.
      * 
      * @return
      *     possible object is
@@ -52,7 +52,7 @@ public class TipoGestionProductoResponse {
     }
 
     /**
-     * Define el valor de la propiedad respuesta.
+     * Sets the value of the respuesta property.
      * 
      * @param value
      *     allowed object is
@@ -64,7 +64,7 @@ public class TipoGestionProductoResponse {
     }
 
     /**
-     * Obtiene el valor de la propiedad idProducto.
+     * Gets the value of the idProducto property.
      * 
      * @return
      *     possible object is
@@ -76,7 +76,7 @@ public class TipoGestionProductoResponse {
     }
 
     /**
-     * Define el valor de la propiedad idProducto.
+     * Sets the value of the idProducto property.
      * 
      * @param value
      *     allowed object is

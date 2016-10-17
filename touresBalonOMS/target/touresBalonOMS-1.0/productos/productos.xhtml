@@ -3,25 +3,114 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
 
     <body>
 
         <ui:composition template="./../newTemplate.xhtml">
 
-            <ui:define name="top">
-                top
-            </ui:define>
-
-            <ui:define name="left">
-                left
-            </ui:define>
-
             <ui:define name="content">
-                <h:form id="formularioProductos">
-                    <p:outputLabel value="Test web service aplicacion"/> <br/>
-                    <h:commandButton action="#{productosBean.crearProducto()}" value="Test service"></h:commandButton>
+                <h:form id="formAccProductos">           
+                    <p:growl id="msgs" showDetail="true" />
+                    <p:accordionPanel>
+                        <p:ajax event="tabChange" listener="#{productosBean.onTabChange}"  />
+                        <p:ajax event="tabClose" listener="#{productosBean.onTabClose}" />
 
+                        <p:tab title="Crear Producto">
+                            <h:form>
+                                <p:panel header="Ingrese Nuevo Producto">
+                                    <h:panelGrid columns="2" cellpadding="5">
+                                        <h:outputLabel for="idProducto" value="Id Producto" />
+                                        <p:inputText id="idProducto" value="#{productosBean.idProducto}">
+                                            <p:clientValidator event="keyup"/>
+                                        </p:inputText>
+                                        <p:message for="idProducto" display="icon" />
+                                        <br></br>
+                                        <h:outputLabel for="nomProducto" value="Nonbre Producto" />
+                                        <p:inputText id="nomProducto" value="#{productosBean.espectaculo}">
+                                            <p:clientValidator event="keyup"/>
+                                        </p:inputText>
+                                        <p:message for="nomProducto" display="icon" />
+                                        <br></br>
+                                        <h:outputLabel for="descProducto" value="Descripcion Producto" />
+                                        <p:inputText id="descProducto" value="#{productosBean.descripcion}">
+                                            <p:clientValidator event="keyup"/>
+                                        </p:inputText>
+                                        <p:message for="descProducto" display="icon" />
+                                        <br></br>
+                                        <p:outputLabel for="fechaLlegada" value="Fecha Llegada" />
+                                        <p:calendar id="fechaLlegada" value="#{productosBean.fechaLlegada}" locale="es" navigator="true" pattern="yyyyMMdd" />
+                                        <h:outputText value="#{productosBean.fechaLlegada}">
+                                            <f:convertDateTime pattern="yyyyMMdd" />
+                                        </h:outputText>
+                                        <br></br>
+                                        <p:outputLabel for="fechaSalida" value="Fecha Salida" />
+                                        <p:calendar id="fechaSalida" value="#{productosBean.fechaSalida}" locale="es" navigator="true" pattern="yyyyMMdd" />
+                                        <h:outputText value="#{productosBean.fechaSalida}">
+                                            <f:convertDateTime pattern="yyyyMMdd" />
+                                        </h:outputText>
+                                        <br></br>
+                                        <p:outputLabel for="fechaEspectaculo" value="Fecha Espectaculo" />
+                                        <p:calendar id="fechaEspectaculo" value="#{productosBean.fechaEspectaculo}" locale="es" navigator="true" pattern="yyyyMMdd" />
+                                        <h:outputText value="#{productosBean.fechaEspectaculo}">
+                                            <f:convertDateTime pattern="yyyyMMdd" />
+                                        </h:outputText>
+                                        <br></br>
+                                    </h:panelGrid>
+                                    
+<!--                                    <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
+                                        <p:panelGrid id="display" columns="2" columnClasses="label,value">
+
+                                            <p:outputLabel for="fechaLlegada" value="Fecha Llegada" />
+                                            <p:calendar id="fechaLlegada" value="#{productosBean.fechaLlegada}" locale="es" navigator="true" pattern="yyyyMMdd" />
+
+                                            <p:outputLabel for="fechaSalida" value="Fecha Salida" />
+                                            <p:calendar id="fechaSalida" value="#{productosBean.fechaSalida}" locale="es" navigator="true" pattern="yyyyMMdd" />
+
+                                            <p:outputLabel for="fechaEspectaculo" value="Fecha Espectaculo" />
+                                            <p:calendar id="fechaEspectaculo" value="#{productosBean.fechaEspectaculo}" locale="es" navigator="true" pattern="yyyyMMdd" />
+
+                                        </p:panelGrid>
+                                    </p:dialog>-->
+
+                                    <h:commandButton value="Guardar" onclick="#{productosBean.crearProducto()}" styleClass="ui-priority-primary"/>
+                                </p:panel>
+                            </h:form>
+                        </p:tab>
+                        <p:tab title="Editar Producto">
+                            <h:form>
+                                <p:panel header="Consultar Producto">
+                                    <h:panelGrid columns="2" cellpadding="4">
+                                        <p:outputLabel for="consultaEdit" value="Consultar Por"/>
+                                        <p:selectOneRadio id="consultaEdit" value="#{productosBean.tipoConsulta}">
+                                            <f:selectItem itemLabel="id" itemValue="id" />
+                                            <f:selectItem itemLabel="nombre" itemValue="nombre" />
+                                            <f:selectItem itemLabel="descripcion" itemValue="descripcion" />
+                                        </p:selectOneRadio>
+                                        <p:inputTextarea id="txtConsulta" value="#{productosBean.txtConsulta}"  rows="1" cols="50">
+                                            <p:clientValidator event="keyup"/>
+                                        </p:inputTextarea>
+                                        <br></br>
+                                        <h:commandButton value="Consultar" onclick="#{productosBean.consultarProducto()}" styleClass="ui-priority-primary" />
+                                        <br></br>
+                                    </h:panelGrid>
+                                </p:panel>
+                            </h:form>
+                            <h:form rendered="#{productosBean.showPanelEdit}">
+                                <p:panel header="Editar Producto" >
+                                    <h:panelGrid columns="2" cellpadding="4">
+                                    </h:panelGrid>
+                                </p:panel>
+                            </h:form>
+                        </p:tab>
+                        <p:tab title="Eliminar Producto">
+                            <h:panelGrid columns="2" cellpadding="10">
+                                <h:outputText value="After a break of more than 15 years..." />
+                            </h:panelGrid>
+                        </p:tab>
+                    </p:accordionPanel>
                 </h:form>
             </ui:define>
 

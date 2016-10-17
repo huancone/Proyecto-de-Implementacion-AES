@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para RespuestaOrdenCerrada complex type.
+ * <p>Java class for RespuestaOrdenCerrada complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="RespuestaOrdenCerrada">
@@ -39,7 +39,7 @@ public class RespuestaOrdenCerrada {
     protected double total;
 
     /**
-     * Obtiene el valor de la propiedad ordenesCerradas.
+     * Gets the value of the ordenesCerradas property.
      * 
      */
     public int getOrdenesCerradas() {
@@ -47,7 +47,7 @@ public class RespuestaOrdenCerrada {
     }
 
     /**
-     * Define el valor de la propiedad ordenesCerradas.
+     * Sets the value of the ordenesCerradas property.
      * 
      */
     public void setOrdenesCerradas(int value) {
@@ -55,7 +55,7 @@ public class RespuestaOrdenCerrada {
     }
 
     /**
-     * Obtiene el valor de la propiedad total.
+     * Gets the value of the total property.
      * 
      */
     public double getTotal() {
@@ -63,7 +63,7 @@ public class RespuestaOrdenCerrada {
     }
 
     /**
-     * Define el valor de la propiedad total.
+     * Sets the value of the total property.
      * 
      */
     public void setTotal(double value) {
