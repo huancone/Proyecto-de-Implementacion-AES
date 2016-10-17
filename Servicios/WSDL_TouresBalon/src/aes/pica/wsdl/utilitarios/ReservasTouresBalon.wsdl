@@ -91,6 +91,35 @@
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
+      <xsd:element name="CallbackValidacionAnalista">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="idOrden" type="xsd:int"
+      				maxOccurs="1" minOccurs="1">
+      			</xsd:element>
+      			<xsd:element name="estatusOrden" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CallbackValidacionAnalistaResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="respuesta" type="tns:RespuestaGenerica" maxOccurs="1" minOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CallbackValidacionAnalistaFault">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="CallbackValidacionAnalistaFault"
+      				type="tns:Error" maxOccurs="1" minOccurs="0">
+      			</xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="ValidarDisponibilidadReservasRequest">
@@ -111,6 +140,15 @@
   <wsdl:message name="ReservarProductosFault">
   	<wsdl:part name="parameters" element="tns:ReservarProductosFault"></wsdl:part>
   </wsdl:message>
+  <wsdl:message name="CallbackValidacionAnalistaRequest">
+  	<wsdl:part name="parameters" element="tns:CallbackValidacionAnalista"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CallbackValidacionAnalistaResponse">
+  	<wsdl:part name="parameters" element="tns:CallbackValidacionAnalistaResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CallbackValidacionAnalistaFault">
+  	<wsdl:part name="parameters" element="tns:CallbackValidacionAnalistaFault"></wsdl:part>
+  </wsdl:message>
   <wsdl:portType name="ReservasTouresBalon">
     <wsdl:operation name="ValidarDisponibilidadReservas">
       <wsdl:input message="tns:ValidarDisponibilidadReservasRequest"/>
@@ -121,6 +159,11 @@
     	<wsdl:input message="tns:ReservarProductosRequest"></wsdl:input>
     	<wsdl:output message="tns:ReservarProductosResponse"></wsdl:output>
             <wsdl:fault name="fault" message="tns:ReservarProductosFault"></wsdl:fault>
+        </wsdl:operation>
+    <wsdl:operation name="CallbackValidacionAnalista">
+    	<wsdl:input message="tns:CallbackValidacionAnalistaRequest"></wsdl:input>
+    	<wsdl:output message="tns:CallbackValidacionAnalistaResponse"></wsdl:output>
+            <wsdl:fault name="fault" message="tns:CallbackValidacionAnalistaFault"></wsdl:fault>
         </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ReservasTouresBalonSOAP"
@@ -141,12 +184,30 @@
   			<soap:body use="literal" />
   		</wsdl:output>
   		<wsdl:fault name="fault">
+
   			<soap:fault use="literal" name="fault" />
   		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="ReservarProductos">
+
   		<soap:operation
   			soapAction="http://www.touresbalon.com/ReservasTouresBalon/ReservarProductos" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  		<wsdl:fault name="fault">
+
+  			<soap:fault use="literal" name="fault" />
+  		</wsdl:fault>
+  	</wsdl:operation>
+  	<wsdl:operation name="CallbackValidacionAnalista">
+  		<soap:operation
+  			soapAction="http://www.touresbalon.com/ReservasTouresBalon/CallbackValidacionAnalista" />
   		<wsdl:input>
   			<soap:body use="literal" />
   		</wsdl:input>

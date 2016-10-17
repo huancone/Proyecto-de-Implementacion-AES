@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="2896eaf2-ee71-439d-8ed0-928b6b49d9c7" activeEnvironment="Default" name="Bpel" resourceRoot="" soapui-version="5.2.1" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="e3c346f3-62f9-424d-a839-90e44a6579c2" wsaVersion="NONE" name="CreacionOrdenesBinding" type="wsdl" bindingName="{http://xmlns.oracle.com/CreacionOrden/CreacionOrdenesBPEL/CreacionOrdenes}CreacionOrdenesBinding" soapVersion="1_1" anonymous="optional" definition="http://169.254.40.165:7001//soa-infra/services/default/CreacionOrdenesBPEL/creacionordenes_client_ep?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://169.254.40.165:7001//soa-infra/services/default/CreacionOrdenesBPEL/creacionordenes_client_ep?wsdl"><con:part><con:url>http://169.254.40.165:7001//soa-infra/services/default/CreacionOrdenesBPEL/creacionordenes_client_ep?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="CreacionOrdenes" targetNamespace="http://xmlns.oracle.com/CreacionOrden/CreacionOrdenesBPEL/CreacionOrdenes" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:client="http://xmlns.oracle.com/CreacionOrden/CreacionOrdenesBPEL/CreacionOrdenes" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:documentation>
+    <abstractWSDL>http://soabpm-vm.site:7001/soa-infra/services/default/CreacionOrdenesBPEL!1.0/CreacionOrdenes.wsdl</abstractWSDL>
+  </wsdl:documentation>
+  <plnk:partnerLinkType name="CreacionOrdenes">
+    <plnk:role name="CreacionOrdenesProvider">
+      <plnk:portType name="client:CreacionOrdenes"/>
+    </plnk:role>
+  </plnk:partnerLinkType>
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://xmlns.oracle.com/CreacionOrden/CreacionOrdenesBPEL/CreacionOrdenes" schemaLocation="http://soabpm-vm.site:7001/soa-infra/services/default/CreacionOrdenesBPEL/creacionordenes_client_ep?XSD=xsd/CreacionOrdenes.xsd"/>
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="CreacionOrdenesRequestMessage">
+    <wsdl:part name="payload" element="client:process"/>
+  </wsdl:message>
+  <wsdl:message name="CreacionOrdenesResponseMessage">
+    <wsdl:part name="payload" element="client:processResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="CreacionOrdenes">
+    <wsdl:operation name="process">
+      <wsdl:input message="client:CreacionOrdenesRequestMessage"/>
+      <wsdl:output message="client:CreacionOrdenesResponseMessage"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CreacionOrdenesBinding" type="client:CreacionOrdenes">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="process">
+      <soap:operation style="document" soapAction="process"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="creacionordenes_client_ep">
+    <wsdl:port name="CreacionOrdenes_pt" binding="client:CreacionOrdenesBinding">
+      <soap:address location="http://soabpm-vm.site:7001/soa-infra/services/default/CreacionOrdenesBPEL/creacionordenes_client_ep"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://soabpm-vm.site:7001/soa-infra/services/default/CreacionOrdenesBPEL/creacionordenes_client_ep?XSD=xsd/CreacionOrdenes.xsd</con:url><con:content><![CDATA[<schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/CreacionOrden/CreacionOrdenesBPEL/CreacionOrdenes" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="process">
+    <complexType>
+      <sequence>
+        <element name="idOrden" type="integer"/>
+        <element name="clienteStatus" type="string"/>
+        <element name="precioTotal" type="double" minOccurs="0"/>
+        <element name="itemEspectaculo" minOccurs="0">
+          <complexType>
+            <sequence>
+              <element name="idEspectaculo" type="integer" minOccurs="0"/>
+              <element name="nombreEspectaculo" type="string" minOccurs="0"/>
+              <element name="precioEspectaculo" type="double" minOccurs="0"/>
+              <element name="cantEspectaculo" type="integer" minOccurs="0"/>
+            </sequence>
+          </complexType>
+        </element>
+        <element name="itemTransporte" minOccurs="0">
+          <complexType>
+            <sequence>
+              <element name="idTransporte" type="integer" minOccurs="0"/>
+              <element name="nombreTransporte" type="string" minOccurs="0"/>
+              <element name="precioTransporte" type="double" minOccurs="0"/>
+              <element name="cantTransporte" type="integer" minOccurs="0"/>
+            </sequence>
+          </complexType>
+        </element>
+        <element name="itemHospedaje" minOccurs="0">
+          <complexType>
+            <sequence>
+              <element name="idHospedaje" type="integer" minOccurs="0"/>
+              <element name="nombreHospedaje" type="string" minOccurs="0"/>
+              <element name="precioHospedaje" type="double" minOccurs="0"/>
+              <element name="cantHospedaje" type="integer" minOccurs="0"/>
+            </sequence>
+          </complexType>
+        </element>
+        <element name="itemCiudad" minOccurs="0">
+          <complexType>
+            <sequence>
+              <element name="idCiudad" type="integer" minOccurs="0"/>
+              <element name="nombreCiudad" type="string" minOccurs="0"/>
+              <element name="precioCiudad" type="double" minOccurs="0"/>
+              <element name="cantCiudad" type="integer" minOccurs="0"/>
+            </sequence>
+          </complexType>
+        </element>
+      </sequence>
+    </complexType>
+  </element>
+  <element name="processResponse">
+    <complexType>
+      <sequence>
+        <element name="estatusOrden" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+</schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://soabpm-vm.site:7001/soa-infra/services/default/CreacionOrdenesBPEL/creacionordenes_client_ep</con:endpoint></con:endpoints><con:operation id="59e2c084-a574-4361-8159-b2c16caf724e" isOneWay="false" action="process" name="process" bindingOperationName="process" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="768e0f75-b06b-4aa7-9630-663c591e65ab" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://soabpm-vm.site:7001/soa-infra/services/default/CreacionOrdenesBPEL/creacionordenes_client_ep</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cre="http://xmlns.oracle.com/CreacionOrden/CreacionOrdenesBPEL/CreacionOrdenes">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cre:process>\r
+         <cre:idOrden>1</cre:idOrden>\r
+         <cre:clienteStatus>PLATEADO</cre:clienteStatus>\r
+         <!--Optional:-->\r
+         <cre:precioTotal>1</cre:precioTotal>\r
+         <!--Optional:-->\r
+         <cre:itemEspectaculo>\r
+            <!--Optional:-->\r
+            <cre:idEspectaculo>1</cre:idEspectaculo>\r
+            <!--Optional:-->\r
+            <cre:nombreEspectaculo>1</cre:nombreEspectaculo>\r
+            <!--Optional:-->\r
+            <cre:precioEspectaculo>1</cre:precioEspectaculo>\r
+            <!--Optional:-->\r
+            <cre:cantEspectaculo>1</cre:cantEspectaculo>\r
+         </cre:itemEspectaculo>\r
+         <!--Optional:-->\r
+         <cre:itemTransporte>\r
+            <!--Optional:-->\r
+            <cre:idTransporte>1</cre:idTransporte>\r
+            <!--Optional:-->\r
+            <cre:nombreTransporte>1</cre:nombreTransporte>\r
+            <!--Optional:-->\r
+            <cre:precioTransporte>1</cre:precioTransporte>\r
+            <!--Optional:-->\r
+            <cre:cantTransporte>1</cre:cantTransporte>\r
+         </cre:itemTransporte>\r
+         <!--Optional:-->\r
+         <cre:itemHospedaje>\r
+            <!--Optional:-->\r
+            <cre:idHospedaje>1</cre:idHospedaje>\r
+            <!--Optional:-->\r
+            <cre:nombreHospedaje>1</cre:nombreHospedaje>\r
+            <!--Optional:-->\r
+            <cre:precioHospedaje>1</cre:precioHospedaje>\r
+            <!--Optional:-->\r
+            <cre:cantHospedaje>1</cre:cantHospedaje>\r
+         </cre:itemHospedaje>\r
+         <!--Optional:-->\r
+         <cre:itemCiudad>\r
+            <!--Optional:-->\r
+            <cre:idCiudad>1</cre:idCiudad>\r
+            <!--Optional:-->\r
+            <cre:nombreCiudad>1</cre:nombreCiudad>\r
+            <!--Optional:-->\r
+            <cre:precioCiudad>1</cre:precioCiudad>\r
+            <!--Optional:-->\r
+            <cre:cantCiudad>1</cre:cantCiudad>\r
+         </cre:itemCiudad>\r
+      </cre:process>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="process"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/></con:soapui-project>
