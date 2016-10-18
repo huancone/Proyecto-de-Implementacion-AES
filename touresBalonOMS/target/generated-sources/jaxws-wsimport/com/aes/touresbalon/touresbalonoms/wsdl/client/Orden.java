@@ -12,9 +12,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Clase Java para Orden complex type.
+ * <p>Java class for Orden complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="Orden">
@@ -61,7 +61,7 @@ public class Orden {
     protected List<Item> item;
 
     /**
-     * Obtiene el valor de la propiedad idCliente.
+     * Gets the value of the idCliente property.
      * 
      */
     public int getIdCliente() {
@@ -69,7 +69,7 @@ public class Orden {
     }
 
     /**
-     * Define el valor de la propiedad idCliente.
+     * Sets the value of the idCliente property.
      * 
      */
     public void setIdCliente(int value) {
@@ -77,7 +77,7 @@ public class Orden {
     }
 
     /**
-     * Obtiene el valor de la propiedad idOrden.
+     * Gets the value of the idOrden property.
      * 
      * @return
      *     possible object is
@@ -89,7 +89,7 @@ public class Orden {
     }
 
     /**
-     * Define el valor de la propiedad idOrden.
+     * Sets the value of the idOrden property.
      * 
      * @param value
      *     allowed object is
@@ -101,7 +101,7 @@ public class Orden {
     }
 
     /**
-     * Obtiene el valor de la propiedad fechaOrden.
+     * Gets the value of the fechaOrden property.
      * 
      * @return
      *     possible object is
@@ -113,7 +113,7 @@ public class Orden {
     }
 
     /**
-     * Define el valor de la propiedad fechaOrden.
+     * Sets the value of the fechaOrden property.
      * 
      * @param value
      *     allowed object is
@@ -125,7 +125,7 @@ public class Orden {
     }
 
     /**
-     * Obtiene el valor de la propiedad precio.
+     * Gets the value of the precio property.
      * 
      */
     public double getPrecio() {
@@ -133,7 +133,7 @@ public class Orden {
     }
 
     /**
-     * Define el valor de la propiedad precio.
+     * Sets the value of the precio property.
      * 
      */
     public void setPrecio(double value) {
@@ -141,7 +141,7 @@ public class Orden {
     }
 
     /**
-     * Obtiene el valor de la propiedad estatus.
+     * Gets the value of the estatus property.
      * 
      * @return
      *     possible object is
@@ -153,7 +153,7 @@ public class Orden {
     }
 
     /**
-     * Define el valor de la propiedad estatus.
+     * Sets the value of the estatus property.
      * 
      * @param value
      *     allowed object is

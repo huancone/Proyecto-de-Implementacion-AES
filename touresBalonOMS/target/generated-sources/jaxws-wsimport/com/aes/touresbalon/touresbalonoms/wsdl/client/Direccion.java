@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para Direccion complex type.
+ * <p>Java class for Direccion complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="Direccion">
@@ -57,7 +57,7 @@ public class Direccion {
     protected String dirCalle;
 
     /**
-     * Obtiene el valor de la propiedad idDireccion.
+     * Gets the value of the idDireccion property.
      * 
      * @return
      *     possible object is
@@ -69,7 +69,7 @@ public class Direccion {
     }
 
     /**
-     * Define el valor de la propiedad idDireccion.
+     * Sets the value of the idDireccion property.
      * 
      * @param value
      *     allowed object is
@@ -81,7 +81,7 @@ public class Direccion {
     }
 
     /**
-     * Obtiene el valor de la propiedad pais.
+     * Gets the value of the pais property.
      * 
      * @return
      *     possible object is
@@ -93,7 +93,7 @@ public class Direccion {
     }
 
     /**
-     * Define el valor de la propiedad pais.
+     * Sets the value of the pais property.
      * 
      * @param value
      *     allowed object is
@@ -105,7 +105,7 @@ public class Direccion {
     }
 
     /**
-     * Obtiene el valor de la propiedad ciudad.
+     * Gets the value of the ciudad property.
      * 
      * @return
      *     possible object is
@@ -117,7 +117,7 @@ public class Direccion {
     }
 
     /**
-     * Define el valor de la propiedad ciudad.
+     * Sets the value of the ciudad property.
      * 
      * @param value
      *     allowed object is
@@ -129,7 +129,7 @@ public class Direccion {
     }
 
     /**
-     * Obtiene el valor de la propiedad estado.
+     * Gets the value of the estado property.
      * 
      * @return
      *     possible object is
@@ -141,7 +141,7 @@ public class Direccion {
     }
 
     /**
-     * Define el valor de la propiedad estado.
+     * Sets the value of the estado property.
      * 
      * @param value
      *     allowed object is
@@ -153,7 +153,7 @@ public class Direccion {
     }
 
     /**
-     * Obtiene el valor de la propiedad codPostal.
+     * Gets the value of the codPostal property.
      * 
      * @return
      *     possible object is
@@ -165,7 +165,7 @@ public class Direccion {
     }
 
     /**
-     * Define el valor de la propiedad codPostal.
+     * Sets the value of the codPostal property.
      * 
      * @param value
      *     allowed object is
@@ -177,7 +177,7 @@ public class Direccion {
     }
 
     /**
-     * Obtiene el valor de la propiedad tipoDir.
+     * Gets the value of the tipoDir property.
      * 
      * @return
      *     possible object is
@@ -189,7 +189,7 @@ public class Direccion {
     }
 
     /**
-     * Define el valor de la propiedad tipoDir.
+     * Sets the value of the tipoDir property.
      * 
      * @param value
      *     allowed object is
@@ -201,7 +201,7 @@ public class Direccion {
     }
 
     /**
-     * Obtiene el valor de la propiedad dirCalle.
+     * Gets the value of the dirCalle property.
      * 
      * @return
      *     possible object is
@@ -213,7 +213,7 @@ public class Direccion {
     }
 
     /**
-     * Define el valor de la propiedad dirCalle.
+     * Sets the value of the dirCalle property.
      * 
      * @param value
      *     allowed object is

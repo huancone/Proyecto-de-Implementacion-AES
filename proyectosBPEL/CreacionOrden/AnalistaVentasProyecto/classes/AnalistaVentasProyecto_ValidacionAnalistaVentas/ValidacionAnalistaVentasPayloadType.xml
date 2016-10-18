@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="ValidacionAnalistaVentasPayloadType"
+          Package="AnalistaVentasProyecto_ValidacionAnalistaVentas"
+          BeanClass="AnalistaVentasProyecto_ValidacionAnalistaVentas.ValidacionAnalistaVentasPayloadType"
+          isJavaBased="false">
+  <AccessorAttribute id="process" IsCollection="true"
+                     BeanClass="AnalistaVentasProyecto_ValidacionAnalistaVentas.process"
+                     CollectionBeanClass="AnalistaVentasProyecto_ValidacionAnalistaVentas.process_process_Operations">
+    <Properties>
+      <Property Name="minOccurs" Value="1"/>
+      <Property Name="maxOccurs" Value="1"/>
+      <Property Name="LABEL" Value="Process"/>
+      <Property Name="nillable" Value="false"/>
+      <Property Name="originalName" Value="process"/>
+      <Property Name="targetNamespace"
+                Value="http://xmlns.oracle.com/CreacionOrden/CreacionOrdenesBPEL/CreacionOrdenes"/>
+    </Properties>
+  </AccessorAttribute>
+</JavaBean>

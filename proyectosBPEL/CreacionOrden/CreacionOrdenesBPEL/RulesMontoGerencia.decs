@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<decisionServices xmlns="http://xmlns.oracle.com/bpel/rules" name="RulesMontoGerencia">
+    <ruleEngineProvider provider="Oracle_11.0.0.0.0" name="OracleRulesSDK">
+        <repository type="SCA-Archive">
+            <path>CreacionOrdenesBPEL/oracle/rules/creacionordenesbpel/RulesMontoGerencia.rules</path>
+        </repository>
+    </ruleEngineProvider>
+    <decisionService name="RulesMontoGerencia_DecisionService_1" ruleEngineProviderReference="OracleRulesSDK" targetNamespace="http://xmlns.oracle.com/RulesMontoGerencia/RulesMontoGerencia_DecisionService_1">
+        <catalog>RulesMontoGerencia</catalog>
+        <pattern name="CallFunctionStateless">
+            <arguments>
+                <call>creacionordenesbpel.RulesMontoGerencia.RulesMontoGerencia_DecisionService_1</call>
+            </arguments>
+        </pattern>
+        <pattern name="CallFunctionStateful">
+            <arguments>
+                <call>creacionordenesbpel.RulesMontoGerencia.RulesMontoGerencia_DecisionService_1</call>
+            </arguments>
+        </pattern>
+    </decisionService>
+    <schemaInformation>
+        <dictionary fqnPackage="creacionordenesbpel" fqnName="RulesMontoGerencia" updateNumber="27">
+            <schemaBrowser>
+                <package>com.oracle.xmlns.creacionorden.creacionordenesbpel.creacionordenes</package>
+                <namespace>http://xmlns.oracle.com/CreacionOrden/CreacionOrdenesBPEL/CreacionOrdenes</namespace>
+            </schemaBrowser>
+            <schemaImport namespace="http://xmlns.oracle.com/ReglasMontoGerencia/ReglasMontoGerencia_DecisionService_1" localPart="CreacionOrdenes.xsd" schemaLocation="xsd/ReglasMontoGerencia_DecisionService_1MessageTypes.xsd" package="">
+                <import namespace="http://xmlns.oracle.com/ReglasMontoGerencia/ReglasMontoGerencia_DecisionService_1" localPart="CreacionOrdenes.xsd"/>
+                <import namespace="http://xmlns.oracle.com/ReglasMontoGerencia/ReglasMontoGerencia_DecisionService_1" localPart="ReglasMontoGerencia_DecisionService_1Types.xsd"/>
+                <import namespace="http://xmlns.oracle.com/bpel/rules" localPart="DecisionServicePrimitiveTypes.xsd"/>
+                <import namespace="http://xmlns.oracle.com/bpel" localPart="BpelProcess.xsd"/>
+                <import namespace="http://xmlns.oracle.com/CreacionOrden/CreacionOrdenesBPEL/CreacionOrdenes" localPart="CreacionOrdenes.xsd"/>
+            </schemaImport>
+        </dictionary>
+    </schemaInformation>
+</decisionServices>

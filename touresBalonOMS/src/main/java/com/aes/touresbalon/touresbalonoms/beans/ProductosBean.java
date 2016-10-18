@@ -5,12 +5,17 @@
  */
 package com.aes.touresbalon.touresbalonoms.beans;
 
-import com.aes.touresbalon.touresbalonoms.services.Servicio;
+import com.aes.touresbalon.touresbalonoms.services.ProductoService;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.Ciudad;
+import com.aes.touresbalon.touresbalonoms.wsdl.client.Producto;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.TarifaValores;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.xml.datatype.XMLGregorianCalendar;
+import org.primefaces.event.TabChangeEvent;
+import org.primefaces.event.TabCloseEvent;
 
 /**
  *
@@ -38,12 +43,45 @@ public class ProductosBean {
     private TarifaValores tipoHospedaje;
     private String imagenProducto;
     
+    private String tipoConsulta;
+    private String txtConsulta;
+    private boolean showPanelEdit;
     
-     public void crearProducto(){
-         Servicio service = new Servicio();
+    ProductoService service = new ProductoService();
+    
+    public void onTabChange(TabChangeEvent event) {
+        FacesMessage msg = new FacesMessage("Tab Changed", "Active Tab: " + event.getTab().getTitle());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
          
-         service.crearProducto();
+    public void onTabClose(TabCloseEvent event) {
+        FacesMessage msg = new FacesMessage("Tab Closed", "Closed tab: " + event.getTab().getTitle());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+    
+    public void crearProducto(){
+        Producto producto = new Producto();
+        producto.setIdProducto(idProducto);
+        producto.setEspectaculo(espectaculo);
+        producto.setDescripcion(descripcion);
+        service.crearProducto(producto);
      }
+     
+    public void editarProducto(){
+        if (!isShowPanelEdit()){
+            setShowPanelEdit(true);
+        }else{
+            setShowPanelEdit(false);
+        }
+    }
+    
+    public void eliminarProducto(){
+        service.eliminarProducto();
+    }
+    
+    public void consultarProducto(){
+        showPanelEdit = true;
+    }
 
     public int getIdProducto() {
         return idProducto;
@@ -131,6 +169,48 @@ public class ProductosBean {
 
     public void setImagenProducto(String imagenProducto) {
         this.imagenProducto = imagenProducto;
+    }
+
+    /**
+     * @return the tipoConsulta
+     */
+    public String getTipoConsulta() {
+        return tipoConsulta;
+    }
+
+    /**
+     * @param tipoConsulta the tipoConsulta to set
+     */
+    public void setTipoConsulta(String tipoConsulta) {
+        this.tipoConsulta = tipoConsulta;
+    }
+
+    /**
+     * @return the txtConsulta
+     */
+    public String getTxtConsulta() {
+        return txtConsulta;
+    }
+
+    /**
+     * @param txtConsulta the txtConsulta to set
+     */
+    public void setTxtConsulta(String txtConsulta) {
+        this.txtConsulta = txtConsulta;
+    }
+
+    /**
+     * @return the showPanelEdit
+     */
+    public boolean isShowPanelEdit() {
+        return showPanelEdit;
+    }
+
+    /**
+     * @param showPanelEdit the showPanelEdit to set
+     */
+    public void setShowPanelEdit(boolean showPanelEdit) {
+        this.showPanelEdit = showPanelEdit;
     }
     
 }

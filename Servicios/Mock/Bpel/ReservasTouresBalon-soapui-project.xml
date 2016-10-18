@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="7a4b219c-6238-4368-b0a3-cebbdd159da6" activeEnvironment="Default" name="ReservasTouresBalon" resourceRoot="" soapui-version="5.2.1" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="7a933586-e543-4f92-9c06-ec5c4ccffb76" wsaVersion="NONE" name="ReservasTouresBalonSOAP" type="wsdl" bindingName="{http://www.touresbalon.com/ReservasTouresBalon/}ReservasTouresBalonSOAP" soapVersion="1_1" anonymous="optional" definition="file:/D:/Development/GitHub/Proyecto-de-Implementacion-AES/Servicios/WSDL_TouresBalon/src/aes/pica/wsdl/utilitarios/ReservasTouresBalon.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\D:\Development\GitHub\Proyecto-de-Implementacion-AES\Servicios\WSDL_TouresBalon\src\aes\pica\wsdl\utilitarios\ReservasTouresBalon.wsdl"><con:part><con:url>file:\D:\Development\GitHub\Proyecto-de-Implementacion-AES\Servicios\WSDL_TouresBalon\src\aes\pica\wsdl\utilitarios\ReservasTouresBalon.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="ReservasTouresBalon" targetNamespace="http://www.touresbalon.com/ReservasTouresBalon/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.touresbalon.com/ReservasTouresBalon/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.touresbalon.com/ReservasTouresBalon/">
+      <xsd:element name="ValidarDisponibilidadReservas">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="itemEspectaculo" type="tns:item" maxOccurs="1" minOccurs="0"/>
+            <xsd:element name="itemTransporte" type="tns:item" maxOccurs="1" minOccurs="0"/>
+            <xsd:element name="itemHospedaje" type="tns:item" maxOccurs="1" minOccurs="0"/>
+            <xsd:element name="itemCiudad" type="tns:item" maxOccurs="1" minOccurs="0"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ValidarDisponibilidadReservasResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="respuesta" type="tns:RespuestaGenerica" maxOccurs="1" minOccurs="1"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ValidarDisponibilidadReservasFault">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ValidarDisponibilidadReservasFault" type="tns:Error" maxOccurs="1" minOccurs="0"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="item">
+        <xsd:sequence>
+          <xsd:element name="idItem" type="xsd:int" maxOccurs="1" minOccurs="0"></xsd:element>
+          <xsd:element name="nombreItem" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+          <xsd:element name="precioItem" type="xsd:double" maxOccurs="1" minOccurs="0"></xsd:element>
+          <xsd:element name="cantidad" type="xsd:int" maxOccurs="1" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="RespuestaGenerica">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="OK"/>
+          <xsd:enumeration value="KO"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="Error">
+        <xsd:sequence>
+          <xsd:element name="codigo" type="xsd:string" maxOccurs="1" minOccurs="0"/>
+          <xsd:element name="mensaje" type="xsd:string" maxOccurs="1" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ReservarProductos">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="itemEspectaculo" type="tns:item" maxOccurs="1" minOccurs="0"></xsd:element>
+            <xsd:element name="itemTransporte" type="tns:item" maxOccurs="1" minOccurs="0"></xsd:element>
+            <xsd:element name="itemHospedaje" type="tns:item" maxOccurs="1" minOccurs="0"/>
+            <xsd:element name="itemCiudad" type="tns:item" maxOccurs="1" minOccurs="0"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReservarProductosResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="respuesta" type="tns:RespuestaGenerica" maxOccurs="1" minOccurs="1"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReservarProductosFault">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ReservarProductosFault" type="tns:Error" maxOccurs="1" minOccurs="0"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CallbackValidacionAnalista">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="idOrden" type="xsd:int" maxOccurs="1" minOccurs="1"></xsd:element>
+            <xsd:element name="estatusOrden" type="xsd:string" maxOccurs="1" minOccurs="1"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CallbackValidacionAnalistaResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="respuesta" type="tns:RespuestaGenerica" maxOccurs="1" minOccurs="1"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CallbackValidacionAnalistaFault">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="CallbackValidacionAnalistaFault" type="tns:Error" maxOccurs="1" minOccurs="0"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ValidarDisponibilidadReservasRequest">
+    <wsdl:part element="tns:ValidarDisponibilidadReservas" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="ValidarDisponibilidadReservasResponse">
+    <wsdl:part element="tns:ValidarDisponibilidadReservasResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="ValidarDisponibilidadReservasFault">
+    <wsdl:part name="parameters" element="tns:ValidarDisponibilidadReservasFault"/>
+  </wsdl:message>
+  <wsdl:message name="ReservarProductosRequest">
+    <wsdl:part name="parameters" element="tns:ReservarProductos"/>
+  </wsdl:message>
+  <wsdl:message name="ReservarProductosResponse">
+    <wsdl:part name="parameters" element="tns:ReservarProductosResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ReservarProductosFault">
+    <wsdl:part name="parameters" element="tns:ReservarProductosFault"/>
+  </wsdl:message>
+  <wsdl:message name="CallbackValidacionAnalistaRequest">
+    <wsdl:part name="parameters" element="tns:CallbackValidacionAnalista"/>
+  </wsdl:message>
+  <wsdl:message name="CallbackValidacionAnalistaResponse">
+    <wsdl:part name="parameters" element="tns:CallbackValidacionAnalistaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="CallbackValidacionAnalistaFault">
+    <wsdl:part name="parameters" element="tns:CallbackValidacionAnalistaFault"/>
+  </wsdl:message>
+  <wsdl:portType name="ReservasTouresBalon">
+    <wsdl:operation name="ValidarDisponibilidadReservas">
+      <wsdl:input message="tns:ValidarDisponibilidadReservasRequest"/>
+      <wsdl:output message="tns:ValidarDisponibilidadReservasResponse"/>
+      <wsdl:fault name="fault" message="tns:ValidarDisponibilidadReservasFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="ReservarProductos">
+      <wsdl:input message="tns:ReservarProductosRequest"/>
+      <wsdl:output message="tns:ReservarProductosResponse"/>
+      <wsdl:fault name="fault" message="tns:ReservarProductosFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="CallbackValidacionAnalista">
+      <wsdl:input message="tns:CallbackValidacionAnalistaRequest"/>
+      <wsdl:output message="tns:CallbackValidacionAnalistaResponse"/>
+      <wsdl:fault name="fault" message="tns:CallbackValidacionAnalistaFault"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ReservasTouresBalonSOAP" type="tns:ReservasTouresBalon">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="ValidarDisponibilidadReservas">
+      <soap:operation soapAction="http://www.touresbalon.com/ReservasTouresBalon/ValidarDisponibilidadReservas"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault use="literal" name="fault"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ReservarProductos">
+      <soap:operation soapAction="http://www.touresbalon.com/ReservasTouresBalon/ReservarProductos"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault use="literal" name="fault"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CallbackValidacionAnalista">
+      <soap:operation soapAction="http://www.touresbalon.com/ReservasTouresBalon/CallbackValidacionAnalista"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault use="literal" name="fault"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ReservasTouresBalon">
+    <wsdl:port binding="tns:ReservasTouresBalonSOAP" name="ReservasTouresBalonSOAP">
+      <soap:address location="http://www.touresbalon.com/Reservas"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://DESKTOP-U4HUO3L:8088/mockReservasTouresBalonSOAP</con:endpoint><con:endpoint>http://www.touresbalon.com/Reservas</con:endpoint></con:endpoints><con:operation id="3e060585-750d-43e2-b270-bbd398fad45f" isOneWay="false" action="http://www.touresbalon.com/ReservasTouresBalon/CallbackValidacionAnalista" name="CallbackValidacionAnalista" bindingOperationName="CallbackValidacionAnalista" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="7d9461a9-d91c-4294-8b03-814dd2be242b" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.touresbalon.com/Reservas</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:res="http://www.touresbalon.com/ReservasTouresBalon/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <res:CallbackValidacionAnalista>\r
+         <idOrden>1</idOrden>\r
+         <estatusOrden>RECHAZADO</estatusOrden>\r
+      </res:CallbackValidacionAnalista>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.touresbalon.com/ReservasTouresBalon/CallbackValidacionAnalista"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="a2cb6549-1c61-4d23-a530-7d6576282ad5" isOneWay="false" action="http://www.touresbalon.com/ReservasTouresBalon/ReservarProductos" name="ReservarProductos" bindingOperationName="ReservarProductos" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="dcea51c8-1be9-4538-b389-f8a5abccf4e1" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.touresbalon.com/Reservas</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:res="http://www.touresbalon.com/ReservasTouresBalon/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <res:ReservarProductos>\r
+         <!--Optional:-->\r
+         <itemEspectaculo>\r
+            <!--Optional:-->\r
+            <idItem>?</idItem>\r
+            <!--Optional:-->\r
+            <nombreItem>?</nombreItem>\r
+            <!--Optional:-->\r
+            <precioItem>?</precioItem>\r
+            <!--Optional:-->\r
+            <cantidad>?</cantidad>\r
+         </itemEspectaculo>\r
+         <!--Optional:-->\r
+         <itemTransporte>\r
+            <!--Optional:-->\r
+            <idItem>?</idItem>\r
+            <!--Optional:-->\r
+            <nombreItem>?</nombreItem>\r
+            <!--Optional:-->\r
+            <precioItem>?</precioItem>\r
+            <!--Optional:-->\r
+            <cantidad>?</cantidad>\r
+         </itemTransporte>\r
+         <!--Optional:-->\r
+         <itemHospedaje>\r
+            <!--Optional:-->\r
+            <idItem>?</idItem>\r
+            <!--Optional:-->\r
+            <nombreItem>?</nombreItem>\r
+            <!--Optional:-->\r
+            <precioItem>?</precioItem>\r
+            <!--Optional:-->\r
+            <cantidad>?</cantidad>\r
+         </itemHospedaje>\r
+         <!--Optional:-->\r
+         <itemCiudad>\r
+            <!--Optional:-->\r
+            <idItem>?</idItem>\r
+            <!--Optional:-->\r
+            <nombreItem>?</nombreItem>\r
+            <!--Optional:-->\r
+            <precioItem>?</precioItem>\r
+            <!--Optional:-->\r
+            <cantidad>?</cantidad>\r
+         </itemCiudad>\r
+      </res:ReservarProductos>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.touresbalon.com/ReservasTouresBalon/ReservarProductos"/></con:call></con:operation><con:operation id="4a974c07-8127-44ef-b723-14d15e9253ae" isOneWay="false" action="http://www.touresbalon.com/ReservasTouresBalon/ValidarDisponibilidadReservas" name="ValidarDisponibilidadReservas" bindingOperationName="ValidarDisponibilidadReservas" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="945fa33a-9775-4c29-b835-4e937137380f" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.touresbalon.com/Reservas</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:res="http://www.touresbalon.com/ReservasTouresBalon/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <res:ValidarDisponibilidadReservas>\r
+         <!--Optional:-->\r
+         <itemEspectaculo>\r
+            <!--Optional:-->\r
+            <idItem>?</idItem>\r
+            <!--Optional:-->\r
+            <nombreItem>?</nombreItem>\r
+            <!--Optional:-->\r
+            <precioItem>?</precioItem>\r
+            <!--Optional:-->\r
+            <cantidad>?</cantidad>\r
+         </itemEspectaculo>\r
+         <!--Optional:-->\r
+         <itemTransporte>\r
+            <!--Optional:-->\r
+            <idItem>?</idItem>\r
+            <!--Optional:-->\r
+            <nombreItem>?</nombreItem>\r
+            <!--Optional:-->\r
+            <precioItem>?</precioItem>\r
+            <!--Optional:-->\r
+            <cantidad>?</cantidad>\r
+         </itemTransporte>\r
+         <!--Optional:-->\r
+         <itemHospedaje>\r
+            <!--Optional:-->\r
+            <idItem>?</idItem>\r
+            <!--Optional:-->\r
+            <nombreItem>?</nombreItem>\r
+            <!--Optional:-->\r
+            <precioItem>?</precioItem>\r
+            <!--Optional:-->\r
+            <cantidad>?</cantidad>\r
+         </itemHospedaje>\r
+         <!--Optional:-->\r
+         <itemCiudad>\r
+            <!--Optional:-->\r
+            <idItem>?</idItem>\r
+            <!--Optional:-->\r
+            <nombreItem>?</nombreItem>\r
+            <!--Optional:-->\r
+            <precioItem>?</precioItem>\r
+            <!--Optional:-->\r
+            <cantidad>?</cantidad>\r
+         </itemCiudad>\r
+      </res:ValidarDisponibilidadReservas>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.touresbalon.com/ReservasTouresBalon/ValidarDisponibilidadReservas"/></con:call></con:operation></con:interface><con:mockService id="e1a6c850-cd3f-4f46-9846-3ef133de8a29" port="8088" path="/mockReservasTouresBalonSOAP" host="DESKTOP-U4HUO3L" name="ReservasTouresBalonSOAP MockService"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting></con:settings><con:properties/><con:mockOperation name="CallbackValidacionAnalista" id="e6eb1fc7-6032-4414-9859-e14256a7137a" interface="ReservasTouresBalonSOAP" operation="CallbackValidacionAnalista"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" id="20df678d-0cf3-4223-81ea-f83e376fb3c7" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:res="http://www.touresbalon.com/ReservasTouresBalon/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <res:CallbackValidacionAnalistaResponse>
+         <respuesta>OK</respuesta>
+      </res:CallbackValidacionAnalistaResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.touresbalon.com/ReservasTouresBalon/CallbackValidacionAnalista"/></con:response><con:dispatchConfig/></con:mockOperation><con:mockOperation name="ReservarProductos" id="dd62b0ac-a1bb-4623-8699-8ea9b0cd5bf5" interface="ReservasTouresBalonSOAP" operation="ReservarProductos"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" id="6a8b83a7-1d77-4454-8997-a3ae4d8f491e" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:res="http://www.touresbalon.com/ReservasTouresBalon/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <res:ReservarProductosResponse>
+         <respuesta>OK</respuesta>
+      </res:ReservarProductosResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.touresbalon.com/ReservasTouresBalon/ReservarProductos"/></con:response><con:dispatchConfig/></con:mockOperation><con:mockOperation name="ValidarDisponibilidadReservas" id="cf1e919b-b830-4b56-988c-2d8d4c82359e" interface="ReservasTouresBalonSOAP" operation="ValidarDisponibilidadReservas"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" id="cb5a600e-c29d-4a1d-8cab-57ebe4171c93" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:res="http://www.touresbalon.com/ReservasTouresBalon/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <res:ValidarDisponibilidadReservasResponse>
+         <respuesta>OK</respuesta>
+      </res:ValidarDisponibilidadReservasResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.touresbalon.com/ReservasTouresBalon/ValidarDisponibilidadReservas"/></con:response><con:dispatchConfig/></con:mockOperation></con:mockService><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/></con:soapui-project>

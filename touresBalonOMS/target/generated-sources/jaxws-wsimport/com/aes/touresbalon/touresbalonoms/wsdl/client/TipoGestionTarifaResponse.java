@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para TipoGestionTarifaResponse complex type.
+ * <p>Java class for TipoGestionTarifaResponse complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="TipoGestionTarifaResponse">
@@ -40,7 +40,7 @@ public class TipoGestionTarifaResponse {
     protected TipoTarifa tarifa;
 
     /**
-     * Obtiene el valor de la propiedad respuesta.
+     * Gets the value of the respuesta property.
      * 
      * @return
      *     possible object is
@@ -52,7 +52,7 @@ public class TipoGestionTarifaResponse {
     }
 
     /**
-     * Define el valor de la propiedad respuesta.
+     * Sets the value of the respuesta property.
      * 
      * @param value
      *     allowed object is
@@ -64,7 +64,7 @@ public class TipoGestionTarifaResponse {
     }
 
     /**
-     * Obtiene el valor de la propiedad tarifa.
+     * Gets the value of the tarifa property.
      * 
      * @return
      *     possible object is
@@ -76,7 +76,7 @@ public class TipoGestionTarifaResponse {
     }
 
     /**
-     * Define el valor de la propiedad tarifa.
+     * Sets the value of the tarifa property.
      * 
      * @param value
      *     allowed object is

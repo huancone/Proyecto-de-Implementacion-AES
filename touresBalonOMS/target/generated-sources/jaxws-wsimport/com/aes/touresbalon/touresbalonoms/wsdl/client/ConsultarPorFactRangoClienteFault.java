@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para anonymous complex type.
+ * <p>Java class for anonymous complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -38,7 +38,7 @@ public class ConsultarPorFactRangoClienteFault {
     protected Error consultarPorFactRangoClienteFault;
 
     /**
-     * Obtiene el valor de la propiedad consultarPorFactRangoClienteFault.
+     * Gets the value of the consultarPorFactRangoClienteFault property.
      * 
      * @return
      *     possible object is
@@ -50,7 +50,7 @@ public class ConsultarPorFactRangoClienteFault {
     }
 
     /**
-     * Define el valor de la propiedad consultarPorFactRangoClienteFault.
+     * Sets the value of the consultarPorFactRangoClienteFault property.
      * 
      * @param value
      *     allowed object is

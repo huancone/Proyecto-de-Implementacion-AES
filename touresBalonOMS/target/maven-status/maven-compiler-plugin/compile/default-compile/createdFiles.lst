@@ -3,6 +3,7 @@ com/aes/touresbalon/touresbalonoms/wsdl/client/ConsultarPorEspectaculoProductoFa
 com/aes/touresbalon/touresbalonoms/wsdl/client/ConsultarPorProductoCliente.class
 com/aes/touresbalon/touresbalonoms/wsdl/client/GestionCampaniaProducto.class
 com/aes/touresbalon/touresbalonoms/wsdl/client/ObjectFactory.class
+com/aes/touresbalon/touresbalonoms/beans/CiudadBean.class
 com/aes/touresbalon/touresbalonoms/wsdl/client/ConsultarOrdenes.class
 com/aes/touresbalon/touresbalonoms/wsdl/client/ConsultarOrdenesFault_Exception.class
 com/aes/touresbalon/touresbalonoms/wsdl/client/ConsultarPorIdentificacionClienteResponse.class
@@ -21,7 +22,6 @@ com/aes/touresbalon/touresbalonoms/wsdl/client/ConsultarRankingFechaProductoFaul
 com/aes/touresbalon/touresbalonoms/wsdl/client/ConsultarRankingCerradoOrdenesFault.class
 com/aes/touresbalon/touresbalonoms/wsdl/client/GestionTarifaFault_Exception.class
 com/aes/touresbalon/touresbalonoms/wsdl/client/ActualizarEstatusClienteFault.class
-com/aes/touresbalon/touresbalonoms/services/Servicio.class
 com/aes/touresbalon/touresbalonoms/wsdl/client/ActualizarEstatusCliente.class
 com/aes/touresbalon/touresbalonoms/wsdl/client/ConsultarPorEspectaculoProductoResponse.class
 com/aes/touresbalon/touresbalonoms/wsdl/client/ConsultarPorIdentificacionCliente.class
@@ -36,6 +36,7 @@ com/aes/touresbalon/touresbalonoms/wsdl/client/ActualizarContraseniaClienteFault
 com/aes/touresbalon/touresbalonoms/wsdl/client/ConsultarRankingAbiertasOrdenesResponse.class
 com/aes/touresbalon/touresbalonoms/wsdl/client/ConsultarRankingFechaProductoFault_Exception.class
 com/aes/touresbalon/touresbalonoms/wsdl/client/Cliente.class
+com/aes/touresbalon/touresbalonoms/services/ProductoService.class
 com/aes/touresbalon/touresbalonoms/wsdl/client/GestionTarifa.class
 com/aes/touresbalon/touresbalonoms/wsdl/client/Orden.class
 com/aes/touresbalon/touresbalonoms/wsdl/client/package-info.class
@@ -50,9 +51,11 @@ com/aes/touresbalon/touresbalonoms/wsdl/client/ConsultarRangoCerradoOrdenesFault
 com/aes/touresbalon/touresbalonoms/wsdl/client/ConsultarRankingEspectaculosVendidosProductoResponse.class
 com/aes/touresbalon/touresbalonoms/wsdl/client/ConsultarPorFactRangoCliente.class
 com/aes/touresbalon/touresbalonoms/wsdl/client/GestionProducto.class
+com/aes/touresbalon/touresbalonoms/beans/CampaniaBean.class
 com/aes/touresbalon/touresbalonoms/wsdl/client/GestionCampaniaProductoFault.class
 com/aes/touresbalon/touresbalonoms/wsdl/client/ConsultarRangoCerradoOrdenesFault_Exception.class
 com/aes/touresbalon/touresbalonoms/wsdl/client/ConsultarRankingCerradoOrdenesFault_Exception.class
+com/aes/touresbalon/touresbalonoms/services/CampaniaService.class
 com/aes/touresbalon/touresbalonoms/wsdl/client/ConsultarPorEspectaculoProductoFault_Exception.class
 com/aes/touresbalon/touresbalonoms/wsdl/client/GestionProductoFault.class
 com/aes/touresbalon/touresbalonoms/wsdl/client/ConsultarRankingFechaProductoResponse.class
@@ -73,6 +76,7 @@ com/aes/touresbalon/touresbalonoms/wsdl/client/RegistrarClienteResponse.class
 com/aes/touresbalon/touresbalonoms/wsdl/client/TipoGestionCampaniaResponse.class
 com/aes/touresbalon/touresbalonoms/wsdl/client/TipoGestionTarifaResponse.class
 com/aes/touresbalon/touresbalonoms/wsdl/client/GestionTarifaResponse.class
+com/aes/touresbalon/touresbalonoms/beans/TarifaValoresBean.class
 com/aes/touresbalon/touresbalonoms/wsdl/client/CriterioConsultaOrden.class
 com/aes/touresbalon/touresbalonoms/wsdl/client/Producto.class
 com/aes/touresbalon/touresbalonoms/wsdl/client/ConsultarRangoCerradoOrdenesResponse.class

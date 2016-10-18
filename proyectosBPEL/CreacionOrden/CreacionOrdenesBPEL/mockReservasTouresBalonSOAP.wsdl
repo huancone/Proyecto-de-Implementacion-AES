@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="ReservasTouresBalon" targetNamespace="http://www.touresbalon.com/ReservasTouresBalon/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.touresbalon.com/ReservasTouresBalon/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.touresbalon.com/ReservasTouresBalon/">
+      <xsd:element name="ValidarDisponibilidadReservas">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="itemEspectaculo" type="tns:item"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="itemTransporte" type="tns:item"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="itemHospedaje" type="tns:item"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="itemCiudad" type="tns:item"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ValidarDisponibilidadReservasResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="respuesta" type="tns:RespuestaGenerica"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ValidarDisponibilidadReservasFault">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="ValidarDisponibilidadReservasFault" type="tns:Error"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="item">
+        <xsd:sequence>
+          <xsd:element maxOccurs="1" minOccurs="0" name="idItem" type="xsd:int"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="nombreItem" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="precioItem" type="xsd:double"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="cantidad" type="xsd:int"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="RespuestaGenerica">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="OK"/>
+          <xsd:enumeration value="KO"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="Error">
+        <xsd:sequence>
+          <xsd:element maxOccurs="1" minOccurs="0" name="codigo" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="mensaje" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ReservarProductos">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="itemEspectaculo" type="tns:item"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="itemTransporte" type="tns:item"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="itemHospedaje" type="tns:item"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="itemCiudad" type="tns:item"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReservarProductosResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="respuesta" type="tns:RespuestaGenerica"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReservarProductosFault">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="ReservarProductosFault" type="tns:Error"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CallbackValidacionAnalista">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="idOrden" type="xsd:int"/>
+            <xsd:element maxOccurs="1" minOccurs="1" name="estatusOrden" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CallbackValidacionAnalistaResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="respuesta" type="tns:RespuestaGenerica"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CallbackValidacionAnalistaFault">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="CallbackValidacionAnalistaFault" type="tns:Error"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ValidarDisponibilidadReservasResponse">
+    <wsdl:part name="parameters" element="tns:ValidarDisponibilidadReservasResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CallbackValidacionAnalistaRequest">
+    <wsdl:part name="parameters" element="tns:CallbackValidacionAnalista">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ReservarProductosResponse">
+    <wsdl:part name="parameters" element="tns:ReservarProductosResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ReservarProductosFault">
+    <wsdl:part name="parameters" element="tns:ReservarProductosFault">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ReservarProductosRequest">
+    <wsdl:part name="parameters" element="tns:ReservarProductos">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ValidarDisponibilidadReservasFault">
+    <wsdl:part name="parameters" element="tns:ValidarDisponibilidadReservasFault">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CallbackValidacionAnalistaFault">
+    <wsdl:part name="parameters" element="tns:CallbackValidacionAnalistaFault">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CallbackValidacionAnalistaResponse">
+    <wsdl:part name="parameters" element="tns:CallbackValidacionAnalistaResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ValidarDisponibilidadReservasRequest">
+    <wsdl:part name="parameters" element="tns:ValidarDisponibilidadReservas">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ReservasTouresBalon">
+    <wsdl:operation name="ValidarDisponibilidadReservas">
+      <wsdl:input message="tns:ValidarDisponibilidadReservasRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:ValidarDisponibilidadReservasResponse">
+    </wsdl:output>
+      <wsdl:fault name="fault" message="tns:ValidarDisponibilidadReservasFault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ReservarProductos">
+      <wsdl:input message="tns:ReservarProductosRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:ReservarProductosResponse">
+    </wsdl:output>
+      <wsdl:fault name="fault" message="tns:ReservarProductosFault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CallbackValidacionAnalista">
+      <wsdl:input message="tns:CallbackValidacionAnalistaRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:CallbackValidacionAnalistaResponse">
+    </wsdl:output>
+      <wsdl:fault name="fault" message="tns:CallbackValidacionAnalistaFault">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ReservasTouresBalonSOAP" type="tns:ReservasTouresBalon">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="ValidarDisponibilidadReservas">
+      <soap:operation soapAction="http://www.touresbalon.com/ReservasTouresBalon/ValidarDisponibilidadReservas"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ReservarProductos">
+      <soap:operation soapAction="http://www.touresbalon.com/ReservasTouresBalon/ReservarProductos"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CallbackValidacionAnalista">
+      <soap:operation soapAction="http://www.touresbalon.com/ReservasTouresBalon/CallbackValidacionAnalista"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ReservasTouresBalon">
+    <wsdl:port name="ReservasTouresBalonSOAP" binding="tns:ReservasTouresBalonSOAP">
+      <soap:address location="http://DESKTOP-U4HUO3L:8088/mockReservasTouresBalonSOAP"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

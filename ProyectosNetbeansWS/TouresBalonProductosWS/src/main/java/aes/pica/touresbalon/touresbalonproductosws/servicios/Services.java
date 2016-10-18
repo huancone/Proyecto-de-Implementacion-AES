@@ -19,7 +19,6 @@ import com.touresbalon.productostouresbalon.GestionProductoFault_Exception;
 import com.touresbalon.productostouresbalon.GestionTarifaFault_Exception;
 import com.touresbalon.productostouresbalon.Producto;
 import com.touresbalon.productostouresbalon.TarifaValores;
-import com.touresbalon.productostouresbalon.TipoConsultaProducto;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
