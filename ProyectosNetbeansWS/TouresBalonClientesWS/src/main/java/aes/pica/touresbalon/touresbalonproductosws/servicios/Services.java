@@ -24,7 +24,9 @@ import com.touresbalon.clientestouresbalon.EstatusCliente;
 import com.touresbalon.clientestouresbalon.RegistrarClienteFault_Exception;
 import com.touresbalon.clientestouresbalon.RegistrarClienteReponseType;
 import com.touresbalon.clientestouresbalon.RespuestaGenerica;
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import javax.jws.WebService;
 import oracle.sql.DATE;
@@ -373,71 +375,51 @@ public class Services {
     }
 
     public java.util.List<com.touresbalon.clientestouresbalon.Cliente> consultarPorFactRangoCliente(javax.xml.datatype.XMLGregorianCalendar fechaInicial, javax.xml.datatype.XMLGregorianCalendar fechaFin) throws ConsultarPorFactRangoClienteFault_Exception {
-        List<Customer> clientesEntidad = null;
+        System.out.println(" ---------------- Entramos consultarPorFactRangoCliente----------------- ");
+
         List<Cliente> clientes = new ArrayList<>();
         
         try {
             sessionClientes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
             tx = sessionClientes.beginTransaction();
             
-            StringBuilder str = new StringBuilder();
-            
-            /*
-            str.append("SELECT orders.custid, fname, SUM(price) from orders ");
+            //Consulta
+            StringBuilder str = new StringBuilder();                        
+            str.append("SELECT orders.custid, fname, SUM(price) precio from orders ");
             str.append("inner join customer on customer.CUSTID = orders.CUSTID ");
             str.append("where orderdate >= :fechaInicio ");
             str.append("and orderdate < :fechaFin ");
             str.append("group by orders.custid, fname ");
-            str.append("order by precio asc");
-            
-            */
-            str.append("from Orders o inner join o.customer as c\n" +
-                        "where orderdate between :fechaIni and :fechaFin");
-
+            str.append("order by precio desc");
+                       
             Query query = sessionClientes.createSQLQuery(str.toString());
-            query.setParameter("fechaIni", Utils.toDate(fechaInicial));
+            query.setParameter("fechaInicio", Utils.toDate(fechaInicial));
             query.setParameter("fechaFin", Utils.toDate(fechaFin));
             List list = query.list();
 
-            clientesEntidad = list;
+            //Variables para conversion de resultados
+            List<Object> listaResultados = new ArrayList<Object>();
+            BigDecimal idLCiente = BigDecimal.ZERO;
+
+            if(list != null && list.size() > 0){
+                for(int i = 0; i < list.size(); i++){
+                    Cliente cliente = new Cliente();                
+                    listaResultados = Arrays.asList(list.get(i)); 
+                    Object[] columnas = (Object[]) listaResultados.get(0);
+                    idLCiente = (BigDecimal)columnas[0]; 
+                    cliente.setIdCliente(idLCiente.intValueExact());
+                    cliente.setNombres((String)columnas[1]);
+                    cliente.setNumTel(columnas[2].toString());
+                    clientes.add(cliente);
+                }
+            }else{
+                System.out.println("INFO: No hay resultados para la busqueda de rangos ");            
+            }
 
         } catch (Exception e) {
-            System.out.println("ERROR consultarPorIdentificacionCliente: " + e.getMessage());
+            System.out.println("ERROR consultarPorFactRangoCliente: " + e.getMessage());
         }
-        Cliente cliente = new Cliente();
-        if(clientesEntidad != null){
-            for (Customer customer : clientesEntidad) {
-                cliente.setIdCliente(customer.getCustid());
-                cliente.setNombres(customer.getFname());
-                /*
-                Solo se mapean los datos que retorna la BD
-                customer.setCreditcardnumber(cliente.getNumeroTarjeta());
-                customer.setCreditcardtype(cliente.getTipoTarjeta());
-                customer.setCustid(cliente.getIdCliente());
-                customer.setEmail(cliente.getEmail());
-                customer.setFname(cliente.getNombres());
-                customer.setLname(cliente.getApellidos());
-                customer.setPassword(cliente.getContrasenia());
-                customer.setPhonenumber(cliente.getNumTel());
-                customer.setStatus(cliente.getEstatus().value());
-                */
-                clientes.add(cliente);
-            }
-            
-        }
-        
-            
-             
-            /*  CONSULTA SQL
-                SELECT orders.custid, fname, SUM(price) precio 
-                from orders 
-                inner join customer on customer.CUSTID = orders.CUSTID
-                where orderdate >= '08/09/16'
-                and orderdate <= '10/09/16'
-                group by orders.custid, fname 
-                order by precio asc
-            */
-        
+        System.out.println("--------------- Saliendo ---------------");
         return clientes;
     }
 
