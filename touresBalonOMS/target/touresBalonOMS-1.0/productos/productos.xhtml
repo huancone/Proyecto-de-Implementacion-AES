@@ -2,9 +2,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
 
 
     <body>
@@ -102,7 +103,6 @@
                                         </p:dialog>
                                         <h:outputText value="#{productosBean.tipoTransporte.id}" id="tipoTransporte"/>
                                         <br></br>
-                                        <br></br>
                                         <p:commandButton value="Tipo Espectaculo" type="button" onclick="PF('tipoEspectDialogo').show();" />
                                         <p:dialog header="Tipo Espectaculo" widgetVar="tipoEspectDialogo" modal="true" height="100">
                                             <p:dataTable id="dtEspectaculo" var="ciudad" value="#{productosBean.tipoEspectaculo}">
@@ -124,7 +124,6 @@
                                             </p:dataTable>
                                         </p:dialog>
                                         <h:outputText value="#{productosBean.tipoEspectaculo.id}" id="tipoEspectaculo"/>
-                                        <br></br>
                                         <br></br>
                                         <p:commandButton value="Tipo Hospedaje" type="button" onclick="PF('tipoHospedajeDialogo').show();" />
                                         <p:dialog header="Tipo Espectaculo" widgetVar="tipoHospedajeDialogo" modal="true" height="100">
@@ -337,7 +336,7 @@
                                                 <p:column headerText="Id Producto">
                                                     <h:outputText value="#{productosBean.idProducto}" />
                                                 </p:column>
-                                                <p:column headerText="Id Producto">
+                                                <p:column headerText="Descripcion Producto">
                                                     <h:outputText value="#{productosBean.descripcion}" />
                                                 </p:column>
                                                 <p:column style="width:32px;text-align: center">

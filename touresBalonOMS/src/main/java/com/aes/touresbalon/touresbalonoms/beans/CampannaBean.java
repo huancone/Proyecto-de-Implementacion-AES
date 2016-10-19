@@ -14,14 +14,14 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *
  * @author alexanderbarbosaayala
  */
-@ManagedBean(name = "campaniaBean")
+@ManagedBean(name = "campannaBean")
 @RequestScoped
-public class CampaniaBean {
+public class CampannaBean {
 
     /**
      * Creates a new instance of ProductosBean
      */
-    public CampaniaBean() {
+    public CampannaBean() {
     }
 
     private ProductosBean producto;

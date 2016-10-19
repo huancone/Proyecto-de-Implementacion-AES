@@ -1,22 +1,29 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <body>
 
         <ui:composition template="./../newTemplate.xhtml">
-
-            <ui:define name="top">
-                top
-            </ui:define>
-
-            <ui:define name="left">
-                left
-            </ui:define>
-
+            
             <ui:define name="content">
-                Contenido de ordenes
+                <h:form id="formAccOrdenes">
+                    <p:accordionPanel>
+                        <p:tab title="Crear Orden">
+
+                        </p:tab>
+                        <p:tab title="Editar Orden">
+
+                        </p:tab>
+                        <p:tab title="Eliminar Orden">
+
+                        </p:tab>
+                    </p:accordionPanel>
+                </h:form>
             </ui:define>
 
         </ui:composition>

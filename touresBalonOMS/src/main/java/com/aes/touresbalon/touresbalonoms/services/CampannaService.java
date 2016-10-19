@@ -15,9 +15,9 @@ import javax.xml.ws.BindingProvider;
  *
  * @author alexanderbarbosaayala
  */
-public class CampaniaService {
+public class CampannaService {
     
-    public void crearCampania(){
+    public void crearCampanna(){
         //conf del servicio
         ServiceProxyOMS_Service service = new ServiceProxyOMS_Service();
         ServiceProxyOMS port = service.getServiceProxyOMSSOAP();
