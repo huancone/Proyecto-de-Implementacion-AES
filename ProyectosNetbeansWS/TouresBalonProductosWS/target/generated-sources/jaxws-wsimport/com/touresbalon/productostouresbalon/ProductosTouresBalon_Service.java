@@ -17,11 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-<<<<<<< Updated upstream
-@WebServiceClient(name = "ProductosTouresBalon", targetNamespace = "http://www.touresbalon.com/ProductosTouresBalon/", wsdlLocation = "file:/D:/Documents/GitHub/Proyecto-de-Implementacion-AES/ProyectosNetbeansWS/TouresBalonProductosWS/src/wsdl/ProductosTouresBalon.wsdl")
-=======
-@WebServiceClient(name = "ProductosTouresBalon", targetNamespace = "http://www.touresbalon.com/ProductosTouresBalon/", wsdlLocation = "file:/Users/jdtrujillop/GitHub/Proyecto-de-Implementacion-AES/ProyectosNetbeansWS/TouresBalonProductosWS/src/wsdl/ProductosTouresBalon.wsdl")
->>>>>>> Stashed changes
+@WebServiceClient(name = "ProductosTouresBalon", targetNamespace = "http://www.touresbalon.com/ProductosTouresBalon/", wsdlLocation = "file:/Users/deirovir/Documents/Especializacion/git/PICA/Proyecto-de-Implementacion-AES/ProyectosNetbeansWS/TouresBalonProductosWS/src/wsdl/ProductosTouresBalon.wsdl")
 public class ProductosTouresBalon_Service
     extends Service
 {
@@ -34,11 +30,7 @@ public class ProductosTouresBalon_Service
         URL url = null;
         WebServiceException e = null;
         try {
-<<<<<<< Updated upstream
-            url = new URL("file:/D:/Documents/GitHub/Proyecto-de-Implementacion-AES/ProyectosNetbeansWS/TouresBalonProductosWS/src/wsdl/ProductosTouresBalon.wsdl");
-=======
-            url = new URL("file:/Users/jdtrujillop/GitHub/Proyecto-de-Implementacion-AES/ProyectosNetbeansWS/TouresBalonProductosWS/src/wsdl/ProductosTouresBalon.wsdl");
->>>>>>> Stashed changes
+            url = new URL("file:/Users/deirovir/Documents/Especializacion/git/PICA/Proyecto-de-Implementacion-AES/ProyectosNetbeansWS/TouresBalonProductosWS/src/wsdl/ProductosTouresBalon.wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

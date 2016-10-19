@@ -5,10 +5,18 @@
       <xsd:element name="ValidarDisponibilidadReservas">
         <xsd:complexType>
           <xsd:sequence>
-          	<xsd:element name="itemEspectaculo" type="tns:item" maxOccurs="1" minOccurs="0"/>
-          	<xsd:element name="itemTransporte" type="tns:item" maxOccurs="1" minOccurs="0"></xsd:element>
-          	<xsd:element name="itemHospedaje" type="tns:item" maxOccurs="1" minOccurs="0"></xsd:element>
-          	<xsd:element name="itemCiudad" type="tns:item" maxOccurs="1" minOccurs="0"></xsd:element>
+          	<xsd:element name="idOrden" type="xsd:int" maxOccurs="1" minOccurs="1"></xsd:element>
+          	<xsd:element name="itemEspectaculo" type="tns:item"
+          		maxOccurs="1" minOccurs="0" />
+          	<xsd:element name="itemTransporte" type="tns:item"
+          		maxOccurs="1" minOccurs="0">
+          	</xsd:element>
+          	<xsd:element name="itemHospedaje" type="tns:item"
+          		maxOccurs="1" minOccurs="0">
+          	</xsd:element>
+          	<xsd:element name="itemCiudad" type="tns:item"
+          		maxOccurs="1" minOccurs="0">
+          	</xsd:element>
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
@@ -62,14 +70,19 @@
       	<xsd:complexType>
       		<xsd:sequence>
 
-      			<xsd:element name="itemEspectaculo"
-      				type="tns:item" maxOccurs="1" minOccurs="0">
+      			<xsd:element name="idOrden" type="xsd:int" maxOccurs="1" minOccurs="1"></xsd:element>
+      			<xsd:element name="itemEspectaculo" type="tns:item"
+      				maxOccurs="1" minOccurs="0">
       			</xsd:element>
-      			<xsd:element name="itemTransporte"
-      				type="tns:item" maxOccurs="1" minOccurs="0">
+      			<xsd:element name="itemTransporte" type="tns:item"
+      				maxOccurs="1" minOccurs="0">
       			</xsd:element>
-      			<xsd:element name="itemHospedaje" type="tns:item" maxOccurs="1" minOccurs="0"></xsd:element>
-      			<xsd:element name="itemCiudad" type="tns:item" maxOccurs="1" minOccurs="0"></xsd:element>
+      			<xsd:element name="itemHospedaje" type="tns:item"
+      				maxOccurs="1" minOccurs="0">
+      			</xsd:element>
+      			<xsd:element name="itemCiudad" type="tns:item"
+      				maxOccurs="1" minOccurs="0">
+      			</xsd:element>
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
