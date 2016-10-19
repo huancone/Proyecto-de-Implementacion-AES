@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18-oct-2016 11:57:07 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="aes.pica.touresbalon.reservas.entidades.clientesyordenes.CustomerAddress" table="CUSTOMER_ADDRESS" schema="TOURESBALON" optimistic-lock="version">
+        <composite-id name="id" class="aes.pica.touresbalon.reservas.entidades.clientesyordenes.CustomerAddressId">
+            <key-property name="custid" type="integer">
+                <column name="CUSTID" />
+            </key-property>
+            <key-property name="addrid" type="integer">
+                <column name="ADDRID"/>
+            </key-property>
+        </composite-id>
+        <many-to-one name="address" class="aes.pica.touresbalon.reservas.entidades.clientesyordenes.Address" update="false" insert="false" fetch="select">
+            <column name="ADDRID" />
+        </many-to-one>
+        <many-to-one name="customer" class="aes.pica.touresbalon.reservas.entidades.clientesyordenes.Customer" update="false" insert="false" fetch="select">
+            <column name="CUSTID" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>
