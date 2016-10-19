@@ -133,6 +133,29 @@
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
+      <xsd:element name="CancelarReserva">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="idOrden" type="xsd:int" maxOccurs="1" minOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CancelarReservaResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="respuesta" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CancelarReservaFault">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="CancelarReservaFault"
+      				type="xsd:string">
+      			</xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="ValidarDisponibilidadReservasRequest">
@@ -162,6 +185,15 @@
   <wsdl:message name="CallbackValidacionAnalistaFault">
   	<wsdl:part name="parameters" element="tns:CallbackValidacionAnalistaFault"></wsdl:part>
   </wsdl:message>
+  <wsdl:message name="CancelarReservaRequest">
+  	<wsdl:part name="parameters" element="tns:CancelarReserva"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CancelarReservaResponse">
+  	<wsdl:part name="parameters" element="tns:CancelarReservaResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CancelarReservaFault">
+  	<wsdl:part name="parameters" element="tns:CancelarReservaFault"></wsdl:part>
+  </wsdl:message>
   <wsdl:portType name="ReservasTouresBalon">
     <wsdl:operation name="ValidarDisponibilidadReservas">
       <wsdl:input message="tns:ValidarDisponibilidadReservasRequest"/>
@@ -177,6 +209,11 @@
     	<wsdl:input message="tns:CallbackValidacionAnalistaRequest"></wsdl:input>
     	<wsdl:output message="tns:CallbackValidacionAnalistaResponse"></wsdl:output>
             <wsdl:fault name="fault" message="tns:CallbackValidacionAnalistaFault"></wsdl:fault>
+        </wsdl:operation>
+    <wsdl:operation name="CancelarReserva">
+    	<wsdl:input message="tns:CancelarReservaRequest"></wsdl:input>
+    	<wsdl:output message="tns:CancelarReservaResponse"></wsdl:output>
+            <wsdl:fault name="fault" message="tns:CancelarReservaFault"></wsdl:fault>
         </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ReservasTouresBalonSOAP"
@@ -221,6 +258,19 @@
   	<wsdl:operation name="CallbackValidacionAnalista">
   		<soap:operation
   			soapAction="http://www.touresbalon.com/ReservasTouresBalon/CallbackValidacionAnalista" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  		<wsdl:fault name="fault">
+  			<soap:fault use="literal" name="fault" />
+  		</wsdl:fault>
+  	</wsdl:operation>
+  	<wsdl:operation name="CancelarReserva">
+  		<soap:operation
+  			soapAction="http://www.touresbalon.com/ReservasTouresBalon/CancelarReserva" />
   		<wsdl:input>
   			<soap:body use="literal" />
   		</wsdl:input>
