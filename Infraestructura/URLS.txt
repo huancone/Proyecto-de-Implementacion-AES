@@ -1,0 +1,2 @@
+http://soabpm-vm:7001//soa-infra/services/default/CreacionOrdenesBPEL/creacionordenes_client_ep?WSDL
+http://bpel_svr:7001//soa-infra/services/default/CreacionOrdenesBPEL/creacionordenes_client_ep?WSDL
