@@ -29,20 +29,20 @@ public class MainTest {
         try {
             sb = new ServiciosBolivarianos(rutaConsulta, rutaReserva);
             
-            System.out.println("PARTE 1 - Consultar viajes con hora");
-            
-            List<ViajeVO> listViajes = sb.consultarViajes("21082016", "bogota", "medellin", "1201");
-            if(!listViajes.isEmpty()){
-                for(ViajeVO v:listViajes){
-                    System.out.println(v);
-                }
-            }else{
-                System.out.println("No hay viajes las caracteristicas solicitadas");
-            }
+//            System.out.println("PARTE 1 - Consultar viajes con hora");
+//            
+//            List<ViajeVO> listViajes = sb.consultarViajes("21082016", "bogota", "medellin", "1201");
+//            if(!listViajes.isEmpty()){
+//                for(ViajeVO v:listViajes){
+//                    System.out.println(v);
+//                }
+//            }else{
+//                System.out.println("No hay viajes las caracteristicas solicitadas");
+//            }
             
             System.out.println("PARTE 2 - Consultar viajes sin hora");
             
-            listViajes = sb.consultarViajes("22082016", "cartagena", "buga");
+            List<ViajeVO> listViajes = sb.consultarViajes("19102016", "bogota", "medellin");
             if(!listViajes.isEmpty()){
                 for(ViajeVO v:listViajes){
                     System.out.println(v);
@@ -51,19 +51,19 @@ public class MainTest {
                 System.out.println("No hay viajes las caracteristicas solicitadas");
             }
             
-            System.out.println("PARTE 3 - Crear archivo de reservas");
-            
-            if(sb.crearReserva("1", "Juan Diego", "Trujillo Perez", "22082016", listViajes,true)){
-                System.out.println("Se creo el archivo con exito");
-            }else{
-                System.err.println("No se creo el archivo de reservas");
-            }
-            
-            System.out.println("PARTE 4 - Lectura archivo de reservas");
-            
-            for (TouresBalonOrdenVO r : sb.consultaReservas("1")) {
-                System.out.println(r);
-            }
+//            System.out.println("PARTE 3 - Crear archivo de reservas");
+//            
+//            if(sb.crearReserva("1", "Juan Diego", "Trujillo Perez", "22082016", listViajes,true)){
+//                System.out.println("Se creo el archivo con exito");
+//            }else{
+//                System.err.println("No se creo el archivo de reservas");
+//            }
+//            
+//            System.out.println("PARTE 4 - Lectura archivo de reservas");
+//            
+//            for (TouresBalonOrdenVO r : sb.consultaReservas("1")) {
+//                System.out.println(r);
+//            }
             
         } catch (ServiciosBolivarianosExcepcion ex) {
             System.err.println(ex.toString());
