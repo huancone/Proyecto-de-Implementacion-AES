@@ -26,7 +26,9 @@ public class ClienteBean {
     private String tipoTarjeta;
     private String numeroTarjeta;
     private List<Direccion> direccion;
-
+    
+    private String tipoConsulta;
+    private String txtConsulta;
     /**
      * @return the idCliente
      */
@@ -151,5 +153,33 @@ public class ClienteBean {
      */
     public void setDireccion(List<Direccion> direccion) {
         this.direccion = direccion;
+    }
+
+    /**
+     * @return the tipoConsulta
+     */
+    public String getTipoConsulta() {
+        return tipoConsulta;
+    }
+
+    /**
+     * @param tipoConsulta the tipoConsulta to set
+     */
+    public void setTipoConsulta(String tipoConsulta) {
+        this.tipoConsulta = tipoConsulta;
+    }
+
+    /**
+     * @return the txtConsulta
+     */
+    public String getTxtConsulta() {
+        return txtConsulta;
+    }
+
+    /**
+     * @param txtConsulta the txtConsulta to set
+     */
+    public void setTxtConsulta(String txtConsulta) {
+        this.txtConsulta = txtConsulta;
     }
 }

@@ -79,10 +79,88 @@
 
                         </p:tab>
                         <p:tab title="Editar Campaña">
-
+                            <h:form>
+                                <p:panel header="Consultar Campaña">
+                                    <h:panelGrid columns="2" cellpadding="2">
+                                        <p:outputLabel for="fechaIniCampConsEdit" value="Fecha Inicio Campaña" />
+                                        <p:calendar id="fechaIniCampConsEdit" value="#{campannaBean.fechaInicioCampania}" locale="es" navigator="true" pattern="yyyyMMdd" />
+                                        <h:outputText value="#{campannaBean.fechaInicioCampania}">
+                                            <f:convertDateTime pattern="yyyyMMdd" />
+                                        </h:outputText>
+                                        <br></br>
+                                        <p:outputLabel for="fechaFinCampConsEdit" value="Fecha Fin Campaña" />
+                                        <p:calendar id="fechaFinCampConsEdit" value="#{productosBean.fechaEspectaculo}" locale="es" navigator="true" pattern="yyyyMMdd" />
+                                        <h:outputText value="#{productosBean.fechaEspectaculo}">
+                                            <f:convertDateTime pattern="yyyyMMdd" />
+                                        </h:outputText>
+                                        <br></br>
+                                        <p:commandButton value="Consultar" onclick="#{productosBean.consultarProducto()}" />
+                                        <br></br>
+                                    </h:panelGrid>
+                                </p:panel>
+                            </h:form>
+                            <h:form>
+                                <p:panel header="Producto Campaña">
+                                    <h:panelGrid columns="2" cellpadding="4">
+                                        <p:dataTable id="dtProductoEditCam" var="campanna" value="#{productosBean.idProducto}">
+                                            <f:facet name="header">
+                                                Producto
+                                            </f:facet>
+                                            <p:column headerText="Id Producto">
+                                                <h:outputText value="#{productosBean.idProducto}" />
+                                            </p:column>
+                                            <p:column headerText="Descripcion Producto">
+                                                <h:outputText value="#{productosBean.descripcion}" />
+                                            </p:column>
+                                            <p:column style="width:32px;text-align: center">
+                                                <p:commandButton onclick="#{productosBean.consultarProducto()}" icon="ui-icon-plus" title="View" />
+                                            </p:column>
+                                        </p:dataTable>
+                                    </h:panelGrid>
+                                </p:panel>
+                            </h:form>
                         </p:tab>
                         <p:tab title="Eliminar Campaña">
-
+                            <h:form>
+                                <p:panel header="Consultar Campaña">
+                                    <h:panelGrid columns="2" cellpadding="2">
+                                        <p:outputLabel for="fechaIniCampConsEli" value="Fecha Inicio Campaña" />
+                                        <p:calendar id="fechaIniCampConsEli" value="#{campannaBean.fechaInicioCampania}" locale="es" navigator="true" pattern="yyyyMMdd" />
+                                        <h:outputText value="#{campannaBean.fechaInicioCampania}">
+                                            <f:convertDateTime pattern="yyyyMMdd" />
+                                        </h:outputText>
+                                        <br></br>
+                                        <p:outputLabel for="fechaFinCampConsEli" value="Fecha Fin Campaña" />
+                                        <p:calendar id="fechaFinCampConsEli" value="#{productosBean.fechaEspectaculo}" locale="es" navigator="true" pattern="yyyyMMdd" />
+                                        <h:outputText value="#{productosBean.fechaEspectaculo}">
+                                            <f:convertDateTime pattern="yyyyMMdd" />
+                                        </h:outputText>
+                                        <br></br>
+                                        <p:commandButton value="Consultar" onclick="#{productosBean.consultarProducto()}" />
+                                        <br></br>
+                                    </h:panelGrid>
+                                </p:panel>
+                            </h:form>
+                            <h:form>
+                                <p:panel header="Producto Campaña">
+                                    <h:panelGrid columns="2" cellpadding="4">
+                                        <p:dataTable id="dtProductoElimCam" var="campanna" value="#{productosBean.idProducto}">
+                                            <f:facet name="header">
+                                                Producto
+                                            </f:facet>
+                                            <p:column headerText="Id Producto">
+                                                <h:outputText value="#{productosBean.idProducto}" />
+                                            </p:column>
+                                            <p:column headerText="Descripcion Producto">
+                                                <h:outputText value="#{productosBean.descripcion}" />
+                                            </p:column>
+                                            <p:column style="width:32px;text-align: center">
+                                                <p:commandButton onclick="#{productosBean.consultarProducto()}" icon="ui-icon-trash" title="View" />
+                                            </p:column>
+                                        </p:dataTable>
+                                    </h:panelGrid>
+                                </p:panel>
+                            </h:form>
                         </p:tab>
                     </p:accordionPanel>
                 </h:form>
