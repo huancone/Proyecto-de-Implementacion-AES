@@ -22,7 +22,7 @@
                         <p:tab title="Crear Producto">
                             <h:form>
                                 <p:panel header="Ingrese Nuevo Producto">
-                                    <h:panelGrid columns="2" cellpadding="5">
+                                    <h:panelGrid columns="2" cellpadding="2">
                                         <h:outputLabel for="idProducto" value="Id Producto" />
                                         <p:inputText id="idProducto" value="#{productosBean.idProducto}">
                                             <p:clientValidator event="keyup"/>
@@ -156,7 +156,7 @@
                         <p:tab title="Editar Producto">
                             <h:form>
                                 <p:panel header="Consultar Producto">
-                                    <h:panelGrid columns="2" cellpadding="4">
+                                    <h:panelGrid columns="2" cellpadding="2">
                                         <p:outputLabel for="consultaEdit" value="Consultar Por"/>
                                         <p:selectOneRadio id="consultaEdit" value="#{productosBean.tipoConsulta}">
                                             <f:selectItem itemLabel="id" itemValue="id" />
@@ -174,7 +174,7 @@
                             </h:form>
                             <h:form rendered="#{productosBean.showPanelEdit}">
                                 <p:panel header="Editar Producto" >
-                                    <h:panelGrid columns="2" cellpadding="5">
+                                    <h:panelGrid columns="2" cellpadding="2">
                                         <h:outputLabel for="idProductoEdit" value="Id Producto" />
                                         <p:inputText id="idProductoEdit" value="#{productosBean.idProducto}">
                                             <p:clientValidator event="keyup"/>
@@ -310,7 +310,7 @@
                         <p:tab title="Eliminar Producto"> 
                             <h:form>
                                 <p:panel header="Consultar Producto">
-                                    <h:panelGrid columns="2" cellpadding="4">
+                                    <h:panelGrid columns="2" cellpadding="2">
                                         <p:outputLabel for="consultaDel" value="Consultar Por"/>
                                         <p:selectOneRadio id="consultaDel" value="#{productosBean.tipoConsulta}">
                                             <f:selectItem itemLabel="id" itemValue="id" />

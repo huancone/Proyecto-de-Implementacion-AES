@@ -27,6 +27,9 @@ public class OrdenBean {
     private EstatusOrden estatus;
     private List<String> comentarios;
     private List<Item> item;
+    
+    private String tipoConsulta;
+    private String txtConsulta;
 
     /**
      * @return the idCliente
@@ -124,6 +127,34 @@ public class OrdenBean {
      */
     public void setItem(List<Item> item) {
         this.item = item;
+    }
+
+    /**
+     * @return the tipoConsulta
+     */
+    public String getTipoConsulta() {
+        return tipoConsulta;
+    }
+
+    /**
+     * @return the txtConsulta
+     */
+    public String getTxtConsulta() {
+        return txtConsulta;
+    }
+
+    /**
+     * @param tipoConsulta the tipoConsulta to set
+     */
+    public void setTipoConsulta(String tipoConsulta) {
+        this.tipoConsulta = tipoConsulta;
+    }
+
+    /**
+     * @param txtConsulta the txtConsulta to set
+     */
+    public void setTxtConsulta(String txtConsulta) {
+        this.txtConsulta = txtConsulta;
     }
     
     
