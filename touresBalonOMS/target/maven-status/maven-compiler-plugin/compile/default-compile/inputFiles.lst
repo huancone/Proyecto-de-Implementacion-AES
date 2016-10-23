@@ -12,6 +12,7 @@
 /Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/target/generated-sources/jaxws-wsimport/com/aes/touresbalon/touresbalonoms/wsdl/client/TarifaValores.java
 /Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/target/generated-sources/jaxws-wsimport/com/aes/touresbalon/touresbalonoms/wsdl/client/ConsultarProductoFault.java
 /Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/target/generated-sources/jaxws-wsimport/com/aes/touresbalon/touresbalonoms/wsdl/client/ConsultarRankingEspectaculosVendidosProductoFault_Exception.java
+/Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/src/main/java/com/aes/touresbalon/touresbalonoms/beans/DireccionBean.java
 /Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/target/generated-sources/jaxws-wsimport/com/aes/touresbalon/touresbalonoms/wsdl/client/ActualizarClienteResponse.java
 /Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/target/generated-sources/jaxws-wsimport/com/aes/touresbalon/touresbalonoms/wsdl/client/ConsultarRangoCerradoOrdenes.java
 /Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/target/generated-sources/jaxws-wsimport/com/aes/touresbalon/touresbalonoms/wsdl/client/ConsultarRankingFechaProductoResponse.java
@@ -36,6 +37,7 @@
 /Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/target/generated-sources/jaxws-wsimport/com/aes/touresbalon/touresbalonoms/wsdl/client/ConsultarPorProductoCliente.java
 /Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/target/generated-sources/jaxws-wsimport/com/aes/touresbalon/touresbalonoms/wsdl/client/GestionProductoResponse.java
 /Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/target/generated-sources/jaxws-wsimport/com/aes/touresbalon/touresbalonoms/wsdl/client/ConsultarRankingEspectaculosVendidosProductoFault.java
+/Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/src/main/java/com/aes/touresbalon/touresbalonoms/beans/OrdenBean.java
 /Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/src/main/java/com/aes/touresbalon/touresbalonoms/services/CampannaService.java
 /Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/target/generated-sources/jaxws-wsimport/com/aes/touresbalon/touresbalonoms/wsdl/client/GestionProductoFault.java
 /Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/target/generated-sources/jaxws-wsimport/com/aes/touresbalon/touresbalonoms/wsdl/client/ActualizarEstatusCliente.java
@@ -50,9 +52,11 @@
 /Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/target/generated-sources/jaxws-wsimport/com/aes/touresbalon/touresbalonoms/wsdl/client/TipoAccion.java
 /Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/target/generated-sources/jaxws-wsimport/com/aes/touresbalon/touresbalonoms/wsdl/client/Ciudad.java
 /Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/target/generated-sources/jaxws-wsimport/com/aes/touresbalon/touresbalonoms/wsdl/client/Cliente.java
+/Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/src/main/java/com/aes/touresbalon/touresbalonoms/beans/ClienteBean.java
 /Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/src/main/java/com/aes/touresbalon/touresbalonoms/beans/CampannaBean.java
 /Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/target/generated-sources/jaxws-wsimport/com/aes/touresbalon/touresbalonoms/wsdl/client/ConsultarRangoCerradoOrdenesResponse.java
 /Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/target/generated-sources/jaxws-wsimport/com/aes/touresbalon/touresbalonoms/wsdl/client/ConsultarRankingAbiertasOrdenesResponse.java
+/Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/src/main/java/com/aes/touresbalon/touresbalonoms/beans/ItemBean.java
 /Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/target/generated-sources/jaxws-wsimport/com/aes/touresbalon/touresbalonoms/wsdl/client/RegistrarClienteReponseType.java
 /Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/target/generated-sources/jaxws-wsimport/com/aes/touresbalon/touresbalonoms/wsdl/client/ActualizarEstatusClienteFault.java
 /Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/target/generated-sources/jaxws-wsimport/com/aes/touresbalon/touresbalonoms/wsdl/client/ConsultarRankingFechaProductoFault_Exception.java
