@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18-oct-2016 11:13:47 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="aes.pica.touresbalon.reservas.entidades.productos.Producto" table="PRODUCTO" schema="dbo" catalog="TB_PRODUCTOS" optimistic-lock="version">
+        <id name="idProducto" type="int">
+            <column name="id_producto" />
+            <generator class="sequence">
+                <param name="sequence">SEC_PRODUCTO_ID</param>
+            </generator>
+        </id>
+        <many-to-one name="ciudad" class="aes.pica.touresbalon.reservas.entidades.productos.Ciudad" fetch="select">
+            <column name="id_ciudad" />
+        </many-to-one>
+        <many-to-one name="tarifaEspectaculo" class="aes.pica.touresbalon.reservas.entidades.productos.TarifaEspectaculo" fetch="select">
+            <column name="id_espectaculo" />
+        </many-to-one>
+        <many-to-one name="tarifaHospedaje" class="aes.pica.touresbalon.reservas.entidades.productos.TarifaHospedaje" fetch="select">
+            <column name="id_hospedaje" />
+        </many-to-one>
+        <many-to-one name="tarifaTransporte" class="aes.pica.touresbalon.reservas.entidades.productos.TarifaTransporte" fetch="select">
+            <column name="id_transporte" />
+        </many-to-one>
+        <property name="espectaculo" type="string">
+            <column name="espectaculo" length="100" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" />
+        </property>
+        <property name="fechaSalida" type="timestamp">
+            <column name="fecha_salida" length="23" />
+        </property>
+        <property name="fechaLlegada" type="timestamp">
+            <column name="fecha_llegada" length="23" />
+        </property>
+        <property name="fechaEspectaculo" type="timestamp">
+            <column name="fecha_espectaculo" length="23" />
+        </property>
+        <property name="urlImagen" type="string">
+            <column name="url_imagen" length="1000" />
+        </property>
+        <set name="campaniases" table="CAMPANIAS" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_producto" not-null="true" />
+            </key>
+            <one-to-many class="aes.pica.touresbalon.reservas.entidades.productos.Campanias" />
+        </set>
+    </class>
+</hibernate-mapping>

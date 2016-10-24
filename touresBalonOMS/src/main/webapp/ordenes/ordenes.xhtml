@@ -1,22 +1,260 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <body>
 
         <ui:composition template="./../newTemplate.xhtml">
-
-            <ui:define name="top">
-                top
-            </ui:define>
-
-            <ui:define name="left">
-                left
-            </ui:define>
-
+            
             <ui:define name="content">
-                Contenido de ordenes
+                <h:form id="formAccOrdenes">
+                    <p:accordionPanel>
+                        <p:tab title="Crear Orden">
+                            <h:form>
+                                <p:panel header="Crear Orden">
+                                    <h:panelGrid columns="2" cellpadding="2">
+                                        <h:outputLabel for="idCliente" value="Id cliente" />
+                                        <p:inputText id="idCliente" value="#{ordenBean.idCliente}">
+                                            <p:clientValidator event="keyup"/>
+                                        </p:inputText>
+                                        <p:message for="idCliente" display="icon" />
+                                        <br></br>
+                                        <h:outputLabel for="idOrden" value="Id Orden" />
+                                        <p:inputText id="idOrden" value="#{ordenBean.idOrden}">
+                                            <p:clientValidator event="keyup"/>
+                                        </p:inputText>
+                                        <p:message for="idOrden" display="icon" />
+                                        <br></br>
+                                        <p:outputLabel for="fechaOrden" value="Fecha Orden" />
+                                        <p:calendar id="fechaOrden" value="#{ordenBean.fechaOrden}" locale="es" navigator="true" pattern="yyyyMMdd" />
+                                        <h:outputText value="#{ordenBean.fechaOrden}">
+                                            <f:convertDateTime pattern="yyyyMMdd" />
+                                        </h:outputText>
+                                        <br></br>
+                                        <h:outputLabel for="precioOrden" value="Precio" />
+                                        <p:inputText id="precioOrden" value="#{ordenBean.precio}">
+                                            <p:clientValidator event="keyup"/>
+                                        </p:inputText>
+                                        <p:message for="precioOrden" display="icon" />
+                                        <br></br>
+                                        <h:outputLabel for="statusOrden" value="Estatus Orden" />
+                                        <p:selectOneRadio id="statusOrden" value="#{ordenBean.estatus}">
+                                            <f:selectItem itemLabel="Validacion" itemValue="validacion" />
+                                            <f:selectItem itemLabel="Reserva" itemValue="reserva" />
+                                        </p:selectOneRadio>
+                                        <br></br>
+                                        <br></br>
+                                        <h:outputLabel for="comentarioOrden" value="Comentarios Orden" />
+                                        <p:inputTextarea id="comentarioOrden" value="#{ordenBean.comentarios}"  rows="1" cols="40">
+                                            <p:clientValidator event="keyup"/>
+                                        </p:inputTextarea>
+                                        <br></br>
+                                        <p:commandButton value="Item Orden" type="button" onclick="PF('ItemOrdenDialogo').show();" />
+                                        <p:dialog header="Item Orden" widgetVar="ItemOrdenDialogo" modal="true" height="400">
+                                            <h:panelGrid columns="2" cellpadding="2">
+                                                <h:outputLabel for="idItem" value="Id Item" />
+                                                <p:inputText id="idItem" value="#{itemBean.idItem}">
+                                                    <p:clientValidator event="keyup"/>
+                                                </p:inputText>
+                                                <p:message for="idItem" display="icon" />
+                                                <br></br>
+                                                <h:outputLabel for="idProductoItem" value="Id Producto" />
+                                                <p:inputText id="idProductoItem" value="#{itemBean.idProd}">
+                                                    <p:clientValidator event="keyup"/>
+                                                </p:inputText>
+                                                <p:message for="idProductoItem" display="icon" />
+                                                <br></br>
+                                                <h:outputLabel for="nombreProdItem" value="Nombre Producto" />
+                                                <p:inputText id="nombreProdItem" value="#{itemBean.idProd}">
+                                                    <p:clientValidator event="keyup"/>
+                                                </p:inputText>
+                                                <p:message for="nombreProdItem" display="icon" />
+                                                <br></br>
+                                                <h:outputLabel for="partNumItem" value="Numero Part Item" />
+                                                <p:inputText id="partNumItem" value="#{itemBean.partNum}">
+                                                    <p:clientValidator event="keyup"/>
+                                                </p:inputText>
+                                                <p:message for="partNumItem" display="icon" />
+                                                <br></br>
+                                                <h:outputLabel for="precioItem" value="Precio Item" />
+                                                <p:inputText id="precioItem" value="#{itemBean.precio}">
+                                                    <p:clientValidator event="keyup"/>
+                                                </p:inputText>
+                                                <p:message for="precioItem" display="icon" />
+                                                <br></br>
+                                                <h:outputLabel for="cantItem" value="Cantidad Item" />
+                                                <p:inputText id="cantItem" value="#{itemBean.cantidad}">
+                                                    <p:clientValidator event="keyup"/>
+                                                </p:inputText>
+                                                <p:message for="cantItem" display="icon" />
+                                                <br></br>
+                                                <h:outputLabel for="idOrdenItem" value="Id Orden" />
+                                                <p:inputText id="idOrdenItem" value="#{itemBean.idOrden}">
+                                                    <p:clientValidator event="keyup"/>
+                                                </p:inputText>
+                                                <p:message for="idOrdenItem" display="icon" />
+                                                <br></br>
+                                                <p:commandButton value="Guardar" onclick="#{productosBean.crearProducto()}"/>
+                                            </h:panelGrid>
+                                        </p:dialog>
+                                    </h:panelGrid>
+                                </p:panel>
+                            </h:form>
+                        </p:tab>
+                        <p:tab title="Editar Orden">
+                            <h:form>
+                                <p:panel header="Consultar Orden">
+                                    <h:panelGrid columns="2" cellpadding="2">
+                                        <p:outputLabel for="consultaEdit" value="Consultar Por"/>
+                                        <p:selectOneRadio id="consultaEdit" value="#{ordenBean.tipoConsulta}">
+                                            <f:selectItem itemLabel="Orden" itemValue="Orden" />
+                                            <f:selectItem itemLabel="Prducto" itemValue="Prducto" />
+                                        </p:selectOneRadio>
+                                        <p:inputTextarea id="txtConsulta" value="#{ordenBean.txtConsulta}"  rows="1" cols="50">
+                                            <p:clientValidator event="keyup"/>
+                                        </p:inputTextarea>
+                                        <br></br>
+                                        <p:commandButton value="Consultar" onclick="#{productosBean.consultarProducto()}" />
+                                        <br></br>
+                                    </h:panelGrid>
+                                </p:panel>
+                            </h:form>
+                            <h:form>
+                                <p:panel header="Editar Orden">
+                                    <h:panelGrid columns="2" cellpadding="2">
+                                        <h:outputLabel for="idClienteEdit" value="Id cliente" />
+                                        <p:inputText id="idClienteEdit" value="#{ordenBean.idCliente}">
+                                            <p:clientValidator event="keyup"/>
+                                        </p:inputText>
+                                        <p:message for="idClienteEdit" display="icon" />
+                                        <br></br>
+                                        <h:outputLabel for="idOrdenEdit" value="Id Orden" />
+                                        <p:inputText id="idOrdenEdit" value="#{ordenBean.idOrden}">
+                                            <p:clientValidator event="keyup"/>
+                                        </p:inputText>
+                                        <p:message for="idOrdenEdit" display="icon" />
+                                        <br></br>
+                                        <p:outputLabel for="fechaOrdenEdit" value="Fecha Orden" />
+                                        <p:calendar id="fechaOrdenEdit" value="#{ordenBean.fechaOrden}" locale="es" navigator="true" pattern="yyyyMMdd" />
+                                        <h:outputText value="#{ordenBean.fechaOrden}">
+                                            <f:convertDateTime pattern="yyyyMMdd" />
+                                        </h:outputText>
+                                        <br></br>
+                                        <h:outputLabel for="precioOrdenEdit" value="Precio" />
+                                        <p:inputText id="precioOrdenEdit" value="#{ordenBean.precio}">
+                                            <p:clientValidator event="keyup"/>
+                                        </p:inputText>
+                                        <p:message for="precioOrdenEdit" display="icon" />
+                                        <br></br>
+                                        <h:outputLabel for="statusOrdenEdit" value="Estatus Orden" />
+                                        <p:selectOneRadio id="statusOrdenEdit" value="#{ordenBean.estatus}">
+                                            <f:selectItem itemLabel="Validacion" itemValue="validacion" />
+                                            <f:selectItem itemLabel="Reserva" itemValue="reserva" />
+                                        </p:selectOneRadio>
+                                        <br></br>
+                                        <br></br>
+                                        <h:outputLabel for="comentarioOrdenEdit" value="Comentarios Orden" />
+                                        <p:inputTextarea id="comentarioOrdenEdit" value="#{ordenBean.comentarios}"  rows="1" cols="40">
+                                            <p:clientValidator event="keyup"/>
+                                        </p:inputTextarea>
+                                        <br></br>
+                                        <p:commandButton value="Item Orden" type="button" onclick="PF('ItemOrdenDialogoEdit').show();" />
+                                        <p:dialog header="Item Orden" widgetVar="ItemOrdenDialogoEdit" modal="true" height="400">
+                                            <h:panelGrid columns="2" cellpadding="2">
+                                                <h:outputLabel for="idItemEdit" value="Id Item" />
+                                                <p:inputText id="idItemEdit" value="#{itemBean.idItem}">
+                                                    <p:clientValidator event="keyup"/>
+                                                </p:inputText>
+                                                <p:message for="idItemEdit" display="icon" />
+                                                <br></br>
+                                                <h:outputLabel for="idProductoItemEdit" value="Id Producto" />
+                                                <p:inputText id="idProductoItemEdit" value="#{itemBean.idProd}">
+                                                    <p:clientValidator event="keyup"/>
+                                                </p:inputText>
+                                                <p:message for="idProductoItemEdit" display="icon" />
+                                                <br></br>
+                                                <h:outputLabel for="nombreProdItemEdit" value="Nombre Producto" />
+                                                <p:inputText id="nombreProdItemEdit" value="#{itemBean.idProd}">
+                                                    <p:clientValidator event="keyup"/>
+                                                </p:inputText>
+                                                <p:message for="nombreProdItemEdit" display="icon" />
+                                                <br></br>
+                                                <h:outputLabel for="partNumItemEdit" value="Numero Part Item" />
+                                                <p:inputText id="partNumItemEdit" value="#{itemBean.partNum}">
+                                                    <p:clientValidator event="keyup"/>
+                                                </p:inputText>
+                                                <p:message for="partNumItemEdit" display="icon" />
+                                                <br></br>
+                                                <h:outputLabel for="precioItemEdit" value="Precio Item" />
+                                                <p:inputText id="precioItemEdit" value="#{itemBean.precio}">
+                                                    <p:clientValidator event="keyup"/>
+                                                </p:inputText>
+                                                <p:message for="precioItemEdit" display="icon" />
+                                                <br></br>
+                                                <h:outputLabel for="cantItemEdit" value="Cantidad Item" />
+                                                <p:inputText id="cantItemEdit" value="#{itemBean.cantidad}">
+                                                    <p:clientValidator event="keyup"/>
+                                                </p:inputText>
+                                                <p:message for="cantItemEdit" display="icon" />
+                                                <br></br>
+                                                <h:outputLabel for="idOrdenItemEdit" value="Id Orden" />
+                                                <p:inputText id="idOrdenItemEdit" value="#{itemBean.idOrden}">
+                                                    <p:clientValidator event="keyup"/>
+                                                </p:inputText>
+                                                <p:message for="idOrdenItemEdit" display="icon" />
+                                                <br></br>
+                                                <p:commandButton value="Guardar" onclick="#{productosBean.crearProducto()}"/>
+                                            </h:panelGrid>
+                                        </p:dialog>
+                                    </h:panelGrid>
+                                </p:panel>
+                            </h:form>
+                        </p:tab>
+                        <p:tab title="Eliminar Orden">
+                            <h:form>
+                                <p:panel header="Consultar Orden">
+                                    <h:panelGrid columns="2" cellpadding="2">
+                                        <p:outputLabel for="consultaEdit" value="Consultar Por"/>
+                                        <p:selectOneRadio id="consultaEdit" value="#{ordenBean.tipoConsulta}">
+                                            <f:selectItem itemLabel="Orden" itemValue="Orden" />
+                                            <f:selectItem itemLabel="Prducto" itemValue="Prducto" />
+                                        </p:selectOneRadio>
+                                        <p:inputTextarea id="txtConsulta" value="#{ordenBean.txtConsulta}"  rows="1" cols="50">
+                                            <p:clientValidator event="keyup"/>
+                                        </p:inputTextarea>
+                                        <br></br>
+                                        <p:commandButton value="Consultar" onclick="#{productosBean.consultarProducto()}" />
+                                        <br></br>
+                                    </h:panelGrid>
+                                </p:panel>
+                            </h:form>
+                            <h:form>
+                                <p:panel header="Eliminar Orden">
+                                    <h:panelGrid columns="2" cellpadding="4">
+                                        <p:dataTable id="dtProductoDel" var="orden" value="#{ordenBean.idOrden}">
+                                                <f:facet name="header">
+                                                    Orden
+                                                </f:facet>
+                                                <p:column headerText="Id Orden">
+                                                    <h:outputText value="#{ordenBean.idOrden}" />
+                                                </p:column>
+                                                <p:column headerText="Id Clente Orden">
+                                                    <h:outputText value="#{ordenBean.idCliente}" />
+                                                </p:column>
+                                                <p:column style="width:32px;text-align: center">
+                                                    <p:commandButton onclick="#{productosBean.eliminarProducto()}" icon="ui-icon-trash" title="View" />
+                                                </p:column>
+                                        </p:dataTable>
+                                    </h:panelGrid>
+                                </p:panel>
+                            </h:form>
+                        </p:tab>
+                    </p:accordionPanel>
+                </h:form>
             </ui:define>
 
         </ui:composition>

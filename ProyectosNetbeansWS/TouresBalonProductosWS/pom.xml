@@ -122,23 +122,6 @@
                         <id>wsimport-generate-ProductosTouresBalon</id>
                         <phase>generate-sources</phase>
                     </execution>
-                    <execution>
-                        <goals>
-                            <goal>wsimport</goal>
-                        </goals>
-                        <configuration>
-                            <wsdlFiles>
-                                <wsdlFile>ProductosTouresBalon.wsdl</wsdlFile>
-                            </wsdlFiles>
-                            <vmArgs>
-                                <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
-                            </vmArgs>
-                            <staleFile>${project.build.directory}/jaxws/stale/ProductosTouresBalon_1.stale</staleFile>
-                        </configuration>
-                        <id>wsimport-generate-ProductosTouresBalon_1</id>
-                        <phase>generate-sources</phase>
-                    </execution>
-                    
                 </executions>
                 <dependencies>
                     <dependency>
@@ -157,4 +140,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19-oct-2016 1:21:43 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="aes.pica.touresbalon.reservas.entidades.dann.TouresbalonReservations" table="TOURESBALON_RESERVATIONS" schema="DANN" optimistic-lock="version">
+        <id name="reserId" type="integer">
+            <column name="RESER_ID" />
+            <generator class="sequence">
+                <param name="sequence">RES_TB_SEC</param>
+            </generator>
+        </id>
+        <many-to-one name="publicReservations" class="aes.pica.touresbalon.reservas.entidades.dann.PublicReservations" fetch="select">
+            <column name="PUBLIC_RESERVATIONS_ID"/>
+        </many-to-one>
+        <property name="state" type="integer">
+            <column name="STATE"/>
+        </property>
+        <property name="guestName" type="string">
+            <column name="GUEST_NAME" length="4000" />
+        </property>
+    </class>
+</hibernate-mapping>

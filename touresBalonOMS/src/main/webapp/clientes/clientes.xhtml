@@ -1,24 +1,295 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <body>
 
         <ui:composition template="./../newTemplate.xhtml">
 
-            <ui:define name="top">
-                top
-            </ui:define>
-
-            <ui:define name="left">
-                left
-            </ui:define>
-
             <ui:define name="content">
-                Admin de clientes
+                <h:form id="formAccClientes">
+                    <p:accordionPanel>
+                        <p:tab title="Crear Cliente">
+                            <h:form>
+                                <p:panel header="Ingrese Nuevo Cliente">
+                                    <h:panelGrid columns="2" cellpadding="2">
+                                        <h:outputLabel for="idCliente" value="Id Cliente" />
+                                        <p:inputText id="idCliente" value="#{clienteBean.idCliente}">
+                                            <p:clientValidator event="keyup"/>
+                                        </p:inputText>
+                                        <p:message for="idCliente" display="icon" />
+                                        <br></br>
+                                        <h:outputLabel for="nombres" value="Nombre" />
+                                        <p:inputText id="nombres" value="#{clienteBean.nombres}">
+                                            <p:clientValidator event="keyup"/>
+                                        </p:inputText>
+                                        <p:message for="nombres" display="icon" />
+                                        <br></br>
+                                        <h:outputLabel for="apellidos" value="Apellidos" />
+                                        <p:inputText id="apellidos" value="#{clienteBean.apellidos}">
+                                            <p:clientValidator event="keyup"/>
+                                        </p:inputText>
+                                        <p:message for="apellidos" display="icon" />
+                                        <br></br>
+                                        <h:outputLabel for="numTel" value="Numero de Telefono" />
+                                        <p:inputText id="numTel" value="#{clienteBean.numTel}">
+                                            <p:clientValidator event="keyup"/>
+                                        </p:inputText>
+                                        <p:message for="numTel" display="icon" />
+                                        <br></br>
+                                        <h:outputLabel for="email" value="Correo Electronico" />
+                                        <p:inputText id="email" value="#{clienteBean.email}">
+                                            <p:clientValidator event="keyup"/>
+                                        </p:inputText>
+                                        <p:message for="email" display="icon" />
+                                        <br></br>
+                                        <h:outputLabel for="contrasenia" value="Contraseña" />
+                                        <p:inputText id="contrasenia" value="#{clienteBean.contrasenia}">
+                                            <p:clientValidator event="keyup"/>
+                                        </p:inputText>
+                                        <p:message for="contrasenia" display="icon" />
+                                        <br></br>
+                                        <h:outputLabel for="tipoTarjeta" value="Tipo Tarjeta" />
+                                        <p:inputText id="tipoTarjeta" value="#{clienteBean.tipoTarjeta}">
+                                            <p:clientValidator event="keyup"/>
+                                        </p:inputText>
+                                        <p:message for="tipoTarjeta" display="icon" />
+                                        <br></br>
+                                        <h:outputLabel for="numeroTarjeta" value="Numero de Tarjeta" />
+                                        <p:inputText id="numeroTarjeta" value="#{clienteBean.numeroTarjeta}">
+                                            <p:clientValidator event="keyup"/>
+                                        </p:inputText>
+                                        <p:message for="numeroTarjeta" display="icon" />
+                                        <br></br>
+                                        <p:commandButton value="Direccion" type="button" onclick="PF('dirDialogo').show();" />
+                                        <p:dialog header="Direccion Dialog" widgetVar="dirDialogo" modal="true" height="355">
+                                            <h:panelGrid columns="2" cellpadding="1">
+                                                <h:outputLabel for="idDireccion" value="Id Direccion" />
+                                                <p:inputText id="idDireccion" value="#{direccionBean.idDireccion}">
+                                                    <p:clientValidator event="keyup"/>
+                                                </p:inputText>
+                                                <p:message for="idDireccion" display="icon" />
+                                                <br></br>
+                                                <h:outputLabel for="paisDir" value="Pais" />
+                                                <p:inputText id="paisDir" value="#{direccionBean.pais}">
+                                                    <p:clientValidator event="keyup"/>
+                                                </p:inputText>
+                                                <p:message for="paisDir" display="icon" />
+                                                <br></br>
+                                                <h:outputLabel for="ciudadDir" value="Ciudad" />
+                                                <p:inputText id="ciudadDir" value="#{direccionBean.ciudad}">
+                                                    <p:clientValidator event="keyup"/>
+                                                </p:inputText>
+                                                <p:message for="ciudadDir" display="icon" />
+                                                <br></br>
+                                                <h:outputLabel for="estadoDir" value="Numero de Tarjeta" />
+                                                <p:inputText id="estadoDir" value="#{direccionBean.estado}">
+                                                    <p:clientValidator event="keyup"/>
+                                                </p:inputText>
+                                                <p:message for="estadoDir" display="icon" />
+                                                <br></br>
+                                                <h:outputLabel for="codPostalDir" value="Codigo Postal" />
+                                                <p:inputText id="codPostalDir" value="#{direccionBean.codPostal}">
+                                                    <p:clientValidator event="keyup"/>
+                                                </p:inputText>
+                                                <p:message for="codPostalDir" display="icon" />
+                                                <br></br>
+                                                <h:outputLabel for="tipoDir" value="Tipo Direccion" />
+                                                <p:inputText id="tipoDir" value="#{direccionBean.tipoDir}">
+                                                    <p:clientValidator event="keyup"/>
+                                                </p:inputText>
+                                                <p:message for="tipoDir" display="icon" />
+                                                <br></br>
+                                                <h:outputLabel for="calleDir" value="Calle Direccion" />
+                                                <p:inputText id="calleDir" value="#{direccionBean.dirCalle}">
+                                                    <p:clientValidator event="keyup"/>
+                                                </p:inputText>
+                                                <p:message for="calleDir" display="icon" />
+                                                <br></br>
+                                                <p:commandButton value="Aceptar" onclick="#{productosBean.crearProducto()}"/>
+                                            </h:panelGrid>
+                                        </p:dialog>
+                                        <h:outputText value="#{productosBean.ciudadEspectaculo.idCiudad}" id="ciudadEspectaculo"/>
+                                        <br></br>
+                                    </h:panelGrid>
+                                </p:panel>
+                            </h:form>
+                        </p:tab>
+                        <p:tab title="Editar Cliente">
+                            <h:form>
+                                <p:panel header="Consultar Cliente">
+                                    <h:panelGrid columns="2" cellpadding="2">
+                                        <p:outputLabel for="consultaEditCli" value="Consultar Por"/>
+                                        <p:selectOneRadio id="consultaEditCli" value="#{clienteBean.tipoConsulta}">
+                                            <f:selectItem itemLabel="Id" itemValue="id" />
+                                            <f:selectItem itemLabel="Nombre" itemValue="nombre" />
+                                            <f:selectItem itemLabel="Apellido" itemValue="apellido" />
+                                        </p:selectOneRadio>
+                                        <p:inputTextarea id="txtConsultaEditCli" value="#{clienteBean.txtConsulta}"  rows="1" cols="50">
+                                            <p:clientValidator event="keyup"/>
+                                        </p:inputTextarea>
+                                        <br></br>
+                                        <p:commandButton value="Consultar" onclick="#{productosBean.consultarProducto()}" />
+                                        <br></br>
+                                    </h:panelGrid>
+                                </p:panel>
+                            </h:form>
+                            <h:form>
+                                <p:panel header="Editar Cliente">
+                                    <h:panelGrid columns="2" cellpadding="2">
+                                        <h:outputLabel for="idClienteEdit" value="Id Cliente" />
+                                        <p:inputText id="idClienteEdit" value="#{clienteBean.idCliente}">
+                                            <p:clientValidator event="keyup"/>
+                                        </p:inputText>
+                                        <p:message for="idClienteEdit" display="icon" />
+                                        <br></br>
+                                        <h:outputLabel for="nombresEdit" value="Nombre" />
+                                        <p:inputText id="nombresEdit" value="#{clienteBean.nombres}">
+                                            <p:clientValidator event="keyup"/>
+                                        </p:inputText>
+                                        <p:message for="nombresEdit" display="icon" />
+                                        <br></br>
+                                        <h:outputLabel for="apellidosEdit" value="Apellidos" />
+                                        <p:inputText id="apellidosEdit" value="#{clienteBean.apellidos}">
+                                            <p:clientValidator event="keyup"/>
+                                        </p:inputText>
+                                        <p:message for="apellidosEdit" display="icon" />
+                                        <br></br>
+                                        <h:outputLabel for="numTelEdit" value="Numero de Telefono" />
+                                        <p:inputText id="numTelEdit" value="#{clienteBean.numTel}">
+                                            <p:clientValidator event="keyup"/>
+                                        </p:inputText>
+                                        <p:message for="numTelEdit" display="icon" />
+                                        <br></br>
+                                        <h:outputLabel for="emailEdit" value="Correo Electronico" />
+                                        <p:inputText id="emailEdit" value="#{clienteBean.email}">
+                                            <p:clientValidator event="keyup"/>
+                                        </p:inputText>
+                                        <p:message for="emailEdit" display="icon" />
+                                        <br></br>
+                                        <h:outputLabel for="contraseniaEdit" value="Contraseña" />
+                                        <p:inputText id="contraseniaEdit" value="#{clienteBean.contrasenia}">
+                                            <p:clientValidator event="keyup"/>
+                                        </p:inputText>
+                                        <p:message for="contraseniaEdit" display="icon" />
+                                        <br></br>
+                                        <h:outputLabel for="tipoTarjetaEdit" value="Tipo Tarjeta" />
+                                        <p:inputText id="tipoTarjetaEdit" value="#{clienteBean.tipoTarjeta}">
+                                            <p:clientValidator event="keyup"/>
+                                        </p:inputText>
+                                        <p:message for="tipoTarjetaEdit" display="icon" />
+                                        <br></br>
+                                        <h:outputLabel for="numeroTarjetaEdit" value="Numero de Tarjeta" />
+                                        <p:inputText id="numeroTarjetaEdit" value="#{clienteBean.numeroTarjeta}">
+                                            <p:clientValidator event="keyup"/>
+                                        </p:inputText>
+                                        <p:message for="numeroTarjetaEdit" display="icon" />
+                                        <br></br>
+                                        <p:commandButton value="Direccion" type="button" onclick="PF('dirEditDialogo').show();" />
+                                        <p:dialog header="Direccion Dialog" widgetVar="dirEditDialogo" modal="true" height="355">
+                                            <h:panelGrid columns="2" cellpadding="1">
+                                                <h:outputLabel for="idDireccionEdit" value="Id Direccion" />
+                                                <p:inputText id="idDireccionEdit" value="#{direccionBean.idDireccion}">
+                                                    <p:clientValidator event="keyup"/>
+                                                </p:inputText>
+                                                <p:message for="idDireccionEdit" display="icon" />
+                                                <br></br>
+                                                <h:outputLabel for="paisDirEdit" value="Pais" />
+                                                <p:inputText id="paisDirEdit" value="#{direccionBean.pais}">
+                                                    <p:clientValidator event="keyup"/>
+                                                </p:inputText>
+                                                <p:message for="paisDirEdit" display="icon" />
+                                                <br></br>
+                                                <h:outputLabel for="ciudadDirEdit" value="Ciudad" />
+                                                <p:inputText id="ciudadDirEdit" value="#{direccionBean.ciudad}">
+                                                    <p:clientValidator event="keyup"/>
+                                                </p:inputText>
+                                                <p:message for="ciudadDirEdit" display="icon" />
+                                                <br></br>
+                                                <h:outputLabel for="estadoDirEdit" value="Numero de Tarjeta" />
+                                                <p:inputText id="estadoDirEdit" value="#{direccionBean.estado}">
+                                                    <p:clientValidator event="keyup"/>
+                                                </p:inputText>
+                                                <p:message for="estadoDirEdit" display="icon" />
+                                                <br></br>
+                                                <h:outputLabel for="codPostalDirEdit" value="Codigo Postal" />
+                                                <p:inputText id="codPostalDirEdit" value="#{direccionBean.codPostal}">
+                                                    <p:clientValidator event="keyup"/>
+                                                </p:inputText>
+                                                <p:message for="codPostalDirEdit" display="icon" />
+                                                <br></br>
+                                                <h:outputLabel for="tipoDirEdit" value="Tipo Direccion" />
+                                                <p:inputText id="tipoDirEdit" value="#{direccionBean.tipoDir}">
+                                                    <p:clientValidator event="keyup"/>
+                                                </p:inputText>
+                                                <p:message for="tipoDirEdit" display="icon" />
+                                                <br></br>
+                                                <h:outputLabel for="calleDirEdit" value="Calle Direccion" />
+                                                <p:inputText id="calleDirEdit" value="#{direccionBean.dirCalle}">
+                                                    <p:clientValidator event="keyup"/>
+                                                </p:inputText>
+                                                <p:message for="calleDirEdit" display="icon" />
+                                                <br></br>
+                                                <p:commandButton value="Aceptar" onclick="#{productosBean.crearProducto()}"/>
+                                            </h:panelGrid>
+                                        </p:dialog>
+                                        <h:outputText value="#{productosBean.ciudadEspectaculo.idCiudad}" id="ciudadEspectaculo"/>
+                                        <br></br>
+                                    </h:panelGrid>
+                                </p:panel>
+                            </h:form>
+                        </p:tab>
+                        <p:tab title="Eliminar Cliente">
+                            <h:form>
+                                <p:panel header="Consultar Cliente">
+                                    <h:panelGrid columns="2" cellpadding="2">
+                                        <p:outputLabel for="consultaEliCli" value="Consultar Por"/>
+                                        <p:selectOneRadio id="consultaEliCli" value="#{clienteBean.tipoConsulta}">
+                                            <f:selectItem itemLabel="Id" itemValue="id" />
+                                            <f:selectItem itemLabel="Nombre" itemValue="nombre" />
+                                            <f:selectItem itemLabel="Apellido" itemValue="apellido" />
+                                        </p:selectOneRadio>
+                                        <p:inputTextarea id="txtConsultaEliCli" value="#{clienteBean.txtConsulta}"  rows="1" cols="50">
+                                            <p:clientValidator event="keyup"/>
+                                        </p:inputTextarea>
+                                        <br></br>
+                                        <p:commandButton value="Consultar" onclick="#{productosBean.consultarProducto()}" />
+                                        <br></br>
+                                    </h:panelGrid>
+                                </p:panel>
+                            </h:form>
+                            <h:form>
+                                <p:panel header="Eliminar Ciente">
+                                    <h:panelGrid columns="2" cellpadding="4">
+                                        <p:dataTable id="dtClienteDel" var="cliente" value="#{clienteBean.idCliente}">
+                                            <f:facet name="header">
+                                                Cliente
+                                            </f:facet>
+                                            <p:column headerText="Id Cliente">
+                                                <h:outputText value="#{clienteBean.idCliente}" />
+                                            </p:column>
+                                            <p:column headerText="Nombres">
+                                                <h:outputText value="#{clienteBean.nombres}" />
+                                            </p:column>
+                                            <p:column headerText="Apellidos">
+                                                <h:outputText value="#{clienteBean.apellidos}" />
+                                            </p:column>
+                                            <p:column style="width:32px;text-align: center">
+                                                <p:commandButton onclick="#{productosBean.eliminarProducto()}" icon="ui-icon-trash" title="View" />
+                                            </p:column>
+                                        </p:dataTable>
+                                    </h:panelGrid>
+                                </p:panel>
+                            </h:form>
+                        </p:tab>
+                    </p:accordionPanel>
+                    
+                </h:form>
             </ui:define>
-
         </ui:composition>
 
     </body>
