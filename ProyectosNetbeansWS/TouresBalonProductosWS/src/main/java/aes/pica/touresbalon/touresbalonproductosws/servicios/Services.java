@@ -273,108 +273,253 @@ public class Services {
         throw new UnsupportedOperationException("Not implemented yet.");
     }
 
+    @SuppressWarnings("empty-statement")
     public com.touresbalon.productostouresbalon.TipoGestionCampaniaResponse gestionCampaniaProducto(com.touresbalon.productostouresbalon.TipoAccion tipoOperacion, com.touresbalon.productostouresbalon.Campania campania) throws GestionCampaniaProductoFault_Exception {
       
-         com.touresbalon.productostouresbalon.TipoGestionCampaniaResponse respuesta = new com.touresbalon.productostouresbalon.TipoGestionCampaniaResponse();   
-        if (tipoOperacion==com.touresbalon.productostouresbalon.TipoAccion.ADICIONAR  )
-        {
-             sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
-           txProductos = sessionProductos.beginTransaction();
-            aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias camp = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias();
-            aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto prod = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto();
-            prod.setIdProducto( campania.getIdProducto().getIdProducto());
-            
-            camp.setProducto(prod);
-            camp.setFechaInicio(toDate(campania.getFechaInicioCampania()));
-            camp.setFechaFin(toDate(campania.getFechaFinCampania()));
-            sessionProductos.save(camp);
-
-            if (camp.getIdCampania() >0)
-                respuesta.setRespuesta(RespuestaGenerica.OK);
-            else
-                respuesta.setRespuesta(RespuestaGenerica.KO);
-            
-             txProductos.commit();
-        }
-        else if (tipoOperacion==com.touresbalon.productostouresbalon.TipoAccion.MODIFICAR)
-        {
-           String sqlQuery;
+        String sqlQuery;
         Query q = null;
         int idcamp;
-        try
-            {
-            idcamp=Integer.valueOf(campania.getIdProducto().getEspectaculo());
-            } catch (Exception e){ 
-                idcamp=0;    
-            }
-               sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
-           txProductos = sessionProductos.beginTransaction();
-        sqlQuery = "from Campanias where idCampania = :idcampana";
-        q=sessionProductos.createQuery(sqlQuery).setParameter("idcampana", idcamp);
-        
-        List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias> lstcamp =q.list();
-        if (lstcamp.size()>0)
-        {
-            txProductos.commit(); 
-            
-            aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias camp = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias();
-            
-            aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto prod = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto();
-            prod.setIdProducto( campania.getIdProducto().getIdProducto());
-            
-            camp.setProducto(prod);
-           
-            camp.setIdCampania(idcamp);
-           
-                    
-            camp.setFechaInicio(toDate(campania.getFechaInicioCampania()));
-            camp.setFechaFin(toDate(campania.getFechaFinCampania()));
-             txProductos = sessionProductos.beginTransaction();
-            sessionProductos.update(camp);
+        com.touresbalon.productostouresbalon.TipoGestionCampaniaResponse respuesta = new com.touresbalon.productostouresbalon.TipoGestionCampaniaResponse();   
+//        if (null!=tipoOperacion  )
+        switch (tipoOperacion) {
+            case ADICIONAR:{
+                sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
+                txProductos = sessionProductos.beginTransaction();
+                aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias camp = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias();
+                aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto prod = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto();
+                prod.setIdProducto( campania.getIdProducto().getIdProducto());
+                camp.setProducto(prod);
+                camp.setFechaInicio(toDate(campania.getFechaInicioCampania()));
+                camp.setFechaFin(toDate(campania.getFechaFinCampania()));
+                sessionProductos.save(camp);
+                if (camp.getIdCampania() >0)
+                {
+                    respuesta.setRespuesta(RespuestaGenerica.OK);
+                    respuesta.setIdCampania(camp.getIdCampania());
+                }
+                else
+                    respuesta.setRespuesta(RespuestaGenerica.KO);
+                txProductos.commit();
 
-            if (camp.getIdCampania() >0)
-                respuesta.setRespuesta(RespuestaGenerica.OK);
-            else
-                respuesta.setRespuesta(RespuestaGenerica.KO);
-             txProductos.commit();
-        }
-        else
-            respuesta.setRespuesta(RespuestaGenerica.KO);
-        
-        }
-        
-        else if (tipoOperacion==com.touresbalon.productostouresbalon.TipoAccion.ELIMINAR)
-        {
-             aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias camp = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias();
-            
-            aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto prod = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto();
-            prod.setIdProducto( campania.getIdProducto().getIdProducto());
-            
-            camp.setProducto(prod);
-            try
-            {
-            camp.setIdCampania(Integer.valueOf(campania.getIdProducto().getEspectaculo()));
-            } catch (Exception e){ 
-                camp.setIdCampania(0);    
-            }
-            
-            
-            
+                    break;
+                }
+            case MODIFICAR:
+                
+                try
+                {
+                    idcamp=Integer.valueOf(campania.getIdProducto().getEspectaculo());
+                } catch (Exception e){
+                    idcamp=0;
+                }   
+                sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
+                txProductos = sessionProductos.beginTransaction();
+                sqlQuery = "from Campanias where idCampania = :idcampana";
+                q=sessionProductos.createQuery(sqlQuery).setParameter("idcampana", idcamp);
+                List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias> lstcamp =q.list();
+                if (lstcamp.size()>0)
+                {
+                   
+                    sessionProductos.clear();
+                    aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias camp = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias();
                     
-            camp.setFechaInicio(toDate(campania.getFechaInicioCampania()));
-            camp.setFechaFin(toDate(campania.getFechaFinCampania()));
-            sessionProductos.delete(camp);
-
-            if (camp.getIdCampania() >0)
-                respuesta.setRespuesta(RespuestaGenerica.OK);
-            else
+                    aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto prod = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto();
+                    prod.setIdProducto( campania.getIdProducto().getIdProducto());
+                    
+                    camp.setProducto(prod);
+                    
+                    camp.setIdCampania(idcamp);
+                    
+                    
+                    camp.setFechaInicio(toDate(campania.getFechaInicioCampania()));
+                    camp.setFechaFin(toDate(campania.getFechaFinCampania()));
+                   
+                    sessionProductos.update(camp);
+                    
+                    if (camp.getIdCampania() >0)
+                        respuesta.setRespuesta(RespuestaGenerica.OK);
+                    else
+                        respuesta.setRespuesta(RespuestaGenerica.KO);
+                    
+                }
+                else
+                    respuesta.setRespuesta(RespuestaGenerica.KO);
+                
+                txProductos.commit();
+                break;
+            case ELIMINAR:{
+        
+                aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias camp = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias();
+//                aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto prod = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto();
+//                prod.setIdProducto( campania.getIdProducto().getIdProducto());
+//                camp.setProducto(prod);
+                try
+                {
+                    idcamp=Integer.valueOf(campania.getIdProducto().getEspectaculo());
+                   
+                } catch (Exception e){
+                    idcamp=0;
+                   
+                }    
+                
+                  sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
+                txProductos = sessionProductos.beginTransaction();
+                  sqlQuery = "from Campanias where idCampania = :idcampana";
+                q=sessionProductos.createQuery(sqlQuery).setParameter("idcampana", idcamp);
+                List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias> lstcampa =q.list();
+                if (lstcampa.size()>0)
+                {
+                    
+                     sessionProductos.clear();
+                    camp.setIdCampania(idcamp);
+//                camp.setFechaInicio(toDate(campania.getFechaInicioCampania()));
+//                camp.setFechaFin(toDate(campania.getFechaFinCampania()));
+                    sessionProductos.delete(camp);
+                    if (camp.getIdCampania() >0)
+                        respuesta.setRespuesta(RespuestaGenerica.OK);
+                    else
+                        respuesta.setRespuesta(RespuestaGenerica.KO);
+                }
+                else
+                    respuesta.setRespuesta(RespuestaGenerica.KO);
+                txProductos.commit();
+                break;
+                }
+            default:
                 respuesta.setRespuesta(RespuestaGenerica.KO);
+                break;
         }
        
-        return respuesta;;
+        return respuesta;
     }
 
     public com.touresbalon.productostouresbalon.TipoGestionProductoResponse gestionProducto(com.touresbalon.productostouresbalon.TipoAccion tipoOperacion, com.touresbalon.productostouresbalon.Producto producto) throws GestionProductoFault_Exception {
+        
+//        String sqlQuery;
+//        Query q = null;
+//        int idcamp;
+//        com.touresbalon.productostouresbalon.TipoGestionProductoResponse respuesta = new com.touresbalon.productostouresbalon.TipoGestionProductoResponse();   
+////        if (null!=tipoOperacion  )
+//        switch (tipoOperacion) {
+//            case ADICIONAR:{
+//                sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
+//                txProductos = sessionProductos.beginTransaction();
+//                 com.touresbalon.productostouresbalon.Ciudad ciu = new com.touresbalon.productostouresbalon.Ciudad();
+//
+//            ciu.setIdCiudad(lstpro.get(i).getCiudad().getIdCiudad());
+//            ciu.setPais(lstpro.get(i).getCiudad().getNombreCiudad() + " - " + lstpro.get(i).getCiudad().getPais());
+//            
+//            
+//                aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto prod = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto();
+//                aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Ciudad ciu = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Ciudad();
+//                ciu.getIdCiudad(producto.getCiudadEspectaculo().getIdCiudad());
+//                
+//                prod.setCiudad();
+//                
+//                sessionProductos.save(prod);
+//                if (camp.getIdCampania() >0)
+//                {
+//                    respuesta.setRespuesta(RespuestaGenerica.OK);
+//                    respuesta.setIdCampania(camp.getIdCampania());
+//                }
+//                else
+//                    respuesta.setRespuesta(RespuestaGenerica.KO);
+//                txProductos.commit();
+//
+//                    break;
+//                }
+//            case MODIFICAR:
+//                
+//                try
+//                {
+//                    idcamp=Integer.valueOf(campania.getIdProducto().getEspectaculo());
+//                } catch (Exception e){
+//                    idcamp=0;
+//                }   
+//                sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
+//                txProductos = sessionProductos.beginTransaction();
+//                sqlQuery = "from Campanias where idCampania = :idcampana";
+//                q=sessionProductos.createQuery(sqlQuery).setParameter("idcampana", idcamp);
+//                List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias> lstcamp =q.list();
+//                if (lstcamp.size()>0)
+//                {
+//                   
+//                    sessionProductos.clear();
+//                    aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias camp = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias();
+//                    
+//                    aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto prod = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto();
+//                    prod.setIdProducto( campania.getIdProducto().getIdProducto());
+//                    
+//                    camp.setProducto(prod);
+//                    
+//                    camp.setIdCampania(idcamp);
+//                    
+//                    
+//                    camp.setFechaInicio(toDate(campania.getFechaInicioCampania()));
+//                    camp.setFechaFin(toDate(campania.getFechaFinCampania()));
+//                   
+//                    sessionProductos.update(camp);
+//                    
+//                    if (camp.getIdCampania() >0)
+//                        respuesta.setRespuesta(RespuestaGenerica.OK);
+//                    else
+//                        respuesta.setRespuesta(RespuestaGenerica.KO);
+//                    
+//                }
+//                else
+//                    respuesta.setRespuesta(RespuestaGenerica.KO);
+//                
+//                txProductos.commit();
+//                break;
+//            case ELIMINAR:{
+//        
+//                aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias camp = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias();
+////                aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto prod = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto();
+////                prod.setIdProducto( campania.getIdProducto().getIdProducto());
+////                camp.setProducto(prod);
+//                try
+//                {
+//                    idcamp=Integer.valueOf(campania.getIdProducto().getEspectaculo());
+//                   
+//                } catch (Exception e){
+//                    idcamp=0;
+//                   
+//                }    
+//                
+//                  sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
+//                txProductos = sessionProductos.beginTransaction();
+//                  sqlQuery = "from Campanias where idCampania = :idcampana";
+//                q=sessionProductos.createQuery(sqlQuery).setParameter("idcampana", idcamp);
+//                List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias> lstcampa =q.list();
+//                if (lstcampa.size()>0)
+//                {
+//                    
+//                     sessionProductos.clear();
+//                    camp.setIdCampania(idcamp);
+////                camp.setFechaInicio(toDate(campania.getFechaInicioCampania()));
+////                camp.setFechaFin(toDate(campania.getFechaFinCampania()));
+//                    sessionProductos.delete(camp);
+//                    if (camp.getIdCampania() >0)
+//                        respuesta.setRespuesta(RespuestaGenerica.OK);
+//                    else
+//                        respuesta.setRespuesta(RespuestaGenerica.KO);
+//                }
+//                else
+//                    respuesta.setRespuesta(RespuestaGenerica.KO);
+//                txProductos.commit();
+//                break;
+//                }
+//            default:
+//                respuesta.setRespuesta(RespuestaGenerica.KO);
+//                break;
+//        }
+//       
+//        return respuesta;
+        
+        
+        
+        
+        
+        
         //TODO implement this method
 //        String res = "";
 //        sessionClientes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();

@@ -6,7 +6,9 @@
     <class name="aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto" table="PRODUCTO" schema="dbo" catalog="TB_PRODUCTOS" optimistic-lock="version">
         <id name="idProducto" type="int">
             <column name="id_producto" />
-            <generator class="assigned" />
+            <generator class="sequence">
+                <param name="sequence">SEC_PRODUCTO_ID</param>
+            </generator>
         </id>
         <many-to-one name="ciudad" class="aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Ciudad" fetch="select">
             <column name="id_ciudad" />
