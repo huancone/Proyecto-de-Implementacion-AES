@@ -144,7 +144,7 @@ public class Services {
 
         List<Producto> lstprod = new ArrayList<Producto>();
 
-        strsql = "SELECT dbo.PRODUCTO.* FROM dbo.CAMPANIAS INNER JOIN dbo.PRODUCTO ON PRODUCTO.id_producto = CAMPANIAS.id_producto WHERE GETDATE()>=fecha_inicio AND GETDATE() <= fecha_fin ";
+        strsql = "SELECT Producto.* FROM Campanias INNER JOIN Producto ON Producto.idProducto = Campanias.idProducto WHERE GETDATE()>=fechaInicio AND GETDATE() <= fechaFin ";
 //        q=sessionProductos.createSQLQuery(strsql);
 //                
 
@@ -263,7 +263,7 @@ public class Services {
         List<Integer> lstProductos = new ArrayList<>();
 
         String strsql = "WITH "
-                + "  PRODUCTOS AS "
+                + "  ProductoS AS "
                 + "  ( "
                 + "    SELECT "
                 + "      Items.prodid, "
@@ -281,9 +281,9 @@ public class Services {
                 + "      Items.prodid "
                 + "  ) "
                 + "SELECT "
-                + "  PRODUCTOS.prodid, "
+                + "  ProductoS.prodid, "
                 + "FROM "
-                + "  PRODUCTOS "
+                + "  ProductoS "
                 + "WHERE "
                 + "  ROWNUM <= 10";
 
@@ -316,7 +316,7 @@ public class Services {
         List<Integer> lstProductos = new ArrayList<>();
 
         String strsql = "WITH "
-                + "  PRODUCTOS AS "
+                + "  ProductoS AS "
                 + "  ( "
                 + "    SELECT "
                 + "      Items.prodid, "
@@ -334,9 +334,9 @@ public class Services {
                 + "      Items.prodid "
                 + "  ) "
                 + "SELECT "
-                + "  PRODUCTOS.prodid, "
+                + "  ProductoS.prodid, "
                 + "FROM "
-                + "  PRODUCTOS "
+                + "  ProductoS "
                 + "WHERE "
                 + "  ROWNUM <= 10";
 
@@ -698,7 +698,7 @@ public class Services {
         List<Integer> lstProductos = new ArrayList<>();
 
         String strsql = "WITH "
-                + "  PRODUCTOS AS "
+                + "  ProductoS AS "
                 + "  ( "
                 + "    SELECT "
                 + "      Items.prodid, "
@@ -716,9 +716,9 @@ public class Services {
                 + "      Items.prodid "
                 + "  ) "
                 + "SELECT "
-                + "  PRODUCTOS.prodid, "
+                + "  ProductoS.prodid, "
                 + "FROM "
-                + "  PRODUCTOS "
+                + "  ProductoS "
                 + "WHERE "
                 + "  ROWNUM <= 10";
 
