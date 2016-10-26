@@ -144,7 +144,7 @@ public class Services {
 
         List<Producto> lstprod = new ArrayList<Producto>();
 
-        strsql = "SELECT Producto.* FROM Campanias INNER JOIN Producto ON Producto.idProducto = Campanias.idProducto WHERE GETDATE()>=fechaInicio AND GETDATE() <= fechaFin ";
+        strsql = "SELECT Producto.* FROM Campanias INNER JOIN Producto ON Producto.id_Producto = Campanias.id_Producto WHERE GETDATE()>= Campanias.fecha_Inicio AND GETDATE() <= Campanias.fecha_Fin ";
 //        q=sessionProductos.createSQLQuery(strsql);
 //                
 
