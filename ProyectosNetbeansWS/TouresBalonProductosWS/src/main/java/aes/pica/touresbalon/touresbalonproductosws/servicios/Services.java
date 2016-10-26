@@ -260,17 +260,93 @@ public class Services {
         txOrdenes = sessionOrdenes.beginTransaction();
 
         List<TarifaValores> lstRankingEspectaculos = new ArrayList<>();
-        List<Orders> lstOrdenesEntity = new ArrayList<>();
+        List<Integer> lstProductos = new ArrayList<>();
 
-        List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaEspectaculo> lstRankingEspectaculosEntity = new ArrayList<>();
+        String strsql = "WITH "
+                + "  PRODUCTOS AS "
+                + "  ( "
+                + "    SELECT "
+                + "      Items.prodid, "
+                + "      COUNT ( * ) CANTIDAD "
+                + "    FROM "
+                + "      Orders "
+                + "    INNER JOIN Items "
+                + "    ON "
+                + "      Orders.ordid = Items.ordid "
+                + "    WHERE "
+                + "      Orders.ORDERDATE BETWEEN TO_DATE ( '" + fechaInicial + "', 'yyyymmdd' ) AND TO_DATE ( '" + fechaFin + "', 'yyyymmdd' ) "
+                + "    GROUP BY "
+                + "      Items.prodid "
+                + "    ORDER BY "
+                + "      Items.prodid "
+                + "  ) "
+                + "SELECT "
+                + "  PRODUCTOS.prodid, "
+                + "FROM "
+                + "  PRODUCTOS "
+                + "WHERE "
+                + "  ROWNUM <= 10";
         
-        String strSQL = "From Ordenes ";
+        Query query = sessionOrdenes.createQuery(strsql);
+        lstProductos = query.list();
+
+        for (Integer p : lstProductos) {
+            TarifaValores t = new TarifaValores();
+            strsql = "from tarifaEspectaculo where productos.idProducto = " + p;
+            query = sessionProductos.createQuery(strsql);
+            lstRankingEspectaculos.add(t);
+        }
+
         return lstRankingEspectaculos;
     }
 
     public java.util.List<com.touresbalon.productostouresbalon.Producto> consultarRankingFechaProducto(javax.xml.datatype.XMLGregorianCalendar fechaInicial, javax.xml.datatype.XMLGregorianCalendar fechaFin) throws ConsultarRankingFechaProductoFault_Exception {
         
-        throw new UnsupportedOperationException("Not implemented yet.");
+        sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
+        txProductos = sessionProductos.beginTransaction();
+
+        sessionOrdenes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
+        txOrdenes = sessionOrdenes.beginTransaction();
+
+        List<Producto> lstRankingProductos = new ArrayList<>();
+        List<Integer> lstProductos = new ArrayList<>();
+
+        String strsql = "WITH "
+                + "  PRODUCTOS AS "
+                + "  ( "
+                + "    SELECT "
+                + "      Items.prodid, "
+                + "      COUNT ( * ) CANTIDAD "
+                + "    FROM "
+                + "      Orders "
+                + "    INNER JOIN Items "
+                + "    ON "
+                + "      Orders.ordid = Items.ordid "
+                + "    WHERE "
+                + "      Orders.ORDERDATE BETWEEN TO_DATE ( '" + fechaInicial + "', 'yyyymmdd' ) AND TO_DATE ( '" + fechaFin + "', 'yyyymmdd' ) "
+                + "    GROUP BY "
+                + "      Items.prodid "
+                + "    ORDER BY "
+                + "      Items.prodid "
+                + "  ) "
+                + "SELECT "
+                + "  PRODUCTOS.prodid, "
+                + "FROM "
+                + "  PRODUCTOS "
+                + "WHERE "
+                + "  ROWNUM <= 10";
+        
+        Query query = sessionOrdenes.createQuery(strsql);
+        lstProductos = query.list();
+
+        for (Integer p : lstProductos) {
+            Producto t = new Producto();
+            strsql = "from Producto where productos.idProducto = " + p;
+            query = sessionProductos.createQuery(strsql);
+            lstRankingProductos.add(t);
+        }
+
+        return lstRankingProductos;
     }
 
     @SuppressWarnings("empty-statement")
@@ -588,8 +664,51 @@ public class Services {
     }
 
     public java.util.List<com.touresbalon.productostouresbalon.Producto> consultaTop5Productos(java.util.List<java.lang.Integer> idProducto) throws ConsultaTop5ProductosFault_Exception {
-        //TODO implement this method
-        throw new UnsupportedOperationException("Not implemented yet.");
+        		sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
+        txProductos = sessionProductos.beginTransaction();
+
+        sessionOrdenes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
+        txOrdenes = sessionOrdenes.beginTransaction();
+
+        List<Producto> lstRankingProductos = new ArrayList<>();
+        List<Integer> lstProductos = new ArrayList<>();
+
+        String strsql = "WITH "
+                + "  PRODUCTOS AS "
+                + "  ( "
+                + "    SELECT "
+                + "      Items.prodid, "
+                + "      COUNT ( * ) CANTIDAD "
+                + "    FROM "
+                + "      Orders "
+                + "    INNER JOIN Items "
+                + "    ON "
+                + "      Orders.ordid = Items.ordid "
+                + "    WHERE "
+                + "      Items.prodid = " + idProducto
+                + "    GROUP BY "
+                + "      Items.prodid "
+                + "    ORDER BY "
+                + "      Items.prodid "
+                + "  ) "
+                + "SELECT "
+                + "  PRODUCTOS.prodid, "
+                + "FROM "
+                + "  PRODUCTOS "
+                + "WHERE "
+                + "  ROWNUM <= 10";
+        
+        Query query = sessionOrdenes.createQuery(strsql);
+        lstProductos = query.list();
+
+        for (Integer p : lstProductos) {
+            Producto t = new Producto();
+            strsql = "from tarifaEspectaculo where productos.idProducto = " + p;
+            query = sessionProductos.createQuery(strsql);
+            lstRankingProductos.add(t);
+        }
+
+        return lstRankingProductos;
     }
 
     public Date toDate(XMLGregorianCalendar calendar) {
