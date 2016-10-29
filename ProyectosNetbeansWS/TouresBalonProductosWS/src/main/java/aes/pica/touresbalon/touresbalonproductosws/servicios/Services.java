@@ -61,7 +61,7 @@ public class Services {
         if (null != tipoConsulta) {
             switch (tipoConsulta) {
                 case DESCRIPCION:
-                    strsql = "from Producto where descripcion like :valorbuscar";
+                    strsql = "from Producto where descripcion like :valorbuscar and fecha_salida >= GETDATE()";
                     q = sessionProductos.createQuery(strsql)
                             .setParameter("valorbuscar", "%" + cadenaConsulta + "%");
                     lstpro = q.list();
@@ -294,7 +294,7 @@ public class Services {
             TarifaValores t = new TarifaValores();
             strsql = "from tarifaEspectaculo where productos.idProducto = " + p;
             query = sessionProductos.createQuery(strsql);
-            TarifaEspectaculoEntity = (aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaEspectaculo)query;
+            TarifaEspectaculoEntity = (aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaEspectaculo) query;
             t.setId(TarifaEspectaculoEntity.getIdEspectaculo());
             t.setNombreTipo(TarifaEspectaculoEntity.getNombreEspectaculo());
             t.setPrecio(TarifaEspectaculoEntity.getPrecio());
@@ -348,7 +348,7 @@ public class Services {
             query = sessionProductos.createQuery(strsql);
             List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto> lstProductEntity = new ArrayList<>();
             lstProductEntity = query.list();
-            for(aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto prod : lstProductEntity){
+            for (aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto prod : lstProductEntity) {
                 Producto p1 = new Producto();
                 p1.setIdProducto(prod.getIdProducto());
                 p1.setEspectaculo(prod.getEspectaculo());
@@ -378,7 +378,7 @@ public class Services {
                 p1.setImagenProducto(prod.getUrlImagen());
                 lstRankingProductos.add(p1);
             }
-            
+
         }
 
         return lstRankingProductos;
@@ -730,7 +730,7 @@ public class Services {
             query = sessionProductos.createQuery(strsql);
             List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto> lstProductEntity = new ArrayList<>();
             lstProductEntity = query.list();
-            for(aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto prod : lstProductEntity){
+            for (aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto prod : lstProductEntity) {
                 Producto p1 = new Producto();
                 p1.setIdProducto(prod.getIdProducto());
                 p1.setEspectaculo(prod.getEspectaculo());
@@ -760,7 +760,7 @@ public class Services {
                 p1.setImagenProducto(prod.getUrlImagen());
                 lstRankingProductos.add(p1);
             }
-            
+
         }
 
         return lstRankingProductos;
