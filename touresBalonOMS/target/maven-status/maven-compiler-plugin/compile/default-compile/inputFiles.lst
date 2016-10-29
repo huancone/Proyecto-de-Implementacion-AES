@@ -73,6 +73,7 @@
 /Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/target/generated-sources/jaxws-wsimport/com/aes/touresbalon/touresbalonoms/wsdl/client/GestionCampaniaProductoResponse.java
 /Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/target/generated-sources/jaxws-wsimport/com/aes/touresbalon/touresbalonoms/wsdl/client/ServiceProxyOMS_Service.java
 /Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/target/generated-sources/jaxws-wsimport/com/aes/touresbalon/touresbalonoms/wsdl/client/ConsultarRankingAbiertasOrdenesFault.java
+/Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/src/main/java/com/aes/touresbalon/touresbalonoms/utilities/OmsUtil.java
 /Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/src/main/java/com/aes/touresbalon/touresbalonoms/beans/CiudadBean.java
 /Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/src/main/java/com/aes/touresbalon/touresbalonoms/beans/ProductosBean.java
 /Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/target/generated-sources/jaxws-wsimport/com/aes/touresbalon/touresbalonoms/wsdl/client/ConsultarRankingAbiertasOrdenes.java

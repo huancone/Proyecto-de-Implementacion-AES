@@ -5,6 +5,8 @@
  */
 package com.aes.touresbalon.touresbalonoms.beans;
 
+import com.aes.touresbalon.touresbalonoms.wsdl.client.TarifaValores;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
@@ -19,7 +21,15 @@ public class TarifaValoresBean {
     private int id;
     private String nombreTipo;
     private double precio;
-
+    
+    public TarifaValores getValores(){
+        TarifaValores tv = new TarifaValores();
+        tv.setId(id);
+        tv.setNombreTipo(nombreTipo);
+        tv.setPrecio(precio);
+        return tv;
+    }
+    
     /**
      * @return the id
      */
