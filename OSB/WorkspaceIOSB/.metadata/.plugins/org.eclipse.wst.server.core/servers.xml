@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<servers>
-  <server auto-publish-setting="1" hostname="localhost" id="Oracle WebLogic Server 11gR1 (10.3.6) at localhost [DominioB2C]" name="Oracle WebLogic Server 11gR1 (10.3.6) at localhost [DominioB2C]" runtime-id="Oracle WebLogic Server 11gR1 (10.3.6)" server-type="com.bea.weblogic1036.server" server-type-id="com.bea.weblogic1036.server" start-timeout="480" stop-timeout="240" timestamp="1" weblogic_domain_path="C:\Oracle\Middleware\user_projects\domains\DominioB2C" weblogic_host_name="" weblogic_is_remote="false" weblogic_port="7001" weblogic_use_bootprop="true" weblogic_use_config_xml="true">
-    <list key="modules" value0="OSB_Configuration_B2C::com.bea.alsb.core.internal.deployables:OSB_Configuration_B2C::bea.alsb.container.module::1.0.100"/>
-  </server>
-</servers>

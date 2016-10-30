@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "ProductosTouresBalon", targetNamespace = "http://www.touresbalon.com/ProductosTouresBalon/", wsdlLocation = "file:/D:/Documents/GitHub/Proyecto-de-Implementacion-AES/ProyectosNetbeansWS/TouresBalonProductosWS/src/wsdl/ProductosTouresBalon.wsdl")
+@WebServiceClient(name = "ProductosTouresBalon", targetNamespace = "http://www.touresbalon.com/ProductosTouresBalon/", wsdlLocation = "file:/D:/ProyectoPICA/Proyecto-de-Implementacion-AES/ProyectosNetbeansWS/TouresBalonProductosWS/src/wsdl/ProductosTouresBalon.wsdl")
 public class ProductosTouresBalon_Service
     extends Service
 {
@@ -30,7 +30,7 @@ public class ProductosTouresBalon_Service
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("file:/D:/Documents/GitHub/Proyecto-de-Implementacion-AES/ProyectosNetbeansWS/TouresBalonProductosWS/src/wsdl/ProductosTouresBalon.wsdl");
+            url = new URL("file:/D:/ProyectoPICA/Proyecto-de-Implementacion-AES/ProyectosNetbeansWS/TouresBalonProductosWS/src/wsdl/ProductosTouresBalon.wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

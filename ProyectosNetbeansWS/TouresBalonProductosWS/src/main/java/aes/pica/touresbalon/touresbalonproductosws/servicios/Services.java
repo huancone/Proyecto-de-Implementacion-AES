@@ -501,185 +501,179 @@ public class Services {
 
     public com.touresbalon.productostouresbalon.TipoGestionProductoResponse gestionProducto(com.touresbalon.productostouresbalon.TipoAccion tipoOperacion, com.touresbalon.productostouresbalon.Producto producto) throws GestionProductoFault_Exception {
 
-//        String sqlQuery;
-//        Query q = null;
-//        int idcamp;
-//        com.touresbalon.productostouresbalon.TipoGestionProductoResponse respuesta = new com.touresbalon.productostouresbalon.TipoGestionProductoResponse();   
-////        if (null!=tipoOperacion  )
-//        switch (tipoOperacion) {
-//            case ADICIONAR:{
-//                sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
-//                txProductos = sessionProductos.beginTransaction();
-//                 com.touresbalon.productostouresbalon.Ciudad ciu = new com.touresbalon.productostouresbalon.Ciudad();
-//
-//            ciu.setIdCiudad(lstpro.get(i).getCiudad().getIdCiudad());
-//            ciu.setPais(lstpro.get(i).getCiudad().getNombreCiudad() + " - " + lstpro.get(i).getCiudad().getPais());
-//            
-//            
-//                aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto prod = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto();
-//                aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Ciudad ciu = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Ciudad();
-//                ciu.getIdCiudad(producto.getCiudadEspectaculo().getIdCiudad());
-//                
-//                prod.setCiudad();
-//                
-//                sessionProductos.save(prod);
-//                if (camp.getIdCampania() >0)
-//                {
-//                    respuesta.setRespuesta(RespuestaGenerica.OK);
-//                    respuesta.setIdCampania(camp.getIdCampania());
-//                }
-//                else
-//                    respuesta.setRespuesta(RespuestaGenerica.KO);
-//                txProductos.commit();
-//
-//                    break;
-//                }
-//            case MODIFICAR:
-//                
-//                try
-//                {
-//                    idcamp=Integer.valueOf(campania.getIdProducto().getEspectaculo());
-//                } catch (Exception e){
-//                    idcamp=0;
-//                }   
-//                sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
-//                txProductos = sessionProductos.beginTransaction();
-//                sqlQuery = "from Campanias where idCampania = :idcampana";
-//                q=sessionProductos.createQuery(sqlQuery).setParameter("idcampana", idcamp);
-//                List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias> lstcamp =q.list();
-//                if (lstcamp.size()>0)
-//                {
-//                   
-//                    sessionProductos.clear();
-//                    aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias camp = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias();
-//                    
-//                    aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto prod = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto();
-//                    prod.setIdProducto( campania.getIdProducto().getIdProducto());
-//                    
-//                    camp.setProducto(prod);
-//                    
-//                    camp.setIdCampania(idcamp);
-//                    
-//                    
-//                    camp.setFechaInicio(toDate(campania.getFechaInicioCampania()));
-//                    camp.setFechaFin(toDate(campania.getFechaFinCampania()));
-//                   
-//                    sessionProductos.update(camp);
-//                    
-//                    if (camp.getIdCampania() >0)
-//                        respuesta.setRespuesta(RespuestaGenerica.OK);
-//                    else
-//                        respuesta.setRespuesta(RespuestaGenerica.KO);
-//                    
-//                }
-//                else
-//                    respuesta.setRespuesta(RespuestaGenerica.KO);
-//                
-//                txProductos.commit();
-//                break;
-//            case ELIMINAR:{
-//        
-//                aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias camp = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias();
-////                aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto prod = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto();
-////                prod.setIdProducto( campania.getIdProducto().getIdProducto());
-////                camp.setProducto(prod);
-//                try
-//                {
-//                    idcamp=Integer.valueOf(campania.getIdProducto().getEspectaculo());
-//                   
-//                } catch (Exception e){
-//                    idcamp=0;
-//                   
-//                }    
-//                
-//                  sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
-//                txProductos = sessionProductos.beginTransaction();
-//                  sqlQuery = "from Campanias where idCampania = :idcampana";
-//                q=sessionProductos.createQuery(sqlQuery).setParameter("idcampana", idcamp);
-//                List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias> lstcampa =q.list();
-//                if (lstcampa.size()>0)
-//                {
-//                    
-//                     sessionProductos.clear();
-//                    camp.setIdCampania(idcamp);
-////                camp.setFechaInicio(toDate(campania.getFechaInicioCampania()));
-////                camp.setFechaFin(toDate(campania.getFechaFinCampania()));
-//                    sessionProductos.delete(camp);
-//                    if (camp.getIdCampania() >0)
-//                        respuesta.setRespuesta(RespuestaGenerica.OK);
-//                    else
-//                        respuesta.setRespuesta(RespuestaGenerica.KO);
-//                }
-//                else
-//                    respuesta.setRespuesta(RespuestaGenerica.KO);
-//                txProductos.commit();
-//                break;
-//                }
-//            default:
-//                respuesta.setRespuesta(RespuestaGenerica.KO);
-//                break;
-//        }
-//       
-//        return respuesta;
-        //TODO implement this method
-//        String res = "";
-//        sessionClientes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
-//        tx = sessionClientes.beginTransaction();
-//        Address addr = new Address();
-//        addr.setZip("1010");
-//        addr.setCity("bogota");
-//        addr.setAddressType("calle");
-//        addr.setCountry("Colombia");
-//        Integer id = (Integer) sessionClientes.save(addr);
-//        res = "este es el id: " + id;
-        //Query q = sessionClientes.
-//        Query q = sessionClientes.createQuery("from Address");
-//        List<Address> listAdd = q.list();
-//        res = "ORACLE: "+listAdd.size();
-//        tx.commit();
-//
-//        sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
-//        tx = sessionProductos.beginTransaction();
-//        TarifaCiudad tc = new TarifaCiudad();
-//        tc.setPrecio(BigDecimal.ZERO);
-//        tc.setTipoCiudad("bogota");
-//        id = (Integer) sessionProductos.save(tc);
-//        res += " - SQLSERVER este es el id: "+id;
-//        tx.commit();
-//        sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
-//        tx = sessionProductos.beginTransaction();
-//        Query q = sessionProductos.createQuery("from TarifaCiudad");
-//        List<TarifaCiudad> listProd = q.list();
-//        res += " - SQLSERVER: "+listProd.size();
-//        tx.commit();
-//        sessionClientes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
-//        tx = sessionClientes.beginTransaction();
-//        Query query = sessionClientes.createSQLQuery(
-//                "select 1 from dual");
-//        int rel = query.list().size();
-//        tx.commit();
-//
-//        String res = "";
-//        
-//        if (rel == 1) {
-//            res = "funciono Oracle";
-//        } else {
-//            res += "no funciono Oracle";
-//        }
-//        sessionProductos = ProductosHU.getSessionFactory().getCurrentSession(); //SELECT GETDATE()
-//        tx = sessionProductos.beginTransaction();
-//        query = sessionProductos.createSQLQuery(
-//                "SELECT GETDATE()");
-//        rel = query.list().size();
-//        tx.commit();
-//        
-//        if (rel == 1) {
-//            res += " - funciono SQL Server";
-//        } else {
-//            res += "- no funciono SQL Server";
-//        }
-//        return res;
-        throw new UnsupportedOperationException("Not implemented yet.");
+        String sqlQuery;
+        Query q = null;
+        int idprod;
+        com.touresbalon.productostouresbalon.TipoGestionProductoResponse respuesta = new com.touresbalon.productostouresbalon.TipoGestionProductoResponse();   
+//        if (null!=tipoOperacion  )
+        switch (tipoOperacion) {
+            case ADICIONAR:{
+                sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
+                txProductos = sessionProductos.beginTransaction();
+                aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto prod = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto();
+                aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Ciudad ciu = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Ciudad();
+                aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaEspectaculo taresp = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaEspectaculo();
+                aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaHospedaje tarhos = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaHospedaje();
+                aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaTransporte tartran = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaTransporte();
+                
+                ciu.setIdCiudad(producto.getCiudadEspectaculo().getIdCiudad());
+                ciu.setPais(producto.getCiudadEspectaculo().getPais());
+                
+                prod.setCiudad(ciu);
+                prod.setDescripcion(producto.getDescripcion());
+                prod.setEspectaculo(producto.getEspectaculo());
+                prod.setFechaEspectaculo(toDate(producto.getFechaEspectaculo()));
+                prod.setFechaLlegada(toDate(producto.getFechaLlegada()));
+                prod.setFechaSalida(toDate(producto.getFechaSalida()));
+                prod.setIdProducto(producto.getIdProducto());
+                
+                taresp.setIdEspectaculo(producto.getTipoEspectaculo().getId());
+                taresp.setNombreEspectaculo(producto.getTipoEspectaculo().getNombreTipo());
+                taresp.setPrecio(producto.getTipoEspectaculo().getPrecio());
+                
+                tarhos.setIdHospedaje(producto.getTipoHospedaje().getId());
+                tarhos.setNombreHospedaje(producto.getTipoHospedaje().getNombreTipo());
+                tarhos.setPrecio(producto.getTipoHospedaje().getPrecio());
+                
+                 tartran.setIdTransporte(producto.getTipoTransporte().getId());
+                tartran.setNombreTransporte(producto.getTipoTransporte().getNombreTipo());
+                tartran.setPrecio(producto.getTipoTransporte().getPrecio());
+                
+                prod.setTarifaEspectaculo(taresp);
+                prod.setTarifaHospedaje(tarhos);
+                prod.setTarifaTransporte(tartran);
+             
+                prod.setUrlImagen(producto.getImagenProducto());
+                
+                
+                //ciu.setNombreCiudad());
+
+            
+                
+                sessionProductos.save(prod);
+                if (prod.getIdProducto() >0)
+                {
+                    respuesta.setRespuesta(RespuestaGenerica.OK);
+                    respuesta.setIdProducto(prod.getIdProducto());
+                    
+                }
+                else
+                    respuesta.setRespuesta(RespuestaGenerica.KO);
+                txProductos.commit();
+
+                    break;
+                }
+            case MODIFICAR:
+                
+                try
+                {
+                    idprod=Integer.valueOf(producto.getIdProducto());
+                } catch (Exception e){
+                    idprod=0;
+                }   
+                sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
+                txProductos = sessionProductos.beginTransaction();
+                sqlQuery = "from Productos where id_producto = :idproducto";
+                q=sessionProductos.createQuery(sqlQuery).setParameter("idproducto", idprod);
+                List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto> lstprod =q.list();
+                if (lstprod.size()>0)
+                {
+                   
+                    sessionProductos.clear();
+                    aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto prod = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto();
+                    aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Ciudad ciu = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Ciudad();
+                    aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaEspectaculo taresp = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaEspectaculo();
+                    aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaHospedaje tarhos = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaHospedaje();
+                    aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaTransporte tartran = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaTransporte();
+                
+                    ciu.setIdCiudad(producto.getCiudadEspectaculo().getIdCiudad());
+                    ciu.setPais(producto.getCiudadEspectaculo().getPais());
+                
+                    prod.setCiudad(ciu);
+                    prod.setDescripcion(producto.getDescripcion());
+                    prod.setEspectaculo(producto.getEspectaculo());
+                    prod.setFechaEspectaculo(toDate(producto.getFechaEspectaculo()));
+                    prod.setFechaLlegada(toDate(producto.getFechaLlegada()));
+                    prod.setFechaSalida(toDate(producto.getFechaSalida()));
+                    prod.setIdProducto(producto.getIdProducto());
+                
+                    taresp.setIdEspectaculo(producto.getTipoEspectaculo().getId());
+                    taresp.setNombreEspectaculo(producto.getTipoEspectaculo().getNombreTipo());
+                    taresp.setPrecio(producto.getTipoEspectaculo().getPrecio());
+                
+                    tarhos.setIdHospedaje(producto.getTipoHospedaje().getId());
+                    tarhos.setNombreHospedaje(producto.getTipoHospedaje().getNombreTipo());
+                    tarhos.setPrecio(producto.getTipoHospedaje().getPrecio());
+                
+                     tartran.setIdTransporte(producto.getTipoTransporte().getId());
+                    tartran.setNombreTransporte(producto.getTipoTransporte().getNombreTipo());
+                    tartran.setPrecio(producto.getTipoTransporte().getPrecio());
+                
+                    prod.setTarifaEspectaculo(taresp);
+                    prod.setTarifaHospedaje(tarhos);
+                    prod.setTarifaTransporte(tartran);
+             
+                    prod.setUrlImagen(producto.getImagenProducto());
+                
+                   
+                    sessionProductos.update(prod);
+                    
+                    if (prod.getIdProducto() >0)
+                        respuesta.setRespuesta(RespuestaGenerica.OK);
+                    else
+                        respuesta.setRespuesta(RespuestaGenerica.KO);
+                    
+                }
+                else
+                    respuesta.setRespuesta(RespuestaGenerica.KO);
+                
+                txProductos.commit();
+                break;
+            case ELIMINAR:{
+        
+                
+                aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto prod = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto();
+//                prod.setIdProducto( campania.getIdProducto().getIdProducto());
+//                camp.setProducto(prod);
+                try
+                {
+                    idprod=Integer.valueOf(producto.getIdProducto());
+                } catch (Exception e){
+                    idprod=0;
+                }     
+                
+                  sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
+                txProductos = sessionProductos.beginTransaction();
+                  sqlQuery = "from Productos where id_producto = :idproducto";
+                q=sessionProductos.createQuery(sqlQuery).setParameter("idproducto", idprod);
+                List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto> lstproducto =q.list();
+                if (lstproducto.size()>0)
+                {
+                    
+                     sessionProductos.clear();
+                    prod.setIdProducto(idprod);
+//                camp.setFechaInicio(toDate(campania.getFechaInicioCampania()));
+//                camp.setFechaFin(toDate(campania.getFechaFinCampania()));
+                    sessionProductos.delete(prod);
+                    if (prod.getIdProducto() >0)
+                        respuesta.setRespuesta(RespuestaGenerica.OK);
+                    else
+                        respuesta.setRespuesta(RespuestaGenerica.KO);
+                }
+                else
+                    respuesta.setRespuesta(RespuestaGenerica.KO);
+                txProductos.commit();
+                break;
+                }
+            default:
+                respuesta.setRespuesta(RespuestaGenerica.KO);
+                break;
+        }
+       
+        return respuesta;
+
+
+
     }
 
     public com.touresbalon.productostouresbalon.TipoGestionTarifaResponse gestionTarifa(com.touresbalon.productostouresbalon.TipoAccion tipoOperacion, com.touresbalon.productostouresbalon.TipoTarifa tipoTarifa, com.touresbalon.productostouresbalon.TarifaValores tarifa) throws GestionTarifaFault_Exception {

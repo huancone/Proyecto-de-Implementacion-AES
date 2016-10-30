@@ -1,0 +1,966 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-fragment xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:env="http://www.bea.com/wli/config/env" xmlns:http="http://www.bea.com/wli/sb/transports/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:con1="http://www.bea.com/wli/sb/stages/routing/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/transform/config">
+  <ser:coreEntry isProxy="true" isEnabled="true">
+    <ser:binding type="SOAP" isSoap12="false" xsi:type="con:SoapBindingType" xmlns:con="http://www.bea.com/wli/sb/services/bindings/config">
+      <con:wsdl ref="OSB_TouresBalon_B2C/WSDLS/ServiceProxyOMS"/>
+      <con:port>
+        <con:name>ServiceProxyOMSSOAP</con:name>
+        <con:namespace>http://www.example.org/ServiceProxyOMS/</con:namespace>
+      </con:port>
+      <con:selector type="SOAP body"/>
+    </ser:binding>
+    <ser:monitoring isEnabled="false">
+      <ser:aggregationInterval>10</ser:aggregationInterval>
+      <ser:pipelineMonitoringLevel>Pipeline</ser:pipelineMonitoringLevel>
+    </ser:monitoring>
+    <ser:reporting>true</ser:reporting>
+    <ser:logging isEnabled="true">
+      <ser:logLevel>debug</ser:logLevel>
+    </ser:logging>
+    <ser:sla-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:sla-alerting>
+    <ser:pipeline-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:pipeline-alerting>
+    <ser:ws-policy>
+      <ser:binding-mode>wsdl-policy-attachments</ser:binding-mode>
+    </ser:ws-policy>
+  </ser:coreEntry>
+  <ser:endpointConfig>
+    <tran:provider-id>http</tran:provider-id>
+    <tran:inbound>true</tran:inbound>
+    <tran:URI>
+      <env:value>/OSB_TouresBalon_B2C/Proxy_services/ProxyServiceOMS</env:value>
+    </tran:URI>
+    <tran:inbound-properties/>
+    <tran:all-headers>false</tran:all-headers>
+    <tran:provider-specific>
+      <http:inbound-properties/>
+    </tran:provider-specific>
+  </ser:endpointConfig>
+  <ser:router>
+    <con:pipeline type="request" name="UnsupportedOperations_request">
+      <con:stage name="RaiseError">
+        <con:context/>
+        <con:actions>
+          <con3:Error>
+            <con2:id>_ActionId-8684200068072172469-36e94b77.157ef3f5834.-7f02</con2:id>
+            <con3:errCode>ERROR1-OPERATION</con3:errCode>
+            <con3:message>Esta operacion no ha sido implementada en esta version</con3:message>
+          </con3:Error>
+        </con:actions>
+      </con:stage>
+    </con:pipeline>
+    <con:pipeline type="response" name="UnsupportedOperations_response"/>
+    <con:flow>
+      <con:branch-node type="operation" name="BranchNode1">
+        <con:context/>
+        <con:branch-table>
+          <con:branch name="consultarPorIdentificacionCliente">
+            <con:operator>equals</con:operator>
+            <con:value/>
+            <con:flow>
+              <con:route-node name="RouteNode1">
+                <con:context>
+                  <con2:varNsDecl namespace="http://www.example.org/ServiceProxyOMS/" prefix="ser"/>
+                </con:context>
+                <con:actions>
+                  <con1:route>
+                    <con2:id>_ActionId-8684200068072172469-36e94b77.157ef3f5834.-7f5b</con2:id>
+                    <con1:service ref="OSB_TouresBalon_B2C/Bussiness_services/BusinessServiceClientes" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                    <con1:operation>ConsultarPorIdentificacionCliente</con1:operation>
+                    <con1:outboundTransform>
+                      <con3:replace varName="body">
+                        <con2:id>_ActionId-8684200068072172469-36e94b77.157ef3f5834.-7f4a</con2:id>
+                        <con3:location>
+                          <con2:xpathText>./ser:consultarPorIdentificacionCliente</con2:xpathText>
+                        </con3:location>
+                        <con3:expr>
+                          <con2:xqueryTransform>
+                            <con2:resource ref="OSB_TouresBalon_B2C/XQueries/ConsultarPorIdClienteReq"/>
+                            <con2:param name="consultarPorIdentificacionCliente1">
+                              <con2:path>$body/ser:consultarPorIdentificacionCliente</con2:path>
+                            </con2:param>
+                          </con2:xqueryTransform>
+                        </con3:expr>
+                      </con3:replace>
+                    </con1:outboundTransform>
+                    <con1:responseTransform>
+                      <con3:replace varName="bosy">
+                        <con2:id>_ActionId-8684200068072172469-36e94b77.157ef3f5834.-7f29</con2:id>
+                        <con3:location>
+                          <con2:xpathText>./ser:consultarPorIdentificacionClienteResponse</con2:xpathText>
+                        </con3:location>
+                        <con3:expr>
+                          <con2:xqueryTransform>
+                            <con2:resource ref="OSB_TouresBalon_B2C/XQueries/ConsultarPorIdClienteRes"/>
+                            <con2:param name="consultarPorIdentificacionClienteResponse1">
+                              <con2:path>$body/ser:consultarPorIdentificacionClienteResponse</con2:path>
+                            </con2:param>
+                          </con2:xqueryTransform>
+                        </con3:expr>
+                      </con3:replace>
+                    </con1:responseTransform>
+                  </con1:route>
+                </con:actions>
+              </con:route-node>
+            </con:flow>
+          </con:branch>
+          <con:branch name="consultarPorFactRangoCliente">
+            <con:operator>equals</con:operator>
+            <con:value/>
+            <con:flow>
+              <con:route-node name="RouteNode2">
+                <con:context>
+                  <con2:varNsDecl namespace="http://www.example.org/ServiceProxyOMS/" prefix="ser"/>
+                </con:context>
+                <con:actions>
+                  <con1:route>
+                    <con2:id>_ActionId-8684200068072172469-36e94b77.157ef3f5834.-7eee</con2:id>
+                    <con1:service ref="OSB_TouresBalon_B2C/Bussiness_services/BusinessServiceClientes" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                    <con1:operation>ConsultarPorFactRangoCliente</con1:operation>
+                    <con1:outboundTransform>
+                      <con3:replace varName="body">
+                        <con2:id>_ActionId-8684200068072172469-36e94b77.157ef3f5834.-7edc</con2:id>
+                        <con3:location>
+                          <con2:xpathText>./ser:consultarPorFactRangoCliente</con2:xpathText>
+                        </con3:location>
+                        <con3:expr>
+                          <con2:xqueryTransform>
+                            <con2:resource ref="OSB_TouresBalon_B2C/XQueries/ConsultaPorFactRangoClienteReq"/>
+                            <con2:param name="consultarPorFactRangoCliente1">
+                              <con2:path>$body/ser:consultarPorFactRangoCliente</con2:path>
+                            </con2:param>
+                          </con2:xqueryTransform>
+                        </con3:expr>
+                      </con3:replace>
+                    </con1:outboundTransform>
+                    <con1:responseTransform>
+                      <con3:replace varName="body">
+                        <con2:id>_ActionId-8684200068072172469-36e94b77.157ef3f5834.-7ecb</con2:id>
+                        <con3:location>
+                          <con2:xpathText>./ser:consultarPorFactRangoClienteResponse</con2:xpathText>
+                        </con3:location>
+                        <con3:expr>
+                          <con2:xqueryTransform>
+                            <con2:resource ref="OSB_TouresBalon_B2C/XQueries/ConsultaPorFactRangoClienteRes"/>
+                            <con2:param name="consultarPorFactRangoClienteResponse1">
+                              <con2:path>$body/ser:consultarPorFactRangoClienteResponse</con2:path>
+                            </con2:param>
+                          </con2:xqueryTransform>
+                        </con3:expr>
+                      </con3:replace>
+                    </con1:responseTransform>
+                  </con1:route>
+                </con:actions>
+              </con:route-node>
+            </con:flow>
+          </con:branch>
+          <con:branch name="gestionProducto">
+            <con:operator>equals</con:operator>
+            <con:value/>
+            <con:flow>
+              <con:route-node name="RouteNode3">
+                <con:context>
+                  <con2:varNsDecl namespace="http://www.example.org/ServiceProxyOMS/" prefix="ser"/>
+                </con:context>
+                <con:actions>
+                  <con1:route>
+                    <con2:id>_ActionId-8684200068072172469-36e94b77.157ef3f5834.-7eb8</con2:id>
+                    <con1:service ref="OSB_TouresBalon_B2C/Bussiness_services/BusinessServiceProductos" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                    <con1:operation>GestionProducto</con1:operation>
+                    <con1:outboundTransform>
+                      <con3:replace varName="body" contents-only="true">
+                        <con2:id>_ActionId-8684200068072172469-36e94b77.157ef3f5834.-7ea2</con2:id>
+                        <con3:location>
+                          <con2:xpathText>.</con2:xpathText>
+                        </con3:location>
+                        <con3:expr>
+                          <con2:xqueryTransform>
+                            <con2:resource ref="OSB_TouresBalon_B2C/XQueries/GestionProductoReq"/>
+                            <con2:param name="gestionProducto1">
+                              <con2:path>$body/ser:gestionProducto</con2:path>
+                            </con2:param>
+                          </con2:xqueryTransform>
+                        </con3:expr>
+                      </con3:replace>
+                    </con1:outboundTransform>
+                    <con1:responseTransform>
+                      <con3:replace varName="body" contents-only="true">
+                        <con2:id>_ActionId-8684200068072172469-36e94b77.157ef3f5834.-7e8d</con2:id>
+                        <con3:location>
+                          <con2:xpathText>./ser:gestionProductoResponse</con2:xpathText>
+                        </con3:location>
+                        <con3:expr>
+                          <con2:xqueryTransform>
+                            <con2:resource ref="OSB_TouresBalon_B2C/XQueries/GestionProductoRes"/>
+                            <con2:param name="gestionProductoResponse1">
+                              <con2:path>$body/ser:gestionProductoResponse</con2:path>
+                            </con2:param>
+                          </con2:xqueryTransform>
+                        </con3:expr>
+                      </con3:replace>
+                    </con1:responseTransform>
+                  </con1:route>
+                </con:actions>
+              </con:route-node>
+            </con:flow>
+          </con:branch>
+          <con:branch name="consultarRankingCerradoOrdenes">
+            <con:operator>equals</con:operator>
+            <con:value/>
+            <con:flow>
+              <con:route-node name="RouteNode4">
+                <con:context>
+                  <con2:varNsDecl namespace="http://www.example.org/ServiceProxyOMS/" prefix="ser"/>
+                </con:context>
+                <con:actions>
+                  <con1:route>
+                    <con2:id>_ActionId-8684200068072172469-36e94b77.157ef3f5834.-7e75</con2:id>
+                    <con1:service ref="OSB_TouresBalon_B2C/Bussiness_services/BusinessServiceOrdenes" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                    <con1:operation>ConsultarRankingCerradoOrdenes</con1:operation>
+                    <con1:outboundTransform>
+                      <con3:replace varName="body" contents-only="true">
+                        <con2:id>_ActionId-8684200068072172469-36e94b77.157ef3f5834.-7e5a</con2:id>
+                        <con3:location>
+                          <con2:xpathText>.</con2:xpathText>
+                        </con3:location>
+                        <con3:expr>
+                          <con2:xqueryTransform>
+                            <con2:resource ref="OSB_TouresBalon_B2C/XQueries/ConsultarRnkCerradasOrdReq"/>
+                            <con2:param name="consultarRankingCerradoOrdenes1">
+                              <con2:path>$body/ser:consultarRankingCerradoOrdenes</con2:path>
+                            </con2:param>
+                          </con2:xqueryTransform>
+                        </con3:expr>
+                      </con3:replace>
+                    </con1:outboundTransform>
+                    <con1:responseTransform>
+                      <con3:replace varName="body" contents-only="true">
+                        <con2:id>_ActionId-8684200068072172469-36e94b77.157ef3f5834.-7e45</con2:id>
+                        <con3:location>
+                          <con2:xpathText>./ser:consultarRankingCerradoOrdenesResponse</con2:xpathText>
+                        </con3:location>
+                        <con3:expr>
+                          <con2:xqueryTransform>
+                            <con2:resource ref="OSB_TouresBalon_B2C/XQueries/ConsultarRnkCerradasOrdRes"/>
+                            <con2:param name="consultarRankingCerradoOrdenesResponse1">
+                              <con2:path>$body/ser:consultarRankingCerradoOrdenesResponse</con2:path>
+                            </con2:param>
+                          </con2:xqueryTransform>
+                        </con3:expr>
+                      </con3:replace>
+                    </con1:responseTransform>
+                  </con1:route>
+                </con:actions>
+              </con:route-node>
+            </con:flow>
+          </con:branch>
+          <con:branch name="consultarRankingFechaProducto">
+            <con:operator>equals</con:operator>
+            <con:value/>
+            <con:flow>
+              <con:route-node name="RouteNode5">
+                <con:context>
+                  <con2:varNsDecl namespace="http://www.example.org/ServiceProxyOMS/" prefix="ser"/>
+                </con:context>
+                <con:actions>
+                  <con1:route>
+                    <con2:id>_ActionId-8684200068072172469-36e94b77.157ef3f5834.-7e2e</con2:id>
+                    <con1:service ref="OSB_TouresBalon_B2C/Bussiness_services/BusinessServiceProductos" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                    <con1:operation>ConsultarRankingFechaProducto</con1:operation>
+                    <con1:outboundTransform>
+                      <con3:replace varName="body" contents-only="true">
+                        <con2:id>_ActionId-8684200068072172469-36e94b77.157ef3f5834.-7e14</con2:id>
+                        <con3:location>
+                          <con2:xpathText>.</con2:xpathText>
+                        </con3:location>
+                        <con3:expr>
+                          <con2:xqueryTransform>
+                            <con2:resource ref="OSB_TouresBalon_B2C/XQueries/ConsultaRnkFechaProdReq"/>
+                            <con2:param name="consultarRankingFechaProducto1">
+                              <con2:path>$body/ser:consultarRankingFechaProducto</con2:path>
+                            </con2:param>
+                          </con2:xqueryTransform>
+                        </con3:expr>
+                      </con3:replace>
+                    </con1:outboundTransform>
+                    <con1:responseTransform>
+                      <con3:replace varName="body" contents-only="true">
+                        <con2:id>_ActionId-8684200068072172469-36e94b77.157ef3f5834.-7e01</con2:id>
+                        <con3:location>
+                          <con2:xpathText>./ser:consultarRankingFechaProductoResponse</con2:xpathText>
+                        </con3:location>
+                        <con3:expr>
+                          <con2:xqueryTransform>
+                            <con2:resource ref="OSB_TouresBalon_B2C/XQueries/ConsultaRnkFechaProdRes"/>
+                            <con2:param name="consultarRankingFechaProductoResponse1">
+                              <con2:path>$body/ser:consultarRankingFechaProductoResponse</con2:path>
+                            </con2:param>
+                          </con2:xqueryTransform>
+                        </con3:expr>
+                      </con3:replace>
+                    </con1:responseTransform>
+                  </con1:route>
+                </con:actions>
+              </con:route-node>
+            </con:flow>
+          </con:branch>
+          <con:branch name="consultarRankingEspectaculosVendidosProducto">
+            <con:operator>equals</con:operator>
+            <con:value/>
+            <con:flow>
+              <con:route-node name="RouteNode6">
+                <con:context>
+                  <con2:varNsDecl namespace="http://www.example.org/ServiceProxyOMS/" prefix="ser"/>
+                </con:context>
+                <con:actions>
+                  <con1:route>
+                    <con2:id>_ActionId-8684200068072172469-36e94b77.157ef3f5834.-7deb</con2:id>
+                    <con1:service ref="OSB_TouresBalon_B2C/Bussiness_services/BusinessServiceProductos" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                    <con1:operation>ConsultarRankingEspectaculosVendidosProducto</con1:operation>
+                    <con1:outboundTransform>
+                      <con3:replace contents-only="true" varName="body">
+                        <con2:id>_ActionId-8684200068072172469-36e94b77.157ef3f5834.-7ddc</con2:id>
+                        <con3:location>
+                          <con2:xpathText>.</con2:xpathText>
+                        </con3:location>
+                        <con3:expr>
+                          <con2:xqueryTransform>
+                            <con2:resource ref="OSB_TouresBalon_B2C/XQueries/ConsultarRnkEspecVenProdReq"/>
+                            <con2:param name="consultarRankingEspectaculosVendidosProducto1">
+                              <con2:path>$body/ser:consultarRankingEspectaculosVendidosProducto</con2:path>
+                            </con2:param>
+                          </con2:xqueryTransform>
+                        </con3:expr>
+                      </con3:replace>
+                    </con1:outboundTransform>
+                    <con1:responseTransform>
+                      <con3:replace varName="body" contents-only="false">
+                        <con2:id>_ActionId-8684200068072172469-36e94b77.157ef3f5834.-7dbc</con2:id>
+                        <con3:location>
+                          <con2:xpathText>./ser:consultarRankingEspectaculosVendidosProductoResponse</con2:xpathText>
+                        </con3:location>
+                        <con3:expr>
+                          <con2:xqueryTransform>
+                            <con2:resource ref="OSB_TouresBalon_B2C/XQueries/ConsultarRnkEspecVenProdRes"/>
+                            <con2:param name="consultarRankingEspectaculosVendidosProductoResponse1">
+                              <con2:path>$body/ser:consultarRankingEspectaculosVendidosProductoResponse</con2:path>
+                            </con2:param>
+                          </con2:xqueryTransform>
+                        </con3:expr>
+                      </con3:replace>
+                    </con1:responseTransform>
+                  </con1:route>
+                </con:actions>
+              </con:route-node>
+            </con:flow>
+          </con:branch>
+          <con:branch name="consultarPorEspectaculoProducto">
+            <con:operator>equals</con:operator>
+            <con:value/>
+            <con:flow>
+              <con:route-node name="RouteNode7">
+                <con:context>
+                  <con2:varNsDecl namespace="http://www.example.org/ServiceProxyOMS/" prefix="ser"/>
+                </con:context>
+                <con:actions>
+                  <con1:route>
+                    <con2:id>_ActionId-8684200068072172469-36e94b77.157ef3f5834.-7dab</con2:id>
+                    <con1:service ref="OSB_TouresBalon_B2C/Bussiness_services/BusinessServiceProductos" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                    <con1:operation>ConsultarPorEspectaculoProducto</con1:operation>
+                    <con1:outboundTransform>
+                      <con3:replace contents-only="true" varName="body">
+                        <con2:id>_ActionId-8684200068072172469-36e94b77.157ef3f5834.-7d9f</con2:id>
+                        <con3:location>
+                          <con2:xpathText>.</con2:xpathText>
+                        </con3:location>
+                        <con3:expr>
+                          <con2:xqueryTransform>
+                            <con2:resource ref="OSB_TouresBalon_B2C/XQueries/consultarPorEspecProdReq"/>
+                            <con2:param name="consultarPorEspectaculoProducto1">
+                              <con2:path>$body/ser:consultarPorEspectaculoProducto</con2:path>
+                            </con2:param>
+                          </con2:xqueryTransform>
+                        </con3:expr>
+                      </con3:replace>
+                    </con1:outboundTransform>
+                    <con1:responseTransform>
+                      <con3:replace varName="body" contents-only="true">
+                        <con2:id>_ActionId-8684200068072172469-36e94b77.157ef3f5834.-7d8b</con2:id>
+                        <con3:location>
+                          <con2:xpathText>./ser:consultarPorEspectaculoProductoResponse</con2:xpathText>
+                        </con3:location>
+                        <con3:expr>
+                          <con2:xqueryTransform>
+                            <con2:resource ref="OSB_TouresBalon_B2C/XQueries/consultarPorEspecProdRes"/>
+                            <con2:param name="consultarPorEspectaculoProductoResponse1">
+                              <con2:path>$body/ser:consultarPorEspectaculoProductoResponse</con2:path>
+                            </con2:param>
+                          </con2:xqueryTransform>
+                        </con3:expr>
+                      </con3:replace>
+                    </con1:responseTransform>
+                  </con1:route>
+                </con:actions>
+              </con:route-node>
+            </con:flow>
+          </con:branch>
+          <con:branch name="actualizarContraseniaCliente">
+            <con:operator>equals</con:operator>
+            <con:value/>
+            <con:flow>
+              <con:route-node name="RouteNode8">
+                <con:context>
+                  <con2:varNsDecl namespace="http://www.example.org/ServiceProxyOMS/" prefix="ser"/>
+                </con:context>
+                <con:actions>
+                  <con1:route>
+                    <con2:id>_ActionId-8684200068072172469-36e94b77.157ef3f5834.-7d73</con2:id>
+                    <con1:service ref="OSB_TouresBalon_B2C/Bussiness_services/BusinessServiceClientes" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                    <con1:operation>ActualizarContraseniaCliente</con1:operation>
+                    <con1:outboundTransform>
+                      <con3:replace varName="body" contents-only="true">
+                        <con2:id>_ActionId-8684200068072172469-36e94b77.157ef3f5834.-7d64</con2:id>
+                        <con3:location>
+                          <con2:xpathText>.</con2:xpathText>
+                        </con3:location>
+                        <con3:expr>
+                          <con2:xqueryTransform>
+                            <con2:resource ref="OSB_TouresBalon_B2C/XQueries/actualizarContraseniaClienteReq"/>
+                            <con2:param name="actualizarContraseniaCliente1">
+                              <con2:path>$body/ser:actualizarContraseniaCliente</con2:path>
+                            </con2:param>
+                          </con2:xqueryTransform>
+                        </con3:expr>
+                      </con3:replace>
+                    </con1:outboundTransform>
+                    <con1:responseTransform>
+                      <con3:replace contents-only="true" varName="body">
+                        <con2:id>_ActionId-8684200068072172469-36e94b77.157ef3f5834.-7d53</con2:id>
+                        <con3:location>
+                          <con2:xpathText>./ser:actualizarContraseniaClienteResponse</con2:xpathText>
+                        </con3:location>
+                        <con3:expr>
+                          <con2:xqueryTransform>
+                            <con2:resource ref="OSB_TouresBalon_B2C/XQueries/actualizarContraseniaClienteRes"/>
+                            <con2:param name="actualizarContraseniaClienteResponse1">
+                              <con2:path>$body/ser:actualizarContraseniaClienteResponse</con2:path>
+                            </con2:param>
+                          </con2:xqueryTransform>
+                        </con3:expr>
+                      </con3:replace>
+                    </con1:responseTransform>
+                  </con1:route>
+                </con:actions>
+              </con:route-node>
+            </con:flow>
+          </con:branch>
+          <con:branch name="consultarProducto">
+            <con:operator>equals</con:operator>
+            <con:value/>
+            <con:flow>
+              <con:route-node name="RouteNode9">
+                <con:context>
+                  <con2:varNsDecl namespace="http://www.example.org/ServiceProxyOMS/" prefix="ser"/>
+                </con:context>
+                <con:actions>
+                  <con1:route>
+                    <con2:id>_ActionId-1158582831811335007-1e218481.158123040e0.-7fa4</con2:id>
+                    <con1:service ref="OSB_TouresBalon_B2C/Bussiness_services/BusinessServiceProductos" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                    <con1:operation>ConsultarProducto</con1:operation>
+                    <con1:outboundTransform>
+                      <con3:replace varName="body" contents-only="true">
+                        <con2:id>_ActionId-1158582831811335007-1e218481.158123040e0.-7f94</con2:id>
+                        <con3:location>
+                          <con2:xpathText>.</con2:xpathText>
+                        </con3:location>
+                        <con3:expr>
+                          <con2:xqueryTransform>
+                            <con2:resource ref="OSB_TouresBalon_B2C/XQueries/ConsultarProdReq"/>
+                            <con2:param name="consultarProducto1">
+                              <con2:path>$body/ser:consultarProducto</con2:path>
+                            </con2:param>
+                          </con2:xqueryTransform>
+                        </con3:expr>
+                      </con3:replace>
+                    </con1:outboundTransform>
+                    <con1:responseTransform>
+                      <con3:replace varName="body" contents-only="true">
+                        <con2:id>_ActionId-1158582831811335007-1e218481.158123040e0.-7f78</con2:id>
+                        <con3:location>
+                          <con2:xpathText>./ser:consultarProductoResponse</con2:xpathText>
+                        </con3:location>
+                        <con3:expr>
+                          <con2:xqueryTransform>
+                            <con2:resource ref="OSB_TouresBalon_B2C/XQueries/ConsultarProdRes"/>
+                            <con2:param name="consultarProductoResponse1">
+                              <con2:path>$body/ser:consultarProductoResponse</con2:path>
+                            </con2:param>
+                          </con2:xqueryTransform>
+                        </con3:expr>
+                      </con3:replace>
+                    </con1:responseTransform>
+                  </con1:route>
+                </con:actions>
+              </con:route-node>
+            </con:flow>
+          </con:branch>
+          <con:branch name="gestionCampaniaProducto">
+            <con:operator>equals</con:operator>
+            <con:value/>
+            <con:flow>
+              <con:route-node name="RouteNode10">
+                <con:context>
+                  <con2:varNsDecl namespace="http://www.example.org/ServiceProxyOMS/" prefix="ser"/>
+                </con:context>
+                <con:actions>
+                  <con1:route>
+                    <con2:id>_ActionId-1158582831811335007-1e218481.158123040e0.-7f62</con2:id>
+                    <con1:service ref="OSB_TouresBalon_B2C/Bussiness_services/BusinessServiceProductos" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                    <con1:operation>ConsultarCampaniaProducto</con1:operation>
+                    <con1:outboundTransform>
+                      <con3:replace varName="body" contents-only="true">
+                        <con2:id>_ActionId-1158582831811335007-1e218481.158123040e0.-7f4b</con2:id>
+                        <con3:location>
+                          <con2:xpathText>.</con2:xpathText>
+                        </con3:location>
+                        <con3:expr>
+                          <con2:xqueryTransform>
+                            <con2:resource ref="OSB_TouresBalon_B2C/XQueries/GestionCampaniaProdReq"/>
+                            <con2:param name="gestionCampaniaProducto1">
+                              <con2:path>$body/ser:gestionCampaniaProducto</con2:path>
+                            </con2:param>
+                          </con2:xqueryTransform>
+                        </con3:expr>
+                      </con3:replace>
+                    </con1:outboundTransform>
+                    <con1:responseTransform>
+                      <con3:replace varName="body" contents-only="true">
+                        <con2:id>_ActionId-1158582831811335007-1e218481.158123040e0.-7f3f</con2:id>
+                        <con3:location>
+                          <con2:xpathText>./ser:gestionCampaniaProductoResponse</con2:xpathText>
+                        </con3:location>
+                        <con3:expr>
+                          <con2:xqueryTransform>
+                            <con2:resource ref="OSB_TouresBalon_B2C/XQueries/GestionCampaniaProdRes"/>
+                            <con2:param name="gestionCampaniaProductoResponse1">
+                              <con2:path>$body/ser:gestionCampaniaProductoResponse</con2:path>
+                            </con2:param>
+                          </con2:xqueryTransform>
+                        </con3:expr>
+                      </con3:replace>
+                    </con1:responseTransform>
+                  </con1:route>
+                </con:actions>
+              </con:route-node>
+            </con:flow>
+          </con:branch>
+          <con:branch name="consultarOrdenes">
+            <con:operator>equals</con:operator>
+            <con:value/>
+            <con:flow>
+              <con:route-node name="RouteNode11">
+                <con:context>
+                  <con2:varNsDecl namespace="http://www.example.org/ServiceProxyOMS/" prefix="ser"/>
+                </con:context>
+                <con:actions>
+                  <con1:route>
+                    <con2:id>_ActionId-1158582831811335007-1e218481.158123040e0.-7f2c</con2:id>
+                    <con1:service ref="OSB_TouresBalon_B2C/Bussiness_services/BusinessServiceOrdenes" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                    <con1:operation>ConsultarOrdenes</con1:operation>
+                    <con1:outboundTransform>
+                      <con3:replace varName="body" contents-only="true">
+                        <con2:id>_ActionId-1158582831811335007-1e218481.158123040e0.-7f14</con2:id>
+                        <con3:location>
+                          <con2:xpathText>.</con2:xpathText>
+                        </con3:location>
+                        <con3:expr>
+                          <con2:xqueryTransform>
+                            <con2:resource ref="OSB_TouresBalon_B2C/XQueries/ConsultarOrdenesReq"/>
+                            <con2:param name="consultarOrdenes1">
+                              <con2:path>$body/ser:consultarOrdenes</con2:path>
+                            </con2:param>
+                          </con2:xqueryTransform>
+                        </con3:expr>
+                      </con3:replace>
+                    </con1:outboundTransform>
+                    <con1:responseTransform>
+                      <con3:replace varName="body" contents-only="true">
+                        <con2:id>_ActionId-1158582831811335007-1e218481.158123040e0.-7f05</con2:id>
+                        <con3:location>
+                          <con2:xpathText>./ser:consultarOrdenesResponse</con2:xpathText>
+                        </con3:location>
+                        <con3:expr>
+                          <con2:xqueryTransform>
+                            <con2:resource ref="OSB_TouresBalon_B2C/XQueries/ConsultarOrdenesRes"/>
+                            <con2:param name="consultarOrdenesResponse1">
+                              <con2:path>$body/ser:consultarOrdenesResponse</con2:path>
+                            </con2:param>
+                          </con2:xqueryTransform>
+                        </con3:expr>
+                      </con3:replace>
+                    </con1:responseTransform>
+                  </con1:route>
+                </con:actions>
+              </con:route-node>
+            </con:flow>
+          </con:branch>
+          <con:branch name="gestionTarifa">
+            <con:operator>equals</con:operator>
+            <con:value/>
+            <con:flow>
+              <con:route-node name="RouteNode12">
+                <con:context>
+                  <con2:varNsDecl namespace="http://www.example.org/ServiceProxyOMS/" prefix="ser"/>
+                </con:context>
+                <con:actions>
+                  <con1:route>
+                    <con2:id>_ActionId-1158582831811335007-1e218481.158123040e0.-7eef</con2:id>
+                    <con1:service ref="OSB_TouresBalon_B2C/Bussiness_services/BusinessServiceProductos" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                    <con1:operation>GestionTarifa</con1:operation>
+                    <con1:outboundTransform>
+                      <con3:replace contents-only="true" varName="body">
+                        <con2:id>_ActionId-1158582831811335007-1e218481.158123040e0.-7edf</con2:id>
+                        <con3:location>
+                          <con2:xpathText>.</con2:xpathText>
+                        </con3:location>
+                        <con3:expr>
+                          <con2:xqueryTransform>
+                            <con2:resource ref="OSB_TouresBalon_B2C/XQueries/GestionTarifaReq"/>
+                            <con2:param name="gestionTarifa1">
+                              <con2:path>$body/ser:gestionTarifa</con2:path>
+                            </con2:param>
+                          </con2:xqueryTransform>
+                        </con3:expr>
+                      </con3:replace>
+                    </con1:outboundTransform>
+                    <con1:responseTransform>
+                      <con3:replace varName="body" contents-only="true">
+                        <con2:id>_ActionId-1158582831811335007-1e218481.158123040e0.-7eca</con2:id>
+                        <con3:location>
+                          <con2:xpathText>./ser:gestionTarifaResponse</con2:xpathText>
+                        </con3:location>
+                        <con3:expr>
+                          <con2:xqueryTransform>
+                            <con2:resource ref="OSB_TouresBalon_B2C/XQueries/GestionTarifaRes"/>
+                            <con2:param name="gestionTarifaResponse1">
+                              <con2:path>$body/ser:gestionTarifaResponse</con2:path>
+                            </con2:param>
+                          </con2:xqueryTransform>
+                        </con3:expr>
+                      </con3:replace>
+                    </con1:responseTransform>
+                  </con1:route>
+                </con:actions>
+              </con:route-node>
+            </con:flow>
+          </con:branch>
+          <con:branch name="consultarCampaniaProducto">
+            <con:operator>equals</con:operator>
+            <con:value/>
+            <con:flow>
+              <con:route-node name="RouteNode13">
+                <con:context>
+                  <con2:varNsDecl namespace="http://www.example.org/ServiceProxyOMS/" prefix="ser"/>
+                </con:context>
+                <con:actions>
+                  <con1:route>
+                    <con2:id>_ActionId-1158582831811335007-1e218481.158123040e0.-7eb5</con2:id>
+                    <con1:service ref="OSB_TouresBalon_B2C/Bussiness_services/BusinessServiceProductos" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                    <con1:operation>ConsultarCampaniaProducto</con1:operation>
+                    <con1:outboundTransform>
+                      <con3:replace varName="body" contents-only="true">
+                        <con2:id>_ActionId-1158582831811335007-1e218481.158123040e0.-7ea5</con2:id>
+                        <con3:location>
+                          <con2:xpathText>.</con2:xpathText>
+                        </con3:location>
+                        <con3:expr>
+                          <con2:xqueryTransform>
+                            <con2:resource ref="OSB_TouresBalon_B2C/XQueries/ConsultarCampaniaProdReq"/>
+                          </con2:xqueryTransform>
+                        </con3:expr>
+                      </con3:replace>
+                    </con1:outboundTransform>
+                    <con1:responseTransform>
+                      <con3:replace varName="body" contents-only="true">
+                        <con2:id>_ActionId-1158582831811335007-1e218481.158123040e0.-7e8c</con2:id>
+                        <con3:location>
+                          <con2:xpathText>./ser:consultarCampaniaProductoResponse</con2:xpathText>
+                        </con3:location>
+                        <con3:expr>
+                          <con2:xqueryTransform>
+                            <con2:resource ref="OSB_TouresBalon_B2C/XQueries/ConsultarCampaniaProdRes"/>
+                            <con2:param name="consultarCampaniaProductoResponse1">
+                              <con2:path>$body/ser:consultarCampaniaProductoResponse</con2:path>
+                            </con2:param>
+                          </con2:xqueryTransform>
+                        </con3:expr>
+                      </con3:replace>
+                    </con1:responseTransform>
+                  </con1:route>
+                </con:actions>
+              </con:route-node>
+            </con:flow>
+          </con:branch>
+          <con:branch name="consultarPorProductoCliente">
+            <con:operator>equals</con:operator>
+            <con:value/>
+            <con:flow>
+              <con:route-node name="RouteNode14">
+                <con:context>
+                  <con2:varNsDecl namespace="http://www.example.org/ServiceProxyOMS/" prefix="ser"/>
+                </con:context>
+                <con:actions>
+                  <con1:route>
+                    <con2:id>_ActionId-1158582831811335007-1e218481.158123040e0.-7e76</con2:id>
+                    <con1:service ref="OSB_TouresBalon_B2C/Bussiness_services/BusinessServiceClientes" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                    <con1:operation>ConsultarPorProductoCliente</con1:operation>
+                    <con1:outboundTransform>
+                      <con3:replace varName="body" contents-only="true">
+                        <con2:id>_ActionId-1158582831811335007-1e218481.158123040e0.-7e61</con2:id>
+                        <con3:location>
+                          <con2:xpathText>.</con2:xpathText>
+                        </con3:location>
+                        <con3:expr>
+                          <con2:xqueryTransform>
+                            <con2:resource ref="OSB_TouresBalon_B2C/XQueries/ConsultarPorProdClienteReq"/>
+                            <con2:param name="consultarPorProductoCliente1">
+                              <con2:path>$body/ser:consultarPorProductoCliente</con2:path>
+                            </con2:param>
+                          </con2:xqueryTransform>
+                        </con3:expr>
+                      </con3:replace>
+                    </con1:outboundTransform>
+                    <con1:responseTransform>
+                      <con3:replace varName="body" contents-only="true">
+                        <con2:id>_ActionId-1158582831811335007-1e218481.158123040e0.-7e4b</con2:id>
+                        <con3:location>
+                          <con2:xpathText>./ser:consultarPorProductoClienteResponse</con2:xpathText>
+                        </con3:location>
+                        <con3:expr>
+                          <con2:xqueryTransform>
+                            <con2:resource ref="OSB_TouresBalon_B2C/XQueries/ConsultarPorProdClienteRes"/>
+                            <con2:param name="consultarPorProductoClienteResponse1">
+                              <con2:path>$body/ser:consultarPorProductoClienteResponse</con2:path>
+                            </con2:param>
+                          </con2:xqueryTransform>
+                        </con3:expr>
+                      </con3:replace>
+                    </con1:responseTransform>
+                  </con1:route>
+                </con:actions>
+              </con:route-node>
+            </con:flow>
+          </con:branch>
+          <con:branch name="actualizarCliente">
+            <con:operator>equals</con:operator>
+            <con:value/>
+            <con:flow>
+              <con:route-node name="RouteNode15">
+                <con:context>
+                  <con2:varNsDecl namespace="http://www.example.org/ServiceProxyOMS/" prefix="ser"/>
+                </con:context>
+                <con:actions>
+                  <con1:route>
+                    <con2:id>_ActionId-1158582831811335007-1e218481.158123040e0.-7e2d</con2:id>
+                    <con1:service ref="OSB_TouresBalon_B2C/Bussiness_services/BusinessServiceClientes" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                    <con1:operation>ActualizarCliente</con1:operation>
+                    <con1:outboundTransform>
+                      <con3:replace varName="body" contents-only="true">
+                        <con2:id>_ActionId-1158582831811335007-1e218481.158123040e0.-7e16</con2:id>
+                        <con3:location>
+                          <con2:xpathText>.</con2:xpathText>
+                        </con3:location>
+                        <con3:expr>
+                          <con2:xqueryTransform>
+                            <con2:resource ref="OSB_TouresBalon_B2C/XQueries/ActClienteReq"/>
+                            <con2:param name="actualizarCliente1">
+                              <con2:path>$body/ser:actualizarCliente</con2:path>
+                            </con2:param>
+                          </con2:xqueryTransform>
+                        </con3:expr>
+                      </con3:replace>
+                    </con1:outboundTransform>
+                    <con1:responseTransform>
+                      <con3:replace varName="body" contents-only="true">
+                        <con2:id>_ActionId-1158582831811335007-1e218481.158123040e0.-7df7</con2:id>
+                        <con3:location>
+                          <con2:xpathText>./ser:actualizarClienteResponse</con2:xpathText>
+                        </con3:location>
+                        <con3:expr>
+                          <con2:xqueryTransform>
+                            <con2:resource ref="OSB_TouresBalon_B2C/XQueries/ActClienteRes"/>
+                            <con2:param name="actualizarClienteResponse1">
+                              <con2:path>$body/ser:actualizarClienteResponse</con2:path>
+                            </con2:param>
+                          </con2:xqueryTransform>
+                        </con3:expr>
+                      </con3:replace>
+                    </con1:responseTransform>
+                  </con1:route>
+                </con:actions>
+              </con:route-node>
+            </con:flow>
+          </con:branch>
+          <con:branch name="consultarRankingAbiertasOrdenes">
+            <con:operator>equals</con:operator>
+            <con:value/>
+            <con:flow>
+              <con:route-node name="RouteNode16">
+                <con:context>
+                  <con2:varNsDecl namespace="http://www.example.org/ServiceProxyOMS/" prefix="ser"/>
+                </con:context>
+                <con:actions>
+                  <con1:route>
+                    <con2:id>_ActionId-1158582831811335007-1e218481.158123040e0.-7de2</con2:id>
+                    <con1:service ref="OSB_TouresBalon_B2C/Bussiness_services/BusinessServiceOrdenes" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                    <con1:operation>ConsultarRankingAbiertasOrdenes</con1:operation>
+                    <con1:outboundTransform>
+                      <con3:replace varName="body" contents-only="true">
+                        <con2:id>_ActionId-1158582831811335007-1e218481.158123040e0.-7dce</con2:id>
+                        <con3:location>
+                          <con2:xpathText>.</con2:xpathText>
+                        </con3:location>
+                        <con3:expr>
+                          <con2:xqueryTransform>
+                            <con2:resource ref="OSB_TouresBalon_B2C/XQueries/ConsultarRnkAbiertasOrdReq"/>
+                          </con2:xqueryTransform>
+                        </con3:expr>
+                      </con3:replace>
+                    </con1:outboundTransform>
+                    <con1:responseTransform>
+                      <con3:replace varName="body" contents-only="true">
+                        <con2:id>_ActionId-1158582831811335007-1e218481.158123040e0.-7dbc</con2:id>
+                        <con3:location>
+                          <con2:xpathText>./ser:consultarRankingAbiertasOrdenesResponse</con2:xpathText>
+                        </con3:location>
+                        <con3:expr>
+                          <con2:xqueryTransform>
+                            <con2:resource ref="OSB_TouresBalon_B2C/XQueries/ConsultarRnkAbiertasOrdRes"/>
+                            <con2:param name="consultarRankingAbiertasOrdenesResponse1">
+                              <con2:path>$body/ser:consultarRankingAbiertasOrdenesResponse</con2:path>
+                            </con2:param>
+                          </con2:xqueryTransform>
+                        </con3:expr>
+                      </con3:replace>
+                    </con1:responseTransform>
+                  </con1:route>
+                </con:actions>
+              </con:route-node>
+            </con:flow>
+          </con:branch>
+          <con:branch name="actualizarEstatusCliente">
+            <con:operator>equals</con:operator>
+            <con:value/>
+            <con:flow>
+              <con:route-node name="RouteNode17">
+                <con:context>
+                  <con2:varNsDecl namespace="http://www.example.org/ServiceProxyOMS/" prefix="ser"/>
+                </con:context>
+                <con:actions>
+                  <con1:route>
+                    <con2:id>_ActionId-1158582831811335007-1e218481.158123040e0.-7d9d</con2:id>
+                    <con1:service ref="OSB_TouresBalon_B2C/Bussiness_services/BusinessServiceClientes" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                    <con1:operation>ActualizarEstatusCliente</con1:operation>
+                    <con1:outboundTransform>
+                      <con3:replace contents-only="true" varName="body">
+                        <con2:id>_ActionId-1158582831811335007-1e218481.158123040e0.-7d86</con2:id>
+                        <con3:location>
+                          <con2:xpathText>.</con2:xpathText>
+                        </con3:location>
+                        <con3:expr>
+                          <con2:xqueryTransform>
+                            <con2:resource ref="OSB_TouresBalon_B2C/XQueries/ActualizarStatusClienteReq"/>
+                            <con2:param name="actualizarEstatusCliente1">
+                              <con2:path>$body/ser:actualizarEstatusCliente</con2:path>
+                            </con2:param>
+                          </con2:xqueryTransform>
+                        </con3:expr>
+                      </con3:replace>
+                    </con1:outboundTransform>
+                    <con1:responseTransform>
+                      <con3:replace varName="body" contents-only="true">
+                        <con2:id>_ActionId-1158582831811335007-1e218481.158123040e0.-7d6d</con2:id>
+                        <con3:location>
+                          <con2:xpathText>./ser:actualizarEstatusClienteResponse</con2:xpathText>
+                        </con3:location>
+                        <con3:expr>
+                          <con2:xqueryTransform>
+                            <con2:resource ref="OSB_TouresBalon_B2C/XQueries/ActualizarStatusClienteRes"/>
+                            <con2:param name="actualizarEstatusClienteResponse1">
+                              <con2:path>$body/ser:actualizarEstatusClienteResponse</con2:path>
+                            </con2:param>
+                          </con2:xqueryTransform>
+                        </con3:expr>
+                      </con3:replace>
+                    </con1:responseTransform>
+                  </con1:route>
+                </con:actions>
+              </con:route-node>
+            </con:flow>
+          </con:branch>
+          <con:branch name="consultarRangoCerradoOrdenes">
+            <con:operator>equals</con:operator>
+            <con:value/>
+            <con:flow>
+              <con:route-node name="RouteNode18">
+                <con:context>
+                  <con2:varNsDecl namespace="http://www.example.org/ServiceProxyOMS/" prefix="ser"/>
+                </con:context>
+                <con:actions>
+                  <con1:route>
+                    <con2:id>_ActionId-1158582831811335007-1e218481.158123040e0.-7d53</con2:id>
+                    <con1:service ref="OSB_TouresBalon_B2C/Bussiness_services/BusinessServiceOrdenes" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                    <con1:operation>ConsultarRangoCerradoOrdenes</con1:operation>
+                    <con1:outboundTransform>
+                      <con3:replace varName="body" contents-only="true">
+                        <con2:id>_ActionId-1158582831811335007-1e218481.158123040e0.-7d40</con2:id>
+                        <con3:location>
+                          <con2:xpathText>.</con2:xpathText>
+                        </con3:location>
+                        <con3:expr>
+                          <con2:xqueryTransform>
+                            <con2:resource ref="OSB_TouresBalon_B2C/XQueries/ConsultarRangoCerradoOrdReq"/>
+                            <con2:param name="consultarRangoCerradoOrdenes1">
+                              <con2:path>$body/ser:consultarRangoCerradoOrdenes</con2:path>
+                            </con2:param>
+                          </con2:xqueryTransform>
+                        </con3:expr>
+                      </con3:replace>
+                    </con1:outboundTransform>
+                    <con1:responseTransform>
+                      <con3:replace varName="body" contents-only="true">
+                        <con2:id>_ActionId-1158582831811335007-1e218481.158123040e0.-7d30</con2:id>
+                        <con3:location>
+                          <con2:xpathText>./ser:consultarRangoCerradoOrdenesResponse</con2:xpathText>
+                        </con3:location>
+                        <con3:expr>
+                          <con2:xqueryTransform>
+                            <con2:resource ref="OSB_TouresBalon_B2C/XQueries/ConsultarRangoCerradoOrdRes"/>
+                            <con2:param name="consultarRangoCerradoOrdenesResponse1">
+                              <con2:path>$body/ser:consultarRangoCerradoOrdenesResponse</con2:path>
+                            </con2:param>
+                          </con2:xqueryTransform>
+                        </con3:expr>
+                      </con3:replace>
+                    </con1:responseTransform>
+                  </con1:route>
+                </con:actions>
+              </con:route-node>
+            </con:flow>
+          </con:branch>
+          <con:default-branch>
+            <con:flow>
+              <con:pipeline-node name="UnsupportedOperations">
+                <con:request>UnsupportedOperations_request</con:request>
+                <con:response>UnsupportedOperations_response</con:response>
+              </con:pipeline-node>
+            </con:flow>
+          </con:default-branch>
+        </con:branch-table>
+      </con:branch-node>
+    </con:flow>
+  </ser:router>
+</xml-fragment>
