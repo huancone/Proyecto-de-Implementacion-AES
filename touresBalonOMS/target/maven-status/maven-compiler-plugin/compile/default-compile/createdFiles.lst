@@ -39,6 +39,7 @@ com/aes/touresbalon/touresbalonoms/wsdl/client/ActualizarContraseniaClienteFault
 com/aes/touresbalon/touresbalonoms/wsdl/client/ConsultarRankingAbiertasOrdenesResponse.class
 com/aes/touresbalon/touresbalonoms/wsdl/client/ConsultarRankingFechaProductoFault_Exception.class
 com/aes/touresbalon/touresbalonoms/wsdl/client/Cliente.class
+com/aes/touresbalon/touresbalonoms/utilities/OmsUtil.class
 com/aes/touresbalon/touresbalonoms/services/ProductoService.class
 com/aes/touresbalon/touresbalonoms/wsdl/client/GestionTarifa.class
 com/aes/touresbalon/touresbalonoms/wsdl/client/Orden.class

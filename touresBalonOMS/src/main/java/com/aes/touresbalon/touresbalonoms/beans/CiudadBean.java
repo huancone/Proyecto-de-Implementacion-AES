@@ -5,6 +5,8 @@
  */
 package com.aes.touresbalon.touresbalonoms.beans;
 
+import com.aes.touresbalon.touresbalonoms.wsdl.client.Ciudad;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -20,7 +22,15 @@ public class CiudadBean {
     private Integer idCiudad;
     private String pais;
     private List<TarifaValoresBean> tipoCiudad;
-
+    
+    
+    public Ciudad getCiudadObj(){
+        Ciudad cb = new Ciudad();
+        cb.setIdCiudad(idCiudad);
+        cb.setPais(pais);
+        return cb;
+    }
+    
     /**
      * @return the idCiudad
      */

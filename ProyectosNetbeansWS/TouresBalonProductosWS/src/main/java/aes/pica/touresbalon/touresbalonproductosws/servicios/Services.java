@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Set;
 import javax.jws.WebService;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
@@ -60,7 +61,7 @@ public class Services {
         if (null != tipoConsulta) {
             switch (tipoConsulta) {
                 case DESCRIPCION:
-                    strsql = "from Producto where descripcion like :valorbuscar";
+                    strsql = "from Producto where descripcion like :valorbuscar and fecha_salida >= GETDATE()";
                     q = sessionProductos.createQuery(strsql)
                             .setParameter("valorbuscar", "%" + cadenaConsulta + "%");
                     lstpro = q.list();
@@ -140,22 +141,20 @@ public class Services {
 
         Query q = null;
         List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto> lstpro = new ArrayList<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto>();
-        
+
         List<Producto> lstprod = new ArrayList<Producto>();
-              
-        strsql="SELECT dbo.PRODUCTO.* FROM dbo.CAMPANIAS INNER JOIN dbo.PRODUCTO ON PRODUCTO.id_producto = CAMPANIAS.id_producto WHERE GETDATE()>=fecha_inicio AND GETDATE() <= fecha_fin " ;
+
+        strsql = "SELECT Producto.* FROM Campanias INNER JOIN Producto ON Producto.id_Producto = Campanias.id_Producto WHERE GETDATE()>= Campanias.fecha_Inicio AND GETDATE() <= Campanias.fecha_Fin ";
 //        q=sessionProductos.createSQLQuery(strsql);
 //                
 
 //         strsql="Select Prod.idProducto, Prod.ciudad, Prod.tarifaEspectaculo, Prod.tarifaHospedaje, Prod.tarifaTransporte, Prod.espectaculo, Prod.descripcion, Prod.fechaSalida, Prod.fechaLlegada, Prod.fechaEspectaculo, Prod.urlImagen FROM Producto as Prod INNER JOIN Prod.campaniases as Cam";
-        q=sessionProductos.createSQLQuery(strsql).addEntity(aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto.class) ;
-              
-        lstpro = (List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto>)q.list();  
-       
-        
-        for(int i=0; i < lstpro.size(); i++)
-        {
-            com.touresbalon.productostouresbalon.Producto prod = new  com.touresbalon.productostouresbalon.Producto();
+        q = sessionProductos.createSQLQuery(strsql).addEntity(aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto.class);
+
+        lstpro = (List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto>) q.list();
+
+        for (int i = 0; i < lstpro.size(); i++) {
+            com.touresbalon.productostouresbalon.Producto prod = new com.touresbalon.productostouresbalon.Producto();
             com.touresbalon.productostouresbalon.Ciudad ciu = new com.touresbalon.productostouresbalon.Ciudad();
 
             ciu.setIdCiudad(lstpro.get(i).getCiudad().getIdCiudad());
@@ -259,43 +258,304 @@ public class Services {
         sessionOrdenes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
         txOrdenes = sessionOrdenes.beginTransaction();
 
+        aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaEspectaculo TarifaEspectaculoEntity = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaEspectaculo();
         List<TarifaValores> lstRankingEspectaculos = new ArrayList<>();
-        List<Orders> lstOrdenesEntity = new ArrayList<>();
+        List<Integer> lstProductos = new ArrayList<>();
 
-        List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaEspectaculo> lstRankingEspectaculosEntity = new ArrayList<>();
-        
-        String strSQL = "From Ordenes ";
+        String strsql = "WITH "
+                + "  ProductoS AS "
+                + "  ( "
+                + "    SELECT "
+                + "      Items.prodid, "
+                + "      COUNT ( * ) CANTIDAD "
+                + "    FROM "
+                + "      Orders "
+                + "    INNER JOIN Items "
+                + "    ON "
+                + "      Orders.ordid = Items.ordid "
+                + "    WHERE "
+                + "      Orders.ORDERDATE BETWEEN TO_DATE ( '" + fechaInicial + "', 'yyyymmdd' ) AND TO_DATE ( '" + fechaFin + "', 'yyyymmdd' ) "
+                + "    GROUP BY "
+                + "      Items.prodid "
+                + "    ORDER BY "
+                + "      Items.prodid "
+                + "  ) "
+                + "SELECT "
+                + "  ProductoS.prodid, "
+                + "FROM "
+                + "  ProductoS "
+                + "WHERE "
+                + "  ROWNUM <= 10";
+
+        Query query = sessionOrdenes.createQuery(strsql);
+        lstProductos = query.list();
+
+        for (Integer p : lstProductos) {
+            TarifaValores t = new TarifaValores();
+            strsql = "from tarifaEspectaculo where productos.idProducto = " + p;
+            query = sessionProductos.createQuery(strsql);
+            TarifaEspectaculoEntity = (aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaEspectaculo) query;
+            t.setId(TarifaEspectaculoEntity.getIdEspectaculo());
+            t.setNombreTipo(TarifaEspectaculoEntity.getNombreEspectaculo());
+            t.setPrecio(TarifaEspectaculoEntity.getPrecio());
+            lstRankingEspectaculos.add(t);
+        }
+
         return lstRankingEspectaculos;
     }
 
-    public java.util.List<com.touresbalon.productostouresbalon.Producto> consultarRankingFechaProducto(javax.xml.datatype.XMLGregorianCalendar fechaInicial, javax.xml.datatype.XMLGregorianCalendar fechaFin) throws ConsultarRankingFechaProductoFault_Exception {
-        
-        throw new UnsupportedOperationException("Not implemented yet.");
+    public java.util.List<com.touresbalon.productostouresbalon.Producto> consultarRankingFechaProducto(javax.xml.datatype.XMLGregorianCalendar fechaInicial, javax.xml.datatype.XMLGregorianCalendar fechaFin) throws ConsultarRankingFechaProductoFault_Exception, DatatypeConfigurationException {
+
+        sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
+        txProductos = sessionProductos.beginTransaction();
+
+        sessionOrdenes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
+        txOrdenes = sessionOrdenes.beginTransaction();
+
+        List<Producto> lstRankingProductos = new ArrayList<>();
+        List<Integer> lstProductos = new ArrayList<>();
+
+        String strsql = "WITH "
+                + "  ProductoS AS "
+                + "  ( "
+                + "    SELECT "
+                + "      Items.prodid, "
+                + "      COUNT ( * ) CANTIDAD "
+                + "    FROM "
+                + "      Orders "
+                + "    INNER JOIN Items "
+                + "    ON "
+                + "      Orders.ordid = Items.ordid "
+                + "    WHERE "
+                + "      Orders.ORDERDATE BETWEEN TO_DATE ( '" + fechaInicial + "', 'yyyymmdd' ) AND TO_DATE ( '" + fechaFin + "', 'yyyymmdd' ) "
+                + "    GROUP BY "
+                + "      Items.prodid "
+                + "    ORDER BY "
+                + "      Items.prodid "
+                + "  ) "
+                + "SELECT "
+                + "  ProductoS.prodid, "
+                + "FROM "
+                + "  ProductoS "
+                + "WHERE "
+                + "  ROWNUM <= 10";
+
+        Query query = sessionOrdenes.createQuery(strsql);
+        lstProductos = query.list();
+
+        for (Integer p : lstProductos) {
+            strsql = "from Producto where productos.idProducto = " + p;
+            query = sessionProductos.createQuery(strsql);
+            List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto> lstProductEntity = new ArrayList<>();
+            lstProductEntity = query.list();
+            for (aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto prod : lstProductEntity) {
+                Producto p1 = new Producto();
+                p1.setIdProducto(prod.getIdProducto());
+                p1.setEspectaculo(prod.getEspectaculo());
+                p1.setDescripcion(prod.getDescripcion());
+
+                TarifaValores tarifaEspectaculo = new TarifaValores();
+                tarifaEspectaculo.setId(prod.getTarifaEspectaculo().getIdEspectaculo());
+                tarifaEspectaculo.setNombreTipo(prod.getTarifaEspectaculo().getNombreEspectaculo());
+                tarifaEspectaculo.setPrecio(prod.getTarifaEspectaculo().getPrecio());
+                p1.setTipoEspectaculo(tarifaEspectaculo);
+
+                TarifaValores tarifaTransporte = new TarifaValores();
+                tarifaTransporte.setId(prod.getTarifaTransporte().getIdTransporte());
+                tarifaTransporte.setNombreTipo(prod.getTarifaTransporte().getNombreTransporte());
+                tarifaTransporte.setPrecio(prod.getTarifaTransporte().getPrecio());
+                p1.setTipoTransporte(tarifaTransporte);
+
+                TarifaValores tarifaHospedaje = new TarifaValores();
+                tarifaHospedaje.setId(prod.getTarifaHospedaje().getIdHospedaje());
+                tarifaHospedaje.setNombreTipo(prod.getTarifaHospedaje().getNombreHospedaje());
+                tarifaHospedaje.setPrecio(prod.getTarifaHospedaje().getPrecio());
+                p1.setTipoHospedaje(tarifaHospedaje);
+
+                p1.setFechaSalida(toGregorian(prod.getFechaSalida()));
+                p1.setFechaLlegada(toGregorian(prod.getFechaLlegada()));
+
+                p1.setImagenProducto(prod.getUrlImagen());
+                lstRankingProductos.add(p1);
+            }
+
+        }
+
+        return lstRankingProductos;
     }
 
     @SuppressWarnings("empty-statement")
     public com.touresbalon.productostouresbalon.TipoGestionCampaniaResponse gestionCampaniaProducto(com.touresbalon.productostouresbalon.TipoAccion tipoOperacion, com.touresbalon.productostouresbalon.Campania campania) throws GestionCampaniaProductoFault_Exception {
-      
+
         String sqlQuery;
         Query q = null;
         int idcamp;
-        com.touresbalon.productostouresbalon.TipoGestionCampaniaResponse respuesta = new com.touresbalon.productostouresbalon.TipoGestionCampaniaResponse();   
+        com.touresbalon.productostouresbalon.TipoGestionCampaniaResponse respuesta = new com.touresbalon.productostouresbalon.TipoGestionCampaniaResponse();
+//        if (null!=tipoOperacion  )
+        switch (tipoOperacion) {
+            case ADICIONAR: {
+                sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
+                txProductos = sessionProductos.beginTransaction();
+                aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias camp = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias();
+                aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto prod = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto();
+                prod.setIdProducto(campania.getIdProducto().getIdProducto());
+                camp.setProducto(prod);
+                camp.setFechaInicio(toDate(campania.getFechaInicioCampania()));
+                camp.setFechaFin(toDate(campania.getFechaFinCampania()));
+                sessionProductos.save(camp);
+                if (camp.getIdCampania() > 0) {
+                    respuesta.setRespuesta(RespuestaGenerica.OK);
+                    respuesta.setIdCampania(camp.getIdCampania());
+                } else {
+                    respuesta.setRespuesta(RespuestaGenerica.KO);
+                }
+                txProductos.commit();
+
+                break;
+            }
+            case MODIFICAR:
+
+                try {
+                    idcamp = Integer.valueOf(campania.getIdProducto().getEspectaculo());
+                } catch (Exception e) {
+                    idcamp = 0;
+                }
+                sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
+                txProductos = sessionProductos.beginTransaction();
+                sqlQuery = "from Campanias where idCampania = :idcampana";
+                q = sessionProductos.createQuery(sqlQuery).setParameter("idcampana", idcamp);
+                List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias> lstcamp = q.list();
+                if (lstcamp.size() > 0) {
+
+                    sessionProductos.clear();
+                    aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias camp = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias();
+
+                    aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto prod = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto();
+                    prod.setIdProducto(campania.getIdProducto().getIdProducto());
+
+                    camp.setProducto(prod);
+
+                    camp.setIdCampania(idcamp);
+
+                    camp.setFechaInicio(toDate(campania.getFechaInicioCampania()));
+                    camp.setFechaFin(toDate(campania.getFechaFinCampania()));
+
+                    sessionProductos.update(camp);
+
+                    if (camp.getIdCampania() > 0) {
+                        respuesta.setRespuesta(RespuestaGenerica.OK);
+                    } else {
+                        respuesta.setRespuesta(RespuestaGenerica.KO);
+                    }
+
+                } else {
+                    respuesta.setRespuesta(RespuestaGenerica.KO);
+                }
+
+                txProductos.commit();
+                break;
+            case ELIMINAR: {
+
+                aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias camp = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias();
+//                aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto prod = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto();
+//                prod.setIdProducto( campania.getIdProducto().getIdProducto());
+//                camp.setProducto(prod);
+                try {
+                    idcamp = Integer.valueOf(campania.getIdProducto().getEspectaculo());
+
+                } catch (Exception e) {
+                    idcamp = 0;
+
+                }
+
+                sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
+                txProductos = sessionProductos.beginTransaction();
+                sqlQuery = "from Campanias where idCampania = :idcampana";
+                q = sessionProductos.createQuery(sqlQuery).setParameter("idcampana", idcamp);
+                List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias> lstcampa = q.list();
+                if (lstcampa.size() > 0) {
+
+                    sessionProductos.clear();
+                    camp.setIdCampania(idcamp);
+//                camp.setFechaInicio(toDate(campania.getFechaInicioCampania()));
+//                camp.setFechaFin(toDate(campania.getFechaFinCampania()));
+                    sessionProductos.delete(camp);
+                    if (camp.getIdCampania() > 0) {
+                        respuesta.setRespuesta(RespuestaGenerica.OK);
+                    } else {
+                        respuesta.setRespuesta(RespuestaGenerica.KO);
+                    }
+                } else {
+                    respuesta.setRespuesta(RespuestaGenerica.KO);
+                }
+                txProductos.commit();
+                break;
+            }
+            default:
+                respuesta.setRespuesta(RespuestaGenerica.KO);
+                break;
+        }
+
+        return respuesta;
+    }
+
+    public com.touresbalon.productostouresbalon.TipoGestionProductoResponse gestionProducto(com.touresbalon.productostouresbalon.TipoAccion tipoOperacion, com.touresbalon.productostouresbalon.Producto producto) throws GestionProductoFault_Exception {
+
+        String sqlQuery;
+        Query q = null;
+        int idprod;
+        com.touresbalon.productostouresbalon.TipoGestionProductoResponse respuesta = new com.touresbalon.productostouresbalon.TipoGestionProductoResponse();   
 //        if (null!=tipoOperacion  )
         switch (tipoOperacion) {
             case ADICIONAR:{
                 sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
                 txProductos = sessionProductos.beginTransaction();
-                aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias camp = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias();
                 aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto prod = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto();
-                prod.setIdProducto( campania.getIdProducto().getIdProducto());
-                camp.setProducto(prod);
-                camp.setFechaInicio(toDate(campania.getFechaInicioCampania()));
-                camp.setFechaFin(toDate(campania.getFechaFinCampania()));
-                sessionProductos.save(camp);
-                if (camp.getIdCampania() >0)
+                aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Ciudad ciu = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Ciudad();
+                aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaEspectaculo taresp = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaEspectaculo();
+                aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaHospedaje tarhos = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaHospedaje();
+                aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaTransporte tartran = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaTransporte();
+                
+                ciu.setIdCiudad(producto.getCiudadEspectaculo().getIdCiudad());
+                ciu.setPais(producto.getCiudadEspectaculo().getPais());
+                
+                prod.setCiudad(ciu);
+                prod.setDescripcion(producto.getDescripcion());
+                prod.setEspectaculo(producto.getEspectaculo());
+                prod.setFechaEspectaculo(toDate(producto.getFechaEspectaculo()));
+                prod.setFechaLlegada(toDate(producto.getFechaLlegada()));
+                prod.setFechaSalida(toDate(producto.getFechaSalida()));
+                prod.setIdProducto(producto.getIdProducto());
+                
+                taresp.setIdEspectaculo(producto.getTipoEspectaculo().getId());
+                taresp.setNombreEspectaculo(producto.getTipoEspectaculo().getNombreTipo());
+                taresp.setPrecio(producto.getTipoEspectaculo().getPrecio());
+                
+                tarhos.setIdHospedaje(producto.getTipoHospedaje().getId());
+                tarhos.setNombreHospedaje(producto.getTipoHospedaje().getNombreTipo());
+                tarhos.setPrecio(producto.getTipoHospedaje().getPrecio());
+                
+                 tartran.setIdTransporte(producto.getTipoTransporte().getId());
+                tartran.setNombreTransporte(producto.getTipoTransporte().getNombreTipo());
+                tartran.setPrecio(producto.getTipoTransporte().getPrecio());
+                
+                prod.setTarifaEspectaculo(taresp);
+                prod.setTarifaHospedaje(tarhos);
+                prod.setTarifaTransporte(tartran);
+             
+                prod.setUrlImagen(producto.getImagenProducto());
+                
+                
+                //ciu.setNombreCiudad());
+
+            
+                
+                sessionProductos.save(prod);
+                if (prod.getIdProducto() >0)
                 {
                     respuesta.setRespuesta(RespuestaGenerica.OK);
-                    respuesta.setIdCampania(camp.getIdCampania());
+                    respuesta.setIdProducto(prod.getIdProducto());
+                    
                 }
                 else
                     respuesta.setRespuesta(RespuestaGenerica.KO);
@@ -307,35 +567,58 @@ public class Services {
                 
                 try
                 {
-                    idcamp=Integer.valueOf(campania.getIdProducto().getEspectaculo());
+                    idprod=Integer.valueOf(producto.getIdProducto());
                 } catch (Exception e){
-                    idcamp=0;
+                    idprod=0;
                 }   
                 sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
                 txProductos = sessionProductos.beginTransaction();
-                sqlQuery = "from Campanias where idCampania = :idcampana";
-                q=sessionProductos.createQuery(sqlQuery).setParameter("idcampana", idcamp);
-                List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias> lstcamp =q.list();
-                if (lstcamp.size()>0)
+                sqlQuery = "from Productos where id_producto = :idproducto";
+                q=sessionProductos.createQuery(sqlQuery).setParameter("idproducto", idprod);
+                List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto> lstprod =q.list();
+                if (lstprod.size()>0)
                 {
                    
                     sessionProductos.clear();
-                    aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias camp = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias();
-                    
                     aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto prod = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto();
-                    prod.setIdProducto( campania.getIdProducto().getIdProducto());
-                    
-                    camp.setProducto(prod);
-                    
-                    camp.setIdCampania(idcamp);
-                    
-                    
-                    camp.setFechaInicio(toDate(campania.getFechaInicioCampania()));
-                    camp.setFechaFin(toDate(campania.getFechaFinCampania()));
+                    aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Ciudad ciu = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Ciudad();
+                    aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaEspectaculo taresp = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaEspectaculo();
+                    aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaHospedaje tarhos = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaHospedaje();
+                    aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaTransporte tartran = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaTransporte();
+                
+                    ciu.setIdCiudad(producto.getCiudadEspectaculo().getIdCiudad());
+                    ciu.setPais(producto.getCiudadEspectaculo().getPais());
+                
+                    prod.setCiudad(ciu);
+                    prod.setDescripcion(producto.getDescripcion());
+                    prod.setEspectaculo(producto.getEspectaculo());
+                    prod.setFechaEspectaculo(toDate(producto.getFechaEspectaculo()));
+                    prod.setFechaLlegada(toDate(producto.getFechaLlegada()));
+                    prod.setFechaSalida(toDate(producto.getFechaSalida()));
+                    prod.setIdProducto(producto.getIdProducto());
+                
+                    taresp.setIdEspectaculo(producto.getTipoEspectaculo().getId());
+                    taresp.setNombreEspectaculo(producto.getTipoEspectaculo().getNombreTipo());
+                    taresp.setPrecio(producto.getTipoEspectaculo().getPrecio());
+                
+                    tarhos.setIdHospedaje(producto.getTipoHospedaje().getId());
+                    tarhos.setNombreHospedaje(producto.getTipoHospedaje().getNombreTipo());
+                    tarhos.setPrecio(producto.getTipoHospedaje().getPrecio());
+                
+                     tartran.setIdTransporte(producto.getTipoTransporte().getId());
+                    tartran.setNombreTransporte(producto.getTipoTransporte().getNombreTipo());
+                    tartran.setPrecio(producto.getTipoTransporte().getPrecio());
+                
+                    prod.setTarifaEspectaculo(taresp);
+                    prod.setTarifaHospedaje(tarhos);
+                    prod.setTarifaTransporte(tartran);
+             
+                    prod.setUrlImagen(producto.getImagenProducto());
+                
                    
-                    sessionProductos.update(camp);
+                    sessionProductos.update(prod);
                     
-                    if (camp.getIdCampania() >0)
+                    if (prod.getIdProducto() >0)
                         respuesta.setRespuesta(RespuestaGenerica.OK);
                     else
                         respuesta.setRespuesta(RespuestaGenerica.KO);
@@ -348,33 +631,31 @@ public class Services {
                 break;
             case ELIMINAR:{
         
-                aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias camp = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias();
-//                aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto prod = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto();
+                
+                aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto prod = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto();
 //                prod.setIdProducto( campania.getIdProducto().getIdProducto());
 //                camp.setProducto(prod);
                 try
                 {
-                    idcamp=Integer.valueOf(campania.getIdProducto().getEspectaculo());
-                   
+                    idprod=Integer.valueOf(producto.getIdProducto());
                 } catch (Exception e){
-                    idcamp=0;
-                   
-                }    
+                    idprod=0;
+                }     
                 
                   sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
                 txProductos = sessionProductos.beginTransaction();
-                  sqlQuery = "from Campanias where idCampania = :idcampana";
-                q=sessionProductos.createQuery(sqlQuery).setParameter("idcampana", idcamp);
-                List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias> lstcampa =q.list();
-                if (lstcampa.size()>0)
+                  sqlQuery = "from Productos where id_producto = :idproducto";
+                q=sessionProductos.createQuery(sqlQuery).setParameter("idproducto", idprod);
+                List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto> lstproducto =q.list();
+                if (lstproducto.size()>0)
                 {
                     
                      sessionProductos.clear();
-                    camp.setIdCampania(idcamp);
+                    prod.setIdProducto(idprod);
 //                camp.setFechaInicio(toDate(campania.getFechaInicioCampania()));
 //                camp.setFechaFin(toDate(campania.getFechaFinCampania()));
-                    sessionProductos.delete(camp);
-                    if (camp.getIdCampania() >0)
+                    sessionProductos.delete(prod);
+                    if (prod.getIdProducto() >0)
                         respuesta.setRespuesta(RespuestaGenerica.OK);
                     else
                         respuesta.setRespuesta(RespuestaGenerica.KO);
@@ -390,196 +671,9 @@ public class Services {
         }
        
         return respuesta;
-    }
 
-    public com.touresbalon.productostouresbalon.TipoGestionProductoResponse gestionProducto(com.touresbalon.productostouresbalon.TipoAccion tipoOperacion, com.touresbalon.productostouresbalon.Producto producto) throws GestionProductoFault_Exception {
-        
-//        String sqlQuery;
-//        Query q = null;
-//        int idcamp;
-//        com.touresbalon.productostouresbalon.TipoGestionProductoResponse respuesta = new com.touresbalon.productostouresbalon.TipoGestionProductoResponse();   
-////        if (null!=tipoOperacion  )
-//        switch (tipoOperacion) {
-//            case ADICIONAR:{
-//                sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
-//                txProductos = sessionProductos.beginTransaction();
-//                 com.touresbalon.productostouresbalon.Ciudad ciu = new com.touresbalon.productostouresbalon.Ciudad();
-//
-//            ciu.setIdCiudad(lstpro.get(i).getCiudad().getIdCiudad());
-//            ciu.setPais(lstpro.get(i).getCiudad().getNombreCiudad() + " - " + lstpro.get(i).getCiudad().getPais());
-//            
-//            
-//                aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto prod = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto();
-//                aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Ciudad ciu = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Ciudad();
-//                ciu.getIdCiudad(producto.getCiudadEspectaculo().getIdCiudad());
-//                
-//                prod.setCiudad();
-//                
-//                sessionProductos.save(prod);
-//                if (camp.getIdCampania() >0)
-//                {
-//                    respuesta.setRespuesta(RespuestaGenerica.OK);
-//                    respuesta.setIdCampania(camp.getIdCampania());
-//                }
-//                else
-//                    respuesta.setRespuesta(RespuestaGenerica.KO);
-//                txProductos.commit();
-//
-//                    break;
-//                }
-//            case MODIFICAR:
-//                
-//                try
-//                {
-//                    idcamp=Integer.valueOf(campania.getIdProducto().getEspectaculo());
-//                } catch (Exception e){
-//                    idcamp=0;
-//                }   
-//                sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
-//                txProductos = sessionProductos.beginTransaction();
-//                sqlQuery = "from Campanias where idCampania = :idcampana";
-//                q=sessionProductos.createQuery(sqlQuery).setParameter("idcampana", idcamp);
-//                List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias> lstcamp =q.list();
-//                if (lstcamp.size()>0)
-//                {
-//                   
-//                    sessionProductos.clear();
-//                    aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias camp = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias();
-//                    
-//                    aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto prod = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto();
-//                    prod.setIdProducto( campania.getIdProducto().getIdProducto());
-//                    
-//                    camp.setProducto(prod);
-//                    
-//                    camp.setIdCampania(idcamp);
-//                    
-//                    
-//                    camp.setFechaInicio(toDate(campania.getFechaInicioCampania()));
-//                    camp.setFechaFin(toDate(campania.getFechaFinCampania()));
-//                   
-//                    sessionProductos.update(camp);
-//                    
-//                    if (camp.getIdCampania() >0)
-//                        respuesta.setRespuesta(RespuestaGenerica.OK);
-//                    else
-//                        respuesta.setRespuesta(RespuestaGenerica.KO);
-//                    
-//                }
-//                else
-//                    respuesta.setRespuesta(RespuestaGenerica.KO);
-//                
-//                txProductos.commit();
-//                break;
-//            case ELIMINAR:{
-//        
-//                aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias camp = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias();
-////                aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto prod = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto();
-////                prod.setIdProducto( campania.getIdProducto().getIdProducto());
-////                camp.setProducto(prod);
-//                try
-//                {
-//                    idcamp=Integer.valueOf(campania.getIdProducto().getEspectaculo());
-//                   
-//                } catch (Exception e){
-//                    idcamp=0;
-//                   
-//                }    
-//                
-//                  sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
-//                txProductos = sessionProductos.beginTransaction();
-//                  sqlQuery = "from Campanias where idCampania = :idcampana";
-//                q=sessionProductos.createQuery(sqlQuery).setParameter("idcampana", idcamp);
-//                List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Campanias> lstcampa =q.list();
-//                if (lstcampa.size()>0)
-//                {
-//                    
-//                     sessionProductos.clear();
-//                    camp.setIdCampania(idcamp);
-////                camp.setFechaInicio(toDate(campania.getFechaInicioCampania()));
-////                camp.setFechaFin(toDate(campania.getFechaFinCampania()));
-//                    sessionProductos.delete(camp);
-//                    if (camp.getIdCampania() >0)
-//                        respuesta.setRespuesta(RespuestaGenerica.OK);
-//                    else
-//                        respuesta.setRespuesta(RespuestaGenerica.KO);
-//                }
-//                else
-//                    respuesta.setRespuesta(RespuestaGenerica.KO);
-//                txProductos.commit();
-//                break;
-//                }
-//            default:
-//                respuesta.setRespuesta(RespuestaGenerica.KO);
-//                break;
-//        }
-//       
-//        return respuesta;
-        
-        
-        
-        
-        
-        
-        //TODO implement this method
-//        String res = "";
-//        sessionClientes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
-//        tx = sessionClientes.beginTransaction();
 
-//        Address addr = new Address();
-//        addr.setZip("1010");
-//        addr.setCity("bogota");
-//        addr.setAddressType("calle");
-//        addr.setCountry("Colombia");
-//        Integer id = (Integer) sessionClientes.save(addr);
-//        res = "este es el id: " + id;
-        //Query q = sessionClientes.
-//        Query q = sessionClientes.createQuery("from Address");
-//        List<Address> listAdd = q.list();
-//        res = "ORACLE: "+listAdd.size();
-//        tx.commit();
-//
-//        sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
-//        tx = sessionProductos.beginTransaction();
-//        TarifaCiudad tc = new TarifaCiudad();
-//        tc.setPrecio(BigDecimal.ZERO);
-//        tc.setTipoCiudad("bogota");
-//        id = (Integer) sessionProductos.save(tc);
-//        res += " - SQLSERVER este es el id: "+id;
-//        tx.commit();
-//        sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
-//        tx = sessionProductos.beginTransaction();
-//        Query q = sessionProductos.createQuery("from TarifaCiudad");
-//        List<TarifaCiudad> listProd = q.list();
-//        res += " - SQLSERVER: "+listProd.size();
-//        tx.commit();
-//        sessionClientes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
-//        tx = sessionClientes.beginTransaction();
-//        Query query = sessionClientes.createSQLQuery(
-//                "select 1 from dual");
-//        int rel = query.list().size();
-//        tx.commit();
-//
-//        String res = "";
-//        
-//        if (rel == 1) {
-//            res = "funciono Oracle";
-//        } else {
-//            res += "no funciono Oracle";
-//        }
-//        sessionProductos = ProductosHU.getSessionFactory().getCurrentSession(); //SELECT GETDATE()
-//        tx = sessionProductos.beginTransaction();
-//        query = sessionProductos.createSQLQuery(
-//                "SELECT GETDATE()");
-//        rel = query.list().size();
-//        tx.commit();
-//        
-//        if (rel == 1) {
-//            res += " - funciono SQL Server";
-//        } else {
-//            res += "- no funciono SQL Server";
-//        }
-//        return res;
-        throw new UnsupportedOperationException("Not implemented yet.");
+
     }
 
     public com.touresbalon.productostouresbalon.TipoGestionTarifaResponse gestionTarifa(com.touresbalon.productostouresbalon.TipoAccion tipoOperacion, com.touresbalon.productostouresbalon.TipoTarifa tipoTarifa, com.touresbalon.productostouresbalon.TarifaValores tarifa) throws GestionTarifaFault_Exception {
@@ -587,9 +681,83 @@ public class Services {
         throw new UnsupportedOperationException("Not implemented yet.");
     }
 
-    public java.util.List<com.touresbalon.productostouresbalon.Producto> consultaTop5Productos(java.util.List<java.lang.Integer> idProducto) throws ConsultaTop5ProductosFault_Exception {
-        //TODO implement this method
-        throw new UnsupportedOperationException("Not implemented yet.");
+    public java.util.List<com.touresbalon.productostouresbalon.Producto> consultaTop5Productos(java.util.List<java.lang.Integer> idProducto) throws ConsultaTop5ProductosFault_Exception, DatatypeConfigurationException {
+        sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
+        txProductos = sessionProductos.beginTransaction();
+
+        sessionOrdenes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
+        txOrdenes = sessionOrdenes.beginTransaction();
+
+        List<Producto> lstRankingProductos = new ArrayList<>();
+        List<Integer> lstProductos = new ArrayList<>();
+
+        String strsql = "WITH "
+                + "  ProductoS AS "
+                + "  ( "
+                + "    SELECT "
+                + "      Items.prodid, "
+                + "      COUNT ( * ) CANTIDAD "
+                + "    FROM "
+                + "      Orders "
+                + "    INNER JOIN Items "
+                + "    ON "
+                + "      Orders.ordid = Items.ordid "
+                + "    WHERE "
+                + "      Items.prodid = " + idProducto
+                + "    GROUP BY "
+                + "      Items.prodid "
+                + "    ORDER BY "
+                + "      Items.prodid "
+                + "  ) "
+                + "SELECT "
+                + "  ProductoS.prodid, "
+                + "FROM "
+                + "  ProductoS "
+                + "WHERE "
+                + "  ROWNUM <= 10";
+
+        Query query = sessionOrdenes.createQuery(strsql);
+        lstProductos = query.list();
+
+        for (Integer p : lstProductos) {
+            strsql = "from Producto where productos.idProducto = " + p;
+            query = sessionProductos.createQuery(strsql);
+            List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto> lstProductEntity = new ArrayList<>();
+            lstProductEntity = query.list();
+            for (aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto prod : lstProductEntity) {
+                Producto p1 = new Producto();
+                p1.setIdProducto(prod.getIdProducto());
+                p1.setEspectaculo(prod.getEspectaculo());
+                p1.setDescripcion(prod.getDescripcion());
+
+                TarifaValores tarifaEspectaculo = new TarifaValores();
+                tarifaEspectaculo.setId(prod.getTarifaEspectaculo().getIdEspectaculo());
+                tarifaEspectaculo.setNombreTipo(prod.getTarifaEspectaculo().getNombreEspectaculo());
+                tarifaEspectaculo.setPrecio(prod.getTarifaEspectaculo().getPrecio());
+                p1.setTipoEspectaculo(tarifaEspectaculo);
+
+                TarifaValores tarifaTransporte = new TarifaValores();
+                tarifaTransporte.setId(prod.getTarifaTransporte().getIdTransporte());
+                tarifaTransporte.setNombreTipo(prod.getTarifaTransporte().getNombreTransporte());
+                tarifaTransporte.setPrecio(prod.getTarifaTransporte().getPrecio());
+                p1.setTipoTransporte(tarifaTransporte);
+
+                TarifaValores tarifaHospedaje = new TarifaValores();
+                tarifaHospedaje.setId(prod.getTarifaHospedaje().getIdHospedaje());
+                tarifaHospedaje.setNombreTipo(prod.getTarifaHospedaje().getNombreHospedaje());
+                tarifaHospedaje.setPrecio(prod.getTarifaHospedaje().getPrecio());
+                p1.setTipoHospedaje(tarifaHospedaje);
+
+                p1.setFechaSalida(toGregorian(prod.getFechaSalida()));
+                p1.setFechaLlegada(toGregorian(prod.getFechaLlegada()));
+
+                p1.setImagenProducto(prod.getUrlImagen());
+                lstRankingProductos.add(p1);
+            }
+
+        }
+
+        return lstRankingProductos;
     }
 
     public Date toDate(XMLGregorianCalendar calendar) {
