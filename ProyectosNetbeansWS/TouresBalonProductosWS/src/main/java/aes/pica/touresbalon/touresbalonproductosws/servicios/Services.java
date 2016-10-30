@@ -65,7 +65,7 @@ public class Services {
                     q = sessionProductos.createQuery(strsql)
                             .setParameter("valorbuscar", "%" + cadenaConsulta + "%");
                     lstpro = q.list();
-                    ;
+                    
                     break;
                 case ID:
                     System.out.println("por ID");
@@ -573,7 +573,7 @@ public class Services {
                 }   
                 sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
                 txProductos = sessionProductos.beginTransaction();
-                sqlQuery = "from Productos where id_producto = :idproducto";
+                sqlQuery = "from Producto where idProducto = :idproducto";
                 q=sessionProductos.createQuery(sqlQuery).setParameter("idproducto", idprod);
                 List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto> lstprod =q.list();
                 if (lstprod.size()>0)
@@ -633,8 +633,7 @@ public class Services {
         
                 
                 aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto prod = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto();
-//                prod.setIdProducto( campania.getIdProducto().getIdProducto());
-//                camp.setProducto(prod);
+
                 try
                 {
                     idprod=Integer.valueOf(producto.getIdProducto());
@@ -644,7 +643,7 @@ public class Services {
                 
                   sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
                 txProductos = sessionProductos.beginTransaction();
-                  sqlQuery = "from Productos where id_producto = :idproducto";
+                  sqlQuery = "from Producto where idProducto = :idproducto";
                 q=sessionProductos.createQuery(sqlQuery).setParameter("idproducto", idprod);
                 List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto> lstproducto =q.list();
                 if (lstproducto.size()>0)
@@ -652,8 +651,7 @@ public class Services {
                     
                      sessionProductos.clear();
                     prod.setIdProducto(idprod);
-//                camp.setFechaInicio(toDate(campania.getFechaInicioCampania()));
-//                camp.setFechaFin(toDate(campania.getFechaFinCampania()));
+
                     sessionProductos.delete(prod);
                     if (prod.getIdProducto() >0)
                         respuesta.setRespuesta(RespuestaGenerica.OK);
