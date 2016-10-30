@@ -20,20 +20,20 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * @author alexanderbarbosaayala
  */
 public class OmsUtil {
-    public static XMLGregorianCalendar stringToXMLGreogrianCalendar(String fecha) 
+    public static XMLGregorianCalendar stringToXMLGreogrianCalendar(Date fecha) 
             throws ParseException, DatatypeConfigurationException{
-        DateFormat formatter = new SimpleDateFormat("yyyyMMdd");
-        Date fechaUtil = formatter.parse(fecha);
+//        DateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+//        Date fechaUtil = formatter.parse(fecha);
         GregorianCalendar gc = new GregorianCalendar();
         DatatypeFactory df = DatatypeFactory.newInstance();
-        gc.setTimeInMillis(fechaUtil.getTime());
+        gc.setTimeInMillis(fecha.getTime());
         return df.newXMLGregorianCalendar(gc);
     }
     
-    public static String xmlgGregorianCalendarToString(XMLGregorianCalendar fecha){
-        Date fechaUtil = new Date();
-        DateFormat formatter = new SimpleDateFormat("yyyyMMdd");
-        fechaUtil = fecha.toGregorianCalendar().getTime();
-        return formatter.format(fechaUtil);
+    public static Date xmlgGregorianCalendarToString(XMLGregorianCalendar fecha){
+//        DateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+//        Date fechaUtil = fecha.toGregorianCalendar().getTime();
+//        return formatter.format(fechaUtil);
+        return fecha.toGregorianCalendar().getTime();
     }
 }

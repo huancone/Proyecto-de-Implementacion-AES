@@ -6,19 +6,21 @@
 package com.aes.touresbalon.touresbalonoms.beans;
 
 import com.aes.touresbalon.touresbalonoms.services.ProductoService;
+import com.aes.touresbalon.touresbalonoms.utilities.OmsUtil;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.Ciudad;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.Producto;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.TarifaValores;
+import java.text.ParseException;
+import java.util.Date;
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
-import org.primefaces.event.TabChangeEvent;
-import org.primefaces.event.TabCloseEvent;
-import com.aes.touresbalon.touresbalonoms.utilities.OmsUtil;
-import java.text.ParseException;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.XMLGregorianCalendar;
+import org.primefaces.event.TabChangeEvent;
+import org.primefaces.event.TabCloseEvent;
 
 /**
  *
@@ -33,14 +35,14 @@ public class ProductosBean {
      */
     public ProductosBean() {
     }
-     
+   
     private int idProducto;
     private String espectaculo;
     private String descripcion;
     private Ciudad ciudadEspectaculo;
-    private String fechaLlegada;
-    private String fechaSalida;
-    private String fechaEspectaculo;
+    private Date fechaLlegada;
+    private Date fechaSalida;
+    private Date fechaEspectaculo;
     private TarifaValores tipoTransporte;
     private TarifaValores tipoEspectaculo;
     private TarifaValores tipoHospedaje;
@@ -62,23 +64,25 @@ public class ProductosBean {
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
     
-    public void crearProducto() throws ParseException, DatatypeConfigurationException{
-        XMLGregorianCalendar fechaLlegadaServ = OmsUtil.stringToXMLGreogrianCalendar(this.fechaLlegada);
-        XMLGregorianCalendar fechaSalidaServ = OmsUtil.stringToXMLGreogrianCalendar(this.fechaSalida);
-        XMLGregorianCalendar fechaEspectaculoServ = OmsUtil.stringToXMLGreogrianCalendar(this.fechaEspectaculo);
-        Ciudad cb = new Ciudad();
-        Producto producto = new Producto();
-        producto.setIdProducto(idProducto);
-        producto.setEspectaculo(espectaculo);
-        producto.setDescripcion(descripcion);
-        producto.setFechaLlegada(fechaLlegadaServ);
-        producto.setFechaSalida(fechaSalidaServ);
-        producto.setFechaEspectaculo(fechaEspectaculoServ);
-        producto.setCiudadEspectaculo(ciudadEspectaculo);
-        producto.setCiudadEspectaculo(cb);
-        service.crearProducto(producto);
-     }
-     
+    public void crearProducto() throws ParseException, DatatypeConfigurationException {
+        if (this.fechaEspectaculo != null) {
+            XMLGregorianCalendar fechaLlegadaServ = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaLlegada());
+            XMLGregorianCalendar fechaSalidaServ = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaSalida());
+            XMLGregorianCalendar fechaEspectaculoServ = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaEspectaculo());
+            Ciudad cb = new Ciudad();
+            Producto producto = new Producto();
+            producto.setIdProducto(this.getIdProducto());
+            producto.setEspectaculo(this.getEspectaculo());
+            producto.setDescripcion(this.getDescripcion());
+            producto.setFechaLlegada(fechaLlegadaServ);
+            producto.setFechaSalida(fechaSalidaServ);
+            producto.setFechaEspectaculo(fechaEspectaculoServ);
+            producto.setCiudadEspectaculo(this.getCiudadEspectaculo());
+            producto.setCiudadEspectaculo(cb);
+            service.crearProducto(producto);
+        }
+    }
+
     public void editarProducto(){
         if (!isShowPanelEdit()){
             setShowPanelEdit(true);
@@ -127,27 +131,27 @@ public class ProductosBean {
         this.ciudadEspectaculo = ciudadEspectaculo;
     }
 
-    public String getFechaLlegada() {
+    public Date getFechaLlegada() {
         return fechaLlegada;
     }
 
-    public void setFechaLlegada(String fechaLlegada) {
+    public void setFechaLlegada(Date fechaLlegada) {
         this.fechaLlegada = fechaLlegada;
     }
 
-    public String getFechaSalida() {
+    public Date getFechaSalida() {
         return fechaSalida;
     }
 
-    public void setFechaSalida(String fechaSalida) {
+    public void setFechaSalida(Date fechaSalida) {
         this.fechaSalida = fechaSalida;
     }
 
-    public String getFechaEspectaculo() {
+    public Date getFechaEspectaculo() {
         return fechaEspectaculo;
     }
 
-    public void setFechaEspectaculo(String fechaEspectaculo) {
+    public void setFechaEspectaculo(Date fechaEspectaculo) {
         this.fechaEspectaculo = fechaEspectaculo;
     }
 
