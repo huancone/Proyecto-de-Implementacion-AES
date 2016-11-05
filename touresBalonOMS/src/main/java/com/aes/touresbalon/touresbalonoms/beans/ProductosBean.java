@@ -10,9 +10,9 @@ import com.aes.touresbalon.touresbalonoms.utilities.OmsUtil;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.Ciudad;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.Producto;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.TarifaValores;
+import com.aes.touresbalon.touresbalonoms.wsdl.client.TipoConsultaProducto;
 import java.text.ParseException;
 import java.util.Date;
-import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -98,6 +98,7 @@ public class ProductosBean {
     
     public void consultarProducto(){
         showPanelEdit = true;
+        service.consultarProducto(TipoConsultaProducto.DESCRIPCION, this.getTxtConsulta());
     }
 
     public int getIdProducto() {

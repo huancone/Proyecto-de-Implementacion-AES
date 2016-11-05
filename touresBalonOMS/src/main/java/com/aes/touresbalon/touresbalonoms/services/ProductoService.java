@@ -6,15 +6,12 @@
 package com.aes.touresbalon.touresbalonoms.services;
 
 import com.aes.touresbalon.touresbalonoms.wsdl.client.ConsultarProductoFault_Exception;
-import com.aes.touresbalon.touresbalonoms.wsdl.client.GestionTarifaFault_Exception;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.Producto;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.ServiceProxyOMS;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.ServiceProxyOMS_Service;
-import com.aes.touresbalon.touresbalonoms.wsdl.client.TarifaValores;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.TipoAccion;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.TipoConsultaProducto;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.TipoGestionProductoResponse;
-import com.aes.touresbalon.touresbalonoms.wsdl.client.TipoTarifa;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
