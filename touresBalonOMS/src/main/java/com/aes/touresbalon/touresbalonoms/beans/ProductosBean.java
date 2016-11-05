@@ -5,11 +5,12 @@
  */
 package com.aes.touresbalon.touresbalonoms.beans;
 
-import com.aes.touresbalon.touresbalonoms.services.ProductoService;
+import com.aes.touresbalon.touresbalonoms.services.Services;
 import com.aes.touresbalon.touresbalonoms.utilities.OmsUtil;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.Ciudad;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.Producto;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.TarifaValores;
+import com.aes.touresbalon.touresbalonoms.wsdl.client.TipoAccion;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.TipoConsultaProducto;
 import java.text.ParseException;
 import java.util.Date;
@@ -52,7 +53,9 @@ public class ProductosBean {
     private String txtConsulta;
     private boolean showPanelEdit;
     
-    ProductoService service = new ProductoService();
+    private TipoAccion tipoAccion;
+    
+    Services service = new Services();
     
     public void onTabChange(TabChangeEvent event) {
         FacesMessage msg = new FacesMessage("Tab Changed", "Active Tab: " + event.getTab().getTitle());
@@ -79,20 +82,53 @@ public class ProductosBean {
             producto.setFechaEspectaculo(fechaEspectaculoServ);
             producto.setCiudadEspectaculo(this.getCiudadEspectaculo());
             producto.setCiudadEspectaculo(cb);
-            service.crearProducto(producto);
+            this.setTipoAccion(TipoAccion.ADICIONAR);
+            service.gestionProducto(producto, this.getTipoAccion());
         }
     }
 
-    public void editarProducto(){
+    public void editarProducto() throws ParseException, DatatypeConfigurationException{
         if (!isShowPanelEdit()){
-            setShowPanelEdit(true);
+            if (this.fechaEspectaculo != null) {
+            XMLGregorianCalendar fechaLlegadaServ = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaLlegada());
+            XMLGregorianCalendar fechaSalidaServ = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaSalida());
+            XMLGregorianCalendar fechaEspectaculoServ = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaEspectaculo());
+            Ciudad cb = new Ciudad();
+            Producto producto = new Producto();
+            producto.setIdProducto(this.getIdProducto());
+            producto.setEspectaculo(this.getEspectaculo());
+            producto.setDescripcion(this.getDescripcion());
+            producto.setFechaLlegada(fechaLlegadaServ);
+            producto.setFechaSalida(fechaSalidaServ);
+            producto.setFechaEspectaculo(fechaEspectaculoServ);
+            producto.setCiudadEspectaculo(this.getCiudadEspectaculo());
+            producto.setCiudadEspectaculo(cb);
+            this.setTipoAccion(TipoAccion.MODIFICAR);
+            service.gestionProducto(producto, this.getTipoAccion());
+        }
         }else{
             setShowPanelEdit(false);
         }
     }
     
-    public void eliminarProducto(){
-        service.eliminarProducto();
+    public void eliminarProducto() throws ParseException, DatatypeConfigurationException{
+        if (this.fechaEspectaculo != null) {
+            XMLGregorianCalendar fechaLlegadaServ = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaLlegada());
+            XMLGregorianCalendar fechaSalidaServ = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaSalida());
+            XMLGregorianCalendar fechaEspectaculoServ = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaEspectaculo());
+            Ciudad cb = new Ciudad();
+            Producto producto = new Producto();
+            producto.setIdProducto(this.getIdProducto());
+            producto.setEspectaculo(this.getEspectaculo());
+            producto.setDescripcion(this.getDescripcion());
+            producto.setFechaLlegada(fechaLlegadaServ);
+            producto.setFechaSalida(fechaSalidaServ);
+            producto.setFechaEspectaculo(fechaEspectaculoServ);
+            producto.setCiudadEspectaculo(this.getCiudadEspectaculo());
+            producto.setCiudadEspectaculo(cb);
+            this.setTipoAccion(TipoAccion.ELIMINAR);
+            service.gestionProducto(producto, this.getTipoAccion());
+        }
     }
     
     
@@ -230,5 +266,20 @@ public class ProductosBean {
     public void setShowPanelEdit(boolean showPanelEdit) {
         this.showPanelEdit = showPanelEdit;
     }
+
+    /**
+     * @return the tipoAccion
+     */
+    public TipoAccion getTipoAccion() {
+        return tipoAccion;
+    }
+
+    /**
+     * @param tipoAccion the tipoAccion to set
+     */
+    public void setTipoAccion(TipoAccion tipoAccion) {
+        this.tipoAccion = tipoAccion;
+    }
+    
     
 }
