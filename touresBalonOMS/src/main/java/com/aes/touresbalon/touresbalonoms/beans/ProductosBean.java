@@ -95,6 +95,7 @@ public class ProductosBean {
         service.eliminarProducto();
     }
     
+    
     public void consultarProducto(){
         showPanelEdit = true;
     }
