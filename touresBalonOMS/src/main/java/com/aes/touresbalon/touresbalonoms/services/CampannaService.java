@@ -25,10 +25,24 @@ public class CampannaService {
         //parametros de entrada
         TipoAccion tipoOperacion = TipoAccion.ADICIONAR;
         Campania campania = new Campania();
-        String endpointURL = "http://localhost:8088/mockServiceProxyOMSSOAP";        
+        String endpointURL = "http://localhost:8080/mockServiceProxyOMSSOAP";        
         BindingProvider bp = (BindingProvider) port;
         bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, endpointURL);
         
+
+    }
+    
+    public void editarCampanna(){
+        //conf del servicio
+        ServiceProxyOMS_Service service = new ServiceProxyOMS_Service();
+        ServiceProxyOMS port = service.getServiceProxyOMSSOAP();
+        
+        //parametros de entrada
+        TipoAccion tipoOperacion = TipoAccion.MODIFICAR;
+        Campania campania = new Campania();
+        String endpointURL = "http://localhost:8080/mockServiceProxyOMSSOAP";        
+        BindingProvider bp = (BindingProvider) port;
+        bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, endpointURL);
         
 
     }

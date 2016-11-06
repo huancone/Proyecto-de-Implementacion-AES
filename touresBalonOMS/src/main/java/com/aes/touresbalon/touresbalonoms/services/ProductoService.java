@@ -5,15 +5,14 @@
  */
 package com.aes.touresbalon.touresbalonoms.services;
 
-import com.aes.touresbalon.touresbalonoms.wsdl.client.GestionTarifaFault_Exception;
+import com.aes.touresbalon.touresbalonoms.wsdl.client.ConsultarProductoFault_Exception;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.Producto;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.ServiceProxyOMS;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.ServiceProxyOMS_Service;
-import com.aes.touresbalon.touresbalonoms.wsdl.client.TarifaValores;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.TipoAccion;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.TipoConsultaProducto;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.TipoGestionProductoResponse;
-import com.aes.touresbalon.touresbalonoms.wsdl.client.TipoTarifa;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.ws.BindingProvider;
@@ -101,28 +100,25 @@ public class ProductoService {
         }
     }
     
-    public void consultarProducto(TipoConsultaProducto tipoConsulta, String consulta){
-        ServiceProxyOMS_Service service = new ServiceProxyOMS_Service();
+    public void consultarProducto(TipoConsultaProducto tipoConsulta, String consulta) {
+        try {
+            ServiceProxyOMS_Service service = new ServiceProxyOMS_Service();
             ServiceProxyOMS port = service.getServiceProxyOMSSOAP();
             
-            //parametros de entrada
-            TipoAccion tipoOperacion = TipoAccion.ADICIONAR;
+            //parametros de entradar
 //            Producto producto = new Producto();
 //            producto.setDescripcion("nuevo producto");
-            String endpointURL = "http://localhost:8088/mockServiceProxyOMSSOAP";        
+            String endpointURL = "http://localhost:8089/mockConsultaProducto";        
             BindingProvider bp = (BindingProvider) port;
             bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, endpointURL);
 
             //Llamado al servicio
-           // TipoGestionProductoResponse result = port.gestionProducto(tipoOperacion, producto);
-           TarifaValores tv = new TarifaValores();
-           tv.setId(12312);
-           tv.setNombreTipo("Bogota");
-           tv.setPrecio(123345);
-           
-        try {
-            port.gestionTarifa(TipoAccion.ADICIONAR, TipoTarifa.CIUDAD, tv);
-        } catch (GestionTarifaFault_Exception ex) {
+            List result = port.consultarProducto(tipoConsulta, consulta);
+            
+            // Procesamiento de la rta del servicio
+            System.out.println("Resultado con idProducto = "+result.get(0));
+            
+        } catch (ConsultarProductoFault_Exception ex) {
             Logger.getLogger(ProductoService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

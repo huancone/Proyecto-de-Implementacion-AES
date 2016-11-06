@@ -250,3 +250,4 @@ ModelManifest.xml
 /ProyectosNetbeansWS/TouresBalonOrdenesWS/target/
 /ProyectosNetbeansWS/TouresBalonClientesWS - copia/target/
 */target/**
+ProyectosNetbeansWS/TouresBalonProductosWS/src/main/java/aes/pica/touresbalon/touresbalonproductosws/servicios/Services.java

@@ -5,20 +5,23 @@
  */
 package com.aes.touresbalon.touresbalonoms.beans;
 
-import com.aes.touresbalon.touresbalonoms.services.ProductoService;
+import com.aes.touresbalon.touresbalonoms.services.Services;
+import com.aes.touresbalon.touresbalonoms.utilities.OmsUtil;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.Ciudad;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.Producto;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.TarifaValores;
+import com.aes.touresbalon.touresbalonoms.wsdl.client.TipoAccion;
+import com.aes.touresbalon.touresbalonoms.wsdl.client.TipoConsultaProducto;
+import java.text.ParseException;
+import java.util.Date;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
-import org.primefaces.event.TabChangeEvent;
-import org.primefaces.event.TabCloseEvent;
-import com.aes.touresbalon.touresbalonoms.utilities.OmsUtil;
-import java.text.ParseException;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.XMLGregorianCalendar;
+import org.primefaces.event.TabChangeEvent;
+import org.primefaces.event.TabCloseEvent;
 
 /**
  *
@@ -33,14 +36,14 @@ public class ProductosBean {
      */
     public ProductosBean() {
     }
-     
+   
     private int idProducto;
     private String espectaculo;
     private String descripcion;
     private Ciudad ciudadEspectaculo;
-    private String fechaLlegada;
-    private String fechaSalida;
-    private String fechaEspectaculo;
+    private Date fechaLlegada;
+    private Date fechaSalida;
+    private Date fechaEspectaculo;
     private TarifaValores tipoTransporte;
     private TarifaValores tipoEspectaculo;
     private TarifaValores tipoHospedaje;
@@ -50,7 +53,9 @@ public class ProductosBean {
     private String txtConsulta;
     private boolean showPanelEdit;
     
-    ProductoService service = new ProductoService();
+    private TipoAccion tipoAccion;
+    
+    Services service = new Services();
     
     public void onTabChange(TabChangeEvent event) {
         FacesMessage msg = new FacesMessage("Tab Changed", "Active Tab: " + event.getTab().getTitle());
@@ -62,37 +67,73 @@ public class ProductosBean {
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
     
-    public void crearProducto() throws ParseException, DatatypeConfigurationException{
-        XMLGregorianCalendar fechaLlegadaServ = OmsUtil.stringToXMLGreogrianCalendar(this.fechaLlegada);
-        XMLGregorianCalendar fechaSalidaServ = OmsUtil.stringToXMLGreogrianCalendar(this.fechaSalida);
-        XMLGregorianCalendar fechaEspectaculoServ = OmsUtil.stringToXMLGreogrianCalendar(this.fechaEspectaculo);
-        Ciudad cb = new Ciudad();
-        Producto producto = new Producto();
-        producto.setIdProducto(idProducto);
-        producto.setEspectaculo(espectaculo);
-        producto.setDescripcion(descripcion);
-        producto.setFechaLlegada(fechaLlegadaServ);
-        producto.setFechaSalida(fechaSalidaServ);
-        producto.setFechaEspectaculo(fechaEspectaculoServ);
-        producto.setCiudadEspectaculo(ciudadEspectaculo);
-        producto.setCiudadEspectaculo(cb);
-        service.crearProducto(producto);
-     }
-     
-    public void editarProducto(){
+    public void crearProducto() throws ParseException, DatatypeConfigurationException {
+        if (this.fechaEspectaculo != null) {
+            XMLGregorianCalendar fechaLlegadaServ = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaLlegada());
+            XMLGregorianCalendar fechaSalidaServ = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaSalida());
+            XMLGregorianCalendar fechaEspectaculoServ = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaEspectaculo());
+            Ciudad cb = new Ciudad();
+            Producto producto = new Producto();
+            producto.setIdProducto(this.getIdProducto());
+            producto.setEspectaculo(this.getEspectaculo());
+            producto.setDescripcion(this.getDescripcion());
+            producto.setFechaLlegada(fechaLlegadaServ);
+            producto.setFechaSalida(fechaSalidaServ);
+            producto.setFechaEspectaculo(fechaEspectaculoServ);
+            producto.setCiudadEspectaculo(this.getCiudadEspectaculo());
+            producto.setCiudadEspectaculo(cb);
+            this.setTipoAccion(TipoAccion.ADICIONAR);
+            service.gestionProducto(producto, this.getTipoAccion());
+        }
+    }
+
+    public void editarProducto() throws ParseException, DatatypeConfigurationException{
         if (!isShowPanelEdit()){
-            setShowPanelEdit(true);
+            if (this.fechaEspectaculo != null) {
+            XMLGregorianCalendar fechaLlegadaServ = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaLlegada());
+            XMLGregorianCalendar fechaSalidaServ = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaSalida());
+            XMLGregorianCalendar fechaEspectaculoServ = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaEspectaculo());
+            Ciudad cb = new Ciudad();
+            Producto producto = new Producto();
+            producto.setIdProducto(this.getIdProducto());
+            producto.setEspectaculo(this.getEspectaculo());
+            producto.setDescripcion(this.getDescripcion());
+            producto.setFechaLlegada(fechaLlegadaServ);
+            producto.setFechaSalida(fechaSalidaServ);
+            producto.setFechaEspectaculo(fechaEspectaculoServ);
+            producto.setCiudadEspectaculo(this.getCiudadEspectaculo());
+            producto.setCiudadEspectaculo(cb);
+            this.setTipoAccion(TipoAccion.MODIFICAR);
+            service.gestionProducto(producto, this.getTipoAccion());
+        }
         }else{
             setShowPanelEdit(false);
         }
     }
     
-    public void eliminarProducto(){
-        service.eliminarProducto();
+    public void eliminarProducto() throws ParseException, DatatypeConfigurationException{
+        if (this.fechaEspectaculo != null) {
+            XMLGregorianCalendar fechaLlegadaServ = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaLlegada());
+            XMLGregorianCalendar fechaSalidaServ = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaSalida());
+            XMLGregorianCalendar fechaEspectaculoServ = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaEspectaculo());
+            Ciudad cb = new Ciudad();
+            Producto producto = new Producto();
+            producto.setIdProducto(this.getIdProducto());
+            producto.setEspectaculo(this.getEspectaculo());
+            producto.setDescripcion(this.getDescripcion());
+            producto.setFechaLlegada(fechaLlegadaServ);
+            producto.setFechaSalida(fechaSalidaServ);
+            producto.setFechaEspectaculo(fechaEspectaculoServ);
+            producto.setCiudadEspectaculo(this.getCiudadEspectaculo());
+            producto.setCiudadEspectaculo(cb);
+            this.setTipoAccion(TipoAccion.ELIMINAR);
+            service.gestionProducto(producto, this.getTipoAccion());
+        }
     }
     
     public void consultarProducto(){
         showPanelEdit = true;
+        service.consultarProducto(TipoConsultaProducto.DESCRIPCION, this.getTxtConsulta());
     }
 
     public int getIdProducto() {
@@ -127,27 +168,27 @@ public class ProductosBean {
         this.ciudadEspectaculo = ciudadEspectaculo;
     }
 
-    public String getFechaLlegada() {
+    public Date getFechaLlegada() {
         return fechaLlegada;
     }
 
-    public void setFechaLlegada(String fechaLlegada) {
+    public void setFechaLlegada(Date fechaLlegada) {
         this.fechaLlegada = fechaLlegada;
     }
 
-    public String getFechaSalida() {
+    public Date getFechaSalida() {
         return fechaSalida;
     }
 
-    public void setFechaSalida(String fechaSalida) {
+    public void setFechaSalida(Date fechaSalida) {
         this.fechaSalida = fechaSalida;
     }
 
-    public String getFechaEspectaculo() {
+    public Date getFechaEspectaculo() {
         return fechaEspectaculo;
     }
 
-    public void setFechaEspectaculo(String fechaEspectaculo) {
+    public void setFechaEspectaculo(Date fechaEspectaculo) {
         this.fechaEspectaculo = fechaEspectaculo;
     }
 
@@ -224,5 +265,20 @@ public class ProductosBean {
     public void setShowPanelEdit(boolean showPanelEdit) {
         this.showPanelEdit = showPanelEdit;
     }
+
+    /**
+     * @return the tipoAccion
+     */
+    public TipoAccion getTipoAccion() {
+        return tipoAccion;
+    }
+
+    /**
+     * @param tipoAccion the tipoAccion to set
+     */
+    public void setTipoAccion(TipoAccion tipoAccion) {
+        this.tipoAccion = tipoAccion;
+    }
+    
     
 }
