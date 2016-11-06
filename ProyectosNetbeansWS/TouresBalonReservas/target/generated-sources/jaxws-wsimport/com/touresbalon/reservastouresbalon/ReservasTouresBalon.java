@@ -25,10 +25,10 @@ public interface ReservasTouresBalon {
 
     /**
      * 
-     * @param itemTransporte
-     * @param itemEspectaculo
-     * @param itemCiudad
      * @param itemHospedaje
+     * @param itemEspectaculo
+     * @param itemTransporte
+     * @param itemCiudad
      * @param idOrden
      * @return
      *     returns com.touresbalon.reservastouresbalon.RespuestaGenerica
@@ -54,10 +54,10 @@ public interface ReservasTouresBalon {
 
     /**
      * 
-     * @param itemTransporte
-     * @param itemEspectaculo
-     * @param itemCiudad
      * @param itemHospedaje
+     * @param itemEspectaculo
+     * @param itemTransporte
+     * @param itemCiudad
      * @param idOrden
      * @return
      *     returns com.touresbalon.reservastouresbalon.RespuestaGenerica

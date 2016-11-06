@@ -12,6 +12,7 @@ import aes.pica.touresbalon.reservas.entidades.productos.Producto;
 import aes.pica.touresbalon.reservas.util.ClientesYOrdenesHU;
 import aes.pica.touresbalon.reservas.util.Constantes;
 import aes.pica.touresbalon.reservas.util.DannHU;
+import aes.pica.touresbalon.reservas.util.EmailSenderService;
 import aes.pica.touresbalon.reservas.util.ProductosHU;
 import aes.pica.touresbalon.tb_serviciosbolivariano.IServiciosBolivarianos;
 import aes.pica.touresbalon.tb_serviciosbolivariano.ServiciosBolivarianos;
@@ -33,7 +34,7 @@ import org.hibernate.Transaction;
  * @author jdtrujillop
  */
 @WebService(serviceName = "ReservasTouresBalon", portName = "ReservasTouresBalonSOAP", endpointInterface = "com.touresbalon.reservastouresbalon.ReservasTouresBalon", targetNamespace = "http://www.touresbalon.com/ReservasTouresBalon/", wsdlLocation = "WEB-INF/wsdl/ReservasTB.wsdl")
-public class Servicios {
+public class Servicios {    
 
     //Variables globlales
     // private Session sessionClientes;
@@ -165,8 +166,135 @@ public class Servicios {
     }
 
     public java.lang.String cancelarReserva(int idOrden) throws com.touresbalon.reservastouresbalon.CancelarReservaFault_Exception {
-        //TODO implement this method
-        throw new UnsupportedOperationException("Not implemented yet.");
+        
+        System.out.println("--------------------------------------------------");
+        System.out.println("INICIO ::: cancelarReserva");
+        
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Query q;
+        try {
+            sessionOrdenes = ClientesYOrdenesHU.getSessionFactory().openSession();
+            txOrdenes = sessionOrdenes.beginTransaction();
+            String strQuery = "from Orders where ordid = :idOrden";
+            q = sessionOrdenes.createQuery(strQuery);
+            q.setParameter("idOrden", idOrden);
+            Orders ord = (Orders) q.uniqueResult();
+
+            if (ord != null) {
+                Iterator<Items> iterator = ord.getItemses().iterator();
+                Items auxItem;
+                Producto prodAux;
+                sessionProductos = ProductosHU.getSessionFactory().openSession();
+                txProductos = sessionProductos.beginTransaction();
+                sessionDann = DannHU.getSessionFactory().openSession();
+                txDann = sessionDann.beginTransaction();
+                RespuestaGenerica resVal = RespuestaGenerica.OK;
+                while (iterator.hasNext()) {
+                    auxItem = iterator.next();
+                    System.out.println("El id del item es: " + auxItem.getItemid());
+                    System.out.println("El id del producto es: " + auxItem.getProdid());
+
+                    strQuery = "from Producto where idProducto = :idProducto";
+                    q = sessionProductos.createQuery(strQuery);
+                    q.setParameter("idProducto", auxItem.getProdid());
+                    prodAux = (Producto) q.uniqueResult();
+
+                    if (prodAux != null) {
+                        System.out.println("El Descripcion del producto es: " + prodAux.getDescripcion());
+                        System.out.println("El Espectaculo del producto es: " + prodAux.getEspectaculo());
+                        System.out.println("El Fecha Salida del producto es: " + df.format(prodAux.getFechaSalida()));
+                        System.out.println("El Fecha Espectactulo del producto es: " + df.format(prodAux.getFechaEspectaculo()));
+                        System.out.println("El Fecha Llegada del producto es: " + df.format(prodAux.getFechaLlegada()));
+
+                        //Si el transporte es Bolivariano se valida con los archivos plano
+                        if (prodAux.getTarifaTransporte().getNombreTransporte().equalsIgnoreCase(Constantes.TRANS_BOL)) {
+                            sb = new ServiciosBolivarianos(Constantes.RUTA_CONSULTA_BOL, Constantes.RUTA_RESERVA_BOL);
+
+                            boolean resultCreacionOrden = sb.cancelarReserva(idOrden);
+                            if (resultCreacionOrden == true) {
+                                System.out.println("Reserva " + Constantes.RUTA_RESERVA_BOL+ " cancelada correctamente");
+                                return "Reserva " + Constantes.RUTA_RESERVA_BOL+ " cancelada correctamente";
+                            } else {
+                                System.out.println("Error en la cancelación de la reserva" + Constantes.RUTA_RESERVA_BOL+ " ");
+                                return "Error en la cancelación de la reserva" + Constantes.RUTA_RESERVA_BOL+ " ";
+                            }
+
+                        } 
+                        //Si es el hotel Dann Carlton se consulta en la base de datos del Hotel para la disponibilidad
+                        else if (prodAux.getTarifaHospedaje().getNombreHospedaje().equalsIgnoreCase(Constantes.HOS_DANN)) {
+                            strQuery = "UPDATE \n"
+                                    + " TOURESBALON_RESERVATIONS \n"
+                                    + " WHERE\n"
+                                    + " ORDER_ID = :idProducto";
+                            
+                            q = sessionDann.createSQLQuery(strQuery).addEntity(PublicReservations.class);
+                            List listPB = q.list();
+                            int cntDann = listPB.size();
+                            if (cntDann > 0) {
+                                System.out.println("Reserva " + Constantes.HOS_DANN + " cancelada correctamente");
+                                return "Reserva " + Constantes.HOS_DANN + " cancelada correctamente";
+                            } else {
+                                System.out.println("Error en la cancelación de la reserva" + Constantes.HOS_DANN + " ");
+                                return "Error en la cancelación de la reserva" + Constantes.HOS_DANN + " ";
+                            }
+                        }
+                        
+                        // Si es el hotel Avianca se realiza el invoca a la operación "cancelarVuelo" 
+                        // del servicio "ServicioWebAvianca"
+                        else if (prodAux.getTarifaTransporte().getNombreTransporte().equalsIgnoreCase(Constantes.TRANS_AVI)) {
+                            //Invocación del servicio de Avianca
+                        }
+                        
+                        // Si es American Airlines se realiza el invoca a la operación "cancelFlight" 
+                        // del servicio "AAFlightsService"
+                        else if (prodAux.getTarifaTransporte().getNombreTransporte().equalsIgnoreCase(Constantes.TRANS_AIR)) {
+                            //Invocación del servicio de American Airlines
+                        }
+
+                        // Si es hotel Hilton se realiza el invoca a la operación "cancelRoom" 
+                        // del servicio "HiltonBookingService"
+                        else if (prodAux.getTarifaTransporte().getNombreTransporte().equalsIgnoreCase(Constantes.HOS_HIL)) {
+                            //Invocación del servicio del hotel Hilton
+                        }    
+                        else {
+                            EmailSenderService emailSenderService = new EmailSenderService();
+                            emailSenderService.sendEmail();
+                        }
+                        
+                        
+                        
+                    }
+                }
+            }
+            txDann.commit();
+            txProductos.commit();
+            txOrdenes.commit();
+
+        } catch (HibernateException e) {
+            if (txProductos != null) {
+                txProductos.rollback();
+            }
+            if (txOrdenes != null) {
+                txOrdenes.rollback();
+            }
+            if (txDann != null) {
+                txDann.rollback();
+            }
+            System.err.println("Error Hibernate:");
+            System.err.println(e.toString());
+        } catch (ServiciosBolivarianosExcepcion ex) {
+            System.err.println("Error Bolivariano");
+            System.err.println(ex.toString());
+        } finally {
+//            sessionDann.close();
+//            sessionProductos.close();
+            sessionOrdenes.close();
+        }
+       
+        System.out.println("FINAL  ::: cancelarReserva");
+        System.out.println("--------------------------------------------------");        
+        return "";
+        
     }
 
 }

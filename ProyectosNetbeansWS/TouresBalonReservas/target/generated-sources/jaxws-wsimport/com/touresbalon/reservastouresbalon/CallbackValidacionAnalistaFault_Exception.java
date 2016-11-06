@@ -23,8 +23,8 @@ public class CallbackValidacionAnalistaFault_Exception
 
     /**
      * 
-     * @param message
      * @param faultInfo
+     * @param message
      */
     public CallbackValidacionAnalistaFault_Exception(String message, CallbackValidacionAnalistaFault faultInfo) {
         super(message);
@@ -33,9 +33,9 @@ public class CallbackValidacionAnalistaFault_Exception
 
     /**
      * 
-     * @param message
      * @param faultInfo
      * @param cause
+     * @param message
      */
     public CallbackValidacionAnalistaFault_Exception(String message, CallbackValidacionAnalistaFault faultInfo, Throwable cause) {
         super(message, cause);

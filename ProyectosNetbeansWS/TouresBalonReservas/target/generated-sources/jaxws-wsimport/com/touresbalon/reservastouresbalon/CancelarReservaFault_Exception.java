@@ -23,8 +23,8 @@ public class CancelarReservaFault_Exception
 
     /**
      * 
-     * @param message
      * @param faultInfo
+     * @param message
      */
     public CancelarReservaFault_Exception(String message, CancelarReservaFault faultInfo) {
         super(message);
@@ -33,9 +33,9 @@ public class CancelarReservaFault_Exception
 
     /**
      * 
-     * @param message
      * @param faultInfo
      * @param cause
+     * @param message
      */
     public CancelarReservaFault_Exception(String message, CancelarReservaFault faultInfo, Throwable cause) {
         super(message, cause);

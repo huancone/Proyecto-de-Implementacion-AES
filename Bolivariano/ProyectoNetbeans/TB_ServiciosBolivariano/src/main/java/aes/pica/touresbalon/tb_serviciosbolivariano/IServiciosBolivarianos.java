@@ -28,4 +28,8 @@ public interface IServiciosBolivarianos {
     
     //Metodo para consultar archivo de reservas
     public List<TouresBalonOrdenVO> consultaReservas(String ordenId);
+    
+    //Metodo para cancelar una reserva
+    public boolean cancelarReserva(int ordenId); 
+    
 }
