@@ -105,7 +105,7 @@ public class ProductoService {
             ServiceProxyOMS_Service service = new ServiceProxyOMS_Service();
             ServiceProxyOMS port = service.getServiceProxyOMSSOAP();
             
-            //parametros de entrada
+            //parametros de entradar
 //            Producto producto = new Producto();
 //            producto.setDescripcion("nuevo producto");
             String endpointURL = "http://localhost:8089/mockConsultaProducto";        
