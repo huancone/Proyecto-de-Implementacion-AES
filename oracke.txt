@@ -1,0 +1,8 @@
+c:\PROGRA~1\Java\jre7\bin
+
+setup.exe -jreLoc C:\PROGRA~1\Java\jre7\bin
+
+rutaMocked
+http://192.168.56.1:8888/mockClientesTouresBalonSOAP   
+
+No
