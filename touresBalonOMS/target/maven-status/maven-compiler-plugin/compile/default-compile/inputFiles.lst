@@ -20,6 +20,7 @@
 /Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/target/generated-sources/jaxws-wsimport/com/aes/touresbalon/touresbalonoms/wsdl/client/ConsultarProductoResponse.java
 /Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/target/generated-sources/jaxws-wsimport/com/aes/touresbalon/touresbalonoms/wsdl/client/ConsultarRangoCerradoOrdenesFault_Exception.java
 /Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/target/generated-sources/jaxws-wsimport/com/aes/touresbalon/touresbalonoms/wsdl/client/GestionTarifaFault_Exception.java
+/Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/src/main/java/com/aes/touresbalon/touresbalonoms/services/Services.java
 /Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/target/generated-sources/jaxws-wsimport/com/aes/touresbalon/touresbalonoms/wsdl/client/ConsultarPorFactRangoClienteFault.java
 /Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/target/generated-sources/jaxws-wsimport/com/aes/touresbalon/touresbalonoms/wsdl/client/ActualizarEstatusClienteFault_Exception.java
 /Users/alexanderbarbosaayala/Documents/workspace/Proyecto-de-Implementacion-AES/touresBalonOMS/target/generated-sources/jaxws-wsimport/com/aes/touresbalon/touresbalonoms/wsdl/client/ConsultarRankingCerradoOrdenesResponse.java

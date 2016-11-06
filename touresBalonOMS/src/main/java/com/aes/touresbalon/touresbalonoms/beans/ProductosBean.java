@@ -131,7 +131,6 @@ public class ProductosBean {
         }
     }
     
-    
     public void consultarProducto(){
         showPanelEdit = true;
         service.consultarProducto(TipoConsultaProducto.DESCRIPCION, this.getTxtConsulta());

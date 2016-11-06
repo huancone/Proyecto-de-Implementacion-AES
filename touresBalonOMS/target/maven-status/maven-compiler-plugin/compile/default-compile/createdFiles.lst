@@ -41,6 +41,7 @@ com/aes/touresbalon/touresbalonoms/wsdl/client/ConsultarRankingFechaProductoFaul
 com/aes/touresbalon/touresbalonoms/wsdl/client/Cliente.class
 com/aes/touresbalon/touresbalonoms/utilities/OmsUtil.class
 com/aes/touresbalon/touresbalonoms/services/ProductoService.class
+com/aes/touresbalon/touresbalonoms/services/Services.class
 com/aes/touresbalon/touresbalonoms/wsdl/client/GestionTarifa.class
 com/aes/touresbalon/touresbalonoms/wsdl/client/Orden.class
 com/aes/touresbalon/touresbalonoms/wsdl/client/package-info.class
