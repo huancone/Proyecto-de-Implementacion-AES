@@ -18,7 +18,8 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>TB_ServiciosBolivariano</artifactId>
-            <version>${project.version}</version>
+            <version>1.0-SNAPSHOT</version>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>javax</groupId>
@@ -45,6 +46,12 @@
             <groupId>com.hynnet</groupId>
             <artifactId>oracle-driver-ojdbc</artifactId>
             <version>12.1.0.2</version>
+         </dependency>
+         <!-- https://mvnrepository.com/artifact/javax.mail/mail -->
+         <dependency>
+             <groupId>javax.mail</groupId>
+             <artifactId>mail</artifactId>
+             <version>1.4</version>
          </dependency>
     </dependencies>
 

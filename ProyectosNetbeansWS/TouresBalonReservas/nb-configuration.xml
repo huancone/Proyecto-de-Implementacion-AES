@@ -25,6 +25,6 @@ Any value defined here will override the pom.xml file value but is only applicab
         <org-netbeans-modules-css-prep.sass_2e_mappings>/scss:/css</org-netbeans-modules-css-prep.sass_2e_mappings>
         <org-netbeans-modules-web-clientproject-api.js_2e_libs_2e_folder>js/libs</org-netbeans-modules-web-clientproject-api.js_2e_libs_2e_folder>
         <org-netbeans-modules-javascript2-requirejs.enabled>true</org-netbeans-modules-javascript2-requirejs.enabled>
-        <org-netbeans-modules-maven-jaxws._5f_S_5f_ReservasTB>file:/Users/jdtrujillop/Desktop/ReservasTB.wsdl</org-netbeans-modules-maven-jaxws._5f_S_5f_ReservasTB>
+        <org-netbeans-modules-maven-jaxws._5f_S_5f_ReservasTB>file:C:\Users\cbraatz\Documents\GitHub\Proyecto-de-Implementacion-AES\Servicios\WSDL_TouresBalon\src\aes\pica\wsdl\utilitarios\ReservasTB.wsdl</org-netbeans-modules-maven-jaxws._5f_S_5f_ReservasTB>
     </properties>
 </project-shared-configuration>
