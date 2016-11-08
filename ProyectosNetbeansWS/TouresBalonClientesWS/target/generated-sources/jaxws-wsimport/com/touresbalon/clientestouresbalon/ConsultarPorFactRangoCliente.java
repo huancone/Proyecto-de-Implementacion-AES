@@ -11,9 +11,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Java class for anonymous complex type.
+ * <p>Clase Java para anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType>
@@ -46,7 +46,7 @@ public class ConsultarPorFactRangoCliente {
     protected XMLGregorianCalendar fechaFin;
 
     /**
-     * Gets the value of the fechaInicial property.
+     * Obtiene el valor de la propiedad fechaInicial.
      * 
      * @return
      *     possible object is
@@ -58,7 +58,7 @@ public class ConsultarPorFactRangoCliente {
     }
 
     /**
-     * Sets the value of the fechaInicial property.
+     * Define el valor de la propiedad fechaInicial.
      * 
      * @param value
      *     allowed object is
@@ -70,7 +70,7 @@ public class ConsultarPorFactRangoCliente {
     }
 
     /**
-     * Gets the value of the fechaFin property.
+     * Obtiene el valor de la propiedad fechaFin.
      * 
      * @return
      *     possible object is
@@ -82,7 +82,7 @@ public class ConsultarPorFactRangoCliente {
     }
 
     /**
-     * Sets the value of the fechaFin property.
+     * Define el valor de la propiedad fechaFin.
      * 
      * @param value
      *     allowed object is

@@ -30,11 +30,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AutenticarClienteFault }
+     * Create an instance of {@link ConsultarPorProductoCliente }
      * 
      */
-    public AutenticarClienteFault createAutenticarClienteFault() {
-        return new AutenticarClienteFault();
+    public ConsultarPorProductoCliente createConsultarPorProductoCliente() {
+        return new ConsultarPorProductoCliente();
+    }
+
+    /**
+     * Create an instance of {@link ConsultarPorFactRangoClienteResponse }
+     * 
+     */
+    public ConsultarPorFactRangoClienteResponse createConsultarPorFactRangoClienteResponse() {
+        return new ConsultarPorFactRangoClienteResponse();
+    }
+
+    /**
+     * Create an instance of {@link Cliente }
+     * 
+     */
+    public Cliente createCliente() {
+        return new Cliente();
+    }
+
+    /**
+     * Create an instance of {@link ConsultarPorFactRangoClienteFault }
+     * 
+     */
+    public ConsultarPorFactRangoClienteFault createConsultarPorFactRangoClienteFault() {
+        return new ConsultarPorFactRangoClienteFault();
     }
 
     /**
@@ -43,6 +67,78 @@ public class ObjectFactory {
      */
     public Error createError() {
         return new Error();
+    }
+
+    /**
+     * Create an instance of {@link ConsultarPorIdentificacionClienteResponse }
+     * 
+     */
+    public ConsultarPorIdentificacionClienteResponse createConsultarPorIdentificacionClienteResponse() {
+        return new ConsultarPorIdentificacionClienteResponse();
+    }
+
+    /**
+     * Create an instance of {@link ActualizarClienteFault }
+     * 
+     */
+    public ActualizarClienteFault createActualizarClienteFault() {
+        return new ActualizarClienteFault();
+    }
+
+    /**
+     * Create an instance of {@link ActualizarEstatusClienteFault }
+     * 
+     */
+    public ActualizarEstatusClienteFault createActualizarEstatusClienteFault() {
+        return new ActualizarEstatusClienteFault();
+    }
+
+    /**
+     * Create an instance of {@link ActualizarEstatusClienteResponse }
+     * 
+     */
+    public ActualizarEstatusClienteResponse createActualizarEstatusClienteResponse() {
+        return new ActualizarEstatusClienteResponse();
+    }
+
+    /**
+     * Create an instance of {@link AutenticarClienteFault }
+     * 
+     */
+    public AutenticarClienteFault createAutenticarClienteFault() {
+        return new AutenticarClienteFault();
+    }
+
+    /**
+     * Create an instance of {@link ActualizarClienteResponse }
+     * 
+     */
+    public ActualizarClienteResponse createActualizarClienteResponse() {
+        return new ActualizarClienteResponse();
+    }
+
+    /**
+     * Create an instance of {@link RegistrarCliente }
+     * 
+     */
+    public RegistrarCliente createRegistrarCliente() {
+        return new RegistrarCliente();
+    }
+
+    /**
+     * Create an instance of {@link AutenticarCliente }
+     * 
+     */
+    public AutenticarCliente createAutenticarCliente() {
+        return new AutenticarCliente();
+    }
+
+    /**
+     * Create an instance of {@link ActualizarContraseniaCliente }
+     * 
+     */
+    public ActualizarContraseniaCliente createActualizarContraseniaCliente() {
+        return new ActualizarContraseniaCliente();
     }
 
     /**
@@ -62,43 +158,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ActualizarEstatusCliente }
+     * Create an instance of {@link ConsultarPorProductoClienteResponse }
      * 
      */
-    public ActualizarEstatusCliente createActualizarEstatusCliente() {
-        return new ActualizarEstatusCliente();
-    }
-
-    /**
-     * Create an instance of {@link RegistrarClienteFault }
-     * 
-     */
-    public RegistrarClienteFault createRegistrarClienteFault() {
-        return new RegistrarClienteFault();
-    }
-
-    /**
-     * Create an instance of {@link ActualizarCliente }
-     * 
-     */
-    public ActualizarCliente createActualizarCliente() {
-        return new ActualizarCliente();
-    }
-
-    /**
-     * Create an instance of {@link Cliente }
-     * 
-     */
-    public Cliente createCliente() {
-        return new Cliente();
-    }
-
-    /**
-     * Create an instance of {@link ActualizarContraseniaCliente }
-     * 
-     */
-    public ActualizarContraseniaCliente createActualizarContraseniaCliente() {
-        return new ActualizarContraseniaCliente();
+    public ConsultarPorProductoClienteResponse createConsultarPorProductoClienteResponse() {
+        return new ConsultarPorProductoClienteResponse();
     }
 
     /**
@@ -110,51 +174,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ActualizarEstatusClienteResponse }
-     * 
-     */
-    public ActualizarEstatusClienteResponse createActualizarEstatusClienteResponse() {
-        return new ActualizarEstatusClienteResponse();
-    }
-
-    /**
-     * Create an instance of {@link ConsultarPorIdentificacionCliente }
-     * 
-     */
-    public ConsultarPorIdentificacionCliente createConsultarPorIdentificacionCliente() {
-        return new ConsultarPorIdentificacionCliente();
-    }
-
-    /**
-     * Create an instance of {@link RegistrarCliente }
-     * 
-     */
-    public RegistrarCliente createRegistrarCliente() {
-        return new RegistrarCliente();
-    }
-
-    /**
      * Create an instance of {@link AutenticarClienteResponse }
      * 
      */
     public AutenticarClienteResponse createAutenticarClienteResponse() {
         return new AutenticarClienteResponse();
-    }
-
-    /**
-     * Create an instance of {@link ActualizarClienteFault }
-     * 
-     */
-    public ActualizarClienteFault createActualizarClienteFault() {
-        return new ActualizarClienteFault();
-    }
-
-    /**
-     * Create an instance of {@link ActualizarClienteResponse }
-     * 
-     */
-    public ActualizarClienteResponse createActualizarClienteResponse() {
-        return new ActualizarClienteResponse();
     }
 
     /**
@@ -166,30 +190,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ConsultarPorIdentificacionClienteResponse }
-     * 
-     */
-    public ConsultarPorIdentificacionClienteResponse createConsultarPorIdentificacionClienteResponse() {
-        return new ConsultarPorIdentificacionClienteResponse();
-    }
-
-    /**
-     * Create an instance of {@link ActualizarEstatusClienteFault }
-     * 
-     */
-    public ActualizarEstatusClienteFault createActualizarEstatusClienteFault() {
-        return new ActualizarEstatusClienteFault();
-    }
-
-    /**
-     * Create an instance of {@link ConsultarPorFactRangoClienteFault }
-     * 
-     */
-    public ConsultarPorFactRangoClienteFault createConsultarPorFactRangoClienteFault() {
-        return new ConsultarPorFactRangoClienteFault();
-    }
-
-    /**
      * Create an instance of {@link ConsultarPorFactRangoCliente }
      * 
      */
@@ -198,19 +198,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ConsultarPorProductoCliente }
+     * Create an instance of {@link ActualizarCliente }
      * 
      */
-    public ConsultarPorProductoCliente createConsultarPorProductoCliente() {
-        return new ConsultarPorProductoCliente();
-    }
-
-    /**
-     * Create an instance of {@link ConsultarPorFactRangoClienteResponse }
-     * 
-     */
-    public ConsultarPorFactRangoClienteResponse createConsultarPorFactRangoClienteResponse() {
-        return new ConsultarPorFactRangoClienteResponse();
+    public ActualizarCliente createActualizarCliente() {
+        return new ActualizarCliente();
     }
 
     /**
@@ -222,11 +214,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AutenticarCliente }
+     * Create an instance of {@link ActualizarEstatusCliente }
      * 
      */
-    public AutenticarCliente createAutenticarCliente() {
-        return new AutenticarCliente();
+    public ActualizarEstatusCliente createActualizarEstatusCliente() {
+        return new ActualizarEstatusCliente();
+    }
+
+    /**
+     * Create an instance of {@link ConsultarPorIdentificacionCliente }
+     * 
+     */
+    public ConsultarPorIdentificacionCliente createConsultarPorIdentificacionCliente() {
+        return new ConsultarPorIdentificacionCliente();
+    }
+
+    /**
+     * Create an instance of {@link RegistrarClienteFault }
+     * 
+     */
+    public RegistrarClienteFault createRegistrarClienteFault() {
+        return new RegistrarClienteFault();
     }
 
     /**
@@ -235,14 +243,6 @@ public class ObjectFactory {
      */
     public ActualizarContraseniaClienteFault createActualizarContraseniaClienteFault() {
         return new ActualizarContraseniaClienteFault();
-    }
-
-    /**
-     * Create an instance of {@link ConsultarPorProductoClienteResponse }
-     * 
-     */
-    public ConsultarPorProductoClienteResponse createConsultarPorProductoClienteResponse() {
-        return new ConsultarPorProductoClienteResponse();
     }
 
     /**

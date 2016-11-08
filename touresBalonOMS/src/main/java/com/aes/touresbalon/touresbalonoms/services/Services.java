@@ -47,6 +47,7 @@ import java.util.logging.Logger;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.ws.BindingProvider;
+import org.primefaces.util.BeanUtils;
 
 /**
  *
@@ -95,9 +96,6 @@ public class Services {
             //Llamado al servicio
              list = port.consultarProducto(tipoConsulta, consulta);
 
-            // Procesamiento de la rta del servicio
-            System.out.println("Resultado con idProducto = " + list.get(0));
-
         } catch (ConsultarProductoFault_Exception ex) {
             Logger.getLogger(ProductoService.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -105,16 +103,44 @@ public class Services {
         return list;
     }
 
-    public RegistrarClienteReponseType registrarCliente(Cliente cliente) throws RegistrarClienteFault_Exception {
-        return null;
-    }
-
     public RespuestaGenerica actualizarCliente(Cliente cliente) throws ActualizarClienteFault_Exception {
-        return null;
+        try {
+            ServiceProxyOMS_Service service = new ServiceProxyOMS_Service();
+            ServiceProxyOMS port = service.getServiceProxyOMSSOAP();
+
+            //parametros de entrada
+            String endpointURL = "http://localhost:8888/mockClientesTouresBalonSOAP";
+            BindingProvider bp = (BindingProvider) port;
+            bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, endpointURL);
+
+            //Llamado al servicio
+             port.actualizarCliente(cliente);
+
+        } catch (ActualizarClienteFault_Exception ex) {
+            Logger.getLogger(ProductoService.class.getName()).log(Level.SEVERE, null, ex);
+            return RespuestaGenerica.KO;
+        }     
+        return RespuestaGenerica.OK;
     }
 
     public RespuestaGenerica actualizarContraseniaCliente(String usuario, String contrasenia) throws ActualizarContraseniaClienteFault_Exception {
-        return null;
+        try {
+            ServiceProxyOMS_Service service = new ServiceProxyOMS_Service();
+            ServiceProxyOMS port = service.getServiceProxyOMSSOAP();
+
+            //parametros de entrada
+            String endpointURL = "http://localhost:8888/mockClientesTouresBalonSOAP";
+            BindingProvider bp = (BindingProvider) port;
+            bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, endpointURL);
+
+            //Llamado al servicio
+             port.actualizarContraseniaCliente(usuario, contrasenia);
+
+        } catch (ActualizarContraseniaClienteFault_Exception ex) {
+            Logger.getLogger(ProductoService.class.getName()).log(Level.SEVERE, null, ex);
+            return RespuestaGenerica.KO;
+        }     
+        return RespuestaGenerica.OK;
     }
 
     public RespuestaGenerica actualizarEstatusCliente(int idCliente, EstatusCliente estatus) throws ActualizarEstatusClienteFault_Exception {

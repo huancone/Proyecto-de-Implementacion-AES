@@ -6,11 +6,15 @@
 
 package com.aes.touresbalon.touresbalonoms.utilities;
 
+import com.aes.touresbalon.touresbalonoms.beans.ClienteBean;
+import java.lang.reflect.InvocationTargetException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
@@ -35,5 +39,13 @@ public class OmsUtil {
 //        Date fechaUtil = fecha.toGregorianCalendar().getTime();
 //        return formatter.format(fechaUtil);
         return fecha.toGregorianCalendar().getTime();
+    }
+    
+    public static void copiarPropiedades(Object origen, Object destino){
+        try {
+            org.apache.commons.beanutils.BeanUtils.copyProperties(origen, destino);
+        } catch (IllegalAccessException | InvocationTargetException ex) {
+            Logger.getLogger(OmsUtil.class.getName()).log(Level.SEVERE, "Error al usar utilitario copiar propiedades", ex);
+        }
     }
 }
