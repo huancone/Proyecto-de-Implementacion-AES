@@ -21,6 +21,12 @@
             <version>12.1.0.2</version>
         </dependency>
         <dependency>
+            <groupId>aes.pica.touresbalon</groupId>
+            <artifactId>TouresBalonProductosWS</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>7.0</version>
