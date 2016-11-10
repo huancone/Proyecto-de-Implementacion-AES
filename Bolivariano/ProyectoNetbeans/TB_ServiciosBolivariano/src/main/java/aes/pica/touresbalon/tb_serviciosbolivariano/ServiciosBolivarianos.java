@@ -18,6 +18,7 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.StringTokenizer;
 import org.apache.commons.io.FileUtils;
 
 /**
@@ -152,57 +153,70 @@ public class ServiciosBolivarianos implements IServiciosBolivarianos {
     public boolean cancelarReserva(int ordenId) {
 
         String nombreArchivo = Constantes.NAME_RESERVAS + ordenId + Constantes.CSV_FILE;
-        Random numaleatorio= new Random(3816L); 
-        
+        Random numaleatorio = new Random(3816L);
+
         try {
             File archivoConsulta = FileUtils.getFile(rutaReservas, nombreArchivo);
             String nombreArchivoNvo = archivoConsulta.getParent() + "/auxiliar" + String.valueOf(Math.abs(numaleatorio.nextInt())) + ".txt";
             File archivoConsultaNvo = new File(nombreArchivoNvo);
-            
+
             if (archivoConsulta != null && archivoConsulta.exists()) {
 
                 br = new BufferedReader(new FileReader(archivoConsulta));
                 String linea = "";
-                
+
                 while ((linea = br.readLine()) != null) {
-                    
+
                     if (linea.indexOf(ordenId + ",") != -1) {
                         System.out.println("" + linea);
                         String lineaNva = null;
-                        for (int i = 0; i <= linea.length(); i++){
+                        /*for (int i = 0; i <= linea.length(); i++){
                             System.out.println("Caracter " + i + ": " + linea.charAt(i));
                             if (POSICION_CANCELAR == i) {
                                 lineaNva.concat("C");   
                             } else {
                                 lineaNva.concat(String.valueOf(linea.charAt(i)));
                             }                            
+                        }*/
+
+                        StringTokenizer token = new StringTokenizer(linea, ".");
+                        int c = 1;
+                        while (token.hasMoreTokens()) {
+                            if (POSICION_CANCELAR == c){
+                                lineaNva.concat("C");
+                            } else {
+                                System.out.println(token.nextToken());
+                                lineaNva.concat(token.nextToken());
+                            }
+                            c ++;
                         }
+
                         EcribirFichero(archivoConsultaNvo, linea);
                     } else {
-                        EcribirFichero(archivoConsulta,linea);
+                        EcribirFichero(archivoConsulta, linea);
                     }
-                    
+
                 }
                 BorrarFichero(archivoConsulta);
                 archivoConsultaNvo.renameTo(archivoConsulta);
-                br.close();             
-            
+                br.close();
+
             } else {
-                
+
                 System.out.println("No existe archivo: " + nombreArchivo + " en el directorio: " + rutaReservas);
-                
+
             }
-            
+
             return true;
-            
+
         } catch (IOException ex) {
-            
+
             System.err.println(ex.toString());
-            
+
         }
-        
+
         return false;
-        
+
     }
     
     public static void EcribirFichero(File Ffichero, String SCadena) {
