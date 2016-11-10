@@ -32,17 +32,16 @@ import org.hibernate.Transaction;
  * @author braatz
  */
 @WebService(serviceName = "OrdenesTouresBalon", portName = "OrdenesTouresBalonSOAP", endpointInterface = "com.touresbalon.ordenestouresbalon.OrdenesTouresBalon", targetNamespace = "http://www.touresbalon.com/OrdenesTouresBalon/", wsdlLocation = "WEB-INF/wsdl/OrdenesTouresBalon.wsdl")
-public class Services {
-
-    //Variables globlales
-    private Session sessionOrdenes;
-    private Transaction tx;
+public class Services { 
 
     public java.util.List<com.touresbalon.ordenestouresbalon.Orden> consultarClientesOrdenes(int idCliente) throws com.touresbalon.ordenestouresbalon.ConsultarClientesOrdenesFault_Exception {
 
         System.out.println("--------------------------------------------------");
         System.out.println("INICIO ::: consultarClientesOrdenes");
 
+        Session sessionOrdenes = null;
+        Transaction tx = null;
+    
         List<Orden> ordenes = new ArrayList<Orden>();
         String strsql;
 
@@ -73,6 +72,9 @@ public class Services {
         System.out.println("--------------------------------------------------");
         System.out.println("INICIO ::: cancelarOrdenes");
 
+        Session sessionOrdenes = null;
+        Transaction tx = null;
+        
         RespuestaGenerica respuesta = RespuestaGenerica.KO;
         Orders ordenDB = new Orders();
         EstatusOrden estatusOrden = null;
@@ -109,6 +111,9 @@ public class Services {
         System.out.println("--------------------------------------------------");
         System.out.println("INICIO ::: crearOrdenes");
 
+        Session sessionOrdenes = null;
+        Transaction tx = null;
+        
         CrearOrdenResponse respuesta = new CrearOrdenResponse();
         Orders ordenDB = new Orders();
         Integer id = 0;
@@ -166,6 +171,9 @@ public class Services {
         System.out.println("--------------------------------------------------");
         System.out.println("INICIO ::: consultarOrdenes");
 
+        Session sessionOrdenes = null;
+        Transaction tx = null;
+        
         Orders ordenDB = new Orders();
         Items itemDB = new Items();
         Orden orden = new Orden();
@@ -218,6 +226,9 @@ public class Services {
         System.out.println("--------------------------------------------------");
         System.out.println("INICIO ::: consultarRangoCerradoOrdenes");
 
+        Session sessionOrdenes = null;
+        Transaction tx = null;
+        
         Orders ordenDB = new Orders();
         Items itemDB = new Items();
         Orden orden = new Orden();
@@ -255,6 +266,9 @@ public class Services {
         System.out.println("--------------------------------------------------");
         System.out.println("INICIO ::: consultarRankingAbiertasOrdenes");
 
+        Session sessionOrdenes = null;
+        Transaction tx = null;
+        
         List<Orden> ordenes = new ArrayList<Orden>();
         List<Orders> ordenesDB = new ArrayList<Orders>();
         String strsql;
@@ -299,6 +313,9 @@ public class Services {
         System.out.println("--------------------------------------------------");
         System.out.println("INICIO ::: consultarRankingCerradoOrdenes");
 
+        Session sessionOrdenes = null;
+        Transaction tx = null;
+        
         List<Orden> ordenes = new ArrayList<Orden>();
         List<Orders> ordenesDB = new ArrayList<Orders>();
         String strsql;

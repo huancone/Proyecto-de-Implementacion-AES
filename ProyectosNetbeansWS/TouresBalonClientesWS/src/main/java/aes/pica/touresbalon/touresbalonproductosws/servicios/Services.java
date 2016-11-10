@@ -41,14 +41,13 @@ import org.hibernate.Transaction;
 @WebService(serviceName = "ClientesTouresBalon", portName = "ClientesTouresBalonSOAP", endpointInterface = "com.touresbalon.clientestouresbalon.ClientesTouresBalon", targetNamespace = "http://www.touresbalon.com/ClientesTouresBalon/", wsdlLocation = "WEB-INF/wsdl/ClientesTouresBalon.wsdl")
 public class Services {
 
-    //Variables globlales
-    private Session sessionClientes;
-    private Session sessionProductos;
-    private Transaction tx;
-
     public com.touresbalon.clientestouresbalon.RegistrarClienteReponseType registrarCliente(com.touresbalon.clientestouresbalon.Cliente cliente) throws RegistrarClienteFault_Exception {
 
         System.out.println(" ---------------- Entramos registrarCliente ----------------- ");
+        
+        Session sessionClientes = null;
+        Transaction tx = null;        
+    
         Customer clienteEntidad = new Customer();
         Address addr = new Address();
         RegistrarClienteReponseType respuesta = new RegistrarClienteReponseType();
@@ -117,6 +116,10 @@ public class Services {
 
     public com.touresbalon.clientestouresbalon.RespuestaGenerica autenticarCliente(java.lang.String usuario, java.lang.String contrasenia) throws AutenticarClienteFault_Exception {
         System.out.println(" ---------------- Entramos autenticarCliente ----------------- ");
+        
+        Session sessionClientes = null;
+        Transaction tx = null;        
+        
         RespuestaGenerica respuesta = RespuestaGenerica.KO;
         Customer clienteEntidad = null;
 
@@ -157,6 +160,10 @@ public class Services {
 
     public com.touresbalon.clientestouresbalon.RespuestaGenerica actualizarCliente(com.touresbalon.clientestouresbalon.Cliente cliente) throws ActualizarClienteFault_Exception {
         System.out.println(" ---------------- Entramos actualizarCliente ----------------- ");
+        
+        Session sessionClientes = null;
+        Transaction tx = null;        
+        
         RespuestaGenerica respuesta = RespuestaGenerica.KO;
 
         Customer clienteEntidad = null;
@@ -251,6 +258,10 @@ public class Services {
 
     public com.touresbalon.clientestouresbalon.RespuestaGenerica actualizarContraseniaCliente(java.lang.String usuario, java.lang.String contrasenia) throws ActualizarContraseniaClienteFault_Exception {
         System.out.println(" ---------------- Entramos actualizarContraseniaCliente ----------------- ");
+        
+        Session sessionClientes = null;
+        Transaction tx = null;        
+        
         RespuestaGenerica respuesta = RespuestaGenerica.KO;
 
         Customer clienteEntidad = null;
@@ -291,6 +302,10 @@ public class Services {
 
     public com.touresbalon.clientestouresbalon.RespuestaGenerica actualizarEstatusCliente(int idCliente, com.touresbalon.clientestouresbalon.EstatusCliente estatus) throws ActualizarEstatusClienteFault_Exception {
         System.out.println(" ---------------- Entramos actualizarEstatusCliente ----------------- ");
+        
+        Session sessionClientes = null;
+        Transaction tx = null;        
+        
         RespuestaGenerica respuesta = RespuestaGenerica.KO;
         Customer clienteEntidad = new Customer();
 
@@ -328,6 +343,9 @@ public class Services {
 
     public com.touresbalon.clientestouresbalon.Cliente consultarPorIdentificacionCliente(int idCliente) throws ConsultarPorIdentificacionClienteFault_Exception {
         System.out.println(" ---------------- Entramos consultarPorIdentificacionCliente----------------- ");
+        
+        Session sessionClientes = null;
+        Transaction tx = null;        
 
         Cliente clienteRta = new Cliente();
         Customer clienteEntidad = new Customer();
@@ -370,12 +388,17 @@ public class Services {
     }
 
     public java.util.List<com.touresbalon.clientestouresbalon.Cliente> consultarPorProductoCliente(int idProducto) throws ConsultarPorProductoClienteFault_Exception {
-        //TODO implement this method
+        
+        Session sessionClientes = null;
+        Transaction tx = null;        
         throw new UnsupportedOperationException("Not implemented yet.");
     }
 
     public java.util.List<com.touresbalon.clientestouresbalon.Cliente> consultarPorFactRangoCliente(javax.xml.datatype.XMLGregorianCalendar fechaInicial, javax.xml.datatype.XMLGregorianCalendar fechaFin) throws ConsultarPorFactRangoClienteFault_Exception {
         System.out.println(" ---------------- Entramos consultarPorFactRangoCliente----------------- ");
+        
+        Session sessionClientes = null;
+        Transaction tx = null;               
 
         List<Cliente> clientes = new ArrayList<>();
         
