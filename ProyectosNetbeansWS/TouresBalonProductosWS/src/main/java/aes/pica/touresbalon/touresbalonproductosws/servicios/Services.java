@@ -41,189 +41,192 @@ public class Services {
 
     public java.util.List<com.touresbalon.productostouresbalon.Producto> consultarProducto(com.touresbalon.productostouresbalon.TipoConsultaProducto tipoConsulta, java.lang.String cadenaConsulta) throws ConsultarProductoFault_Exception, DatatypeConfigurationException {
 
-        Session sessionProductos;
-        Session sessionOrdenes;
-        Transaction txProductos;
-        Transaction txOrdenes;
+        final Session sessionProductos;
+        final Transaction txProductos;
+        List<Producto> lstprod = new ArrayList<>();
 
         sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
-        txProductos = sessionProductos.beginTransaction();
+        try {
+            txProductos = sessionProductos.beginTransaction();
+            try {
+                String strsql, descripcion;
+                String[] arrayConsulta;
+                int primerProducto, ultimoProducto;
+                Query q = null;
+                List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto> lstpro = new ArrayList<>();
+                System.out.println("inicializa consulta de productos");
 
-        String strsql, descripcion;
-        String[] arrayConsulta;
-        int primerProducto, ultimoProducto;
-        Query q = null;
-        List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto> lstpro = new ArrayList<>();
-        List<Producto> lstprod = new ArrayList<>();
-        System.out.println("inicializa consulta de productos");
+                if (null != tipoConsulta) {
+                    switch (tipoConsulta) {
+                        case DESCRIPCION:
+                            arrayConsulta = cadenaConsulta.split("@");
+                            descripcion = arrayConsulta[1];
+                            primerProducto = 20 * Integer.parseInt(arrayConsulta[0]) - 19;
+                            ultimoProducto = 20 * Integer.parseInt(arrayConsulta[0]);
+                            strsql = ""
+                                    + "WITH "
+                                    + "  LISTADO AS "
+                                    + "  ( "
+                                    + "    SELECT "
+                                    + "      ROW_NUMBER( ) OVER( ORDER BY FECHA_SALIDA ASC ) ROW_ID, "
+                                    + "      ID_PRODUCTO, "
+                                    + "      ESPECTACULO, "
+                                    + "      DESCRIPCION, "
+                                    + "      ID_ESPECTACULO, "
+                                    + "      ID_TRANSPORTE, "
+                                    + "      ID_HOSPEDAJE, "
+                                    + "      ID_CIUDAD, "
+                                    + "      FECHA_SALIDA, "
+                                    + "      FECHA_LLEGADA, "
+                                    + "      FECHA_ESPECTACULO, "
+                                    + "      URL_IMAGEN "
+                                    + "    FROM "
+                                    + "      PRODUCTO "
+                                    + "    WHERE "
+                                    + "      FECHA_SALIDA >= GETDATE( ) "
+                                    + "      AND DESCRIPCION LIKE :valorBuscar "
+                                    + "  ) "
+                                    + "SELECT "
+                                    + "  ID_PRODUCTO, "
+                                    + "  ESPECTACULO, "
+                                    + "  DESCRIPCION, "
+                                    + "  ID_ESPECTACULO, "
+                                    + "  ID_TRANSPORTE, "
+                                    + "  ID_HOSPEDAJE, "
+                                    + "  ID_CIUDAD, "
+                                    + "  FECHA_SALIDA, "
+                                    + "  FECHA_LLEGADA, "
+                                    + "  FECHA_ESPECTACULO, "
+                                    + "  URL_IMAGEN "
+                                    + "FROM "
+                                    + "  LISTADO "
+                                    + "WHERE "
+                                    + "  ROW_ID BETWEEN :primerProducto AND :ultimoProducto";
+                            try {
+                                q = sessionProductos.createSQLQuery(strsql).addEntity(aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto.class)
+                                        .setParameter("valorBuscar", "%" + descripcion + "%")
+                                        .setParameter("primerProducto", primerProducto)
+                                        .setParameter("ultimoProducto", ultimoProducto);
+                                lstpro = q.list();
+                            } catch (Exception e) {
+                                System.out.println("Error al Consultar: " + e.getMessage());
+                            }
 
-        if (null != tipoConsulta) {
-            switch (tipoConsulta) {
-                case DESCRIPCION:
-                    arrayConsulta = cadenaConsulta.split("@");
-                    descripcion = arrayConsulta[1];
-                    primerProducto = 20 * Integer.parseInt(arrayConsulta[0]) - 19;
-                    ultimoProducto = 20 * Integer.parseInt(arrayConsulta[0]);
-                    strsql = ""
-                            + "WITH "
-                            + "  LISTADO AS "
-                            + "  ( "
-                            + "    SELECT "
-                            + "      ROW_NUMBER( ) OVER( ORDER BY FECHA_SALIDA ASC ) ROW_ID, "
-                            + "      ID_PRODUCTO, "
-                            + "      ESPECTACULO, "
-                            + "      DESCRIPCION, "
-                            + "      ID_ESPECTACULO, "
-                            + "      ID_TRANSPORTE, "
-                            + "      ID_HOSPEDAJE, "
-                            + "      ID_CIUDAD, "
-                            + "      FECHA_SALIDA, "
-                            + "      FECHA_LLEGADA, "
-                            + "      FECHA_ESPECTACULO, "
-                            + "      URL_IMAGEN "
-                            + "    FROM "
-                            + "      PRODUCTO "
-                            + "    WHERE "
-                            + "      FECHA_SALIDA >= GETDATE( ) "
-                            + "      AND DESCRIPCION LIKE :valorBuscar "
-                            + "  ) "
-                            + "SELECT "
-                            + "  ID_PRODUCTO, "
-                            + "  ESPECTACULO, "
-                            + "  DESCRIPCION, "
-                            + "  ID_ESPECTACULO, "
-                            + "  ID_TRANSPORTE, "
-                            + "  ID_HOSPEDAJE, "
-                            + "  ID_CIUDAD, "
-                            + "  FECHA_SALIDA, "
-                            + "  FECHA_LLEGADA, "
-                            + "  FECHA_ESPECTACULO, "
-                            + "  URL_IMAGEN "
-                            + "FROM "
-                            + "  LISTADO "
-                            + "WHERE "
-                            + "  ROW_ID BETWEEN :primerProducto AND :ultimoProducto";
-                    try {
-                        q = sessionProductos.createSQLQuery(strsql).addEntity(aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto.class)
-                                .setParameter("valorBuscar", "%" + descripcion + "%")
-                                .setParameter("primerProducto", primerProducto)
-                                .setParameter("ultimoProducto", ultimoProducto);
-                        lstpro = q.list();
-                    } catch (Exception e) {
-                        System.out.println("Error al Consultar: " + e.getMessage());
+                            break;
+                        case ID:
+                            System.out.println("por ID");
+                            strsql = "from Producto where idProducto=" + cadenaConsulta;
+                            try {
+                                q = sessionProductos.createQuery(strsql);
+                                lstpro = q.list();
+                            } catch (Exception e) {
+                                System.out.println("Error al Consultar: " + e.getMessage());
+                            }
+                            break;
+                        default:
+                            arrayConsulta = cadenaConsulta.split("@");
+                            descripcion = arrayConsulta[1];
+                            primerProducto = 20 * Integer.parseInt(arrayConsulta[0]) - 19;
+                            ultimoProducto = 20 * Integer.parseInt(arrayConsulta[0]);
+                            strsql = ""
+                                    + "WITH "
+                                    + "  LISTADO AS "
+                                    + "  ( "
+                                    + "    SELECT "
+                                    + "      ROW_NUMBER( ) OVER( ORDER BY FECHA_SALIDA ASC ) ROW_ID, "
+                                    + "      ID_PRODUCTO, "
+                                    + "      ESPECTACULO, "
+                                    + "      DESCRIPCION, "
+                                    + "      ID_ESPECTACULO, "
+                                    + "      ID_TRANSPORTE, "
+                                    + "      ID_HOSPEDAJE, "
+                                    + "      ID_CIUDAD, "
+                                    + "      FECHA_SALIDA, "
+                                    + "      FECHA_LLEGADA, "
+                                    + "      FECHA_ESPECTACULO, "
+                                    + "      URL_IMAGEN "
+                                    + "    FROM "
+                                    + "      PRODUCTO "
+                                    + "    WHERE "
+                                    + "      FECHA_SALIDA >= GETDATE( ) "
+                                    + "      AND ESPECTACULO LIKE :valorBuscar "
+                                    + "  ) "
+                                    + "SELECT "
+                                    + "  ID_PRODUCTO, "
+                                    + "  ESPECTACULO, "
+                                    + "  DESCRIPCION, "
+                                    + "  ID_ESPECTACULO, "
+                                    + "  ID_TRANSPORTE, "
+                                    + "  ID_HOSPEDAJE, "
+                                    + "  ID_CIUDAD, "
+                                    + "  FECHA_SALIDA, "
+                                    + "  FECHA_LLEGADA, "
+                                    + "  FECHA_ESPECTACULO, "
+                                    + "  URL_IMAGEN "
+                                    + "FROM "
+                                    + "  LISTADO "
+                                    + "WHERE "
+                                    + "  ROW_ID BETWEEN :primerProducto AND :ultimoProducto";
+                            try {
+                                q = sessionProductos.createSQLQuery(strsql).addEntity(aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto.class)
+                                        .setParameter("valorBuscar", "%" + descripcion + "%")
+                                        .setParameter("primerProducto", primerProducto)
+                                        .setParameter("ultimoProducto", ultimoProducto);
+                                lstpro = q.list();
+                            } catch (Exception e) {
+                                System.out.println("Error al Consultar: " + e.getMessage());
+                            }
+                            break;
                     }
+                }
 
-                    break;
-                case ID:
-                    System.out.println("por ID");
-                    strsql = "from Producto where idProducto=" + cadenaConsulta;
-                    try {
-                        q = sessionProductos.createQuery(strsql);
-                        lstpro = q.list();
-                    } catch (Exception e) {
-                        System.out.println("Error al Consultar: " + e.getMessage());
-                    }
-                    break;
-                default:
-                    arrayConsulta = cadenaConsulta.split("@");
-                    descripcion = arrayConsulta[1];
-                    primerProducto = 20 * Integer.parseInt(arrayConsulta[0]) - 19;
-                    ultimoProducto = 20 * Integer.parseInt(arrayConsulta[0]);
-                    strsql = ""
-                            + "WITH "
-                            + "  LISTADO AS "
-                            + "  ( "
-                            + "    SELECT "
-                            + "      ROW_NUMBER( ) OVER( ORDER BY FECHA_SALIDA ASC ) ROW_ID, "
-                            + "      ID_PRODUCTO, "
-                            + "      ESPECTACULO, "
-                            + "      DESCRIPCION, "
-                            + "      ID_ESPECTACULO, "
-                            + "      ID_TRANSPORTE, "
-                            + "      ID_HOSPEDAJE, "
-                            + "      ID_CIUDAD, "
-                            + "      FECHA_SALIDA, "
-                            + "      FECHA_LLEGADA, "
-                            + "      FECHA_ESPECTACULO, "
-                            + "      URL_IMAGEN "
-                            + "    FROM "
-                            + "      PRODUCTO "
-                            + "    WHERE "
-                            + "      FECHA_SALIDA >= GETDATE( ) "
-                            + "      AND ESPECTACULO LIKE :valorBuscar "
-                            + "  ) "
-                            + "SELECT "
-                            + "  ID_PRODUCTO, "
-                            + "  ESPECTACULO, "
-                            + "  DESCRIPCION, "
-                            + "  ID_ESPECTACULO, "
-                            + "  ID_TRANSPORTE, "
-                            + "  ID_HOSPEDAJE, "
-                            + "  ID_CIUDAD, "
-                            + "  FECHA_SALIDA, "
-                            + "  FECHA_LLEGADA, "
-                            + "  FECHA_ESPECTACULO, "
-                            + "  URL_IMAGEN "
-                            + "FROM "
-                            + "  LISTADO "
-                            + "WHERE "
-                            + "  ROW_ID BETWEEN :primerProducto AND :ultimoProducto";
-                    try {
-                        q = sessionProductos.createSQLQuery(strsql).addEntity(aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto.class)
-                                .setParameter("valorBuscar", "%" + descripcion + "%")
-                                .setParameter("primerProducto", primerProducto)
-                                .setParameter("ultimoProducto", ultimoProducto);
-                        lstpro = q.list();
-                    } catch (Exception e) {
-                        System.out.println("Error al Consultar: " + e.getMessage());
-                    }
-                    break;
+                for (int i = 0; i < lstpro.size(); i++) {
+                    com.touresbalon.productostouresbalon.Producto prod = new com.touresbalon.productostouresbalon.Producto();
+                    com.touresbalon.productostouresbalon.Ciudad ciu = new com.touresbalon.productostouresbalon.Ciudad();
+
+                    ciu.setIdCiudad(lstpro.get(i).getCiudad().getIdCiudad());
+                    ciu.setPais(lstpro.get(i).getCiudad().getNombreCiudad() + " - " + lstpro.get(i).getCiudad().getPais());
+
+                    prod.setCiudadEspectaculo(ciu);
+                    prod.setDescripcion(lstpro.get(i).getDescripcion());
+                    prod.setEspectaculo(lstpro.get(i).getEspectaculo());
+                    prod.setFechaEspectaculo(toGregorian(lstpro.get(i).getFechaEspectaculo()));
+                    prod.setFechaLlegada(toGregorian(lstpro.get(i).getFechaLlegada()));
+                    prod.setFechaSalida(toGregorian(lstpro.get(i).getFechaSalida()));
+                    prod.setIdProducto(lstpro.get(i).getIdProducto());
+                    prod.setImagenProducto(lstpro.get(i).getUrlImagen());
+
+                    com.touresbalon.productostouresbalon.TarifaValores tarvalesp = new com.touresbalon.productostouresbalon.TarifaValores();
+                    com.touresbalon.productostouresbalon.TarifaValores tarvaltra = new com.touresbalon.productostouresbalon.TarifaValores();
+                    com.touresbalon.productostouresbalon.TarifaValores tarvalhos = new com.touresbalon.productostouresbalon.TarifaValores();
+
+                    tarvalesp.setId(lstpro.get(i).getTarifaEspectaculo().getIdEspectaculo());
+                    tarvalesp.setNombreTipo(lstpro.get(i).getTarifaEspectaculo().getNombreEspectaculo());
+                    tarvalesp.setPrecio(lstpro.get(i).getTarifaEspectaculo().getPrecio());
+
+                    tarvaltra.setId(lstpro.get(i).getTarifaTransporte().getIdTransporte());
+                    tarvaltra.setNombreTipo(lstpro.get(i).getTarifaTransporte().getNombreTransporte());
+                    tarvaltra.setPrecio(lstpro.get(i).getTarifaTransporte().getPrecio());
+
+                    tarvalhos.setId(lstpro.get(i).getTarifaHospedaje().getIdHospedaje());
+                    tarvalhos.setNombreTipo(lstpro.get(i).getTarifaHospedaje().getNombreHospedaje());
+                    tarvalhos.setPrecio(lstpro.get(i).getTarifaHospedaje().getPrecio());
+
+                    //tipoesp
+                    prod.setTipoEspectaculo(tarvalesp);
+                    prod.setTipoHospedaje(tarvalhos);
+                    prod.setTipoTransporte(tarvaltra);
+
+                    //prod.setTipoEspectaculo();
+                    lstprod.add(prod);
+                }
+                txProductos.commit();
+            } catch (Exception ex) {
+                // Log the exception here
+                txProductos.rollback();
+                throw ex;
             }
-        }
-
-        for (int i = 0; i < lstpro.size(); i++) {
-            com.touresbalon.productostouresbalon.Producto prod = new com.touresbalon.productostouresbalon.Producto();
-            com.touresbalon.productostouresbalon.Ciudad ciu = new com.touresbalon.productostouresbalon.Ciudad();
-
-            ciu.setIdCiudad(lstpro.get(i).getCiudad().getIdCiudad());
-            ciu.setPais(lstpro.get(i).getCiudad().getNombreCiudad() + " - " + lstpro.get(i).getCiudad().getPais());
-
-            prod.setCiudadEspectaculo(ciu);
-            prod.setDescripcion(lstpro.get(i).getDescripcion());
-            prod.setEspectaculo(lstpro.get(i).getEspectaculo());
-            prod.setFechaEspectaculo(toGregorian(lstpro.get(i).getFechaEspectaculo()));
-            prod.setFechaLlegada(toGregorian(lstpro.get(i).getFechaLlegada()));
-            prod.setFechaSalida(toGregorian(lstpro.get(i).getFechaSalida()));
-            prod.setIdProducto(lstpro.get(i).getIdProducto());
-            prod.setImagenProducto(lstpro.get(i).getUrlImagen());
-
-            com.touresbalon.productostouresbalon.TarifaValores tarvalesp = new com.touresbalon.productostouresbalon.TarifaValores();
-            com.touresbalon.productostouresbalon.TarifaValores tarvaltra = new com.touresbalon.productostouresbalon.TarifaValores();
-            com.touresbalon.productostouresbalon.TarifaValores tarvalhos = new com.touresbalon.productostouresbalon.TarifaValores();
-
-            tarvalesp.setId(lstpro.get(i).getTarifaEspectaculo().getIdEspectaculo());
-            tarvalesp.setNombreTipo(lstpro.get(i).getTarifaEspectaculo().getNombreEspectaculo());
-            tarvalesp.setPrecio(lstpro.get(i).getTarifaEspectaculo().getPrecio());
-
-            tarvaltra.setId(lstpro.get(i).getTarifaTransporte().getIdTransporte());
-            tarvaltra.setNombreTipo(lstpro.get(i).getTarifaTransporte().getNombreTransporte());
-            tarvaltra.setPrecio(lstpro.get(i).getTarifaTransporte().getPrecio());
-
-            tarvalhos.setId(lstpro.get(i).getTarifaHospedaje().getIdHospedaje());
-            tarvalhos.setNombreTipo(lstpro.get(i).getTarifaHospedaje().getNombreHospedaje());
-            tarvalhos.setPrecio(lstpro.get(i).getTarifaHospedaje().getPrecio());
-
-            //tipoesp
-            prod.setTipoEspectaculo(tarvalesp);
-            prod.setTipoHospedaje(tarvalhos);
-            prod.setTipoTransporte(tarvaltra);
-
-            //prod.setTipoEspectaculo();
-            lstprod.add(prod);
-        }
-
-        System.out.println("cierre");
-        if (sessionProductos.isOpen()) {
+        } finally {
             sessionProductos.close();
         }
         return lstprod;
