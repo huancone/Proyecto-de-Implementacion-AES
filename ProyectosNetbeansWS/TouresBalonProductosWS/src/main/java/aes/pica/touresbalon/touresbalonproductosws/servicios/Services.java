@@ -39,8 +39,6 @@ import org.hibernate.Transaction;
 @WebService(serviceName = "ProductosTouresBalon", portName = "ProductosTouresBalonSOAP", endpointInterface = "com.touresbalon.productostouresbalon.ProductosTouresBalon", targetNamespace = "http://www.touresbalon.com/ProductosTouresBalon/", wsdlLocation = "WEB-INF/wsdl/ProductosTouresBalon.wsdl")
 public class Services {
 
-    //Variables globlales
-    // private Session sessionClientes;
     public java.util.List<com.touresbalon.productostouresbalon.Producto> consultarProducto(com.touresbalon.productostouresbalon.TipoConsultaProducto tipoConsulta, java.lang.String cadenaConsulta) throws ConsultarProductoFault_Exception, DatatypeConfigurationException {
 
         Session sessionProductos;
@@ -62,7 +60,6 @@ public class Services {
         if (null != tipoConsulta) {
             switch (tipoConsulta) {
                 case DESCRIPCION:
-
                     arrayConsulta = cadenaConsulta.split("@");
                     descripcion = arrayConsulta[1];
                     primerProducto = 20 * Integer.parseInt(arrayConsulta[0]) - 19;
@@ -234,78 +231,75 @@ public class Services {
 
     public java.util.List<com.touresbalon.productostouresbalon.Producto> consultarCampaniaProducto() throws ConsultarCampaniaProductoFault_Exception, DatatypeConfigurationException {
 
-        Session sessionProductos;
-        Session sessionOrdenes;
-        Transaction txProductos;
-        Transaction txOrdenes;
-
-        sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
-        txProductos = sessionProductos.beginTransaction();
-
-        String strsql;
-
-        Query q = null;
-        List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto> lstpro = new ArrayList<>();
+        final Session sessionProductos;
+        final Transaction txProductos;
 
         List<Producto> lstprod = new ArrayList<>();
-
-        strsql = "SELECT Producto.* FROM Campanias INNER JOIN Producto ON Producto.id_Producto = Campanias.id_Producto WHERE GETDATE()>= Campanias.fecha_Inicio AND GETDATE() <= Campanias.fecha_Fin ";
-
+        sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
         try {
-            q = sessionProductos.createSQLQuery(strsql).addEntity(aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto.class);
-            lstpro = q.list();
-        } catch (Exception e) {
-            System.out.println("Error al consultar las campañas: " + e.getMessage());
-        }
+            txProductos = sessionProductos.beginTransaction();
+            try {
 
-        for (int i = 0; i < lstpro.size(); i++) {
-            com.touresbalon.productostouresbalon.Producto prod = new com.touresbalon.productostouresbalon.Producto();
-            com.touresbalon.productostouresbalon.Ciudad ciu = new com.touresbalon.productostouresbalon.Ciudad();
+                String strsql;
+                Query q = null;
+                List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto> lstpro = new ArrayList<>();
 
-            ciu.setIdCiudad(lstpro.get(i).getCiudad().getIdCiudad());
-            ciu.setPais(lstpro.get(i).getCiudad().getNombreCiudad() + " - " + lstpro.get(i).getCiudad().getPais());
+                strsql = "SELECT Producto.* FROM Campanias INNER JOIN Producto ON Producto.id_Producto = Campanias.id_Producto WHERE GETDATE()>= Campanias.fecha_Inicio AND GETDATE() <= Campanias.fecha_Fin ";
 
-            prod.setCiudadEspectaculo(ciu);
-            prod.setDescripcion(lstpro.get(i).getDescripcion());
-            prod.setEspectaculo(lstpro.get(i).getEspectaculo());
-            prod.setFechaEspectaculo(toGregorian(lstpro.get(i).getFechaEspectaculo()));
-            prod.setFechaLlegada(toGregorian(lstpro.get(i).getFechaLlegada()));
-            prod.setFechaSalida(toGregorian(lstpro.get(i).getFechaSalida()));
-            prod.setIdProducto(lstpro.get(i).getIdProducto());
-            prod.setImagenProducto(lstpro.get(i).getUrlImagen());
+                q = sessionProductos.createSQLQuery(strsql).addEntity(aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto.class);
+                lstpro = q.list();
 
-            com.touresbalon.productostouresbalon.TarifaValores tarvalesp = new com.touresbalon.productostouresbalon.TarifaValores();
-            com.touresbalon.productostouresbalon.TarifaValores tarvaltra = new com.touresbalon.productostouresbalon.TarifaValores();
-            com.touresbalon.productostouresbalon.TarifaValores tarvalhos = new com.touresbalon.productostouresbalon.TarifaValores();
+                for (int i = 0; i < lstpro.size(); i++) {
+                    com.touresbalon.productostouresbalon.Producto prod = new com.touresbalon.productostouresbalon.Producto();
+                    com.touresbalon.productostouresbalon.Ciudad ciu = new com.touresbalon.productostouresbalon.Ciudad();
 
-            tarvalesp.setId(lstpro.get(i).getTarifaEspectaculo().getIdEspectaculo());
-            tarvalesp.setNombreTipo(lstpro.get(i).getTarifaEspectaculo().getNombreEspectaculo());
-            tarvalesp.setPrecio(lstpro.get(i).getTarifaEspectaculo().getPrecio());
+                    ciu.setIdCiudad(lstpro.get(i).getCiudad().getIdCiudad());
+                    ciu.setPais(lstpro.get(i).getCiudad().getNombreCiudad() + " - " + lstpro.get(i).getCiudad().getPais());
 
-            tarvaltra.setId(lstpro.get(i).getTarifaTransporte().getIdTransporte());
-            tarvaltra.setNombreTipo(lstpro.get(i).getTarifaTransporte().getNombreTransporte());
-            tarvaltra.setPrecio(lstpro.get(i).getTarifaTransporte().getPrecio());
+                    prod.setCiudadEspectaculo(ciu);
+                    prod.setDescripcion(lstpro.get(i).getDescripcion());
+                    prod.setEspectaculo(lstpro.get(i).getEspectaculo());
+                    prod.setFechaEspectaculo(toGregorian(lstpro.get(i).getFechaEspectaculo()));
+                    prod.setFechaLlegada(toGregorian(lstpro.get(i).getFechaLlegada()));
+                    prod.setFechaSalida(toGregorian(lstpro.get(i).getFechaSalida()));
+                    prod.setIdProducto(lstpro.get(i).getIdProducto());
+                    prod.setImagenProducto(lstpro.get(i).getUrlImagen());
 
-            tarvalhos.setId(lstpro.get(i).getTarifaHospedaje().getIdHospedaje());
-            tarvalhos.setNombreTipo(lstpro.get(i).getTarifaHospedaje().getNombreHospedaje());
-            tarvalhos.setPrecio(lstpro.get(i).getTarifaHospedaje().getPrecio());
+                    com.touresbalon.productostouresbalon.TarifaValores tarvalesp = new com.touresbalon.productostouresbalon.TarifaValores();
+                    com.touresbalon.productostouresbalon.TarifaValores tarvaltra = new com.touresbalon.productostouresbalon.TarifaValores();
+                    com.touresbalon.productostouresbalon.TarifaValores tarvalhos = new com.touresbalon.productostouresbalon.TarifaValores();
 
-            //tipoesp
-            prod.setTipoEspectaculo(tarvalesp);
-            prod.setTipoHospedaje(tarvalhos);
-            prod.setTipoTransporte(tarvaltra);
+                    tarvalesp.setId(lstpro.get(i).getTarifaEspectaculo().getIdEspectaculo());
+                    tarvalesp.setNombreTipo(lstpro.get(i).getTarifaEspectaculo().getNombreEspectaculo());
+                    tarvalesp.setPrecio(lstpro.get(i).getTarifaEspectaculo().getPrecio());
 
-            //prod.setTipoEspectaculo();
-            lstprod.add(prod);
-        }
+                    tarvaltra.setId(lstpro.get(i).getTarifaTransporte().getIdTransporte());
+                    tarvaltra.setNombreTipo(lstpro.get(i).getTarifaTransporte().getNombreTransporte());
+                    tarvaltra.setPrecio(lstpro.get(i).getTarifaTransporte().getPrecio());
 
-        System.out.println("cierre");
+                    tarvalhos.setId(lstpro.get(i).getTarifaHospedaje().getIdHospedaje());
+                    tarvalhos.setNombreTipo(lstpro.get(i).getTarifaHospedaje().getNombreHospedaje());
+                    tarvalhos.setPrecio(lstpro.get(i).getTarifaHospedaje().getPrecio());
 
-        if (sessionProductos.isOpen()) {
+                    //tipoesp
+                    prod.setTipoEspectaculo(tarvalesp);
+                    prod.setTipoHospedaje(tarvalhos);
+                    prod.setTipoTransporte(tarvaltra);
+
+                    //prod.setTipoEspectaculo();
+                    lstprod.add(prod);
+                }
+                txProductos.commit();
+                System.out.println("cierre");
+            } catch (Exception e) {
+                txProductos.rollback();
+
+                System.out.println("Error al consultar las campañas: " + e.getMessage());
+            }
+        } finally {
             sessionProductos.close();
+            return lstprod;
         }
-
-        return lstprod;
     }
 
     public java.util.List<com.touresbalon.productostouresbalon.Producto> consultarPorEspectaculoProducto(java.lang.String espectaculo) throws ConsultarPorEspectaculoProductoFault_Exception, DatatypeConfigurationException {
@@ -791,7 +785,7 @@ public class Services {
                 break;
             case ELIMINAR: {
 
-                aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto prod = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto();               
+                aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto prod = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto();
 //                prod.setIdProducto( campania.getIdProducto().getIdProducto());
 //                camp.setProducto(prod);
                 try {
