@@ -227,7 +227,7 @@ public class Services {
                 throw ex;
             }
         } finally {
-            sessionProductos.close();
+            if(sessionProductos.isOpen())sessionProductos.close();
             return lstprod;
         }
         
@@ -301,7 +301,7 @@ public class Services {
                 System.out.println("Error al consultar las campañas: " + e.getMessage());
             }
         } finally {
-            sessionProductos.close();
+            if(sessionProductos.isOpen())sessionProductos.close();
             return lstprod;
         }
     }
