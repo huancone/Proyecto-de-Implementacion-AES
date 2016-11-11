@@ -228,8 +228,9 @@ public class Services {
             }
         } finally {
             sessionProductos.close();
+            return lstprod;
         }
-        return lstprod;
+        
     }
 
     public java.util.List<com.touresbalon.productostouresbalon.Producto> consultarCampaniaProducto() throws ConsultarCampaniaProductoFault_Exception, DatatypeConfigurationException {
