@@ -32,7 +32,7 @@ import org.hibernate.Transaction;
  * @author braatz
  */
 @WebService(serviceName = "OrdenesTouresBalon", portName = "OrdenesTouresBalonSOAP", endpointInterface = "com.touresbalon.ordenestouresbalon.OrdenesTouresBalon", targetNamespace = "http://www.touresbalon.com/OrdenesTouresBalon/", wsdlLocation = "WEB-INF/wsdl/OrdenesTouresBalon.wsdl")
-public class Services { 
+public class Services {
 
     public java.util.List<com.touresbalon.ordenestouresbalon.Orden> consultarClientesOrdenes(int idCliente) throws com.touresbalon.ordenestouresbalon.ConsultarClientesOrdenesFault_Exception {
 
@@ -41,7 +41,7 @@ public class Services {
 
         Session sessionOrdenes = null;
         Transaction tx = null;
-    
+
         List<Orden> ordenes = new ArrayList<Orden>();
         String strsql;
 
@@ -49,11 +49,11 @@ public class Services {
 
             sessionOrdenes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
             tx = sessionOrdenes.beginTransaction();
-        
+
             strsql = "from Orders where ordid = :idCustomer )";
             sessionOrdenes.createQuery(strsql)
                     .setParameter("idCustomer", idCliente);
- 
+
         } catch (Exception e) {
 
             System.out.println("$$$ Error consultarClientesOrdenes" + e);
@@ -64,7 +64,7 @@ public class Services {
         System.out.println("--------------------------------------------------");
 
         return ordenes;
-        
+
     }
 
     public com.touresbalon.ordenestouresbalon.RespuestaGenerica cancelarOrdenes(java.util.List<java.lang.Integer> idOrden) throws com.touresbalon.ordenestouresbalon.CancelarOrdenesFault_Exception {
@@ -74,7 +74,7 @@ public class Services {
 
         Session sessionOrdenes = null;
         Transaction tx = null;
-        
+
         RespuestaGenerica respuesta = RespuestaGenerica.KO;
         Orders ordenDB = new Orders();
         EstatusOrden estatusOrden = null;
@@ -103,7 +103,7 @@ public class Services {
         System.out.println("--------------------------------------------------");
 
         return respuesta;
-        
+
     }
 
     public com.touresbalon.ordenestouresbalon.CrearOrdenResponse crearOrdenes(com.touresbalon.ordenestouresbalon.Orden orden) throws com.touresbalon.ordenestouresbalon.CrearOrdenesFault_Exception {
@@ -111,48 +111,51 @@ public class Services {
         System.out.println("--------------------------------------------------");
         System.out.println("INICIO ::: crearOrdenes");
 
-        Session sessionOrdenes = null;
-        Transaction tx = null;
-        
+        final Session sessionOrdenes;
+        sessionOrdenes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
+
         CrearOrdenResponse respuesta = new CrearOrdenResponse();
         Orders ordenDB = new Orders();
         Integer id = 0;
 
         try {
+            final Transaction tx = sessionOrdenes.beginTransaction();
+            try {
 
-            sessionOrdenes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
-            tx = sessionOrdenes.beginTransaction();
+                // Creacion de orden
+                System.out.println("fecha recibida: " + orden.getFechaOrden());
+                ordenDB.setOrderdate(toDate(orden.getFechaOrden()));
+                ordenDB.setPrice(orden.getPrecio());
+                EstatusOrden estatusOrden = null;
+                ordenDB.setStatus(orden.getEstatus().toString());
+                ordenDB.setComments(orden.getComentarios().get(0));
+                ordenDB.setCustomer(new Customer());
+                ordenDB.getCustomer().setCustid(orden.getIdCliente());
+                id = (Integer) sessionOrdenes.save(ordenDB);
 
-            // Creacion de orden
-            System.out.println("fecha recibida: " + orden.getFechaOrden());
-            ordenDB.setOrderdate(toDate(orden.getFechaOrden()));
-            ordenDB.setPrice(orden.getPrecio());
-            EstatusOrden estatusOrden = null;
-            ordenDB.setStatus(orden.getEstatus().toString());
-            ordenDB.setComments(orden.getComentarios().get(0));
-            ordenDB.setCustomer(new Customer());
-            ordenDB.getCustomer().setCustid(orden.getIdCliente());
-            id = (Integer) sessionOrdenes.save(ordenDB);
-
-            // Creacion de items
-            for (Item item : orden.getItem()) {
-                Items itemDB = new Items();
-                itemDB.setProdid(item.getIdProd());
-                itemDB.setProductname(item.getNombreProd());
-                itemDB.setPartnum(item.getPartNum());
-                itemDB.setPrice(item.getPrecio());
-                itemDB.setQuantity(item.getCantidad());
-                itemDB.setOrders(new Orders());
-                itemDB.getOrders().setOrdid(id);
-                sessionOrdenes.save(itemDB);
+                // Creacion de items
+                for (Item item : orden.getItem()) {
+                    Items itemDB = new Items();
+                    itemDB.setProdid(item.getIdProd());
+                    itemDB.setProductname(item.getNombreProd());
+                    itemDB.setPartnum(item.getPartNum());
+                    itemDB.setPrice(item.getPrecio());
+                    itemDB.setQuantity(item.getCantidad());
+                    itemDB.setOrders(new Orders());
+                    itemDB.getOrders().setOrdid(id);
+                    sessionOrdenes.save(itemDB);
+                }
+                tx.commit();
+            } catch (Exception ex) {
+                System.out.println("$$$ ERROR: crearOrdenes: " + ex.getMessage());
+                respuesta.setRespuesta(RespuestaGenerica.KO);
+                tx.rollback();
+                throw ex;
             }
-            tx.commit();
-
-        } catch (Exception e) {
-
-            System.out.println("$$$ ERROR: crearOrdenes: " + e);
-            respuesta.setRespuesta(RespuestaGenerica.KO);
-
+        } finally {
+            if (sessionOrdenes.isOpen()) {
+                sessionOrdenes.close();
+            }
         }
 
         respuesta.setEstatusOrden(EstatusOrden.fromValue(ordenDB.getStatus()));
@@ -173,7 +176,7 @@ public class Services {
 
         Session sessionOrdenes = null;
         Transaction tx = null;
-        
+
         Orders ordenDB = new Orders();
         Items itemDB = new Items();
         Orden orden = new Orden();
@@ -222,13 +225,13 @@ public class Services {
     }
 
     public com.touresbalon.ordenestouresbalon.RespuestaOrdenCerrada consultarRangoCerradoOrdenes(javax.xml.datatype.XMLGregorianCalendar fechaInicial, javax.xml.datatype.XMLGregorianCalendar fechaFinal) throws com.touresbalon.ordenestouresbalon.ConsultarRangoCerradoOrdenesFault_Exception {
-     
+
         System.out.println("--------------------------------------------------");
         System.out.println("INICIO ::: consultarRangoCerradoOrdenes");
 
         Session sessionOrdenes = null;
         Transaction tx = null;
-        
+
         Orders ordenDB = new Orders();
         Items itemDB = new Items();
         Orden orden = new Orden();
@@ -268,7 +271,7 @@ public class Services {
 
         Session sessionOrdenes = null;
         Transaction tx = null;
-        
+
         List<Orden> ordenes = new ArrayList<Orden>();
         List<Orders> ordenesDB = new ArrayList<Orders>();
         String strsql;
@@ -278,13 +281,13 @@ public class Services {
 
             sessionOrdenes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
             tx = sessionOrdenes.beginTransaction();
-        
+
             strsql = "from Orders where status in ( :estadoValidacion, :stadoReservacion )";
             query = sessionOrdenes.createQuery(strsql)
                     .setParameter("estadoValidacion", EstatusOrden.VALIDACION.value())
                     .setParameter("stadoReservacion", EstatusOrden.RESERVACION.value());
             ordenesDB = query.list();
- 
+
             for (Orders registro : ordenesDB) {
                 Orden orden = new Orden();
                 orden.setIdOrden(registro.getOrdid());
@@ -315,7 +318,7 @@ public class Services {
 
         Session sessionOrdenes = null;
         Transaction tx = null;
-        
+
         List<Orden> ordenes = new ArrayList<Orden>();
         List<Orders> ordenesDB = new ArrayList<Orders>();
         String strsql;
@@ -325,12 +328,12 @@ public class Services {
 
             sessionOrdenes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
             tx = sessionOrdenes.beginTransaction();
-        
+
             strsql = "from Orders where status = :estadoCarrada";
             query = sessionOrdenes.createQuery(strsql)
                     .setParameter("estadoCarrada", EstatusOrden.CERRADA.value());
             ordenesDB = query.list();
- 
+
             for (Orders registro : ordenesDB) {
                 Orden orden = new Orden();
                 orden.setIdOrden(registro.getOrdid());
@@ -352,7 +355,7 @@ public class Services {
         System.out.println("--------------------------------------------------");
 
         return ordenes;
-        
+
     }
 
     public Date toDate(XMLGregorianCalendar calendar) {
