@@ -13,7 +13,9 @@ import com.aes.touresbalon.touresbalonoms.wsdl.client.TarifaValores;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.TipoAccion;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.TipoConsultaProducto;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -36,7 +38,7 @@ public class ProductosBean {
      */
     public ProductosBean() {
     }
-   
+
     private int idProducto;
     private String espectaculo;
     private String descripcion;
@@ -48,92 +50,90 @@ public class ProductosBean {
     private TarifaValores tipoEspectaculo;
     private TarifaValores tipoHospedaje;
     private String imagenProducto;
-    
+
     private String tipoConsulta;
     private String txtConsulta;
-    private boolean showPanelEdit;
-    
+
+    private Producto producto;
+    private List<Producto> productosList;
+
     private TipoAccion tipoAccion;
-    
+
     Services service = new Services();
-    
+
     public void onTabChange(TabChangeEvent event) {
         FacesMessage msg = new FacesMessage("Tab Changed", "Active Tab: " + event.getTab().getTitle());
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
-         
+
     public void onTabClose(TabCloseEvent event) {
         FacesMessage msg = new FacesMessage("Tab Closed", "Closed tab: " + event.getTab().getTitle());
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
-    
+
     public void crearProducto() throws ParseException, DatatypeConfigurationException {
-        if (this.fechaEspectaculo != null) {
-            XMLGregorianCalendar fechaLlegadaServ = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaLlegada());
-            XMLGregorianCalendar fechaSalidaServ = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaSalida());
-            XMLGregorianCalendar fechaEspectaculoServ = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaEspectaculo());
-            Ciudad cb = new Ciudad();
-            Producto producto = new Producto();
-            producto.setIdProducto(this.getIdProducto());
-            producto.setEspectaculo(this.getEspectaculo());
-            producto.setDescripcion(this.getDescripcion());
-            producto.setFechaLlegada(fechaLlegadaServ);
-            producto.setFechaSalida(fechaSalidaServ);
-            producto.setFechaEspectaculo(fechaEspectaculoServ);
-            producto.setCiudadEspectaculo(this.getCiudadEspectaculo());
-            producto.setCiudadEspectaculo(cb);
-            this.setTipoAccion(TipoAccion.ADICIONAR);
-            service.gestionProducto(producto, this.getTipoAccion());
-        }
+        XMLGregorianCalendar fechaLlegadaServ = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaLlegada());
+        XMLGregorianCalendar fechaSalidaServ = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaSalida());
+        XMLGregorianCalendar fechaEspectaculoServ = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaEspectaculo());
+        Ciudad cb = new Ciudad();
+        producto.setIdProducto(this.getIdProducto());
+        producto.setEspectaculo(this.getEspectaculo());
+        producto.setDescripcion(this.getDescripcion());
+        producto.setFechaLlegada(fechaLlegadaServ);
+        producto.setFechaSalida(fechaSalidaServ);
+        producto.setFechaEspectaculo(fechaEspectaculoServ);
+        producto.setCiudadEspectaculo(this.getCiudadEspectaculo());
+        producto.setCiudadEspectaculo(cb);
+        this.setTipoAccion(TipoAccion.ADICIONAR);
+        service.gestionProducto(producto, this.getTipoAccion());
     }
 
-    public void editarProducto() throws ParseException, DatatypeConfigurationException{
-        if (!isShowPanelEdit()){
-            if (this.fechaEspectaculo != null) {
-            XMLGregorianCalendar fechaLlegadaServ = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaLlegada());
-            XMLGregorianCalendar fechaSalidaServ = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaSalida());
-            XMLGregorianCalendar fechaEspectaculoServ = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaEspectaculo());
-            Ciudad cb = new Ciudad();
-            Producto producto = new Producto();
-            producto.setIdProducto(this.getIdProducto());
-            producto.setEspectaculo(this.getEspectaculo());
-            producto.setDescripcion(this.getDescripcion());
-            producto.setFechaLlegada(fechaLlegadaServ);
-            producto.setFechaSalida(fechaSalidaServ);
-            producto.setFechaEspectaculo(fechaEspectaculoServ);
-            producto.setCiudadEspectaculo(this.getCiudadEspectaculo());
-            producto.setCiudadEspectaculo(cb);
-            this.setTipoAccion(TipoAccion.MODIFICAR);
-            service.gestionProducto(producto, this.getTipoAccion());
-        }
-        }else{
-            setShowPanelEdit(false);
-        }
+    public void editarProducto() throws ParseException, DatatypeConfigurationException {
+        XMLGregorianCalendar fechaLlegadaServ = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaLlegada());
+        XMLGregorianCalendar fechaSalidaServ = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaSalida());
+        XMLGregorianCalendar fechaEspectaculoServ = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaEspectaculo());
+        Ciudad cb = new Ciudad();
+        producto.setIdProducto(this.getIdProducto());
+        producto.setEspectaculo(this.getEspectaculo());
+        producto.setDescripcion(this.getDescripcion());
+        producto.setFechaLlegada(fechaLlegadaServ);
+        producto.setFechaSalida(fechaSalidaServ);
+        producto.setFechaEspectaculo(fechaEspectaculoServ);
+        producto.setCiudadEspectaculo(this.getCiudadEspectaculo());
+        producto.setCiudadEspectaculo(cb);
+        this.setTipoAccion(TipoAccion.MODIFICAR);
+        service.gestionProducto(producto, this.getTipoAccion());
     }
-    
-    public void eliminarProducto() throws ParseException, DatatypeConfigurationException{
-        if (this.fechaEspectaculo != null) {
-            XMLGregorianCalendar fechaLlegadaServ = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaLlegada());
-            XMLGregorianCalendar fechaSalidaServ = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaSalida());
-            XMLGregorianCalendar fechaEspectaculoServ = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaEspectaculo());
-            Ciudad cb = new Ciudad();
-            Producto producto = new Producto();
-            producto.setIdProducto(this.getIdProducto());
-            producto.setEspectaculo(this.getEspectaculo());
-            producto.setDescripcion(this.getDescripcion());
-            producto.setFechaLlegada(fechaLlegadaServ);
-            producto.setFechaSalida(fechaSalidaServ);
-            producto.setFechaEspectaculo(fechaEspectaculoServ);
-            producto.setCiudadEspectaculo(this.getCiudadEspectaculo());
-            producto.setCiudadEspectaculo(cb);
-            this.setTipoAccion(TipoAccion.ELIMINAR);
-            service.gestionProducto(producto, this.getTipoAccion());
-        }
+
+    public void eliminarProducto() throws ParseException, DatatypeConfigurationException {
+        XMLGregorianCalendar fechaLlegadaServ = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaLlegada());
+        XMLGregorianCalendar fechaSalidaServ = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaSalida());
+        XMLGregorianCalendar fechaEspectaculoServ = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaEspectaculo());
+        Ciudad cb = new Ciudad();
+//            org.apache.commons.beanutils.BeanUtils.copyProperties(producto, this);
+
+        producto.setIdProducto(this.getIdProducto());
+        producto.setEspectaculo(this.getEspectaculo());
+        producto.setDescripcion(this.getDescripcion());
+        producto.setFechaLlegada(fechaLlegadaServ);
+        producto.setFechaSalida(fechaSalidaServ);
+        producto.setFechaEspectaculo(fechaEspectaculoServ);
+        producto.setCiudadEspectaculo(this.getCiudadEspectaculo());
+        producto.setCiudadEspectaculo(cb);
+        this.setTipoAccion(TipoAccion.ELIMINAR);
+        service.gestionProducto(producto, this.getTipoAccion());
     }
-    
-    public void consultarProducto(){
-        showPanelEdit = true;
-        service.consultarProducto(TipoConsultaProducto.DESCRIPCION, this.getTxtConsulta());
+
+    public void consultarProducto() {
+        List<Producto> productos = new ArrayList<>();
+        if (this.getTipoConsulta().equalsIgnoreCase("id")) {
+            productos = service.consultarProducto(TipoConsultaProducto.ID, this.getTxtConsulta());
+        } else if (this.getTipoConsulta().equalsIgnoreCase("nombre")) {
+            productos = service.consultarProducto(TipoConsultaProducto.NOMBRE, this.getTxtConsulta());
+        } else if (this.getTipoConsulta().equalsIgnoreCase("descripcion")) {
+            productos = service.consultarProducto(TipoConsultaProducto.DESCRIPCION, this.getTxtConsulta());
+        }
+        this.setProductosList(productos);
     }
 
     public int getIdProducto() {
@@ -253,20 +253,6 @@ public class ProductosBean {
     }
 
     /**
-     * @return the showPanelEdit
-     */
-    public boolean isShowPanelEdit() {
-        return showPanelEdit;
-    }
-
-    /**
-     * @param showPanelEdit the showPanelEdit to set
-     */
-    public void setShowPanelEdit(boolean showPanelEdit) {
-        this.showPanelEdit = showPanelEdit;
-    }
-
-    /**
      * @return the tipoAccion
      */
     public TipoAccion getTipoAccion() {
@@ -279,6 +265,33 @@ public class ProductosBean {
     public void setTipoAccion(TipoAccion tipoAccion) {
         this.tipoAccion = tipoAccion;
     }
-    
-    
+
+    /**
+     * @return the productosList
+     */
+    public List<Producto> getProductosList() {
+        return productosList;
+    }
+
+    /**
+     * @param productosList the productosList to set
+     */
+    public void setProductosList(List<Producto> productosList) {
+        this.productosList = productosList;
+    }
+
+    /**
+     * @return the producto
+     */
+    public Producto getProducto() {
+        return producto;
+    }
+
+    /**
+     * @param producto the producto to set
+     */
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
+
 }
