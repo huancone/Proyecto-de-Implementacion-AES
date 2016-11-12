@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
+<<<<<<< Updated upstream
   <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.OracleDialect</property>
     <property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
@@ -17,4 +18,20 @@
     <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/clientesyordenes/Items.hbm.xml"/>
     <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/clientesyordenes/Address.hbm.xml"/>
   </session-factory>
+=======
+    <session-factory>
+        <property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
+        <!--property name="hibernate.connection.url">jdbc:oracle:thin:@192.168.99.100:32771:XE</property-->
+        <property name="hibernate.connection.url">jdbc:oracle:thin:@clientes_sql:1521:XE</property>
+        <property name="hibernate.connection.username">touresbalon</property>
+        <property name="hibernate.connection.password">touresbalon</property>
+        <property name="hibernate.current_session_context_class">thread</property>
+        <property name="show_sql">true</property>
+        <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/clientesyordenes/CustomerAddress.hbm.xml"/>
+        <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/clientesyordenes/Customer.hbm.xml"/>
+        <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/clientesyordenes/Orders.hbm.xml"/>
+        <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/clientesyordenes/Items.hbm.xml"/>
+        <mapping resource="aes/pica/touresbalon/touresbalonproductosws/entidades/clientesyordenes/Address.hbm.xml"/>
+    </session-factory>
+>>>>>>> Stashed changes
 </hibernate-configuration>

@@ -9,7 +9,7 @@
             <column name="id_espectaculo" />
             <generator class="sequence">
                 <param name="sequence">SEC_TARESP_ID</param>
-            </generator>s
+            </generator>
         </id>
         <property name="nombreEspectaculo" type="string">
             <column name="nombre_espectaculo" length="4000" />
