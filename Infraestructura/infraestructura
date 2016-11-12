@@ -86,18 +86,17 @@ MAQUINAS
 
 B2C 					Harold
 Memcache 				Harold
-OMS 					Alex
-OSB 					Deiver
+OMS 					Christian
+OSB 					Juan Diego
 Bpel 					Juan Diego
 ProductosWS        		Christian
 OrdenesWS 				Christian
 ClientesWS 				Christian
-ReservasWS 				Juan Diego
+ReservasWS 				Christian
 productos_sql			Hugo
 clientes_sql 			Hugo
-Directorio Activo 		Deiver
-FileServer 				Juan Diego
-SMTP 					Deiver
+Directorio Activo 		Juan Diego
+FileServer 				Harold - Christian
 Contabilidad			Juan Diego
 
 
