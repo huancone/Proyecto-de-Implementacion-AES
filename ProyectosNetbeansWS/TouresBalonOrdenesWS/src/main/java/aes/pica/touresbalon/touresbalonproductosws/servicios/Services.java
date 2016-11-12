@@ -39,16 +39,16 @@ public class Services {
         System.out.println("--------------------------------------------------");
         System.out.println("INICIO ::: consultarClientesOrdenes");
 
-        Session sessionOrdenes = null;
-        Transaction tx = null;
+        final Session sessionOrdenes;
+        final Transaction tx;
     
+        sessionOrdenes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
+        tx = sessionOrdenes.beginTransaction();
+        
         List<Orden> ordenes = new ArrayList<Orden>();
         String strsql;
 
-        try {
-
-            sessionOrdenes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
-            tx = sessionOrdenes.beginTransaction();
+        try {           
         
             strsql = "from Orders where ordid = :idCustomer )";
             sessionOrdenes.createQuery(strsql)
@@ -56,8 +56,13 @@ public class Services {
  
         } catch (Exception e) {
 
+            tx.rollback();
             System.out.println("$$$ Error consultarClientesOrdenes" + e);
 
+        } finally {
+            if(sessionOrdenes.isOpen()){
+                sessionOrdenes.close();
+            }
         }
 
         System.out.println("FINAL  ::: consultarClientesOrdenes");
@@ -72,8 +77,11 @@ public class Services {
         System.out.println("--------------------------------------------------");
         System.out.println("INICIO ::: cancelarOrdenes");
 
-        Session sessionOrdenes = null;
-        Transaction tx = null;
+        final Session sessionOrdenes;
+        final Transaction tx;
+    
+        sessionOrdenes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
+        tx = sessionOrdenes.beginTransaction();
         
         RespuestaGenerica respuesta = RespuestaGenerica.KO;
         Orders ordenDB = new Orders();
@@ -81,10 +89,7 @@ public class Services {
         Integer id = 0;
 
         try {
-
-            sessionOrdenes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
-            tx = sessionOrdenes.beginTransaction();
-
+            
             ordenDB.setOrdid(idOrden.get(0));
             ordenDB.setStatus(estatusOrden.CANCELADA.value());
             sessionOrdenes.update(ordenDB);
@@ -92,9 +97,14 @@ public class Services {
 
         } catch (Exception e) {
 
+            tx.rollback();
             System.out.println("$$$ ERROR: cancelarOrdenes: " + e);
             respuesta = RespuestaGenerica.OK;
 
+        } finally {
+            if(sessionOrdenes.isOpen()){
+                sessionOrdenes.close();
+            }
         }
 
         respuesta = RespuestaGenerica.OK;
@@ -111,17 +121,17 @@ public class Services {
         System.out.println("--------------------------------------------------");
         System.out.println("INICIO ::: crearOrdenes");
 
-        Session sessionOrdenes = null;
-        Transaction tx = null;
+        final Session sessionOrdenes;
+        final Transaction tx;
+    
+        sessionOrdenes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
+        tx = sessionOrdenes.beginTransaction();
         
         CrearOrdenResponse respuesta = new CrearOrdenResponse();
         Orders ordenDB = new Orders();
         Integer id = 0;
 
         try {
-
-            sessionOrdenes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
-            tx = sessionOrdenes.beginTransaction();
 
             // Creacion de orden
             System.out.println("fecha recibida: " + orden.getFechaOrden());
@@ -150,9 +160,14 @@ public class Services {
 
         } catch (Exception e) {
 
+            tx.rollback();
             System.out.println("$$$ ERROR: crearOrdenes: " + e);
             respuesta.setRespuesta(RespuestaGenerica.KO);
 
+        } finally {
+            if(sessionOrdenes.isOpen()){
+                sessionOrdenes.close();
+            }
         }
 
         respuesta.setEstatusOrden(EstatusOrden.fromValue(ordenDB.getStatus()));
@@ -171,8 +186,11 @@ public class Services {
         System.out.println("--------------------------------------------------");
         System.out.println("INICIO ::: consultarOrdenes");
 
-        Session sessionOrdenes = null;
-        Transaction tx = null;
+        final Session sessionOrdenes;
+        final Transaction tx;
+    
+        sessionOrdenes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
+        tx = sessionOrdenes.beginTransaction();
         
         Orders ordenDB = new Orders();
         Items itemDB = new Items();
@@ -180,9 +198,6 @@ public class Services {
         List<Orden> ordenes = new ArrayList<Orden>();
 
         try {
-
-            sessionOrdenes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
-            tx = sessionOrdenes.beginTransaction();
 
             switch (criterios.getTipoConsulta()) {
                 case ORDEN:
@@ -210,8 +225,13 @@ public class Services {
 
         } catch (Exception e) {
 
+            tx.rollback();
             System.out.println("$$$ Error consultarOrdenes" + e);
 
+        } finally {
+            if(sessionOrdenes.isOpen()){
+                sessionOrdenes.close();
+            }
         }
 
         System.out.println("FINAL  ::: consultarOrdenes");
@@ -226,8 +246,11 @@ public class Services {
         System.out.println("--------------------------------------------------");
         System.out.println("INICIO ::: consultarRangoCerradoOrdenes");
 
-        Session sessionOrdenes = null;
-        Transaction tx = null;
+        final Session sessionOrdenes;
+        final Transaction tx;
+    
+        sessionOrdenes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
+        tx = sessionOrdenes.beginTransaction();
         
         Orders ordenDB = new Orders();
         Items itemDB = new Items();
@@ -236,9 +259,6 @@ public class Services {
         RespuestaOrdenCerrada respuesta = new RespuestaOrdenCerrada();
 
         try {
-
-            sessionOrdenes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
-            tx = sessionOrdenes.beginTransaction();
 
             int count = ((Long) sessionOrdenes.createQuery("select count(*) from Orders where orderdate between " + fechaInicial + " and " + fechaFinal + " order by price desc ").uniqueResult()).intValue();
             System.out.println("||| cantidad: " + count);
@@ -250,8 +270,13 @@ public class Services {
 
         } catch (Exception e) {
 
+            tx.rollback();
             System.out.println("$$$ Error consultarRangoCerradoOrdenes" + e);
 
+        } finally {
+            if(sessionOrdenes.isOpen()){
+                sessionOrdenes.close();
+            }
         }
 
         System.out.println("FINAL  ::: consultarRangoCerradoOrdenes");
@@ -265,9 +290,11 @@ public class Services {
 
         System.out.println("--------------------------------------------------");
         System.out.println("INICIO ::: consultarRankingAbiertasOrdenes");
-
-        Session sessionOrdenes = null;
-        Transaction tx = null;
+        final Session sessionOrdenes;
+        final Transaction tx;
+    
+        sessionOrdenes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
+        tx = sessionOrdenes.beginTransaction();
         
         List<Orden> ordenes = new ArrayList<Orden>();
         List<Orders> ordenesDB = new ArrayList<Orders>();
@@ -275,9 +302,6 @@ public class Services {
         Query query = null;
 
         try {
-
-            sessionOrdenes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
-            tx = sessionOrdenes.beginTransaction();
         
             strsql = "from Orders where status in ( :estadoValidacion, :stadoReservacion )";
             query = sessionOrdenes.createQuery(strsql)
@@ -298,8 +322,13 @@ public class Services {
 
         } catch (Exception e) {
 
+            tx.rollback();
             System.out.println("$$$ Error consultarRankingAbiertasOrdenes" + e);
 
+        } finally {
+            if(sessionOrdenes.isOpen()){
+                sessionOrdenes.close();
+            }
         }
 
         System.out.println("FINAL  ::: consultarRankingAbiertasOrdenes");
@@ -313,8 +342,11 @@ public class Services {
         System.out.println("--------------------------------------------------");
         System.out.println("INICIO ::: consultarRankingCerradoOrdenes");
 
-        Session sessionOrdenes = null;
-        Transaction tx = null;
+        final Session sessionOrdenes;
+        final Transaction tx;
+    
+        sessionOrdenes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
+        tx = sessionOrdenes.beginTransaction();
         
         List<Orden> ordenes = new ArrayList<Orden>();
         List<Orders> ordenesDB = new ArrayList<Orders>();
@@ -322,9 +354,6 @@ public class Services {
         Query query = null;
 
         try {
-
-            sessionOrdenes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
-            tx = sessionOrdenes.beginTransaction();
         
             strsql = "from Orders where status = :estadoCarrada";
             query = sessionOrdenes.createQuery(strsql)
@@ -344,8 +373,13 @@ public class Services {
 
         } catch (Exception e) {
 
+            tx.rollback();
             System.out.println("$$$ Error consultarRankingCerradoOrdenes" + e);
 
+        } finally {
+            if(sessionOrdenes.isOpen()){
+                sessionOrdenes.close();
+            }
         }
 
         System.out.println("FINAL  ::: consultarRankingCerradoOrdenes");
