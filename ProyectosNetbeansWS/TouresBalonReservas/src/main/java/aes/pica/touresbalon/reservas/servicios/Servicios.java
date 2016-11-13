@@ -7,9 +7,7 @@ package aes.pica.touresbalon.reservas.servicios;
 
 import aes.pica.touresbalon.reservas.entidades.clientesyordenes.Items;
 import aes.pica.touresbalon.reservas.entidades.clientesyordenes.Orders;
-import aes.pica.touresbalon.reservas.entidades.dann.Hotel;
 import aes.pica.touresbalon.reservas.entidades.dann.PublicReservations;
-import aes.pica.touresbalon.reservas.entidades.dann.Room;
 import aes.pica.touresbalon.reservas.entidades.dann.TouresbalonReservations;
 import aes.pica.touresbalon.reservas.entidades.productos.Producto;
 import aes.pica.touresbalon.reservas.util.ClientesYOrdenesHU;
@@ -165,9 +163,13 @@ public class Servicios {
         return reservar(idOrden, itemEspectaculo, itemTransporte, itemHospedaje, itemCiudad);
     }
 
-    public com.touresbalon.reservastouresbalon.RespuestaGenerica callbackValidacionAnalista(int idOrden, java.lang.String estatusOrden) throws com.touresbalon.reservastouresbalon.CallbackValidacionAnalistaFault_Exception {
-        //TODO implement this method
-        throw new UnsupportedOperationException("Not implemented yet.");
+   public com.touresbalon.reservastouresbalon.RespuestaGenerica callbackValidacionAnalista(int idOrden, java.lang.String estatusOrden, com.touresbalon.reservastouresbalon.Item itemTransporte, com.touresbalon.reservastouresbalon.Item itemHospedaje, com.touresbalon.reservastouresbalon.Item itemEspectaculo, com.touresbalon.reservastouresbalon.Item itemCiudad) throws com.touresbalon.reservastouresbalon.CallbackValidacionAnalistaFault_Exception {
+       System.out.println("INICIO ::: CAllBaclReserva"); 
+       if(estatusOrden.equalsIgnoreCase(Constantes.RESERVACION)){
+            return reservar(idOrden, itemEspectaculo, itemTransporte, itemHospedaje, itemCiudad);
+        }else{
+            return RespuestaGenerica.KO;
+        }
     }
 
     public java.lang.String cancelarReserva(int idOrden) throws com.touresbalon.reservastouresbalon.CancelarReservaFault_Exception {

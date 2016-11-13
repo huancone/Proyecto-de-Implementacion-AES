@@ -111,7 +111,15 @@
       			<xsd:element name="idOrden" type="xsd:int"
       				maxOccurs="1" minOccurs="1">
       			</xsd:element>
-      			<xsd:element name="estatusOrden" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      			<xsd:element name="estatusOrden" type="xsd:string"
+      				maxOccurs="1" minOccurs="1">
+      			</xsd:element>
+      			<xsd:element name="itemTransporte"
+      				type="tns:item" maxOccurs="1" minOccurs="0">
+      			</xsd:element>
+      			<xsd:element name="itemHospedaje" type="tns:item" maxOccurs="1" minOccurs="0"></xsd:element>
+      			<xsd:element name="itemEspectaculo" type="tns:item" maxOccurs="1" minOccurs="0"></xsd:element>
+      			<xsd:element name="itemCiudad" type="tns:item" maxOccurs="1" minOccurs="0"></xsd:element>
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
