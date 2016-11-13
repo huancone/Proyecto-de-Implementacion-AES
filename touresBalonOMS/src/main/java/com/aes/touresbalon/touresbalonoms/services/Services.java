@@ -102,13 +102,8 @@ public class Services {
         return list;
     }
 
-<<<<<<< HEAD
-    
     public RespuestaGenerica actualizarCliente(Cliente cliente) throws ActualizarClienteFault_Exception {
         RespuestaGenerica result = null;
-=======
-    public RespuestaGenerica actualizarCliente(Cliente cliente) throws ActualizarClienteFault_Exception {
->>>>>>> 56fe0c60bf510df0fb52404541f13e5ab43a8085
         try {
             ServiceProxyOMS_Service service = new ServiceProxyOMS_Service();
             ServiceProxyOMS port = service.getServiceProxyOMSSOAP();
@@ -119,13 +114,9 @@ public class Services {
             bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, endpointURL);
 
             //Llamado al servicio
-<<<<<<< HEAD
             result = port.actualizarCliente(cliente);
        
             port.actualizarCliente(cliente);
-=======
-             port.actualizarCliente(cliente);
->>>>>>> 56fe0c60bf510df0fb52404541f13e5ab43a8085
 
         } catch (ActualizarClienteFault_Exception ex) {
             Logger.getLogger(ProductoService.class.getName()).log(Level.SEVERE, null, ex);
