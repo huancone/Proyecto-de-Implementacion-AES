@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
-    <system systemId="file:/Users/jdtrujillop/GitHub/Proyecto-de-Implementacion-AES/Servicios/WSDL_TouresBalon/src/aes/pica/wsdl/utilitarios/ReservasTouresBalon.wsdl" uri="wsdl/ReservasTouresBalon.wsdl"/>
-    <system systemId="file:/Users/jdtrujillop/Desktop/ReservasTB.wsdl" uri="wsdl/ReservasTB.wsdl"/>
-    <system systemId="file:/Users/jdtrujillop/GitHub/Proyecto-de-Implementacion-AES/Servicios/WSDL_TouresBalon/src/aes/pica/wsdl/utilitarios/ReservasTB.wsdl" uri="wsdl/ReservasTB.wsdl"/>
-</catalog>
