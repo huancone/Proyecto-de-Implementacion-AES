@@ -3,7 +3,8 @@
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
-        <property name="hibernate.connection.url">jdbc:oracle:thin:@192.168.99.100:32771:XE</property>
+        <!--property name="hibernate.connection.url">jdbc:oracle:thin:@192.168.99.100:32771:XE</property-->
+        <property name="hibernate.connection.url">jdbc:oracle:thin:@clientes_sql:1521:XE</property>
         <property name="hibernate.connection.username">touresbalon</property>
         <property name="hibernate.connection.password">touresbalon</property>
         <property name="hibernate.current_session_context_class">thread</property>

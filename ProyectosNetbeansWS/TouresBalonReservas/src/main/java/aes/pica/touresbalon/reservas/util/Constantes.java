@@ -23,5 +23,10 @@ public class Constantes {
     //Rutas Archivos Bolivariano
     public static String RUTA_CONSULTA_BOL = "/Users/jdtrujillop/Desarrollo/TouresBalon/Bolivariano/Consulta";
     public static String RUTA_RESERVA_BOL = "/Users/jdtrujillop/Desarrollo/TouresBalon/Bolivariano/Reservas";
+    
+    //ESTADOS ORDEN
+    public static String CERRADA = "CERRADA";
+    public static String RECHAZADA = "RECHAZADA";
+    public static String RESERVACION = "RESERVACION";
 
 }

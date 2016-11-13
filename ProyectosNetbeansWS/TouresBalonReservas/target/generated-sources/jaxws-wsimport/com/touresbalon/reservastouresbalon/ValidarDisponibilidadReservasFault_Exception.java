@@ -23,8 +23,8 @@ public class ValidarDisponibilidadReservasFault_Exception
 
     /**
      * 
-     * @param faultInfo
      * @param message
+     * @param faultInfo
      */
     public ValidarDisponibilidadReservasFault_Exception(String message, ValidarDisponibilidadReservasFault faultInfo) {
         super(message);
@@ -33,9 +33,9 @@ public class ValidarDisponibilidadReservasFault_Exception
 
     /**
      * 
+     * @param message
      * @param faultInfo
      * @param cause
-     * @param message
      */
     public ValidarDisponibilidadReservasFault_Exception(String message, ValidarDisponibilidadReservasFault faultInfo, Throwable cause) {
         super(message, cause);

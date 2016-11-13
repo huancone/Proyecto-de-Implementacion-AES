@@ -5,17 +5,24 @@
  */
 package com.aes.touresbalon.touresbalonoms.beans;
 
+import com.aes.touresbalon.touresbalonoms.services.Services;
+import com.aes.touresbalon.touresbalonoms.wsdl.client.ActualizarClienteFault_Exception;
+import com.aes.touresbalon.touresbalonoms.wsdl.client.Cliente;
+import com.aes.touresbalon.touresbalonoms.wsdl.client.ConsultarPorIdentificacionClienteFault_Exception;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.Direccion;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 
 /**
  *
  * @author alexanderbarbosaayala
  */
 @ManagedBean(name = "clienteBean")
-@RequestScoped
+@ViewScoped
 public class ClienteBean {
     private Integer idCliente;
     private String nombres;
@@ -29,6 +36,41 @@ public class ClienteBean {
     
     private String tipoConsulta;
     private String txtConsulta;
+    
+    private Cliente cliente;
+    private List<Cliente> clienteList;
+    
+    Services service = new Services();
+    
+    public void actualizarCliente(){
+        cliente.setIdCliente(this.getIdCliente());
+        cliente.setNombres(this.getApellidos());
+        cliente.setApellidos(this.getApellidos());
+        cliente.setNumTel(this.getNumTel());
+        cliente.setTipoTarjeta(this.getTipoTarjeta());
+        cliente.setNumeroTarjeta(this.getNumeroTarjeta());
+        cliente.setEmail(this.getEmail());
+        cliente.setContrasenia(this.getContrasenia());
+        
+        try {
+            service.actualizarCliente(cliente);
+        } catch (ActualizarClienteFault_Exception ex) {
+            Logger.getLogger(ClienteBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void consultarCliente() {
+        List<Cliente> clientes = new ArrayList<>();
+        try {
+            if (this.getTipoConsulta().equalsIgnoreCase("id")) {
+                clientes.add(service.consultarPorIdentificacionCliente(Integer.parseInt(this.getTxtConsulta())));
+            }
+        } catch (ConsultarPorIdentificacionClienteFault_Exception ex) {
+            Logger.getLogger(ClienteBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.setClienteList(clientes);
+    }
+    
     /**
      * @return the idCliente
      */
@@ -181,5 +223,33 @@ public class ClienteBean {
      */
     public void setTxtConsulta(String txtConsulta) {
         this.txtConsulta = txtConsulta;
+    }
+
+    /**
+     * @return the cliente
+     */
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    /**
+     * @param cliente the cliente to set
+     */
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    /**
+     * @return the clienteList
+     */
+    public List<Cliente> getClienteList() {
+        return clienteList;
+    }
+
+    /**
+     * @param clienteList the clienteList to set
+     */
+    public void setClienteList(List<Cliente> clienteList) {
+        this.clienteList = clienteList;
     }
 }

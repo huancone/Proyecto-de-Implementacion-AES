@@ -30,70 +30,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CancelarReserva }
-     * 
-     */
-    public CancelarReserva createCancelarReserva() {
-        return new CancelarReserva();
-    }
-
-    /**
-     * Create an instance of {@link CallbackValidacionAnalistaResponse }
-     * 
-     */
-    public CallbackValidacionAnalistaResponse createCallbackValidacionAnalistaResponse() {
-        return new CallbackValidacionAnalistaResponse();
-    }
-
-    /**
-     * Create an instance of {@link ReservarProductosResponse }
-     * 
-     */
-    public ReservarProductosResponse createReservarProductosResponse() {
-        return new ReservarProductosResponse();
-    }
-
-    /**
-     * Create an instance of {@link CallbackValidacionAnalistaFault }
-     * 
-     */
-    public CallbackValidacionAnalistaFault createCallbackValidacionAnalistaFault() {
-        return new CallbackValidacionAnalistaFault();
-    }
-
-    /**
-     * Create an instance of {@link Error }
-     * 
-     */
-    public Error createError() {
-        return new Error();
-    }
-
-    /**
-     * Create an instance of {@link ValidarDisponibilidadReservas }
-     * 
-     */
-    public ValidarDisponibilidadReservas createValidarDisponibilidadReservas() {
-        return new ValidarDisponibilidadReservas();
-    }
-
-    /**
-     * Create an instance of {@link Item }
-     * 
-     */
-    public Item createItem() {
-        return new Item();
-    }
-
-    /**
-     * Create an instance of {@link CallbackValidacionAnalista }
-     * 
-     */
-    public CallbackValidacionAnalista createCallbackValidacionAnalista() {
-        return new CallbackValidacionAnalista();
-    }
-
-    /**
      * Create an instance of {@link CancelarReservaResponse }
      * 
      */
@@ -102,27 +38,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ReservarProductos }
+     * Create an instance of {@link CancelarReserva }
      * 
      */
-    public ReservarProductos createReservarProductos() {
-        return new ReservarProductos();
-    }
-
-    /**
-     * Create an instance of {@link ValidarDisponibilidadReservasFault }
-     * 
-     */
-    public ValidarDisponibilidadReservasFault createValidarDisponibilidadReservasFault() {
-        return new ValidarDisponibilidadReservasFault();
-    }
-
-    /**
-     * Create an instance of {@link CancelarReservaFault }
-     * 
-     */
-    public CancelarReservaFault createCancelarReservaFault() {
-        return new CancelarReservaFault();
+    public CancelarReserva createCancelarReserva() {
+        return new CancelarReserva();
     }
 
     /**
@@ -134,11 +54,91 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ReservarProductos }
+     * 
+     */
+    public ReservarProductos createReservarProductos() {
+        return new ReservarProductos();
+    }
+
+    /**
+     * Create an instance of {@link Item }
+     * 
+     */
+    public Item createItem() {
+        return new Item();
+    }
+
+    /**
+     * Create an instance of {@link ReservarProductosResponse }
+     * 
+     */
+    public ReservarProductosResponse createReservarProductosResponse() {
+        return new ReservarProductosResponse();
+    }
+
+    /**
+     * Create an instance of {@link CallbackValidacionAnalista }
+     * 
+     */
+    public CallbackValidacionAnalista createCallbackValidacionAnalista() {
+        return new CallbackValidacionAnalista();
+    }
+
+    /**
+     * Create an instance of {@link ValidarDisponibilidadReservas }
+     * 
+     */
+    public ValidarDisponibilidadReservas createValidarDisponibilidadReservas() {
+        return new ValidarDisponibilidadReservas();
+    }
+
+    /**
+     * Create an instance of {@link CallbackValidacionAnalistaResponse }
+     * 
+     */
+    public CallbackValidacionAnalistaResponse createCallbackValidacionAnalistaResponse() {
+        return new CallbackValidacionAnalistaResponse();
+    }
+
+    /**
      * Create an instance of {@link ReservarProductosFault }
      * 
      */
     public ReservarProductosFault createReservarProductosFault() {
         return new ReservarProductosFault();
+    }
+
+    /**
+     * Create an instance of {@link Error }
+     * 
+     */
+    public Error createError() {
+        return new Error();
+    }
+
+    /**
+     * Create an instance of {@link CallbackValidacionAnalistaFault }
+     * 
+     */
+    public CallbackValidacionAnalistaFault createCallbackValidacionAnalistaFault() {
+        return new CallbackValidacionAnalistaFault();
+    }
+
+    /**
+     * Create an instance of {@link CancelarReservaFault }
+     * 
+     */
+    public CancelarReservaFault createCancelarReservaFault() {
+        return new CancelarReservaFault();
+    }
+
+    /**
+     * Create an instance of {@link ValidarDisponibilidadReservasFault }
+     * 
+     */
+    public ValidarDisponibilidadReservasFault createValidarDisponibilidadReservasFault() {
+        return new ValidarDisponibilidadReservasFault();
     }
 
 }

@@ -115,7 +115,7 @@ public class ServiciosBolivarianos implements IServiciosBolivarianos {
                     + "," + fechaSalida.toUpperCase()
                     + "," + v.getNumViaje()
                     + "," + v.getNumSilla()
-                    + ","
+                    + "," + "A,"
             );
         }
         try {

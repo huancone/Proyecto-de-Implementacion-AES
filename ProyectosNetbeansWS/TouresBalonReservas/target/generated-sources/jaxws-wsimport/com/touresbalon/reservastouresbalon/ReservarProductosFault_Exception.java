@@ -23,8 +23,8 @@ public class ReservarProductosFault_Exception
 
     /**
      * 
-     * @param faultInfo
      * @param message
+     * @param faultInfo
      */
     public ReservarProductosFault_Exception(String message, ReservarProductosFault faultInfo) {
         super(message);
@@ -33,9 +33,9 @@ public class ReservarProductosFault_Exception
 
     /**
      * 
+     * @param message
      * @param faultInfo
      * @param cause
-     * @param message
      */
     public ReservarProductosFault_Exception(String message, ReservarProductosFault faultInfo, Throwable cause) {
         super(message, cause);

@@ -25,10 +25,10 @@ public interface ReservasTouresBalon {
 
     /**
      * 
-     * @param itemHospedaje
-     * @param itemEspectaculo
      * @param itemTransporte
+     * @param itemEspectaculo
      * @param itemCiudad
+     * @param itemHospedaje
      * @param idOrden
      * @return
      *     returns com.touresbalon.reservastouresbalon.RespuestaGenerica
@@ -54,10 +54,10 @@ public interface ReservasTouresBalon {
 
     /**
      * 
-     * @param itemHospedaje
-     * @param itemEspectaculo
      * @param itemTransporte
+     * @param itemEspectaculo
      * @param itemCiudad
+     * @param itemHospedaje
      * @param idOrden
      * @return
      *     returns com.touresbalon.reservastouresbalon.RespuestaGenerica
@@ -83,7 +83,11 @@ public interface ReservasTouresBalon {
 
     /**
      * 
+     * @param itemTransporte
      * @param estatusOrden
+     * @param itemEspectaculo
+     * @param itemCiudad
+     * @param itemHospedaje
      * @param idOrden
      * @return
      *     returns com.touresbalon.reservastouresbalon.RespuestaGenerica
@@ -97,7 +101,15 @@ public interface ReservasTouresBalon {
         @WebParam(name = "idOrden", targetNamespace = "")
         int idOrden,
         @WebParam(name = "estatusOrden", targetNamespace = "")
-        String estatusOrden)
+        String estatusOrden,
+        @WebParam(name = "itemTransporte", targetNamespace = "")
+        Item itemTransporte,
+        @WebParam(name = "itemHospedaje", targetNamespace = "")
+        Item itemHospedaje,
+        @WebParam(name = "itemEspectaculo", targetNamespace = "")
+        Item itemEspectaculo,
+        @WebParam(name = "itemCiudad", targetNamespace = "")
+        Item itemCiudad)
         throws CallbackValidacionAnalistaFault_Exception
     ;
 
