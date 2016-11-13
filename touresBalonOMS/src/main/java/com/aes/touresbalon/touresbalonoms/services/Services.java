@@ -55,7 +55,7 @@ import org.primefaces.util.BeanUtils;
  */
 public class Services {
     
-    private static final String URL_ENDPOINT ="http://localhost:9999/mockServiceProxyOMSSOAP ";
+    private static final String URL_ENDPOINT ="http://localhost:8088/mockServiceProxyOMSSOAP";
 
     public TipoGestionProductoResponse gestionProducto(Producto producto, TipoAccion tipoOperacion) {
 
@@ -96,7 +96,7 @@ public class Services {
              list = port.consultarProducto(tipoConsulta, consulta);
 
         } catch (ConsultarProductoFault_Exception ex) {
-            Logger.getLogger(ProductoService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Services.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return list;
@@ -119,7 +119,7 @@ public class Services {
             port.actualizarCliente(cliente);
 
         } catch (ActualizarClienteFault_Exception ex) {
-            Logger.getLogger(ProductoService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Services.class.getName()).log(Level.SEVERE, null, ex);
             return RespuestaGenerica.KO;
         }     
         return RespuestaGenerica.OK;
@@ -139,7 +139,7 @@ public class Services {
              port.actualizarContraseniaCliente(usuario, contrasenia);
 
         } catch (ActualizarContraseniaClienteFault_Exception ex) {
-            Logger.getLogger(ProductoService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Services.class.getName()).log(Level.SEVERE, null, ex);
             return RespuestaGenerica.KO;
         }     
         return RespuestaGenerica.OK;
