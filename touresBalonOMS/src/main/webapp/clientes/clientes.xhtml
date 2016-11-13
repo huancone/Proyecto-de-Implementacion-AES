@@ -64,19 +64,30 @@
                         <h:form>
                             <p:panelGrid  columns="2" columnClasses="label,value">
 
-                                <h:outputText for="idClienteEdit" value="Id Cliente" />
-                                <p:inputText id="idClienteEdit" value="#{clienteBean.cliente.idCliente}">
+                                <h:outputLabel for="idClienteEdit" value="Id Cliente" />
+                                <p:inputText id="idClienteEdit" value="#{clienteBean.cliente.idCliente}" >
                                     <p:clientValidator event="keyup"/>
                                 </p:inputText>
-                                <p:message for="idProductoEdit" display="icon" />
+                                <p:message for="idClienteEdit" display="icon" />                                        
                                 <br></br>
-
-                                <h:outputText value="Nombre" />
-                                <h:outputText value="#{clienteBean.cliente.nombres}" />
-
-                                <h:outputText value="Apellido" />
-                                <h:outputText value="#{clienteBean.cliente.apellidos}" />
-
+                                
+                                <h:outputLabel for="nombreClienteEdit" value="Nombre" />
+                                <p:inputText id="nombreClienteEdit" value="#{clienteBean.cliente.nombres}" >
+                                    <p:clientValidator event="keyup"/>
+                                </p:inputText>
+                                <p:message for="nombreClienteEdit" display="icon" />                                        
+                                <br></br>
+                                
+                                <h:outputLabel for="apellidoClienteEdit" value="Nombre" />
+                                <p:inputText id="apellidoClienteEdit" value="#{clienteBean.cliente.apellidos}" >
+                                    <p:clientValidator event="keyup"/>
+                                </p:inputText>
+                                <p:message for="apellidoClienteEdit" display="icon" />                                        
+                                <br></br>
+                                
+                                <p:commandButton value="Editar" actionListener="#{productosBean.editarProducto()}" 
+                                                 process="@form" oncomplete="PF('clienteEditDialog').hide()"/>
+                                <br></br>
                             </p:panelGrid>
                         </h:form>
                     </p:outputPanel>
