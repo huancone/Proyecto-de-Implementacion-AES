@@ -64,8 +64,12 @@
                         <h:form>
                             <p:panelGrid  columns="2" columnClasses="label,value">
 
-                                <h:outputText value="Id Cliente" />
-                                <h:outputText value="#{clienteBean.cliente.idCliente}" />
+                                <h:outputText for="idClienteEdit" value="Id Cliente" />
+                                <p:inputText id="idClienteEdit" value="#{clienteBean.cliente.idCliente}">
+                                    <p:clientValidator event="keyup"/>
+                                </p:inputText>
+                                <p:message for="idProductoEdit" display="icon" />
+                                <br></br>
 
                                 <h:outputText value="Nombre" />
                                 <h:outputText value="#{clienteBean.cliente.nombres}" />
