@@ -27,6 +27,8 @@ import com.aes.touresbalon.touresbalonoms.wsdl.client.GestionCampaniaProductoFau
 import com.aes.touresbalon.touresbalonoms.wsdl.client.GestionTarifaFault_Exception;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.Orden;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.Producto;
+import com.aes.touresbalon.touresbalonoms.wsdl.client.RegistrarClienteFault_Exception;
+import com.aes.touresbalon.touresbalonoms.wsdl.client.RegistrarClienteReponseType;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.RespuestaGenerica;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.RespuestaOrdenCerrada;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.ServiceProxyOMS;
@@ -45,6 +47,7 @@ import java.util.logging.Logger;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.ws.BindingProvider;
+import org.primefaces.util.BeanUtils;
 
 /**
  *
@@ -62,12 +65,12 @@ public class Services {
             ServiceProxyOMS_Service service = new ServiceProxyOMS_Service();
             ServiceProxyOMS port = service.getServiceProxyOMSSOAP();
 
-            String endpointURL = URL_ENDPOINT;
+            String endpointURL =  URL_ENDPOINT;
             BindingProvider bp = (BindingProvider) port;
             bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, endpointURL);
 
             //Llamado al servicio
-             result = port.gestionProducto(tipoOperacion, producto);
+            result = port.gestionProducto(tipoOperacion, producto);
 
             // Procesamiento de la rta del servicio
             System.out.println("Resultado con idProducto = " + result.getIdProducto());
@@ -85,9 +88,6 @@ public class Services {
             ServiceProxyOMS_Service service = new ServiceProxyOMS_Service();
             ServiceProxyOMS port = service.getServiceProxyOMSSOAP();
 
-            //parametros de entrada
-//            Producto producto = new Producto();
-//            producto.setDescripcion("nuevo producto");
             String endpointURL = URL_ENDPOINT;
             BindingProvider bp = (BindingProvider) port;
             bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, endpointURL);
@@ -102,18 +102,30 @@ public class Services {
         return list;
     }
 
+<<<<<<< HEAD
+    
     public RespuestaGenerica actualizarCliente(Cliente cliente) throws ActualizarClienteFault_Exception {
+        RespuestaGenerica result = null;
+=======
+    public RespuestaGenerica actualizarCliente(Cliente cliente) throws ActualizarClienteFault_Exception {
+>>>>>>> 56fe0c60bf510df0fb52404541f13e5ab43a8085
         try {
             ServiceProxyOMS_Service service = new ServiceProxyOMS_Service();
             ServiceProxyOMS port = service.getServiceProxyOMSSOAP();
 
             //parametros de entrada
-            String endpointURL = URL_ENDPOINT;
+            String endpointURL = "http://localhost:8888/mockClientesTouresBalonSOAP";
             BindingProvider bp = (BindingProvider) port;
             bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, endpointURL);
 
             //Llamado al servicio
+<<<<<<< HEAD
+            result = port.actualizarCliente(cliente);
+       
+            port.actualizarCliente(cliente);
+=======
              port.actualizarCliente(cliente);
+>>>>>>> 56fe0c60bf510df0fb52404541f13e5ab43a8085
 
         } catch (ActualizarClienteFault_Exception ex) {
             Logger.getLogger(ProductoService.class.getName()).log(Level.SEVERE, null, ex);
@@ -128,7 +140,7 @@ public class Services {
             ServiceProxyOMS port = service.getServiceProxyOMSSOAP();
 
             //parametros de entrada
-            String endpointURL = URL_ENDPOINT;
+            String endpointURL = "http://localhost:8888/mockClientesTouresBalonSOAP";
             BindingProvider bp = (BindingProvider) port;
             bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, endpointURL);
 
