@@ -391,7 +391,59 @@ public class Services {
         
         Session sessionClientes = null;
         Transaction tx = null;        
-        throw new UnsupportedOperationException("Not implemented yet.");
+        List<Cliente> clientes = new ArrayList<>();
+        
+        try {
+            sessionClientes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
+            tx = sessionClientes.beginTransaction();
+            
+            List<aes.pica.touresbalon.touresbalonproductosws.entidades.clientesyordenes.Customer> list =  new ArrayList<>();
+            //Consulta
+            StringBuilder str = new StringBuilder();                        
+            str.append("SELECT customer.* from orders ");
+            str.append("inner join customer on customer.CUSTID = orders.CUSTID ");
+            str.append("inner join Items on orders.ORDID = Items.ORDID ");
+            str.append("where Items.PRODID = :idProducto ");
+            
+                       
+            Query query = sessionClientes.createSQLQuery(str.toString()).addEntity(aes.pica.touresbalon.touresbalonproductosws.entidades.clientesyordenes.Customer.class);
+            query.setParameter("idProducto", idProducto);
+            
+            list = query.list();
+
+            //Variables para conversion de resultados
+//            List<Object> listaResultados = new ArrayList<Object>();
+//            BigDecimal idLCiente = BigDecimal.ZERO;
+
+            if(list != null && list.size() > 0){
+                for(int i = 0; i < list.size(); i++){
+                    Cliente cliente = new Cliente();     
+                    cliente.setApellidos(list.get(i).getLname());
+                    cliente.setContrasenia(list.get(i).getPassword());
+                    cliente.setEstatus(EstatusCliente.fromValue(list.get(i).getStatus()));
+                    cliente.setEmail(list.get(i).getEmail());
+                    cliente.setNombres(list.get(i).getFname());
+                    cliente.setNumTel(list.get(i).getPhonenumber());
+                    cliente.setNumeroTarjeta(list.get(i).getCreditcardnumber());
+                    cliente.setTipoTarjeta(list.get(i).getCreditcardtype());
+                    
+                    clientes.add(cliente);
+                }
+            }else{
+                System.out.println("INFO: No hay resultados para la busqueda de rangos ");            
+            }
+
+        } catch (Exception e) {
+            System.out.println("ERROR consultarPorFactRangoCliente: " + e.getMessage());
+        }
+        finally
+                {
+                    if(sessionClientes.isOpen())sessionClientes.close();
+                }
+        System.out.println("--------------- Saliendo ---------------");
+         
+           
+        return clientes;
     }
 
     public java.util.List<com.touresbalon.clientestouresbalon.Cliente> consultarPorFactRangoCliente(javax.xml.datatype.XMLGregorianCalendar fechaInicial, javax.xml.datatype.XMLGregorianCalendar fechaFin) throws ConsultarPorFactRangoClienteFault_Exception {

@@ -102,7 +102,6 @@ public class Services {
         return list;
     }
 
-    
     public RespuestaGenerica actualizarCliente(Cliente cliente) throws ActualizarClienteFault_Exception {
         RespuestaGenerica result = null;
         try {
@@ -114,9 +113,8 @@ public class Services {
             BindingProvider bp = (BindingProvider) port;
             bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, endpointURL);
 
-            //Llamado al servicio
+            //Llamado al servicio     
             port.actualizarCliente(cliente);
-
 
         } catch (ActualizarClienteFault_Exception ex) {
             Logger.getLogger(Services.class.getName()).log(Level.SEVERE, null, ex);
