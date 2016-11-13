@@ -27,19 +27,19 @@
                                             <p:clientValidator event="keyup"/>
                                         </p:inputTextarea>
                                         <br></br>
-                                        <p:commandButton value="Consultar" onclick="#{clienteBean.consultarCliente()}" />
-                                        <br></br>
                                     </h:panelGrid>
                                 </p:panel>
+                                
+                                <p:commandButton value="Consultar" actionListener="#{clienteBean.consultarCliente()}" update="dtClientesList" process="@form"/>
+                                
                                 <p:panel header="Editar Cliente">
-                                    <p:dataTable id="dtProductosList" var="clienteL" value="#{clienteBean.clienteList}" selectionMode="single" 
+                                    <p:dataTable id="dtClientesList" var="clienteL" value="#{clienteBean.clienteList}" selectionMode="single" 
                                                  selection="#{clienteBean.cliente}" rowKey="#{clienteL.idCliente}">
                                         <f:facet name="footer">
                                             
                                             <p:commandButton process="dtClientesList" update=":clienteDialogId" 
                                                              oncomplete="PF('clienteEditDialog').show()" icon="ui-icon-search" value="Ver"/>
                                             
-                                            <p:commandButton actionListener="#{productosBean.eliminarProducto()}" icon="ui-icon-trash" value="Eliminar" />
                                         </f:facet>
                                         
                                         <p:column headerText="Id Cliente">
@@ -51,16 +51,16 @@
                                         <p:column headerText="Apellido">
                                             <p:outputLabel value="#{clienteL.apellidos}" />
                                         </p:column>
-
+                                    </p:dataTable>
                                 </p:panel>
                             </h:form>
                         </p:tab>
                     </p:accordionPanel>
                     
                 </h:form>
-                <p:dialog header="Car Info" widgetVar="clienteEditDialog" modal="true" showEffect="fade" hideEffect="fade" id="clienteDialogId" 
-                          resizable="false" >
-                    <p:outputPanel id="carDetail" style="text-align:center;">
+                <p:dialog header="Detalle Clientes" widgetVar="clienteEditDialog" modal="true" showEffect="fade" hideEffect="fade" id="clienteDialogId" 
+                          resizable="false">
+                    <p:outputPanel style="text-align:center;">
                         <h:form>
                             <p:panelGrid  columns="2" columnClasses="label,value">
 

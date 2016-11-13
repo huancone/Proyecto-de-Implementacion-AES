@@ -5,11 +5,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-
-
-
     <body>
-
         <ui:composition template="./../newTemplate.xhtml">
 
             <ui:define name="content">
@@ -184,9 +180,9 @@
                 <p:dialog header="Car Info" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" id="dlgId" 
                               resizable="false" >
                     <h:form>
-                        <p:outputPanel id="carDetail" style="text-align:center;">
+                        <p:outputPanel id="detalleProducto" style="text-align:center;">
                             <p:panelGrid  columns="2" columnClasses="label,value">
-                                <p:outputPanel id="productoDetalle" style="text-align:center;">
+                                <p:outputPanel id="idProductoDetalle" style="text-align:center;">
                                     <h:panelGrid columns="2" cellpadding="2">
                                         <h:outputLabel for="idProductoEdit" value="Id Producto" />
                                         <p:inputText id="idProductoEdit" value="#{productosBean.producto.idProducto}">
@@ -228,31 +224,37 @@
                                         <p:inputText id="idCiudadEdit" value="#{productosBean.producto.ciudadEspectaculo.idCiudad}" >
                                             <p:clientValidator event="keyup"/>
                                         </p:inputText>
+                                        <p:message for="idCiudadEdit" display="icon" />
                                         <br></br>
                                         <h:outputLabel for="paisEdit" value="Pais" />
                                         <p:inputText id="paisEdit" value="#{productosBean.producto.ciudadEspectaculo.pais}" >
                                             <p:clientValidator event="keyup"/>
                                         </p:inputText>
+                                        <p:message for="paisEdit" display="icon" />
                                         <br></br>
                                         <h:outputLabel for="tipoCiudadEdit" value="Tipo Ciudad" />
                                         <p:inputText id="tipoCiudadEdit" value="#{productosBean.producto.ciudadEspectaculo.tipoCiudad}" >
                                             <p:clientValidator event="keyup"/>
                                         </p:inputText>
+                                        <p:message for="tipoCiudadEdit" display="icon" />                                        
                                         <br></br>
                                         <h:outputLabel for="idTarifaEdit" value="Id Tarifa espectaculo" />
                                         <p:inputText id="idTarifaEdit" value="#{productosBean.producto.tipoEspectaculo.id}" >
                                             <p:clientValidator event="keyup"/>
                                         </p:inputText>
+                                        <p:message for="idTarifaEdit" display="icon" />                                                                                
                                         <br></br>
                                         <h:outputLabel for="nombreTipoEdit" value="Nombre Espectaculo" />
                                         <p:inputText id="nombreTipoEdit"  value="#{productosBean.producto.tipoEspectaculo.nombreTipo}" >
                                             <p:clientValidator event="keyup"/>
                                         </p:inputText>
+                                        <p:message for="nombreTipoEdit" display="icon" />                                                                                                                        
                                         <br></br>
                                         <h:outputLabel for="precioEdit" value="Precio" />
                                         <p:inputText id="precioEdit" value="#{productosBean.producto.tipoEspectaculo.precio}" >
                                             <p:clientValidator event="keyup"/>
                                         </p:inputText>
+                                        <p:message for="precioEdit" display="icon" />                                                                                                                                                              
                                         <br></br>
 
                                         <p:commandButton value="Editar" actionListener="#{productosBean.editarProducto()}" 
@@ -265,7 +267,6 @@
                         </h:form>
                     </p:dialog>
             </ui:define>
-
         </ui:composition>
     </body>
 </html>
