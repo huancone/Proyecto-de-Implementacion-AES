@@ -36,35 +36,44 @@ public class Services {
 
     public java.util.List<com.touresbalon.ordenestouresbalon.Orden> consultarClientesOrdenes(int idCliente) throws com.touresbalon.ordenestouresbalon.ConsultarClientesOrdenesFault_Exception {
 
-        System.out.println("--------------------------------------------------");
-        System.out.println("INICIO ::: consultarClientesOrdenes");
+        final Session sessionOrdenes;
+        final Transaction tx;
 
-        Session sessionOrdenes = null;
-        Transaction tx = null;
-
-        List<Orden> ordenes = new ArrayList<Orden>();
+        List<Orden> ordenes = new ArrayList<>();
+        List<Orders> OrderDB = new ArrayList<>();
+        
         String strsql;
 
+        sessionOrdenes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
         try {
-
-            sessionOrdenes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
             tx = sessionOrdenes.beginTransaction();
+            try {
+                strsql = "from Orders where custid = :idCustomer )";
+                Query q = sessionOrdenes.createQuery(strsql)
+                        .setParameter("idCustomer", idCliente);
+                OrderDB = q.list();
 
-            strsql = "from Orders where ordid = :idCustomer )";
-            sessionOrdenes.createQuery(strsql)
-                    .setParameter("idCustomer", idCliente);
-
-        } catch (Exception e) {
-
-            System.out.println("$$$ Error consultarClientesOrdenes" + e);
-
+            for (Orders registro : OrderDB) {
+                Orden orden = new Orden();
+                orden.setIdOrden(registro.getOrdid());
+                orden.setIdCliente(registro.getCustomer().getCustid());
+                orden.setIdOrden(registro.getOrdid());
+                orden.setPrecio(registro.getPrice());
+                orden.setFechaOrden(toGregorian(registro.getOrderdate()));
+                orden.setEstatus(EstatusOrden.fromValue(registro.getStatus()));
+                ordenes.add(orden);
+            }
+                tx.commit();
+            } catch (Exception e) {
+                System.out.println("$$$ Error consultarClientesOrdenes" + e);
+                tx.rollback();
+            }
+        } finally {
+            if (sessionOrdenes.isOpen()) {
+                sessionOrdenes.close();
+            }
         }
-
-        System.out.println("FINAL  ::: consultarClientesOrdenes");
-        System.out.println("--------------------------------------------------");
-
         return ordenes;
-
     }
 
     public com.touresbalon.ordenestouresbalon.RespuestaGenerica cancelarOrdenes(java.util.List<java.lang.Integer> idOrden) throws com.touresbalon.ordenestouresbalon.CancelarOrdenesFault_Exception {
@@ -126,11 +135,16 @@ public class Services {
                 System.out.println("fecha recibida: " + orden.getFechaOrden());
                 ordenDB.setOrderdate(toDate(orden.getFechaOrden()));
                 ordenDB.setPrice(orden.getPrecio());
-                EstatusOrden estatusOrden = null;
-                ordenDB.setStatus(orden.getEstatus().toString());
-                ordenDB.setComments(orden.getComentarios().get(0));
-                ordenDB.setCustomer(new Customer());
-                ordenDB.getCustomer().setCustid(orden.getIdCliente());
+                ordenDB.setStatus("VALIDACION");
+                if(orden.getComentarios().isEmpty() || orden.getComentarios() == null ){
+                    ordenDB.setComments("");
+                }else{
+                    ordenDB.setComments(orden.getComentarios().get(0));
+                }
+                
+                Customer user = (Customer)sessionOrdenes.load(Customer.class, orden.getIdCliente());
+                        
+                ordenDB.setCustomer(user);
                 id = (Integer) sessionOrdenes.save(ordenDB);
 
                 // Creacion de items
@@ -141,13 +155,15 @@ public class Services {
                     itemDB.setPartnum(item.getPartNum());
                     itemDB.setPrice(item.getPrecio());
                     itemDB.setQuantity(item.getCantidad());
-                    itemDB.setOrders(new Orders());
-                    itemDB.getOrders().setOrdid(id);
+                    
+                    Orders order = (Orders)sessionOrdenes.load(Orders.class, id);
+                    itemDB.setOrders(order);
+                    
                     sessionOrdenes.save(itemDB);
                 }
                 tx.commit();
             } catch (Exception ex) {
-                System.out.println("$$$ ERROR: crearOrdenes: " + ex.getMessage());
+                System.out.println("$$$ ERROR: crearOrdenes: " + ex);
                 respuesta.setRespuesta(RespuestaGenerica.KO);
                 tx.rollback();
                 throw ex;
