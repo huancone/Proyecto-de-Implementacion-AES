@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "ReservasTouresBalon", targetNamespace = "http://www.touresbalon.com/ReservasTouresBalon/", wsdlLocation = "file:/C:/Users/cbraatz/Documents/GitHub/Proyecto-de-Implementacion-AES/ProyectosNetbeansWS/TouresBalonReservas/src/wsdl/ReservasTB.wsdl")
+@WebServiceClient(name = "ReservasTouresBalon", targetNamespace = "http://www.touresbalon.com/ReservasTouresBalon/", wsdlLocation = "file:/Users/jdtrujillop/GitHub/Proyecto-de-Implementacion-AES/ProyectosNetbeansWS/TouresBalonReservas/src/wsdl/ReservasTB.wsdl")
 public class ReservasTouresBalon_Service
     extends Service
 {
@@ -30,7 +30,7 @@ public class ReservasTouresBalon_Service
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("file:/C:/Users/cbraatz/Documents/GitHub/Proyecto-de-Implementacion-AES/ProyectosNetbeansWS/TouresBalonReservas/src/wsdl/ReservasTB.wsdl");
+            url = new URL("file:/Users/jdtrujillop/GitHub/Proyecto-de-Implementacion-AES/ProyectosNetbeansWS/TouresBalonReservas/src/wsdl/ReservasTB.wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }
