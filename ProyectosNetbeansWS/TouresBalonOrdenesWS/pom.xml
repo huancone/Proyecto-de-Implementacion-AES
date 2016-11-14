@@ -154,6 +154,24 @@
                         <id>wsimport-generate-OrdenesTouresBalon_2</id>
                         <phase>generate-sources</phase>
                     </execution>
+                    <execution>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                        <configuration>
+                            <wsdlFiles>
+                                <wsdlFile>soabpm-vm.site_7001/soa-infra/services/default/CreacionOrdenesBPEL/creacionordenes_client_ep.wsdl</wsdlFile>
+                            </wsdlFiles>
+                            <packageName>aes.pica.touresbalon.touresbalonproductosws.clientebpel</packageName>
+                            <vmArgs>
+                                <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
+                            </vmArgs>
+                            <wsdlLocation>http://soabpm-vm.site:7001//soa-infra/services/default/CreacionOrdenesBPEL/creacionordenes_client_ep?wsdl</wsdlLocation>
+                            <staleFile>${project.build.directory}/jaxws/stale/creacionordenes_client_ep.stale</staleFile>
+                        </configuration>
+                        <id>wsimport-generate-creacionordenes_client_ep</id>
+                        <phase>generate-sources</phase>
+                    </execution>
                 </executions>
                 <dependencies>
                     <dependency>

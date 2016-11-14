@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<wsdl:definitions
+     name="CreacionOrdenes"
+     targetNamespace="http://xmlns.oracle.com/CreacionOrden/CreacionOrdenesBPEL/CreacionOrdenes"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:client="http://xmlns.oracle.com/CreacionOrden/CreacionOrdenesBPEL/CreacionOrdenes"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    >
+    <wsdl:documentation>
+        <abstractWSDL>http://soabpm-vm.site:7001/soa-infra/services/default/CreacionOrdenesBPEL!1.1/CreacionOrdenes.wsdl</abstractWSDL>
+    </wsdl:documentation>
+    <plnk:partnerLinkType name="CreacionOrdenes">
+        <plnk:role name="CreacionOrdenesProvider">
+            <plnk:portType name="client:CreacionOrdenes"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/CreacionOrden/CreacionOrdenesBPEL/CreacionOrdenes"
+                 schemaLocation="http://soabpm-vm.site:7001//soa-infra/services/default/CreacionOrdenesBPEL/creacionordenes_client_ep?XSD=xsd/CreacionOrdenes.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="CreacionOrdenesRequestMessage">
+        <wsdl:part name="payload" element="client:process"/>
+    </wsdl:message>
+    <wsdl:message name="CreacionOrdenesResponseMessage">
+        <wsdl:part name="payload" element="client:processResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="CreacionOrdenes">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:CreacionOrdenesRequestMessage"/>
+            <wsdl:output message="client:CreacionOrdenesResponseMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="CreacionOrdenesBinding" type="client:CreacionOrdenes">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="process">
+            <soap:operation style="document" soapAction="process"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="creacionordenes_client_ep">
+        <wsdl:port name="CreacionOrdenes_pt" binding="client:CreacionOrdenesBinding">
+            <soap:address location="http://soabpm-vm.site:7001//soa-infra/services/default/CreacionOrdenesBPEL/creacionordenes_client_ep"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

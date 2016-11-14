@@ -4,4 +4,6 @@
     <system systemId="file:/Users/jdtrujillop/GitHub/Proyecto-de-Implementacion-AES/Servicios/WSDL_TouresBalon/src/aes/pica/wsdl/clientes/ClientesTouresBalon.wsdl" uri="wsdl/ClientesTouresBalon.wsdl"/>
     <system systemId="file:/C:/Users/braatz/Documents/Git/Proyecto-de-Implementacion-AES/Servicios/WSDL_TouresBalon/src/aes/pica/wsdl/ordenes/OrdenesTouresBalon.wsdl" uri="wsdl/OrdenesTouresBalon.wsdl"/>
     <system systemId="file:/D:/Development/GitHub/Proyecto-de-Implementacion-AES/Servicios/WSDL_TouresBalon/src/aes/pica/wsdl/ordenes/OrdenesTouresBalon.wsdl" uri="wsdl/OrdenesTouresBalon.wsdl"/>
+    <system systemId="http://soabpm-vm.site:7001//soa-infra/services/default/CreacionOrdenesBPEL/creacionordenes_client_ep?wsdl" uri="wsdl/soabpm-vm.site_7001/soa-infra/services/default/CreacionOrdenesBPEL/creacionordenes_client_ep.wsdl"/>
+    <system systemId="http://soabpm-vm.site:7001//soa-infra/services/default/CreacionOrdenesBPEL/creacionordenes_client_ep?XSD=xsd/CreacionOrdenes.xsd" uri="wsdl/soabpm-vm.site_7001/soa-infra/services/default/CreacionOrdenesBPEL/creacionordenes_client_ep.XSD_xsd/CreacionOrdenes.xsd"/>
 </catalog>

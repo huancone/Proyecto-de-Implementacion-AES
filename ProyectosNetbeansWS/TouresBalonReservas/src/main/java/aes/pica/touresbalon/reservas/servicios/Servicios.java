@@ -417,7 +417,7 @@ public class Servicios {
             if (txDann != null) {
                 txDann.commit();
             }
-            
+
         } catch (HibernateException e) {
             if (txProductos != null) {
                 txProductos.rollback();
@@ -436,7 +436,15 @@ public class Servicios {
         } finally {
 //            sessionDann.close();
 //            sessionProductos.close();
-            sessionOrdenes.close();
+            if (sessionDann != null) {
+                sessionDann.close();
+            }
+            if (sessionOrdenes != null) {
+                sessionOrdenes.close();
+            }
+            if (sessionProductos != null) {
+                sessionProductos.close();
+            }
         }
 
         System.out.println("Fin Reservar Producto");

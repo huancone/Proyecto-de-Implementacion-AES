@@ -13,7 +13,8 @@ You can copy and paste the single properties, into the pom.xml file and the IDE 
 That way multiple projects can share the same settings (useful for formatting rules for example).
 Any value defined here will override the pom.xml file value but is only applicable to the current project.
 -->
-        <org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_deploy_2e_server>gfv3ee6</org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_deploy_2e_server>
-        <netbeans.hint.jdkPlatform>JDK_1.7</netbeans.hint.jdkPlatform>
+        <org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_deploy_2e_server>JBoss4</org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_deploy_2e_server>
+        <netbeans.hint.jdkPlatform>Java_7</netbeans.hint.jdkPlatform>
+        <org-netbeans-modules-maven-jaxws._5f_C_5f_creacionordenes_5f_client_5f_ep>http://soabpm-vm.site:7001//soa-infra/services/default/CreacionOrdenesBPEL/creacionordenes_client_ep?wsdl</org-netbeans-modules-maven-jaxws._5f_C_5f_creacionordenes_5f_client_5f_ep>
     </properties>
 </project-shared-configuration>
