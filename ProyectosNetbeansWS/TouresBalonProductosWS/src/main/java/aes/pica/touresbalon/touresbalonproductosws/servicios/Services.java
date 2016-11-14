@@ -19,11 +19,13 @@ import com.touresbalon.productostouresbalon.GestionTarifaFault_Exception;
 import com.touresbalon.productostouresbalon.Producto;
 import com.touresbalon.productostouresbalon.RespuestaGenerica;
 import com.touresbalon.productostouresbalon.TarifaValores;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import javax.jws.WebService;
+import javax.persistence.ForeignKey;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
@@ -227,11 +229,13 @@ public class Services {
                 throw ex;
             }
         } finally {
-            if(sessionProductos.isOpen())sessionProductos.close();
-            
+            if (sessionProductos.isOpen()) {
+                sessionProductos.close();
+            }
+
             return lstprod;
         }
-        
+
     }
 
     public java.util.List<com.touresbalon.productostouresbalon.Producto> consultarCampaniaProducto() throws ConsultarCampaniaProductoFault_Exception, DatatypeConfigurationException {
@@ -302,7 +306,9 @@ public class Services {
                 System.out.println("Error al consultar las campañas: " + e.getMessage());
             }
         } finally {
-            if(sessionProductos.isOpen())sessionProductos.close();
+            if (sessionProductos.isOpen()) {
+                sessionProductos.close();
+            }
             return lstprod;
         }
     }
@@ -374,7 +380,7 @@ public class Services {
     public java.util.List<com.touresbalon.productostouresbalon.TarifaValores> consultarRankingEspectaculosVendidosProducto(javax.xml.datatype.XMLGregorianCalendar fechaInicial, javax.xml.datatype.XMLGregorianCalendar fechaFin) throws ConsultarRankingEspectaculosVendidosProductoFault_Exception {
 
         Session sessionProductos;
-      Session sessionOrdenes;
+        Session sessionOrdenes;
         Transaction txProductos;
         Transaction txOrdenes;
 
@@ -613,7 +619,6 @@ public class Services {
                         txProductos.rollback();
                     }
 
-                    
                 } else {
                     respuesta.setRespuesta(RespuestaGenerica.KO);
                 }
@@ -659,7 +664,6 @@ public class Services {
                 break;
         }
 
-        
         if (sessionProductos.isOpen()) {
             sessionProductos.close();
         }
@@ -846,483 +850,375 @@ public class Services {
 
     public com.touresbalon.productostouresbalon.TipoGestionTarifaResponse gestionTarifa(com.touresbalon.productostouresbalon.TipoAccion tipoOperacion, com.touresbalon.productostouresbalon.TipoTarifa tipoTarifa, com.touresbalon.productostouresbalon.TarifaValores tarifa) throws GestionTarifaFault_Exception {
         //TODO implement this method
-      Session sessionProductos;
-         Transaction txProductos;
+        Session sessionProductos;
+        Transaction txProductos;
         int idtarifa;
         String sqlQuery;
-          Query q = null;
+        Query q = null;
         com.touresbalon.productostouresbalon.TipoGestionTarifaResponse respuesta = new com.touresbalon.productostouresbalon.TipoGestionTarifaResponse();
-         sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
-         
-        switch (tipoTarifa)  {
-        case TRANSPORTE: 
-        {
-            aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaTransporte tartra = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaTransporte();
-           
+        sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
+
+        switch (tipoTarifa) {
+            case TRANSPORTE: {
+                aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaTransporte tartra = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaTransporte();
+
                 txProductos = sessionProductos.beginTransaction();
-            
-            if (tipoOperacion != com.touresbalon.productostouresbalon.TipoAccion.ADICIONAR )
-            {
-                 try
-                {
-                    idtarifa=tarifa.getId();
-                } catch (Exception e){
-                    idtarifa=0;
-                }                
-                sqlQuery = "from TarifaTransporte where idTransporte = :idtarifa";
-                q=sessionProductos.createQuery(sqlQuery).setParameter("idtarifa", idtarifa);
-                List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaTransporte> lsttras =q.list();
-               
-                if (lsttras.size()>0)
-                {
-                    sessionProductos.clear();
-                    tartra.setIdTransporte(idtarifa);
-                                       
-                    if (tipoOperacion==  com.touresbalon.productostouresbalon.TipoAccion.ELIMINAR)
-                    {
-                        try
-                        {
-                            sessionProductos.delete(tartra);
-                            if (tartra.getIdTransporte()>0)
-                            {
-                                respuesta.setRespuesta(RespuestaGenerica.OK);
-                            }
-                            else
-                            {
-                                respuesta.setRespuesta(RespuestaGenerica.KO);
-                            }
-                            respuesta.setTarifa(tipoTarifa);
-            
-                            txProductos.commit();
-                        }
-                        catch(Exception e) {
-                            txProductos.rollback();
-                            System.out.println("Error al borrar el tipo de tarifa de transporte: " +  e);
-                             respuesta.setRespuesta(RespuestaGenerica.KO);
-                             txProductos.rollback();
-                            
-                             
-                        }
+
+                if (tipoOperacion != com.touresbalon.productostouresbalon.TipoAccion.ADICIONAR) {
+                    try {
+                        idtarifa = tarifa.getId();
+                    } catch (Exception e) {
+                        idtarifa = 0;
                     }
-                    else
-                    {
-                        tartra.setNombreTransporte(tarifa.getNombreTipo());
-                        tartra.setPrecio(tarifa.getPrecio());
-                        try
-                        {
-                            sessionProductos.update(tartra);
-                             if (tartra.getIdTransporte()>0)
-                            {
-                                respuesta.setRespuesta(RespuestaGenerica.OK);
-                            }
-                            else
-                            {
+                    sqlQuery = "from TarifaTransporte where idTransporte = :idtarifa";
+                    q = sessionProductos.createQuery(sqlQuery).setParameter("idtarifa", idtarifa);
+                    List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaTransporte> lsttras = q.list();
+
+                    if (lsttras.size() > 0) {
+                        sessionProductos.clear();
+                        tartra.setIdTransporte(idtarifa);
+
+                        if (tipoOperacion == com.touresbalon.productostouresbalon.TipoAccion.ELIMINAR) {
+                            try {
+                                sessionProductos.delete(tartra);
+                                if (tartra.getIdTransporte() > 0) {
+                                    respuesta.setRespuesta(RespuestaGenerica.OK);
+                                } else {
+                                    respuesta.setRespuesta(RespuestaGenerica.KO);
+                                }
+                                respuesta.setTarifa(tipoTarifa);
+
+                                txProductos.commit();
+                            } catch (Exception e) {
+                                txProductos.rollback();
+                                System.out.println("Error al borrar el tipo de tarifa de transporte: " + e);
                                 respuesta.setRespuesta(RespuestaGenerica.KO);
+                                txProductos.rollback();
+
                             }
-                            respuesta.setTarifa(tipoTarifa);
-                            txProductos.commit();
+                        } else {
+                            tartra.setNombreTransporte(tarifa.getNombreTipo());
+                            tartra.setPrecio(tarifa.getPrecio());
+                            try {
+                                sessionProductos.update(tartra);
+                                if (tartra.getIdTransporte() > 0) {
+                                    respuesta.setRespuesta(RespuestaGenerica.OK);
+                                } else {
+                                    respuesta.setRespuesta(RespuestaGenerica.KO);
+                                }
+                                respuesta.setTarifa(tipoTarifa);
+                                txProductos.commit();
+                            } catch (Exception e) {
+                                txProductos.rollback();
+                                System.out.println("Error al actualizar el tipo de tarifa de transporte: " + e);
+                                respuesta.setRespuesta(RespuestaGenerica.KO);
+                                txProductos.rollback();
+                            }
+
                         }
-                        catch(Exception e) {
-                            txProductos.rollback();
-                            System.out.println("Error al actualizar el tipo de tarifa de transporte: " +  e);
-                            respuesta.setRespuesta(RespuestaGenerica.KO);
-                            txProductos.rollback();
-                        }
-                                
+
                     }
-         
-                }
-            }
-            else
-            {
-                   tartra.setNombreTransporte(tarifa.getNombreTipo());
-                   tartra.setPrecio(tarifa.getPrecio());
-                   try
-                   {
+                } else {
+                    tartra.setNombreTransporte(tarifa.getNombreTipo());
+                    tartra.setPrecio(tarifa.getPrecio());
+                    try {
                         sessionProductos.save(tartra);
-                        if (tartra.getIdTransporte()>0)
-                        {
+                        if (tartra.getIdTransporte() > 0) {
                             respuesta.setRespuesta(RespuestaGenerica.OK);
-                        }
-                        else
-                        {
+                        } else {
                             respuesta.setRespuesta(RespuestaGenerica.KO);
                         }
                         respuesta.setTarifa(tipoTarifa);
                         txProductos.commit();
-                   }
-                    catch(Exception e) {
-                            txProductos.rollback();
-                            System.out.println("Error al crear el tipo de tarifa de transporte: " +  e);
-                             respuesta.setRespuesta(RespuestaGenerica.KO);
-                             txProductos.rollback();
-                          
-                        }
-            }
-           
+                    } catch (Exception e) {
+                        txProductos.rollback();
+                        System.out.println("Error al crear el tipo de tarifa de transporte: " + e);
+                        respuesta.setRespuesta(RespuestaGenerica.KO);
+                        txProductos.rollback();
+
+                    }
+                }
+
 //             if (sessionProductos.isOpen())
 //                sessionProductos.close();
-            break;
-            
-            
-        } 
-        case HOSPEDAJE:{
-             aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaHospedaje tarhos = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaHospedaje();
-             sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
+                break;
+
+            }
+            case HOSPEDAJE: {
+                aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaHospedaje tarhos = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaHospedaje();
+                sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
                 txProductos = sessionProductos.beginTransaction();
-            if (tipoOperacion !=  com.touresbalon.productostouresbalon.TipoAccion.ADICIONAR )
-            {
-                 try
-                {
-                    idtarifa=tarifa.getId();
-                } catch (Exception e){
-                    idtarifa=0;
-                }   
-                
-                sqlQuery = "from TarifaHospedaje where idHospedaje = :idtarifa";
-                q=sessionProductos.createQuery(sqlQuery).setParameter("idtarifa", idtarifa);
-                List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaHospedaje> lsthos =q.list();
-               
-                if (lsthos.size()>0)
-                {
-                    sessionProductos.clear();
-                    
-                    tarhos.setIdHospedaje(idtarifa);
-                                       
-                    if (tipoOperacion==  com.touresbalon.productostouresbalon.TipoAccion.ELIMINAR)
-                    {   try
-                        {
-                            sessionProductos.delete(tarhos);
-                            if (tarhos.getIdHospedaje()>0)
-                            {
-                                respuesta.setRespuesta(RespuestaGenerica.OK);
-                        
-                            }
-                            else
-                            {
-                                respuesta.setRespuesta(RespuestaGenerica.KO);
-                            }
-                            respuesta.setTarifa(tipoTarifa);
-                            txProductos.commit();
-                        }
-                        catch(Exception e)
-                        {
-                             txProductos.rollback();
-                            System.out.println("Error al borrar el tipo de tarifa de hospedaje: " +  e);
-                             respuesta.setRespuesta(RespuestaGenerica.KO);
-                            txProductos.rollback();
-                        }
-                        
+                if (tipoOperacion != com.touresbalon.productostouresbalon.TipoAccion.ADICIONAR) {
+                    try {
+                        idtarifa = tarifa.getId();
+                    } catch (Exception e) {
+                        idtarifa = 0;
                     }
-                    else
-                    {
-                        tarhos.setNombreHospedaje(tarifa.getNombreTipo());
-                        tarhos.setPrecio(tarifa.getPrecio());
-                        try
-                        {
-                            sessionProductos.update(tarhos);
-                              if (tarhos.getIdHospedaje()>0)
-                            {
-                                respuesta.setRespuesta(RespuestaGenerica.OK);
-                        
-                            }
-                            else
-                            {
+
+                    sqlQuery = "from TarifaHospedaje where idHospedaje = :idtarifa";
+                    q = sessionProductos.createQuery(sqlQuery).setParameter("idtarifa", idtarifa);
+                    List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaHospedaje> lsthos = q.list();
+
+                    if (lsthos.size() > 0) {
+                        sessionProductos.clear();
+
+                        tarhos.setIdHospedaje(idtarifa);
+
+                        if (tipoOperacion == com.touresbalon.productostouresbalon.TipoAccion.ELIMINAR) {
+                            try {
+                                sessionProductos.delete(tarhos);
+                                if (tarhos.getIdHospedaje() > 0) {
+                                    respuesta.setRespuesta(RespuestaGenerica.OK);
+
+                                } else {
+                                    respuesta.setRespuesta(RespuestaGenerica.KO);
+                                }
+                                respuesta.setTarifa(tipoTarifa);
+                                txProductos.commit();
+                            } catch (Exception e) {
+                                txProductos.rollback();
+                                System.out.println("Error al borrar el tipo de tarifa de hospedaje: " + e);
                                 respuesta.setRespuesta(RespuestaGenerica.KO);
+                                txProductos.rollback();
                             }
-                            respuesta.setTarifa(tipoTarifa);
-                            txProductos.commit();
+
+                        } else {
+                            tarhos.setNombreHospedaje(tarifa.getNombreTipo());
+                            tarhos.setPrecio(tarifa.getPrecio());
+                            try {
+                                sessionProductos.update(tarhos);
+                                if (tarhos.getIdHospedaje() > 0) {
+                                    respuesta.setRespuesta(RespuestaGenerica.OK);
+
+                                } else {
+                                    respuesta.setRespuesta(RespuestaGenerica.KO);
+                                }
+                                respuesta.setTarifa(tipoTarifa);
+                                txProductos.commit();
+                            } catch (Exception e) {
+                                txProductos.rollback();
+                                System.out.println("Error al modificar el tipo de tarifa de hospedaje: " + e);
+                                respuesta.setRespuesta(RespuestaGenerica.KO);
+                                txProductos.rollback();
+                                // return respuesta;
+                            }
                         }
-                         catch(Exception e)
-                        {
-                             txProductos.rollback();
-                            System.out.println("Error al modificar el tipo de tarifa de hospedaje: " +  e);
-                             respuesta.setRespuesta(RespuestaGenerica.KO);
-                             txProductos.rollback();
-                           // return respuesta;
-                        }
+
                     }
-                    
-                    
-                }
-            }
-            else
-            {
-                 
-                   
-                   tarhos.setNombreHospedaje(tarifa.getNombreTipo());
-                   tarhos.setPrecio(tarifa.getPrecio());
-                   try
-                   {
+                } else {
+
+                    tarhos.setNombreHospedaje(tarifa.getNombreTipo());
+                    tarhos.setPrecio(tarifa.getPrecio());
+                    try {
                         sessionProductos.save(tarhos);
-                          if (tarhos.getIdHospedaje()>0)
-                            {
-                                respuesta.setRespuesta(RespuestaGenerica.OK);
-                        
-                            }
-                            else
-                            {
-                                respuesta.setRespuesta(RespuestaGenerica.KO);
-                            }
-                            respuesta.setTarifa(tipoTarifa);
-                            txProductos.commit();
-                   }
-                    catch(Exception e)
-                        {
-                             txProductos.rollback();
-                            System.out.println("Error al crear el tipo de tarifa de hospedaje: " +  e);
-                             respuesta.setRespuesta(RespuestaGenerica.KO);
-                           txProductos.rollback();                        }
-                   
-            }
-           
+                        if (tarhos.getIdHospedaje() > 0) {
+                            respuesta.setRespuesta(RespuestaGenerica.OK);
+
+                        } else {
+                            respuesta.setRespuesta(RespuestaGenerica.KO);
+                        }
+                        respuesta.setTarifa(tipoTarifa);
+                        txProductos.commit();
+                    } catch (Exception e) {
+                        txProductos.rollback();
+                        System.out.println("Error al crear el tipo de tarifa de hospedaje: " + e);
+                        respuesta.setRespuesta(RespuestaGenerica.KO);
+                        txProductos.rollback();
+                    }
+
+                }
+
 //            if (sessionProductos.isOpen())
 //                sessionProductos.close();
-             break;
-        }
-        
-        case ESPECTACULO: {
-            aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaEspectaculo taresp = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaEspectaculo();
-            sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
-            txProductos = sessionProductos.beginTransaction();
-            if (tipoOperacion !=  com.touresbalon.productostouresbalon.TipoAccion.ADICIONAR )
-            {
-                 try
-                {
-                    idtarifa=tarifa.getId();
-                } catch (Exception e){
-                    idtarifa=0;
-                }   
-              
-                sqlQuery = "from TarifaEspectaculo where idEspectaculo = :idtarifa";
-                q=sessionProductos.createQuery(sqlQuery).setParameter("idtarifa", idtarifa);
-                List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaEspectaculo> lsttras =q.list();
-               
-                if (lsttras.size()>0)
-                {
-                    sessionProductos.clear();
-                    
-                    taresp.setIdEspectaculo(idtarifa);
-                                       
-                    if (tipoOperacion==  com.touresbalon.productostouresbalon.TipoAccion.ELIMINAR)
-                    {
-                        try
-                        {
-                            sessionProductos.delete(taresp);
-                           if (taresp.getIdEspectaculo()>0)
-                            {
-                                respuesta.setRespuesta(RespuestaGenerica.OK);
-                        
-                            }
-                            else
-                            {
-                                respuesta.setRespuesta(RespuestaGenerica.KO);
-                            }
-                            respuesta.setTarifa(tipoTarifa);
-            
-                            txProductos.commit();
-                        }
-                        catch(Exception e)
-                        {
-                             txProductos.rollback();
-                            System.out.println("Error al borrar el tipo de tarifa de espectaculo: " +  e);
-                             respuesta.setRespuesta(RespuestaGenerica.KO);
-                            txProductos.rollback();
-                        }
-                    }
-                    else
-                    {
-                        taresp.setNombreEspectaculo(tarifa.getNombreTipo());
-                        taresp.setPrecio(tarifa.getPrecio());
-                        try
-                        {
-                            sessionProductos.update(taresp);
-                            if (taresp.getIdEspectaculo()>0)
-                            {
-                                respuesta.setRespuesta(RespuestaGenerica.OK);
-                        
-                            }
-                            else
-                            {
-                                respuesta.setRespuesta(RespuestaGenerica.KO);
-                            }
-                            respuesta.setTarifa(tipoTarifa);
-            
-                            txProductos.commit();
-                        }
-                         catch(Exception e)
-                        {
-                             txProductos.rollback();
-                            System.out.println("Error al modificar el tipo de tarifa de espectaculo: " +  e);
-                             respuesta.setRespuesta(RespuestaGenerica.KO);
-                             txProductos.rollback();
-                        }
-                    }
-                    
-                    
-                }
+                break;
             }
-            else
-            {
-                 
-                   
-                   taresp.setNombreEspectaculo(tarifa.getNombreTipo());
-                   taresp.setPrecio(tarifa.getPrecio());
-                   try
-                   {
+
+            case ESPECTACULO: {
+                aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaEspectaculo taresp = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaEspectaculo();
+                sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
+                txProductos = sessionProductos.beginTransaction();
+                if (tipoOperacion != com.touresbalon.productostouresbalon.TipoAccion.ADICIONAR) {
+                    try {
+                        idtarifa = tarifa.getId();
+                    } catch (Exception e) {
+                        idtarifa = 0;
+                    }
+
+                    sqlQuery = "from TarifaEspectaculo where idEspectaculo = :idtarifa";
+                    q = sessionProductos.createQuery(sqlQuery).setParameter("idtarifa", idtarifa);
+                    List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaEspectaculo> lsttras = q.list();
+
+                    if (lsttras.size() > 0) {
+                        sessionProductos.clear();
+
+                        taresp.setIdEspectaculo(idtarifa);
+
+                        if (tipoOperacion == com.touresbalon.productostouresbalon.TipoAccion.ELIMINAR) {
+                            try {
+                                sessionProductos.delete(taresp);
+                                if (taresp.getIdEspectaculo() > 0) {
+                                    respuesta.setRespuesta(RespuestaGenerica.OK);
+
+                                } else {
+                                    respuesta.setRespuesta(RespuestaGenerica.KO);
+                                }
+                                respuesta.setTarifa(tipoTarifa);
+
+                                txProductos.commit();
+                            } catch (Exception e) {
+                                txProductos.rollback();
+                                System.out.println("Error al borrar el tipo de tarifa de espectaculo: " + e);
+                                respuesta.setRespuesta(RespuestaGenerica.KO);
+                                txProductos.rollback();
+                            }
+                        } else {
+                            taresp.setNombreEspectaculo(tarifa.getNombreTipo());
+                            taresp.setPrecio(tarifa.getPrecio());
+                            try {
+                                sessionProductos.update(taresp);
+                                if (taresp.getIdEspectaculo() > 0) {
+                                    respuesta.setRespuesta(RespuestaGenerica.OK);
+
+                                } else {
+                                    respuesta.setRespuesta(RespuestaGenerica.KO);
+                                }
+                                respuesta.setTarifa(tipoTarifa);
+
+                                txProductos.commit();
+                            } catch (Exception e) {
+                                txProductos.rollback();
+                                System.out.println("Error al modificar el tipo de tarifa de espectaculo: " + e);
+                                respuesta.setRespuesta(RespuestaGenerica.KO);
+                                txProductos.rollback();
+                            }
+                        }
+
+                    }
+                } else {
+
+                    taresp.setNombreEspectaculo(tarifa.getNombreTipo());
+                    taresp.setPrecio(tarifa.getPrecio());
+                    try {
                         sessionProductos.save(taresp);
-                          if (taresp.getIdEspectaculo()>0)
-                            {
-                                respuesta.setRespuesta(RespuestaGenerica.OK);
-                        
-                            }
-                            else
-                            {
-                                respuesta.setRespuesta(RespuestaGenerica.KO);
-                            }
-                            respuesta.setTarifa(tipoTarifa);
-            
-                            txProductos.commit();
-                        
-                   }
-                    catch(Exception e)
-                        {
-                             txProductos.rollback();
-                            System.out.println("Error al crear el tipo de tarifa de espectaculo: " +  e);
-                             respuesta.setRespuesta(RespuestaGenerica.KO);
-                            txProductos.rollback();
+                        if (taresp.getIdEspectaculo() > 0) {
+                            respuesta.setRespuesta(RespuestaGenerica.OK);
+
+                        } else {
+                            respuesta.setRespuesta(RespuestaGenerica.KO);
                         }
-                   
-            }
-            
-            if (sessionProductos.isOpen())
-                sessionProductos.close();
-             break;
-        }
-        case CIUDAD: {
-            aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaCiudad tarciu = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaCiudad();
-            
-             sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
-            txProductos = sessionProductos.beginTransaction();
-            if (tipoOperacion !=  com.touresbalon.productostouresbalon.TipoAccion.ADICIONAR )
-            {
-                 try
-                {
-                    idtarifa=tarifa.getId();
-                } catch (Exception e){
-                    idtarifa=0;
-                }   
-               
-                sqlQuery = "from TarifaCiudad where idTarifaCiudad = :idtarifa";
-                q=sessionProductos.createQuery(sqlQuery).setParameter("idtarifa", idtarifa);
-                List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaCiudad> lsttras =q.list();
-               
-                if (lsttras.size()>0)
-                {
-                    sessionProductos.clear();
-                    
-                    tarciu.setIdTarifaCiudad(idtarifa);
-                                       
-                    if (tipoOperacion==  com.touresbalon.productostouresbalon.TipoAccion.ELIMINAR)
-                    {
-                        try
-                        {
-                            sessionProductos.delete(tarciu);
-                             if (tarciu.getIdTarifaCiudad()>0)
-                            {
-                                respuesta.setRespuesta(RespuestaGenerica.OK);
-                        
-                            }
-                            else
-                            {
-                                respuesta.setRespuesta(RespuestaGenerica.KO);
-                            }
-                            respuesta.setTarifa(tipoTarifa);
-            
-                            txProductos.commit();
-                        }
-                         catch(Exception e)
-                        {
-                             txProductos.rollback();
-                            System.out.println("Error al borrar el tipo de tarifa de ciudad: " +  e);
-                             respuesta.setRespuesta(RespuestaGenerica.KO);
-                            txProductos.rollback();
-                        }
+                        respuesta.setTarifa(tipoTarifa);
+
+                        txProductos.commit();
+
+                    } catch (Exception e) {
+                        txProductos.rollback();
+                        System.out.println("Error al crear el tipo de tarifa de espectaculo: " + e);
+                        respuesta.setRespuesta(RespuestaGenerica.KO);
+                        txProductos.rollback();
                     }
-                    else
-                    {
-                        
-                        
-                        tarciu.setTipoCiudad(tarifa.getNombreTipo());
-                        tarciu.setPrecio(tarifa.getPrecio());
-                        try
-                        {
-                            sessionProductos.update(tarciu);
-                            if (tarciu.getIdTarifaCiudad()>0)
-                            {
-                                respuesta.setRespuesta(RespuestaGenerica.OK);
-                        
-                            }
-                            else
-                            {
-                                respuesta.setRespuesta(RespuestaGenerica.KO);
-                            }
-                            respuesta.setTarifa(tipoTarifa);
-            
-                            txProductos.commit();
-                        }
-                        catch(Exception e)
-                        {
-                             txProductos.rollback();
-                            System.out.println("Error al modificar el tipo de tarifa de ciudad: " +  e);
-                             respuesta.setRespuesta(RespuestaGenerica.KO);
-                            txProductos.rollback();
-                        }
-                    }
-                    
-                    
+
                 }
+
+                if (sessionProductos.isOpen()) {
+                    sessionProductos.close();
+                }
+                break;
             }
-            else
-            {
-                 
-                   
-                   tarciu.setTipoCiudad(tarifa.getNombreTipo());
-                   tarciu.setPrecio(tarifa.getPrecio());
-                   try
-                   {
-                        sessionProductos.save(tarciu);
-                        if (tarciu.getIdTarifaCiudad()>0)
-                            {
-                                respuesta.setRespuesta(RespuestaGenerica.OK);
-                        
-                            }
-                            else
-                            {
+            case CIUDAD: {
+                aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaCiudad tarciu = new aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaCiudad();
+
+                sessionProductos = ProductosHU.getSessionFactory().getCurrentSession();
+                txProductos = sessionProductos.beginTransaction();
+                if (tipoOperacion != com.touresbalon.productostouresbalon.TipoAccion.ADICIONAR) {
+                    try {
+                        idtarifa = tarifa.getId();
+                    } catch (Exception e) {
+                        idtarifa = 0;
+                    }
+
+                    sqlQuery = "from TarifaCiudad where idTarifaCiudad = :idtarifa";
+                    q = sessionProductos.createQuery(sqlQuery).setParameter("idtarifa", idtarifa);
+                    List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaCiudad> lsttras = q.list();
+
+                    if (lsttras.size() > 0) {
+                        sessionProductos.clear();
+
+                        tarciu.setIdTarifaCiudad(idtarifa);
+
+                        if (tipoOperacion == com.touresbalon.productostouresbalon.TipoAccion.ELIMINAR) {
+                            try {
+                                sessionProductos.delete(tarciu);
+                                if (tarciu.getIdTarifaCiudad() > 0) {
+                                    respuesta.setRespuesta(RespuestaGenerica.OK);
+
+                                } else {
+                                    respuesta.setRespuesta(RespuestaGenerica.KO);
+                                }
+                                respuesta.setTarifa(tipoTarifa);
+
+                                txProductos.commit();
+                            } catch (Exception e) {
+                                txProductos.rollback();
+                                System.out.println("Error al borrar el tipo de tarifa de ciudad: " + e);
                                 respuesta.setRespuesta(RespuestaGenerica.KO);
+                                txProductos.rollback();
                             }
-                            respuesta.setTarifa(tipoTarifa);
-            
-                            txProductos.commit();
-                   }
-                   catch(Exception e)
-                        {
-                             txProductos.rollback();
-                            System.out.println("Error al crear el tipo de tarifa de ciudad: " +  e);
-                             respuesta.setRespuesta(RespuestaGenerica.KO);
-                            txProductos.rollback();
+                        } else {
+
+                            tarciu.setTipoCiudad(tarifa.getNombreTipo());
+                            tarciu.setPrecio(tarifa.getPrecio());
+                            try {
+                                sessionProductos.update(tarciu);
+                                if (tarciu.getIdTarifaCiudad() > 0) {
+                                    respuesta.setRespuesta(RespuestaGenerica.OK);
+
+                                } else {
+                                    respuesta.setRespuesta(RespuestaGenerica.KO);
+                                }
+                                respuesta.setTarifa(tipoTarifa);
+
+                                txProductos.commit();
+                            } catch (Exception e) {
+                                txProductos.rollback();
+                                System.out.println("Error al modificar el tipo de tarifa de ciudad: " + e);
+                                respuesta.setRespuesta(RespuestaGenerica.KO);
+                                txProductos.rollback();
+                            }
                         }
-                   
+
+                    }
+                } else {
+
+                    tarciu.setTipoCiudad(tarifa.getNombreTipo());
+                    tarciu.setPrecio(tarifa.getPrecio());
+                    try {
+                        sessionProductos.save(tarciu);
+                        if (tarciu.getIdTarifaCiudad() > 0) {
+                            respuesta.setRespuesta(RespuestaGenerica.OK);
+
+                        } else {
+                            respuesta.setRespuesta(RespuestaGenerica.KO);
+                        }
+                        respuesta.setTarifa(tipoTarifa);
+
+                        txProductos.commit();
+                    } catch (Exception e) {
+                        txProductos.rollback();
+                        System.out.println("Error al crear el tipo de tarifa de ciudad: " + e);
+                        respuesta.setRespuesta(RespuestaGenerica.KO);
+                        txProductos.rollback();
+                    }
+
+                }
+
+                if (sessionProductos.isOpen()) {
+                    sessionProductos.close();
+                }
+                break;
             }
-           
-            if (sessionProductos.isOpen())
-                sessionProductos.close();
-             break;
-        }
-        default:
-        {
-            respuesta.setRespuesta(RespuestaGenerica.KO);
-        }
+            default: {
+                respuesta.setRespuesta(RespuestaGenerica.KO);
+            }
         }
         return respuesta;
     }
@@ -1341,44 +1237,46 @@ public class Services {
         txOrdenes = sessionOrdenes.beginTransaction();
 
         List<Producto> lstRankingProductos = new ArrayList<>();
-        List<Integer> lstProductos = new ArrayList<>();
+        List<BigDecimal> lstProductos = new ArrayList<>();
 
         Query query;
 
-        String strsql = "WITH "
-                + "  ProductoS AS "
+        String strsql = ""
+                + "SELECT "
+                + "  PRODID "
+                + "FROM "
                 + "  ( "
                 + "    SELECT "
-                + "      Items.prodid, "
-                + "      COUNT ( * ) CANTIDAD "
+                + "      ASOCIADOS.PRODID, "
+                + "      COUNT ( ASOCIADOS.PRODID ) AS COUNT_PRODID "
                 + "    FROM "
-                + "      Orders "
-                + "    INNER JOIN Items "
+                + "      ITEMS SELECCIONADO "
+                + "    INNER JOIN ORDERS "
                 + "    ON "
-                + "      Orders.ordid = Items.ordid "
-                + "    WHERE "
-                + "      Items.prodid = " + idProducto
+                + "      ORDERS.ORDID = SELECCIONADO.ORDID "
+                + "    AND SELECCIONADO.PRODID = " + idProducto.get(0)
+                + "    INNER JOIN ITEMS ASOCIADOS "
+                + "    ON "
+                + "      ORDERS.ORDID = ASOCIADOS.ORDID "
+                + "    AND SELECCIONADO.PRODID <> ASOCIADOS.PRODID "
                 + "    GROUP BY "
-                + "      Items.prodid "
+                + "      ASOCIADOS.PRODID, "
+                + "      ORDERS.ORDID "
                 + "    ORDER BY "
-                + "      Items.prodid "
+                + "      COUNT_PRODID DESC "
                 + "  ) "
-                + "SELECT "
-                + "  ProductoS.prodid, "
-                + "FROM "
-                + "  ProductoS "
                 + "WHERE "
-                + "  ROWNUM <= 10";
+                + "  ROWNUM <= 5";
 
         try {
-            query = sessionOrdenes.createQuery(strsql);
+            query = sessionOrdenes.createSQLQuery(strsql);
             lstProductos = query.list();
         } catch (Exception e) {
             System.out.println("Error al consultar el producto: " + e.getMessage());
         }
 
-        for (Integer p : lstProductos) {
-            strsql = "from Producto where productos.idProducto = " + p;
+        for (BigDecimal p : lstProductos) {
+            strsql = "from Producto where idProducto = " + p.intValue();
             List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto> lstProductEntity = new ArrayList<>();
             try {
                 query = sessionProductos.createQuery(strsql);
