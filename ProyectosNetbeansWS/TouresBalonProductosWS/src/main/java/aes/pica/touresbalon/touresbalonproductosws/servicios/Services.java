@@ -25,6 +25,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import javax.jws.WebService;
+import javax.persistence.ForeignKey;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
@@ -1240,41 +1241,30 @@ public class Services {
 
         Query query;
 
-        String strsql = "WITH "
-                + "  ORD AS "
+        String strsql = ""
+                + "SELECT "
+                + "  PRODID "
+                + "FROM "
                 + "  ( "
                 + "    SELECT "
-                + "      ITEMS.PRODID, "
-                + "      ITEMS.ORDID "
+                + "      ASOCIADOS.PRODID, "
+                + "      COUNT ( ASOCIADOS.PRODID ) AS COUNT_PRODID "
                 + "    FROM "
-                + "      ITEMS "
-                + "    WHERE "
-                + "      ITEMS.PRODID = " + idProducto.get(0)
-                + "  ) "
-                + "  , "
-                + "  PROD AS "
-                + "  ( "
-                + "    SELECT "
-                + "      COUNT ( ITEMS.PRODID ) AS COUNT_PRODID, "
-                + "      ITEMS.PRODID "
-                + "    FROM "
-                + "      ORD "
+                + "      ITEMS SELECCIONADO "
                 + "    INNER JOIN ORDERS "
                 + "    ON "
-                + "      ORD.ORDID = ORDERS.ORDID "
-                + "    INNER JOIN ITEMS "
+                + "      ORDERS.ORDID = SELECCIONADO.ORDID "
+                + "    AND SELECCIONADO.PRODID = " + idProducto.get(0)
+                + "    INNER JOIN ITEMS ASOCIADOS "
                 + "    ON "
-                + "      ORDERS.ORDID = ITEMS.ORDID "
-                + "    AND ORD.PRODID <> ITEMS.PRODID "
+                + "      ORDERS.ORDID = ASOCIADOS.ORDID "
+                + "    AND SELECCIONADO.PRODID <> ASOCIADOS.PRODID "
                 + "    GROUP BY "
-                + "      ITEMS.PRODID "
+                + "      ASOCIADOS.PRODID, "
+                + "      ORDERS.ORDID "
                 + "    ORDER BY "
                 + "      COUNT_PRODID DESC "
                 + "  ) "
-                + "SELECT "
-                + "  PROD.PRODID "
-                + "FROM "
-                + "  PROD "
                 + "WHERE "
                 + "  ROWNUM <= 5";
 
@@ -1286,7 +1276,7 @@ public class Services {
         }
 
         for (BigDecimal p : lstProductos) {
-            strsql = "from Producto where productos.idProducto = " + p.intValue();
+            strsql = "from Producto where idProducto = " + p.intValue();
             List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto> lstProductEntity = new ArrayList<>();
             try {
                 query = sessionProductos.createQuery(strsql);
