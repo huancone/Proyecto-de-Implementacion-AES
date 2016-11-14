@@ -150,13 +150,13 @@
                                     <p:dataTable id="dtProductosList" var="productoL" value="#{productosBean.productosList}" selectionMode="single" 
                                                  selection="#{productosBean.producto}" rowKey="#{productoL.idProducto}">
                                         <f:facet name="footer">
-                                            
-                                            <p:commandButton process="dtProductosList" update=":dlgId" 
-                                                             oncomplete="PF('carDialog').show()" icon="ui-icon-search" value="Ver"/>
-                                            
+
+                                            <p:commandButton process="dtProductosList" update=":dlgProductoId" 
+                                                             oncomplete="PF('productoDialog').show()" icon="ui-icon-search" value="Ver"/>
+
                                             <p:commandButton actionListener="#{productosBean.eliminarProducto()}" icon="ui-icon-trash" value="Eliminar" />
                                         </f:facet>
-                                        
+
                                         <p:column headerText="Id Producto">
                                             <p:outputLabel value="#{productoL.idProducto}" />
                                         </p:column>
@@ -167,8 +167,8 @@
                                             <p:outputLabel value="#{productoL.descripcion}" />
                                         </p:column>
                                         <p:column style="width:62px;text-align: center">
-                                           
-                                            
+
+
                                         </p:column>
                                     </p:dataTable>
                                 </p:panel>
@@ -177,8 +177,8 @@
 
                     </p:accordionPanel>                    
                 </h:form>
-                <p:dialog header="Car Info" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" id="dlgId" 
-                              resizable="false" >
+                <p:dialog header="Detalle Productos" widgetVar="productoDialog" modal="true" showEffect="fade" hideEffect="fade" id="dlgProductoId" 
+                          resizable="false" >
                     <h:form>
                         <p:outputPanel id="idProductoDetalle" style="text-align:center;">
                             <h:panelGrid columns="2" cellpadding="2">
@@ -261,7 +261,7 @@
                             </h:panelGrid>
                         </p:outputPanel>
                     </h:form>
-                    </p:dialog>
+                </p:dialog>
             </ui:define>
         </ui:composition>
     </body>

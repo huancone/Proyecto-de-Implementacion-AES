@@ -30,7 +30,6 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @RequestScoped
 public class CampannaBean {
 
-    private ProductosBean producto;
     private Date fechaInicioCampania;
     private Date fechaFinCampania;
     
@@ -86,20 +85,6 @@ public class CampannaBean {
             productos = service.consultarProducto(TipoConsultaProducto.DESCRIPCION, this.getTxtConsulta());
         }
         this.setProductoList(productos);
-    }
-    
-    /**
-     * @return the producto
-     */
-    public ProductosBean getProducto() {
-        return producto;
-    }
-
-    /**
-     * @param producto the producto to set
-     */
-    public void setProducto(ProductosBean producto) {
-        this.producto = producto;
     }
 
     /**
