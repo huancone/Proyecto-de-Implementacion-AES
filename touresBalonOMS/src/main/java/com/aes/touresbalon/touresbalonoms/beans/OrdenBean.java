@@ -5,11 +5,21 @@
  */
 package com.aes.touresbalon.touresbalonoms.beans;
 
+import com.aes.touresbalon.touresbalonoms.services.Services;
+import com.aes.touresbalon.touresbalonoms.wsdl.client.ConsultarOrdenesFault_Exception;
+import com.aes.touresbalon.touresbalonoms.wsdl.client.CriterioConsultaOrden;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.EstatusOrden;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.Item;
+import com.aes.touresbalon.touresbalonoms.wsdl.client.Orden;
+import com.aes.touresbalon.touresbalonoms.wsdl.client.TipoConsultaOrden;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 /**
@@ -17,7 +27,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * @author alexanderbarbosaayala
  */
 @ManagedBean(name = "ordenBean")
-@RequestScoped
+@ViewScoped
 public class OrdenBean {
     
     private int idCliente;
@@ -30,7 +40,32 @@ public class OrdenBean {
     
     private String tipoConsulta;
     private String txtConsulta;
-
+    
+    private Orden orden;
+    private List<Orden> ordenList;
+    
+    private Services service = new Services();
+    
+    public void consultarOrdenes() {
+        List<Orden> ordenes = new ArrayList<>();
+        CriterioConsultaOrden criterio = new CriterioConsultaOrden();
+        try {
+            if (this.getTipoConsulta().equalsIgnoreCase("idOrden")) {
+                criterio.setTipoConsulta(TipoConsultaOrden.ORDEN);
+                criterio.setCodigo(Integer.parseInt(this.getTxtConsulta()));
+                ordenes = getService().consultarOrdenes(criterio);
+            }else if (this.getTipoConsulta().equalsIgnoreCase("idPrducto")) {
+                criterio.setTipoConsulta(TipoConsultaOrden.PRODUCTO);
+                criterio.setCodigo(Integer.parseInt(this.getTxtConsulta()));
+                ordenes = getService().consultarOrdenes(criterio);
+            }
+        } catch (ConsultarOrdenesFault_Exception ex) {
+            Logger.getLogger(OrdenBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.setOrdenList(ordenes);
+        
+    }
+    
     /**
      * @return the idCliente
      */
@@ -155,6 +190,48 @@ public class OrdenBean {
      */
     public void setTxtConsulta(String txtConsulta) {
         this.txtConsulta = txtConsulta;
+    }
+
+    /**
+     * @return the ordenList
+     */
+    public List<Orden> getOrdenList() {
+        return ordenList;
+    }
+
+    /**
+     * @param ordenList the ordenList to set
+     */
+    public void setOrdenList(List<Orden> ordenList) {
+        this.ordenList = ordenList;
+    }
+
+    /**
+     * @return the service
+     */
+    public Services getService() {
+        return service;
+    }
+
+    /**
+     * @param service the service to set
+     */
+    public void setService(Services service) {
+        this.service = service;
+    }
+
+    /**
+     * @return the orden
+     */
+    public Orden getOrden() {
+        return orden;
+    }
+
+    /**
+     * @param orden the orden to set
+     */
+    public void setOrden(Orden orden) {
+        this.orden = orden;
     }
     
     

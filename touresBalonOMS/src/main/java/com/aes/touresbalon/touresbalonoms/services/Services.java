@@ -187,7 +187,27 @@ public class Services {
     }
 
     public TipoGestionCampaniaResponse gestionCampaniaProducto(TipoAccion tipoOperacion, Campania campania) throws GestionCampaniaProductoFault_Exception {
-        return null;
+        TipoGestionCampaniaResponse result = new TipoGestionCampaniaResponse();
+        try {
+            //conf del servicio
+            ServiceProxyOMS_Service service = new ServiceProxyOMS_Service();
+            ServiceProxyOMS port = service.getServiceProxyOMSSOAP();
+
+            String endpointURL =  URL_ENDPOINT;
+            BindingProvider bp = (BindingProvider) port;
+            bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, endpointURL);
+
+            //Llamado al servicio
+            result = port.gestionCampaniaProducto(tipoOperacion, campania);
+
+            // Procesamiento de la rta del servicio
+            System.out.println("Resultado con idProducto = " + result.getIdCampania());
+
+        } catch (Exception ex) {
+            System.out.println("com.aes.touresbalon.touresbalonoms.services.Servicio.gestionCampaniaProducto()" + ex.getMessage());
+        }
+       
+        return result;
     }
 
     public TipoGestionTarifaResponse gestionTarifa(TipoAccion tipoOperacion, TipoTarifa tipoTarifa, TarifaValores tarifa) throws GestionTarifaFault_Exception {
@@ -195,7 +215,16 @@ public class Services {
     }
 
     public List<Orden> consultarOrdenes(CriterioConsultaOrden criterios) throws ConsultarOrdenesFault_Exception {
-        return null;
+        List<Orden> list = new ArrayList<Orden>();
+        
+        ServiceProxyOMS_Service service = new ServiceProxyOMS_Service();
+        ServiceProxyOMS port = service.getServiceProxyOMSSOAP();
+        String endpointURL = URL_ENDPOINT;
+        BindingProvider bp = (BindingProvider) port;
+        bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, endpointURL);
+        list = port.consultarOrdenes(criterios);
+
+        return list;
     }
 
     public RespuestaOrdenCerrada consultarRangoCerradoOrdenes(javax.xml.datatype.XMLGregorianCalendar fechaInicial, javax.xml.datatype.XMLGregorianCalendar fechaFinal) throws ConsultarRangoCerradoOrdenesFault_Exception {
