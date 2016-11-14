@@ -7,7 +7,10 @@ package com.aes.touresbalon.touresbalonoms.beans;
 
 import com.aes.touresbalon.touresbalonoms.services.Services;
 import com.aes.touresbalon.touresbalonoms.utilities.OmsUtil;
+import com.aes.touresbalon.touresbalonoms.wsdl.client.Campania;
+import com.aes.touresbalon.touresbalonoms.wsdl.client.GestionCampaniaProductoFault_Exception;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.Producto;
+import com.aes.touresbalon.touresbalonoms.wsdl.client.TipoAccion;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.TipoConsultaProducto;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -17,7 +20,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.XMLGregorianCalendar;
 
@@ -27,7 +30,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * @author alexanderbarbosaayala
  */
 @ManagedBean(name = "campannaBean")
-@RequestScoped
+@ViewScoped
 public class CampannaBean {
 
     private Date fechaInicioCampania;
@@ -38,8 +41,10 @@ public class CampannaBean {
     
     private Producto productoSel;
     private List<Producto> productoList;
+    private TipoAccion tipoAccion;
     
     Services service = new Services();
+    Campania campania = new Campania();
     
     /**
      * Creates a new instance of ProductosBean
@@ -52,25 +57,51 @@ public class CampannaBean {
         this.tipoConsulta = "id";
     }
     
-    public void crearCampanna(){
+    public void crearCampanna() {
         try {
             XMLGregorianCalendar fechaInicioCampanna = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaInicioCampania());
-            XMLGregorianCalendar fechaFinCampanna = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaFinCampania());
 
-        } catch (ParseException ex) {
-            Logger.getLogger(CampannaBean.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (DatatypeConfigurationException ex) {
+            XMLGregorianCalendar fechaFinCampanna = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaFinCampania());
+            campania.setIdProducto(productoSel);
+            campania.setFechaInicioCampania(fechaInicioCampanna);
+            campania.setFechaFinCampania(fechaFinCampanna);
+            this.setTipoAccion(TipoAccion.ADICIONAR);
+
+            service.gestionCampaniaProducto(this.getTipoAccion(), campania);
+        } catch (GestionCampaniaProductoFault_Exception | ParseException | DatatypeConfigurationException ex) {
             Logger.getLogger(CampannaBean.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public void eliminarCampanna(){
+    
+    public void eliminarCampanna() {
         try {
             XMLGregorianCalendar fechaInicioCampanna = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaInicioCampania());
             XMLGregorianCalendar fechaFinCampanna = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaFinCampania());
+            campania.setIdProducto(productoSel);
+            campania.setFechaInicioCampania(fechaInicioCampanna);
+            campania.setFechaFinCampania(fechaFinCampanna);
+            this.setTipoAccion(TipoAccion.ELIMINAR);
 
-        } catch (ParseException ex) {
+            service.gestionCampaniaProducto(this.getTipoAccion(), campania);
+
+        } catch (ParseException | DatatypeConfigurationException | GestionCampaniaProductoFault_Exception ex) {
             Logger.getLogger(CampannaBean.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (DatatypeConfigurationException ex) {
+        }
+    }
+    
+    
+    public void editarCampanna() {
+        try {
+            XMLGregorianCalendar fechaInicioCampanna = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaInicioCampania());
+
+            XMLGregorianCalendar fechaFinCampanna = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaFinCampania());
+            campania.setIdProducto(productoSel);
+            campania.setFechaInicioCampania(fechaInicioCampanna);
+            campania.setFechaFinCampania(fechaFinCampanna);
+            this.setTipoAccion(TipoAccion.MODIFICAR);
+
+            service.gestionCampaniaProducto(this.getTipoAccion(), campania);
+        } catch (GestionCampaniaProductoFault_Exception | ParseException | DatatypeConfigurationException ex) {
             Logger.getLogger(CampannaBean.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -169,6 +200,20 @@ public class CampannaBean {
      */
     public void setTxtConsulta(String txtConsulta) {
         this.txtConsulta = txtConsulta;
+    }
+
+    /**
+     * @return the tipoAccion
+     */
+    public TipoAccion getTipoAccion() {
+        return tipoAccion;
+    }
+
+    /**
+     * @param tipoAccion the tipoAccion to set
+     */
+    public void setTipoAccion(TipoAccion tipoAccion) {
+        this.tipoAccion = tipoAccion;
     }
     
     

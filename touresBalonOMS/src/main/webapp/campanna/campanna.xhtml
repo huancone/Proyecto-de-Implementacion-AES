@@ -41,10 +41,9 @@
                                                     Gestion de Campañas
                                                 </f:facet>
                                                 <f:facet name="footer">
-
+                                                    
                                                     <p:commandButton process="dtProductosCampList" update=":detalleProdCamDialog" 
-                                                                     oncomplete="PF('campProdDialog').show()" icon="ui-icon-plus" value="Adicionar"/>
-
+                                                             oncomplete="PF('campProdDialog').show()" icon="ui-icon-search" value="Adicionar"/>
                                                 </f:facet>
 
                                                 <p:column headerText="Id Producto">
@@ -62,14 +61,25 @@
                                                 </p:column>
                                             </p:dataTable>
                                         </p:panel>
-
-
-
                                         
                                     </h:panelGrid>
                                 </p:panel>
                             </h:form>
 
+                        </p:tab>
+                        <p:tab title="Gestion Campaña">
+                            <h:form>
+                                <p:panel header="Gestion de  Campaña">
+                                    <h:panelGrid columns="2" cellpadding="2">
+                                        <p:panel header="Consultar Campañas">
+                                            <h:panelGrid columns="2" cellpadding="2" id="panelConsultaProductos">
+                                                <p:commandButton value="Consultar Productos Campaña" actionListener="#{campannaBean.consultarProducto()}" update="dtProductosCampList" process="@form"/>
+                                            </h:panelGrid>
+                                        
+                                        
+                                        </p:panel>
+                                    </h:panelGrid>
+                                </p:panel>  
                         </p:tab>
                     </p:accordionPanel>
                 </h:form>
@@ -79,6 +89,13 @@
                     <p:outputPanel style="text-align:center;">
                         <h:form>
                             <p:panelGrid  columns="2" columnClasses="label,value">
+                                <h:outputLabel for="idProdCamCrea" value="Id Producto" />
+                                <p:inputText id="idProdCamCrea" value="#{campannaBean.productoSel.idProducto}">
+                                    <p:clientValidator event="keyup"/>
+                                </p:inputText>
+                                <p:message for="idProdCamCrea" display="icon" />
+                                <br></br>
+                                
                                 <p:outputLabel for="fechaIniCamp" value="Fecha Inicio Campaña" />
                                 <p:calendar id="fechaIniCamp" value="#{campannaBean.fechaInicioCampania}" locale="es" navigator="true" pattern="yyyyMMdd" />
                                 <h:outputText value="#{campannaBean.fechaInicioCampania}">
@@ -86,12 +103,12 @@
                                 </h:outputText>
                                 <br></br>
                                 <p:outputLabel for="fechaFinCamp" value="Fecha Fin Campaña" />
-                                <p:calendar id="fechaFinCamp" value="#{productosBean.fechaEspectaculo}" locale="es" navigator="true" pattern="yyyyMMdd" />
-                                <h:outputText value="#{productosBean.fechaEspectaculo}">
+                                <p:calendar id="fechaFinCamp" value="#{campannaBean.fechaFinCampania}" locale="es" navigator="true" pattern="yyyyMMdd" />
+                                <h:outputText value="#{campannaBean.fechaFinCampania}">
                                     <f:convertDateTime pattern="yyyyMMdd" />
                                 </h:outputText>
                                 <br></br>
-                                <p:commandButton value="Editar" 
+                                <p:commandButton value="Editar" actionListener="#{campannaBean.crearCampanna()}"
                                                  process="@form" oncomplete="PF('campProdDialog').hide()"/>
                             </p:panelGrid>
 
