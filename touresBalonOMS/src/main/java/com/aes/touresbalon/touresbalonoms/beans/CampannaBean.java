@@ -15,6 +15,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.xml.datatype.DatatypeConfigurationException;
@@ -29,12 +30,6 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @RequestScoped
 public class CampannaBean {
 
-    /**
-     * Creates a new instance of ProductosBean
-     */
-    public CampannaBean() {
-    }
-
     private ProductosBean producto;
     private Date fechaInicioCampania;
     private Date fechaFinCampania;
@@ -46,6 +41,17 @@ public class CampannaBean {
     private List<Producto> productoList;
     
     Services service = new Services();
+    
+    /**
+     * Creates a new instance of ProductosBean
+     */
+    public CampannaBean() {
+    }
+    
+    @PostConstruct
+    public void init(){
+        this.tipoConsulta = "id";
+    }
     
     public void crearCampanna(){
         try {

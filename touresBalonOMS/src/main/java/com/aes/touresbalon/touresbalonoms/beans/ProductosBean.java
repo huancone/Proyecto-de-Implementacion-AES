@@ -35,16 +35,6 @@ import org.primefaces.event.TabCloseEvent;
 @ViewScoped
 public class ProductosBean {
 
-    /**
-     * Creates a new instance of ProductosBean
-     */
-    public ProductosBean() {
-    }
-    
-    @PostConstruct
-    public void init(){
-        this.tipoConsulta = "id";
-    }
 
     private int idProducto;
     private String espectaculo;
@@ -67,7 +57,18 @@ public class ProductosBean {
     private TipoAccion tipoAccion;
 
     Services service = new Services();
-
+    
+    /**
+     * Creates a new instance of ProductosBean
+     */
+    public ProductosBean() {
+    }
+    
+    @PostConstruct
+    public void init(){
+        this.tipoConsulta = "id";
+    }
+    
     public void onTabChange(TabChangeEvent event) {
         FacesMessage msg = new FacesMessage("Tab Changed", "Active Tab: " + event.getTab().getTitle());
         FacesContext.getCurrentInstance().addMessage(null, msg);
