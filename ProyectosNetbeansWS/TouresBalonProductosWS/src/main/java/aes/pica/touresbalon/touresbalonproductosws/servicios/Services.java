@@ -53,7 +53,7 @@ public class Services {
             try {
                 String strsql, descripcion;
                 String[] arrayConsulta;
-                int primerProducto, ultimoProducto;
+                int page, pagesize;
                 Query q = null;
                 List<aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto> lstpro = new ArrayList<>();
                 System.out.println("inicializa consulta de productos");
@@ -63,31 +63,9 @@ public class Services {
                         case DESCRIPCION:
                             arrayConsulta = cadenaConsulta.split("@");
                             descripcion = arrayConsulta[1];
-                            primerProducto = 20 * Integer.parseInt(arrayConsulta[0]) - 19;
-                            ultimoProducto = 20 * Integer.parseInt(arrayConsulta[0]);
+                            page = Integer.parseInt(arrayConsulta[0]);
+                            pagesize = 20;
                             strsql = ""
-                                    + "WITH "
-                                    + "  LISTADO AS "
-                                    + "  ( "
-                                    + "    SELECT "
-                                    + "      ROW_NUMBER( ) OVER( ORDER BY FECHA_SALIDA ASC ) ROW_ID, "
-                                    + "      ID_PRODUCTO, "
-                                    + "      ESPECTACULO, "
-                                    + "      DESCRIPCION, "
-                                    + "      ID_ESPECTACULO, "
-                                    + "      ID_TRANSPORTE, "
-                                    + "      ID_HOSPEDAJE, "
-                                    + "      ID_CIUDAD, "
-                                    + "      FECHA_SALIDA, "
-                                    + "      FECHA_LLEGADA, "
-                                    + "      FECHA_ESPECTACULO, "
-                                    + "      URL_IMAGEN "
-                                    + "    FROM "
-                                    + "      PRODUCTO "
-                                    + "    WHERE "
-                                    + "      FECHA_SALIDA >= GETDATE( ) "
-                                    + "      AND DESCRIPCION LIKE :valorBuscar "
-                                    + "  ) "
                                     + "SELECT "
                                     + "  ID_PRODUCTO, "
                                     + "  ESPECTACULO, "
@@ -101,14 +79,19 @@ public class Services {
                                     + "  FECHA_ESPECTACULO, "
                                     + "  URL_IMAGEN "
                                     + "FROM "
-                                    + "  LISTADO "
+                                    + "  PRODUCTO "
                                     + "WHERE "
-                                    + "  ROW_ID BETWEEN :primerProducto AND :ultimoProducto";
+                                    + "  FECHA_SALIDA >= GETDATE( ) "
+                                    + "AND CONTAINS( ESPECTACULO, :valorBuscar )"
+                                    + "ORDER BY "
+                                    + "  FECHA_SALIDA OFFSET( :page - 1 ) * :pagesize ROWS "
+                                    + "FETCH NEXT "
+                                    + "  :pagesize ROWS ONLY";
                             try {
                                 q = sessionProductos.createSQLQuery(strsql).addEntity(aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto.class)
-                                        .setParameter("valorBuscar", "%" + descripcion + "%")
-                                        .setParameter("primerProducto", primerProducto)
-                                        .setParameter("ultimoProducto", ultimoProducto);
+                                        .setParameter("valorBuscar", descripcion)
+                                        .setParameter("page", page)
+                                        .setParameter("pagesize", pagesize);
                                 lstpro = q.list();
                             } catch (Exception e) {
                                 System.out.println("Error al Consultar: " + e.getMessage());
@@ -120,60 +103,6 @@ public class Services {
                             strsql = "from Producto where idProducto=" + cadenaConsulta;
                             try {
                                 q = sessionProductos.createQuery(strsql);
-                                lstpro = q.list();
-                            } catch (Exception e) {
-                                System.out.println("Error al Consultar: " + e.getMessage());
-                            }
-                            break;
-                        default:
-                            arrayConsulta = cadenaConsulta.split("@");
-                            descripcion = arrayConsulta[1];
-                            primerProducto = 20 * Integer.parseInt(arrayConsulta[0]) - 19;
-                            ultimoProducto = 20 * Integer.parseInt(arrayConsulta[0]);
-                            strsql = ""
-                                    + "WITH "
-                                    + "  LISTADO AS "
-                                    + "  ( "
-                                    + "    SELECT "
-                                    + "      ROW_NUMBER( ) OVER( ORDER BY FECHA_SALIDA ASC ) ROW_ID, "
-                                    + "      ID_PRODUCTO, "
-                                    + "      ESPECTACULO, "
-                                    + "      DESCRIPCION, "
-                                    + "      ID_ESPECTACULO, "
-                                    + "      ID_TRANSPORTE, "
-                                    + "      ID_HOSPEDAJE, "
-                                    + "      ID_CIUDAD, "
-                                    + "      FECHA_SALIDA, "
-                                    + "      FECHA_LLEGADA, "
-                                    + "      FECHA_ESPECTACULO, "
-                                    + "      URL_IMAGEN "
-                                    + "    FROM "
-                                    + "      PRODUCTO "
-                                    + "    WHERE "
-                                    + "      FECHA_SALIDA >= GETDATE( ) "
-                                    + "      AND ESPECTACULO LIKE :valorBuscar "
-                                    + "  ) "
-                                    + "SELECT "
-                                    + "  ID_PRODUCTO, "
-                                    + "  ESPECTACULO, "
-                                    + "  DESCRIPCION, "
-                                    + "  ID_ESPECTACULO, "
-                                    + "  ID_TRANSPORTE, "
-                                    + "  ID_HOSPEDAJE, "
-                                    + "  ID_CIUDAD, "
-                                    + "  FECHA_SALIDA, "
-                                    + "  FECHA_LLEGADA, "
-                                    + "  FECHA_ESPECTACULO, "
-                                    + "  URL_IMAGEN "
-                                    + "FROM "
-                                    + "  LISTADO "
-                                    + "WHERE "
-                                    + "  ROW_ID BETWEEN :primerProducto AND :ultimoProducto";
-                            try {
-                                q = sessionProductos.createSQLQuery(strsql).addEntity(aes.pica.touresbalon.touresbalonproductosws.entidades.productos.Producto.class)
-                                        .setParameter("valorBuscar", "%" + descripcion + "%")
-                                        .setParameter("primerProducto", primerProducto)
-                                        .setParameter("ultimoProducto", ultimoProducto);
                                 lstpro = q.list();
                             } catch (Exception e) {
                                 System.out.println("Error al Consultar: " + e.getMessage());
@@ -395,42 +324,41 @@ public class Services {
         List<Integer> lstProductos = new ArrayList<>();
         Query query;
 
-        String strsql = "WITH "
-                + "  Productos AS "
+        String strsql = ""
+                + "SELECT "
+                + "  PRODID "
+                + "FROM "
                 + "  ( "
                 + "    SELECT "
-                + "      Items.prodid, "
-                + "      COUNT ( * ) CANTIDAD "
+                + "      ITEMS.PRODID, "
+                + "      SUM ( ITEMS.QUANTITY ) AS SUM_QUANTITY "
                 + "    FROM "
-                + "      Orders "
-                + "    INNER JOIN Items "
+                + "      ITEMS "
+                + "    INNER JOIN ORDERS "
                 + "    ON "
-                + "      Orders.ordid = Items.ordid "
-                + "    WHERE "
-                + "      Orders.ORDERDATE BETWEEN TO_DATE ( '" + fechaInicial + "', 'yyyymmdd' ) AND TO_DATE ( '" + fechaFin + "', 'yyyymmdd' ) "
+                + "      ORDERS.ORDID = ITEMS.ORDID "
+                + "    AND ORDERDATE BETWEEN TO_DATE ( :fechaInicial, 'yyyymmdd' ) AND TO_DATE ( :fechaFinal, 'yyyymmdd' ) "
                 + "    GROUP BY "
-                + "      Items.prodid "
+                + "      ITEMS.PRODID "
                 + "    ORDER BY "
-                + "      Items.prodid "
+                + "      SUM_QUANTITY DESC "
                 + "  ) "
-                + "SELECT "
-                + "  Productos.prodid, "
-                + "FROM "
-                + "  Productos "
                 + "WHERE "
                 + "  ROWNUM <= 10";
 
         try {
-            query = sessionOrdenes.createQuery(strsql);
+            query = sessionOrdenes.createQuery(strsql)
+                    .setParameter("fechaInicial", fechaInicial)
+                    .setParameter("fechaFinal", fechaFin);
             lstProductos = query.list();
         } catch (Exception e) {
             System.out.println("Error al consultar el los productos: " + e.getMessage());
         }
 
-        for (Integer p : lstProductos) {
+        for (Integer idProducto : lstProductos) {
             TarifaValores t = new TarifaValores();
-            strsql = "from tarifaEspectaculo where productos.idProducto = " + p;
-            query = sessionProductos.createQuery(strsql);
+            strsql = "from tarifaEspectaculo where productos.idProducto = :idProducto";
+            query = sessionProductos.createQuery(strsql).setParameter("idProducto", idProducto);
             TarifaEspectaculoEntity = (aes.pica.touresbalon.touresbalonproductosws.entidades.productos.TarifaEspectaculo) query;
             t.setId(TarifaEspectaculoEntity.getIdEspectaculo());
             t.setNombreTipo(TarifaEspectaculoEntity.getNombreEspectaculo());
