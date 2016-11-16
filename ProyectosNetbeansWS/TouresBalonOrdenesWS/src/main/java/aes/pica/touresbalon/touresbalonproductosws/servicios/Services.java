@@ -167,27 +167,35 @@ public class Services {
 
                     sessionOrdenes.save(itemDB);
                 }
-
-//                URL wsdlBPEL = new URL("http://soabpm-vm.site:7001//soa-infra/services/default/CreacionOrdenesBPEL/creacionordenes_client_ep?wsdl");
-//                CreacionordenesClientEp bpel = new CreacionordenesClientEp(wsdlBPEL);
-//
-//                BindingProvider bp = (BindingProvider) bpel;
-//                bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, wsdlBPEL.toString());
-//                
-//                CreacionOrdenes co = bpel.getCreacionOrdenesPt();
-//                
-//                ordenDB.get
-//                String resBPEL = co.process(
-//                        BigInteger.valueOf(id), 
-//                        ordenDB.getStatus(), 
-//                        ordenDB.getPrice(), 
-//                        itemEspectaculo, 
-//                        itemTransporte, 
-//                        itemHospedaje, 
-//                        itemCiudad);
-                
-
                 tx.commit();
+
+                //Se hace después del commit para que los datos del orden estén la base de datos
+                URL wsdlBPEL = new URL("http://soabpm-vm.site:7001//soa-infra/services/default/CreacionOrdenesBPEL/creacionordenes_client_ep?wsdl");
+                CreacionordenesClientEp bpel = new CreacionordenesClientEp(wsdlBPEL);
+
+                BindingProvider bp = (BindingProvider) bpel;
+                bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, wsdlBPEL.toString());
+
+                CreacionOrdenes co = bpel.getCreacionOrdenesPt();
+//                
+                //Se crean los items por defecto
+                aes.pica.touresbalon.touresbalonproductosws.clientebpel.Process.ItemEspectaculo itEsp = new aes.pica.touresbalon.touresbalonproductosws.clientebpel.Process.ItemEspectaculo();
+                aes.pica.touresbalon.touresbalonproductosws.clientebpel.Process.ItemTransporte itTra = new aes.pica.touresbalon.touresbalonproductosws.clientebpel.Process.ItemTransporte();
+                aes.pica.touresbalon.touresbalonproductosws.clientebpel.Process.ItemHospedaje itHos = new aes.pica.touresbalon.touresbalonproductosws.clientebpel.Process.ItemHospedaje();
+                aes.pica.touresbalon.touresbalonproductosws.clientebpel.Process.ItemCiudad itCiu = new aes.pica.touresbalon.touresbalonproductosws.clientebpel.Process.ItemCiudad();
+
+                //Llamado al servicio web del bpel
+                String resBPEL = co.process(
+                        BigInteger.valueOf(id),
+                        ordenDB.getStatus(),
+                        ordenDB.getPrice(),
+                        itEsp,
+                        itTra,
+                        itHos,
+                        itCiu);
+                
+                System.out.println("Respuesta del BPEL: "+resBPEL);
+
             } catch (Exception ex) {
                 System.out.println("$$$ ERROR: crearOrdenes: " + ex);
                 respuesta.setRespuesta(RespuestaGenerica.KO);
@@ -251,11 +259,11 @@ public class Services {
             orden.setPrecio(ordenDB.getPrice());
             orden.setFechaOrden(toGregorian(ordenDB.getOrderdate()));
             orden.setEstatus(EstatusOrden.fromValue(ordenDB.getStatus()));
-            
+
             Iterator it = ordenDB.getItemses().iterator();
             Items auxItem;
             Item auxIt;
-            while(it.hasNext()){
+            while (it.hasNext()) {
                 auxItem = (Items) it.next();
                 auxIt = new Item();
                 auxIt.setIdItem(auxItem.getItemid());
@@ -265,7 +273,7 @@ public class Services {
                 auxIt.setIdProd(auxItem.getProdid());
                 orden.getItem().add(auxIt);
             }
-            
+
             ordenes.add(orden);
             if (tx != null) {
                 tx.commit();
@@ -275,7 +283,7 @@ public class Services {
 
             System.out.println("$$$ Error consultarOrdenes" + e);
 
-        }finally {
+        } finally {
 //            sessionDann.close();
 //            sessionProductos.close();
             sessionOrdenes.close();
