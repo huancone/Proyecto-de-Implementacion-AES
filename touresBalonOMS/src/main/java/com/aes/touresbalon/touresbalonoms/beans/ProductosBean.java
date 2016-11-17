@@ -16,6 +16,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -38,6 +39,12 @@ public class ProductosBean {
      * Creates a new instance of ProductosBean
      */
     public ProductosBean() {
+    }
+    
+    
+    @PostConstruct
+    public void init() {
+        tipoConsulta ="id";
     }
 
     private int idProducto;

@@ -134,7 +134,7 @@
                                 <p:panel header="Consultar Producto">
                                     <h:panelGrid columns="2" cellpadding="2" id="panelConsultaProductos">
                                         <p:outputLabel for="consultaEdit" value="Consultar Por"/>
-                                        <p:selectOneRadio id="consultaEdit" value="#{productosBean.tipoConsulta}">
+                                        <p:selectOneRadio id="consultaEdit" value="#{productosBean.tipoConsulta}" required="true">
                                             <f:selectItem itemLabel="id" itemValue="id" />
                                             <f:selectItem itemLabel="nombre" itemValue="nombre" />
                                             <f:selectItem itemLabel="descripcion" itemValue="descripcion" />
@@ -177,7 +177,7 @@
 
                     </p:accordionPanel>                    
                 </h:form>
-                <p:dialog header="Car Info" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" id="dlgId" 
+                <p:dialog header="Detalle Producto" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" id="dlgId" 
                               resizable="false" >
                     <h:form>
                         <p:outputPanel id="detalleProducto" style="text-align:center;">
