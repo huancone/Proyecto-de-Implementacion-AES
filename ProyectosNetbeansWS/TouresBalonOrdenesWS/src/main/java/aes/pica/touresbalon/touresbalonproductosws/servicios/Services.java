@@ -5,6 +5,8 @@
  */
 package aes.pica.touresbalon.touresbalonproductosws.servicios;
 
+import aes.pica.touresbalon.touresbalonproductosws.clientebpel.CreacionOrdenes;
+import aes.pica.touresbalon.touresbalonproductosws.clientebpel.CreacionordenesClientEp;
 import aes.pica.touresbalon.touresbalonproductosws.entidades.clientesyordenes.Customer;
 import aes.pica.touresbalon.touresbalonproductosws.entidades.clientesyordenes.Items;
 import aes.pica.touresbalon.touresbalonproductosws.entidades.clientesyordenes.Orders;
@@ -15,14 +17,18 @@ import com.touresbalon.ordenestouresbalon.Item;
 import com.touresbalon.ordenestouresbalon.Orden;
 import com.touresbalon.ordenestouresbalon.RespuestaGenerica;
 import com.touresbalon.ordenestouresbalon.RespuestaOrdenCerrada;
+import java.math.BigInteger;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Iterator;
 import java.util.List;
 import javax.jws.WebService;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
+import javax.xml.ws.BindingProvider;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -41,7 +47,7 @@ public class Services {
 
         List<Orden> ordenes = new ArrayList<>();
         List<Orders> OrderDB = new ArrayList<>();
-        
+
         String strsql;
 
         sessionOrdenes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
@@ -53,16 +59,16 @@ public class Services {
                         .setParameter("idCustomer", idCliente);
                 OrderDB = q.list();
 
-            for (Orders registro : OrderDB) {
-                Orden orden = new Orden();
-                orden.setIdOrden(registro.getOrdid());
-                orden.setIdCliente(registro.getCustomer().getCustid());
-                orden.setIdOrden(registro.getOrdid());
-                orden.setPrecio(registro.getPrice());
-                orden.setFechaOrden(toGregorian(registro.getOrderdate()));
-                orden.setEstatus(EstatusOrden.fromValue(registro.getStatus()));
-                ordenes.add(orden);
-            }
+                for (Orders registro : OrderDB) {
+                    Orden orden = new Orden();
+                    orden.setIdOrden(registro.getOrdid());
+                    orden.setIdCliente(registro.getCustomer().getCustid());
+                    orden.setIdOrden(registro.getOrdid());
+                    orden.setPrecio(registro.getPrice());
+                    orden.setFechaOrden(toGregorian(registro.getOrderdate()));
+                    orden.setEstatus(EstatusOrden.fromValue(registro.getStatus()));
+                    ordenes.add(orden);
+                }
                 tx.commit();
             } catch (Exception e) {
                 System.out.println("$$$ Error consultarClientesOrdenes" + e);
@@ -136,14 +142,14 @@ public class Services {
                 ordenDB.setOrderdate(toDate(orden.getFechaOrden()));
                 ordenDB.setPrice(orden.getPrecio());
                 ordenDB.setStatus("VALIDACION");
-                if(orden.getComentarios().isEmpty() || orden.getComentarios() == null ){
+                if (orden.getComentarios().isEmpty() || orden.getComentarios() == null) {
                     ordenDB.setComments("");
-                }else{
+                } else {
                     ordenDB.setComments(orden.getComentarios().get(0));
                 }
-                
-                Customer user = (Customer)sessionOrdenes.load(Customer.class, orden.getIdCliente());
-                        
+
+                Customer user = (Customer) sessionOrdenes.load(Customer.class, orden.getIdCliente());
+
                 ordenDB.setCustomer(user);
                 id = (Integer) sessionOrdenes.save(ordenDB);
 
@@ -155,18 +161,46 @@ public class Services {
                     itemDB.setPartnum(item.getPartNum());
                     itemDB.setPrice(item.getPrecio());
                     itemDB.setQuantity(item.getCantidad());
-                    
-                    Orders order = (Orders)sessionOrdenes.load(Orders.class, id);
+
+                    Orders order = (Orders) sessionOrdenes.load(Orders.class, id);
                     itemDB.setOrders(order);
-                    
+
                     sessionOrdenes.save(itemDB);
                 }
                 tx.commit();
+
+                //Se hace después del commit para que los datos del orden estén la base de datos
+                URL wsdlBPEL = new URL("http://soabpm-vm.site:7001//soa-infra/services/default/CreacionOrdenesBPEL/creacionordenes_client_ep?wsdl");
+                CreacionordenesClientEp bpel = new CreacionordenesClientEp(wsdlBPEL);
+
+                BindingProvider bp = (BindingProvider) bpel;
+                bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, wsdlBPEL.toString());
+
+                CreacionOrdenes co = bpel.getCreacionOrdenesPt();
+//                
+                //Se crean los items por defecto
+                aes.pica.touresbalon.touresbalonproductosws.clientebpel.Process.ItemEspectaculo itEsp = new aes.pica.touresbalon.touresbalonproductosws.clientebpel.Process.ItemEspectaculo();
+                aes.pica.touresbalon.touresbalonproductosws.clientebpel.Process.ItemTransporte itTra = new aes.pica.touresbalon.touresbalonproductosws.clientebpel.Process.ItemTransporte();
+                aes.pica.touresbalon.touresbalonproductosws.clientebpel.Process.ItemHospedaje itHos = new aes.pica.touresbalon.touresbalonproductosws.clientebpel.Process.ItemHospedaje();
+                aes.pica.touresbalon.touresbalonproductosws.clientebpel.Process.ItemCiudad itCiu = new aes.pica.touresbalon.touresbalonproductosws.clientebpel.Process.ItemCiudad();
+
+                //Llamado al servicio web del bpel
+                String resBPEL = co.process(
+                        BigInteger.valueOf(id),
+                        ordenDB.getStatus(),
+                        ordenDB.getPrice(),
+                        itEsp,
+                        itTra,
+                        itHos,
+                        itCiu);
+                
+                System.out.println("Respuesta del BPEL: "+resBPEL);
+
             } catch (Exception ex) {
                 System.out.println("$$$ ERROR: crearOrdenes: " + ex);
                 respuesta.setRespuesta(RespuestaGenerica.KO);
                 tx.rollback();
-                throw ex;
+                //throw ex;
             }
         } finally {
             if (sessionOrdenes.isOpen()) {
@@ -200,7 +234,7 @@ public class Services {
 
         try {
 
-            sessionOrdenes = ClientesyOrdenesHU.getSessionFactory().getCurrentSession();
+            sessionOrdenes = ClientesyOrdenesHU.getSessionFactory().openSession();
             tx = sessionOrdenes.beginTransaction();
 
             switch (criterios.getTipoConsulta()) {
@@ -225,12 +259,34 @@ public class Services {
             orden.setPrecio(ordenDB.getPrice());
             orden.setFechaOrden(toGregorian(ordenDB.getOrderdate()));
             orden.setEstatus(EstatusOrden.fromValue(ordenDB.getStatus()));
+
+            Iterator it = ordenDB.getItemses().iterator();
+            Items auxItem;
+            Item auxIt;
+            while (it.hasNext()) {
+                auxItem = (Items) it.next();
+                auxIt = new Item();
+                auxIt.setIdItem(auxItem.getItemid());
+                auxIt.setCantidad(auxItem.getQuantity());
+                auxIt.setNombreProd(auxItem.getProductname());
+                auxIt.setPrecio(auxItem.getPrice());
+                auxIt.setIdProd(auxItem.getProdid());
+                orden.getItem().add(auxIt);
+            }
+
             ordenes.add(orden);
+            if (tx != null) {
+                tx.commit();
+            }
 
         } catch (Exception e) {
 
             System.out.println("$$$ Error consultarOrdenes" + e);
 
+        } finally {
+//            sessionDann.close();
+//            sessionProductos.close();
+            sessionOrdenes.close();
         }
 
         System.out.println("FINAL  ::: consultarOrdenes");

@@ -90,7 +90,7 @@ public class Services {
             bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, endpointURL);
 
             //Llamado al servicio
-             list = port.consultarProducto(tipoConsulta, consulta);
+            list = port.consultarProducto(tipoConsulta, consulta);
 
         } catch (ConsultarProductoFault_Exception ex) {
             Logger.getLogger(Services.class.getName()).log(Level.SEVERE, null, ex);
@@ -111,33 +111,20 @@ public class Services {
             bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, endpointURL);
 
             //Llamado al servicio     
-            port.actualizarCliente(cliente);
+            result = port.actualizarCliente(cliente);
+            
+            // Procesamiento de la rta del servicio
+            System.out.println("Resultado actualizar cliente = " + result.OK);
 
         } catch (ActualizarClienteFault_Exception ex) {
             Logger.getLogger(Services.class.getName()).log(Level.SEVERE, null, ex);
             return RespuestaGenerica.KO;
         }     
-        return RespuestaGenerica.OK;
+        return result.KO;
     }
 
     public RespuestaGenerica actualizarContraseniaCliente(String usuario, String contrasenia) throws ActualizarContraseniaClienteFault_Exception {
-        try {
-            ServiceProxyOMS_Service service = new ServiceProxyOMS_Service();
-            ServiceProxyOMS port = service.getServiceProxyOMSSOAP();
-
-            //parametros de entrada
-            String endpointURL = URL_ENDPOINT;
-            BindingProvider bp = (BindingProvider) port;
-            bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, endpointURL);
-
-            //Llamado al servicio
-             port.actualizarContraseniaCliente(usuario, contrasenia);
-
-        } catch (ActualizarContraseniaClienteFault_Exception ex) {
-            Logger.getLogger(Services.class.getName()).log(Level.SEVERE, null, ex);
-            return RespuestaGenerica.KO;
-        }     
-        return RespuestaGenerica.OK;
+        return null;
     }
 
     public RespuestaGenerica actualizarEstatusCliente(int idCliente, EstatusCliente estatus) throws ActualizarEstatusClienteFault_Exception {
@@ -162,7 +149,20 @@ public class Services {
     }
 
     public List<Cliente> consultarPorProductoCliente(int idProducto) throws ConsultarPorProductoClienteFault_Exception {
-        return null;
+        List<Cliente> cliente = new ArrayList<>();
+        
+        ServiceProxyOMS_Service service = new ServiceProxyOMS_Service();
+        ServiceProxyOMS port = service.getServiceProxyOMSSOAP();
+
+        //parametros de entrada
+        String endpointURL = URL_ENDPOINT;
+        BindingProvider bp = (BindingProvider) port;
+        bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, endpointURL);
+
+        //Llamado al servicio
+        cliente = port.consultarPorProductoCliente(idProducto);
+        
+        return cliente;
     }
 
     public List<Cliente> consultarPorFactRangoCliente(javax.xml.datatype.XMLGregorianCalendar fechaInicial, XMLGregorianCalendar fechaFin) throws ConsultarPorFactRangoClienteFault_Exception {
@@ -187,7 +187,27 @@ public class Services {
     }
 
     public TipoGestionCampaniaResponse gestionCampaniaProducto(TipoAccion tipoOperacion, Campania campania) throws GestionCampaniaProductoFault_Exception {
-        return null;
+        TipoGestionCampaniaResponse result = new TipoGestionCampaniaResponse();
+        try {
+            //conf del servicio
+            ServiceProxyOMS_Service service = new ServiceProxyOMS_Service();
+            ServiceProxyOMS port = service.getServiceProxyOMSSOAP();
+
+            String endpointURL =  URL_ENDPOINT;
+            BindingProvider bp = (BindingProvider) port;
+            bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, endpointURL);
+
+            //Llamado al servicio
+            result = port.gestionCampaniaProducto(tipoOperacion, campania);
+
+            // Procesamiento de la rta del servicio
+            System.out.println("Resultado con idProducto = " + result.getIdCampania());
+
+        } catch (Exception ex) {
+            System.out.println("com.aes.touresbalon.touresbalonoms.services.Servicio.gestionCampaniaProducto()" + ex.getMessage());
+        }
+       
+        return result;
     }
 
     public TipoGestionTarifaResponse gestionTarifa(TipoAccion tipoOperacion, TipoTarifa tipoTarifa, TarifaValores tarifa) throws GestionTarifaFault_Exception {
@@ -195,7 +215,16 @@ public class Services {
     }
 
     public List<Orden> consultarOrdenes(CriterioConsultaOrden criterios) throws ConsultarOrdenesFault_Exception {
-        return null;
+        List<Orden> list = new ArrayList<Orden>();
+        
+        ServiceProxyOMS_Service service = new ServiceProxyOMS_Service();
+        ServiceProxyOMS port = service.getServiceProxyOMSSOAP();
+        String endpointURL = URL_ENDPOINT;
+        BindingProvider bp = (BindingProvider) port;
+        bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, endpointURL);
+        list = port.consultarOrdenes(criterios);
+
+        return list;
     }
 
     public RespuestaOrdenCerrada consultarRangoCerradoOrdenes(javax.xml.datatype.XMLGregorianCalendar fechaInicial, javax.xml.datatype.XMLGregorianCalendar fechaFinal) throws ConsultarRangoCerradoOrdenesFault_Exception {

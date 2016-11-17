@@ -1,0 +1,20 @@
+# Web Services Clientes
+http://jdt_pc:8080/TouresBalonClientesWS/ClientesTouresBalon?wsdl
+
+# Web Services Ordenes
+http://jdt_pc:8080/TouresBalonOrdenesWS/OrdenesTouresBalon?wsdl
+
+# Web Services Productos
+http://jdt_pc:8080/TouresBalon/ProductosTouresBalon?wsdl
+
+# Web Services Reservas
+http://jdt_pc:8080/TouresBalonReservas/ReservasTouresBalon?wsdl
+
+#Web Service BPEL
+http://soabpm-vm.site:7001//soa-infra/services/default/CreacionOrdenesBPEL/creacionordenes_client_ep?wsdl
+
+#Web Service Proxy Service B2C
+http://osb_svr:7001/OSB_TouresBalon_B2C/Proxy_services/ProxyServiceB2C?wsdl
+
+#Web Service Proxy Service OMS
+http://osb_svr:7001/OSB_TouresBalon_B2C/Proxy_services/ProxyServiceOMS?wsdl

@@ -8,6 +8,8 @@ release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
 
+#### Mac files #####
+.DS_Store
 
 ### Eclipse ###
 *.pydevproject

@@ -9,11 +9,13 @@ import com.aes.touresbalon.touresbalonoms.services.Services;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.ActualizarClienteFault_Exception;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.Cliente;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.ConsultarPorIdentificacionClienteFault_Exception;
+import com.aes.touresbalon.touresbalonoms.wsdl.client.ConsultarPorProductoClienteFault_Exception;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.Direccion;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -42,6 +44,17 @@ public class ClienteBean {
     
     Services service = new Services();
     
+    /**
+     * Creates a new instance of ProductosBean
+     */
+    public ClienteBean() {
+    }
+    
+    @PostConstruct
+    public void init(){
+        this.tipoConsulta = "idCliente";
+    }
+    
     public void actualizarCliente(){
         cliente.setIdCliente(this.getIdCliente());
         cliente.setNombres(this.getApellidos());
@@ -59,11 +72,13 @@ public class ClienteBean {
         }
     }
     
-    public void consultarCliente() {
+    public void consultarCliente() throws ConsultarPorProductoClienteFault_Exception {
         List<Cliente> clientes = new ArrayList<>();
         try {
-            if (this.getTipoConsulta().equalsIgnoreCase("id")) {
+            if (this.getTipoConsulta().equalsIgnoreCase("idCliente")) {
                 clientes.add(service.consultarPorIdentificacionCliente(Integer.parseInt(this.getTxtConsulta())));
+            }else if(this.getTipoConsulta().equalsIgnoreCase("idProducto")){
+                clientes = service.consultarPorProductoCliente(Integer.parseInt(this.getTxtConsulta()));
             }
         } catch (ConsultarPorIdentificacionClienteFault_Exception ex) {
             Logger.getLogger(ClienteBean.class.getName()).log(Level.SEVERE, null, ex);

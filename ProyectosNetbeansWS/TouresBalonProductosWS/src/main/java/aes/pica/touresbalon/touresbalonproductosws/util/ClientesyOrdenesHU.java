@@ -18,6 +18,7 @@ import org.hibernate.cfg.Configuration;
 public class ClientesyOrdenesHU {
 
     private static final SessionFactory sessionFactory;
+    
 
     static {
         try {

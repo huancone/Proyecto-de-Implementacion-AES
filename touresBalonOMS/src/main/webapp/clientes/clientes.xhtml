@@ -19,9 +19,8 @@
                                     <h:panelGrid columns="2" cellpadding="2">
                                         <p:outputLabel for="consultaEditCli" value="Consultar Por"/>
                                         <p:selectOneRadio id="consultaEditCli" value="#{clienteBean.tipoConsulta}">
-                                            <f:selectItem itemLabel="Id" itemValue="id" />
-                                            <f:selectItem itemLabel="Nombre" itemValue="nombre" />
-                                            <f:selectItem itemLabel="Apellido" itemValue="apellido" />
+                                            <f:selectItem itemLabel="Id Cliente" itemValue="idCliente" />
+                                            <f:selectItem itemLabel="Id Producto" itemValue="idProducto" />
                                         </p:selectOneRadio>
                                         <p:inputTextarea id="txtConsultaEditCli" value="#{clienteBean.txtConsulta}"  rows="1" cols="50">
                                             <p:clientValidator event="keyup"/>
@@ -64,15 +63,65 @@
                         <h:form>
                             <p:panelGrid  columns="2" columnClasses="label,value">
 
-                                <h:outputText value="Id Cliente" />
-                                <h:outputText value="#{clienteBean.cliente.idCliente}" />
-
-                                <h:outputText value="Nombre" />
-                                <h:outputText value="#{clienteBean.cliente.nombres}" />
-
-                                <h:outputText value="Apellido" />
-                                <h:outputText value="#{clienteBean.cliente.apellidos}" />
-
+                                <h:outputLabel for="idClienteEdit" value="Id Cliente" />
+                                <p:inputText id="idClienteEdit" value="#{clienteBean.cliente.idCliente}" >
+                                    <p:clientValidator event="keyup"/>
+                                </p:inputText>
+                                <p:message for="idClienteEdit" display="icon" />                                        
+                                <br></br>
+                                
+                                <h:outputLabel for="nombreClienteEdit" value="Nombre" />
+                                <p:inputText id="nombreClienteEdit" value="#{clienteBean.cliente.nombres}" >
+                                    <p:clientValidator event="keyup"/>
+                                </p:inputText>
+                                <p:message for="nombreClienteEdit" display="icon" />                                        
+                                <br></br>
+                                
+                                <h:outputLabel for="apellidoClienteEdit" value="Nombre" />
+                                <p:inputText id="apellidoClienteEdit" value="#{clienteBean.cliente.apellidos}" >
+                                    <p:clientValidator event="keyup"/>
+                                </p:inputText>
+                                <p:message for="apellidoClienteEdit" display="icon" />                                        
+                                <br></br>
+                                
+                                <h:outputLabel for="numTelClienteEdit" value="Numero Telefono" />
+                                <p:inputText id="numTelClienteEdit" value="#{clienteBean.cliente.numTel}" >
+                                    <p:clientValidator event="keyup"/>
+                                </p:inputText>
+                                <p:message for="numTelClienteEdit" display="icon" />                                        
+                                <br></br>
+                                
+                                <h:outputLabel for="emailClienteEdit" value="Email" />
+                                <p:inputText id="emailClienteEdit" value="#{clienteBean.cliente.email}" >
+                                    <p:clientValidator event="keyup"/>
+                                </p:inputText>
+                                <p:message for="emailClienteEdit" display="icon" />                                        
+                                <br></br>
+                                
+                                <h:outputLabel for="contrasennaClienteEdit" value="Contraseña" />
+                                <p:inputText id="contrasennaClienteEdit" value="#{clienteBean.cliente.contrasenia}" >
+                                    <p:clientValidator event="keyup"/>
+                                </p:inputText>
+                                <p:message for="contrasennaClienteEdit" display="icon" />                                        
+                                <br></br>
+                                
+                                <h:outputLabel for="tipoTarjClienteEdit" value="Tipo Tarjeta" />
+                                <p:inputText id="tipoTarjClienteEdit" value="#{clienteBean.cliente.contrasenia}" >
+                                    <p:clientValidator event="keyup"/>
+                                </p:inputText>
+                                <p:message for="tipoTarjClienteEdit" display="icon" />                                        
+                                <br></br>
+                                
+                                <h:outputLabel for="numTarjClienteEdit" value="Numero Tarjeta" />
+                                <p:inputText id="numTarjClienteEdit" value="#{clienteBean.cliente.contrasenia}" >
+                                    <p:clientValidator event="keyup"/>
+                                </p:inputText>
+                                <p:message for="numTarjClienteEdit" display="icon" />                                        
+                                <br></br>
+                                
+                                <p:commandButton value="Editar" actionListener="#{clienteBean.actualizarCliente()}" 
+                                                 process="@form" oncomplete="PF('clienteEditDialog').hide()"/>
+                                <br></br>
                             </p:panelGrid>
                         </h:form>
                     </p:outputPanel>

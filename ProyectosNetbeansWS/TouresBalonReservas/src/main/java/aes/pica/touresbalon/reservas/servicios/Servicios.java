@@ -52,7 +52,9 @@ public class Servicios {
     private DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 
     public com.touresbalon.reservastouresbalon.RespuestaGenerica validarDisponibilidadReservas(int idOrden, com.touresbalon.reservastouresbalon.Item itemEspectaculo, com.touresbalon.reservastouresbalon.Item itemTransporte, com.touresbalon.reservastouresbalon.Item itemHospedaje, com.touresbalon.reservastouresbalon.Item itemCiudad) throws com.touresbalon.reservastouresbalon.ValidarDisponibilidadReservasFault_Exception {
-
+        if (itemCiudad.getNombreItem() == null) {
+            itemCiudad.setNombreItem("");
+        }
         Query q;
         try {
             sessionOrdenes = ClientesYOrdenesHU.getSessionFactory().openSession();
@@ -163,11 +165,13 @@ public class Servicios {
         return reservar(idOrden, itemEspectaculo, itemTransporte, itemHospedaje, itemCiudad);
     }
 
-   public com.touresbalon.reservastouresbalon.RespuestaGenerica callbackValidacionAnalista(int idOrden, java.lang.String estatusOrden, com.touresbalon.reservastouresbalon.Item itemTransporte, com.touresbalon.reservastouresbalon.Item itemHospedaje, com.touresbalon.reservastouresbalon.Item itemEspectaculo, com.touresbalon.reservastouresbalon.Item itemCiudad) throws com.touresbalon.reservastouresbalon.CallbackValidacionAnalistaFault_Exception {
-       System.out.println("INICIO ::: CAllBaclReserva"); 
-       if(estatusOrden.equalsIgnoreCase(Constantes.RESERVACION)){
+    public com.touresbalon.reservastouresbalon.RespuestaGenerica callbackValidacionAnalista(int idOrden, java.lang.String estatusOrden, com.touresbalon.reservastouresbalon.Item itemTransporte, com.touresbalon.reservastouresbalon.Item itemHospedaje, com.touresbalon.reservastouresbalon.Item itemEspectaculo, com.touresbalon.reservastouresbalon.Item itemCiudad) throws com.touresbalon.reservastouresbalon.CallbackValidacionAnalistaFault_Exception {
+        System.out.println("INICIO ::: CAllBaclReserva");
+        if (estatusOrden.equalsIgnoreCase(Constantes.RESERVACION)) {
+            System.out.println("Estado de la reserva " + estatusOrden);
             return reservar(idOrden, itemEspectaculo, itemTransporte, itemHospedaje, itemCiudad);
-        }else{
+        } else {
+            System.out.println("Estado de la reserva " + estatusOrden);
             return RespuestaGenerica.KO;
         }
     }
@@ -297,6 +301,10 @@ public class Servicios {
     //Metodos Privados
     private com.touresbalon.reservastouresbalon.RespuestaGenerica reservar(int idOrden, com.touresbalon.reservastouresbalon.Item itemEspectaculo, com.touresbalon.reservastouresbalon.Item itemTransporte, com.touresbalon.reservastouresbalon.Item itemHospedaje, com.touresbalon.reservastouresbalon.Item itemCiudad) {
         System.out.println("Inicio Reservar Producto");
+        RespuestaGenerica respuesta = RespuestaGenerica.KO;
+        if (itemCiudad.getNombreItem() == null) {
+            itemCiudad.setNombreItem("");
+        }
 
         //Validar si tiene la tarjeta cupo
         Query q;
@@ -309,14 +317,13 @@ public class Servicios {
             q.setParameter("idOrden", idOrden);
             Orders ord = (Orders) q.uniqueResult();
 
-            System.out.println("El cliente es:");
-            System.out.println("\t: Primer Nombre: " + ord.getCustomer().getFname());
-            System.out.println("\t: Apellido Nombre: " + ord.getCustomer().getLname());
-            System.out.println("\t: Tipo Tarjeta: " + ord.getCustomer().getCreditcardtype());
-            System.out.println("\t: Numero Tarjeta: " + ord.getCustomer().getCreditcardnumber());
-            System.out.println("\t: Primer Nombre: " + ord.getCustomer().getFname());
-
             if (ord != null) {
+                System.out.println("El cliente es:");
+                System.out.println("\t: Primer Nombre: " + ord.getCustomer().getFname());
+                System.out.println("\t: Apellido Nombre: " + ord.getCustomer().getLname());
+                System.out.println("\t: Tipo Tarjeta: " + ord.getCustomer().getCreditcardtype());
+                System.out.println("\t: Numero Tarjeta: " + ord.getCustomer().getCreditcardnumber());
+                System.out.println("\t: Primer Nombre: " + ord.getCustomer().getFname());
                 if (ValidacionCupoTarjeta.hayCupo(new BigInteger(ord.getCustomer().getCreditcardnumber()))) {
                     System.out.println("Hay cupo en la tarjeta de credito");
                     Iterator<Items> iterator = ord.getItemses().iterator();
@@ -395,14 +402,22 @@ public class Servicios {
                     System.out.println("Se actualiza el estado de la orden a cerrada");
                     ord.setStatus(Constantes.CERRADA);
                     sessionOrdenes.update(ord);
+                    respuesta = RespuestaGenerica.OK;
 
                 } else {
                     System.out.println("No hay cupo en la tarjeta de credito");
                 }
             }
-            txProductos.commit();
-            txOrdenes.commit();
-            txDann.commit();
+            if (txProductos != null) {
+                txProductos.commit();
+            }
+            if (txOrdenes != null) {
+                txOrdenes.commit();
+            }
+            if (txDann != null) {
+                txDann.commit();
+            }
+
         } catch (HibernateException e) {
             if (txProductos != null) {
                 txProductos.rollback();
@@ -421,11 +436,19 @@ public class Servicios {
         } finally {
 //            sessionDann.close();
 //            sessionProductos.close();
-            sessionOrdenes.close();
+            if (sessionDann != null) {
+                sessionDann.close();
+            }
+            if (sessionOrdenes != null) {
+                sessionOrdenes.close();
+            }
+            if (sessionProductos != null) {
+                sessionProductos.close();
+            }
         }
 
         System.out.println("Fin Reservar Producto");
-        return RespuestaGenerica.KO;
+        return respuesta;
     }
 
 }
