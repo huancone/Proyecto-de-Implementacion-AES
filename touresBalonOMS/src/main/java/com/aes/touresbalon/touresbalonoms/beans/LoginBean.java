@@ -24,22 +24,23 @@ public class LoginBean {
     private String idUsuario;
     private String passUsuario;
     
+    private String mensajePagina;
+    
     LoginService service = new LoginService();
     
     public void login(ActionEvent event){
-        String validarUsr = null;
         RequestContext context = RequestContext.getCurrentInstance();
         FacesMessage message = null;
         boolean loggedIn = false;
         
-        validarUsr = service.validarUsuarioLogin(this.idUsuario,this.passUsuario);
+        mensajePagina = service.validarUsuarioLogin(this.idUsuario,this.passUsuario);
         
-        if (validarUsr.equalsIgnoreCase("OK")){
+        if (mensajePagina.equalsIgnoreCase("OK")){
             
             //Redireccion en caso exitoso
             try{
             FacesContext contex = FacesContext.getCurrentInstance();
-            contex.getExternalContext().redirect( "/touresBalonOMS/index.xhtml" );
+            contex.getExternalContext().redirect( "/touresBalonOMS/principal_Content.xhtml" );
             }catch(  Exception e ){
                 System.out.println("Redireccion fallida" );
             }
@@ -50,7 +51,7 @@ public class LoginBean {
             //Redireccion en caso NO EXITOSO 
             try{
             FacesContext contex = FacesContext.getCurrentInstance();
-            contex.getExternalContext().redirect( "/touresBalonOMS/index.xhtml" );
+            contex.getExternalContext().redirect( "/touresBalonOMS/principal.xhtml" );
             }catch(  Exception e ){
                 System.out.println("Redireccion fallida" );
             }
@@ -88,6 +89,20 @@ public class LoginBean {
      */
     public void setPassUsuario(String passUsuario) {
         this.passUsuario = passUsuario;
+    }
+
+    /**
+     * @return the mensajePagina
+     */
+    public String getMensajePagina() {
+        return mensajePagina;
+    }
+
+    /**
+     * @param mensajePagina the mensajePagina to set
+     */
+    public void setMensajePagina(String mensajePagina) {
+        this.mensajePagina = mensajePagina;
     }
 
     

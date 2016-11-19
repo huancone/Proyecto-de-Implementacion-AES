@@ -17,6 +17,8 @@ public class LoginService {
         String respuesta = null;
         if(usr.equalsIgnoreCase("admin") && pass.equals("admin")){
             respuesta = "OK";
+        }else{
+            respuesta = "ERROR: Usuario/Contraseña no válidos";
         }
         return respuesta;
     }
