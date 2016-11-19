@@ -5,8 +5,8 @@
  */
 package aes.pica.touresbalon.touresbalonproductosws.servicios;
 
-import aes.pica.touresbalon.touresbalonproductosws.clientebpel.CreacionOrdenes;
-import aes.pica.touresbalon.touresbalonproductosws.clientebpel.CreacionordenesClientEp;
+//import aes.pica.touresbalon.touresbalonproductosws.clientebpel.CreacionOrdenes;
+//import aes.pica.touresbalon.touresbalonproductosws.clientebpel.CreacionordenesClientEp;
 import aes.pica.touresbalon.touresbalonproductosws.entidades.clientesyordenes.Customer;
 import aes.pica.touresbalon.touresbalonproductosws.entidades.clientesyordenes.Items;
 import aes.pica.touresbalon.touresbalonproductosws.entidades.clientesyordenes.Orders;
@@ -170,31 +170,31 @@ public class Services {
                 tx.commit();
 
                 //Se hace después del commit para que los datos del orden estén la base de datos
-                URL wsdlBPEL = new URL("http://soabpm-vm.site:7001//soa-infra/services/default/CreacionOrdenesBPEL/creacionordenes_client_ep?wsdl");
-                CreacionordenesClientEp bpel = new CreacionordenesClientEp(wsdlBPEL);
+//                URL wsdlBPEL = new URL("http://soabpm-vm.site:7001//soa-infra/services/default/CreacionOrdenesBPEL/creacionordenes_client_ep?wsdl");
+//                CreacionordenesClientEp bpel = new CreacionordenesClientEp(wsdlBPEL);
 
-                BindingProvider bp = (BindingProvider) bpel;
-                bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, wsdlBPEL.toString());
+//                BindingProvider bp = (BindingProvider) bpel;
+//                bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, wsdlBPEL.toString());
 
-                CreacionOrdenes co = bpel.getCreacionOrdenesPt();
+//                CreacionOrdenes co = bpel.getCreacionOrdenesPt();
+////                
+//                //Se crean los items por defecto
+//                aes.pica.touresbalon.touresbalonproductosws.clientebpel.Process.ItemEspectaculo itEsp = new aes.pica.touresbalon.touresbalonproductosws.clientebpel.Process.ItemEspectaculo();
+//                aes.pica.touresbalon.touresbalonproductosws.clientebpel.Process.ItemTransporte itTra = new aes.pica.touresbalon.touresbalonproductosws.clientebpel.Process.ItemTransporte();
+//                aes.pica.touresbalon.touresbalonproductosws.clientebpel.Process.ItemHospedaje itHos = new aes.pica.touresbalon.touresbalonproductosws.clientebpel.Process.ItemHospedaje();
+//                aes.pica.touresbalon.touresbalonproductosws.clientebpel.Process.ItemCiudad itCiu = new aes.pica.touresbalon.touresbalonproductosws.clientebpel.Process.ItemCiudad();
+//
+//                //Llamado al servicio web del bpel
+//                String resBPEL = co.process(
+//                        BigInteger.valueOf(id),
+//                        ordenDB.getStatus(),
+//                        ordenDB.getPrice(),
+//                        itEsp,
+//                        itTra,
+//                        itHos,
+//                        itCiu);
 //                
-                //Se crean los items por defecto
-                aes.pica.touresbalon.touresbalonproductosws.clientebpel.Process.ItemEspectaculo itEsp = new aes.pica.touresbalon.touresbalonproductosws.clientebpel.Process.ItemEspectaculo();
-                aes.pica.touresbalon.touresbalonproductosws.clientebpel.Process.ItemTransporte itTra = new aes.pica.touresbalon.touresbalonproductosws.clientebpel.Process.ItemTransporte();
-                aes.pica.touresbalon.touresbalonproductosws.clientebpel.Process.ItemHospedaje itHos = new aes.pica.touresbalon.touresbalonproductosws.clientebpel.Process.ItemHospedaje();
-                aes.pica.touresbalon.touresbalonproductosws.clientebpel.Process.ItemCiudad itCiu = new aes.pica.touresbalon.touresbalonproductosws.clientebpel.Process.ItemCiudad();
-
-                //Llamado al servicio web del bpel
-                String resBPEL = co.process(
-                        BigInteger.valueOf(id),
-                        ordenDB.getStatus(),
-                        ordenDB.getPrice(),
-                        itEsp,
-                        itTra,
-                        itHos,
-                        itCiu);
-                
-                System.out.println("Respuesta del BPEL: "+resBPEL);
+//                System.out.println("Respuesta del BPEL: "+resBPEL);
 
             } catch (Exception ex) {
                 System.out.println("$$$ ERROR: crearOrdenes: " + ex);
