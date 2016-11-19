@@ -183,7 +183,20 @@ public class Services {
     }
 
     public List<Producto> consultarCampaniaProducto()throws ConsultarCampaniaProductoFault_Exception, DatatypeConfigurationException  {
-        return null;
+        List<Producto> productoCampanna = new ArrayList<>();
+        
+        ServiceProxyOMS_Service service = new ServiceProxyOMS_Service();
+        ServiceProxyOMS port = service.getServiceProxyOMSSOAP();
+
+        //parametros de entrada
+        String endpointURL = URL_ENDPOINT;
+        BindingProvider bp = (BindingProvider) port;
+        bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, endpointURL);
+
+        //Llamado al servicio
+        productoCampanna = port.consultarCampaniaProducto();
+        
+        return productoCampanna;
     }
 
     public TipoGestionCampaniaResponse gestionCampaniaProducto(TipoAccion tipoOperacion, Campania campania) throws GestionCampaniaProductoFault_Exception {

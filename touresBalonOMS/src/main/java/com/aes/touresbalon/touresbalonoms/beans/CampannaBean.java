@@ -8,6 +8,7 @@ package com.aes.touresbalon.touresbalonoms.beans;
 import com.aes.touresbalon.touresbalonoms.services.Services;
 import com.aes.touresbalon.touresbalonoms.utilities.OmsUtil;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.Campania;
+import com.aes.touresbalon.touresbalonoms.wsdl.client.ConsultarCampaniaProductoFault_Exception;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.GestionCampaniaProductoFault_Exception;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.Producto;
 import com.aes.touresbalon.touresbalonoms.wsdl.client.TipoAccion;
@@ -17,7 +18,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.logging.Logger;    
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -117,7 +118,17 @@ public class CampannaBean {
         }
         this.setProductoList(productos);
     }
-
+    
+    public void consultarCampanna(){
+        List<Producto> productos = new ArrayList<>();
+        try {
+            productos = service.consultarCampaniaProducto();
+        } catch (ConsultarCampaniaProductoFault_Exception | DatatypeConfigurationException ex) {
+            Logger.getLogger(CampannaBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.setProductoList(productos);
+    }
+    
     /**
      * @return the fechaInicioCampania
      */

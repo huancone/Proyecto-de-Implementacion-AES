@@ -38,7 +38,7 @@
                                                          selection="#{campannaBean.productoSel}" rowKey="#{productoCamL.idProducto}">
                                                 
                                                 <f:facet name="header">
-                                                    Gestion de Campañas
+                                                    Adicion de Productos de Campañas
                                                 </f:facet>
                                                 <f:facet name="footer">
                                                     
@@ -72,10 +72,35 @@
                                 <p:panel header="Gestion de  Campaña">
                                     <h:panelGrid columns="2" cellpadding="2">
                                         <p:panel header="Consultar Campañas">
-                                            <h:panelGrid columns="2" cellpadding="2" id="panelGestionCamp">
-                                                <p:commandButton value="Consultar Productos Campaña" actionListener="#{campannaBean.consultarProducto()}" update="dtProductosCampList" process="@form"/>
+                                            <h:panelGrid columns="2" cellpadding="2" id="panelGestionCampEdit">
+                                                <p:commandButton value="Consultar" actionListener="#{campannaBean.consultarCampanna()}" update="dtProductosCampListEdit" process="@form"/>
                                             </h:panelGrid>
-                                        
+                                            <p:dataTable id="dtProductosCampListEdit" var="productoCamLEdit" value="#{campannaBean.productoList}" selectionMode="single" 
+                                                         selection="#{campannaBean.productoSel}" rowKey="#{productoCamLEdit.idProducto}">
+                                                
+                                                <f:facet name="header">
+                                                    Gestion de Campañas
+                                                </f:facet>
+                                                <f:facet name="footer">
+                                                    
+                                                    <p:commandButton process="dtProductosCampListEdit" update=":detalleProdCamDialogEdit" 
+                                                             oncomplete="PF('campProdDialogEdit').show()" icon="ui-icon-search" value="Ver"/>
+                                                </f:facet>
+
+                                                <p:column headerText="Id Producto">
+                                                    <p:outputLabel value="#{productoCamLEdit.idProducto}" />
+                                                </p:column>
+                                                <p:column headerText="Espectaculo">
+                                                    <p:outputLabel value="#{productoCamLEdit.espectaculo}" />
+                                                </p:column>
+                                                <p:column headerText="Descripcion Producto">
+                                                    <p:outputLabel value="#{productoCamLEdit.descripcion}" />
+                                                </p:column>
+                                                <p:column style="width:62px;text-align: center">
+
+
+                                                </p:column>
+                                            </p:dataTable>
                                         
                                         </p:panel>
                                     </h:panelGrid>
@@ -109,8 +134,95 @@
                                     <f:convertDateTime pattern="yyyyMMdd" />
                                 </h:outputText>
                                 <br></br>
-                                <p:commandButton value="Editar" actionListener="#{campannaBean.crearCampanna()}"
+                                <p:commandButton value="Adicionar Campaña" actionListener="#{campannaBean.crearCampanna()}"
                                                  process="@form" oncomplete="PF('campProdDialog').hide()"/>
+                            </p:panelGrid>
+
+                        </h:form>
+                    </p:outputPanel>
+                </p:dialog>
+                
+                <p:dialog header="Adicionar Producto Campaña" widgetVar="campProdDialogEdit" modal="true" showEffect="fade" hideEffect="fade" id="detalleProdCamDialogEdit" 
+                          resizable="false">
+                    <p:outputPanel style="text-align:center;">
+                        <h:form>
+                            <p:panelGrid  columns="2" columnClasses="label,value">
+                                <h:outputLabel for="idProductoEdit" value="Id Producto" />
+                                <p:inputText id="idProductoEdit" value="#{campannaBean.productoSel.idProducto}">
+                                    <p:clientValidator event="keyup"/>
+                                </p:inputText>
+                                <p:message for="idProductoEdit" display="icon" />
+                                <br></br>
+                                <h:outputLabel for="nomProductoEdit" value="Nombre Producto" />
+                                <p:inputText id="nomProductoEdit" value="#{campannaBean.productoSel.espectaculo}">
+                                    <p:clientValidator event="keyup"/>
+                                </p:inputText>
+                                <p:message for="nomProductoEdit" display="icon" />
+                                <br></br>
+                                <h:outputLabel for="descProductoEdit" value="Descripcion Producto" />
+                                <p:inputText id="descProductoEdit" value="#{campannaBean.productoSel.descripcion}">
+                                    <p:clientValidator event="keyup"/>
+                                </p:inputText>
+                                <p:message for="descProductoEdit" display="icon" />
+                                <br></br>
+                                <p:outputLabel for="fechaLlegadaEdit" value="Fecha Llegada" />
+                                <p:calendar id="fechaLlegadaEdit" value="#{campannaBean.productoSel.fechaLlegada}" locale="es" navigator="true" pattern="yyyyMMdd" />
+                                <h:outputText value="#{campannaBean.productoSel.fechaLlegada}">
+                                    <f:convertDateTime pattern="yyyyMMdd" />
+                                </h:outputText>
+                                <br></br>
+                                <p:outputLabel for="fechaSalidaEdit" value="Fecha Salida" />
+                                <p:calendar id="fechaSalidaEdit" value="#{campannaBean.productoSel.fechaSalida}" locale="es" navigator="true" pattern="yyyyMMdd" />
+                                <h:outputText value="#{campannaBean.productoSel.fechaSalida}">
+                                    <f:convertDateTime pattern="yyyyMMdd" />
+                                </h:outputText>
+                                <br></br>
+                                <p:outputLabel for="fechaEspectaculoEdit" value="Fecha Espectaculo" />
+                                <p:calendar id="fechaEspectaculoEdit" value="#{campannaBean.productoSel.fechaEspectaculo}" locale="es" navigator="true" pattern="yyyyMMdd" />
+                                <h:outputText value="#{campannaBean.productoSel.fechaEspectaculo}">
+                                    <f:convertDateTime pattern="yyyyMMdd" />
+                                </h:outputText>
+                                <br></br>
+                                <h:outputLabel for="idCiudadEdit" value="Id Ciudad" />
+                                <p:inputText id="idCiudadEdit" value="#{campannaBean.productoSel.ciudadEspectaculo.idCiudad}" >
+                                    <p:clientValidator event="keyup"/>
+                                </p:inputText>
+                                <p:message for="idCiudadEdit" display="icon" />
+                                <br></br>
+                                <h:outputLabel for="paisEdit" value="Pais" />
+                                <p:inputText id="paisEdit" value="#{campannaBean.productoSel.ciudadEspectaculo.pais}" >
+                                    <p:clientValidator event="keyup"/>
+                                </p:inputText>
+                                <p:message for="paisEdit" display="icon" />
+                                <br></br>
+                                <h:outputLabel for="tipoCiudadEdit" value="Tipo Ciudad" />
+                                <p:inputText id="tipoCiudadEdit" value="#{campannaBean.productoSel.ciudadEspectaculo.tipoCiudad}" >
+                                    <p:clientValidator event="keyup"/>
+                                </p:inputText>
+                                <p:message for="tipoCiudadEdit" display="icon" />                                        
+                                <br></br>
+                                <h:outputLabel for="idTarifaEdit" value="Id Tarifa espectaculo" />
+                                <p:inputText id="idTarifaEdit" value="#{campannaBean.productoSel.tipoEspectaculo.id}" >
+                                    <p:clientValidator event="keyup"/>
+                                </p:inputText>
+                                <p:message for="idTarifaEdit" display="icon" />                                                                                
+                                <br></br>
+                                <h:outputLabel for="nombreTipoEdit" value="Nombre Espectaculo" />
+                                <p:inputText id="nombreTipoEdit"  value="#{campannaBean.productoSel.tipoEspectaculo.nombreTipo}" >
+                                    <p:clientValidator event="keyup"/>
+                                </p:inputText>
+                                <p:message for="nombreTipoEdit" display="icon" />                                                                                                                        
+                                <br></br>
+                                <h:outputLabel for="precioEdit" value="Precio" />
+                                <p:inputText id="precioEdit" value="#{campannaBean.productoSel.tipoEspectaculo.precio}" >
+                                    <p:clientValidator event="keyup"/>
+                                </p:inputText>
+                                <p:message for="precioEdit" display="icon" />                                                                                                                                                              
+                                <br></br>
+                                <p:commandButton value="Editar Campaña" actionListener="#{campannaBean.editarCampanna()}"
+                                                 process="@form" oncomplete="PF('campProdDialogEdit').hide()"/>
+                                <p:commandButton value="Eliminar Campaña" actionListener="#{campannaBean.eliminarCampanna()}"
+                                                 process="@form" oncomplete="PF('campProdDialogEdit').hide()"/>
                             </p:panelGrid>
 
                         </h:form>
