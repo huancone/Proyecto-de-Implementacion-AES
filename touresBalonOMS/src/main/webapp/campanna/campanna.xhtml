@@ -72,14 +72,15 @@
                                 <p:panel header="Gestion de  Campaña">
                                     <h:panelGrid columns="2" cellpadding="2">
                                         <p:panel header="Consultar Campañas">
-                                            <h:panelGrid columns="2" cellpadding="2" id="panelConsultaProductos">
+                                            <h:panelGrid columns="2" cellpadding="2" id="panelGestionCamp">
                                                 <p:commandButton value="Consultar Productos Campaña" actionListener="#{campannaBean.consultarProducto()}" update="dtProductosCampList" process="@form"/>
                                             </h:panelGrid>
                                         
                                         
                                         </p:panel>
                                     </h:panelGrid>
-                                </p:panel>  
+                                </p:panel> 
+                            </h:form>
                         </p:tab>
                     </p:accordionPanel>
                 </h:form>
