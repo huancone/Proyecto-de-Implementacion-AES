@@ -1,7 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <body>
 
@@ -16,7 +19,21 @@
             </ui:define>
 
             <ui:define name="content">
-                Aqui va el lgin de la aplicacion
+                <h:form id="formAccLogin">
+                    
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <h:outputLabel for="idUsuario" value="Id usuario" />
+                        <p:inputText id="idUsuario" value="#{loginBean.idUsuario}"/>
+                        
+                        <h:outputLabel for="passUsuario" value="Contraseña " />
+                        <p:password id="passUsuario" value="#{loginBean.passUsuario}" feedback="true"
+                                    promptLabel="Ingrese Contraseña" weakLabel="Débil" goodLabel="Medio" strongLabel="Fuerte"/>
+                        
+                        <f:facet name="footer">
+                            <p:commandButton value="Login" actionListener="#{loginBean.login(event)}"  />
+                        </f:facet> 
+                    </h:panelGrid>
+                </h:form>
             </ui:define>
 
         </ui:composition>
