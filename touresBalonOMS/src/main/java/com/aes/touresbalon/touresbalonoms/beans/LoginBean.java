@@ -35,9 +35,26 @@ public class LoginBean {
         validarUsr = service.validarUsuarioLogin(this.idUsuario,this.passUsuario);
         
         if (validarUsr.equalsIgnoreCase("OK")){
+            
+            //Redireccion en caso exitoso
+            try{
+            FacesContext contex = FacesContext.getCurrentInstance();
+            contex.getExternalContext().redirect( "/touresBalonOMS/index.xhtml" );
+            }catch(  Exception e ){
+                System.out.println("Redireccion fallida" );
+            }
             loggedIn = true;
             message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Welcome", idUsuario);
         }else {
+            
+            //Redireccion en caso NO EXITOSO 
+            try{
+            FacesContext contex = FacesContext.getCurrentInstance();
+            contex.getExternalContext().redirect( "/touresBalonOMS/index.xhtml" );
+            }catch(  Exception e ){
+                System.out.println("Redireccion fallida" );
+            }
+            
             loggedIn = false;
             message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Loggin Error", "Invalid credentials");
         }
