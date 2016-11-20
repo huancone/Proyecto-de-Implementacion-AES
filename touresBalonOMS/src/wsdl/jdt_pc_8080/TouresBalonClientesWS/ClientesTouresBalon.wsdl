@@ -1,0 +1,542 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="ClientesTouresBalon" targetNamespace="http://www.touresbalon.com/ClientesTouresBalon/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:t="http://www.touresbalon.com/ClientesTouresBalon/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xsd:schema targetNamespace="http://www.touresbalon.com/ClientesTouresBalon/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:t="http://www.touresbalon.com/ClientesTouresBalon/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:element name="RegistrarCliente">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="cliente" type="t:Cliente"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RegistrarClienteResponse">
+        <xsd:complexType>
+                    <xsd:sequence>
+                    	<xsd:element maxOccurs="1" minOccurs="1" name="registrarClienteResponse" type="t:RegistrarClienteReponseType">
+                    	</xsd:element>
+                    </xsd:sequence>
+                    
+        </xsd:complexType>
+      </xsd:element>
+    
+      <xsd:complexType name="Cliente">
+      	<xsd:sequence>
+
+      		<xsd:element maxOccurs="1" minOccurs="0" name="id_cliente" type="xsd:int">
+      		</xsd:element>
+      		<xsd:element maxOccurs="1" minOccurs="1" name="nombres" type="xsd:string">
+      		</xsd:element>
+      		<xsd:element maxOccurs="1" minOccurs="1" name="apellidos" type="xsd:string">
+      		</xsd:element>
+      		<xsd:element maxOccurs="1" minOccurs="0" name="num_tel" type="xsd:string">
+      		</xsd:element>
+      		<xsd:element maxOccurs="1" minOccurs="1" name="email" type="xsd:string">
+      		</xsd:element>
+      		<xsd:element maxOccurs="1" minOccurs="1" name="contrasenia" type="xsd:string">
+      		</xsd:element>
+      		<xsd:element maxOccurs="1" minOccurs="0" name="tipo_tarjeta" type="xsd:string">
+      		</xsd:element>
+      		<xsd:element maxOccurs="1" minOccurs="0" name="numero_tarjeta" type="xsd:string">
+      		</xsd:element>
+      		<xsd:element maxOccurs="unbounded" minOccurs="0" name="direccion" type="t:Direccion">
+      		</xsd:element>
+      		<xsd:element maxOccurs="1" minOccurs="1" name="estatus" type="t:EstatusCliente"/>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+      <xsd:complexType name="Direccion">
+      	<xsd:sequence>
+      		<xsd:element maxOccurs="1" minOccurs="0" name="id_direccion" type="xsd:int"/>
+      		<xsd:element maxOccurs="1" minOccurs="0" name="pais" type="xsd:string">
+      		</xsd:element>
+      		<xsd:element maxOccurs="1" minOccurs="0" name="ciudad" type="xsd:string">
+      		</xsd:element>
+      		<xsd:element maxOccurs="1" minOccurs="0" name="estado" type="xsd:string">
+      		</xsd:element>
+      		<xsd:element maxOccurs="1" minOccurs="0" name="cod_postal" type="xsd:string">
+      		</xsd:element>
+      		<xsd:element maxOccurs="1" minOccurs="0" name="tipo_dir" type="xsd:string">
+      		</xsd:element>
+      		<xsd:element maxOccurs="1" minOccurs="0" name="dir_calle" type="xsd:string">
+      		</xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+      <xsd:element name="AutenticarCliente">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element maxOccurs="1" minOccurs="1" name="usuario" type="xsd:string"/>
+      			<xsd:element maxOccurs="1" minOccurs="1" name="contrasenia" type="xsd:string"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AutenticarClienteResponse">
+      	<xsd:complexType>
+                    <xsd:sequence>
+      			<xsd:element maxOccurs="1" minOccurs="1" name="respuesta" type="t:RespuestaGenerica">
+      			</xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    
+      <xsd:element name="ActualizarCliente">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element maxOccurs="1" minOccurs="1" name="cliente" type="t:Cliente"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ActualizarClienteResponse">
+      	<xsd:complexType>
+                    <xsd:sequence>
+      			<xsd:element maxOccurs="1" minOccurs="1" name="respuesta" type="t:RespuestaGenerica">
+      			</xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    
+      <xsd:element name="ActualizarContraseniaCliente">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element maxOccurs="1" minOccurs="1" name="usuario" type="xsd:string"/>
+      			<xsd:element maxOccurs="1" minOccurs="1" name="contrasenia" type="xsd:string"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ActualizarContraseniaClienteResponse">
+      	<xsd:complexType>
+                    <xsd:sequence>
+      			<xsd:element maxOccurs="1" minOccurs="1" name="respuesta" type="t:RespuestaGenerica">
+      			</xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    
+    
+      <xsd:complexType name="Error">
+      	<xsd:sequence>
+      		<xsd:element maxOccurs="1" minOccurs="0" name="codigo" type="xsd:string"/>
+      		<xsd:element maxOccurs="1" minOccurs="0" name="mensaje" type="xsd:string"/>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+      <xsd:simpleType name="RespuestaGenerica">
+      	<xsd:restriction base="xsd:string">
+      		<xsd:enumeration value="OK"/>
+      		<xsd:enumeration value="KO"/>
+      	</xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="ActualizarEstatusCliente">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element maxOccurs="1" minOccurs="1" name="id_cliente" type="xsd:int">
+      			</xsd:element>
+      			<xsd:element maxOccurs="1" minOccurs="1" name="estatus" type="t:EstatusCliente"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ActualizarEstatusClienteResponse">
+      	<xsd:complexType>
+                    <xsd:sequence>
+                    	<xsd:element maxOccurs="1" minOccurs="1" name="respuesta" type="t:RespuestaGenerica"/>
+                    </xsd:sequence>
+                    
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ConsultarPorIdentificacionCliente">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element maxOccurs="1" minOccurs="1" name="id_cliente" type="xsd:int"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ConsultarPorIdentificacionClienteResponse">
+      	<xsd:complexType>
+                    <xsd:sequence>
+                    	<xsd:element maxOccurs="1" minOccurs="0" name="cliente" type="t:Cliente"/>
+                    </xsd:sequence>
+                    
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ConsultarPorProductoCliente">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element maxOccurs="1" minOccurs="1" name="id_producto" type="xsd:int"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ConsultarPorProductoClienteResponse">
+      	<xsd:complexType>
+                    <xsd:sequence>
+                    	<xsd:element maxOccurs="unbounded" minOccurs="0" name="cliente" type="t:Cliente">
+                    	</xsd:element>
+                    </xsd:sequence>
+                    
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ConsultarPorFactRangoCliente">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element maxOccurs="1" minOccurs="1" name="fecha_inicial" type="xsd:dateTime"/>
+      			<xsd:element maxOccurs="1" minOccurs="1" name="fecha_fin" type="xsd:dateTime"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ConsultarPorFactRangoClienteResponse">
+      	<xsd:complexType>
+                    <xsd:sequence>
+                    	<xsd:element maxOccurs="unbounded" minOccurs="0" name="cliente" type="t:Cliente"/>
+                    </xsd:sequence>
+                    
+      	</xsd:complexType>
+      </xsd:element>
+    
+      <xsd:simpleType name="EstatusCliente">
+      	<xsd:restriction base="xsd:string">
+      		<xsd:enumeration value="PLATINO"/>
+      		<xsd:enumeration value="DORADO"/>
+      		<xsd:enumeration value="PLATEADO"/>
+      	</xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="RegistrarClienteFault">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element maxOccurs="1" minOccurs="0" name="RegistrarClienteFault" type="t:Error">
+      			</xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AutenticarClienteFault">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element maxOccurs="1" minOccurs="0" name="AutenticarClienteFault" type="t:Error">
+      			</xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ActualizarClienteFault">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element maxOccurs="1" minOccurs="0" name="ActualizarClienteFault" type="t:Error">
+      			</xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ActualizarContraseniaClienteFault">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element maxOccurs="1" minOccurs="0" name="ActualizarContraseniaClienteFault" type="t:Error">
+      			</xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ActualizarEstatusClienteFault">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element maxOccurs="1" minOccurs="0" name="ActualizarEstatusClienteFault" type="t:Error">
+      			</xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ConsultarPorIdentificacionClienteFault">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element maxOccurs="1" minOccurs="0" name="ConsultarPorIdentificacionClienteFault" type="t:Error">
+      			</xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ConsultarPorProductoClienteFault">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element maxOccurs="1" minOccurs="0" name="ConsultarPorProductoClienteFault" type="xsd:string">
+      			</xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ConsultarPorFactRangoClienteFault">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element maxOccurs="1" minOccurs="0" name="ConsultarPorFactRangoClienteFault" type="t:Error">
+      			</xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    
+    
+      <xsd:complexType name="RegistrarClienteReponseType">
+      	<xsd:sequence>
+      		<xsd:element maxOccurs="1" minOccurs="1" name="respuesta" type="t:RespuestaGenerica">
+      		</xsd:element>
+      		<xsd:element maxOccurs="1" minOccurs="0" name="id_cliente" type="xsd:int"/>
+      	</xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="AutenticarClienteResponse">
+    <wsdl:part element="t:AutenticarClienteResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarPorFactRangoClienteRequest">
+    <wsdl:part element="t:ConsultarPorFactRangoCliente" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ActualizarEstatusClienteResponse">
+    <wsdl:part element="t:ActualizarEstatusClienteResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ActualizarEstatusClienteRequest">
+    <wsdl:part element="t:ActualizarEstatusCliente" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarPorIdentificacionClienteFault">
+    <wsdl:part element="t:ConsultarPorIdentificacionClienteFault" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="RegistrarClienteFault">
+    <wsdl:part element="t:RegistrarClienteFault" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarPorProductoClienteRequest">
+    <wsdl:part element="t:ConsultarPorProductoCliente" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ActualizarContraseniaClienteRequest">
+    <wsdl:part element="t:ActualizarContraseniaCliente" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="RegistrarClienteResponse">
+    <wsdl:part element="t:RegistrarClienteResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ActualizarClienteRequest">
+    <wsdl:part element="t:ActualizarCliente" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AutenticarClienteFault">
+    <wsdl:part element="t:AutenticarClienteFault" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AutenticarClienteRequest">
+    <wsdl:part element="t:AutenticarCliente" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ActualizarContraseniaClienteFault">
+    <wsdl:part element="t:ActualizarContraseniaClienteFault" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarPorProductoClienteResponse">
+    <wsdl:part element="t:ConsultarPorProductoClienteResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarPorProductoClienteFault">
+    <wsdl:part element="t:ConsultarPorProductoClienteFault" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarPorIdentificacionClienteRequest">
+    <wsdl:part element="t:ConsultarPorIdentificacionCliente" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarPorFactRangoClienteResponse">
+    <wsdl:part element="t:ConsultarPorFactRangoClienteResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarPorFactRangoClienteFault">
+    <wsdl:part element="t:ConsultarPorFactRangoClienteFault" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ActualizarEstatusClienteFault">
+    <wsdl:part element="t:ActualizarEstatusClienteFault" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ActualizarContraseniaClienteResponse">
+    <wsdl:part element="t:ActualizarContraseniaClienteResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarPorIdentificacionClienteResponse">
+    <wsdl:part element="t:ConsultarPorIdentificacionClienteResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ActualizarClienteFault">
+    <wsdl:part element="t:ActualizarClienteFault" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ActualizarClienteResponse">
+    <wsdl:part element="t:ActualizarClienteResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="RegistrarClienteRequest">
+    <wsdl:part element="t:RegistrarCliente" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ClientesTouresBalon">
+    <wsdl:operation name="RegistrarCliente">
+      <wsdl:input message="t:RegistrarClienteRequest">
+    </wsdl:input>
+      <wsdl:output message="t:RegistrarClienteResponse">
+    </wsdl:output>
+      <wsdl:fault message="t:RegistrarClienteFault" name="fault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AutenticarCliente">
+      <wsdl:input message="t:AutenticarClienteRequest">
+    </wsdl:input>
+      <wsdl:output message="t:AutenticarClienteResponse">
+    </wsdl:output>
+      <wsdl:fault message="t:AutenticarClienteFault" name="fault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarCliente">
+      <wsdl:input message="t:ActualizarClienteRequest">
+    </wsdl:input>
+      <wsdl:output message="t:ActualizarClienteResponse">
+    </wsdl:output>
+      <wsdl:fault message="t:ActualizarClienteFault" name="fault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarContraseniaCliente">
+      <wsdl:input message="t:ActualizarContraseniaClienteRequest">
+    </wsdl:input>
+      <wsdl:output message="t:ActualizarContraseniaClienteResponse">
+    </wsdl:output>
+      <wsdl:fault message="t:ActualizarContraseniaClienteFault" name="fault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarEstatusCliente">
+      <wsdl:input message="t:ActualizarEstatusClienteRequest">
+    </wsdl:input>
+      <wsdl:output message="t:ActualizarEstatusClienteResponse">
+    </wsdl:output>
+      <wsdl:fault message="t:ActualizarEstatusClienteFault" name="fault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarPorIdentificacionCliente">
+      <wsdl:input message="t:ConsultarPorIdentificacionClienteRequest">
+    </wsdl:input>
+      <wsdl:output message="t:ConsultarPorIdentificacionClienteResponse">
+    </wsdl:output>
+      <wsdl:fault message="t:ConsultarPorIdentificacionClienteFault" name="fault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarPorProductoCliente">
+      <wsdl:input message="t:ConsultarPorProductoClienteRequest">
+    </wsdl:input>
+      <wsdl:output message="t:ConsultarPorProductoClienteResponse">
+    </wsdl:output>
+      <wsdl:fault message="t:ConsultarPorProductoClienteFault" name="fault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarPorFactRangoCliente">
+      <wsdl:input message="t:ConsultarPorFactRangoClienteRequest">
+    </wsdl:input>
+      <wsdl:output message="t:ConsultarPorFactRangoClienteResponse">
+    </wsdl:output>
+      <wsdl:fault message="t:ConsultarPorFactRangoClienteFault" name="fault">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ClientesTouresBalonSOAP" type="t:ClientesTouresBalon">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="RegistrarCliente">
+      <soap:operation soapAction="http://www.touresbalon.com/ClientesTouresBalon/RegistrarCliente"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AutenticarCliente">
+      <soap:operation soapAction="http://www.touresbalon.com/ClientesTouresBalon/AutenticarCliente"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarCliente">
+      <soap:operation soapAction="http://www.touresbalon.com/ClientesTouresBalon/ActualizarCliente"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarContraseniaCliente">
+      <soap:operation soapAction="http://www.touresbalon.com/ClientesTouresBalon/ActualizarContraseniaCliente"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarEstatusCliente">
+      <soap:operation soapAction="http://www.touresbalon.com/ClientesTouresBalon/ActualizarEstatusCliente"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarPorIdentificacionCliente">
+      <soap:operation soapAction="http://www.touresbalon.com/ClientesTouresBalon/ConsultarPorIdentificacionCliente"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarPorProductoCliente">
+      <soap:operation soapAction="http://www.touresbalon.com/ClientesTouresBalon/ConsultarPorProductoCliente"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarPorFactRangoCliente">
+      <soap:operation soapAction="http://www.touresbalon.com/ClientesTouresBalon/ConsultarPorFactRangoCliente"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ClientesTouresBalon">
+    <wsdl:port binding="t:ClientesTouresBalonSOAP" name="ClientesTouresBalonSOAP">
+<wsdl:documentation>Version 0.1</wsdl:documentation>
+      <soap:address location="http://localhost:8080/TouresBalonClientesWS/ClientesTouresBalon"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -7,6 +7,9 @@
 package com.aes.touresbalon.touresbalonoms.beans;
 
 import com.aes.touresbalon.touresbalonoms.services.LoginService;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -61,6 +64,16 @@ public class LoginBean {
         }
         FacesContext.getCurrentInstance().addMessage(null, message);
         context.addCallbackParam("loggedIn", loggedIn);
+    }
+    
+    public void logout(ActionEvent event){
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.getExternalContext().redirect( "/touresBalonOMS/principal.xhtml" );
+        } catch (IOException ex) {
+            Logger.getLogger(LoginBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     /**

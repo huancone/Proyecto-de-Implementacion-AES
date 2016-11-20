@@ -15,5 +15,8 @@ Any value defined here will override the pom.xml file value but is only applicab
 -->
         <org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_deploy_2e_server>gfv3ee6</org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_deploy_2e_server>
         <org-netbeans-modules-projectapi.jsf_2e_language>Facelets</org-netbeans-modules-projectapi.jsf_2e_language>
+        <org-netbeans-modules-maven-jaxws._5f_C_5f_ClientesTouresBalon>http://jdt_pc:8080/TouresBalonClientesWS/ClientesTouresBalon?wsdl</org-netbeans-modules-maven-jaxws._5f_C_5f_ClientesTouresBalon>
+        <org-netbeans-modules-maven-jaxws._5f_C_5f_OrdenesTouresBalon>http://jdt_pc:8080/TouresBalonOrdenesWS/OrdenesTouresBalon?wsdl</org-netbeans-modules-maven-jaxws._5f_C_5f_OrdenesTouresBalon>
+        <org-netbeans-modules-maven-jaxws._5f_C_5f_ProductosTouresBalon>http://jdt_pc:8080/TouresBalon/ProductosTouresBalon?wsdl</org-netbeans-modules-maven-jaxws._5f_C_5f_ProductosTouresBalon>
     </properties>
 </project-shared-configuration>

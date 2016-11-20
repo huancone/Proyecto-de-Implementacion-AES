@@ -12,6 +12,7 @@
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring.version>3.2.3.RELEASE</spring.version>
     </properties>
     
     <dependencies>
@@ -46,6 +47,56 @@
             <artifactId>commons-beanutils</artifactId>
             <version>1.9.3</version>
         </dependency>
+        
+        <!--  Dependencias SPRING SECURITY  -->
+         <dependency>
+            <groupId>org.springframework.ldap</groupId>
+            <artifactId>spring-ldap</artifactId>
+            <version>1.3.1.RELEASE</version>
+            <classifier>all</classifier>
+        </dependency>
+        <!--  Spring MVC  -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <!--  JSON  -->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20131018</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -72,6 +123,14 @@
                         <resource>
                             <directory>src</directory>
                             <targetPath>WEB-INF</targetPath>
+                            <includes>
+                                <include>jax-ws-catalog.xml</include>
+                                <include>wsdl/**</include>
+                            </includes>
+                        </resource>
+                        <resource>
+                            <directory>src</directory>
+                            <targetPath>WEB-INF/classes/META-INF</targetPath>
                             <includes>
                                 <include>jax-ws-catalog.xml</include>
                                 <include>wsdl/**</include>
@@ -126,6 +185,60 @@
                             <staleFile>${project.build.directory}/jaxws/stale/mockServiceProxyOMSSOAP.stale</staleFile>
                         </configuration>
                         <id>wsimport-generate-mockServiceProxyOMSSOAP</id>
+                        <phase>generate-sources</phase>
+                    </execution>
+                    <execution>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                        <configuration>
+                            <wsdlFiles>
+                                <wsdlFile>jdt_pc_8080/TouresBalonClientesWS/ClientesTouresBalon.wsdl</wsdlFile>
+                            </wsdlFiles>
+                            <packageName></packageName>
+                            <vmArgs>
+                                <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
+                            </vmArgs>
+                            <wsdlLocation>http://jdt_pc:8080/TouresBalonClientesWS/ClientesTouresBalon?wsdl</wsdlLocation>
+                            <staleFile>${project.build.directory}/jaxws/stale/ClientesTouresBalon.stale</staleFile>
+                        </configuration>
+                        <id>wsimport-generate-ClientesTouresBalon</id>
+                        <phase>generate-sources</phase>
+                    </execution>
+                    <execution>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                        <configuration>
+                            <wsdlFiles>
+                                <wsdlFile>jdt_pc_8080/TouresBalonOrdenesWS/OrdenesTouresBalon.wsdl</wsdlFile>
+                            </wsdlFiles>
+                            <packageName></packageName>
+                            <vmArgs>
+                                <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
+                            </vmArgs>
+                            <wsdlLocation>http://jdt_pc:8080/TouresBalonOrdenesWS/OrdenesTouresBalon?wsdl</wsdlLocation>
+                            <staleFile>${project.build.directory}/jaxws/stale/OrdenesTouresBalon.stale</staleFile>
+                        </configuration>
+                        <id>wsimport-generate-OrdenesTouresBalon</id>
+                        <phase>generate-sources</phase>
+                    </execution>
+                    <execution>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                        <configuration>
+                            <wsdlFiles>
+                                <wsdlFile>jdt_pc_8080/TouresBalon/ProductosTouresBalon.wsdl</wsdlFile>
+                            </wsdlFiles>
+                            <packageName></packageName>
+                            <vmArgs>
+                                <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
+                            </vmArgs>
+                            <wsdlLocation>http://jdt_pc:8080/TouresBalon/ProductosTouresBalon?wsdl</wsdlLocation>
+                            <staleFile>${project.build.directory}/jaxws/stale/ProductosTouresBalon.stale</staleFile>
+                        </configuration>
+                        <id>wsimport-generate-ProductosTouresBalon</id>
                         <phase>generate-sources</phase>
                     </execution>
                 </executions>

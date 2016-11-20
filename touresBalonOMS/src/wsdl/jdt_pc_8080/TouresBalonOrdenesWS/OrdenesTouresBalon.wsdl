@@ -1,0 +1,505 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="OrdenesTouresBalon" targetNamespace="http://www.touresbalon.com/OrdenesTouresBalon/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tb_o="http://www.touresbalon.com/OrdenesTouresBalon/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<wsdl:documentation>V 0.1</wsdl:documentation>
+  <wsdl:types>
+<xsd:schema targetNamespace="http://www.touresbalon.com/OrdenesTouresBalon/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tb_o="http://www.touresbalon.com/OrdenesTouresBalon/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:element name="ConsultarClientesOrdenes">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="id_cliente" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ConsultarClientesOrdenesResponse">
+        <xsd:complexType>
+      		<xsd:sequence>
+        <xsd:element maxOccurs="unbounded" minOccurs="0" name="orden" type="tb_o:Orden"/>
+      </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    
+      <xsd:complexType name="Item">
+      	<xsd:sequence>
+      		<xsd:element maxOccurs="1" minOccurs="1" name="id_item" type="xsd:int">
+      		</xsd:element>
+      		<xsd:element maxOccurs="1" minOccurs="1" name="id_prod" type="xsd:int">
+      		</xsd:element>
+      		<xsd:element maxOccurs="1" minOccurs="1" name="nombre_prod" type="xsd:string">
+      		</xsd:element>
+      		<xsd:element maxOccurs="1" minOccurs="0" name="part_num" type="xsd:string">
+      		</xsd:element>
+      		<xsd:element maxOccurs="1" minOccurs="1" name="precio" type="xsd:double">
+      		</xsd:element>
+      		<xsd:element maxOccurs="1" minOccurs="1" name="cantidad" type="xsd:int">
+      		</xsd:element>
+      		<xsd:element maxOccurs="1" minOccurs="0" name="id_orden" type="xsd:int"/>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+      <xsd:complexType name="Orden">
+      	<xsd:sequence>
+      		<xsd:element maxOccurs="1" minOccurs="1" name="id_cliente" type="xsd:int"/>
+      		<xsd:element maxOccurs="1" minOccurs="0" name="id_orden" type="xsd:int">
+      		</xsd:element>
+      		<xsd:element maxOccurs="1" minOccurs="1" name="fecha_orden" type="xsd:dateTime">
+      		</xsd:element>
+      		<xsd:element maxOccurs="1" minOccurs="1" name="precio" type="xsd:double">
+      		</xsd:element>
+      		<xsd:element maxOccurs="1" minOccurs="0" name="estatus" type="tb_o:EstatusOrden">
+      		</xsd:element>
+      		<xsd:element maxOccurs="unbounded" minOccurs="0" name="comentarios" type="xsd:string">
+      		</xsd:element>
+      		<xsd:element maxOccurs="unbounded" minOccurs="0" name="item" type="tb_o:Item">
+      		</xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+      
+            <xsd:complexType name="Error">
+            	<xsd:sequence>
+            		<xsd:element maxOccurs="1" minOccurs="0" name="codigo" type="xsd:string"/>
+            		<xsd:element maxOccurs="1" minOccurs="0" name="mensaje" type="xsd:string"/>
+            	</xsd:sequence>
+            </xsd:complexType>
+    
+            <xsd:simpleType name="EstatusOrden">
+            	<xsd:restriction base="xsd:string">
+            		<xsd:enumeration value="VALIDACION"/>
+            		<xsd:enumeration value="RESERVACION"/>
+            		<xsd:enumeration value="CERRADA"/>
+            		<xsd:enumeration value="RECHAZADA"/>
+            		<xsd:enumeration value="CANCELADA"/>
+            	</xsd:restriction>
+            </xsd:simpleType>
+            <xsd:element name="CancelarOrdenes">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element maxOccurs="unbounded" minOccurs="1" name="id_orden" type="xsd:int"/>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+            <xsd:element name="CancelarOrdenesResponse">
+            	<xsd:complexType>
+           			<xsd:sequence>
+        <xsd:element maxOccurs="1" minOccurs="1" name="respuesta" type="tb_o:RespuestaGenerica">
+           			</xsd:element>
+      </xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+            <xsd:element name="CrearOrdenes">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element maxOccurs="1" minOccurs="1" name="orden" type="tb_o:Orden"/>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+            <xsd:element name="CrearOrdenesResponse">
+            	<xsd:complexType>
+          			<xsd:sequence>
+        <xsd:element maxOccurs="1" minOccurs="1" name="respuesta" type="tb_o:CrearOrdenResponse">
+          			</xsd:element>
+      </xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+    
+            <xsd:simpleType name="RespuestaGenerica">
+            	<xsd:restriction base="xsd:string">
+            		<xsd:enumeration value="OK"/>
+            		<xsd:enumeration value="KO"/>
+            	</xsd:restriction>
+            </xsd:simpleType>
+            <xsd:element name="ConsultarOrdenes">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element maxOccurs="1" minOccurs="1" name="criterios" type="tb_o:CriterioConsultaOrden">
+            			</xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+            <xsd:element name="ConsultarOrdenesResponse">
+            	<xsd:complexType>
+           			<xsd:sequence>
+        <xsd:element maxOccurs="unbounded" minOccurs="0" name="orden" type="tb_o:Orden">
+           			</xsd:element>
+      </xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+    
+            <xsd:simpleType name="TipoConsultaOrden">
+            	<xsd:restriction base="xsd:string">
+            		<xsd:enumeration value="ORDEN"/>
+            		<xsd:enumeration value="PRODUCTO"/>
+            	</xsd:restriction>
+            </xsd:simpleType>
+    
+        
+        
+            <xsd:element name="ConsultarRangoCerradoOrdenes">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element maxOccurs="1" minOccurs="1" name="fecha_inicial" type="xsd:dateTime">
+
+            			</xsd:element>
+            			<xsd:element maxOccurs="1" minOccurs="1" name="fecha_final" type="xsd:dateTime">
+
+            			</xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+            <xsd:element name="ConsultarRangoCerradoOrdenesResponse">
+            	<xsd:complexType>
+           			<xsd:sequence>
+           				<xsd:element maxOccurs="1" minOccurs="1" name="ordenes_cerradas" type="tb_o:RespuestaOrdenCerrada">
+           				</xsd:element>
+           			</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+            <xsd:element name="ConsultarRankingAbiertasOrdenes">
+            	<xsd:complexType>
+            		<xsd:sequence>
+
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+            <xsd:element name="ConsultarRankingAbiertasOrdenesResponse">
+            	<xsd:complexType>
+           			<xsd:sequence>
+        <xsd:element maxOccurs="unbounded" minOccurs="0" name="ordenes" type="tb_o:Orden">
+           			</xsd:element>
+      </xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+            <xsd:element name="ConsultarRankingCerradoOrdenes">
+            	<xsd:complexType>
+            		<xsd:sequence>
+
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+			<xsd:element name="ConsultarRankingCerradoOrdenesResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+        <xsd:element maxOccurs="unbounded" minOccurs="0" name="ordenes" type="tb_o:Orden">
+					</xsd:element>
+      </xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ConsultarClientesOrdenesFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element maxOccurs="1" minOccurs="0" name="ConsultarClientesOrdenesFault" type="tb_o:Error">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="CancelarOrdenesFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element maxOccurs="1" minOccurs="0" name="CancelarOrdenesFault" type="tb_o:Error">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="CrearOrdenesFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element maxOccurs="1" minOccurs="0" name="CrearOrdenesFault" type="tb_o:Error">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ConsultarOrdenesFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element maxOccurs="1" minOccurs="0" name="ConsultarOrdenesFault" type="tb_o:Error">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ConsultarRangoCerradoOrdenesFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element maxOccurs="1" minOccurs="0" name="ConsultarRangoCerradoOrdenesFault" type="tb_o:Error">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ConsultarRankingAbiertasOrdenesFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element maxOccurs="1" minOccurs="0" name="ConsultarRankingAbiertasOrdenesFault" type="tb_o:Error">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ConsultarRankingCerradoOrdenesFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element maxOccurs="1" minOccurs="0" name="ConsultarRankingCerradoOrdenesFault" type="tb_o:Error">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:complexType name="CriterioConsultaOrden">
+            	<xsd:sequence>
+            		<xsd:element maxOccurs="1" minOccurs="1" name="tipo_consulta" type="tb_o:TipoConsultaOrden">
+            		</xsd:element>
+            		<xsd:element maxOccurs="1" minOccurs="1" name="codigo" type="xsd:int"/>
+            	</xsd:sequence>
+            </xsd:complexType>
+    
+    
+            <xsd:complexType name="RespuestaOrdenCerrada">
+            	<xsd:sequence>
+            		<xsd:element maxOccurs="1" minOccurs="1" name="ordenes_cerradas" type="xsd:int">
+            		</xsd:element>
+            		<xsd:element maxOccurs="1" minOccurs="1" name="total" type="xsd:double"/>
+            	</xsd:sequence>
+            </xsd:complexType>
+    
+            <xsd:complexType name="CrearOrdenResponse">
+            	<xsd:sequence>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="respuesta" type="tb_o:RespuestaGenerica"/>
+                    <xsd:element maxOccurs="1" minOccurs="0" name="id_orden" type="xsd:int">
+            		</xsd:element>
+            		<xsd:element maxOccurs="1" minOccurs="0" name="estatus_orden" type="tb_o:EstatusOrden">
+            		</xsd:element>
+
+            	</xsd:sequence>
+            </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ConsultarClientesOrdenesResponse">
+    <wsdl:part element="tb_o:ConsultarClientesOrdenesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarRangoCerradoOrdenesFault">
+    <wsdl:part element="tb_o:ConsultarRangoCerradoOrdenesFault" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarClientesOrdenesRequest">
+    <wsdl:part element="tb_o:ConsultarClientesOrdenes" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarRankingAbiertasOrdenesRequest">
+    <wsdl:part element="tb_o:ConsultarRankingAbiertasOrdenes" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarClientesOrdenesFault">
+    <wsdl:part element="tb_o:ConsultarClientesOrdenesFault" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarRangoCerradoOrdenesResponse">
+    <wsdl:part element="tb_o:ConsultarRangoCerradoOrdenesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CancelarOrdenesFault">
+    <wsdl:part element="tb_o:CancelarOrdenesFault" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarRankingCerradoOrdenesResponse">
+    <wsdl:part element="tb_o:ConsultarRankingCerradoOrdenesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CancelarOrdenesResponse">
+    <wsdl:part element="tb_o:CancelarOrdenesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarRankingCerradoOrdenesFault">
+    <wsdl:part element="tb_o:ConsultarRankingCerradoOrdenesFault" name="fault">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarRankingAbiertasOrdenesFault">
+    <wsdl:part element="tb_o:ConsultarRankingAbiertasOrdenesFault" name="fault">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CrearOrdenesRequest">
+    <wsdl:part element="tb_o:CrearOrdenes" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CrearOrdenesFault">
+    <wsdl:part element="tb_o:CrearOrdenesFault" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CrearOrdenesResponse">
+    <wsdl:part element="tb_o:CrearOrdenesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarOrdenesResponse">
+    <wsdl:part element="tb_o:ConsultarOrdenesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarRankingAbiertasOrdenesResponse">
+    <wsdl:part element="tb_o:ConsultarRankingAbiertasOrdenesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CancelarOrdenesRequest">
+    <wsdl:part element="tb_o:CancelarOrdenes" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarOrdenesRequest">
+    <wsdl:part element="tb_o:ConsultarOrdenes" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarOrdenesFault">
+    <wsdl:part element="tb_o:ConsultarOrdenesFault" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarRangoCerradoOrdenesRequest">
+    <wsdl:part element="tb_o:ConsultarRangoCerradoOrdenes" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConsultarRankingCerradoOrdenesRequest">
+    <wsdl:part element="tb_o:ConsultarRankingCerradoOrdenes" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="OrdenesTouresBalon">
+    <wsdl:operation name="ConsultarClientesOrdenes">
+      <wsdl:input message="tb_o:ConsultarClientesOrdenesRequest">
+    </wsdl:input>
+      <wsdl:output message="tb_o:ConsultarClientesOrdenesResponse">
+    </wsdl:output>
+      <wsdl:fault message="tb_o:ConsultarClientesOrdenesFault" name="fault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CancelarOrdenes">
+      <wsdl:input message="tb_o:CancelarOrdenesRequest">
+    </wsdl:input>
+      <wsdl:output message="tb_o:CancelarOrdenesResponse">
+    </wsdl:output>
+      <wsdl:fault message="tb_o:CancelarOrdenesFault" name="fault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CrearOrdenes">
+      <wsdl:input message="tb_o:CrearOrdenesRequest">
+    </wsdl:input>
+      <wsdl:output message="tb_o:CrearOrdenesResponse">
+    </wsdl:output>
+      <wsdl:fault message="tb_o:CrearOrdenesFault" name="fault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarOrdenes">
+      <wsdl:input message="tb_o:ConsultarOrdenesRequest">
+    </wsdl:input>
+      <wsdl:output message="tb_o:ConsultarOrdenesResponse">
+    </wsdl:output>
+      <wsdl:fault message="tb_o:ConsultarOrdenesFault" name="fault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarRangoCerradoOrdenes">
+      <wsdl:input message="tb_o:ConsultarRangoCerradoOrdenesRequest">
+    </wsdl:input>
+      <wsdl:output message="tb_o:ConsultarRangoCerradoOrdenesResponse">
+    </wsdl:output>
+      <wsdl:fault message="tb_o:ConsultarRangoCerradoOrdenesFault" name="fault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarRankingAbiertasOrdenes">
+      <wsdl:input message="tb_o:ConsultarRankingAbiertasOrdenesRequest">
+    </wsdl:input>
+      <wsdl:output message="tb_o:ConsultarRankingAbiertasOrdenesResponse">
+    </wsdl:output>
+      <wsdl:fault message="tb_o:ConsultarRankingAbiertasOrdenesFault" name="fault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarRankingCerradoOrdenes">
+      <wsdl:input message="tb_o:ConsultarRankingCerradoOrdenesRequest">
+    </wsdl:input>
+      <wsdl:output message="tb_o:ConsultarRankingCerradoOrdenesResponse">
+    </wsdl:output>
+      <wsdl:fault message="tb_o:ConsultarRankingCerradoOrdenesFault" name="fault">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="OrdenesTouresBalonSOAP" type="tb_o:OrdenesTouresBalon">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="ConsultarClientesOrdenes">
+      <soap:operation soapAction="http://www.touresbalon.com/OrdenesTouresBalon/ConsultarClientesOrdenes"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CancelarOrdenes">
+      <soap:operation soapAction="http://www.touresbalon.com/OrdenesTouresBalon/CancelarOrdenes"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CrearOrdenes">
+      <soap:operation soapAction="http://www.touresbalon.com/OrdenesTouresBalon/CrearOrdenes"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarOrdenes">
+      <soap:operation soapAction="http://www.touresbalon.com/OrdenesTouresBalon/ConsultarOrdenes"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarRangoCerradoOrdenes">
+      <soap:operation soapAction="http://www.touresbalon.com/OrdenesTouresBalon/ConsultarRangoCerradoOrdenes"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarRankingAbiertasOrdenes">
+      <soap:operation soapAction="http://www.touresbalon.com/OrdenesTouresBalon/ConsultarRankingAbiertasOrdenes"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarRankingCerradoOrdenes">
+      <soap:operation soapAction="http://www.touresbalon.com/OrdenesTouresBalon/ConsultarRankingCerradoOrdenes"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="OrdenesTouresBalon">
+    <wsdl:port binding="tb_o:OrdenesTouresBalonSOAP" name="OrdenesTouresBalonSOAP">
+      <soap:address location="http://localhost:8080/TouresBalonOrdenesWS/OrdenesTouresBalon"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

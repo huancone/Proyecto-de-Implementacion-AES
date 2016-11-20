@@ -46,7 +46,9 @@
 
 
         <div id="top" class="top">
-            <ui:insert name="top">Toures Balon</ui:insert>
+            <ui:insert name="top">Toures Balon
+                <p:commandButton value="LogOut" actionListener="#{loginBean.logout(event)}"  />
+            </ui:insert>
         </div>
         <div>
             <div id="left">
