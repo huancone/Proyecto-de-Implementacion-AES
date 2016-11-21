@@ -55,18 +55,31 @@
                                             <f:convertDateTime pattern="yyyyMMdd" />
                                         </h:outputText>
                                         <br></br>
-                                        <p:commandButton value="Ciudad Espectaculo" onclick="PF('ciudadDialogo').show();" />
+                                        <h:outputLabel for="idCiudad" value="Id Ciudad" />
+                                        <p:inputText id="idCiudad" value="#{productosBean.idCiudad}" >
+                                            <p:clientValidator event="keyup"/>
+                                        </p:inputText>
+                                        <p:message for="idCiudad" display="icon" />
+                                        <br></br>
+                                        <h:outputLabel for="paisCiudad" value="Pais" />
+                                        <p:inputText id="paisCiudad" value="#{productosBean.pais}" >
+                                            <p:clientValidator event="keyup"/>
+                                        </p:inputText>
+                                        <p:message for="paisCiudad" display="icon" />
+                                        <br></br>
+                                        <p:commandButton value="Tarifa Ciudad" onclick="PF('ciudadDialogo').show();" />
                                         <p:dialog header="Ciudad Dialog" widgetVar="ciudadDialogo" modal="true" height="100">
                                             <h:panelGrid columns="2" cellpadding="2">
-                                                <p:outputLabel for="idCiudad" value="Id Ciudad" />
-                                                <p:inputText id="idCiudad" value="#{ciudad.idCiudad}" />
-                                                <br></br>
-                                                <p:outputLabel for="pais" value="Pais"/>
-                                                <p:inputText id="pais" value="#{ciudad.pais}" />
-                                                <br></br>
-                                                    <p:outputLabel for="tipoCiudad" value="Tipo Ciudad" />
-                                                <p:inputText id="tipoCiudad" value="#{ciudad.tipoCiudad}" />
-                                                <br></br>
+                                                <p:outputLabel for="idTipoCiudad" value="Id Ciudad" />
+                                                <p:inputText id="idTipoCiudad" value="#{productosBean.tipoCiudad.id}" />
+                                                
+                                                <p:outputLabel for="nombreTipoCiudad" value="Pais"/>
+                                                <p:inputText id="nombreTipoCiudad" value="#{productosBean.tipoCiudad.nombreTipo}" />
+                                                
+                                                <p:outputLabel for="precioTipoCiudad" value="Tipo Ciudad" />
+                                                <p:inputText id="precioTipoCiudad" value="#{productosBean.tipoCiudad.precio}" />
+                                                
+                                                <p:outputLabel  value="" />
                                                 <p:commandButton onclick="PF('ciudadDialogo').hide();" value="Aceptar" title="View" />
                                             </h:panelGrid>
                                         </p:dialog>
@@ -76,14 +89,15 @@
                                         <p:dialog header="Tipo Transporte" widgetVar="tipotranspDialogo" modal="true" height="100">
                                             <h:panelGrid columns="2" cellpadding="2">
                                                 <p:outputLabel for="idTarifa" value="Id Tarifa" />
-                                                <p:inputText id="idTarifa" value="#{tarifaValoresBean.id}" />
-                                                <br></br>
+                                                <p:inputText id="idTarifa" value="#{productosBean.tipoTransporte.id}" />
+                                                
                                                 <p:outputLabel for="nombreTipo" value="Nombre"/>
-                                                <p:inputText id="nombreTipo" value="#{tarifaValoresBean.nombreTipo}" />
-                                                <br></br>
+                                                <p:inputText id="nombreTipo" value="#{productosBean.tipoTransporte.nombreTipo}" />
+                                                
                                                 <p:outputLabel for="precio" value="Nombre"/>
-                                                <p:inputText id="precio" value="#{tarifaValoresBean.precio}" />
-                                                <br></br>
+                                                <p:inputText id="precio" value="#{productosBean.tipoTransporte.precio}" />
+                                                
+                                                <p:outputLabel  value="" />
                                                 <p:commandButton onclick="PF('tipotranspDialogo').hide();" value="Aceptar"  />
                                             </h:panelGrid>
                                         </p:dialog>
@@ -93,14 +107,15 @@
                                         <p:dialog header="Tipo Espectaculo" widgetVar="tipoEspectDialogo" modal="true" height="100">
                                             <h:panelGrid columns="2" cellpadding="2">
                                                 <p:outputLabel for="idTarifaEspect" value="Id Espectaculo"/>
-                                                <p:inputText id="idTarifaEspect" value="#{tarifaValoresBean.id}" />
-                                                <br></br>
+                                                <p:inputText id="idTarifaEspect" value="#{productosBean.tipoEspectaculo.id}" />
+                                                
                                                 <p:outputLabel for="nombreEsectaculo" value="Nombre Espectaculo"/>
-                                                <p:inputText id="nombreEsectaculo" value="#{tarifaValoresBean.nombreTipo}" />
-                                                <br></br>
+                                                <p:inputText id="nombreEsectaculo" value="#{productosBean.tipoEspectaculo.nombreTipo}" />
+                                                
                                                 <p:outputLabel for="precioEspectaculo" value="Precio Espectaculo"/>
-                                                <p:inputText id="precioEspectaculo" value="#{tarifaValoresBean.precio}" />
-                                                <br></br>
+                                                <p:inputText id="precioEspectaculo" value="#{productosBean.tipoEspectaculo.precio}" />
+                                                
+                                                <p:outputLabel  value="" />
                                                 <p:commandButton onclick="PF('tipoEspectDialogo').hide();" value="Aceptar"/>
                                             </h:panelGrid>
                                         </p:dialog>
@@ -110,14 +125,15 @@
                                         <p:dialog header="Hospedaje Espectaculo" widgetVar="tipoHospedajeDialogo" modal="true" height="100">
                                             <h:panelGrid columns="2" cellpadding="2">
                                                 <p:outputLabel for="idTarifaHospedaje" value="Id Hospedaje"/>
-                                                <p:inputText id="idTarifaHospedaje" value="#{tarifaValoresBean.id}" />
-                                                <br></br>
+                                                <p:inputText id="idTarifaHospedaje" value="#{productosBean.tipoHospedaje.id}" />
+                                                
                                                 <p:outputLabel for="nombreHospedaje" value="Nombre Hospedaje"/>
-                                                <p:inputText id="nombreHospedaje" value="#{tarifaValoresBean.nombreTipo}" />
-                                                <br></br>
+                                                <p:inputText id="nombreHospedaje" value="#{productosBean.tipoHospedaje.nombreTipo}" />
+                                                
                                                 <p:outputLabel for="precioHospedaje" value="Precio Hospedaje"/>
-                                                <p:inputText id="precioHospedaje" value="#{tarifaValoresBean.precio}" />
-                                                <br></br>
+                                                <p:inputText id="precioHospedaje" value="#{productosBean.tipoHospedaje.precio}" />
+                                                
+                                                <p:outputLabel  value="" />
                                                 <p:commandButton onclick="PF('tipoHospedajeDialogo').hide();" value="Aceptar" />
                                             </h:panelGrid>
                                         </p:dialog>

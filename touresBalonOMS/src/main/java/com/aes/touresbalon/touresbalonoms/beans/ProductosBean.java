@@ -19,7 +19,6 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.xml.datatype.DatatypeConfigurationException;
@@ -45,6 +44,9 @@ public class ProductosBean {
     private TarifaValores tipoTransporte;
     private TarifaValores tipoEspectaculo;
     private TarifaValores tipoHospedaje;
+    private Integer idCiudad;
+    private String pais;
+    private TarifaValoresBean tipoCiudad;
     private String imagenProducto;
 
     private String tipoConsulta;
@@ -83,14 +85,20 @@ public class ProductosBean {
         XMLGregorianCalendar fechaSalidaServ = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaSalida());
         XMLGregorianCalendar fechaEspectaculoServ = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaEspectaculo());
         Ciudad cb = new Ciudad();
+        List<TarifaValores> tipoCiudadList = new ArrayList<>();
         producto.setIdProducto(this.getIdProducto());
         producto.setEspectaculo(this.getEspectaculo());
         producto.setDescripcion(this.getDescripcion());
         producto.setFechaLlegada(fechaLlegadaServ);
         producto.setFechaSalida(fechaSalidaServ);
         producto.setFechaEspectaculo(fechaEspectaculoServ);
-        producto.setCiudadEspectaculo(this.getCiudadEspectaculo());
+        cb.setIdCiudad(this.getIdCiudad());
+        cb.setPais(this.getPais());
+        cb.getTipoCiudad();
         producto.setCiudadEspectaculo(cb);
+        producto.setTipoEspectaculo(this.tipoEspectaculo);
+        producto.setTipoHospedaje(this.tipoHospedaje);
+        producto.setTipoTransporte(this.tipoTransporte);
         this.setTipoAccion(TipoAccion.ADICIONAR);
         service.gestionProducto(producto, this.getTipoAccion());
     }
@@ -106,8 +114,13 @@ public class ProductosBean {
         producto.setFechaLlegada(fechaLlegadaServ);
         producto.setFechaSalida(fechaSalidaServ);
         producto.setFechaEspectaculo(fechaEspectaculoServ);
-        producto.setCiudadEspectaculo(this.getCiudadEspectaculo());
+        cb.setIdCiudad(this.getIdCiudad());
+        cb.setPais(this.getPais());
+        cb.getTipoCiudad();
         producto.setCiudadEspectaculo(cb);
+        producto.setTipoEspectaculo(this.tipoEspectaculo);
+        producto.setTipoHospedaje(this.tipoHospedaje);
+        producto.setTipoTransporte(this.tipoTransporte);
         this.setTipoAccion(TipoAccion.MODIFICAR);
         service.gestionProducto(producto, this.getTipoAccion());
     }
@@ -125,8 +138,13 @@ public class ProductosBean {
         producto.setFechaLlegada(fechaLlegadaServ);
         producto.setFechaSalida(fechaSalidaServ);
         producto.setFechaEspectaculo(fechaEspectaculoServ);
-        producto.setCiudadEspectaculo(this.getCiudadEspectaculo());
+        cb.setIdCiudad(this.getIdCiudad());
+        cb.setPais(this.getPais());
+        cb.getTipoCiudad();
         producto.setCiudadEspectaculo(cb);
+        producto.setTipoEspectaculo(this.tipoEspectaculo);
+        producto.setTipoHospedaje(this.tipoHospedaje);
+        producto.setTipoTransporte(this.tipoTransporte);
         this.setTipoAccion(TipoAccion.ELIMINAR);
         service.gestionProducto(producto, this.getTipoAccion());
     }
@@ -299,6 +317,48 @@ public class ProductosBean {
      */
     public void setProducto(Producto producto) {
         this.producto = producto;
+    }
+
+    /**
+     * @return the idCiudad
+     */
+    public Integer getIdCiudad() {
+        return idCiudad;
+    }
+
+    /**
+     * @param idCiudad the idCiudad to set
+     */
+    public void setIdCiudad(Integer idCiudad) {
+        this.idCiudad = idCiudad;
+    }
+
+    /**
+     * @return the pais
+     */
+    public String getPais() {
+        return pais;
+    }
+
+    /**
+     * @param pais the pais to set
+     */
+    public void setPais(String pais) {
+        this.pais = pais;
+    }
+
+    /**
+     * @return the tipoCiudad
+     */
+    public TarifaValoresBean getTipoCiudad() {
+        return tipoCiudad;
+    }
+
+    /**
+     * @param tipoCiudad the tipoCiudad to set
+     */
+    public void setTipoCiudad(TarifaValoresBean tipoCiudad) {
+        this.tipoCiudad = tipoCiudad;
     }
 
 }
