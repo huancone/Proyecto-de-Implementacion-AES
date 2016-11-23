@@ -54,23 +54,25 @@ public class Services {
     
     private static final String URL_ENDPOINT ="http://localhost:8088/mockServiceProxyOMSSOAP";
 
-    public TipoGestionProductoResponse gestionProducto(Producto producto, TipoAccion tipoOperacion) {
+    public String gestionProducto(Producto producto, TipoAccion tipoOperacion) {
 
-        TipoGestionProductoResponse result = new TipoGestionProductoResponse();
+//        TipoGestionProductoResponse result = new TipoGestionProductoResponse();
+        String result = null;
         try {
             //conf del servicio
-            ServiceProxyOMS_Service service = new ServiceProxyOMS_Service();
-            ServiceProxyOMS port = service.getServiceProxyOMSSOAP();
-
-            String endpointURL =  URL_ENDPOINT;
-            BindingProvider bp = (BindingProvider) port;
-            bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, endpointURL);
+//            ServiceProxyOMS_Service service = new ServiceProxyOMS_Service();
+//            ServiceProxyOMS port = service.getServiceProxyOMSSOAP();
+//
+//            String endpointURL =  URL_ENDPOINT;
+//            BindingProvider bp = (BindingProvider) port;
+//            bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, endpointURL);
 
             //Llamado al servicio
-            result = port.gestionProducto(tipoOperacion, producto);
+//            result = port.gestionProducto(tipoOperacion, producto);
+            result = ConexionDB.gestionProducto(tipoOperacion, producto);
 
             // Procesamiento de la rta del servicio
-            System.out.println("Resultado con idProducto = " + result.getIdProducto());
+            System.out.println("Resultado Gestion Producto = " + result);
 
         } catch (Exception ex) {
             System.out.println("com.aes.touresbalon.touresbalonoms.services.Servicio.gestionProducto()" + ex.getMessage());
@@ -81,20 +83,21 @@ public class Services {
 
     public java.util.List<Producto> consultarProducto(TipoConsultaProducto tipoConsulta, String consulta) {
         List<Producto> list = new ArrayList<Producto>();
-        try {
-            ServiceProxyOMS_Service service = new ServiceProxyOMS_Service();
-            ServiceProxyOMS port = service.getServiceProxyOMSSOAP();
-
-            String endpointURL = URL_ENDPOINT;
-            BindingProvider bp = (BindingProvider) port;
-            bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, endpointURL);
+//        try {
+//            ServiceProxyOMS_Service service = new ServiceProxyOMS_Service();
+//            ServiceProxyOMS port = service.getServiceProxyOMSSOAP();
+//
+//            String endpointURL = URL_ENDPOINT;
+//            BindingProvider bp = (BindingProvider) port;
+//            bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, endpointURL);
 
             //Llamado al servicio
-            list = port.consultarProducto(tipoConsulta, consulta);
+//            list = port.consultarProducto(tipoConsulta, consulta);
+            list = ConexionDB.consultarProducto(tipoConsulta.toString(),consulta);
 
-        } catch (ConsultarProductoFault_Exception ex) {
-            Logger.getLogger(Services.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        } catch (ConsultarProductoFault_Exception ex) {
+//            Logger.getLogger(Services.class.getName()).log(Level.SEVERE, null, ex);
+//        }
 
         return list;
     }

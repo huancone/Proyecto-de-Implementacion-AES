@@ -67,78 +67,25 @@
                                         </p:inputText>
                                         <p:message for="paisCiudad" display="icon" />
                                         <br></br>
-                                        <p:commandButton value="Tarifa Ciudad" onclick="PF('ciudadDialogo').show();" />
-                                        <p:dialog header="Ciudad Dialog" widgetVar="ciudadDialogo" modal="true" height="100">
-                                            <h:panelGrid columns="2" cellpadding="2">
-                                                <p:outputLabel for="idTipoCiudad" value="Id Ciudad" />
-                                                <p:inputText id="idTipoCiudad" value="#{productosBean.tipoCiudad.id}" />
-                                                
-                                                <p:outputLabel for="nombreTipoCiudad" value="Pais"/>
-                                                <p:inputText id="nombreTipoCiudad" value="#{productosBean.tipoCiudad.nombreTipo}" />
-                                                
-                                                <p:outputLabel for="precioTipoCiudad" value="Tipo Ciudad" />
-                                                <p:inputText id="precioTipoCiudad" value="#{productosBean.tipoCiudad.precio}" />
-                                                
-                                                <p:outputLabel  value="" />
-                                                <p:commandButton onclick="PF('ciudadDialogo').hide();" value="Aceptar" title="View" />
-                                            </h:panelGrid>
-                                        </p:dialog>
-                                        <h:outputText value="#{productosBean.ciudadEspectaculo.idCiudad}" id="ciudadEspectaculo"/>
+                                        <h:outputLabel for="idTransporte" value="Id Transporte" />
+                                        <p:inputText id="idTransporte" value="#{productosBean.idTiipoTransporte}" >
+                                            <p:clientValidator event="keyup"/>
+                                        </p:inputText>
+                                        <p:message for="idTransporte" display="icon" />
                                         <br></br>
-                                        <p:commandButton value="Tipo Transporte" onclick="PF('tipotranspDialogo').show();" />
-                                        <p:dialog header="Tipo Transporte" widgetVar="tipotranspDialogo" modal="true" height="100">
-                                            <h:panelGrid columns="2" cellpadding="2">
-                                                <p:outputLabel for="idTarifa" value="Id Tarifa" />
-                                                <p:inputText id="idTarifa" value="#{productosBean.tipoTransporte.id}" />
-                                                
-                                                <p:outputLabel for="nombreTipo" value="Nombre"/>
-                                                <p:inputText id="nombreTipo" value="#{productosBean.tipoTransporte.nombreTipo}" />
-                                                
-                                                <p:outputLabel for="precio" value="Nombre"/>
-                                                <p:inputText id="precio" value="#{productosBean.tipoTransporte.precio}" />
-                                                
-                                                <p:outputLabel  value="" />
-                                                <p:commandButton onclick="PF('tipotranspDialogo').hide();" value="Aceptar"  />
-                                            </h:panelGrid>
-                                        </p:dialog>
-                                        <h:outputText value="#{productosBean.tipoTransporte.id}" id="tipoTransporte"/>
+                                        <h:outputLabel for="idEspectaculo" value="Id Espectaculo" />
+                                        <p:inputText id="idEspectaculo" value="#{productosBean.idTipoEspectaculo}" >
+                                            <p:clientValidator event="keyup"/>
+                                        </p:inputText>
+                                        <p:message for="idEspectaculo" display="icon" />
                                         <br></br>
-                                        <p:commandButton value="Tipo Espectaculo" onclick="PF('tipoEspectDialogo').show();" />
-                                        <p:dialog header="Tipo Espectaculo" widgetVar="tipoEspectDialogo" modal="true" height="100">
-                                            <h:panelGrid columns="2" cellpadding="2">
-                                                <p:outputLabel for="idTarifaEspect" value="Id Espectaculo"/>
-                                                <p:inputText id="idTarifaEspect" value="#{productosBean.tipoEspectaculo.id}" />
-                                                
-                                                <p:outputLabel for="nombreEsectaculo" value="Nombre Espectaculo"/>
-                                                <p:inputText id="nombreEsectaculo" value="#{productosBean.tipoEspectaculo.nombreTipo}" />
-                                                
-                                                <p:outputLabel for="precioEspectaculo" value="Precio Espectaculo"/>
-                                                <p:inputText id="precioEspectaculo" value="#{productosBean.tipoEspectaculo.precio}" />
-                                                
-                                                <p:outputLabel  value="" />
-                                                <p:commandButton onclick="PF('tipoEspectDialogo').hide();" value="Aceptar"/>
-                                            </h:panelGrid>
-                                        </p:dialog>
-                                        <h:outputText value="#{productosBean.tipoEspectaculo.id}" id="tipoEspectaculo"/>
+                                        <h:outputLabel for="idHospedaje" value="Id Hospedaje" />
+                                        <p:inputText id="idHospedaje" value="#{productosBean.idTipoHispedaje}" >
+                                            <p:clientValidator event="keyup"/>
+                                        </p:inputText>
+                                        <p:message for="idHospedaje" display="icon" />
                                         <br></br>
-                                        <p:commandButton value="Tipo Hospedaje" onclick="PF('tipoHospedajeDialogo').show();" />
-                                        <p:dialog header="Hospedaje Espectaculo" widgetVar="tipoHospedajeDialogo" modal="true" height="100">
-                                            <h:panelGrid columns="2" cellpadding="2">
-                                                <p:outputLabel for="idTarifaHospedaje" value="Id Hospedaje"/>
-                                                <p:inputText id="idTarifaHospedaje" value="#{productosBean.tipoHospedaje.id}" />
-                                                
-                                                <p:outputLabel for="nombreHospedaje" value="Nombre Hospedaje"/>
-                                                <p:inputText id="nombreHospedaje" value="#{productosBean.tipoHospedaje.nombreTipo}" />
-                                                
-                                                <p:outputLabel for="precioHospedaje" value="Precio Hospedaje"/>
-                                                <p:inputText id="precioHospedaje" value="#{productosBean.tipoHospedaje.precio}" />
-                                                
-                                                <p:outputLabel  value="" />
-                                                <p:commandButton onclick="PF('tipoHospedajeDialogo').hide();" value="Aceptar" />
-                                            </h:panelGrid>
-                                        </p:dialog>
-                                        <h:outputText value="#{productosBean.tipoHospedaje.id}" id="tipoHospedaje"/>
-                                        <br></br>
+                                        
                                     </h:panelGrid>
 
                                     <p:commandButton value="Crear Producto" actionListener="#{productosBean.crearProducto()}" process="@form"/>

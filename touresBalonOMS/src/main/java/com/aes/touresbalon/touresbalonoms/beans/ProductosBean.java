@@ -41,6 +41,9 @@ public class ProductosBean {
     private Date fechaLlegada;
     private Date fechaSalida;
     private Date fechaEspectaculo;
+    private int idTiipoTransporte;
+    private int idTipoEspectaculo;
+    private int idTipoHispedaje;
     private TarifaValores tipoTransporte;
     private TarifaValores tipoEspectaculo;
     private TarifaValores tipoHospedaje;
@@ -85,7 +88,11 @@ public class ProductosBean {
         XMLGregorianCalendar fechaSalidaServ = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaSalida());
         XMLGregorianCalendar fechaEspectaculoServ = OmsUtil.stringToXMLGreogrianCalendar(this.getFechaEspectaculo());
         Ciudad cb = new Ciudad();
+        TarifaValores tipoTransporte = new TarifaValores();
+        TarifaValores tipoEspectaculo = new TarifaValores();;
+        TarifaValores tipoHospedaje = new TarifaValores();;
         List<TarifaValores> tipoCiudadList = new ArrayList<>();
+        producto = new Producto();
         producto.setIdProducto(this.getIdProducto());
         producto.setEspectaculo(this.getEspectaculo());
         producto.setDescripcion(this.getDescripcion());
@@ -93,12 +100,16 @@ public class ProductosBean {
         producto.setFechaSalida(fechaSalidaServ);
         producto.setFechaEspectaculo(fechaEspectaculoServ);
         cb.setIdCiudad(this.getIdCiudad());
-        cb.setPais(this.getPais());
-        cb.getTipoCiudad();
+//        cb.setPais(this.getPais());
+//        cb.getTipoCiudad();
+
+        tipoTransporte.setId(this.getIdTiipoTransporte());
+        tipoEspectaculo.setId(this.getIdTipoEspectaculo());
+        tipoHospedaje.setId(this.getIdTipoHispedaje());
         producto.setCiudadEspectaculo(cb);
-        producto.setTipoEspectaculo(this.tipoEspectaculo);
-        producto.setTipoHospedaje(this.tipoHospedaje);
-        producto.setTipoTransporte(this.tipoTransporte);
+        producto.setTipoEspectaculo(tipoEspectaculo);
+        producto.setTipoHospedaje(tipoHospedaje);
+        producto.setTipoTransporte(tipoTransporte);
         this.setTipoAccion(TipoAccion.ADICIONAR);
         service.gestionProducto(producto, this.getTipoAccion());
     }
@@ -359,6 +370,48 @@ public class ProductosBean {
      */
     public void setTipoCiudad(TarifaValoresBean tipoCiudad) {
         this.tipoCiudad = tipoCiudad;
+    }
+
+    /**
+     * @return the idTiipoTransporte
+     */
+    public int getIdTiipoTransporte() {
+        return idTiipoTransporte;
+    }
+
+    /**
+     * @param idTiipoTransporte the idTiipoTransporte to set
+     */
+    public void setIdTiipoTransporte(int idTiipoTransporte) {
+        this.idTiipoTransporte = idTiipoTransporte;
+    }
+
+    /**
+     * @return the idTipoEspectaculo
+     */
+    public int getIdTipoEspectaculo() {
+        return idTipoEspectaculo;
+    }
+
+    /**
+     * @param idTipoEspectaculo the idTipoEspectaculo to set
+     */
+    public void setIdTipoEspectaculo(int idTipoEspectaculo) {
+        this.idTipoEspectaculo = idTipoEspectaculo;
+    }
+
+    /**
+     * @return the idTipoHispedaje
+     */
+    public int getIdTipoHispedaje() {
+        return idTipoHispedaje;
+    }
+
+    /**
+     * @param idTipoHispedaje the idTipoHispedaje to set
+     */
+    public void setIdTipoHispedaje(int idTipoHispedaje) {
+        this.idTipoHispedaje = idTipoHispedaje;
     }
 
 }
